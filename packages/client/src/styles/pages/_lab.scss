@@ -1,172 +1,272 @@
 .lab-page {
+  height: calc(100vh - 120px);
 
-    .col {
-        padding-right: 18px;
-        padding-left: 18px;
+  .lab-row {
+    margin-bottom: 15px;
+    .lab-choose-video-text {
+      margin-bottom: 115px;
     }
 
-    .lab-tool-wrapper {
-        display: flex;
-        flex-direction: column;
-
-        &.fullscreen {
-            background-color: $black;
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: +2000;
-            overflow-y: auto;
-
-            .controls-row {
-                .left-side {
-                    .icon {
-                        color: $white;
-                    }
-                }
-
-                .right-side {
-                    color: $white;
-
-                    .toggle-switch {
-                        background: none;
-                        color: $white;
-                    }
-                }
-            }
-        }
-
-        .lab-tool-player-wrapper {
-            width: 100%;
-        }
-
-        .linked-controls {
-            position: absolute;
-            bottom: 2px;
-            left: 2px;
-            z-index: +2;
-            width: calc(100% - 4px);
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            background: rgba($black, 0.8);
+    &.choose-star-video-row {
 
 
+    }
+  }
 
-            .speed-controls {
-                .btn {
-                    color: $white;
-                }
+  .page-title-row{
+    margin-bottom: 15px;
+  }
+  .star-video-row{
+    height: calc(100% - 300px);
+    margin-bottom: 15px;
 
-                .btn-sm {
-                    padding: 0;
-                }
+  }
+  //TODO: add to general style
+  .lab-button {
+    border: 1px solid;
+    border-radius: 50px;
+    display: inherit;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
 
-                >span {
-                    font-size: 0.66rem;
-                    color: $white;
-                }
-            }
-
-            .center-controls {
-                .icon-btn {
-                    padding-left: 0.1rem;
-
-                    .icon-btn span {
-                        font-size: 1.1rem;
-                    }
-                }
-            }
-        }
-
-        .controls-row {
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            background-color: transparent;
-
-            z-index: +2;
-
-            .left-side {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-
-                .icon {
-                    height: 26px;
-                    width: auto;
-                    color: $body-color;
-                }
-            }
-
-            .right-side {
-                display: flex;
-                flex-direction: row-reverse;
-                align-items: center;
-
-                label {
-                    display: inline-block;
-                    margin-bottom: 0.2rem;
-                    line-height: 1;
-                }
-            }
-
-
-
-            &.linked {
-                color: $white;
-                background-color: $black;
-            }
-
-
-
-
-        }
+    &.start-button{
+      height: 100px;
+      width: 100px;
+    }
+    &.user-button{
+      height: 50px;
+      width: 50px;
+      margin-right: 15px;
+      margin-top: 15px;
     }
 
-    .upload-placeholder {
+  }
+
+  .steps-bar-wrapper {
+    //display: flex;
+    margin-top: 15px;
+
+    .steps-bar {
+      width: 100%;
+      display: inline-flex;
+      list-style: none;
+      padding: 0;
+
+      .steps-bar-item {
+        //border: 1px solid;
+        width: 33%;
+        display: grid;
+        text-align: center;
+        position: relative;
+        font-size: 10px;
+
+        &.active {
+          .step-item-num {
+            background-color: $indigo;
+            color: $white;
+          }
+        }
+
+        &:after {
+          content: ' ';
+          height: 1px;
+          width: 66%;
+          background-color: $indigo;
+          position: absolute;
+          left: 67%;
+          top: calc(50% - 10px);
+        }
+
+        &:last-child {
+          &:after {
+            content: none;
+          }
+        }
+
+        .step-item-num {
+          font-size: 8px;
+          border: 1px solid $indigo;
+          border-radius: 50px;
+          width: 20px;
+          height: 20px;
+          margin: 0 auto;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+
+        }
+      }
+    }
+  }
+
+  //.col {
+  //    padding-right: 18px;
+  //    padding-left: 18px;
+  //}
+
+  .lab-tool-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    &.fullscreen {
+      background-color: $black;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: +2000;
+      overflow-y: auto;
+
+      .controls-row {
+        .left-side {
+          .icon {
+            color: $white;
+          }
+        }
+
+        .right-side {
+          color: $white;
+
+          .toggle-switch {
+            background: none;
+            color: $white;
+          }
+        }
+      }
+    }
+
+    .lab-tool-player-wrapper {
+      width: 100%;
+      height: 100%;
+
+    }
+
+    .linked-controls {
+      position: absolute;
+      bottom: 2px;
+      left: 2px;
+      z-index: +2;
+      width: calc(100% - 4px);
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      background: rgba($black, 0.8);
+
+
+      .speed-controls {
+        .btn {
+          color: $white;
+        }
+
+        .btn-sm {
+          padding: 0;
+        }
+
+        > span {
+          font-size: 0.66rem;
+          color: $white;
+        }
+      }
+
+      .center-controls {
+        .icon-btn {
+          padding-left: 0.1rem;
+
+          .icon-btn span {
+            font-size: 1.1rem;
+          }
+        }
+      }
+    }
+
+    .controls-row {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      background-color: transparent;
+
+      z-index: +2;
+
+      .left-side {
         display: flex;
-        flex-direction: column;
-        justify-content: space-around;
+        flex-direction: row;
         align-items: center;
 
-        .toolbox {
-            padding: 0 0.5rem;
-
-            h5 {
-                text-align: center;
-                font-size: 0.8rem;
-                line-height: 1.4;
-                font-weight: 400;
-                margin-bottom: 2rem;
-                max-width: 250px;
-            }
-
-            .btn {
-                // color: $white;
-                background: $white;
-                width: 12rem;
-                text-align: left;
-                font-weight: 700;
-            }
+        .icon {
+          height: 26px;
+          width: auto;
+          color: $body-color;
         }
+      }
 
-        &.bg-secondary {
-            color: $gray-500;
-            pointer-events: none;
+      .right-side {
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
 
-            .step-number {
-                border-color: $gray-500;
-            }
-
-            .toolbox {
-                .btn {
-                    color: $gray-500;
-                }
-            }
+        label {
+          display: inline-block;
+          margin-bottom: 0.2rem;
+          line-height: 1;
         }
+      }
+
+
+      &.linked {
+        color: $white;
+        background-color: $black;
+      }
+
+
     }
+  }
+
+  .upload-placeholder {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    .toolbox {
+      padding: 0 0.5rem;
+
+      h5 {
+        text-align: center;
+        font-size: 0.8rem;
+        line-height: 1.4;
+        font-weight: 400;
+        margin-bottom: 2rem;
+        max-width: 250px;
+      }
+
+      .btn {
+        // color: $white;
+        background: $white;
+        width: 12rem;
+        text-align: left;
+        font-weight: 700;
+      }
+    }
+
+    &.bg-secondary {
+      color: $gray-500;
+      pointer-events: none;
+
+      .step-number {
+        border-color: $gray-500;
+      }
+
+      .toolbox {
+        .btn {
+          color: $gray-500;
+        }
+      }
+    }
+  }
 }
