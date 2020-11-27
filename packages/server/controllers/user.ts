@@ -250,7 +250,7 @@ const verifyUserEmail = async (user: IUser) => {
   // eslint-disable-next-line require-atomic-updates
   user.emailVerificationToken = token;
   await user.save();
-  await sendVerifyEmail(user.email, token);
+  // await sendVerifyEmail(user.email, token);
 };
 
 /**
