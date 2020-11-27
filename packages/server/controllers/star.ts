@@ -9,8 +9,16 @@ import { HttpException } from "../shared/exceptions";
  */
 
 const getAllStars = async (): Promise<IStar[]> => (
-    await Star.find().exec()
-);
+    await Star.aggregate([
+        {
+            $addFields: {
+                "figures_length": { "$size": "$figures" }
+            }
+        },
+        { "$sort": { "figures_length": -1 } },
+        // { "$limit": 5 }
+    ])
+)
 
 export const getStars = async (req: Request, res: Response) => {
     const stars = await getAllStars();
