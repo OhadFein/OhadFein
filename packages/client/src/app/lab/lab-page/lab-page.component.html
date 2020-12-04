@@ -1,4 +1,4 @@
-<div class="lab-page">
+<div class="lab-page {{labView}}">
     <!--    BACK TO FIGURE PAGE -->
     <div *ngIf="labItem"
          class="row back-btn-row back-to-figure-page-row">
@@ -10,16 +10,10 @@
             </a>
         </div>
     </div>
-
     <div class="steps-bar-wrapper">
         <ul class="steps-bar">
-            <li class="steps-bar-item" [ngClass]="labView == 'empty' ? 'active' : ''"><span
-                    class="step-item-num">1</span><span>star video</span></li>
-            <li class="steps-bar-item" [ngClass]="labView == 'preview' ? 'active' : ''"><span
-                    class="step-item-num">2</span><span>star video</span></li>
-            <li class="steps-bar-item" [ngClass]="labView == 'full' ? 'active' : ''"><span
-                    class="step-item-num">3</span><span>star video</span></li>
-
+            <li *ngFor="let step of steps" class="steps-bar-item" [ngClass]="step.id == currentStep ? 'active' : step.id < currentStep ? 'completed': ''"><span
+                    class="step-item-num">{{step.id}}</span><span>{{step.name}}</span></li>
         </ul>
     </div>
 

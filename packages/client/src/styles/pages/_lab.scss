@@ -1,8 +1,22 @@
 .lab-page {
-  height: calc(100vh - 120px);
+  //border: 1px solid;
+
+  &.full {
+    height: calc(100vh - 160px);
+    .star-video-row {
+      height: calc(100% - 170px);
+    }
+
+  }
+
+  &.empty, &.preview {
+    height: calc(100vh - 120px);
+
+  }
 
   .lab-row {
-    margin-bottom: 15px;
+    //margin-bottom: 15px;
+
     .lab-choose-video-text {
       margin-bottom: 115px;
     }
@@ -13,14 +27,17 @@
     }
   }
 
-  .page-title-row{
-    margin-bottom: 15px;
+  .page-title-row {
+    //margin-bottom: 15px;
   }
-  .star-video-row{
+
+  .star-video-row {
+    //border: red 1px solid;
     height: calc(100% - 300px);
     margin-bottom: 15px;
 
   }
+
   //TODO: add to general style
   .lab-button {
     border: 1px solid;
@@ -30,11 +47,12 @@
     justify-content: center;
     margin: 0 auto;
 
-    &.start-button{
+    &.start-button {
       height: 100px;
       width: 100px;
     }
-    &.user-button{
+
+    &.user-button {
       height: 50px;
       width: 50px;
       margin-right: 15px;
@@ -61,7 +79,7 @@
         position: relative;
         font-size: 10px;
 
-        &.active {
+        &.active, &.completed {
           .step-item-num {
             background-color: $indigo;
             color: $white;
