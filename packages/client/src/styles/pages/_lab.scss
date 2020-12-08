@@ -3,6 +3,7 @@
 
   &.full {
     height: calc(100vh - 160px);
+
     .star-video-row {
       height: calc(100% - 170px);
     }
@@ -74,45 +75,38 @@
       .steps-bar-item {
         //border: 1px solid;
         width: 33%;
-        display: grid;
+        display: flex;
         text-align: center;
-        position: relative;
-        font-size: 10px;
+        //position: relative;
+        font-size: 11px;
+        justify-content: center;
+        align-items: baseline;
+        line-height: normal;
+        color: $gray-500;
 
-        &.active, &.completed {
+        &.active {
+          color: $green;
+
           .step-item-num {
-            background-color: $indigo;
+            background-color: $green;
             color: $white;
-          }
-        }
-
-        &:after {
-          content: ' ';
-          height: 1px;
-          width: 66%;
-          background-color: $indigo;
-          position: absolute;
-          left: 67%;
-          top: calc(50% - 10px);
-        }
-
-        &:last-child {
-          &:after {
-            content: none;
+            font-weight: bold;
           }
         }
 
         .step-item-num {
-          font-size: 8px;
-          border: 1px solid $indigo;
+          font-size: 11px;
+          //border: 1px solid $indigo;
+          background-color: $gray-500;
+          color: $white;
           border-radius: 50px;
           width: 20px;
           height: 20px;
-          margin: 0 auto;
+          //margin: 0 auto;
           display: flex;
           align-items: center;
           justify-content: center;
-
+          margin-right: 5px;
 
         }
       }
