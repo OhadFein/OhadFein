@@ -3,18 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="ba9d3809-63eb-4ad6-b069-f4fe30159890" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/core/models/practices.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/core/models/practices.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/core/models/video.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/core/models/video.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/core/services/practices.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/core/services/practices.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/store/actions/practices.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/actions/practices.actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/store/reducers/practices.reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/reducers/practices.reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/video-player-modal/video-player-modal.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/video-player-modal/video-player-modal.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/lab/lab-page/lab-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/lab/lab-page/lab-page.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/client/src/app/lab/lab-page/lab-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/lab/lab-page/lab-page.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/lab/lab-video-tool/lab-video-tool.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/lab/lab-video-tool/lab-video-tool.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/student/practices/practice-page/practice-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/student/practices/practice-page/practice-page.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/student/practices/practices-page/practices-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/student/practices/practices-page/practices-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/student/practices/practices-page/practices-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/student/practices/practices-page/practices-page.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/styles/pages/_lab.scss" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/styles/pages/_lab.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +73,7 @@
       <workItem from="1598462801631" duration="4502000" />
       <workItem from="1599993533477" duration="677000" />
       <workItem from="1603645637847" duration="14633000" />
+      <workItem from="1607086414122" duration="4405000" />
     </task>
     <servers />
   </component>
@@ -103,38 +95,39 @@
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2020" y="98" width="1720" height="882" key="DiffContextDialog/0.27.1920.988/1920.0.1920.1080/3840.0.1920.1080@1920.0.1920.1080" timestamp="1604060869672" />
-    <state x="2663" y="333" width="424" height="484" key="FileChooserDialogImpl" timestamp="1602843650523">
-      <screen x="1920" y="36" width="1920" height="1080" />
+    <state x="743" y="299" width="424" height="484" key="FileChooserDialogImpl" timestamp="1607433039158">
+      <screen x="0" y="27" width="1920" height="988" />
     </state>
+    <state x="743" y="299" key="FileChooserDialogImpl/0.27.1920.988/3840.0.1920.1080/1920.0.1920.1080@0.27.1920.988" timestamp="1607433039158" />
     <state x="2663" y="333" width="424" height="484" key="FileChooserDialogImpl/3840.0.1920.1080/1920.36.1920.1080/0.36.1920.1080@1920.36.1920.1080" timestamp="1602843650523" />
     <state x="2592" y="241" width="566" height="595" key="RollbackChangesDialog" timestamp="1604063003446">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2592" y="241" width="566" height="595" key="RollbackChangesDialog/0.27.1920.988/1920.0.1920.1080/3840.0.1920.1080@1920.0.1920.1080" timestamp="1604063003446" />
-    <state x="4479" y="271" width="1004" height="622" key="find.popup" timestamp="1604343740613">
-      <screen x="3840" y="0" width="1920" height="1080" />
+    <state x="439" y="153" width="1004" height="570" key="find.popup" timestamp="1607433608449">
+      <screen x="0" y="27" width="1920" height="988" />
     </state>
     <state x="639" y="275" width="1004" height="544" key="find.popup/0.27.1920.988/1920.0.1920.1080/3840.0.1920.1080@0.27.1920.988" timestamp="1604220847590" />
     <state x="2559" y="271" width="1004" height="594" key="find.popup/0.27.1920.988/1920.0.1920.1080/3840.0.1920.1080@1920.0.1920.1080" timestamp="1604065622109" />
     <state x="4479" y="271" width="1004" height="622" key="find.popup/0.27.1920.988/1920.0.1920.1080/3840.0.1920.1080@3840.0.1920.1080" timestamp="1604343740613" />
+    <state x="439" y="153" width="1004" height="570" key="find.popup/0.27.1920.988/3840.0.1920.1080/1920.0.1920.1080@0.27.1920.988" timestamp="1607433608449" />
+    <state x="2359" y="138" width="1004" height="622" key="find.popup/0.27.1920.988/3840.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1607086732313" />
+    <state x="4479" y="271" width="1004" height="622" key="find.popup/0.27.1920.988/3840.0.1920.1080/1920.0.1920.1080@3840.0.1920.1080" timestamp="1606240791528" />
     <state x="639" y="275" width="1004" height="544" key="find.popup/0.27.1920.988@0.27.1920.988" timestamp="1599993819586" />
-    <state x="639" y="291" width="1004" height="566" key="find.popup/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1596474407181" />
-    <state x="2559" y="271" width="1004" height="581" key="find.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1596643160534" />
     <state x="2559" y="307" width="1004" height="594" key="find.popup/3840.0.1920.1080/1920.36.1920.1080/0.36.1920.1080@1920.36.1920.1080" timestamp="1603452334631" />
     <state x="2568" y="435" width="613" height="207" key="git4idea.ui.GitResetDialog" timestamp="1604063057720">
       <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="2568" y="435" width="613" height="207" key="git4idea.ui.GitResetDialog/0.27.1920.988/1920.0.1920.1080/3840.0.1920.1080@1920.0.1920.1080" timestamp="1604063057720" />
-    <state x="4450" y="236" width="697" height="697" key="search.everywhere.popup" timestamp="1604343541937">
-      <screen x="3840" y="0" width="1920" height="1080" />
+    <state x="610" y="243" width="697" height="638" key="search.everywhere.popup" timestamp="1607433593390">
+      <screen x="0" y="27" width="1920" height="988" />
     </state>
     <state x="610" y="243" width="697" height="637" key="search.everywhere.popup/0.27.1920.988/1920.0.1920.1080/3840.0.1920.1080@0.27.1920.988" timestamp="1603650792825" />
     <state x="2530" y="236" width="697" height="697" key="search.everywhere.popup/0.27.1920.988/1920.0.1920.1080/3840.0.1920.1080@1920.0.1920.1080" timestamp="1604065753964" />
     <state x="4450" y="236" width="697" height="697" key="search.everywhere.popup/0.27.1920.988/1920.0.1920.1080/3840.0.1920.1080@3840.0.1920.1080" timestamp="1604343541937" />
+    <state x="610" y="243" width="697" height="638" key="search.everywhere.popup/0.27.1920.988/3840.0.1920.1080/1920.0.1920.1080@0.27.1920.988" timestamp="1607433593390" />
+    <state x="2530" y="236" width="697" height="697" key="search.everywhere.popup/0.27.1920.988/3840.0.1920.1080/1920.0.1920.1080@1920.0.1920.1080" timestamp="1606402986962" />
     <state x="610" y="243" width="697" height="637" key="search.everywhere.popup/0.27.1920.988@0.27.1920.988" timestamp="1599994070799" />
-    <state x="610" y="257" width="697" height="679" key="search.everywhere.popup/1920.0.1920.1080/0.27.1920.1053@0.27.1920.1053" timestamp="1596477872194" />
-    <state x="2530" y="236" width="697" height="697" key="search.everywhere.popup/1920.0.1920.1080/0.27.1920.1053@1920.0.1920.1080" timestamp="1596642087944" />
-    <state x="656" y="257" width="673" height="680" key="search.everywhere.popup/1920.0.1920.1080/67.27.1853.1053@67.27.1853.1053" timestamp="1596532755094" />
     <state x="2530" y="272" width="697" height="696" key="search.everywhere.popup/3840.0.1920.1080/1920.36.1920.1080/0.36.1920.1080@1920.36.1920.1080" timestamp="1603452604715" />
     <state x="4450" y="236" width="697" height="697" key="search.everywhere.popup/3840.0.1920.1080/1920.36.1920.1080/0.36.1920.1080@3840.0.1920.1080" timestamp="1602843941238" />
   </component>
