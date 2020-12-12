@@ -47,10 +47,15 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto;
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0,0,0,.12);
 
     &.start-button {
       height: 100px;
       width: 100px;
+      border: none;
+      background-color: #1B154B;
+      color: white;
+      font-weight: 700;
     }
 
     &.user-button {

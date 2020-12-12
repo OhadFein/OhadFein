@@ -159,9 +159,9 @@
     },
     "LAB": {
         "title": "Welcome to My Lab",
-        "instruction": "To start using Lab tool, you need to select Figure from Our Library first",
-        "chooseVideo": "Choose Video",
-        "uploadVideo": "Upload your Video",
+        "instruction": "Start using the lab tool, click on 'Choose video' or select a figure from our library",
+        "chooseVideo": "Choose video",
+        "uploadVideo": "Upload your video",
         "FilmVideo": "Film Video",
         "UploadVideo": "Upload Video",
         "chooseAnotherVideo": "choose another video",
@@ -169,7 +169,7 @@
         "speed": "speed",
         "linkVideos": "link videos",
         "unlinkVideos": "unlink videos",
-        "saveToMyPractices": "Save to My Practices",
+        "saveToMyPractices": "Save to my practices",
         "MESSAGES": {
             "uploadStarted": "Video upload has been started",
             "uploadCompleted": "Video was successfully uploaded"
