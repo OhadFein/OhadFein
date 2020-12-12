@@ -12,11 +12,12 @@
     </div>
     <div class="right-side"
          (click)="toggleSync()">
+      <label>{{synchronized ? ('LAB.unlinkVideos' | translate):('LAB.linkVideos' | translate)}}</label>
+
       <div role="button"
            uiToggleSwitch
            [state]="synchronized"
            [disabled]="!studentVideo"></div>
-      <label>{{synchronized ? ('LAB.unlinkVideos' | translate):('LAB.linkVideos' | translate)}}</label>
     </div>
 
   </div>
