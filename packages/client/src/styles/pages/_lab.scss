@@ -172,7 +172,7 @@
 
     .linked-controls {
       position: absolute;
-      bottom: 2px;
+      //bottom: 2px;
       left: 2px;
       z-index: +2;
       width: calc(100% - 4px);
@@ -180,6 +180,7 @@
       flex-direction: row;
       justify-content: space-between;
       background: rgba($black, 0.8);
+      top: 100%;
 
 
       .speed-controls {
@@ -231,8 +232,9 @@
       }
 
       .right-side {
+        height: 34px;
         display: flex;
-        flex-direction: row-reverse;
+        //flex-direction: row-reverse;
         align-items: center;
 
         label {

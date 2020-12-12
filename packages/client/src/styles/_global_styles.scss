@@ -30,6 +30,10 @@ button:focus {
 }
 
 .full-height {
+    min-height: 100vh;
+}
+
+.full-mobile{
     height: 100vh;
 }
 
