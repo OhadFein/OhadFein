@@ -37,8 +37,8 @@ currentStep: number;
     ngOnInit() {
         this.steps = [
             {id: 1, key: 'empty', name: 'Star video'},
-            {id: 2, key: 'preview', name: 'user video'},
-            {id: 3, key: 'full', name: 'Both videos'},
+            {id: 2, key: 'preview', name: 'User video'},
+            {id: 3, key: 'full', name: 'Analysis'},
         ]
         this.setLabView();
 
