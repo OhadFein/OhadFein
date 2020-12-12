@@ -27,12 +27,14 @@
             </div>
         </div>
         <!-- PAGE SUB TITLE - AFTER STARR VIDEO UPLOADED -->
-        <div *ngIf="labItem" class="col-12 text-center">
-            <div dsappStarName
-                [name]="labItem.star.name"></div>
-            <p>{{labItem.figure.name}},
+        <div *ngIf="labItem" class="col-12 pb-2 text-center">
+            <span dsappStarName
+                [name]="labItem.star.name">
+            </span>
+            <span> - </span>
+            <span>{{labItem.figure.name}},
                 {{'STAR.STAR_INFO_PAGE.level' | translate}}
-                {{labItem.figure.level}}</p>
+                {{labItem.figure.level}}</span>
         </div>
     </div>
 
@@ -81,7 +83,7 @@
             <!--                     [ngClass]="labItem && labItem.starVideo? 'bg-dark':'bg-secondary'">-->
             <!-- <div class="step-number">2</div> -->
             <div class="toolbox">
-                <div>{{'LAB.uploadVideo' | translate}}</div>
+<!--                <div>{{'LAB.uploadVideo' | translate}}</div>-->
                 <ui-video-file-picker
                         (videoChange)="userVideoFileChanged($event)">
                 </ui-video-file-picker>
