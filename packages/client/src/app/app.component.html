@@ -1,4 +1,4 @@
-<div *ngIf="state=='portrait'; else lanscape" class="portrait-mode">
+<div *ngIf="state=='portrait';" class="portrait-mode">
     <div class="app-bg ap-bg-one"
          [ngStyle]="{'background-position-x':backgroundPositionOne.posX,'background-position-y':backgroundPositionOne.posY,'background-size':backgroundPositionOne.size}">
     </div>
@@ -9,6 +9,6 @@
     <ui-alerts></ui-alerts>
     <ui-background-processes></ui-background-processes>
 </div>
-<div class="landscape-mode text-center d-flex align-items-center justify-content-center vh-100 p-5" #lanscape>
+<div *ngIf="state=='landscape';" class="landscape-mode text-center d-flex align-items-center justify-content-center vh-100 p-5" #lanscape>
    <h2>{{'COMMON.landscape' | translate}}</h2>
 </div>
