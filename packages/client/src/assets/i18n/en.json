@@ -10,7 +10,8 @@
         "Cancel": "Cancel",
         "preview": "Preview",
         "NotSelected": "Not Selected",
-        "tryAgain": "Try again"
+        "tryAgain": "Try again",
+        "landscape": "Sorry, This version doesn't support landscape mode."
     },
     "ERRORS": {
         "Error": "Error",

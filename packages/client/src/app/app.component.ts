@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, HostListener } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { BackgroundPosition } from '@core/models/';
 import { MenuService } from '@core/services';
@@ -8,12 +8,14 @@ import { TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
 
 declare let gtag: any;
+
 @Component({
   selector: 'dsapp-root',
   templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit, OnDestroy {
 
+  state: string;
   route = '';
   subs: Array<Subscription> = [];
   backgroundPositionOne: BackgroundPosition;
@@ -28,8 +30,15 @@ export class AppComponent implements OnInit, OnDestroy {
     translate.setDefaultLang('en');
     translate.use('en');
   }
-
+  @HostListener("window:resize") updateOrientatioState() {
+    if (window.innerHeight > window.innerWidth) {
+      this.state = 'portrait'
+    } else {
+      this.state = 'landscape'
+    }
+  }
   ngOnInit(): void {
+    this.updateOrientatioState();
     this.changeBgPosition();
     this.subs.push(
       this.router.events.subscribe(event => {
