@@ -3,10 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ba9d3809-63eb-4ad6-b069-f4fe30159890" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/lab/lab-video-tool/lab-video-tool.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/lab/lab-video-tool/lab-video-tool.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/student/student-layout/student-layout.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/student/student-layout/student-layout.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/student/student-layout/student-layout.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/student/student-layout/student-layout.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/styles/_global_styles.scss" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/styles/_global_styles.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/video-player-wrapper/video-player-wrapper.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/video-player-wrapper/video-player-wrapper.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/client/src/styles/pages/_lab.scss" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/styles/pages/_lab.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,6 +74,7 @@
       <workItem from="1603645637847" duration="14633000" />
       <workItem from="1607086414122" duration="5575000" />
       <workItem from="1607761314963" duration="8416000" />
+      <workItem from="1608477469838" duration="718000" />
     </task>
     <servers />
   </component>
