@@ -25,7 +25,8 @@ export class LabPageComponent implements OnInit, OnDestroy {
     labView: LabViewType = LabViewType.EMPTY;
     subs: Subscription[] = [];
     steps: any;
-currentStep: number;
+    currentStep: number;
+
     constructor(
         private store: Store<any>,
         private sanitizer: DomSanitizer,
@@ -40,7 +41,6 @@ currentStep: number;
             {id: 2, key: 'preview', name: 'User video'},
             {id: 3, key: 'full', name: 'Analysis'},
         ]
-        this.setLabView();
 
         this.subs.push(
             this.store.select(
@@ -59,6 +59,7 @@ currentStep: number;
                 }
             })
         )
+        this.setLabView();
 
 
     }
@@ -86,7 +87,9 @@ currentStep: number;
                 path: this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(file)),
                 file
             });
+            this.updateLabStore();
         }
+
     }
 
     checkUserVideoDuration(event) {
@@ -131,10 +134,9 @@ currentStep: number;
         const data: CreatePracticeData = new FormData();
         data.append('name', `${this.labItem.star.name.firstName} ${this.labItem.star.name.lastName} ${this.labItem.figure.name}`);
         data.append('associatedVideoId', this.labItem.starVideo._id);
-        data.append('video', this.userVideo.file);
-
+        data.append('video', this.labItem.userVideo.file);
         this.backgroundProcessesService.uploadPractice(data, `upload_practice_${this.userStamp}`);
-
+        this.userVideo = this.labItem.userVideo;
         this.practiceIsSaved = true;
 
         this.updateLabStore();
