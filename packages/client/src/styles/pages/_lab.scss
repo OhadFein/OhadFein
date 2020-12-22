@@ -183,7 +183,8 @@
       flex-direction: row;
       justify-content: space-between;
       background: rgba($black, 0.8);
-      top: 100%;
+      //top: 100%;
+      bottom: 0;
 
 
       .speed-controls {
@@ -220,8 +221,8 @@
       width: 100%;
       background-color: transparent;
       z-index: +2;
-      height: 35px;
-      border: red 2px solid;
+      height: 40px;
+      //border: red 2px solid;
 
       .left-side {
         display: flex;
