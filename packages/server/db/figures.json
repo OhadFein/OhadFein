@@ -21,7 +21,7 @@
   "type": "samba",
   "level": "1",
   "name": "Natural Basic Movement",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
   "createdAt": {
     "$date": "2020-09-05T20:29:01.198Z"
   },
@@ -62,7 +62,7 @@
   "__v": 0
 },{
   "_id": {
-    "$oid": "5f85957f5be43ca1943cdc4d"
+    "$oid": "5f85957f5be43ca1943cdc7e"
   },
   "stars": [
     {
@@ -80,72 +80,10 @@
       "$oid": "5f53f67e6ffba730ca8df5ff"
     }
   ],
-  "type": "samba",
-  "level": "3",
-  "name": "Natural Basic Movement",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc51"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "samba",
+  "type": "pasodoble",
   "level": "1",
-  "name": "Progressive Basic Movement",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc50"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "samba",
-  "level": "3",
-  "name": "Reverse Basic Movement",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
+  "name": "Attak",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
   "createdAt": {
     "$date": "2020-09-05T20:29:01.198Z"
   },
@@ -186,7 +124,131 @@
   "__v": 0
 },{
   "_id": {
-    "$oid": "5f85957f5be43ca1943cdc55"
+    "$oid": "5f85957f5be43ca1943cdc59"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "samba",
+  "level": "3",
+  "name": "Outside Basic",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc7a"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "pasodoble",
+  "level": "3",
+  "name": "Sur Place",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc88"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "jive",
+  "level": "2",
+  "name": "Basic In Place",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc95"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "jive",
+  "level": "3",
+  "name": "Windmill",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc4c"
   },
   "stars": [
     {
@@ -206,7 +268,472 @@
   ],
   "type": "samba",
   "level": "2",
-  "name": "Side Basic Movement",
+  "name": "Natural Basic Movement",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc5d"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "cha cha cha",
+  "level": "1",
+  "name": "Close Basic Movement",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc7f"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "pasodoble",
+  "level": "2",
+  "name": "Attak",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc87"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "jive",
+  "level": "1",
+  "name": "Basic In Place",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc4e"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "samba",
+  "level": "1",
+  "name": "Reverse Basic Movement",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc5e"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "cha cha cha",
+  "level": "2",
+  "name": "Close Basic Movement",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc5a"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "cha cha cha",
+  "level": "1",
+  "name": "Time Step",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc66"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "cha cha cha",
+  "level": "1",
+  "name": "Fan",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc6d"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "rumba",
+  "level": "2",
+  "name": "Close Basic Movement",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc79"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "pasodoble",
+  "level": "2",
+  "name": "Sur Place",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc86"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "pasodoble",
+  "level": "3",
+  "name": "Promenade",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc63"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "cha cha cha",
+  "level": "1",
+  "name": "Spot Turn To Right",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc71"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "rumba",
+  "level": "3",
+  "name": "Spot Turn To Right",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc8e"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "jive",
+  "level": "2",
+  "name": "Link",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc91"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "jive",
+  "level": "2",
+  "name": "Whip",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc50"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "samba",
+  "level": "3",
+  "name": "Reverse Basic Movement",
   "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
   "createdAt": {
     "$date": "2020-09-05T20:29:01.198Z"
@@ -248,37 +775,6 @@
   "__v": 0
 },{
   "_id": {
-    "$oid": "5f85957f5be43ca1943cdc57"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "samba",
-  "level": "1",
-  "name": "Outside Basic",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
     "$oid": "5f85957f5be43ca1943cdc58"
   },
   "stars": [
@@ -310,223 +806,6 @@
   "__v": 0
 },{
   "_id": {
-    "$oid": "5f85957f5be43ca1943cdc4c"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "samba",
-  "level": "2",
-  "name": "Natural Basic Movement",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc4e"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "samba",
-  "level": "1",
-  "name": "Reverse Basic Movement",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f7cda934ce0556d7f807959"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "rumba",
-  "level": "1",
-  "name": "Opening Out",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f53f50d6ffba730ca8df5fc"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "rumba",
-  "level": "3",
-  "name": "Opening Out",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-10-23T11:49:11.812Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc59"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "samba",
-  "level": "3",
-  "name": "Outside Basic",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc5e"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "cha cha cha",
-  "level": "2",
-  "name": "Close Basic Movement",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc5b"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "cha cha cha",
-  "level": "2",
-  "name": "Time Step",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
     "$oid": "5f85957f5be43ca1943cdc5c"
   },
   "stars": [
@@ -548,100 +827,7 @@
   "type": "cha cha cha",
   "level": "3",
   "name": "Time Step",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc5f"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "cha cha cha",
-  "level": "3",
-  "name": "Close Basic Movement",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc5a"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "cha cha cha",
-  "level": "1",
-  "name": "Time Step",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc53"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "samba",
-  "level": "3",
-  "name": "Progressive Basic Movement",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
   "createdAt": {
     "$date": "2020-09-05T20:29:01.198Z"
   },
@@ -713,1215 +899,6 @@
   "__v": 0
 },{
   "_id": {
-    "$oid": "5f85957f5be43ca1943cdc61"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "cha cha cha",
-  "level": "2",
-  "name": "New York To Right",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc60"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "cha cha cha",
-  "level": "1",
-  "name": "New York To Right",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc64"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "cha cha cha",
-  "level": "2",
-  "name": "Spot Turn To Right",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc5d"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "cha cha cha",
-  "level": "1",
-  "name": "Close Basic Movement",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc63"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "cha cha cha",
-  "level": "1",
-  "name": "Spot Turn To Right",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc62"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "cha cha cha",
-  "level": "3",
-  "name": "New York To Right",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc66"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "cha cha cha",
-  "level": "1",
-  "name": "Fan",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc65"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "cha cha cha",
-  "level": "3",
-  "name": "Spot Turn To Right",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc67"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "cha cha cha",
-  "level": "2",
-  "name": "Fan",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc68"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "cha cha cha",
-  "level": "3",
-  "name": "Fan",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc6c"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "rumba",
-  "level": "1",
-  "name": "Close Basic Movement",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc6d"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "rumba",
-  "level": "2",
-  "name": "Close Basic Movement",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc6e"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "rumba",
-  "level": "3",
-  "name": "Close Basic Movement",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc6f"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "rumba",
-  "level": "1",
-  "name": "Spot Turn To Right",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc70"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "rumba",
-  "level": "2",
-  "name": "Spot Turn To Right",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc73"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "rumba",
-  "level": "2",
-  "name": "Underarm Turn Turning Right",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc71"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "rumba",
-  "level": "3",
-  "name": "Spot Turn To Right",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc72"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "rumba",
-  "level": "1",
-  "name": "Underarm Turn Turning Right",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc74"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "rumba",
-  "level": "3",
-  "name": "Underarm Turn Turning Right",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc75"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "rumba",
-  "level": "1",
-  "name": "Hockey Stick",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc76"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "rumba",
-  "level": "2",
-  "name": "Hockey Stick",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc79"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "pasodoble",
-  "level": "2",
-  "name": "Sur Place",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc77"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "rumba",
-  "level": "3",
-  "name": "Hockey Stick",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc7a"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "pasodoble",
-  "level": "3",
-  "name": "Sur Place",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc78"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "pasodoble",
-  "level": "1",
-  "name": "Sur Place",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc7b"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "pasodoble",
-  "level": "1",
-  "name": "Drag",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc7d"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "pasodoble",
-  "level": "3",
-  "name": "Drag",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc7c"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "pasodoble",
-  "level": "2",
-  "name": "Drag",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc80"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "pasodoble",
-  "level": "3",
-  "name": "Attak",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc7f"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "pasodoble",
-  "level": "2",
-  "name": "Attak",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc7e"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "pasodoble",
-  "level": "1",
-  "name": "Attak",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc81"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "pasodoble",
-  "level": "1",
-  "name": "Huit",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc84"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "pasodoble",
-  "level": "1",
-  "name": "Promenade",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc82"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "pasodoble",
-  "level": "2",
-  "name": "Huit",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc83"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "pasodoble",
-  "level": "3",
-  "name": "Huit",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc89"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "jive",
-  "level": "3",
-  "name": "Basic In Place",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc86"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "pasodoble",
-  "level": "3",
-  "name": "Promenade",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc87"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "jive",
-  "level": "1",
-  "name": "Basic In Place",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc88"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "jive",
-  "level": "2",
-  "name": "Basic In Place",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
     "$oid": "5f85957f5be43ca1943cdc85"
   },
   "stars": [
@@ -1943,69 +920,7 @@
   "type": "pasodoble",
   "level": "2",
   "name": "Promenade",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc8a"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "jive",
-  "level": "1",
-  "name": "Basic In Fallaway",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc8b"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "jive",
-  "level": "2",
-  "name": "Basic In Fallaway",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
   "createdAt": {
     "$date": "2020-09-05T20:29:01.198Z"
   },
@@ -2036,7 +951,131 @@
   "type": "jive",
   "level": "3",
   "name": "Basic In Fallaway",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f53f50d6ffba730ca8df5fc"
+  },
+  "stars": [
+    {
+      "$oid": "5f85981c5be43ca1943cdc96"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "rumba",
+  "level": "3",
+  "name": "Opening Out",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-10-23T11:49:11.812Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc74"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "rumba",
+  "level": "3",
+  "name": "Underarm Turn Turning Right",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc7b"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "pasodoble",
+  "level": "1",
+  "name": "Drag",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc8b"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "jive",
+  "level": "2",
+  "name": "Basic In Fallaway",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
   "createdAt": {
     "$date": "2020-09-05T20:29:01.198Z"
   },
@@ -2067,69 +1106,7 @@
   "type": "jive",
   "level": "1",
   "name": "Link",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc8e"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "jive",
-  "level": "2",
-  "name": "Link",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc90"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "jive",
-  "level": "1",
-  "name": "Whip",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
   "createdAt": {
     "$date": "2020-09-05T20:29:01.198Z"
   },
@@ -2160,7 +1137,317 @@
   "type": "jive",
   "level": "3",
   "name": "Link",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc68"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "cha cha cha",
+  "level": "3",
+  "name": "Fan",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc75"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "rumba",
+  "level": "1",
+  "name": "Hockey Stick",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc7c"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "pasodoble",
+  "level": "2",
+  "name": "Drag",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc81"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "pasodoble",
+  "level": "1",
+  "name": "Huit",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc89"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "jive",
+  "level": "3",
+  "name": "Basic In Place",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc8a"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "jive",
+  "level": "1",
+  "name": "Basic In Fallaway",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc7d"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "pasodoble",
+  "level": "3",
+  "name": "Drag",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc6f"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "rumba",
+  "level": "1",
+  "name": "Spot Turn To Right",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc82"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "pasodoble",
+  "level": "2",
+  "name": "Huit",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc90"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "jive",
+  "level": "1",
+  "name": "Whip",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
   "createdAt": {
     "$date": "2020-09-05T20:29:01.198Z"
   },
@@ -2191,7 +1478,7 @@
   "type": "jive",
   "level": "2",
   "name": "Windmill",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
   "createdAt": {
     "$date": "2020-09-05T20:29:01.198Z"
   },
@@ -2201,7 +1488,7 @@
   "__v": 0
 },{
   "_id": {
-    "$oid": "5f85957f5be43ca1943cdc91"
+    "$oid": "5f85957f5be43ca1943cdc4d"
   },
   "stars": [
     {
@@ -2219,10 +1506,103 @@
       "$oid": "5f53f67e6ffba730ca8df5ff"
     }
   ],
-  "type": "jive",
+  "type": "samba",
+  "level": "3",
+  "name": "Natural Basic Movement",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc6c"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "rumba",
+  "level": "1",
+  "name": "Close Basic Movement",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc62"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "cha cha cha",
+  "level": "3",
+  "name": "New York To Right",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc67"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "cha cha cha",
   "level": "2",
-  "name": "Whip",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
+  "name": "Fan",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
   "createdAt": {
     "$date": "2020-09-05T20:29:01.198Z"
   },
@@ -2232,7 +1612,7 @@
   "__v": 0
 },{
   "_id": {
-    "$oid": "5f85957f5be43ca1943cdc95"
+    "$oid": "5f85957f5be43ca1943cdc83"
   },
   "stars": [
     {
@@ -2250,41 +1630,10 @@
       "$oid": "5f53f67e6ffba730ca8df5ff"
     }
   ],
-  "type": "jive",
+  "type": "pasodoble",
   "level": "3",
-  "name": "Windmill",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-  "createdAt": {
-    "$date": "2020-09-05T20:29:01.198Z"
-  },
-  "updatedAt": {
-    "$date": "2020-09-05T20:35:10.217Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85957f5be43ca1943cdc92"
-  },
-  "stars": [
-    {
-      "$oid": "5f53f2a76ffba730ca8df5fb"
-    }
-  ],
-  "videos": [
-    {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    }
-  ],
-  "type": "jive",
-  "level": "3",
-  "name": "Whip",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
+  "name": "Huit",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
   "createdAt": {
     "$date": "2020-09-05T20:29:01.198Z"
   },
@@ -2315,7 +1664,695 @@
   "type": "jive",
   "level": "1",
   "name": "Windmill",
-  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fd4d4a2effcdbe000d0dc6c"
+  },
+  "stars": [
+    {
+      "$oid": "5f7c9df60a9ca1223e12ab32"
+    },
+    {
+      "$oid": "5f85d7a15be43ca1943cdc99"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5fd4d5cceffcdbe000d0dc6d"
+    },
+    {
+      "$oid": "5fd4d620effcdbe000d0dc6e"
+    },
+    {
+      "$oid": "5fd4d63ceffcdbe000d0dc6f"
+    },
+    {
+      "$oid": "5fd4d64feffcdbe000d0dc70"
+    }
+  ],
+  "type": "waltz",
+  "level": "1",
+  "name": "Figure 1",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/anton_besedin/logo.png",
+  "createdAt": {
+    "$date": "2020-12-12T14:33:06.228Z"
+  },
+  "updatedAt": {
+    "$date": "2020-12-12T14:40:15.955Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc6e"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "rumba",
+  "level": "3",
+  "name": "Close Basic Movement",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc77"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "rumba",
+  "level": "3",
+  "name": "Hockey Stick",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f7cda934ce0556d7f807959"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "rumba",
+  "level": "1",
+  "name": "Opening Out",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc53"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "samba",
+  "level": "3",
+  "name": "Progressive Basic Movement",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc5f"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "cha cha cha",
+  "level": "3",
+  "name": "Close Basic Movement",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc73"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "rumba",
+  "level": "2",
+  "name": "Underarm Turn Turning Right",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc72"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "rumba",
+  "level": "1",
+  "name": "Underarm Turn Turning Right",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc78"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "pasodoble",
+  "level": "1",
+  "name": "Sur Place",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc84"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "pasodoble",
+  "level": "1",
+  "name": "Promenade",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc65"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "cha cha cha",
+  "level": "3",
+  "name": "Spot Turn To Right",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc70"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "rumba",
+  "level": "2",
+  "name": "Spot Turn To Right",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc51"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "samba",
+  "level": "1",
+  "name": "Progressive Basic Movement",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc61"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "cha cha cha",
+  "level": "2",
+  "name": "New York To Right",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc55"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "samba",
+  "level": "2",
+  "name": "Side Basic Movement",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc57"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "samba",
+  "level": "1",
+  "name": "Outside Basic",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc5b"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "cha cha cha",
+  "level": "2",
+  "name": "Time Step",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level%2B3/Opening%2BOut/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.jpg",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc92"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "jive",
+  "level": "3",
+  "name": "Whip",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc60"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "cha cha cha",
+  "level": "1",
+  "name": "New York To Right",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc64"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "cha cha cha",
+  "level": "2",
+  "name": "Spot Turn To Right",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc76"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "rumba",
+  "level": "2",
+  "name": "Hockey Stick",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "createdAt": {
+    "$date": "2020-09-05T20:29:01.198Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:35:10.217Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85957f5be43ca1943cdc80"
+  },
+  "stars": [
+    {
+      "$oid": "5f53f2a76ffba730ca8df5fb"
+    }
+  ],
+  "videos": [
+    {
+      "$oid": "5f53f5676ffba730ca8df5fd"
+    },
+    {
+      "$oid": "5f53f64c6ffba730ca8df5fe"
+    },
+    {
+      "$oid": "5f53f67e6ffba730ca8df5ff"
+    }
+  ],
+  "type": "pasodoble",
+  "level": "3",
+  "name": "Attak",
+  "logo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
   "createdAt": {
     "$date": "2020-09-05T20:29:01.198Z"
   },

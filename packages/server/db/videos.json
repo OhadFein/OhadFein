@@ -1,95 +1,162 @@
-[
-  {
-    "_id": {
-      "$oid": "5f53f5676ffba730ca8df5fd"
-    },
-    "view": "front",
-    "type": "basicPrinciples",
-    "participatesAmount": "couple",
-    "associatedObject": {
-      "$oid": "5f53f50d6ffba730ca8df5fc"
-    },
-    "thumbnail": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-    "ownerUser": {
-      "$oid": "5f53e610c57684288918a92d"
-    },
-    "associatedModel": "Figure",
-    "key": "stars/paul_moldovan/Rumba/Level+3/Opening+Out/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.mp4",
-    "createdAt": {
-      "$date": "2020-09-05T20:30:31.967Z"
-    },
-    "updatedAt": {
-      "$date": "2020-09-05T20:30:31.967Z"
-    },
-    "__v": 0
+[{
+  "_id": {
+    "$oid": "5f53f64c6ffba730ca8df5fe"
   },
-  {
-    "_id": {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    },
-    "view": "front",
-    "type": "comparable",
-    "participatesAmount": "couple",
-    "associatedObject": {
-      "$oid": "5f53f50d6ffba730ca8df5fc"
-    },
-    "thumbnail": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-    "ownerUser": {
-      "$oid": "5f53e610c57684288918a92d"
-    },
-    "associatedModel": "Figure",
-    "key": "stars/paul_moldovan/Rumba/Level+3/Opening+Out/RUMBA_L3_OPENING_OUT_MY_LAB_PAUL_v2.mp4",
-    "createdAt": {
-      "$date": "2020-09-05T20:35:10.216Z"
-    },
-    "updatedAt": {
-      "$date": "2020-10-23T11:18:07.514Z"
-    },
-    "__v": 0
+  "view": "front",
+  "type": "promo",
+  "participatesAmount": "couple",
+  "associatedObject": {
+    "$oid": "5f53f50d6ffba730ca8df5fc"
   },
-  {
-    "_id": {
-      "$oid": "5f53f64c6ffba730ca8df5fe"
-    },
-    "view": "front",
-    "type": "promo",
-    "participatesAmount": "couple",
-    "associatedObject": {
-      "$oid": "5f53f50d6ffba730ca8df5fc"
-    },
-    "thumbnail": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
-    "ownerUser": {
-      "$oid": "5f53e610c57684288918a92d"
-    },
-    "associatedModel": "Figure",
-    "key": "stars/paul_moldovan/Rumba/Level+3/Opening+Out/RUMBA_L3_OPENING_OUT_MY_LAB_PAUL_v2.mp4",
-    "createdAt": {
-      "$date": "2020-09-05T20:34:20.570Z"
-    },
-    "updatedAt": {
-      "$date": "2020-09-05T20:34:20.570Z"
-    },
-    "__v": 0
+  "thumbnail": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "ownerUser": {
+    "$oid": "5f53e610c57684288918a92d"
   },
-  {
-    "_id": {
-      "$oid": "5f92bbefb548833e2ac36ac0"
-    },
-    "associatedObject": {
-      "$oid": "5f53f67e6ffba730ca8df5ff"
-    },
-    "ownerUser": {
-      "$oid": "5f53e610c57684288918a92d"
-    },
-    "associatedModel": "Video",
-    "key": "users/2020-10-23T11-17-51.179Z_Roy (user) - fake it till you make it.mp4",
-    "type": "comparable",
-    "createdAt": {
-      "$date": "2020-10-23T11:18:07.512Z"
-    },
-    "updatedAt": {
-      "$date": "2020-10-23T11:18:07.512Z"
-    },
-    "__v": 0
-  }
-]
+  "associatedModel": "Figure",
+  "key": "stars/paul_moldovan/Rumba/opening_out/fake_it_till_you_make_it_mobile.mp4",
+  "createdAt": {
+    "$date": "2020-09-05T20:34:20.570Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:34:20.570Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fd4d620effcdbe000d0dc6e"
+  },
+  "view": "front",
+  "type": "comparable",
+  "participatesAmount": "solo",
+  "associatedObject": {
+    "$oid": "5fd4d4a2effcdbe000d0dc6c"
+  },
+  "thumbnail": "https://d7nb4rcaibu03.cloudfront.net/stars/anton_besedin/figure_anton_logo.png",
+  "ownerUser": {
+    "$oid": "5f53e610c57684288918a92d"
+  },
+  "associatedModel": "Figure",
+  "key": "stars/anton_besedin/figure_1/Anton-mobile.mp4",
+  "createdAt": {
+    "$date": "2020-12-12T14:39:28.774Z"
+  },
+  "updatedAt": {
+    "$date": "2020-12-13T16:21:04.807Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fd4d63ceffcdbe000d0dc6f"
+  },
+  "view": "front",
+  "type": "comparable",
+  "participatesAmount": "solo",
+  "associatedObject": {
+    "$oid": "5fd4d4a2effcdbe000d0dc6c"
+  },
+  "thumbnail": "https://d7nb4rcaibu03.cloudfront.net/stars/anton_besedin/figure_ekaterina_logo.png",
+  "ownerUser": {
+    "$oid": "5f53e610c57684288918a92d"
+  },
+  "associatedModel": "Figure",
+  "key": "stars/anton_besedin/figure_1/Ekaterina-mobile.mp4",
+  "createdAt": {
+    "$date": "2020-12-12T14:39:56.820Z"
+  },
+  "updatedAt": {
+    "$date": "2020-12-13T18:15:32.206Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fd4d5cceffcdbe000d0dc6d"
+  },
+  "view": "front",
+  "type": "promo",
+  "participatesAmount": "couple",
+  "associatedObject": {
+    "$oid": "5fd4d4a2effcdbe000d0dc6c"
+  },
+  "thumbnail": "https://d7nb4rcaibu03.cloudfront.net/stars/anton_besedin/logo.png",
+  "ownerUser": {
+    "$oid": "5f53e610c57684288918a92d"
+  },
+  "associatedModel": "Figure",
+  "key": "stars/anton_besedin/figure_1/Anton_Ekaterina-mobile.mp4",
+  "createdAt": {
+    "$date": "2020-12-12T14:38:04.066Z"
+  },
+  "updatedAt": {
+    "$date": "2020-12-12T14:38:04.066Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f53f5676ffba730ca8df5fd"
+  },
+  "view": "front",
+  "type": "basicPrinciples",
+  "participatesAmount": "couple",
+  "associatedObject": {
+    "$oid": "5f53f50d6ffba730ca8df5fc"
+  },
+  "thumbnail": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/opening_out/logo.png",
+  "ownerUser": {
+    "$oid": "5f53e610c57684288918a92d"
+  },
+  "associatedModel": "Figure",
+  "key": "stars/paul_moldovan/Rumba/opening_out/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.mp4",
+  "createdAt": {
+    "$date": "2020-09-05T20:30:31.967Z"
+  },
+  "updatedAt": {
+    "$date": "2020-09-05T20:30:31.967Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f53f67e6ffba730ca8df5ff"
+  },
+  "view": "front",
+  "type": "comparable",
+  "participatesAmount": "couple",
+  "associatedObject": {
+    "$oid": "5f53f50d6ffba730ca8df5fc"
+  },
+  "thumbnail": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png",
+  "ownerUser": {
+    "$oid": "5f53e610c57684288918a92d"
+  },
+  "associatedModel": "Figure",
+  "key": "stars/paul_moldovan/Rumba/opening_out/fake_it_till_you_make_it_mobile.mp4",
+  "createdAt": {
+    "$date": "2020-09-05T20:35:10.216Z"
+  },
+  "updatedAt": {
+    "$date": "2020-12-20T21:24:43.336Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5fd4d64feffcdbe000d0dc70"
+  },
+  "view": "front",
+  "type": "comparable",
+  "participatesAmount": "couple",
+  "associatedObject": {
+    "$oid": "5fd4d4a2effcdbe000d0dc6c"
+  },
+  "thumbnail": "https://d7nb4rcaibu03.cloudfront.net/stars/anton_besedin/logo.png",
+  "ownerUser": {
+    "$oid": "5f53e610c57684288918a92d"
+  },
+  "associatedModel": "Figure",
+  "key": "stars/anton_besedin/figure_1/Anton_Ekaterina-mobile.mp4",
+  "createdAt": {
+    "$date": "2020-12-12T14:40:15.954Z"
+  },
+  "updatedAt": {
+    "$date": "2020-12-12T19:35:30.984Z"
+  },
+  "__v": 0
+}]
