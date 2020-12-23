@@ -3,10 +3,13 @@
 
   &.full {
     height: calc(100% - 35px);
-    .col{
+
+    .col {
       height: 100%;
-      .lab-tool-player-wrapper{
-        height: 50%;
+
+      .lab-tool-player-wrapper {
+        height: calc(50% - 17px);
+
       }
     }
 
@@ -17,13 +20,12 @@
 
   }
 
-  &.preview{
-    .star-video-row{
+  &.preview {
+    .star-video-row {
       height: calc(100% - 230px);
     }
 
   }
-
 
 
   .lab-row {
@@ -55,7 +57,7 @@
     align-items: center;
     justify-content: center;
     margin: 0 auto;
-    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0,0,0,.12);
+    box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, .12);
     border: none;
     background-color: $indigo;
     color: white;
@@ -181,7 +183,8 @@
       flex-direction: row;
       justify-content: space-between;
       background: rgba($black, 0.8);
-      top: 100%;
+      //top: 100%;
+      bottom: 0;
 
 
       .speed-controls {
@@ -217,9 +220,10 @@
       align-items: center;
       width: 100%;
       background-color: transparent;
-
       z-index: +2;
-height: 35px;
+      height: 40px;
+      //border: red 2px solid;
+
       .left-side {
         display: flex;
         flex-direction: row;
