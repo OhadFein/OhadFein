@@ -1,8 +1,7 @@
 <div class="row mb-4">
     <div class="col-12">
         <a class="btn-link dark-link"
-           [routerLink]="['/','student','practices']"><i
-                class="icon-arrow-left"></i>
+           [routerLink]="['/','student','practices']"><i class="icon-arrow-left"></i>
             {{'PRACTICES.PRACTICE.backToPractices' | translate}}
         </a>
     </div>
@@ -10,7 +9,8 @@
 <ng-template [ngIf]="true && !loading && !errorMsg">
     <div class="row page-title-row mb-4 text-center edit-practice-name-wrapper">
         <div class="col-12 edit-practice-name">
-            <button class="edit-btn" (click)=editTitle()></button>
+            <button class="edit-btn"
+                    (click)=editTitle()></button>
             <input class="title-input inner-page-title text-center"
                    type="text"
                    [(ngModel)]="practiceTitleInput"
@@ -32,7 +32,7 @@
         </div>
     </div>
     <button class="btn btn-sm mt-3 mb-2 btn-success"
-            (click)="openInLab(practice.video)">{{'STAR.FIGURES.openInMyLab' | translate}}</button>
+            (click)="openInLab(practice)">{{'STAR.FIGURES.openInMyLab' | translate}}</button>
     <div class="row mb-4 justify-content-between">
         <div class="col-4">
             <button class="hide-btn"
@@ -49,8 +49,7 @@
             <textarea [disabled]="disabledNote"
                       class="form-control"
                       rows="4"
-                      [(ngModel)]="practiceNotes"
-            ></textarea>
+                      [(ngModel)]="practiceNotes"></textarea>
         </div>
     </div>
     <div class="row text-center">

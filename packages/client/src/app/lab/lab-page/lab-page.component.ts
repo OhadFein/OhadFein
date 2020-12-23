@@ -1,15 +1,15 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {DomSanitizer} from '@angular/platform-browser';
-import {AlertService} from '@app/_infra/core/services';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { AlertService } from '@app/_infra/core/services';
 import * as UserActions from '@app/_infra/store/actions/user.actions';
-import {CreatePracticeData} from '@core/models';
-import {LAB_USER_VIDEO_DURATION_DIFF_LIMIT, LabItem, LabPlayerType, LabUserVideo, LabViewType} from '@core/models/';
-import {BackgroundProcessesService} from '@core/services';
+import { CreatePracticeData } from '@core/models';
+import { LAB_USER_VIDEO_DURATION_DIFF_LIMIT, LabItem, LabPlayerType, LabUserVideo, LabViewType } from '@core/models/';
+import { BackgroundProcessesService } from '@core/services';
 import * as LabActions from '@infra/store/actions//lab.actions';
 import * as labSelectors from '@infra/store/selectors/lab.selectors';
 import * as userSelectors from '@infra/store/selectors/user.selectors';
-import {Store} from '@ngrx/store';
-import {Subscription} from 'rxjs';
+import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'dsapp-lab-page',
@@ -37,27 +37,27 @@ export class LabPageComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.steps = [
-            {id: 1, key: 'empty', name: 'Star video'},
-            {id: 2, key: 'preview', name: 'User video'},
-            {id: 3, key: 'full', name: 'Analysis'},
+            { id: 1, key: 'empty', name: 'Star video' },
+            { id: 2, key: 'preview', name: 'User video' },
+            { id: 3, key: 'full', name: 'Analysis' },
         ]
 
         this.subs.push(
             this.store.select(
                 labSelectors.selectCurrentLabItem()).subscribe(res => {
-                this.labItem = res ? {...res} : null;
-                this.setLabView();
-            })
+                    this.labItem = res ? { ...res } : null;
+                    this.setLabView();
+                })
         )
         this.subs.push(
             this.store.select(
                 userSelectors.selectCurrentUser()).subscribe(res => {
-                if (res) {
-                    this.userStamp = `user_${res._id}_${res.profile.name.firstName}_${res.profile.name.lastName}`;
-                } else {
-                    this.store.dispatch(UserActions.BeginGetUserAction());
-                }
-            })
+                    if (res) {
+                        this.userStamp = `user_${res._id}_${res.profile.name.firstName}_${res.profile.name.lastName}`;
+                    } else {
+                        this.store.dispatch(UserActions.BeginGetUserAction());
+                    }
+                })
         )
         this.setLabView();
 
@@ -126,8 +126,8 @@ export class LabPageComponent implements OnInit, OnDestroy {
     }
 
     updateLabStore() {
-        const payload: LabItem = {...this.labItem, userVideo: this.userVideo, practiceIsSaved: this.practiceIsSaved};
-        this.store.dispatch(LabActions.UpdateLabAction({payload}));
+        const payload: LabItem = { ...this.labItem, userVideo: this.userVideo, practiceIsSaved: this.practiceIsSaved };
+        this.store.dispatch(LabActions.UpdateLabAction({ payload }));
     }
 
     saveToPractices(): void {
@@ -135,6 +135,7 @@ export class LabPageComponent implements OnInit, OnDestroy {
         data.append('name', `${this.labItem.star.name.firstName} ${this.labItem.star.name.lastName} ${this.labItem.figure.name}`);
         data.append('associatedVideoId', this.labItem.starVideo._id);
         data.append('video', this.labItem.userVideo.file);
+        data.append('starId', this.labItem.star._id);
         this.backgroundProcessesService.uploadPractice(data, `upload_practice_${this.userStamp}`);
         this.userVideo = this.labItem.userVideo;
         this.practiceIsSaved = true;
