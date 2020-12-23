@@ -2,6 +2,7 @@ import { Video } from '@models/video.model';
 
 export class Practice {
   _id: string;
+  starId: string;
   name: string;
   video: Video;
   createdAt: string;

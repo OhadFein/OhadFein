@@ -108,8 +108,9 @@ export class PracticePageComponent implements OnInit, OnDestroy {
         });
     }
 
-    openInLab(userVideo: LabUserVideo): void {
-        const starId = userVideo.associatedObject.associatedObject.stars[0].toString();
+    openInLab(practice: Practice): void {
+        const userVideo = practice.video;
+        const starId = practice.starId;
         let currentStar;
         this.starsSubs.push(
             this.store.select(starsSelectors.selectStarById(starId)).subscribe(
@@ -119,8 +120,8 @@ export class PracticePageComponent implements OnInit, OnDestroy {
                         this.loading = false;
                         const labItem: LabItem = {
                             star: currentStar,
-                            figure: userVideo.associatedObject.associatedObject,
-                            starVideo: userVideo.associatedObject,
+                            figure: (userVideo.associatedObject as any).associatedObject, // TODO: any
+                            starVideo: userVideo.associatedObject as any, // TODO: any
                             userVideo,
                         }
                         this.store.dispatch(LabActions.SetLabAction({ payload: labItem }));

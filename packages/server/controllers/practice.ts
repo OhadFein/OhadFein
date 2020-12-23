@@ -106,7 +106,8 @@ export const getPracticeItem = async (req: Request, res: Response) => {
 const buildpracticeItemFromRequest = (req: Request, video: IVideo): IPracticeItem => {
     return new PracticeItem({
         video: video._id,
-        name: req.body.name
+        name: req.body.name,
+        starId: req.body.starId
     })
 }
 
