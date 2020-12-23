@@ -13,8 +13,6 @@ import { Name } from '../models/User'
 
 const randomBytesAsync = promisify(crypto.randomBytes);
 
-const DEFAULT_BIRTH_DATE = new Date('1990-12-31T00:00:00.000Z');
-
 /**
  * POST /login
  * Sign in using email and password.
@@ -72,7 +70,7 @@ export const postSignup = async (req: Request<ParamsDictionary, signupRequestBod
     profile: {
       name: req.body.name,
       birthDate: {
-        date: req.body.birthDate || DEFAULT_BIRTH_DATE
+        date: req.body.birthDate
       }
     }
   });
@@ -96,7 +94,6 @@ export const postSignup = async (req: Request<ParamsDictionary, signupRequestBod
 interface updateProfileRequestBody {
   name: Name;
   birthDate: Date;
-  location: string; // TODO: needed?
   language: EnumLanguage;
   gender: EnumGender;
   about: string;
@@ -114,10 +111,9 @@ export const patchUpdateProfile = async (req: Request<ParamsDictionary, updatePr
     name: req.body.name || '',
     gender: req.body.gender || '',
     language: req.body.language || '',
-    // location: req.body.location || '',
     // picture: req.body.picture || '',
     birthDate: {
-      date: req.body.birthDate || DEFAULT_BIRTH_DATE  // TODO: '' or something else?
+      date: req.body.birthDate
     },
     about: req.body.about || ''
   };
