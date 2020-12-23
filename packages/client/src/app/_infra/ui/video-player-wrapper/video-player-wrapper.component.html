@@ -2,7 +2,7 @@
 
      <div *ngIf="playerIsReady && !preview"
           class="top-controls onplayer-controls">
-          <p class="time btn btn-sm">{{time}}</p>
+          <p class="time btn btn-sm">{{timePassed + '/' + totalTime}}</p>
 
           <ui-player-speed-controls *ngIf="!synchronized"
                                     [playbackRate]="playbackRate"
@@ -48,7 +48,7 @@
                </div>
 
 
-               <vg-scrub-bar >
+               <vg-scrub-bar>
                     <vg-scrub-bar-buffering-time vgFor="mainVideo"></vg-scrub-bar-buffering-time>
                     <vg-scrub-bar-current-time vgFor="mainVideo"></vg-scrub-bar-current-time>
                </vg-scrub-bar>
