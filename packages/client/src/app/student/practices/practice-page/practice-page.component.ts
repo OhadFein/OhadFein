@@ -1,13 +1,13 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {LabItem, LabStarVideo, Practice, PracticeError, LabUserVideo, Star, Figure} from '@app/_infra/core/models';
-import {AlertErrorService} from '@app/_infra/core/services';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { LabItem, LabStarVideo, Practice, PracticeError, LabUserVideo, Star, Figure } from '@app/_infra/core/models';
+import { AlertErrorService } from '@app/_infra/core/services';
 import * as PracticeAction from '@app/_infra/store/actions/practices.actions';
 import * as selectors from '@app/_infra/store/selectors/practices.selector';
 import * as starsSelectors from '@app/_infra/store/selectors/stars.selectors';
-import {Store} from '@ngrx/store';
-import {TranslateService} from '@ngx-translate/core';
-import {Subscription} from 'rxjs';
+import { Store } from '@ngrx/store';
+import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 import * as PracticesAction from '@store/actions/practices.actions';
 import * as LabActions from '@store/actions/lab.actions';
 import * as StarsActions from '@store/actions/stars.actions';
@@ -69,7 +69,7 @@ export class PracticePageComponent implements OnInit, OnDestroy {
                     this.store.select(selectors.selectPracticeById(this.practiceId)).subscribe(
                         practice => {
                             if (practice) {
-                                this.practice = {...practice};
+                                this.practice = { ...practice };
                                 this.loading = false;
                                 this.practiceTitleInput = practice.name;
                                 this.practiceNotes = practice.notes;
@@ -89,12 +89,12 @@ export class PracticePageComponent implements OnInit, OnDestroy {
         this.subs.push(
             this.store.select(
                 selectors.selectPracticesError()).subscribe(res => {
-                if (res && res.type) {
-                    this.practice = null;
-                    this.loading = false;
-                    this.errorMsg = this.errorService.alertStarsError(res.type);
-                }
-            })
+                    if (res && res.type) {
+                        this.practice = null;
+                        this.loading = false;
+                        this.errorMsg = this.errorService.alertStarsError(res.type);
+                    }
+                })
         );
     }
 
@@ -109,13 +109,13 @@ export class PracticePageComponent implements OnInit, OnDestroy {
     }
 
     openInLab(userVideo: LabUserVideo): void {
-        const starId = userVideo.associatedObject.associatedObject.stars.toString();
+        const starId = userVideo.associatedObject.associatedObject.stars[0].toString();
         let currentStar;
         this.starsSubs.push(
             this.store.select(starsSelectors.selectStarById(starId)).subscribe(
                 star => {
                     if (star) {
-                        currentStar = {...star};
+                        currentStar = { ...star };
                         this.loading = false;
                         const labItem: LabItem = {
                             star: currentStar,
@@ -123,7 +123,7 @@ export class PracticePageComponent implements OnInit, OnDestroy {
                             starVideo: userVideo.associatedObject,
                             userVideo,
                         }
-                        this.store.dispatch(LabActions.SetLabAction({payload: labItem}));
+                        this.store.dispatch(LabActions.SetLabAction({ payload: labItem }));
                         this.router.navigate(['/', 'student', 'lab']);
 
                     } else {
@@ -153,7 +153,7 @@ export class PracticePageComponent implements OnInit, OnDestroy {
     saveChanges() {
         this.practice.name = this.practiceTitleInput;
         this.practice.notes = this.practiceNotes;
-        this.store.dispatch(PracticesAction.BeginUpdatePracticeItemAction({payload: this.practice}));
+        this.store.dispatch(PracticesAction.BeginUpdatePracticeItemAction({ payload: this.practice }));
         this.getPractice(true, this.practice.notes);
 
 
