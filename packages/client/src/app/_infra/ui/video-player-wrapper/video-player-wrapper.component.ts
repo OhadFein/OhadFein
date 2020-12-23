@@ -24,7 +24,8 @@ export class VideoPlayerWrapperComponent implements OnInit, OnDestroy {
   playerIsPlaying = false;
   playerAPI: VgAPI;
 
-  time = '0';
+  timePassed = '0';
+  totalTime = '0';
   playbackRate = 1;
   isIos: boolean;
   subs: Subscription[] = [];
@@ -33,7 +34,6 @@ export class VideoPlayerWrapperComponent implements OnInit, OnDestroy {
   constructor(private deviceService: DeviceDetectorService) { }
 
   ngOnInit() {
-    this.playerIsReady = false;
     const deviceInfo = this.deviceService.getDeviceInfo();
     this.isIos = deviceInfo.os.toLocaleLowerCase() === 'ios';
 
@@ -43,83 +43,47 @@ export class VideoPlayerWrapperComponent implements OnInit, OnDestroy {
     this.subs.forEach(s => { s.unsubscribe(); });
   }
 
-  onPlayerReady(api) {
-    this.playerAPI = api;
-    this.playerAPI.volume = 0;
-
-
-
-
+  pushSubscriptions() {
     this.subs.push(this.playerAPI.getDefaultMedia().subscriptions.loadedMetadata.subscribe(() => {
-      /// getting original video duration
-      this.durationEvent.emit(this.playerAPI.getDefaultMedia().duration);
+      const duration = this.getDuration();
+      this.totalTime = duration.toFixed(2);
+      this.durationEvent.emit(duration);
     }))
 
+    const canPlayEvent = (event) => {
+      this.playerIsReady = true;
+      this.playerEvent.emit(event);
+    };
 
     this.subs.push(
-      this.playerAPI.getDefaultMedia().subscriptions.canPlayThrough.subscribe(
-        event => {
-          this.playerIsReady = true;
-          this.playerEvent.emit(event);
-        }
-      )
+      this.playerAPI.getDefaultMedia().subscriptions.canPlayThrough.subscribe(canPlayEvent)
     );
     this.subs.push(
-      this.playerAPI.getDefaultMedia().subscriptions.canPlay.subscribe(
-        event => {
-          this.playerIsReady = true;
-          this.playerEvent.emit(event);
-        }
-      )
+      this.playerAPI.getDefaultMedia().subscriptions.canPlay.subscribe(canPlayEvent)
     );
 
-    this.subs.push(
-      this.playerAPI.getDefaultMedia().subscriptions.abort.subscribe(
-        event => {
-          this.playerIsPlaying = false;
-          this.playerEvent.emit(event);
-          this.playerStateChange.emit(this.playerIsPlaying);
-        }
-      )
-    );
+    const videoStatusChangedEvent = (event) => {
+      this.playerIsPlaying = ('playing' === this.playerAPI.state);
+      this.playerEvent.emit(event);
+      this.playerStateChange.emit(this.playerIsPlaying);
+    }
 
     this.subs.push(
-      this.playerAPI.getDefaultMedia().subscriptions.error.subscribe(
-        event => {
-          this.playerIsPlaying = false;
-          this.playerEvent.emit(event);
-          this.playerStateChange.emit(this.playerIsPlaying);
-        }
-      )
+      this.playerAPI.getDefaultMedia().subscriptions.abort.subscribe(videoStatusChangedEvent)
+    );
+    this.subs.push(
+      this.playerAPI.getDefaultMedia().subscriptions.error.subscribe(videoStatusChangedEvent)
+    );
+    this.subs.push(
+      this.playerAPI.getDefaultMedia().subscriptions.ended.subscribe(videoStatusChangedEvent)
+    );
+    this.subs.push(
+      this.playerAPI.getDefaultMedia().subscriptions.playing.subscribe(videoStatusChangedEvent)
+    );
+    this.subs.push(
+      this.playerAPI.getDefaultMedia().subscriptions.pause.subscribe(videoStatusChangedEvent)
     );
 
-    this.subs.push(
-      this.playerAPI.getDefaultMedia().subscriptions.playing.subscribe(
-        event => {
-          this.playerIsPlaying = true;
-          this.playerEvent.emit(event);
-          this.playerStateChange.emit(this.playerIsPlaying);
-        }
-      )
-    );
-    this.subs.push(
-      this.playerAPI.getDefaultMedia().subscriptions.pause.subscribe(
-        event => {
-          this.playerIsPlaying = false;
-          this.playerEvent.emit(event);
-          this.playerStateChange.emit(this.playerIsPlaying);
-        }
-      )
-    );
-    this.subs.push(
-      this.playerAPI.getDefaultMedia().subscriptions.ended.subscribe(
-        event => {
-          this.playerIsPlaying = false;
-          this.playerEvent.emit(event);
-          this.playerStateChange.emit(this.playerIsPlaying);
-        }
-      )
-    );
     this.subs.push(
       this.playerAPI.getDefaultMedia().subscriptions.seeked.subscribe(
         event => {
@@ -127,21 +91,27 @@ export class VideoPlayerWrapperComponent implements OnInit, OnDestroy {
         }
       )
     );
+
     this.subs.push(
       this.playerAPI.getDefaultMedia().subscriptions.timeUpdate.subscribe(
         event => {
-          this.time = (Math.round(this.getCurrentTime() * 100) / 100).toFixed(2);
+          this.timePassed = (Math.round(this.getCurrentTime() * 100) / 100).toFixed(2);
           this.playerEvent.emit(event);
         }
       )
     );
 
+  }
+
+  onPlayerReady(api) {
+    this.playerAPI = api;
+    this.playerAPI.volume = 0;
+
+    this.pushSubscriptions();
+
     if (this.isIos) {
       this.playerIsReady = true;
     }
-
-
-
   }
 
   togglePlay() {
@@ -153,6 +123,7 @@ export class VideoPlayerWrapperComponent implements OnInit, OnDestroy {
   }
 
   jump(direction) {
+    // TODO: should we use seekTo instead of .currentTIme = ...?
     switch (direction) {
       case 'fwd':
         this.playerAPI.getDefaultMedia().currentTime += 0.5;
@@ -184,6 +155,7 @@ export class VideoPlayerWrapperComponent implements OnInit, OnDestroy {
     const seekRatio = devVelocity;
     const time = this.getCurrentTime();
     const seekTo = seekRatio + time;
+
     this.seekTo(seekTo);
   }
 
@@ -192,11 +164,22 @@ export class VideoPlayerWrapperComponent implements OnInit, OnDestroy {
   }
 
   seekTo(time: number) {
-    this.playerAPI.seekTime(time);
+    let seekTo = time;
+
+    if (seekTo > this.getDuration())
+      seekTo = this.getDuration();
+    else if (seekTo < 0)
+      seekTo = 0;
+
+    this.playerAPI.seekTime(seekTo);
   }
 
   getCurrentTime(): number {
     return this.playerAPI.getDefaultMedia().currentTime;
+  }
+
+  getDuration(): number {
+    return this.playerAPI.getDefaultMedia().duration;
   }
 
   changePLayBackRate(operator: LabPlayerPlaybackOperator) {
