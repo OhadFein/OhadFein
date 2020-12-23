@@ -1,5 +1,91 @@
 [{
   "_id": {
+    "$oid": "5fa7d148e91bd800665f28d4"
+  },
+  "profile": {
+    "name": {
+      "firstName": "Levv",
+      "lastName": "Kaplun"
+    },
+    "gender": "male",
+    "language": "en",
+    "birthDate": {
+      "date": {
+        "$date": "2010-12-31T00:00:00Z"
+      }
+    },
+    "about": "asdasdassad"
+  },
+  "role": 1,
+  "emailVerified": false,
+  "email": "levkaplun1@gmail.com",
+  "password": "$2b$10$spex2MgIlWUzizdZdqQj5up.AUPmTNMzfk0kKbOiQNYT.bJ/bnoaa",
+  "createdAt": {
+    "$date": "2020-11-08T11:06:48.243Z"
+  },
+  "updatedAt": {
+    "$date": "2020-12-22T16:12:00.944Z"
+  },
+  "__v": 0,
+  "emailVerificationToken": "c6d0b7f3d440005fe36b8ed5dbb6eead"
+},{
+  "_id": {
+    "$oid": "5fb24010fb85ed103bd8bb92"
+  },
+  "profile": {
+    "birthDate": {
+      "date": {
+        "$date": "1990-12-31T00:00:00Z"
+      }
+    },
+    "name": {
+      "firstName": "Sergey",
+      "lastName": "Stepanov"
+    },
+    "language": "en"
+  },
+  "role": 1,
+  "emailVerified": false,
+  "email": "seroga@danskill.com",
+  "password": "$2b$10$MMUVAP0TASVc4zfgGn.q1esQiyLSMUVjd0DUKDR61a.GLQZue0lUG",
+  "createdAt": {
+    "$date": "2020-11-16T09:02:08.551Z"
+  },
+  "updatedAt": {
+    "$date": "2020-12-20T21:24:43.351Z"
+  },
+  "__v": 0,
+  "emailVerificationToken": "cd3a26fc99fa3d7f3731b11ff30c26d5"
+},{
+  "_id": {
+    "$oid": "5f96fabb4f495b6f2a8d4ab6"
+  },
+  "profile": {
+    "birthDate": {
+      "date": {
+        "$date": "1990-10-15T00:00:00Z"
+      }
+    },
+    "name": {
+      "firstName": "test",
+      "lastName": "user"
+    },
+    "language": "en"
+  },
+  "role": 1,
+  "emailVerified": false,
+  "email": "test@test.com",
+  "password": "$2b$10$mvosAtCSq6cactsA/0TmZuJcFPEHyvj2cVfjsYzcivLTNmrvOKna2",
+  "createdAt": {
+    "$date": "2020-10-26T16:35:07.254Z"
+  },
+  "updatedAt": {
+    "$date": "2020-10-26T16:35:07.312Z"
+  },
+  "__v": 0,
+  "emailVerificationToken": "fcd8a644ae2c0c26c30bd91f241929c5"
+},{
+  "_id": {
     "$oid": "5f53e610c57684288918a92d"
   },
   "profile": {
@@ -16,20 +102,42 @@
   },
   "role": 99,
   "emailVerified": false,
-  "tokens": [],
-  "practiceItems": [
-    {
-      "$oid": "5f92bbefb548833e2ac36ac1"
-    }
-  ],
   "email": "ohad2121@gmail.com",
   "password": "$2b$10$..IxTSeyHB5RvZkTHYFDt.Y/d.f52cH3vkzqkOaii5xkUeC3KJPhC",
   "createdAt": {
     "$date": "2020-09-05T19:25:04.945Z"
   },
   "updatedAt": {
-    "$date": "2020-10-23T11:18:07.526Z"
+    "$date": "2020-12-20T19:54:01.134Z"
   },
   "__v": 0,
   "emailVerificationToken": "5f53b898a8ee00bc3ee2b3ca21ff78a4"
+},{
+  "_id": {
+    "$oid": "5fd644c11fa68c75a613c433"
+  },
+  "profile": {
+    "birthDate": {
+      "date": {
+        "$date": "1990-12-31T00:00:00Z"
+      }
+    },
+    "name": {
+      "firstName": "angelika",
+      "lastName": "Frenkel"
+    },
+    "language": "en"
+  },
+  "role": 1,
+  "emailVerified": false,
+  "email": "angelikafr4@gmail.com",
+  "password": "$2b$10$FZdoEoyWqALHOc/SnruWkO6XlMWzteW6wE0i5aW5POpDOHNuh2C0S",
+  "createdAt": {
+    "$date": "2020-12-13T16:43:45.580Z"
+  },
+  "updatedAt": {
+    "$date": "2020-12-13T16:43:45.667Z"
+  },
+  "__v": 0,
+  "emailVerificationToken": "d86c5ad511c2c3088b844fe24040889a"
 }]

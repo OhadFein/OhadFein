@@ -1,168 +1,5 @@
 [{
   "_id": {
-    "$oid": "5f7ca0440a9ca1223e12ab38"
-  },
-  "figures": [],
-  "achievements": [
-    "World, European and GOC Finalists"
-  ],
-  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
-  "name": {
-    "firstName": "Madis",
-    "lastName": "Abel"
-  },
-  "slug": "Madis-Abel",
-  "location": {
-    "city": "Ukraine"
-  },
-  "logo": {
-    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/Madis+Abel/Madis_400x225.jpg",
-    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/Madis+Abel/Madis_400x225.jpg"
-  },
-  "about": "",
-  "createdAt": {
-    "$date": "2020-10-06T16:50:12.688Z"
-  },
-  "updatedAt": {
-    "$date": "2020-10-06T16:50:12.688Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f7c9fd10a9ca1223e12ab36"
-  },
-  "figures": [],
-  "achievements": [
-    "Romanian Champions, Adult Latin (2019, 2020)",
-    "World ranking: 11th ",
-    "World Champions, Under 21 Latin (2016)",
-    "Winners of European Cup, Adult Latin (2018)",
-    "Semifinal at European Championship, Adult Latin (2018)",
-    "South European Champions, Adult Latin (2017)"
-  ],
-  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
-  "name": {
-    "firstName": "Alexandru Ionut",
-    "lastName": "Miculescu"
-  },
-  "slug": "Alexandru-Ionut-Miculescu",
-  "location": {
-    "city": "Ukraine"
-  },
-  "logo": {
-    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/Alexandru+Ionut+Miculescu/Ionut+Miculescu_400x225.jpg",
-    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/Alexandru+Ionut+Miculescu/Ionut+Miculescu_400x225.jpg"
-  },
-  "about": "",
-  "createdAt": {
-    "$date": "2020-10-06T16:48:17.965Z"
-  },
-  "updatedAt": {
-    "$date": "2020-10-06T16:48:17.965Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f7c9f350a9ca1223e12ab35"
-  },
-  "figures": [],
-  "achievements": [
-    "6 x British National Champions",
-    "6 x UK National Champions",
-    "European Champions",
-    "UK Open Champions",
-    "World Number 1 in WDC"
-  ],
-  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
-  "name": {
-    "firstName": "Kyle",
-    "lastName": "Taylor"
-  },
-  "slug": "Kyle-Taylor",
-  "location": {
-    "city": "Ukraine"
-  },
-  "logo": {
-    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/Kyle+Taylor/Taylor_400x225px.jpg",
-    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/Kyle+Taylor/Taylor_400x225px.jpg"
-  },
-  "about": "",
-  "createdAt": {
-    "$date": "2020-10-06T16:45:41.542Z"
-  },
-  "updatedAt": {
-    "$date": "2020-10-06T16:45:41.542Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f7ca0170a9ca1223e12ab37"
-  },
-  "figures": [],
-  "achievements": [
-    "World Champions youth",
-    "World champions youth under 21",
-    "Finalists European, Championship Amateur",
-    "Grand Slams finalists"
-  ],
-  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
-  "name": {
-    "firstName": "Evgeniy",
-    "lastName": "Nikitin"
-  },
-  "slug": "Evgeniy-Nikitin",
-  "location": {
-    "city": "Ukraine"
-  },
-  "logo": {
-    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/Evgeniy+Nikitin/Nikitin_400x225.jpg",
-    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/Evgeniy+Nikitin/Nikitin_400x225.jpg"
-  },
-  "about": "",
-  "createdAt": {
-    "$date": "2020-10-06T16:49:27.766Z"
-  },
-  "updatedAt": {
-    "$date": "2020-10-06T16:49:27.766Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f7c9e2e0a9ca1223e12ab33"
-  },
-  "figures": [],
-  "achievements": [
-    "Wdsf world ten dance champions. ",
-    "Wdsf world latin semi finalist",
-    "German Open latin semi finalist",
-    "U21 world ten dance champions",
-    "U21 world latin vice champions",
-    "U21 world ballroom bronze medalists",
-    "Top 12 wdsf world ranking list"
-  ],
-  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
-  "name": {
-    "firstName": "Winson",
-    "lastName": "Tam"
-  },
-  "slug": "Winson-Tam",
-  "location": {
-    "city": "Ukraine"
-  },
-  "logo": {
-    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/Winson+Tam/Tam_400x225.jpg",
-    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/Winson+Tam/Tam_400x225.jpg"
-  },
-  "about": "",
-  "createdAt": {
-    "$date": "2020-10-06T16:41:18.970Z"
-  },
-  "updatedAt": {
-    "$date": "2020-10-06T16:41:18.970Z"
-  },
-  "__v": 0
-},{
-  "_id": {
     "$oid": "5f85d7a15be43ca1943cdc98"
   },
   "figures": [],
@@ -182,8 +19,8 @@
     "city": "Ukraine"
   },
   "logo": {
-    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/Debora+Pacini/Pacini_400x225.jpg",
-    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/Debora+Pacini/Pacini_400x225.jpg"
+    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/debora_pacini/Pacini_400x225.jpg",
+    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/debora_pacini/Pacini_400x225.jpg"
   },
   "about": "",
   "createdAt": {
@@ -191,52 +28,23 @@
   },
   "updatedAt": {
     "$date": "2020-10-06T16:37:14.823Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85d7a15be43ca1943cdc97"
-  },
-  "figures": [],
-  "achievements": [
-    "2 x world champions 10 dance",
-    "World and European cup champions",
-    "Semi-Finalists Blackpool,Uk and International",
-    "Semi-Finalists World championship",
-    "Ukrainian champions"
-  ],
-  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
-  "name": {
-    "firstName": "Olessia",
-    "lastName": "Getsko"
-  },
-  "slug": "Olessia-Getsko",
-  "location": {
-    "city": "Ukraine"
-  },
-  "logo": {
-    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/Olessia+Getsko/Getsko_400x225.jpg",
-    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/Olessia+Getsko/Getsko_400x225.jpg"
-  },
-  "about": "",
-  "createdAt": {
-    "$date": "2020-10-06T16:36:08.221Z"
-  },
-  "updatedAt": {
-    "$date": "2020-10-06T16:36:08.221Z"
   },
   "__v": 0
 },{
   "_id": {
     "$oid": "5f85d7a15be43ca1943cdc99"
   },
-  "figures": [],
+  "figures": [
+    {
+      "$oid": "5fd4d4a2effcdbe000d0dc6c"
+    }
+  ],
   "achievements": [
     "Finalists of Russian national championship ",
     "Semifinalists of Grand slam competitions",
     "Winners and medalists of International open and World open competitions"
   ],
-  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
+  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/anton_besedin/promo.mp4",
   "name": {
     "firstName": "Ekaterina",
     "lastName": "Strelkova"
@@ -246,378 +54,15 @@
     "city": "Ukraine"
   },
   "logo": {
-    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/Ekaterina+Strelkova/Strelkova_400x225.jpg",
-    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/Ekaterina+Strelkova/Strelkova_400x225.jpg"
+    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/ekaterina_strelkova/Strelkova_400x225.jpg",
+    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/ekaterina_strelkova/Strelkova_400x225.jpg"
   },
   "about": "",
   "createdAt": {
     "$date": "2020-10-06T16:40:22.941Z"
   },
   "updatedAt": {
-    "$date": "2020-10-06T16:40:22.941Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f7c9db60a9ca1223e12ab31"
-  },
-  "figures": [],
-  "achievements": [
-    "Spanish Champion ",
-    "6th place Grand Slam Moscow 2019",
-    "7th place Grand Slam Stuttgart 2019",
-    "6th place European Championships Paris 2018",
-    "9th place World Championships Ostrava 2018",
-    "5th place World Games Wroclaw 2017",
-    "1st place European Cup Famalicao 2016",
-    "1st place in many World Opens"
-  ],
-  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
-  "name": {
-    "firstName": "Guillem",
-    "lastName": "Pascual"
-  },
-  "slug": "Guillem-Pascual",
-  "location": {
-    "city": "Ukraine"
-  },
-  "logo": {
-    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/Guillem+Pascual/Pascual_400x225.jpg",
-    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/Guillem+Pascual/Pascual_400x225.jpg"
-  },
-  "about": "",
-  "createdAt": {
-    "$date": "2020-10-06T16:39:18.587Z"
-  },
-  "updatedAt": {
-    "$date": "2020-10-06T16:39:18.587Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85d7a15be43ca1943cdc9a"
-  },
-  "figures": [],
-  "achievements": [
-    "Wdsf world ten dance champions. ",
-    "Wdsf world latin semi finalist",
-    "German Open latin semi finalist",
-    "U21 world ten dance champions",
-    "U21 world latin vice champions",
-    "U21 world ballroom bronze medalists",
-    "Top 12 wdsf world ranking list"
-  ],
-  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
-  "name": {
-    "firstName": "Anastasia",
-    "lastName": "Novikova"
-  },
-  "slug": "Anastasia-Novikova",
-  "location": {
-    "city": "Ukraine"
-  },
-  "logo": {
-    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/Anastasia+Novikova/Novikova_400x225.jpg",
-    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/Anastasia+Novikova/Novikova_400x225.jpg"
-  },
-  "about": "",
-  "createdAt": {
-    "$date": "2020-10-06T16:41:18.970Z"
-  },
-  "updatedAt": {
-    "$date": "2020-10-06T16:41:18.970Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85d7a15be43ca1943cdc9b"
-  },
-  "figures": [],
-  "achievements": [
-    "3rd place World cup ",
-    "3rd place European cup",
-    "2 x Semi final World championship ",
-    "3 x semi final European championship ",
-    "2 x GOC semi final",
-    "5 x Latvian champions"
-  ],
-  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
-  "name": {
-    "firstName": "Eliza",
-    "lastName": "Ancane"
-  },
-  "slug": "Eliza-Ancane",
-  "location": {
-    "city": "Ukraine"
-  },
-  "logo": {
-    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/Eliza+Ancane/Ancane_400x225.jpg",
-    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/Eliza+Ancane/Ancane_400x225.jpg"
-  },
-  "about": "",
-  "createdAt": {
-    "$date": "2020-10-06T16:42:04.543Z"
-  },
-  "updatedAt": {
-    "$date": "2020-10-06T16:42:04.543Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85d7a15be43ca1943cdc9e"
-  },
-  "figures": [],
-  "achievements": [
-    "Romanian Champions, Adult Latin (2019, 2020)",
-    "World ranking: 11th ",
-    "World Champions, Under 21 Latin (2016)",
-    "Winners of European Cup, Adult Latin (2018)",
-    "Semifinal at European Championship, Adult Latin (2018)",
-    "South European Champions, Adult Latin (2017)"
-  ],
-  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
-  "name": {
-    "firstName": "Andra",
-    "lastName": "Pacurar"
-  },
-  "slug": "Andra-Pacurar",
-  "location": {
-    "city": "Ukraine"
-  },
-  "logo": {
-    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/Andra+Pacurar/Pacurar_400x225.jpg",
-    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/Andra+Pacurar/Pacurar_400x225.jpg"
-  },
-  "about": "",
-  "createdAt": {
-    "$date": "2020-10-06T16:48:17.965Z"
-  },
-  "updatedAt": {
-    "$date": "2020-10-06T16:48:17.965Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f7c9e5c0a9ca1223e12ab34"
-  },
-  "figures": [],
-  "achievements": [
-    "3rd place World cup ",
-    "3rd place European cup",
-    "2 x Semi final World championship ",
-    "3 x semi final European championship ",
-    "2 x GOC semi final",
-    "5 x Latvian champions"
-  ],
-  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
-  "name": {
-    "firstName": "Edgars",
-    "lastName": "Linis"
-  },
-  "slug": "Edgars-Linis",
-  "location": {
-    "city": "Ukraine"
-  },
-  "logo": {
-    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/Edgars+Linis/Linis_400x225.jpg",
-    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/Edgars+Linis/Linis_400x225.jpg"
-  },
-  "about": "",
-  "createdAt": {
-    "$date": "2020-10-06T16:42:04.543Z"
-  },
-  "updatedAt": {
-    "$date": "2020-10-06T16:42:04.543Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85d7a15be43ca1943cdc9d"
-  },
-  "figures": [],
-  "achievements": [
-    "6 x British National Champions",
-    "6 x UK National Champions",
-    "European Champions",
-    "UK Open Champions",
-    "World Number 1 in WDC"
-  ],
-  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
-  "name": {
-    "firstName": "Izabela",
-    "lastName": "Skierska"
-  },
-  "slug": "Izabela-Skierska",
-  "location": {
-    "city": "Ukraine"
-  },
-  "logo": {
-    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/Izabela+Skierska/Skierska_400x225.jpg",
-    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/Izabela+Skierska/Skierska_400x225.jpg"
-  },
-  "about": "",
-  "createdAt": {
-    "$date": "2020-10-06T16:45:41.542Z"
-  },
-  "updatedAt": {
-    "$date": "2020-10-06T16:45:41.542Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85d7a15be43ca1943cdc9f"
-  },
-  "figures": [],
-  "achievements": [
-    "World Champions youth",
-    "World champions youth under 21",
-    "Finalists European, Championship Amateur",
-    "Grand Slams finalists"
-  ],
-  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
-  "name": {
-    "firstName": "Anastasia",
-    "lastName": "Miliutina"
-  },
-  "slug": "Anastasia-Miliutina",
-  "location": {
-    "city": "Ukraine"
-  },
-  "logo": {
-    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/Anastasia+Miliutina/Miliutina_400x225.jpg",
-    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/Anastasia+Miliutina/Miliutina_400x225.jpg"
-  },
-  "about": "",
-  "createdAt": {
-    "$date": "2020-10-06T16:49:27.766Z"
-  },
-  "updatedAt": {
-    "$date": "2020-10-06T16:49:27.766Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f85d7a15be43ca1943cdca0"
-  },
-  "figures": [],
-  "achievements": [
-    "World, European and GOC Finalists"
-  ],
-  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
-  "name": {
-    "firstName": "Aleksandra",
-    "lastName": "Galkina"
-  },
-  "slug": "Aleksandra-Galkina",
-  "location": {
-    "city": "Ukraine"
-  },
-  "logo": {
-    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/Aleksandra+Galkina/Galkina_400x225.jpg",
-    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/Aleksandra+Galkina/Galkina_400x225.jpg"
-  },
-  "about": "",
-  "createdAt": {
-    "$date": "2020-10-06T16:50:12.688Z"
-  },
-  "updatedAt": {
-    "$date": "2020-10-06T16:50:12.688Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f7c9cf86368302033851798"
-  },
-  "figures": [],
-  "achievements": [
-    "2 x world champions 10 dance",
-    "World and European cup champions",
-    "Semi-Finalists Blackpool,Uk and International",
-    "Semi-Finalists World championship",
-    "Ukrainian champions"
-  ],
-  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
-  "name": {
-    "firstName": "Oleksandr",
-    "lastName": "Kravchuk"
-  },
-  "slug": "Oleksandr-Kravchuk",
-  "location": {
-    "city": "Ukraine"
-  },
-  "logo": {
-    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/Oleksandr+Kravchuk/Kravchuk_400x225_4.jpg",
-    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/Oleksandr+Kravchuk/Kravchuk_400x225_4.jpg"
-  },
-  "about": "",
-  "createdAt": {
-    "$date": "2020-10-06T16:36:08.221Z"
-  },
-  "updatedAt": {
-    "$date": "2020-10-06T16:36:08.221Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f7c9d3a6368302033851799"
-  },
-  "figures": [],
-  "achievements": [
-    "GrandSlam Finalists",
-    "Runner up european championship",
-    "3 x world cup champions",
-    "4 x world championship runner up"
-  ],
-  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
-  "name": {
-    "firstName": "Francesco",
-    "lastName": "Galuppo"
-  },
-  "slug": "Francesco-Galuppo",
-  "location": {
-    "city": "Ukraine"
-  },
-  "logo": {
-    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/Francesco+Galuppo/Galuppo_400x225.jpg",
-    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/Francesco+Galuppo/Galuppo_400x225.jpg"
-  },
-  "about": "",
-  "createdAt": {
-    "$date": "2020-10-06T16:37:14.823Z"
-  },
-  "updatedAt": {
-    "$date": "2020-10-06T16:37:14.823Z"
-  },
-  "__v": 0
-},{
-  "_id": {
-    "$oid": "5f7c9df60a9ca1223e12ab32"
-  },
-  "figures": [],
-  "achievements": [
-    "Finalists of Russian national championship ",
-    "Semifinalists of Grand slam competitions",
-    "Winners and medalists of International open and World open competitions"
-  ],
-  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
-  "name": {
-    "firstName": "Anton",
-    "lastName": "Besedin"
-  },
-  "slug": "Anton-Besedin",
-  "location": {
-    "city": "Ukraine"
-  },
-  "logo": {
-    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/Anton+Besedin/Besedin_400x225.jpg",
-    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/Anton+Besedin/Besedin_400x225.jpg"
-  },
-  "about": "",
-  "createdAt": {
-    "$date": "2020-10-06T16:40:22.941Z"
-  },
-  "updatedAt": {
-    "$date": "2020-10-06T16:40:22.941Z"
+    "$date": "2020-12-12T14:33:06.234Z"
   },
   "__v": 0
 },{
@@ -880,6 +325,203 @@
   "__v": 0
 },{
   "_id": {
+    "$oid": "5f7c9fd10a9ca1223e12ab36"
+  },
+  "figures": [],
+  "achievements": [
+    "Romanian Champions, Adult Latin (2019, 2020)",
+    "World ranking: 11th ",
+    "World Champions, Under 21 Latin (2016)",
+    "Winners of European Cup, Adult Latin (2018)",
+    "Semifinal at European Championship, Adult Latin (2018)",
+    "South European Champions, Adult Latin (2017)"
+  ],
+  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
+  "name": {
+    "firstName": "Alexandru Ionut",
+    "lastName": "Miculescu"
+  },
+  "slug": "Alexandru-Ionut-Miculescu",
+  "location": {
+    "city": "Ukraine"
+  },
+  "logo": {
+    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/alexandru_ionut_miculescu/Miculescu_400x225.jpg",
+    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/alexandru_ionut_miculescu/Miculescu_400x225.jpg"
+  },
+  "about": "",
+  "createdAt": {
+    "$date": "2020-10-06T16:48:17.965Z"
+  },
+  "updatedAt": {
+    "$date": "2020-10-06T16:48:17.965Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f7c9f350a9ca1223e12ab35"
+  },
+  "figures": [],
+  "achievements": [
+    "6 x British National Champions",
+    "6 x UK National Champions",
+    "European Champions",
+    "UK Open Champions",
+    "World Number 1 in WDC"
+  ],
+  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
+  "name": {
+    "firstName": "Kyle",
+    "lastName": "Taylor"
+  },
+  "slug": "Kyle-Taylor",
+  "location": {
+    "city": "Ukraine"
+  },
+  "logo": {
+    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/kyle_taylor/Taylor_400x225px.jpg",
+    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/kyle_taylor/Taylor_400x225px.jpg"
+  },
+  "about": "",
+  "createdAt": {
+    "$date": "2020-10-06T16:45:41.542Z"
+  },
+  "updatedAt": {
+    "$date": "2020-10-06T16:45:41.542Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f7ca0170a9ca1223e12ab37"
+  },
+  "figures": [],
+  "achievements": [
+    "World Champions youth",
+    "World champions youth under 21",
+    "Finalists European, Championship Amateur",
+    "Grand Slams finalists"
+  ],
+  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
+  "name": {
+    "firstName": "Evgeniy",
+    "lastName": "Nikitin"
+  },
+  "slug": "Evgeniy-Nikitin",
+  "location": {
+    "city": "Ukraine"
+  },
+  "logo": {
+    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/evgeniy_nikitin/Nikitin_400x225.jpg",
+    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/evgeniy_nikitin/Nikitin_400x225.jpg"
+  },
+  "about": "",
+  "createdAt": {
+    "$date": "2020-10-06T16:49:27.766Z"
+  },
+  "updatedAt": {
+    "$date": "2020-10-06T16:49:27.766Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f7ca0440a9ca1223e12ab38"
+  },
+  "figures": [],
+  "achievements": [
+    "World, European and GOC Finalists"
+  ],
+  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
+  "name": {
+    "firstName": "Madis",
+    "lastName": "Abel"
+  },
+  "slug": "Madis-Abel",
+  "location": {
+    "city": "Ukraine"
+  },
+  "logo": {
+    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/madis_abel/Madis_400x225.jpg",
+    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/madis_abel/Madis_400x225.jpg"
+  },
+  "about": "",
+  "createdAt": {
+    "$date": "2020-10-06T16:50:12.688Z"
+  },
+  "updatedAt": {
+    "$date": "2020-10-06T16:50:12.688Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85d7a15be43ca1943cdc9d"
+  },
+  "figures": [],
+  "achievements": [
+    "6 x British National Champions",
+    "6 x UK National Champions",
+    "European Champions",
+    "UK Open Champions",
+    "World Number 1 in WDC"
+  ],
+  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
+  "name": {
+    "firstName": "Izabela",
+    "lastName": "Skierska"
+  },
+  "slug": "Izabela-Skierska",
+  "location": {
+    "city": "Ukraine"
+  },
+  "logo": {
+    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/izabela_skierska/Skierska_400x225.jpg",
+    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/izabela_skierska/Skierska_400x225.jpg"
+  },
+  "about": "",
+  "createdAt": {
+    "$date": "2020-10-06T16:45:41.542Z"
+  },
+  "updatedAt": {
+    "$date": "2020-10-06T16:45:41.542Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f7c9db60a9ca1223e12ab31"
+  },
+  "figures": [],
+  "achievements": [
+    "Spanish Champion ",
+    "6th place Grand Slam Moscow 2019",
+    "7th place Grand Slam Stuttgart 2019",
+    "6th place European Championships Paris 2018",
+    "9th place World Championships Ostrava 2018",
+    "5th place World Games Wroclaw 2017",
+    "1st place European Cup Famalicao 2016",
+    "1st place in many World Opens"
+  ],
+  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
+  "name": {
+    "firstName": "Guillem",
+    "lastName": "Pascual"
+  },
+  "slug": "Guillem-Pascual",
+  "location": {
+    "city": "Ukraine"
+  },
+  "logo": {
+    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/guillem_pascual/Pascual_400x225.jpg",
+    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/guillem_pascual/Pascual_400x225.jpg"
+  },
+  "about": "",
+  "createdAt": {
+    "$date": "2020-10-06T16:39:18.587Z"
+  },
+  "updatedAt": {
+    "$date": "2020-10-06T16:39:18.587Z"
+  },
+  "__v": 0
+},{
+  "_id": {
     "$oid": "5f85d7a15be43ca1943cdc9c"
   },
   "figures": [
@@ -1124,8 +766,8 @@
     "city": "Romania"
   },
   "logo": {
-    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/Cristina+Tatar/Tatar_200x200.jpg",
-    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/Cristina+Tatar/Tatar_400x225.jpg"
+    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/cristina_tatar/Tatar_200x200.jpg",
+    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/cristina_tatar/Tatar_400x225.jpg"
   },
   "about": "",
   "slug": "Cristina-Tatar",
@@ -1134,6 +776,372 @@
   },
   "updatedAt": {
     "$date": "2020-09-05T20:29:01.222Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f7c9d3a6368302033851799"
+  },
+  "figures": [],
+  "achievements": [
+    "GrandSlam Finalists",
+    "Runner up european championship",
+    "3 x world cup champions",
+    "4 x world championship runner up"
+  ],
+  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
+  "name": {
+    "firstName": "Francesco",
+    "lastName": "Galuppo"
+  },
+  "slug": "Francesco-Galuppo",
+  "location": {
+    "city": "Ukraine"
+  },
+  "logo": {
+    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/francesco_galuppo/Galuppo_400x225.jpg",
+    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/francesco_galuppo/Galuppo_400x225.jpg"
+  },
+  "about": "",
+  "createdAt": {
+    "$date": "2020-10-06T16:37:14.823Z"
+  },
+  "updatedAt": {
+    "$date": "2020-10-06T16:37:14.823Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85d7a15be43ca1943cdc9f"
+  },
+  "figures": [],
+  "achievements": [
+    "World Champions youth",
+    "World champions youth under 21",
+    "Finalists European, Championship Amateur",
+    "Grand Slams finalists"
+  ],
+  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
+  "name": {
+    "firstName": "Anastasia",
+    "lastName": "Miliutina"
+  },
+  "slug": "Anastasia-Miliutina",
+  "location": {
+    "city": "Ukraine"
+  },
+  "logo": {
+    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/anastasia_miliutina/Miliutina_400x225.jpg",
+    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/anastasia_miliutina/Miliutina_400x225.jpg"
+  },
+  "about": "",
+  "createdAt": {
+    "$date": "2020-10-06T16:49:27.766Z"
+  },
+  "updatedAt": {
+    "$date": "2020-10-06T16:49:27.766Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f7c9cf86368302033851798"
+  },
+  "figures": [],
+  "achievements": [
+    "2 x world champions 10 dance",
+    "World and European cup champions",
+    "Semi-Finalists Blackpool,Uk and International",
+    "Semi-Finalists World championship",
+    "Ukrainian champions"
+  ],
+  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
+  "name": {
+    "firstName": "Oleksandr",
+    "lastName": "Kravchuk"
+  },
+  "slug": "Oleksandr-Kravchuk",
+  "location": {
+    "city": "Ukraine"
+  },
+  "logo": {
+    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/oleksandr_kravchuk/Kravchuk_400x225_4.jpg",
+    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/oleksandr_kravchuk/Kravchuk_400x225_4.jpg"
+  },
+  "about": "",
+  "createdAt": {
+    "$date": "2020-10-06T16:36:08.221Z"
+  },
+  "updatedAt": {
+    "$date": "2020-10-06T16:36:08.221Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f7c9e2e0a9ca1223e12ab33"
+  },
+  "figures": [],
+  "achievements": [
+    "Wdsf world ten dance champions. ",
+    "Wdsf world latin semi finalist",
+    "German Open latin semi finalist",
+    "U21 world ten dance champions",
+    "U21 world latin vice champions",
+    "U21 world ballroom bronze medalists",
+    "Top 12 wdsf world ranking list"
+  ],
+  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
+  "name": {
+    "firstName": "Winson",
+    "lastName": "Tam"
+  },
+  "slug": "Winson-Tam",
+  "location": {
+    "city": "Ukraine"
+  },
+  "logo": {
+    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/winson_tam/Tam_400x225.jpg",
+    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/winson_tam/Tam_400x225.jpg"
+  },
+  "about": "",
+  "createdAt": {
+    "$date": "2020-10-06T16:41:18.970Z"
+  },
+  "updatedAt": {
+    "$date": "2020-10-06T16:41:18.970Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f7c9df60a9ca1223e12ab32"
+  },
+  "figures": [
+    {
+      "$oid": "5fd4d4a2effcdbe000d0dc6c"
+    }
+  ],
+  "achievements": [
+    "Finalists of Russian national championship ",
+    "Semifinalists of Grand slam competitions",
+    "Winners and medalists of International open and World open competitions"
+  ],
+  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/anton_besedin/promo.mp4",
+  "name": {
+    "firstName": "Anton",
+    "lastName": "Besedin"
+  },
+  "slug": "Anton-Besedin",
+  "location": {
+    "city": "Ukraine"
+  },
+  "logo": {
+    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/anton_besedin/Besedin_400x225.jpg",
+    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/anton_besedin/Besedin_400x225.jpg"
+  },
+  "about": "",
+  "createdAt": {
+    "$date": "2020-10-06T16:40:22.941Z"
+  },
+  "updatedAt": {
+    "$date": "2020-12-12T14:33:06.233Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85d7a15be43ca1943cdc9b"
+  },
+  "figures": [],
+  "achievements": [
+    "3rd place World cup ",
+    "3rd place European cup",
+    "2 x Semi final World championship ",
+    "3 x semi final European championship ",
+    "2 x GOC semi final",
+    "5 x Latvian champions"
+  ],
+  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
+  "name": {
+    "firstName": "Eliza",
+    "lastName": "Ancane"
+  },
+  "slug": "Eliza-Ancane",
+  "location": {
+    "city": "Ukraine"
+  },
+  "logo": {
+    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/eliza_ancane/Ancane_400x225.jpg",
+    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/eliza_ancane/Ancane_400x225.jpg"
+  },
+  "about": "",
+  "createdAt": {
+    "$date": "2020-10-06T16:42:04.543Z"
+  },
+  "updatedAt": {
+    "$date": "2020-10-06T16:42:04.543Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f7c9e5c0a9ca1223e12ab34"
+  },
+  "figures": [],
+  "achievements": [
+    "3rd place World cup ",
+    "3rd place European cup",
+    "2 x Semi final World championship ",
+    "3 x semi final European championship ",
+    "2 x GOC semi final",
+    "5 x Latvian champions"
+  ],
+  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
+  "name": {
+    "firstName": "Edgars",
+    "lastName": "Linis"
+  },
+  "slug": "Edgars-Linis",
+  "location": {
+    "city": "Ukraine"
+  },
+  "logo": {
+    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/edgars_linis/Linis_400x225.jpg",
+    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/edgars_linis/Linis_400x225.jpg"
+  },
+  "about": "",
+  "createdAt": {
+    "$date": "2020-10-06T16:42:04.543Z"
+  },
+  "updatedAt": {
+    "$date": "2020-10-06T16:42:04.543Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85d7a15be43ca1943cdca0"
+  },
+  "figures": [],
+  "achievements": [
+    "World, European and GOC Finalists"
+  ],
+  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
+  "name": {
+    "firstName": "Aleksandra",
+    "lastName": "Galkina"
+  },
+  "slug": "Aleksandra-Galkina",
+  "location": {
+    "city": "Ukraine"
+  },
+  "logo": {
+    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/aleksandra_galkina/Galkina_400x225.jpg",
+    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/aleksandra_galkina/Galkina_400x225.jpg"
+  },
+  "about": "",
+  "createdAt": {
+    "$date": "2020-10-06T16:50:12.688Z"
+  },
+  "updatedAt": {
+    "$date": "2020-10-06T16:50:12.688Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85d7a15be43ca1943cdc97"
+  },
+  "figures": [],
+  "achievements": [
+    "2 x world champions 10 dance",
+    "World and European cup champions",
+    "Semi-Finalists Blackpool,Uk and International",
+    "Semi-Finalists World championship",
+    "Ukrainian champions"
+  ],
+  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
+  "name": {
+    "firstName": "Olessia",
+    "lastName": "Getsko"
+  },
+  "slug": "Olessia-Getsko",
+  "location": {
+    "city": "Ukraine"
+  },
+  "logo": {
+    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/olessia_getsko/Getsko_400x225.jpg",
+    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/olessia_getsko/Getsko_400x225.jpg"
+  },
+  "about": "",
+  "createdAt": {
+    "$date": "2020-10-06T16:36:08.221Z"
+  },
+  "updatedAt": {
+    "$date": "2020-10-06T16:36:08.221Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85d7a15be43ca1943cdc9e"
+  },
+  "figures": [],
+  "achievements": [
+    "Romanian Champions, Adult Latin (2019, 2020)",
+    "World ranking: 11th ",
+    "World Champions, Under 21 Latin (2016)",
+    "Winners of European Cup, Adult Latin (2018)",
+    "Semifinal at European Championship, Adult Latin (2018)",
+    "South European Champions, Adult Latin (2017)"
+  ],
+  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
+  "name": {
+    "firstName": "Andra",
+    "lastName": "Pacurar"
+  },
+  "slug": "Andra-Pacurar",
+  "location": {
+    "city": "Ukraine"
+  },
+  "logo": {
+    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/andra_pacurar/Pacurar_400x225.jpg",
+    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/andra_pacurar/Pacurar_400x225.jpg"
+  },
+  "about": "",
+  "createdAt": {
+    "$date": "2020-10-06T16:48:17.965Z"
+  },
+  "updatedAt": {
+    "$date": "2020-10-06T16:48:17.965Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "5f85d7a15be43ca1943cdc9a"
+  },
+  "figures": [],
+  "achievements": [
+    "Wdsf world ten dance champions. ",
+    "Wdsf world latin semi finalist",
+    "German Open latin semi finalist",
+    "U21 world ten dance champions",
+    "U21 world latin vice champions",
+    "U21 world ballroom bronze medalists",
+    "Top 12 wdsf world ranking list"
+  ],
+  "promoVideo": "https://d7nb4rcaibu03.cloudfront.net/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4",
+  "name": {
+    "firstName": "Anastasia",
+    "lastName": "Novikova"
+  },
+  "slug": "Anastasia-Novikova",
+  "location": {
+    "city": "Ukraine"
+  },
+  "logo": {
+    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/anastasia_novikova/Novikova_400x225.jpg",
+    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/anastasia_novikova/Novikova_400x225.jpg"
+  },
+  "about": "",
+  "createdAt": {
+    "$date": "2020-10-06T16:41:18.970Z"
+  },
+  "updatedAt": {
+    "$date": "2020-10-06T16:41:18.970Z"
   },
   "__v": 0
 }]

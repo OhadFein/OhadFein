@@ -1,17 +1,1 @@
-[{
-  "_id": {
-    "$oid": "5f92bbefb548833e2ac36ac1"
-  },
-  "video": {
-    "$oid": "5f92bbefb548833e2ac36ac0"
-  },
-  "name": "fake it till you make it #11",
-  "createdAt": {
-    "$date": "2020-10-23T11:18:07.520Z"
-  },
-  "updatedAt": {
-    "$date": "2020-10-25T09:20:32.779Z"
-  },
-  "__v": 0,
-  "notes": "Note #1"
-}]
+[]
