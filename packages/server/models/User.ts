@@ -19,7 +19,7 @@ export interface dataStoredInToken {
 }
 
 interface BirthDate {
-  date: Date;
+  date?: Date;
   group?: EnumAgeGroup;
 }
 
@@ -32,14 +32,9 @@ export interface Name {
 interface IProfile {
   gender?: EnumGender,
   language: EnumLanguage,
-  birthDate: BirthDate,
+  birthDate?: BirthDate,
   name: Name,
-  about?: string,
-  // location?: {
-  //   country?: string,
-  //   city?: string
-  // };
-  // picture?: string,
+  about?: string
 }
 
 const userSchema = new mongoose.Schema(
@@ -71,11 +66,6 @@ const userSchema = new mongoose.Schema(
         nickname: { type: String },
       },
       about: { type: String },
-      // location: {
-      //   country: { type: String },
-      //   city: { type: String }
-      // },
-      // picture: { type: String },
     }
   },
   { timestamps: true }

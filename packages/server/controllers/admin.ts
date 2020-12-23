@@ -62,9 +62,9 @@ const buildVideoFromRequest = (req: Request, videoKey: string): IVideo => {
 
 export const associateVideoWithFigure = async (associatedId: mongoose.Types.ObjectId,
     newVideoId: mongoose.Types.ObjectId) => (
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-        await Figure.updateOne({ _id: associatedId }, { $addToSet: { videos: newVideoId } }).exec()
-    );
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    await Figure.updateOne({ _id: associatedId }, { $addToSet: { videos: newVideoId } }).exec()
+);
 
 export const addVideo = async (req: Request, res: Response) => {
     // TODO: validation for req.file
