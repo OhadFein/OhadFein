@@ -14,7 +14,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "7170e5e2-587e-455a-a899-75787ef36107",
 								"exec": [
 									"pm.test(\"Sign up\", function () {",
 									"    if (responseCode.code === 201)",
@@ -67,7 +66,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "7b696d07-b35e-4a9c-bdfb-c592988998f6",
 								"exec": [
 									"pm.test(\"login\", function () {",
 									"    if (responseCode.code === 200)",
@@ -120,7 +118,6 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "deb9d465-a9c8-4f95-bc1f-0a60f5f717ed",
 								"exec": [
 									"",
 									"",
@@ -329,7 +326,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "509cdb13-e09d-4b30-937b-606342a6369d",
 								"exec": [
 									"pm.test(\"Refresh token\", function () {",
 									"    if (responseCode.code === 200)",
@@ -469,7 +465,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ba660c6e-9c34-4db4-963c-823cb5887a01",
 								"exec": [
 									"pm.test(\"Get my profile info\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -520,7 +515,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "0eaf8a68-258c-4efa-a4fd-4fac1fcd240b",
 								"exec": [
 									"pm.test(\"Edit my profile info\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -568,7 +562,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "40b8ff07-26b8-427b-84af-d9a960ddd62f",
 								"exec": [
 									"pm.test(\"Edit password\", function () {",
 									"    pm.response.to.have.status(200);",
@@ -615,7 +608,6 @@
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "bf5c81fa-a078-473e-b3c7-fa97b66c11da",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -625,15 +617,13 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "163861c3-0b7f-4143-96ce-88345e1213d9",
 						"type": "text/javascript",
 						"exec": [
 							""
 						]
 					}
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Admins",
@@ -647,7 +637,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "ed1087b5-1a2c-410b-b500-07862e42644a",
 										"exec": [
 											"pm.test(\"Add star\", function () {",
 											"        if (responseCode.code === 201)",
@@ -701,7 +690,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "c4362275-8403-4a37-8c7a-3e6f9bb249dd",
 										"exec": [
 											"pm.test(\"Delete star\", function () {",
 											"    pm.response.to.have.status(200);",
@@ -723,10 +711,7 @@
 								],
 								"body": {
 									"mode": "formdata",
-									"formdata": [],
-									"options": {
-										"formdata": {}
-									}
+									"formdata": []
 								},
 								"url": {
 									"raw": "{{baseURL}}/admins/stars/{{starId}}",
@@ -742,9 +727,7 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "Videos",
@@ -755,7 +738,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "944b288c-8760-49dd-b092-b6d73ff15bee",
 										"exec": [
 											"pm.test(\"Add star video\", function () {\r",
 											"    if (responseCode.code === 201) {\r",
@@ -791,7 +773,7 @@
 										},
 										{
 											"key": "videoKey",
-											"value": "stars/paul_moldovan/Rumba/Level 3/Opening Out/RUMBA_L3_OPENING_OUT_MY_LAB_PAUL_v2.mp4",
+											"value": "stars/paul_moldovan/Rumba/Level 3/Opening Out/RUMBA_L3_OPENING_OUT_MY_LAB_PAUL.mp4",
 											"type": "text"
 										},
 										{
@@ -827,7 +809,7 @@
 										},
 										{
 											"key": "thumbnail",
-											"value": "https://danskill1.s3-eu-west-1.amazonaws.com/stars/paul_moldovan/Rumba/Level+3/Opening+Out/RUMBA_L3_OPENING_OUT_MY_LAB_PAUL_v2.mp4",
+											"value": "https://danskill1.s3-eu-west-1.amazonaws.com/stars/paul_moldovan/Rumba/Level+3/Opening+Out/RUMBA_L3_OPENING_OUT_MY_LAB_PAUL.mp4",
 											"type": "text"
 										},
 										{
@@ -842,10 +824,7 @@
 											"value": "https://danskill1.s3-eu-west-1.amazonaws.com/stars/paul_moldovan/Rumba/Level+3/Opening+Out/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.mp4",
 											"type": "text"
 										}
-									],
-									"options": {
-										"formdata": {}
-									}
+									]
 								},
 								"url": {
 									"raw": "{{baseURL}}/admins/videos/",
@@ -867,7 +846,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "31fee555-a8e1-405f-8bca-f21532553f92",
 										"exec": [
 											"pm.test(\"Delete video\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
@@ -889,10 +867,7 @@
 								],
 								"body": {
 									"mode": "formdata",
-									"formdata": [],
-									"options": {
-										"formdata": {}
-									}
+									"formdata": []
 								},
 								"url": {
 									"raw": "{{baseURL}}/admins/videos/{{videoId}}",
@@ -908,9 +883,7 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "S3 objects",
@@ -921,7 +894,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "a99e9d49-5f9f-4233-9c49-782d4a3e4704",
 										"exec": [
 											"pm.test(\"Delete video\", function () {\r",
 											"    pm.response.to.have.status(200);\r",
@@ -943,10 +915,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n    \"key\": \"stars/Paul Moldovan/logo.jpg\"\n}",
-									"options": {
-										"formdata": {}
-									}
+									"raw": "{\n    \"key\": \"stars/Paul Moldovan/logo.jpg\"\n}"
 								},
 								"url": {
 									"raw": "{{baseURL}}/admins/s3Objects/",
@@ -968,7 +937,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "ae6d73f4-ab98-4a2e-8ad9-8e66fbf423a0",
 										"exec": [
 											"pm.test(\"Add video\", function () {\r",
 											"    if (responseCode.code === 201) {\r",
@@ -1008,10 +976,7 @@
 											"type": "file",
 											"src": "/home/ohad/Downloads/Paul Moldovan-20200814T133944Z-001/Paul Moldovan/photos/logo.jpg"
 										}
-									],
-									"options": {
-										"formdata": {}
-									}
+									]
 								},
 								"url": {
 									"raw": "{{baseURL}}/admins/s3Objects",
@@ -1032,7 +997,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "275dc9d5-db8b-4c72-8751-ffe70674b985",
 										"exec": [
 											"pm.test(\"Add video\", function () {\r",
 											"    if (responseCode.code === 201) {\r",
@@ -1072,10 +1036,7 @@
 											"type": "file",
 											"src": "/home/ohad/Downloads/Paul Moldovan-20200814T133944Z-001/Paul Moldovan/promo.MP4"
 										}
-									],
-									"options": {
-										"formdata": {}
-									}
+									]
 								},
 								"url": {
 									"raw": "{{baseURL}}/admins/s3Objects",
@@ -1096,7 +1057,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "5fcb13c9-f4da-4a3d-8846-586b4a9098c1",
 										"exec": [
 											"pm.test(\"Add video\", function () {\r",
 											"    if (responseCode.code === 201) {\r",
@@ -1126,10 +1086,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "",
-									"options": {
-										"formdata": {}
-									}
+									"raw": ""
 								},
 								"url": {
 									"raw": "{{baseURL}}/admins/s3Objects",
@@ -1144,9 +1101,7 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				},
 				{
 					"name": "FIgures",
@@ -1157,7 +1112,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "4ea9b52a-d6e2-4bba-a20e-69fa14295c2c",
 										"exec": [
 											"pm.test(\"Add figure\", function () {",
 											"    if (responseCode.code === 201)",
@@ -1211,7 +1165,6 @@
 								{
 									"listen": "test",
 									"script": {
-										"id": "e4804107-27b9-4221-80bc-b63e5b0d7dc5",
 										"exec": [
 											"pm.test(\"Delete figure\", function () {",
 											"    pm.response.to.have.status(200);",
@@ -1233,10 +1186,7 @@
 								],
 								"body": {
 									"mode": "formdata",
-									"formdata": [],
-									"options": {
-										"formdata": {}
-									}
+									"formdata": []
 								},
 								"url": {
 									"raw": "{{baseURL}}/admins/figures//{{figureId}}",
@@ -1253,12 +1203,9 @@
 							},
 							"response": []
 						}
-					],
-					"protocolProfileBehavior": {},
-					"_postman_isSubFolder": true
+					]
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Stars",
@@ -1269,7 +1216,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "8ab5a57e-c94b-4ba6-b854-974fb5200199",
 								"exec": [
 									""
 								],
@@ -1292,10 +1238,7 @@
 						],
 						"body": {
 							"mode": "formdata",
-							"formdata": [],
-							"options": {
-								"formdata": {}
-							}
+							"formdata": []
 						},
 						"url": {
 							"raw": "{{baseURL}}/stars",
@@ -1326,10 +1269,7 @@
 						],
 						"body": {
 							"mode": "formdata",
-							"formdata": [],
-							"options": {
-								"formdata": {}
-							}
+							"formdata": []
 						},
 						"url": {
 							"raw": "{{baseURL}}/stars/{{starId}}",
@@ -1344,8 +1284,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Figures",
@@ -1356,7 +1295,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "734646dd-92d0-4025-b5fe-8664e7a7d72c",
 								"exec": [
 									""
 								],
@@ -1379,10 +1317,7 @@
 						],
 						"body": {
 							"mode": "formdata",
-							"formdata": [],
-							"options": {
-								"formdata": {}
-							}
+							"formdata": []
 						},
 						"url": {
 							"raw": "{{baseURL}}/figures/{{figureId}}",
@@ -1403,7 +1338,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "50ecf2d0-c9b1-419a-97e9-aaaa66c5d11c",
 								"exec": [
 									""
 								],
@@ -1426,10 +1360,7 @@
 						],
 						"body": {
 							"mode": "formdata",
-							"formdata": [],
-							"options": {
-								"formdata": {}
-							}
+							"formdata": []
 						},
 						"url": {
 							"raw": "{{baseURL}}/figures/star/all/{{starId}}",
@@ -1463,10 +1394,7 @@
 						],
 						"body": {
 							"mode": "formdata",
-							"formdata": [],
-							"options": {
-								"formdata": {}
-							}
+							"formdata": []
 						},
 						"url": {
 							"raw": "{{baseURL}}/figures/star/{{starId}}?danceType=rumba&level=advanced",
@@ -1509,10 +1437,7 @@
 						],
 						"body": {
 							"mode": "formdata",
-							"formdata": [],
-							"options": {
-								"formdata": {}
-							}
+							"formdata": []
 						},
 						"url": {
 							"raw": "{{baseURL}}/figures/star/{{starId}}?danceType=rumba&level=advanced",
@@ -1538,8 +1463,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Video",
@@ -1550,7 +1474,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "c124faed-2a62-4f30-a809-c927bc8b2264",
 								"exec": [
 									"pm.test(\"Get video\", function () {\r",
 									"\r",
@@ -1576,10 +1499,7 @@
 						],
 						"body": {
 							"mode": "formdata",
-							"formdata": [],
-							"options": {
-								"formdata": {}
-							}
+							"formdata": []
 						},
 						"url": {
 							"raw": "{{baseURL}}/videos/{{videoId}}",
@@ -1594,8 +1514,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		},
 		{
 			"name": "Practices",
@@ -1606,7 +1525,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f043bd4c-e182-4738-994a-d1b0a998e837",
 								"exec": [
 									"pm.test(\"Add practice item\", function () {\r",
 									"    if (responseCode.code === 201) {\r",
@@ -1653,10 +1571,7 @@
 									"type": "file",
 									"src": "/home/ohad/Downloads/Paul Moldovan-20200814T133944Z-001/Paul Moldovan/Opening Out/Roy (user) - fake it till you make it.mp4"
 								}
-							],
-							"options": {
-								"formdata": {}
-							}
+							]
 						},
 						"url": {
 							"raw": "{{baseURL}}/account/practices",
@@ -1677,7 +1592,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ee050f55-56f6-4af4-b80a-f711bf26c5c9",
 								"exec": [
 									"pm.test(\"Edit practice item\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1699,10 +1613,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"fake it till you make it #11\",\n    \"notes\": \"Note #1\"\n}",
-							"options": {
-								"formdata": {}
-							}
+							"raw": "{\n\t\"name\": \"fake it till you make it #11\",\n    \"notes\": \"Note #1\"\n}"
 						},
 						"url": {
 							"raw": "{{baseURL}}/account/practices/{{practiceId}}",
@@ -1724,7 +1635,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "11c039bf-dbfd-4b8c-80d6-d806e2ff5867",
 								"exec": [
 									"pm.test(\"Get all practice items\", function () {\r",
 									"\r",
@@ -1750,10 +1660,7 @@
 						],
 						"body": {
 							"mode": "formdata",
-							"formdata": [],
-							"options": {
-								"formdata": {}
-							}
+							"formdata": []
 						},
 						"url": {
 							"raw": "{{baseURL}}/account/practices",
@@ -1774,7 +1681,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f75e7837-d624-44de-a26f-e812ab8d0eaa",
 								"exec": [
 									"pm.test(\"Get practice item by id\", function () {\r",
 									"\r",
@@ -1800,10 +1706,7 @@
 						],
 						"body": {
 							"mode": "formdata",
-							"formdata": [],
-							"options": {
-								"formdata": {}
-							}
+							"formdata": []
 						},
 						"url": {
 							"raw": "{{baseURL}}/account/practices/{{practiceId}}",
@@ -1825,7 +1728,6 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "72ece4b9-d7db-4f53-b19b-1a5750ce3172",
 								"exec": [
 									"pm.test(\"Delete practice item\", function () {\r",
 									"    pm.response.to.have.status(200);\r",
@@ -1847,10 +1749,7 @@
 						],
 						"body": {
 							"mode": "formdata",
-							"formdata": [],
-							"options": {
-								"formdata": {}
-							}
+							"formdata": []
 						},
 						"url": {
 							"raw": "{{baseURL}}/account/practices/{{practiceId}}",
@@ -1866,8 +1765,7 @@
 					},
 					"response": []
 				}
-			],
-			"protocolProfileBehavior": {}
+			]
 		}
 	],
 	"auth": {
@@ -1884,7 +1782,6 @@
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "3859d9fe-eb1a-4d24-9e3f-75cd63799f8e",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -1894,13 +1791,11 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "d1c0aee7-bae0-49f7-aed4-deb422d0be36",
 				"type": "text/javascript",
 				"exec": [
 					""
 				]
 			}
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }

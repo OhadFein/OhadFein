@@ -16,7 +16,7 @@ export const getPracticeItems = async (req: Request, res: Response) => {
     await req.user.populate({
         path: 'practiceItems',
         populate: {
-            path: 'video',
+            path: 'star video',
             populate: {
                 model: 'Video',
                 path: 'associatedObject',
@@ -107,7 +107,7 @@ const buildpracticeItemFromRequest = (req: Request, video: IVideo): IPracticeIte
     return new PracticeItem({
         video: video._id,
         name: req.body.name,
-        starId: req.body.starId
+        star: req.body.starId
     })
 }
 

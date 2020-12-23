@@ -110,28 +110,22 @@ export class PracticePageComponent implements OnInit, OnDestroy {
 
     openInLab(practice: Practice): void {
         const userVideo = practice.video;
-        const starId = practice.starId;
-        let currentStar;
-        this.starsSubs.push(
-            this.store.select(starsSelectors.selectStarById(starId)).subscribe(
-                star => {
-                    if (star) {
-                        currentStar = { ...star };
-                        this.loading = false;
-                        const labItem: LabItem = {
-                            star: currentStar,
-                            figure: (userVideo.associatedObject as any).associatedObject, // TODO: any
-                            starVideo: userVideo.associatedObject as any, // TODO: any
-                            userVideo,
-                        }
-                        this.store.dispatch(LabActions.SetLabAction({ payload: labItem }));
-                        this.router.navigate(['/', 'student', 'lab']);
+        const currentStar = practice.star;
 
-                    } else {
-                        this.store.dispatch(StarsActions.BeginGetStarsAction());
-                    }
-                })
-        )
+        if (currentStar) {
+            this.loading = false;
+            const labItem: LabItem = {
+                star: currentStar as any, // TODO: any,
+                figure: (userVideo.associatedObject as any).associatedObject, // TODO: any
+                starVideo: userVideo.associatedObject as any, // TODO: any
+                userVideo,
+            }
+            this.store.dispatch(LabActions.SetLabAction({ payload: labItem }));
+            this.router.navigate(['/', 'student', 'lab']);
+
+        } else {
+            this.store.dispatch(StarsActions.BeginGetStarsAction());
+        }
 
 
     }
