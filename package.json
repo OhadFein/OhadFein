@@ -4,7 +4,8 @@
   "version": "1.0.0",
   "main": "index.js",
   "workspaces": [
-    "packages/*"
+    "packages/client",
+    "packages/server"
   ],
   "scripts": {
     "dev": "lerna run dev --stream",
