@@ -11,7 +11,8 @@
         "preview": "Preview",
         "NotSelected": "Not Selected",
         "tryAgain": "Try again",
-        "landscape": "Sorry, This version doesn't support landscape mode."
+        "landscapeTitle": "Currently, the landscape view is not optimally supported.",
+        "landscapeSubTitle": "In order to enjoy a maximum user experience, we recommend that you rotate the screen back."
     },
     "ERRORS": {
         "Error": "Error",

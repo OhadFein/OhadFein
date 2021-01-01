@@ -1,13 +1,15 @@
 import {Location} from '@angular/common';
-import {Component, OnDestroy, OnInit, HostListener} from '@angular/core';
+import {Component, OnDestroy, OnInit, HostListener, ViewChild} from '@angular/core';
 import {NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {BackgroundPosition} from '@core/models/';
 import {MenuService} from '@core/services';
 import {environment} from '@environments/environment';
 import {TranslateService} from '@ngx-translate/core';
 import {Subscription} from 'rxjs';
+import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 
 declare let gtag: any;
+declare var $: any;
 
 @Component({
     selector: 'dsapp-root',
@@ -21,24 +23,29 @@ export class AppComponent implements OnInit, OnDestroy {
     backgroundPositionOne: BackgroundPosition;
     backgroundPositionTwo: BackgroundPosition;
     isDesktop: boolean;
+    showModal: boolean = false;
+    @ViewChild('myModal') myModal;
 
     constructor(
         public translate: TranslateService,
         public router: Router,
         public location: Location,
-        private menuService: MenuService
+        private menuService: MenuService,
+        private modalService: NgbModal
     ) {
         translate.setDefaultLang('en');
         translate.use('en');
     }
 
     @HostListener("window:resize") updateOrientatioState() {
-
         this.isDesktop = innerWidth > 980;
-        if (window.innerHeight > window.innerWidth) {
-            this.state = 'portrait'
-        } else {
+        if (!this.isDesktop && window.innerHeight < window.innerWidth) {
+            this.showModal = true;
             this.state = 'landscape'
+        } else {
+            this.state = 'portrait'
+            this.showModal = false;
+
         }
     }
 
@@ -68,6 +75,10 @@ export class AppComponent implements OnInit, OnDestroy {
         this.backgroundPositionTwo = new BackgroundPosition();
     }
 
+    closeModal() {
+        this.showModal = false;
+
+    }
 
     ngOnDestroy(): void {
         this.subs.forEach(s => s.unsubscribe());

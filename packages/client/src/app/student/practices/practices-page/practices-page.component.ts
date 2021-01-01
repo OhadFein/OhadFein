@@ -7,6 +7,7 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { ChangeDetectorRef } from '@angular/core';
 
+
 @Component({
   selector: 'dsapp-practices-page',
   templateUrl: './practices-page.component.html'
@@ -31,12 +32,11 @@ export class PracticesPageComponent implements OnInit, OnDestroy, AfterViewCheck
   selectedValue = '';
   isPracticesOnThisMonth;
   formattedDate;
-  practiceDate;
 
   constructor(
       private store: Store<any>,
       private errorService: AlertErrorService,
-      private cdRef:ChangeDetectorRef,
+      private cdRef:ChangeDetectorRef
   ) {
     this.currentDate = this.lastDate;
   }
@@ -88,8 +88,6 @@ export class PracticesPageComponent implements OnInit, OnDestroy, AfterViewCheck
     this.monthLength = this.currentDate.getMonth() - this.startDate.getMonth() + yearDelta + 1;
   }
 
-
-
   setDisabledBtn() {
     if (this.monthLength === this.maxMonthLength)
       this.nextBtndisabled = true;
@@ -101,8 +99,6 @@ export class PracticesPageComponent implements OnInit, OnDestroy, AfterViewCheck
     }
 
   }
-
-
 
   increaseMonths() {
     this.currentDate = new Date(this.currentDate.setMonth(this.currentDate.getMonth() + 1));

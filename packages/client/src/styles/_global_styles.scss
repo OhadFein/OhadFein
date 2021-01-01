@@ -13,6 +13,17 @@ body {
         font-size: 1rem;
     }
 }
+.landscape-modal{
+    background: radial-gradient(black, transparent);
+    //display: block;
+    .modal-body{
+        padding: 15px;
+        .modal-message{
+            padding: 15px;
+            word-break: break-word;
+        }
+    }
+}
 @viewport {
     orientation: portrait;
 }
