@@ -17,7 +17,7 @@ dotenv.config({ path: '.env' });
 
 import api from './routes/api';
 import homeController from './controllers/frontend/home';
-import adminController from './controllers/frontend/admin';
+// import adminController from './controllers/frontend/admin';
 import HttpException from './shared/exceptions';
 
 /**
@@ -93,7 +93,7 @@ app.use('/admin',
 app.use('/api/v1', api);
 
 // Cath-all admin route to angular admin
-app.get('/admin/*', (req, res, next) => { return adminController(req, res, next); });
+// app.get('/admin/*', (req, res, next) => { return adminController(req, res, next); });
 
 // Cath-all route to angular app
 app.get('/*', (req, res, next) => { return homeController(req, res, next); });
