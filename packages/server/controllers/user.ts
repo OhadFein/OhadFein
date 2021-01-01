@@ -93,7 +93,9 @@ export const postSignup = async (req: Request<ParamsDictionary, signupRequestBod
 
 interface updateProfileRequestBody {
   name: Name;
-  birthDate: Date;
+  birthDate: {
+    date: Date
+  }
   language: EnumLanguage;
   gender: EnumGender;
   about: string;
@@ -113,7 +115,7 @@ export const patchUpdateProfile = async (req: Request<ParamsDictionary, updatePr
     language: req.body.language || '',
     // picture: req.body.picture || '',
     birthDate: {
-      date: req.body.birthDate
+      date: req.body.birthDate.date
     },
     about: req.body.about || ''
   };
