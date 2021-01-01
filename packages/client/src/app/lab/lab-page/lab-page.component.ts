@@ -37,7 +37,6 @@ export class LabPageComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
-        console.log("disableSavePracticesButton", this.practiceIsSaved)
         this.steps = [
             {id: 1, key: 'empty', name: 'Star video'},
             {id: 2, key: 'preview', name: 'User video'},

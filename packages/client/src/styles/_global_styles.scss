@@ -13,6 +13,9 @@ body {
         font-size: 1rem;
     }
 }
+@viewport {
+    orientation: portrait;
+}
 
 //  remove blue background on chrome autocomplete
 input:-webkit-autofill,
