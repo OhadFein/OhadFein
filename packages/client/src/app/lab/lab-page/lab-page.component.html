@@ -109,17 +109,15 @@
         </div>
     </div>
 </ng-template>
-
 <div *ngIf="labView=='full'"
      class="row">
     <div class="col text-center">
         <button class="btn btn-danger"
-                [disabled]="practiceIsSaved"
+                [disabled]="practiceIsSaved || disableSavePracticesButton"
                 (click)="saveToPractices()"><i class="icon icon-practices"></i>
             {{'LAB.saveToMyPractices' | translate}}</button>
     </div>
 </div>
-
 <video #videoMta
        style="display: none;"
        *ngIf="userVideo"

@@ -7,7 +7,7 @@
     <list default="true" id="0ed527c0-12d5-4ae0-9bc4-1323668d1442" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/client/src/app/lab/lab-page/lab-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/lab/lab-page/lab-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/styles/pages/_lab.scss" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/styles/pages/_lab.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/lab/lab-page/lab-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/lab/lab-page/lab-page.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +60,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="ba9d3809-63eb-4ad6-b069-f4fe30159890" name="Default Changelist" comment="" />
+      <changelist id="0ed527c0-12d5-4ae0-9bc4-1323668d1442" name="Default Changelist" comment="" />
       <created>1594918542910</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -77,6 +77,7 @@
       <workItem from="1603645637847" duration="14633000" />
       <workItem from="1607086414122" duration="5575000" />
       <workItem from="1607761314963" duration="8416000" />
+      <workItem from="1609510698953" duration="1359000" />
     </task>
     <servers />
   </component>
