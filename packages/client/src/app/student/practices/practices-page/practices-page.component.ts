@@ -31,6 +31,7 @@ export class PracticesPageComponent implements OnInit, OnDestroy, AfterViewCheck
   searchTerm = '';
   selectedValue = '';
   isPracticesOnThisMonth;
+  formattedDate;
 
   constructor(
       private store: Store<any>,
