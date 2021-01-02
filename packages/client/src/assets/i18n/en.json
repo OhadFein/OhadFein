@@ -35,7 +35,7 @@
         "Password": "Password",
         "newPassword": "New Password",
         "confirmPassword": "Confirm Password",
-        "LoginSuccessMsg": "You was logged in successfully!",
+        "LoginSuccessMsg": "You were logged in successfully!",
         "RegisterSuccessMsg": "Your registration was successful!",
         "LoginFailedMsg": "Login Error!",
         "RegistrationFailedMsg": "Registration Error!",
