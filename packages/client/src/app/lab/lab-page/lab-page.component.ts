@@ -46,7 +46,7 @@ export class LabPageComponent implements OnInit, OnDestroy {
         this.subs.push(
             this.store.select(
                 labSelectors.selectCurrentLabItem()).subscribe(res => {
-                    if (res.practiceIsSaved === undefined && res.userVideo) {
+                    if (res && res.practiceIsSaved === undefined && res.userVideo) {
                         this.disableSavePracticesButton = true;
                     }
                     this.labItem = res ? { ...res } : null;
