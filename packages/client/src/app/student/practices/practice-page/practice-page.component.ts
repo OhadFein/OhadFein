@@ -23,8 +23,8 @@ export class PracticePageComponent implements OnInit, OnDestroy {
     practiceId: string = null;
     loading = true;
     practice: Practice = null;
-    disabled = true;
-    disabledNote = true;
+    disabled = false; // TODO: can be removed?
+    disabledNote = false; // TODO: can be removed?
     disabledTitle = true;
     practiceTitleInput = '';
     practiceNotes = '';
@@ -48,7 +48,6 @@ export class PracticePageComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit(): void {
-
         this.translateContent()
         this.getPractice(false, null);
 
@@ -70,13 +69,12 @@ export class PracticePageComponent implements OnInit, OnDestroy {
                         practice => {
                             if (practice) {
                                 this.practice = { ...practice };
-                                console.log("this.practice", this.practice)
                                 this.loading = false;
                                 this.practiceTitleInput = practice.name;
                                 this.practiceNotes = practice.notes;
                                 if (isUpdate) {
-                                    this.disabled = true;
-                                    this.disabledNote = true;
+                                    // this.disabled = true;
+                                    // this.disabledNote = true;
                                     this.practiceNotes = practiceNotes;
                                 }
                             } else {
@@ -127,8 +125,6 @@ export class PracticePageComponent implements OnInit, OnDestroy {
         } else {
             this.store.dispatch(StarsActions.BeginGetStarsAction());
         }
-
-
     }
 
 
@@ -141,18 +137,16 @@ export class PracticePageComponent implements OnInit, OnDestroy {
         this.disabled = false;
     }
 
-    editNote() {
-        this.disabledNote = false;
-        this.disabled = false;
-    }
+    // editNote() {
+    //     this.disabledNote = false;
+    //     this.disabled = false;
+    // }
 
     saveChanges() {
         this.practice.name = this.practiceTitleInput;
         this.practice.notes = this.practiceNotes;
         this.store.dispatch(PracticesAction.BeginUpdatePracticeItemAction({ payload: this.practice }));
         this.getPractice(true, this.practice.notes);
-
-
     }
 
     toggleVideo() {

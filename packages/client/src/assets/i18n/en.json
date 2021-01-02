@@ -126,10 +126,10 @@
         "FIGURES": {
             "Figure": "Figure",
             "view": "view",
-            "learnFigure": "learn figure",
+            "learnFigure": "Learn figure",
             "basicPrinciples": "Basic Principles",
-            "learnPrinciples": "learn principles",
-            "openInMyLab": "open in My Lab",
+            "learnPrinciples": "Learn principles",
+            "openInMyLab": "Open in My Lab",
             "backToStarLibrary": "Back to Star Library",
             "backToFigurePage": "Back to Figure page"
         },
@@ -150,7 +150,6 @@
             "showVideo": "Show video",
             "hideNotes": "Hide Notes",
             "showNotes": "Show Notes",
-            "editNote": "Edit Note",
             "saveChanges": "Save changes",
             "noPracticesMonth": "No Practices on this month"
         },
