@@ -63,7 +63,7 @@ export const getPracticeItemById = async (practiceItemId: mongoose.Types.ObjectI
         PracticeItem.findById(practiceItemId)
             //.select() // TODO: select is needed
             .populate({
-                path: 'video',
+                path: 'star video',
                 populate: {
                     model: 'Video',
                     path: 'associatedObject',
