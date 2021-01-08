@@ -9,7 +9,6 @@ export const initialGlobalState = initializeGlobalState();
 const reducer = createReducer(
     initialGlobalState,
     on(GlobalActions.Logout, state => {
-        console.log(222)
         return { ...initialGlobalState };
     })
 );

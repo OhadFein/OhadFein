@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output , Input} from '@angular/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
@@ -8,7 +8,7 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 export class VideoFilePickerComponent implements OnInit {
 
   @Output() videoChange = new EventEmitter<Event>();
-
+@Input() disableButtons;
   isDesktop: boolean;
 
   constructor(private deviceService: DeviceDetectorService) { }

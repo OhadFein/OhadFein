@@ -76,13 +76,14 @@
         </div>
     </div>
 </ng-template>
-
+{{disableUserVideoButtons}}
 <!-- USER MUST TO UPLOAD --->
 <ng-template #emptyUserVideo>
     <div class="row lab-row choose-user-video-row text-center">
         <div class="col">
             <div class="toolbox">
                 <ui-video-file-picker
+                        [disableButtons]="disableUserVideoButtons"
                         (videoChange)="userVideoFileChanged($event)">
                 </ui-video-file-picker>
             </div>
@@ -99,6 +100,7 @@
             <dsapp-lab-video-tool [masterVideo]="labItem.starVideo ? labItem.starVideo : null"
                                   [studentVideo]="labItem.userVideo ? labItem.userVideo : null"
                                   (masterPlayerDurationReady)="setDurationLimit($event)"
+                                  (isPlayerReady)="masterVideoReady()"
                                   (clearVideo)="clearVideo($event)">
             </dsapp-lab-video-tool>
         </div>
