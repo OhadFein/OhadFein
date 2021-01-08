@@ -536,7 +536,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\":{\n\t\t\"firstName\": \"Ohadd\",\n\t\t\"lastName\": \"Fein\"\n\t},\n\t\"website\": \"www.google.com\",\n\t\"birthDate\": \"1992-12-31\",\n\t\"gender\": \"male\",\n\t\"language\": \"en\"\n}",
+							"raw": "{\n\t\"name\":{\n\t\t\"firstName\": \"Ohadd\",\n\t\t\"lastName\": \"Fein\"\n\t},\n\t\"website\": \"www.google.com\",\n\t\"birthDate\":{\n        \"date\": \"1991-12-30\"\n    },\n\t\"gender\": \"male\",\n\t\"language\": \"en\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
