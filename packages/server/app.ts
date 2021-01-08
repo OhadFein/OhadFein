@@ -75,7 +75,6 @@ app.use(
   express.static(
     path.join(__dirname, '..', '..', '..', 'packages', 'client', 'dist', 'webapp'),
     {
-      // cacheControl: false
       maxAge: 3600000,
     }
   )
@@ -85,7 +84,6 @@ app.use('/admin',
   express.static(
     path.join(__dirname, '..', '..', '..', 'packages', 'admin', 'dist', 'admin'),
     {
-      // cacheControl: false
       maxAge: 3600000,
     }
   )
