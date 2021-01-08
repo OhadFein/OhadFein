@@ -75,7 +75,7 @@ app.use(
   express.static(
     path.join(__dirname, '..', '..', '..', 'packages', 'client', 'dist', 'webapp'),
     {
-      maxAge: 31557600000
+      maxAge: 3600000,
     }
   )
 );
@@ -84,7 +84,7 @@ app.use('/admin',
   express.static(
     path.join(__dirname, '..', '..', '..', 'packages', 'admin', 'dist', 'admin'),
     {
-      maxAge: 31557600000
+      maxAge: 3600000,
     }
   )
 );
