@@ -62,8 +62,11 @@ export class LoginService {
   }
 
   logout(showMsg = true) {
+      console.log("log out component")
     this.store.dispatch(GlobalActions.Logout());
-    this.tokenService.deleteStoredTokens();
+      console.log("After log out component")
+
+      this.tokenService.deleteStoredTokens();
     if (showMsg) {
       this.alertService.info('LOGIN.LogOutMsg');
     }

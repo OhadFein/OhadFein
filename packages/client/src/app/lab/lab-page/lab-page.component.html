@@ -81,17 +81,12 @@
 <ng-template #emptyUserVideo>
     <div class="row lab-row choose-user-video-row text-center">
         <div class="col">
-            <!--                <div class="embed-responsive-item upload-placeholder"-->
-            <!--                     [ngClass]="labItem && labItem.starVideo? 'bg-dark':'bg-secondary'">-->
-            <!-- <div class="step-number">2</div> -->
             <div class="toolbox">
-<!--                <div>{{'LAB.uploadVideo' | translate}}</div>-->
                 <ui-video-file-picker
                         (videoChange)="userVideoFileChanged($event)">
                 </ui-video-file-picker>
             </div>
         </div>
-        <!--            </div>-->
     </div>
 </ng-template>
 <!--</div>-->
