@@ -1,4 +1,5 @@
 <button class="lab-button user-button btn"
+        [disabled]="disableButtons"
         (click)="cameraInput.click()">
     <span class=" ">
     <span class="">    {{'LAB.FilmVideo' | translate}}</span>
@@ -12,7 +13,7 @@
        (change)="fileChangeEvent($event)"/>
 
 
-<button class="btn lab-button user-button" (click)="fileInput.click()">
+<button [disabled]="disableButtons" class="btn lab-button user-button" (click)="fileInput.click()">
     <span class="">
             <span class="">{{'LAB.UploadVideo' | translate}}</span>
     </span>
