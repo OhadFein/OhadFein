@@ -3,6 +3,7 @@ import t from 'typy';
 
 import { PracticesState } from '../state';
 import { Practice } from '@app/_infra/core/models';
+import { state } from '@angular/animations';
 
 export const selectPractices = (state: PracticesState) => state.practices;
 
@@ -16,6 +17,11 @@ export const selectAllPracticesSorted = () => createSelector(
     }
 )
 
+export const selectPracticestMonth = () => createSelector(
+    selectPractices, (state: any) => {
+        return state.currentMonth ? state.currentMonth : null; 
+    }
+);
 
 
 export const selectPracticeById = (id) => createSelector(
