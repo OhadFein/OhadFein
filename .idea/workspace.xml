@@ -6,16 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0ed527c0-12d5-4ae0-9bc4-1323668d1442" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/core/services/login.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/core/services/login.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/store/reducers/global.reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/reducers/global.reducers.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/store/reducers/practices.reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/reducers/practices.reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/video-file-picker/video-file-picker.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/video-file-picker/video-file-picker.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/video-file-picker/video-file-picker.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/video-file-picker/video-file-picker.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/video-player-wrapper/video-player-wrapper.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/video-player-wrapper/video-player-wrapper.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/client/src/app/lab/lab-page/lab-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/lab/lab-page/lab-page.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/lab/lab-page/lab-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/lab/lab-page/lab-page.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/lab/lab-video-tool/lab-video-tool.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/lab/lab-video-tool/lab-video-tool.component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/lab/lab-video-tool/lab-video-tool.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/lab/lab-video-tool/lab-video-tool.component.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
