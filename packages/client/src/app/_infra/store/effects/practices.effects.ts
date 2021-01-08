@@ -5,7 +5,6 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
-
 import * as PracticsActions from '../actions/practices.actions';
 
 @Injectable()
@@ -43,4 +42,5 @@ export class PracticesEffects {
             )
         )
     );
+
 }

@@ -32,6 +32,7 @@ export class PracticesPageComponent implements OnInit, OnDestroy, AfterViewCheck
   selectedValue = '';
   isPracticesOnThisMonth;
   formattedDate;
+  currentMonth: string;
 
   constructor(
       private store: Store<any>,
@@ -48,6 +49,7 @@ export class PracticesPageComponent implements OnInit, OnDestroy, AfterViewCheck
 
   ngOnInit() {
 
+
     // this.setMonthsLength();
 
     this.maxMonthLength = this.monthLength;
@@ -55,6 +57,15 @@ export class PracticesPageComponent implements OnInit, OnDestroy, AfterViewCheck
     this.setDisabledBtn();
 
 
+    this.subs.push(
+      this.store.select(selectors.selectPracticestMonth()).subscribe(
+        res => {
+          if(res){
+            this.currentDate = res; 
+          }
+        }
+      )
+    )
     this.subs.push(
         this.store.select(selectors.selectAllPracticesSorted()).subscribe(
             res => {
@@ -105,7 +116,14 @@ export class PracticesPageComponent implements OnInit, OnDestroy, AfterViewCheck
     this.setMonthsLength();
     this.setDisabledBtn();
     this.isPracticesOnThisMonth = false;
+    this.currentMonth = this.getCurrentMonth(); 
+    this.store.dispatch(PracticesActions.SaveCurrentMonth({payload: this.currentDate}))
 
+
+  }
+
+  getCurrentMonth(){
+    return this.currentDate.toLocaleString('default', { month: 'long' });
   }
 
   decreaseMonths() {
@@ -113,8 +131,9 @@ export class PracticesPageComponent implements OnInit, OnDestroy, AfterViewCheck
     this.setMonthsLength();
     this.setDisabledBtn();
     this.isPracticesOnThisMonth = false;
-
-  }
+     this.currentMonth = this.getCurrentMonth(); 
+     this.store.dispatch(PracticesActions.SaveCurrentMonth({payload: this.currentDate}))
+    }
 
   compareDates(firstDate, secondDate) {
     firstDate = new Date(firstDate);

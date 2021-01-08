@@ -9,7 +9,9 @@ export enum PracticesActionType {
     updatePracticeItemAction = '[practices] - Update practice item',
     BeginUpdatePracticeItemAction = '[practices] - Begin update practice item',
     SuccessUpdatePracticeItemAction = '[practice] - Success update practice item',
-    ErrorPracticesAction = '[practices] - Error'
+    ErrorPracticesAction = '[practices] - Error',
+    SaveCurrentMonth = '[practices] - Save current month',
+    SuccesSaveCurrentMonth = '[practices] - Success save current month'
 }
 
 
@@ -38,3 +40,13 @@ export const SuccessUpdatePracticeItemAction = createAction(
 
 export const ErrorPracticesAction = createAction(PracticesActionType.ErrorPracticesAction, props<Error>());
 
+
+export const SaveCurrentMonth = createAction(
+    PracticesActionType.SaveCurrentMonth,
+    props<{ payload: Date }>()
+);
+
+export const SuccessSaveCurrentMonth = createAction(
+    PracticesActionType.SaveCurrentMonth,
+    props<{ payload: string }>()
+);

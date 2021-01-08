@@ -27,6 +27,10 @@ const reducer = createReducer(
         const x = {...state, practices: state.practices.map(practiceItem => practiceItem._id === payload._id ? practiceItem = payload : practiceItem ), error: null};
         return {...state, practices: state.practices.map(practiceItem => practiceItem._id === payload._id ? practiceItem = payload : practiceItem ), error: null};
     }),
+
+    on(PracticesActions.SaveCurrentMonth, (state: PracticesState, {payload: Date}) => {
+        return {...state, practices: state.practices, currentMonth: payload, error: null};
+    }),
 );
 
 
