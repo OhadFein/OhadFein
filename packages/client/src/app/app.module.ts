@@ -67,7 +67,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     InfraModule,
     LoginModule,
     StudentModule,
-    // ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: false })
   ],
   entryComponents: [
     AboutDanskillModalComponent,
