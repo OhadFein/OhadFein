@@ -1,12 +1,13 @@
 {
-    "name": "DanSkill - Platform where you sharp your Coordination Skills",
+    "name": "*****DanSkill - Platform where you sharp your Coordination Skills",
     "short_name": "DanSkill",
     "theme_color": "#ffffff",
     "background_color": "#1d1634",
     "display": "standalone",
     "scope": "./",
     "start_url": "./",
-    "icons": [{
+    "icons": [
+        {
             "src": "assets/icons/android-icon-36x36.png",
             "sizes": "36x36",
             "type": "image/png",
