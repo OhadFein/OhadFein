@@ -49,6 +49,7 @@
 }
 
 @mixin list-item-image ($width) {
+  // border: green 5px solid;
   width: 100%;
 
   @include media-breakpoint-down(sm) {

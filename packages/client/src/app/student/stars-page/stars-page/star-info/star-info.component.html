@@ -1,19 +1,19 @@
-<div class="star-info">
+<div [routerLink]="[star.slug]" style="cursor: pointer;" class="star-info">
   <div class="star-info-image video-preview-container star-big-image cover-bg"
        [style.backgroundImage]="'url('+ star.logo.large +')'"
-       (click)="openPromoModal(star.name, star.promoVideo)">
+       >
 
-    <div class="play-btn-container">
+    <!-- <div class="play-btn-container">
       <i class="icon-play"></i>
     </div>
     <div class="hover-message">
       {{'STAR.STAR_INFO_PAGE.WatchPromo' | translate}}
-    </div>
+    </div> -->
 
   </div>
 
 
-  <div class="star-info-text">
+  <div class="star-info-text" >
 
     <h5 class="star-info-name"
         dsappStarName
@@ -21,26 +21,14 @@
 
     <p *ngIf="star.about"
        class="star-info-desc text-muted">{{star.about}}</p>
-    <ul *ngIf="star.achievements"
-        class="star-info-achivments text-muted">
-      <li *ngFor="let achivment of cuttedAchivments; let i = index">
-        {{achivment}}
-      </li>
-
-      <button *ngIf="star.figures.length > 0"
-              class="btn"
-              [routerLink]="[star.slug]">{{'STAR.more' | translate}}
-        <i class="icon-right-open-big"></i>
-      </button>
-    </ul>
-
+  <div class="text-center"> 120 subscriptions </div>
     <!-- <dsapp-tags-holder [tags]="star.tags"></dsapp-tags-holder> -->
 
-    <div class="star-info-btns">
+    <!-- <div class="star-info-btns">
       <button class="btn btn-sm btn-success"
               [disabled]="star.figures.length === 0"
               [routerLink]="[star.slug]">{{'STAR.openLibrary' | translate}}</button>
-    </div>
+    </div> -->
 
   </div>
 
