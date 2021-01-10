@@ -5,12 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0ed527c0-12d5-4ae0-9bc4-1323668d1442" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/store/actions/practices.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/actions/practices.actions.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/store/effects/practices.effects.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/effects/practices.effects.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/store/reducers/practices.reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/reducers/practices.reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/store/selectors/practices.selector.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/selectors/practices.selector.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/store/state/practices.state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/state/practices.state.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/student/practices/practices-page/practices-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/student/practices/practices-page/practices-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/student/stars-page/stars-page/star-info/star-info.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/student/stars-page/stars-page/star-info/star-info.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/student/stars-page/stars-page/stars-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/student/stars-page/stars-page/stars-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/styles/_mixins.scss" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/styles/_mixins.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/styles/star/_star-info.scss" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/styles/star/_star-info.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,6 +88,7 @@
       <workItem from="1607086414122" duration="5575000" />
       <workItem from="1607761314963" duration="8416000" />
       <workItem from="1609510698953" duration="9862000" />
+      <workItem from="1610309573478" duration="742000" />
     </task>
     <servers />
   </component>
