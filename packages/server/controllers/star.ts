@@ -46,7 +46,7 @@ export const getStarById = async (id: mongoose.Types.ObjectId): Promise<IStar | 
 export const getStar = async (req: Request, res: Response) => {
     const starId = new mongoose.mongo.ObjectId(req.params.starId);
     const star = await getStarById(starId);
-    await star?.populate("figures", "type -_id").execPopulate();
+    await star?.populate("figures").execPopulate();
 
     res.status(200).json({
         success: true,

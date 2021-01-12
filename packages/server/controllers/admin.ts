@@ -109,7 +109,7 @@ export const deleteVideo = async (req: Request, res: Response) => {
  */
 
 export const listS3Object = async (req: Request, res: Response) => {
-    const objects = await awsListObjects();
+    const objects = await awsListObjects(req.body.prefix);
 
     res.status(200).json({
         data: objects
