@@ -25,15 +25,18 @@ export const awsAdminUpload = multer({
 export const awsUserUpload = multer({
     storage: multerS3({
         s3: s3,
+        metadata: function (req, file, cb) {
+            cb(null, Object.assign({}, req.body));
+        },
         bucket: default_bucket_name,
         key: function (req: Request, file, cb) {
-            cb(null, "users/" + new Date().toISOString().replace(/:/g, '-') + "_" + file.originalname)
+            cb(null, "users/" + req.user.email + "/" + new Date().toISOString().replace(/:/g, '-') + "_" + file.originalname)
         }
     })
 })
 
-export const awsListObjects = async () => (
-    await s3.listObjectsV2({ Bucket: default_bucket_name }).promise()
+export const awsListObjects = async (prefix: string) => (
+    await s3.listObjectsV2({ Bucket: default_bucket_name, Prefix: prefix }).promise()
 )
 
 export const awsDelete = async (key: string) => (
