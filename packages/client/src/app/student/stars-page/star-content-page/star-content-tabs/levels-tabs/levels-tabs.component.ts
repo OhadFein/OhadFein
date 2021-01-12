@@ -14,9 +14,9 @@ export class LevelsTabsComponent implements OnChanges {
   constructor() { }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes.levels && changes.levels.currentValue.length > 0) {
-      this.active = changes.levels.currentValue[0].level;
-    }
+    // if (changes.levels && changes.levels.currentValue.length > 0) {
+    //   this.active = changes.levels.currentValue[0].level;
+    // }
   }
 
 }

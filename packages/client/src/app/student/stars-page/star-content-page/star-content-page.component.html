@@ -9,7 +9,6 @@
         </div>
     </div>
     <div class="row d-flex justify-content-center">
-
         <div class="col">
             <div class="star-info-vertical">
                 <div class="star-info-image">
@@ -44,10 +43,9 @@
 
             </div>
         </div>
-
     </div>
-
-    <dsapp-star-content-tabs [star]="star"></dsapp-star-content-tabs>
+    {{star._id}}
+    <dsapp-start-figure-wrapper [starId]="star._id"></dsapp-start-figure-wrapper>
 </ng-template>
 
 <ng-template [ngIf]="loading">
