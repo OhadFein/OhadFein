@@ -16,7 +16,7 @@ export class StarContentTabsComponent implements OnInit, OnDestroy {
 
   content: StarContent = null;
   loading = true;
-  selectDance: StarContentDance = null;
+  selectDance: any = null;
   subs: Subscription[] = [];
 
   customOptions: OwlOptions = {
@@ -57,8 +57,9 @@ export class StarContentTabsComponent implements OnInit, OnDestroy {
       this.store.select(selectors.selectStarContentByStarId(this.star._id)).subscribe(
         content => {
           if (content) {
-            this.content = { ...content };
-            this.selectDance = this.content.dances && this.content.dances.length > 0 ? { ...this.content.dances[0] } : null;
+            // this.content = { ...content };
+            this.selectDance = this.content.dances && this.content.dances.length > 0 ? [...this.content.dances]  : null;
+            console.log("this.selectDance", this.selectDance)
             this.loading = false;
           } else {
             this.store.dispatch(StarContentActions.BeginGetStarsContentAction({ payload: this.star._id }));
@@ -70,7 +71,7 @@ export class StarContentTabsComponent implements OnInit, OnDestroy {
   }
 
   onDanceSelection(dance: StarContentDance): void {
-    this.selectDance = { ...dance };
+    // this.selectDance = { ...dance };
   }
 
   ngOnDestroy(): void { this.subs.forEach(s => s.unsubscribe()); }

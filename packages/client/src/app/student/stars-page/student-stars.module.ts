@@ -15,6 +15,7 @@ import {
   StarsPageComponent,
 } from '.';
 import { StudentStarRoutingModule } from './student-strars-routing.module';
+import { StartFigureWrapperComponent } from './star-content-page/start-figure-wrapper/start-figure-wrapper.component';
 
 
 @NgModule({
@@ -22,7 +23,7 @@ import { StudentStarRoutingModule } from './student-strars-routing.module';
     CommonModule, ReactiveFormsModule, TranslateModule.forChild(), NgbModule, StudentStarRoutingModule, InfraModule, CarouselModule
   ],
   declarations: [
-    StarsPageComponent, StarInfoComponent, StarContentPageComponent, StarContentTabsComponent, LevelsTabsComponent, StarFigurePageComponent
+    StarsPageComponent, StarInfoComponent, StarContentPageComponent, StarContentTabsComponent, LevelsTabsComponent, StarFigurePageComponent, StartFigureWrapperComponent
   ]
 })
 export class StudentStarsModule { }

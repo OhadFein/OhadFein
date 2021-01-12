@@ -1,35 +1,17 @@
-<div [routerLink]="[star.slug]" style="cursor: pointer;" class="star-info">
-  <div class="star-info-image video-preview-container star-big-image cover-bg"
-       [style.backgroundImage]="'url('+ star.logo.large +')'"
-       >
-
-    <!-- <div class="play-btn-container">
-      <i class="icon-play"></i>
+<div 
+     style="cursor: pointer;"
+     class="star-info">
+  <div [routerLink]="[star.slug]" class="star-info-image video-preview-container star-big-image cover-bg"
+       [style.backgroundImage]="'url('+ star.logo.large +')'">
+  </div>
+  <div class="star-info-inner">
+    <div class="star-info-text">
+      <h5 class="star-info-name"
+          dsappStarName
+          [name]="star.name"></h5>
+      <p *ngIf="star.about"class="star-info-desc text-muted">{{star.about}}</p>
+      <div class=""> 120 subscriptions </div>
     </div>
-    <div class="hover-message">
-      {{'STAR.STAR_INFO_PAGE.WatchPromo' | translate}}
-    </div> -->
-
+    <div class="watch-promo-button" role="button" (click)="openPromoModal(star.name, star.promoVideo)"><img src="assets/images/icons/promo-icon.svg"></div>
   </div>
-
-
-  <div class="star-info-text" >
-
-    <h5 class="star-info-name"
-        dsappStarName
-        [name]="star.name"></h5>
-
-    <p *ngIf="star.about"
-       class="star-info-desc text-muted">{{star.about}}</p>
-  <div class="text-center"> 120 subscriptions </div>
-    <!-- <dsapp-tags-holder [tags]="star.tags"></dsapp-tags-holder> -->
-
-    <!-- <div class="star-info-btns">
-      <button class="btn btn-sm btn-success"
-              [disabled]="star.figures.length === 0"
-              [routerLink]="[star.slug]">{{'STAR.openLibrary' | translate}}</button>
-    </div> -->
-
-  </div>
-
 </div>
