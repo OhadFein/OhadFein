@@ -9,34 +9,34 @@ import {Practice} from "@models/practices.model";
 // export type ForgotPasswordErrorCode = 'INVALID_EMAIL' | 'NON_EXISTING_USER';
 
 
-export interface RestResponse {
+export interface IRestResponse {
     success: boolean;
     message?: string;
     data?: any;
 }
 
-export interface AuthRestResponse extends RestResponse {
+export interface AuthRestResponse extends IRestResponse {
     data?: AuthTokens;
 }
 
-export interface UserRestResponse extends RestResponse {
+export interface UserRestResponse extends IRestResponse {
     data?: User;
 }
 
-export interface StarsRestResponse extends RestResponse {
+export interface StarsRestResponse extends IRestResponse {
     data?: Array<Star>;
 }
 
-export interface FiguresRestResponse extends RestResponse {
+export interface FiguresRestResponse extends IRestResponse {
     data?: Array<Figure>;
 }
-export interface SingleFigureRestResponse extends RestResponse {
+export interface SingleFigureRestResponse extends IRestResponse {
     data?: Figure;
 }
-export interface PracticeItemsRestResponse extends RestResponse {
+export interface PracticeItemsRestResponse extends IRestResponse {
     data?: Array<Practice>;
 }
 
-export interface UpdatePracticeItemsRestResponse extends RestResponse {
+export interface UpdatePracticeItemsRestResponse extends IRestResponse {
     data?: Practice;
 }

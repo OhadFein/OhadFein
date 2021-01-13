@@ -1,8 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
-
 import * as StarsContentActions from '../actions/stars-content.actions';
 import { initializeStarContentState, StarContentState } from '../state';
-
 
 export const initialStarContentState = initializeStarContentState();
 

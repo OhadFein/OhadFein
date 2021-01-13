@@ -27,6 +27,7 @@
     "@ngrx/entity": "^9.1.0",
     "@ngrx/store": "^9.1.0",
     "@ngrx/store-devtools": "^9.1.0",
+    "@ngu/carousel": "^3.0.2",
     "@ngx-translate/core": "^12.1.2",
     "@ngx-translate/http-loader": "^4.0.0",
     "angularx-social-login": "^2.2.1",
