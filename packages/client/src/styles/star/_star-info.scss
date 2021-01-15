@@ -26,17 +26,12 @@
   
 
     .watch-promo-button{
-      // border: red 2px solid;
-      flex: 1;
-      // height: 100%;
-      // width: 100%;
       img{
         width: 100%;
         height: 25px;
       }
     }
     .star-info-text {
-flex: 3;
       .star-info-name {
         font-weight: 600;
         line-height: 1.05;
@@ -63,6 +58,7 @@ flex: 3;
           overflow: hidden;
           text-overflow: ellipsis;
         }
+       
       }
   
       .star-info-achivments {
@@ -135,6 +131,11 @@ flex: 3;
     justify-content: center;
     align-items: center;
 
+    .read-less-button, .read-more-button{
+      img{
+        width: 10px;
+      }
+    }
     .star-info-name {
       font-weight: 600;
       margin-top: 0.7rem;
@@ -144,6 +145,24 @@ flex: 3;
     .star-info-desc {
       @include media-breakpoint-down(sm) {
         font-size: 0.7rem;
+      }
+      max-height: 65px;
+      overflow: hidden;
+      margin: 0;
+      &.read-more{
+        max-height: max-content;
+        &:before{
+          content: none;
+        }
+      }
+      &:before {
+        content: "";
+        width: 100%;
+        height: 65px;
+        position: absolute;
+        left: 0;
+        background: linear-gradient(transparent 30px, white);
+    
       }
     }
 

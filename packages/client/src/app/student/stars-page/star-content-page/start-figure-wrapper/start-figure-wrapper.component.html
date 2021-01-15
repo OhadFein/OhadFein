@@ -1,1 +1,26 @@
-<p>start-figure-wrapper works!</p>
+<div class="star-figure-wrapper">
+    <div *ngFor="let dance of danceTypes"
+         class="row star-figure-row">
+        <h5 class="col-12">
+            {{dance}}
+        </h5>
+        <div class="col-12 d-flex">
+            <swiper [slidesPerView]="2"
+                    [spaceBetween]="10"
+                    (swiper)="onSwiper($event)"
+                    (slideChange)="onSlideChange()">
+                <ng-container *ngFor="let figure of figures">
+                    <ng-template *ngIf="figure.type === dance"
+                                 swiperSlide>
+                                 <div class="figure-swiper" [routerLink]="[figure._id]">
+                                    <div class="figure-swiper-img-wrapper">
+                                        <img style="height: 100px; width: 150px; border-radius: 4px;" class="figure-swiper-img"src="{{figure.logo}}">
+                                    </div>
+                                    <div class="figure-swiper-content text-center"><span>{{figure.name}}</span></div>
+                                 </div>
+                    </ng-template>
+                </ng-container>
+            </swiper>
+        </div>
+    </div>
+</div>

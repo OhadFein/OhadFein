@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Figure, LabItem, LabStarVideo, Star, Video, VideoType } from '@app/_infra/core/models';
+import { Figure, LabItem, LabStarVideo, IStar, Video, VideoType } from '@app/_infra/core/models';
 import * as FigureActions from '@app/_infra/store/actions/figures.actions';
 import * as StarsActions from '@app/_infra/store/actions/stars.actions';
 import { VideoPlayerModalComponent } from '@app/_infra/ui';
@@ -19,7 +19,7 @@ import { Subscription } from 'rxjs';
 export class StarFigurePageComponent implements OnInit, OnDestroy {
 
   slug = null;
-  star: Star = null;
+  star: IStar = null;
   figure: Figure = null;
   figureId = null;
   starIsLoading = true;

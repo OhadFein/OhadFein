@@ -29,6 +29,8 @@ import { FiguresEffects, PracticesEffects, StarsContentEffects, StarsEffects, Us
 import { APP_PROVIDERS } from './app-providers';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { SwiperModule } from 'swiper/angular';
+
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -40,6 +42,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
   ],
   imports: [
+    SwiperModule,
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,

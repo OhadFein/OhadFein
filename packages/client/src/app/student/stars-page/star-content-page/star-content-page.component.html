@@ -31,20 +31,32 @@
                     <h5 class="star-info-name"
                         dsappStarName
                         [name]="star.name"></h5>
+                    <div>
+                        <p #stardescription
+                           *ngIf="star.description"
+                           class="star-info-desc text-muted"
+                           [ngClass]="showMore ? 'read-more' : ''">{{star.description}}</p>
+                    </div>
 
-                    <p *ngIf="star.about"
-                       class="star-info-desc text-muted">{{star.about}}</p>
-                    <ul *ngIf="star.achievements"
-                        class="star-info-desc star-info-achivments text-left">
-                        <li *ngFor="let achivment of star.achievements">
-                            {{achivment}}</li>
-                    </ul>
+                    <div *ngIf="isReadMore===true"
+                         class="text-end w-100 text-right read-more-button"
+                         (click)="readMore()"><span>
+                            {{'COMMON.showMore' | translate}}
+                        </span>
+                        <img src="/assets/images/icons/down-chevron.svg">
+                    </div>
+                    <div *ngIf="isReadMore===false"
+                         class="text-end w-100 text-right read-less-button"
+                         (click)="readLess()"><span>
+                            {{'COMMON.showLess' | translate}}
+                        </span>
+                        <img src="/assets/images/icons/up-chevron.svg">
+                    </div>
                 </div>
 
             </div>
         </div>
     </div>
-    {{star._id}}
     <dsapp-start-figure-wrapper [starId]="star._id"></dsapp-start-figure-wrapper>
 </ng-template>
 

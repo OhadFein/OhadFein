@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { AlertErrorService } from '@app/_infra/core/services';
 import * as StarsActions from '@app/_infra/store/actions/stars.actions';
-import { Name, Star, StarError, StarSortingOptions } from '@core/models';
+import { Name, IStar, StarError, StarSortingOptions } from '@core/models';
 import { ConfigurationService } from '@core/services/configuration.service';
 import * as selectors from '@infra/store/selectors/stars.selectors';
 import { Store } from '@ngrx/store';
@@ -16,8 +16,8 @@ import { debounceTime, distinctUntilChanged, startWith } from 'rxjs/operators';
 })
 export class StarsPageComponent implements OnInit, OnDestroy {
 
-  stars: Star[] = null;
-  filteredStars: Star[] = [];
+  stars: IStar[] = null;
+  filteredStars: IStar[] = [];
   sorting: StarSortingOptions = StarSortingOptions.NUMBER_OF_FIGURES;
   subs: Subscription[] = [];
   aboutBtnTxt = '';
@@ -107,7 +107,7 @@ export class StarsPageComponent implements OnInit, OnDestroy {
 
   }
 
-  sortStars = (star1: Star, star2: Star): number => {
+  sortStars = (star1: IStar, star2: IStar): number => {
     switch (this.sorting) {
       case StarSortingOptions.NUMBER_OF_FIGURES:
         return star2.figures.length - star1.figures.length;

@@ -1,10 +1,10 @@
-import { StarContent } from '@core/models';
+import { IStarContent } from '@core/models';
 
 export class StarContentState {
-    starsContent: Array<StarContent> | null;
+    starsContent: Array<IStarContent> | null;
     error: Error | string | null; // track errors
 }
 
 export const initializeStarContentState = () => {
-    return { starsContent: Array<StarContent>(), error: null };
+    return { starsContent: Array<IStarContent>(), error: null };
 };

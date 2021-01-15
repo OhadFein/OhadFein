@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Star } from '@core/models';
+import { IStar } from '@core/models';
 import { StarsService } from '@core/services';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';

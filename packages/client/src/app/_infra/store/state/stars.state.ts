@@ -1,7 +1,7 @@
-import { Star } from '@core/models/';
+import { IStar } from '@core/models/';
 
 export class StarsState {
-    stars: Array<Star> | null;
+    stars: Array<IStar> | null;
     error: Error | string | null; // track errors
 }
 

@@ -37,6 +37,7 @@
     "ngx-owl-carousel-o": "^4.0.0",
     "ngx-videogular": "^9.0.1",
     "rxjs": "~6.5.5",
+    "swiper": "^6.4.5",
     "tslib": "^1.10.0",
     "typy": "^3.3.0",
     "web-animations-js": "^2.3.2",

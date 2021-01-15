@@ -1,8 +1,31 @@
 import { Figure } from './figure.model';
 
-export interface StarContent {
-    starId: string;
-    dances: Array<StarContentDance>
+export interface IStarContent {
+    about: string;
+    achievements: string[];
+    createdAt: string;
+    figures: Figure[];
+    location: IStarContentLocation;
+    logo: IStarContentLogo; 
+    name: IStarContentName; 
+    promoVideo: string;
+    slug: string; 
+    updatedAt: string;
+    _id: string;
+}
+
+export interface IStarContentName{
+    firstName: string;
+    lastName: string;
+}
+
+export interface IStarContentLogo{
+    large: string;
+    small: string; 
+}
+
+export interface IStarContentLocation{
+    city: string;
 }
 
 export enum DanceType {

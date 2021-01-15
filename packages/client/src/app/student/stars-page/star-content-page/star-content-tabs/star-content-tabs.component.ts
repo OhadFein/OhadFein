@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import * as StarContentActions from '@app/_infra/store/actions/stars-content.actions';
-import { Star, StarContent, StarContentDance } from '@core/models';
+import { IStar, IStarContent, StarContentDance } from '@core/models';
 import * as selectors from '@infra/store/selectors/stars-content.selectors';
 import { Store } from '@ngrx/store';
 import { OwlOptions } from 'ngx-owl-carousel-o';
@@ -12,9 +12,9 @@ import { Subscription } from 'rxjs';
 })
 export class StarContentTabsComponent implements OnInit, OnDestroy {
 
-  @Input() star: Star;
+  @Input() star: IStar;
 
-  content: StarContent = null;
+  content: IStarContent = null;
   loading = true;
   selectDance: any = null;
   subs: Subscription[] = [];
@@ -58,8 +58,8 @@ export class StarContentTabsComponent implements OnInit, OnDestroy {
         content => {
           if (content) {
             // this.content = { ...content };
-            this.selectDance = this.content.dances && this.content.dances.length > 0 ? [...this.content.dances]  : null;
-            console.log("this.selectDance", this.selectDance)
+            // this.selectDance = this.content.dances && this.content.dances.length > 0 ? [...this.content.dances]  : null;
+            // console.log("this.selectDance", this.selectDance)
             this.loading = false;
           } else {
             this.store.dispatch(StarContentActions.BeginGetStarsContentAction({ payload: this.star._id }));
