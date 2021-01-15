@@ -1,6 +1,6 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import * as StarContentActions from '@app/_infra/store/actions/stars-content.actions';
-import { Star, IStarContent, StarContentDance } from '@core/models';
+import { IStar, IStarContent, StarContentDance } from '@core/models';
 import * as selectors from '@infra/store/selectors/stars-content.selectors';
 import { Store } from '@ngrx/store';
 import { OwlOptions } from 'ngx-owl-carousel-o';
@@ -12,7 +12,7 @@ import { Subscription } from 'rxjs';
 })
 export class StarContentTabsComponent implements OnInit, OnDestroy {
 
-  @Input() star: Star;
+  @Input() star: IStar;
 
   content: IStarContent = null;
   loading = true;

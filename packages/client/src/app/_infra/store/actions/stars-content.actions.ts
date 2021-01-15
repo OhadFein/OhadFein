@@ -1,4 +1,4 @@
-import { StarContent } from '@core/models';
+import { IStarContent } from '@core/models';
 import { createAction, props } from '@ngrx/store';
 
 export enum StarsContentActionType {

@@ -4,23 +4,23 @@
         <h5 class="col-12">
             {{dance}}
         </h5>
-        <div class="col-12 d-flex" style="overflow-y: scroll;">
-            <div *ngFor="let figure of figures" class="w-50 d-inline-flex ">
-                <ng-container >
-                    <div class="d-flex flex-column justify-content-center text-center" style=" margin-right: 15px; width: max-content;"
-                         *ngIf="figure.type === dance">
-                         <div class="w-100">
-                            <img style="height: 100px; width: 150px; border-radius: 4px;"
-                            class=""
-                            src="{{figure.logo}}">
-      
-                         </div >
-                          <div class="w-100">
-                               {{figure.name}}
-                             </div>
-                    </div>
+        <div class="col-12 d-flex">
+            <swiper [slidesPerView]="2"
+                    [spaceBetween]="10"
+                    (swiper)="onSwiper($event)"
+                    (slideChange)="onSlideChange()">
+                <ng-container *ngFor="let figure of figures">
+                    <ng-template *ngIf="figure.type === dance"
+                                 swiperSlide>
+                                 <div class="figure-swiper" [routerLink]="[figure._id]">
+                                    <div class="figure-swiper-img-wrapper">
+                                        <img style="height: 100px; width: 150px; border-radius: 4px;" class="figure-swiper-img"src="{{figure.logo}}">
+                                    </div>
+                                    <div class="figure-swiper-content text-center"><span>{{figure.name}}</span></div>
+                                 </div>
+                    </ng-template>
                 </ng-container>
-            </div>
+            </swiper>
         </div>
     </div>
 </div>

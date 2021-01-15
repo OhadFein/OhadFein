@@ -29,7 +29,7 @@ import { FiguresEffects, PracticesEffects, StarsContentEffects, StarsEffects, Us
 import { APP_PROVIDERS } from './app-providers';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NguCarouselModule } from '@ngu/carousel';
+import { SwiperModule } from 'swiper/angular';
 
 
 // AoT requires an exported function for factories
@@ -42,7 +42,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
   ],
   imports: [
-    NguCarouselModule,
+    SwiperModule,
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,

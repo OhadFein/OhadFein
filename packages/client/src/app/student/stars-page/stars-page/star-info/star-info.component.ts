@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { VideoPlayerModalComponent } from '@app/_infra/ui';
-import { Name, Star } from '@core/models/star.model';
+import { Name, IStar } from '@core/models/star.model';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -11,7 +11,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class StarInfoComponent implements OnInit {
 
 
-  @Input() star: Star;
+  @Input() star: IStar;
 
   cuttedAchivments: Array<string> = [];
 

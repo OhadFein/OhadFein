@@ -1,9 +1,9 @@
-import { StarContent } from './star-content.model';
+import { IStarContent } from './star-content.model';
 import { Tag } from './tag.model';
 import { Location } from './user.model';
 
 
-export interface Star {
+export interface IStar {
     _id: string;
     name: Name;
     slug: string;
@@ -15,6 +15,7 @@ export interface Star {
     figures?: Array<any>
     createdAt?: Date;
     updatedAt?: Date;
+    description: string;
 }
 
 export interface Name {

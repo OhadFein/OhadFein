@@ -5,6 +5,7 @@ import { InfraModule } from '@app/_infra/infra.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { SwiperModule } from 'swiper/angular';
 
 import {
   LevelsTabsComponent,
@@ -20,7 +21,7 @@ import { StartFigureWrapperComponent } from './star-content-page/start-figure-wr
 
 @NgModule({
   imports: [
-    CommonModule, ReactiveFormsModule, TranslateModule.forChild(), NgbModule, StudentStarRoutingModule, InfraModule, CarouselModule
+    CommonModule, ReactiveFormsModule, TranslateModule.forChild(), NgbModule, StudentStarRoutingModule, InfraModule, CarouselModule, SwiperModule,
   ],
   declarations: [
     StarsPageComponent, StarInfoComponent, StarContentPageComponent, StarContentTabsComponent, LevelsTabsComponent, StarFigurePageComponent, StartFigureWrapperComponent

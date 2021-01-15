@@ -12,7 +12,9 @@
         "NotSelected": "Not Selected",
         "tryAgain": "Try again",
         "landscapeTitle": "Currently, the landscape view is not optimally supported.",
-        "landscapeSubTitle": "In order to enjoy a maximum user experience, we recommend that you rotate the screen back."
+        "landscapeSubTitle": "In order to enjoy a maximum user experience, we recommend that you rotate the screen back.",
+        "showMore": "Show more",
+        "showLess": "Show less"
     },
     "ERRORS": {
         "Error": "Error",

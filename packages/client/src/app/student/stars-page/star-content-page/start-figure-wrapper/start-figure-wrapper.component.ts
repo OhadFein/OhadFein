@@ -4,7 +4,9 @@ import * as StarContentActions from '@app/_infra/store/actions/stars-content.act
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { Figure } from '@app/_infra/core/models';
-import { NguCarousel, NguCarouselConfig } from '@ngu/carousel';
+import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper/core';
+
+SwiperCore.use([Pagination, Scrollbar, A11y]);
 
 @Component({
   selector: 'dsapp-start-figure-wrapper',
@@ -21,25 +23,15 @@ export class StartFigureWrapperComponent implements OnInit {
   figures: Figure[];
   danceTypes: string[];
   @Input() starId: string; 
-  public carouselTileItems: Array<any>;
-  public carouselTile: NguCarouselConfig;
-
-  
-  slideNo = 0;
-
-  // @ViewChild('myCarousel') myCarousel: NguCarousel<any>;
-  // carouselConfig: NguCarouselConfig = {
-  //   grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
-  //   load: 3,
-  //   interval: {timing: 4000, initialDelay: 1000}, 
-  //   loop: true,
-  //   touch: true,
-  //   velocity: 0.2
-  // }
-  // carouselItems = [1, 2, 3];
 
   constructor(private store: Store<any>, private cdr: ChangeDetectorRef) { }
 
+  onSwiper(swiper) {
+    // console.log(swiper)
+  }
+  onSlideChange() {
+    // console.log('slide change')
+  }
 
   ngAfterViewInit() {
     this.cdr.detectChanges();
@@ -60,8 +52,8 @@ export class StartFigureWrapperComponent implements OnInit {
         content => {
           if (content) {
             this.content = { ...content };
+            console.log("this.content", this.content)
             this.figures = this.content.figures;
-            console.log("this.figures", this.figures)
             this.manageTypes()
             this.loading = false;
           } else {

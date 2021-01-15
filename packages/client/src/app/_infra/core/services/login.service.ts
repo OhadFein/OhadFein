@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { AuthRestResponse, RestResponse } from '@app/_infra/core/models';
+import { AuthRestResponse, IRestResponse } from '@app/_infra/core/models';
 import * as GlobalActions from '@infra/store/actions/global.actions';
 import { Store } from '@ngrx/store';
 import { AuthService } from 'angularx-social-login';
@@ -76,12 +76,12 @@ export class LoginService {
     this.router.navigate(['/student']); // TODO: Smart redirect
   }
 
-  forgotPassword({ email }): Observable<RestResponse> {
-    return this.baseRestService.post<RestResponse>('forgot', { email });
+  forgotPassword({ email }): Observable<IRestResponse> {
+    return this.baseRestService.post<IRestResponse>('forgot', { email });
   }
 
-  validateResetToken(token: string): Observable<RestResponse> {
-    return this.baseRestService.get<RestResponse>(`reset/${token}`);
+  validateResetToken(token: string): Observable<IRestResponse> {
+    return this.baseRestService.get<IRestResponse>(`reset/${token}`);
   }
 
   refreshToken() {

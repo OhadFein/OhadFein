@@ -4,14 +4,13 @@
   <div [routerLink]="[star.slug]" class="star-info-image video-preview-container star-big-image cover-bg"
        [style.backgroundImage]="'url('+ star.logo.large +')'">
   </div>
-  <div class="star-info-inner">
-    <div class="star-info-text">
+  <div class="star-info-inner justify-content-center">
+    <div class="star-info-text text-center">
       <h5 class="star-info-name"
           dsappStarName
           [name]="star.name"></h5>
       <p *ngIf="star.about"class="star-info-desc text-muted">{{star.about}}</p>
       <div class=""> 120 subscriptions </div>
     </div>
-    <div class="watch-promo-button" role="button" (click)="openPromoModal(star.name, star.promoVideo)"><img src="assets/images/icons/promo-icon.svg"></div>
   </div>
 </div>
