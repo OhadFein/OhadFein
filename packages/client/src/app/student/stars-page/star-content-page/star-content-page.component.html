@@ -27,7 +27,6 @@
                 </div>
 
                 <div class="star-info-text text-center">
-
                     <h5 class="star-info-name"
                         dsappStarName
                         [name]="star.name"></h5>
@@ -35,7 +34,7 @@
                         <p #stardescription
                            *ngIf="star.description"
                            class="star-info-desc text-muted"
-                           [ngClass]="showMore ? 'read-more' : ''">{{star.description}}</p>
+                           [ngClass]="isReadMore === true ? 'show-less' : isReadMore === false ? 'read-more' : ''">{{star.description}}</p>
                     </div>
 
                     <div *ngIf="isReadMore===true"
