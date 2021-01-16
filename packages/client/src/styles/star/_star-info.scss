@@ -1,23 +1,12 @@
-//
 .star-info {
-
-  // @include list-item;
-
   .star-info-image {
     height: 140px;
     position: relative;
     margin-bottom: 5px; 
     @include list-item-image(100%);
-
     @include media-breakpoint-up(md) {
-
-      // padding-top: 56.25%;
-      // margin-bottom: 1rem;
     }
-// .star-info-image{
-  // height: 150px;
-// }
-
+    border-radius: 4px;
   }
   .star-info-inner{
     // border: red 2px solid;
@@ -115,22 +104,14 @@
 
     
   }
-
-  
 }
 
 .star-info-vertical {
-
-  .star-info-image {
-    // padding: 5px 30px;
-  }
-
   .star-info-text {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     .read-less-button, .read-more-button{
       img{
         width: 10px;
@@ -195,8 +176,6 @@
     }
   }
 }
-
-.star-info-page {}
 
 .star-big-image {
   background-color: $gray-200;
