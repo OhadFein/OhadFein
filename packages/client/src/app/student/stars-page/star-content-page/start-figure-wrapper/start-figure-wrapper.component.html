@@ -10,7 +10,6 @@
                     [slidesPerView]="2.2"
                     [spaceBetween]="15"
                     (swiper)="onSwiper($event)"
-                    [allowTouchMove]= "figuresPerType.length === 1 ? false : true"
                     (slideChange)="onSlideChange()"
                     [setWrapperSize]="true"
                     >
@@ -20,7 +19,7 @@
                                     <div class="figure-swiper-img-wrapper">
                                         <img class="figure-swiper-img w-100 h-100" style=" border-radius: 4px;" src="{{figure.logo}}">
                                     </div>
-                                    <div class="figure-swiper-content text-center"><span>{{figure.name}}</span></div>
+                                    <div class="figure-swiper-content text-center" style="height: 40px;   text-overflow: ellipsis;                                    "><span>{{figure.name}}</span></div>
                                  </div>
                     </ng-template>
                 </ng-container>
