@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild , ChangeDetectorRef, AfterViewInit} from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import * as selectors from '@infra/store/selectors/stars-content.selectors';
 import * as StarContentActions from '@app/_infra/store/actions/stars-content.actions';
 import { Subscription } from 'rxjs';
@@ -15,14 +15,15 @@ SwiperCore.use([Pagination, Scrollbar, A11y]);
   ]
 })
 export class StartFigureWrapperComponent implements OnInit {
-  subs: Subscription[] = []  ;
+  subs: Subscription[] = [];
   star: any;
   content: any;
   selectDance: any[];
   loading: boolean;
   figures: Figure[];
   danceTypes: string[];
-  @Input() starId: string; 
+  figuresPerType: Figure[];
+  @Input() starId: string;
 
   constructor(private store: Store<any>, private cdr: ChangeDetectorRef) { }
 
@@ -38,23 +39,28 @@ export class StartFigureWrapperComponent implements OnInit {
   }
 
   ngOnInit(): void {
-  
-    this.getStarContent();;
+
+    this.getStarContent();
+    // this.getFiguresPerDance();
   }
 
-  manageTypes(){
-    this.danceTypes = [...new Set(this.figures.map(item=> item.type))];    
+  manageTypes() {
+    this.danceTypes = [...new Set(this.figures.map(item => item.type))];
   }
 
-  getStarContent(){
+  getFiguresPerDance(dance): Figure[] {
+    return this.figuresPerType = this.figures.filter((figure)=> figure.type === dance);
+  }
+
+  getStarContent() {
     this.subs.push(
       this.store.select(selectors.selectStarContentByStarId(this.starId)).subscribe(
         content => {
           if (content) {
             this.content = { ...content };
-            console.log("this.content", this.content)
             this.figures = this.content.figures;
-            this.manageTypes()
+            this.manageTypes();
+            // this.getFiguresPerDance('samba');
             this.loading = false;
           } else {
             this.store.dispatch(StarContentActions.BeginGetStarsContentAction({ payload: this.starId }));

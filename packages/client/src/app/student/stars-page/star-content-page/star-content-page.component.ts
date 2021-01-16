@@ -57,12 +57,6 @@ export class StarContentPageComponent implements OnInit, OnDestroy {
             if (element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth) {
                 this.isReadMore = true;
                 console.log(11)
-
-            }
-            else {
-                // this.isReadMore = false;
-                // console.log(22)
-
             }
         }, 1000);
     }
