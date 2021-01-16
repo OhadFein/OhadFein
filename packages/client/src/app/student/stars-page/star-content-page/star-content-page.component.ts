@@ -9,7 +9,6 @@ import { VideoPlayerModalComponent } from "@infra/ui";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 import { ElementRef } from '@angular/core';
 
-
 @Component({
     selector: 'dsapp-star-content-page',
     templateUrl: './star-content-page.component.html',
@@ -24,10 +23,7 @@ export class StarContentPageComponent implements OnInit, OnDestroy {
     isReadMore: boolean;
     showMore = false;
 
-
-    constructor(private store: Store<any>, private route: ActivatedRoute, private modalService: NgbModal) {
-
-    }
+    constructor(private store: Store<any>, private route: ActivatedRoute, private modalService: NgbModal) {}
 
     ngOnInit(): void {
         this.isOverflown();
@@ -50,13 +46,11 @@ export class StarContentPageComponent implements OnInit, OnDestroy {
         )
     }
 
-
     isOverflown(): void {
         setTimeout(() => {
             const element = this.starDescriptionEl.nativeElement;
             if (element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth) {
                 this.isReadMore = true;
-                console.log(11)
             }
         }, 1000);
     }

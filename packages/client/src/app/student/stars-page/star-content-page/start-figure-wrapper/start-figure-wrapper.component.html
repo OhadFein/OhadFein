@@ -8,8 +8,6 @@
             <swiper  
                     [slidesPerView]="2.2"
                     [spaceBetween]="15"
-                    (swiper)="onSwiper($event)"
-                    (slideChange)="onSlideChange()"
                     [setWrapperSize]="true"
                     >
                 <ng-container *ngFor="let figure of figuresPerType">

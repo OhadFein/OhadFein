@@ -27,21 +27,12 @@ export class StartFigureWrapperComponent implements OnInit {
 
   constructor(private store: Store<any>, private cdr: ChangeDetectorRef) { }
 
-  onSwiper(swiper) {
-    // console.log(swiper)
-  }
-  onSlideChange() {
-    // console.log('slide change')
-  }
-
   ngAfterViewInit() {
     this.cdr.detectChanges();
   }
 
   ngOnInit(): void {
-
     this.getStarContent();
-    // this.getFiguresPerDance();
   }
 
   manageTypes() {

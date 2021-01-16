@@ -24,9 +24,6 @@ export class StarInfoComponent implements OnInit {
   }
 
   openPromoModal(starName: Name | string, promoUrl: string) {
-    console.log(11);
-    console.log("starName", starName);
-    console.log("promoUrl", promoUrl);
     const modalRef = this.modalService.open(VideoPlayerModalComponent, { size: 'xl', centered: true });
     modalRef.componentInstance.videoURL = promoUrl;
     modalRef.componentInstance.title = starName;

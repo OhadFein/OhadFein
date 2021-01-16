@@ -8,9 +8,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SwiperModule } from 'swiper/angular';
 
 import {
-  LevelsTabsComponent,
   StarContentPageComponent,
-  StarContentTabsComponent,
   StarFigurePageComponent,
   StarInfoComponent,
   StarsPageComponent,
@@ -21,10 +19,11 @@ import { StartFigureWrapperComponent } from './star-content-page/start-figure-wr
 
 @NgModule({
   imports: [
-    CommonModule, ReactiveFormsModule, TranslateModule.forChild(), NgbModule, StudentStarRoutingModule, InfraModule, CarouselModule, SwiperModule,
+    CommonModule, ReactiveFormsModule, TranslateModule.forChild(), NgbModule, StudentStarRoutingModule, InfraModule, SwiperModule,
+
   ],
   declarations: [
-    StarsPageComponent, StarInfoComponent, StarContentPageComponent, StarContentTabsComponent, LevelsTabsComponent, StarFigurePageComponent, StartFigureWrapperComponent
+    StarsPageComponent, StarInfoComponent, StarContentPageComponent, StarFigurePageComponent, StartFigureWrapperComponent
   ]
 })
 export class StudentStarsModule { }
