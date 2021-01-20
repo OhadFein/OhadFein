@@ -40,15 +40,14 @@
       <h5 class="figure-name text-center pt-2">{{figure.name}}</h5>
     </div>
   </div>
-
-
   <swiper [slidesPerView]="4"
           [spaceBetween]="15"
           [setWrapperSize]="true">
     <ng-container *ngFor="let tab of tabs">
       <ng-template swiperSlide>
-        <div class="tabs-swiper d-flex flex-column h-100"
-             [routerLink]="tab">
+        <div class="tab-swiper d-flex flex-column h-100" [ngClass]="tab === activeTab ? 'active' : ''"
+             [routerLink]="tab"
+             >
           <div class="figure-swiper-content text-center"><span>{{tab}}</span></div>
         </div>
       </ng-template>

@@ -33,6 +33,14 @@
   }
 }
 
+.tab-swiper{
+  // border: 1px solid;
+  padding: 5px 0;
+  &.active{
+    border-bottom: 1px solid
+  }
+}
+
 .basic-principles-videos-wrapper {
 
   .basic-principles-videos {

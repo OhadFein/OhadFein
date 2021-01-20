@@ -32,7 +32,7 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
   promoVideo: Video = null;
 
   subs: Subscription[] = [];
-
+public activeTab: string;
   tabs = [ETabs.preview, ETabs.Movements, ETabs.Principles, ETabs.Practices]
 
   constructor(
@@ -47,7 +47,12 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
 
     this.subs.push(
       this.route.params.subscribe((params: ParamMap) => {
-
+        if(Object.keys(params).length!==0){
+          console.log(11)
+          this.activeTab = ETabs.preview;
+          console.log("this.activeTab", this.activeTab)
+        }
+console.log("params", params)
         this.slug = params['slug'];
         this.figureId = params['figureId'];
       })
