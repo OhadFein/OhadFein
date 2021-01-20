@@ -12,9 +12,9 @@
                     >
                 <ng-container *ngFor="let figure of figuresPerType">
                     <ng-template swiperSlide>
-                                 <div style="height: 100%;" class="figure-swiper d-flex flex-column" [routerLink]="[figure._id]">
-                                    <div style=" height: 100%;" class="figure-swiper-img-wrapper">
-                                        <img class="figure-swiper-img w-100 h-100" src="{{figure.logo}}">
+                                 <div class="figure-swiper d-flex flex-column h-100" [routerLink]="[figure._id]">
+                                    <div class="figure-swiper-img-wrapper h-100">
+                                        <img class="figure-swiper-img w-100" src="{{figure.logo}}">
                                     </div>
                                     <div  class="figure-swiper-content text-center"><span>{{figure.name}}</span></div>
                                  </div>

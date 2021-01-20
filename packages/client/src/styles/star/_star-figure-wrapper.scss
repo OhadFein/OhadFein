@@ -1,13 +1,14 @@
-.star-figure-wrapper{
-.figure-swiper{
-    .figure-swiper-img-wrapper{
-        .figure-swiper-img{
-            border-radius: 4px;
-        }
+.star-figure-wrapper {
+  .figure-swiper {
+    .figure-swiper-img-wrapper {
+      .figure-swiper-img {
+        border-radius: 4px;
+        height: 100px;
+      }
     }
-    .figure-swiper-content{
-        min-height: 40px;   
-        text-overflow: ellipsis
+    .figure-swiper-content {
+      min-height: 40px;
+      text-overflow: ellipsis;
     }
-}
+  }
 }
