@@ -12,3 +12,5 @@ export interface Figure {
     createdAt?: Date,
     updatedAt?: Date
 }
+
+

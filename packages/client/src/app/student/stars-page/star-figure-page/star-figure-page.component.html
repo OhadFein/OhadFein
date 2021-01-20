@@ -1,4 +1,4 @@
-<ng-template [ngIf]="star">
+<!-- <ng-template [ngIf]="star">
   <div class="row back-btn-row">
     <div class="col-12">
       <a class="btn-link dark-link"
@@ -20,7 +20,7 @@
           [name]="star.name"></h5>
     </div>
   </div>
-</ng-template>
+</ng-template> -->
 
 
 <ng-template [ngIf]="figure">
@@ -41,6 +41,21 @@
     </div>
   </div>
 
+
+  <swiper [slidesPerView]="4"
+          [spaceBetween]="15"
+          [setWrapperSize]="true">
+    <ng-container *ngFor="let tab of tabs">
+      <ng-template swiperSlide>
+        <div class="tabs-swiper d-flex flex-column h-100"
+             [routerLink]="tab">
+          <div class="figure-swiper-content text-center"><span>{{tab}}</span></div>
+        </div>
+      </ng-template>
+    </ng-container>
+  </swiper>
+  <router-outlet></router-outlet>
+
   <!-- BASIC PRINCIPLES VIDEOS -->
 
   <div *ngIf="basicPrinciplesVideos.length>0"
@@ -51,8 +66,7 @@
         <div class="basic-principles-video">
           <div class="basic-principal-image">
 
-            <div
-                 class="embed-responsive embed-responsive-16by9 video-preview-container">
+            <div class="embed-responsive embed-responsive-16by9 video-preview-container">
               <div class="embed-responsive-item star-big-image cover-bg"
                    [style.backgroundImage]="'url('+ video.thumbnail +')'"
                    (click)="learnPrinciples(video.path, video.name)">
@@ -83,8 +97,7 @@
            *ngFor="let video of comparableVideos">
         <div class="comparable-video-inner">
           <div class="comparable-video-image">
-            <div
-                 class="embed-responsive embed-responsive-16by9 video-preview-container">
+            <div class="embed-responsive embed-responsive-16by9 video-preview-container">
               <div class="embed-responsive-item star-big-image cover-bg"
                    [style.backgroundImage]="'url('+ video.thumbnail +')'">
               </div>

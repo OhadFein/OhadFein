@@ -8,7 +8,12 @@ import { StarContentPageComponent, StarFigurePageComponent, StarsPageComponent }
 const routes: Routes = [
   { path: '', component: StarsPageComponent, canActivate: [AuthGuard] },
   { path: ':slug', component: StarContentPageComponent, canActivate: [AuthGuard] },
-  { path: ':slug/:figureId', component: StarFigurePageComponent, canActivate: [AuthGuard] }
+  { path: ':slug/:figureId', component: StarFigurePageComponent, children: [
+    {path:'preview', component: StarFigurePageComponent},
+    {path:'Movements', component: StarFigurePageComponent},
+    {path:'Principles', component: StarFigurePageComponent},
+    {path:'Practices', component: StarFigurePageComponent},
+  ],canActivate: [AuthGuard] }
   /* {
     path: ':starId', component: StarInfoPageComponent,
     children: [
