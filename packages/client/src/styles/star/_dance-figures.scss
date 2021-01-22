@@ -1,43 +1,60 @@
-.figure-star-info {
-  .star-short-info {
-    padding-bottom: 0.4rem;
+.star-figure{
+  .star-figure-header{
+    position: fixed;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    top: 41px;
+    overflow: hidden;
+    background: white;
 
-    img {
-      width: 85px;
-      height: 85px;
-      background: $gray-400;
-
-      @include media-breakpoint-down(sm) {
-        width: 60px;
-        height: 60px;
-      }
-    }
-
-    .star-info-name {
-      font-weight: 600;
-
-      @include media-breakpoint-down(sm) {
-        font-size: 1rem;
-      }
-    }
+  }
+  .star-figure-content{
+    margin-top: 290px;
   }
 }
 
-.figure-info {
-  .figure-name {
-    font-weight: 600;
+// .figure-star-info {
+//   .star-short-info {
+//     padding-bottom: 0.4rem;
 
-    @include media-breakpoint-down(sm) {
-      font-size: 0.8rem;
-    }
-  }
-}
+//     img {
+//       width: 85px;
+//       height: 85px;
+//       background: $gray-400;
+
+//       @include media-breakpoint-down(sm) {
+//         width: 60px;
+//         height: 60px;
+//       }
+//     }
+
+//     .star-info-name {
+//       font-weight: 600;
+
+//       @include media-breakpoint-down(sm) {
+//         font-size: 1rem;
+//       }
+//     }
+//   }
+// }
+
+// .figure-info {
+//   .figure-name {
+//     font-weight: 600;
+
+//     @include media-breakpoint-down(sm) {
+//       font-size: 0.8rem;
+//     }
+//   }
+// }
 
 .tab-swiper{
   // border: 1px solid;
   padding: 5px 0;
   &.active{
-    border-bottom: 1px solid
+    border-bottom: 1px solid;
+    outline: none;
   }
 }
 

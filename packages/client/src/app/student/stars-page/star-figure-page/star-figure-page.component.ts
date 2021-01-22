@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Figure, LabItem, LabStarVideo, IStar, Video, VideoType, ETabs} from '@core/models';
+import { Figure, LabItem, LabStarVideo, IStar, Video, VideoType, ETabs } from '@core/models';
 import * as FigureActions from '@app/_infra/store/actions/figures.actions';
 import * as StarsActions from '@app/_infra/store/actions/stars.actions';
 import { VideoPlayerModalComponent } from '@app/_infra/ui';
@@ -9,7 +9,8 @@ import * as StarSelectors from '@infra/store/selectors/stars.selectors';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import * as LabActions from '@store/actions/lab.actions';
-import { Subscription } from 'rxjs';
+import { from, Subscription } from 'rxjs';
+import { StarFigureService } from '../star-figure-page/figure-page.service'
 
 
 @Component({
@@ -32,31 +33,44 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
   promoVideo: Video = null;
 
   subs: Subscription[] = [];
-public activeTab: string;
+  public activeTab: string;
   tabs = [ETabs.preview, ETabs.Movements, ETabs.Principles, ETabs.Practices]
 
   constructor(
     private store: Store<any>,
     private route: ActivatedRoute,
     private modalService: NgbModal,
-    private router: Router
-  ) { }
+    private router: Router,
+    private starFigureService: StarFigureService
+  ) {
+    this.router.events.subscribe((event: Event) => {
+      const url = event?.url;
+      const routeLength = url?.split('/').length;
+      const lastParam = url?.split('/')[routeLength - 1];
+      if (this.tabs.find((tab) => tab === lastParam)) {
+        this.activeTab = lastParam;
+      }
+      else {
+        this.activeTab = ETabs.preview
+      }
+    });
+  }
 
   ngOnInit() {
-    console.log("tabs", this.tabs)
-
     this.subs.push(
       this.route.params.subscribe((params: ParamMap) => {
-        if(Object.keys(params).length!==0){
-          console.log(11)
-          this.activeTab = ETabs.preview;
-          console.log("this.activeTab", this.activeTab)
-        }
-console.log("params", params)
         this.slug = params['slug'];
         this.figureId = params['figureId'];
       })
     )
+
+    // const x = this.starFigureService.getFigure(this.figureId).subscribe((value) => {
+    //   console.log("value", value)
+    // },
+    //   err => {
+    //     console.log("err", err)
+    //   });
+    // console.log("x", x)
 
     this.subs.push(
       this.store.select(StarSelectors.selectStarBySlug(this.slug)).subscribe(

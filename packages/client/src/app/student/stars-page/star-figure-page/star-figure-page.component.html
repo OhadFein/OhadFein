@@ -24,36 +24,43 @@
 
 
 <ng-template [ngIf]="figure">
-
-  <div class="row figure-info">
-    <div class="col">
-
-      <ui-video-preview *ngIf="promoVideo"
-                        [path]="promoVideo.path"
-                        [poster]="promoVideo.thumbnail"></ui-video-preview>
-      <div *ngIf="!promoVideo"
-           class="embed-responsive embed-responsive-16by9">
-        <div class="embed-responsive-item cover-bg"
-             [style.backgroundImage]="'url('+ figure.logo +')'">
+  <div class="star-figure">
+    <div class="star-figure-header">
+      <div class="row figure-info">
+        <div class="col">
+    
+          <ui-video-preview *ngIf="promoVideo"
+                            [path]="promoVideo.path"
+                            [poster]="promoVideo.thumbnail"></ui-video-preview>
+          <div *ngIf="!promoVideo"
+               class="embed-responsive embed-responsive-16by9">
+            <div class="embed-responsive-item cover-bg"
+                 [style.backgroundImage]="'url('+ figure.logo +')'">
+            </div>
+          </div>
+          <h5 class="figure-name text-center pt-2">{{figure.name}}</h5>
         </div>
       </div>
-      <h5 class="figure-name text-center pt-2">{{figure.name}}</h5>
+      <swiper [slidesPerView]="4"
+              [spaceBetween]="15"
+              [setWrapperSize]="true">
+        <ng-container *ngFor="let tab of tabs">
+          <ng-template swiperSlide>
+            <div class="tab-swiper d-flex flex-column h-100" [ngClass]="tab === activeTab ? 'active' : ''"
+                 [routerLink]="tab"
+                 >
+              <div class="figure-swiper-content text-center"><span>{{tab}}</span></div>
+            </div>
+          </ng-template>
+        </ng-container>
+      </swiper>
     </div>
+     <div class="star-figure-content">
+      <router-outlet></router-outlet>
+
+     </div>
   </div>
-  <swiper [slidesPerView]="4"
-          [spaceBetween]="15"
-          [setWrapperSize]="true">
-    <ng-container *ngFor="let tab of tabs">
-      <ng-template swiperSlide>
-        <div class="tab-swiper d-flex flex-column h-100" [ngClass]="tab === activeTab ? 'active' : ''"
-             [routerLink]="tab"
-             >
-          <div class="figure-swiper-content text-center"><span>{{tab}}</span></div>
-        </div>
-      </ng-template>
-    </ng-container>
-  </swiper>
-  <router-outlet></router-outlet>
+
 
   <!-- BASIC PRINCIPLES VIDEOS -->
 
