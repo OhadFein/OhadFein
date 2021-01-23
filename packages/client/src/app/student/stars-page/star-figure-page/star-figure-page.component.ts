@@ -26,7 +26,6 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
   starIsLoading = true;
   figureIsLoading = true;
   loading = true;
-
   basicPrinciplesVideos: Array<Video> = [];
   comparableVideos: Array<Video> = [];
   additionalVideos: Array<Video> = [];
@@ -34,7 +33,7 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
 
   subs: Subscription[] = [];
   public activeTab: string;
-  tabs = [ETabs.preview, ETabs.Movements, ETabs.Principles, ETabs.Practices]
+  tabs = [ETabs.preview, ETabs.Principles, ETabs.Movements, ETabs.Practices]
 
   constructor(
     private store: Store<any>,
@@ -54,24 +53,36 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
         this.activeTab = ETabs.preview
       }
     });
+
+
   }
 
   ngOnInit() {
+
+    this.getFigureId();
+   
+    this.getStar()
+
+    this.getFigure();
+  }
+
+  getFigure(){
     this.subs.push(
-      this.route.params.subscribe((params: ParamMap) => {
-        this.slug = params['slug'];
-        this.figureId = params['figureId'];
-      })
+      this.store.select(FigureSelectors.selectFigureById(this.figureId)).subscribe(
+        figure => {
+          if (figure) {
+            this.figure = { ...figure };
+            // console.log("this.figure", this.figure)
+            this.splitVideosByType();
+            this.starIsLoading = false;
+          } else {
+            setTimeout(() => { this.store.dispatch(FigureActions.BeginGetFigureAction({ payload: this.figureId })); }, 1000);
+          }
+        })
     )
+  }
 
-    // const x = this.starFigureService.getFigure(this.figureId).subscribe((value) => {
-    //   console.log("value", value)
-    // },
-    //   err => {
-    //     console.log("err", err)
-    //   });
-    // console.log("x", x)
-
+  getStar():void{
     this.subs.push(
       this.store.select(StarSelectors.selectStarBySlug(this.slug)).subscribe(
         star => {
@@ -83,21 +94,16 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
           }
         })
     )
-
-    this.subs.push(
-      this.store.select(FigureSelectors.selectFigureById(this.figureId)).subscribe(
-        figure => {
-          if (figure) {
-            this.figure = { ...figure };
-            this.splitVideosByType();
-            this.starIsLoading = false;
-          } else {
-            setTimeout(() => { this.store.dispatch(FigureActions.BeginGetFigureAction({ payload: this.figureId })); }, 1000);
-          }
-        })
-    )
   }
 
+  getFigureId() : void{
+    this.subs.push(
+      this.route.params.subscribe((params: ParamMap) => {
+        this.slug = params['slug'];
+        this.figureId = params['figureId'];
+      })
+    )
+  }
   splitVideosByType(): void {
     this.basicPrinciplesVideos = [];
     this.comparableVideos = [];

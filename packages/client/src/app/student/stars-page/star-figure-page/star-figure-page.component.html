@@ -21,14 +21,11 @@
     </div>
   </div>
 </ng-template> -->
-
-
 <ng-template [ngIf]="figure">
   <div class="star-figure">
     <div class="star-figure-header">
       <div class="row figure-info">
         <div class="col">
-    
           <ui-video-preview *ngIf="promoVideo"
                             [path]="promoVideo.path"
                             [poster]="promoVideo.thumbnail"></ui-video-preview>
@@ -43,11 +40,13 @@
       </div>
       <swiper [slidesPerView]="4"
               [spaceBetween]="15"
-              [setWrapperSize]="true">
+              [setWrapperSize]="true"
+              style="box-shadow: inset 0 -1px 0 0 #afada1"
+              >
         <ng-container *ngFor="let tab of tabs">
           <ng-template swiperSlide>
             <div class="tab-swiper d-flex flex-column h-100" [ngClass]="tab === activeTab ? 'active' : ''"
-                 [routerLink]="tab"
+                 [routerLink]="tab" 
                  >
               <div class="figure-swiper-content text-center"><span>{{tab}}</span></div>
             </div>
@@ -56,7 +55,7 @@
       </swiper>
     </div>
      <div class="star-figure-content">
-      <router-outlet></router-outlet>
+      <router-outlet ></router-outlet>
 
      </div>
   </div>

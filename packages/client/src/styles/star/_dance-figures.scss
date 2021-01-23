@@ -7,6 +7,7 @@
     top: 41px;
     overflow: hidden;
     background: white;
+    z-index: 1;
 
   }
   .star-figure-content{
@@ -51,7 +52,7 @@
 
 .tab-swiper{
   // border: 1px solid;
-  padding: 5px 0;
+  padding: 10px 0;
   &.active{
     border-bottom: 1px solid;
     outline: none;

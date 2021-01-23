@@ -29,7 +29,7 @@ export type LabPlayerJumpDirection = 'bwd' | 'fwd';
 
 
 export enum ETabs {
-    preview = 'preview',
+    preview = 'Outline',
     Principles = 'Principles',
     Movements = 'Movements',
     Practices = 'Practices'
