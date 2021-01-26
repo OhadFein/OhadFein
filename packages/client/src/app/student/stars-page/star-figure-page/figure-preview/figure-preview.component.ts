@@ -29,6 +29,10 @@ export class FigurePreviewComponent implements OnInit {
     this.getFigure();
   }
 
+  getLevelStr(): string {
+    return this.levels[Number(this.figure.level) -1]
+  }
+
   getFigure(): void {
     this.subs.push(
       this.store.select(FigureSelectors.selectFigureById(this.figureId)).subscribe(
