@@ -11,7 +11,7 @@ import { Store } from '@ngrx/store';
 import * as LabActions from '@store/actions/lab.actions';
 import { from, Subscription } from 'rxjs';
 import { StarFigureService } from '../star-figure-page/figure-page.service'
-
+import { Event, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'dsapp-star-figure-page',
@@ -43,15 +43,17 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
     private starFigureService: StarFigureService
   ) {
     this.router.events.subscribe((event: Event) => {
-      const url = event?.url;
-      const routeLength = url?.split('/').length;
-      const lastParam = url?.split('/')[routeLength - 1];
-      if (this.tabs.find((tab) => tab === lastParam)) {
-        this.activeTab = lastParam;
-      }
-      else {
-        this.activeTab = ETabs.preview
-      }
+      if(event instanceof NavigationEnd ){
+        const url = event?.url;
+        const routeLength = url?.split('/').length;
+        const lastParam = url?.split('/')[routeLength - 1];
+        if (this.tabs.find((tab) => tab === lastParam)) {
+          this.activeTab = lastParam;
+        }
+        else {
+          this.activeTab = ETabs.preview
+        }      }
+      
     });
 
 
@@ -72,7 +74,6 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
         figure => {
           if (figure) {
             this.figure = { ...figure };
-            // console.log("this.figure", this.figure)
             this.splitVideosByType();
             this.starIsLoading = false;
           } else {

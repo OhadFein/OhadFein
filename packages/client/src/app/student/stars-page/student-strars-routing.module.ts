@@ -7,7 +7,7 @@ import { FigurePreviewComponent } from './star-figure-page/figure-preview/figure
 import { FigurePrinciplesComponent } from './star-figure-page/figure-principles/figure-principles.component'
 import { FigurePracticesComponent } from './star-figure-page/figure-practices/figure-practices.component'
 import { StarContentPageComponent, StarFigurePageComponent, StarsPageComponent } from '.';
-
+import {PracticesPageComponent} from '../practices/practices-page/practices-page.component'
 
 const routes: Routes = [
   { path: '', component: StarsPageComponent, canActivate: [AuthGuard] },
@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path: ':slug/:figureId', component: StarFigurePageComponent, children: [
       { path: '', component: FigurePreviewComponent },
-      { path: 'preview', component: FigurePreviewComponent },
+      { path: 'Outline', component: FigurePreviewComponent },
       { path: 'Movements', component: FigureMovementsComponent },
       { path: 'Principles', component: FigurePrinciplesComponent },
       { path: 'Practices', component: FigurePracticesComponent },

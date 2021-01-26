@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
+import * as FigureSelectors from '@infra/store/selectors/figures.selectors';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Figure, IStar, } from '@core/models';
+import * as FigureActions from '@app/_infra/store/actions/figures.actions';
 
 @Component({
   selector: 'dsapp-figure-preview',
@@ -8,9 +14,37 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FigurePreviewComponent implements OnInit {
 
-  constructor() { }
+  constructor(private store: Store<any>, private router: Router, private route: ActivatedRoute) { }
+
+  subs: Subscription[] = [];
+  slug = null;
+  figureId = null;
+  movements: any = null;
+  star: IStar = null;
+  figure: Figure = null;
+  levels = ['beginners', 'intermediate', 'advanced']
 
   ngOnInit(): void {
+    this.getFigureId();
+    this.getFigure();
   }
 
+  getFigure(): void {
+    this.subs.push(
+      this.store.select(FigureSelectors.selectFigureById(this.figureId)).subscribe(
+        figure => {
+          if (figure) {
+            this.figure = figure;
+          } else {
+            this.store.dispatch(FigureActions.BeginGetFigureAction({ payload: this.figureId }));
+          }
+        })
+    )
+  }
+
+  getFigureId(): void {
+    this.figureId = this.router.url.split('/')[this.router.url.split('/').length - 1];
+    this.slug = this.router.url.split('/')[this.router.url.split('/').length - 2];
+
+  }
 }

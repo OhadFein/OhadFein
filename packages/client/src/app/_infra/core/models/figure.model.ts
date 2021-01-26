@@ -11,6 +11,7 @@ export interface Figure {
     level: string;
     createdAt?: Date,
     updatedAt?: Date
+    description: string
 }
 
 

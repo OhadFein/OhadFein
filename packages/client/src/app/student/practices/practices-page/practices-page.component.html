@@ -40,14 +40,11 @@
                             <div class="col-4 practice-date text-muted ">
                                 <p>{{practice.createdAt | danskillDate}}</p>
                             </div>
-                            <div class="col-7">
+                            <div class="col-8">
                                 <h5 class="practice-title">
                                     {{practice.name}}</h5>
                             </div>
-                            <div class="col-1">
-                                <button class="edit-btn"
-                                        [routerLink]="[practice._id]"></button>
-                            </div>
+                            
                         </li>
                     </div>
                 </ng-container>

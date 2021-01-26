@@ -18,9 +18,7 @@ export const selectFigureById = (figureId) => createSelector(
 
 export const selectFigureTabsById = (figureId, tab) => createSelector(
     selectFigures, (allFigures) => {
-        console.log('tab :>> ', tab);
-        if (!t(allFigures, 'figures').isNullOrUndefined) {
-            console.log('allFigures :>> ', allFigures);
+            if (!t(allFigures, 'figures').isNullOrUndefined) {
             const figures = t(allFigures, 'figures').safeArray.find(figure => figure._id === figureId);
             if(!t(figures, 'videos').isNullOrUndefined){
                 return t(figures, 'videos').safeArray.filter(video => video.type === tab);

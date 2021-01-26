@@ -25,7 +25,6 @@ export class FigureMovementsComponent implements OnInit {
   figure: Figure = null;
 
   constructor(private store: Store<any>, private router: Router, private route: ActivatedRoute) { 
-    // console.log(7777);
   }
 
   ngOnInit(): void {
@@ -61,7 +60,6 @@ export class FigureMovementsComponent implements OnInit {
   }
 
   getFigureId() : void{
-    console.log(this.router.url);
     this.figureId = this.router.url.split('/')[this.router.url.split('/').length-2]
     this.slug = this.router.url.split('/')[this.router.url.split('/').length-3];
 
@@ -81,9 +79,6 @@ export class FigureMovementsComponent implements OnInit {
   }
 
   openInLab(starVideo: LabStarVideo): void {
-    console.log("open in lab")
-    console.log('this.star :>> ', this.star);
-    console.log('this.figure :>> ', this.figure);
     const labItem: LabItem = {
       star: this.star,
       figure: this.figure,

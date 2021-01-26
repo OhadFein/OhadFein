@@ -18,15 +18,8 @@ export class StarFigureService {
   this.store.select(FigureSelectors.selectFigureById(figureId)).subscribe(
     figure => {
       if (figure) {
-        console.log(111111);
-
           return figure; 
-        // this.figure = { ...figure };
-        // this.splitVideosByType();
-        // this.starIsLoading = false;
       } else {
-        console.log(111111);
-
         setTimeout(() => { this.store.dispatch(FigureActions.BeginGetFigureAction({ payload: figureId })); }, 1000);
       }
     })
