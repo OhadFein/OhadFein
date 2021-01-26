@@ -43,8 +43,8 @@ export class FigurePreviewComponent implements OnInit {
   }
 
   getFigureId(): void {
-    this.figureId = this.router.url.split('/')[this.router.url.split('/').length - 1];
-    this.slug = this.router.url.split('/')[this.router.url.split('/').length - 2];
+    this.figureId = this.router.url.split('/')[4];
+    this.slug = this.router.url.split('/')[5];
 
   }
 }
