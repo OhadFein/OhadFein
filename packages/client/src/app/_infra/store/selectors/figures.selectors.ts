@@ -13,7 +13,20 @@ export const selectFigureById = (figureId) => createSelector(
         else {
             return null;
         }
+    }
+);
 
+export const selectFigureTabsById = (figureId, tab) => createSelector(
+    selectFigures, (allFigures) => {
+            if (!t(allFigures, 'figures').isNullOrUndefined) {
+            const figures = t(allFigures, 'figures').safeArray.find(figure => figure._id === figureId);
+            if(!t(figures, 'videos').isNullOrUndefined){
+                return t(figures, 'videos').safeArray.filter(video => video.type === tab);
+            }
+        }
+        else {
+            return null;
+        }
     }
 );
 

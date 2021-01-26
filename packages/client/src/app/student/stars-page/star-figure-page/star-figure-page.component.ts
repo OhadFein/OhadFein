@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { Figure, LabItem, LabStarVideo, IStar, Video, VideoType } from '@app/_infra/core/models';
+import { Figure, LabItem, LabStarVideo, IStar, Video, VideoType, ETabs } from '@core/models';
 import * as FigureActions from '@app/_infra/store/actions/figures.actions';
 import * as StarsActions from '@app/_infra/store/actions/stars.actions';
 import { VideoPlayerModalComponent } from '@app/_infra/ui';
@@ -9,8 +9,9 @@ import * as StarSelectors from '@infra/store/selectors/stars.selectors';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
 import * as LabActions from '@store/actions/lab.actions';
-import { Subscription } from 'rxjs';
-
+import { from, Subscription } from 'rxjs';
+import { StarFigureService } from '../star-figure-page/figure-page.service'
+import { Event, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'dsapp-star-figure-page',
@@ -25,44 +26,49 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
   starIsLoading = true;
   figureIsLoading = true;
   loading = true;
-
   basicPrinciplesVideos: Array<Video> = [];
   comparableVideos: Array<Video> = [];
   additionalVideos: Array<Video> = [];
   promoVideo: Video = null;
 
   subs: Subscription[] = [];
-
+  public activeTab: string;
+  tabs = [ETabs.preview, ETabs.Principles, ETabs.Movements, ETabs.Practices]
 
   constructor(
     private store: Store<any>,
     private route: ActivatedRoute,
     private modalService: NgbModal,
-    private router: Router
-  ) { }
+    private router: Router,
+    private starFigureService: StarFigureService
+  ) {
+    this.router.events.subscribe((event: Event) => {
+      if(event instanceof NavigationEnd ){
+        const url = event?.url;
+        const routeLength = url?.split('/').length;
+        const lastParam = url?.split('/')[routeLength - 1];
+        if (this.tabs.find((tab) => tab === lastParam)) {
+          this.activeTab = lastParam;
+        }
+        else {
+          this.activeTab = ETabs.preview
+        }      }
+      
+    });
+
+
+  }
 
   ngOnInit() {
 
-    this.subs.push(
-      this.route.params.subscribe((params: ParamMap) => {
+    this.getFigureId();
+   
+    this.getStar()
 
-        this.slug = params['slug'];
-        this.figureId = params['figureId'];
-      })
-    )
+    this.getFigure();
+  }
 
-    this.subs.push(
-      this.store.select(StarSelectors.selectStarBySlug(this.slug)).subscribe(
-        star => {
-          if (star) {
-            this.star = { ...star };
-            this.starIsLoading = false;
-          } else {
-            this.store.dispatch(StarsActions.BeginGetStarsAction());
-          }
-        })
-    )
-
+  getFigure(){
     this.subs.push(
       this.store.select(FigureSelectors.selectFigureById(this.figureId)).subscribe(
         figure => {
@@ -77,6 +83,28 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
     )
   }
 
+  getStar():void{
+    this.subs.push(
+      this.store.select(StarSelectors.selectStarBySlug(this.slug)).subscribe(
+        star => {
+          if (star) {
+            this.star = { ...star };
+            this.starIsLoading = false;
+          } else {
+            this.store.dispatch(StarsActions.BeginGetStarsAction());
+          }
+        })
+    )
+  }
+
+  getFigureId() : void{
+    this.subs.push(
+      this.route.params.subscribe((params: ParamMap) => {
+        this.slug = params['slug'];
+        this.figureId = params['figureId'];
+      })
+    )
+  }
   splitVideosByType(): void {
     this.basicPrinciplesVideos = [];
     this.comparableVideos = [];

@@ -130,8 +130,6 @@ export class PracticesPageComponent implements OnInit, OnDestroy, AfterViewCheck
     this.setDisabledBtn();
     this.isPracticesOnThisMonth = false;
      this.currentMonth = this.getCurrentMonth(); 
-     console.log("this.currentDate", this.currentDate)
-     console.log("this.currentDate", typeof this.currentDate)
      this.store.dispatch(PracticesActions.SaveCurrentMonth({payload: this.currentDate}))
     }
 

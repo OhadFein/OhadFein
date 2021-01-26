@@ -15,6 +15,10 @@ import {
 } from '.';
 import { StudentStarRoutingModule } from './student-strars-routing.module';
 import { StartFigureWrapperComponent } from './star-content-page/start-figure-wrapper/start-figure-wrapper.component';
+import { FigureMovementsComponent } from './star-figure-page/figure-movements/figure-movements.component';
+import { FigurePrinciplesComponent } from './star-figure-page/figure-principles/figure-principles.component';
+import { FigurePracticesComponent } from './star-figure-page/figure-practices/figure-practices.component';
+import { FigurePreviewComponent } from './star-figure-page/figure-preview/figure-preview.component';
 
 
 @NgModule({
@@ -23,7 +27,7 @@ import { StartFigureWrapperComponent } from './star-content-page/start-figure-wr
 
   ],
   declarations: [
-    StarsPageComponent, StarInfoComponent, StarContentPageComponent, StarFigurePageComponent, StartFigureWrapperComponent
+    StarsPageComponent, StarInfoComponent, StarContentPageComponent, StarFigurePageComponent, StartFigureWrapperComponent, FigureMovementsComponent, FigurePrinciplesComponent, FigurePracticesComponent, FigurePreviewComponent
   ]
 })
 export class StudentStarsModule { }

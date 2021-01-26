@@ -6,27 +6,28 @@ export interface IStarContent {
     createdAt: string;
     figures: Figure[];
     location: IStarContentLocation;
-    logo: IStarContentLogo; 
-    name: IStarContentName; 
+    logo: IStarContentLogo;
+    name: IStarContentName;
     promoVideo: string;
-    slug: string; 
+    slug: string;
     updatedAt: string;
     _id: string;
 }
 
-export interface IStarContentName{
+export interface IStarContentName {
     firstName: string;
     lastName: string;
 }
 
-export interface IStarContentLogo{
+export interface IStarContentLogo {
     large: string;
-    small: string; 
+    small: string;
 }
 
-export interface IStarContentLocation{
+export interface IStarContentLocation {
     city: string;
 }
+
 
 export enum DanceType {
     //Latin

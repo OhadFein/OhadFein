@@ -26,3 +26,11 @@ export enum LabPlayerType {
 
 export type LabPlayerPlaybackOperator = 'plus' | 'minus' | 'def';
 export type LabPlayerJumpDirection = 'bwd' | 'fwd';
+
+
+export enum ETabs {
+    preview = 'Outline',
+    Principles = 'Principles',
+    Movements = 'Movements',
+    Practices = 'Practices'
+}
