@@ -34,6 +34,53 @@ export const getPracticeItems = async (req: Request, res: Response) => {
     });
 }
 
+
+/**
+ * GET /:practiceItemId
+ * get practice item by figure
+ */
+
+export const getPracticeItemsByFigureId = async (figureId: mongoose.Types.ObjectId): Promise<IPracticeItem[]> => (
+    new Promise((resolve, reject) => {
+        PracticeItem.find({ figure: figureId })
+            //.select() // TODO: select is needed
+            .populate({
+                path: 'star video',
+                populate: {
+                    model: 'Video',
+                    path: 'associatedObject',
+                    populate: {
+                        model: 'Figure',
+                        path: 'associatedObject',
+                    }
+                }
+            })
+            .exec()
+            .then(practiceItem => {
+                if (!practiceItem) {
+                    reject(new HttpException(404, "Practice item not found"));
+
+                } else {
+                    resolve(practiceItem);
+                }
+            })
+            .catch(err => {
+                reject(err);
+            });
+    })
+);
+
+export const getPracticeItemByFigure = async (req: Request, res: Response) => {
+    const figureId = new mongoose.mongo.ObjectId(req.params.figureId);
+    const practiceItems = await getPracticeItemsByFigureId(figureId);
+
+    res.status(200).json({
+        success: true,
+        data: practiceItems
+    });
+}
+
+
 /**
  * GET /:practiceItemId
  * get practice item
@@ -107,7 +154,8 @@ const buildpracticeItemFromRequest = (req: Request, video: IVideo): IPracticeIte
     return new PracticeItem({
         video: video._id,
         name: req.body.name,
-        star: req.body.starId
+        star: req.body.starId,
+        figure: req.body.figureId,
     })
 }
 

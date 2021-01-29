@@ -1,4 +1,5 @@
 import mongoose, { Document, Model, model } from 'mongoose';
+import { IFigure } from './Figure';
 import { IStar } from './Star';
 import { IVideo } from "./Video"
 
@@ -6,6 +7,7 @@ const practiceItemSchema = new mongoose.Schema(
     {
         video: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Video' },
         star: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Star' },
+        figure: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Figure' },
         name: { type: String, required: true },
         notes: { type: String, default: "" },
     },
@@ -24,6 +26,7 @@ interface IPracticeItemBase extends IPracticeItemSchema {
 export interface IPracticeItem extends IPracticeItemBase {
     video: IVideo["_id"];
     star: IStar["_id"];
+    figure: IFigure["_id"];
 }
 
 export interface IPracticeItemModel extends Model<IPracticeItem> {

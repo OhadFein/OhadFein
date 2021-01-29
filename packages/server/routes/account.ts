@@ -3,7 +3,7 @@ import {
     getVerifyEmail, getVerifyEmailToken, patchUpdatePassword,
     patchUpdateProfile, getProfileInfo
 } from '../controllers/user';
-import { addPracticeItem, deletePracticeItem, getPracticeItems, getPracticeItem, editPracticeItem } from "../controllers/practice"
+import { addPracticeItem, deletePracticeItem, getPracticeItems, getPracticeItem, editPracticeItem, getPracticeItemByFigure } from "../controllers/practice"
 import asyncHandler from 'express-async-handler';
 import { awsUserUpload } from "../services/aws";
 import { rules_updatePassword, rules_verifyEmailToken } from "../middleware/rules/account";
@@ -19,8 +19,9 @@ router.patch('/profile', asyncHandler(patchUpdateProfile)); // TODO: validation 
 router.patch('/password', rules_updatePassword, validate, asyncHandler(patchUpdatePassword));
 
 // TODO: validation is needed:
-router.get('/practices', asyncHandler(getPracticeItems));
-router.get('/practices/:practiceItemId', asyncHandler(getPracticeItem));
+router.get('/practices/single/:practiceItemId', asyncHandler(getPracticeItem));
+router.get('/practices/all', asyncHandler(getPracticeItems));
+router.get('/practices/figure/:figureId', asyncHandler(getPracticeItemByFigure));
 router.post('/practices', awsUserUpload.single('video'), asyncHandler(addPracticeItem));
 router.patch('/practices/:practiceItemId', asyncHandler(editPracticeItem));
 router.delete('/practices/:practiceItemId', asyncHandler(deletePracticeItem)); // middleware of check permissions is needed!
