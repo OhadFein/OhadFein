@@ -6,12 +6,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { PracticePageComponent, PracticesPageComponent } from '.';
 import { PracticesRoutingModule } from './practices-routing.module';
 import {FormsModule} from '@angular/forms';
-import {DanskillDatePipe} from "@app/pipes/danskill-date.pipe";
 
 @NgModule({
   imports: [
     CommonModule, TranslateModule, NgbModule, InfraModule, PracticesRoutingModule, FormsModule
   ],
-  declarations: [PracticePageComponent, PracticesPageComponent, DanskillDatePipe]
+  declarations: [PracticePageComponent, PracticesPageComponent]
 })
 export class PracticesModule { }
