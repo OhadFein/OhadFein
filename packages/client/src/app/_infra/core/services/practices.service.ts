@@ -15,7 +15,7 @@ export class PracticesService {
     }
 
     getPractices(): Observable<Practice[]> {
-        return this.baseRestService.get<PracticeItemsRestResponse>('account/practices').pipe(map(res => {
+        return this.baseRestService.get<PracticeItemsRestResponse>('account/practices/all').pipe(map(res => {
             return res.data ? res.data : [];
         }));
     }

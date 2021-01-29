@@ -43,9 +43,10 @@ export class FigurePracticesComponent implements OnInit {
   ngOnInit() {
 
     this.subs.push(
-        this.store.select(selectors.selectAllPracticesSorted()).subscribe(
+        this.store.select(selectors.selectAllPracticesByFigureId('5f53f50d6ffba730ca8df5fc')).subscribe(
             res => {
               if (res) {
+                console.log("res", res)
                 this.practices = [...res];
                 console.log('this.practices :>> ', this.practices);
                 this.loading = false;
