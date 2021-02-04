@@ -6,6 +6,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { SwiperModule } from 'swiper/angular';
+import {SharedModule} from '../../shared/shared.module'
 
 import {
   StarContentPageComponent,
@@ -23,7 +24,7 @@ import { FigurePreviewComponent } from './star-figure-page/figure-preview/figure
 
 @NgModule({
   imports: [
-    CommonModule, ReactiveFormsModule, TranslateModule.forChild(), NgbModule, StudentStarRoutingModule, InfraModule, SwiperModule,
+    CommonModule, ReactiveFormsModule, TranslateModule.forChild(), NgbModule, StudentStarRoutingModule, InfraModule, SwiperModule,SharedModule
 
   ],
   declarations: [

@@ -7,7 +7,7 @@
                  [routerLink]="practice._id"
                  >
                 <div class="date">
-                    <p>{{practice.createdAt}}</p>
+                    <p>{{practice.createdAt | danskillDate}}</p>
                 </div>
                 <div class="comparable-video-text">
                     <div *ngIf="practice.name"> {{practice.name}}</div>
