@@ -12,14 +12,13 @@ import * as FigureSelectors from '@infra/store/selectors/figures.selectors';
 @Component({
   selector: 'dsapp-figure-principles',
   templateUrl: './figure-principles.component.html',
-  styles: [
-  ]
+  styleUrls: ['./figure-principles.component.scss']
 })
 export class FigurePrinciplesComponent implements OnInit {
   subs: Subscription[] = [];
   slug = null;
   figureId = null;
-  movements: any = null;
+  prinicipals: any = null;
   star: IStar = null;
   figure: Figure = null;
 
@@ -29,7 +28,7 @@ export class FigurePrinciplesComponent implements OnInit {
     this.getFigureId();
     this.getFigure();
     this.getStar();
-    this.getMovements();
+    this.getPrinicipals();
   }
   getFigure():void{
     this.subs.push(
@@ -62,12 +61,13 @@ export class FigurePrinciplesComponent implements OnInit {
     this.slug = this.router.url.split('/')[this.router.url.split('/').length-3];
   }
 
-  getMovements(){
+  getPrinicipals(){
     this.subs.push(
       this.store.select(FigureSelectors.selectFigureTabsById(this.figureId, 'basicPrinciples')).subscribe(
         videos => {
           if (videos) {
-            this.movements = videos ;
+            this.prinicipals = videos ;
+            console.log('this.prinicipals :>> ', this.prinicipals);
           } else {
             setTimeout(() => { this.store.dispatch(FigureActions.BeginGetFigureAction({ payload: this.figureId })); }, 1000);
           }

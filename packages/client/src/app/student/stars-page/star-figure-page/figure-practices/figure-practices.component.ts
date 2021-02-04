@@ -10,8 +10,8 @@ import { ChangeDetectorRef } from '@angular/core';
 @Component({
   selector: 'dsapp-figure-practices',
   templateUrl: './figure-practices.component.html',
-  styles: [
-  ]
+  styleUrls: ['./figure-practices.component.scss']
+
 })
 export class FigurePracticesComponent implements OnInit {
 
@@ -74,5 +74,6 @@ export class FigurePracticesComponent implements OnInit {
   deletePractice(e){
     console.log('e :>> ', e);
     console.log(1111)
+  
   }
 }
