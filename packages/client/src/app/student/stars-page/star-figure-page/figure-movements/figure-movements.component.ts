@@ -12,8 +12,7 @@ import * as LabActions from '@store/actions/lab.actions';
 @Component({
   selector: 'dsapp-figure-movements',
   templateUrl: './figure-movements.component.html',
-  styles: [
-  ]
+  styleUrls: ['./figure-movements.component.scss']
 })
 export class FigureMovementsComponent implements OnInit {
 

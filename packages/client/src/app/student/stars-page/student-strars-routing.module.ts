@@ -7,7 +7,8 @@ import { FigurePreviewComponent } from './star-figure-page/figure-preview/figure
 import { FigurePrinciplesComponent } from './star-figure-page/figure-principles/figure-principles.component'
 import { FigurePracticesComponent } from './star-figure-page/figure-practices/figure-practices.component'
 import { StarContentPageComponent, StarFigurePageComponent, StarsPageComponent } from '.';
-import {PracticesPageComponent} from '../practices/practices-page/practices-page.component'
+import { PracticesPageComponent } from '../practices/practices-page/practices-page.component'
+import { PracticePageComponent } from '../practices/practice-page/practice-page.component';
 
 const routes: Routes = [
   { path: '', component: StarsPageComponent, canActivate: [AuthGuard] },
@@ -18,17 +19,13 @@ const routes: Routes = [
       { path: 'Outline', component: FigurePreviewComponent },
       { path: 'Movements', component: FigureMovementsComponent },
       { path: 'Principles', component: FigurePrinciplesComponent },
-      { path: 'Practices', component: FigurePracticesComponent },
+      {
+        path: 'Practices', component: FigurePracticesComponent, children: [
+          { path: 'practiceId', component: StarContentPageComponent }
+        ], canActivate: [AuthGuard]
+      },
     ], canActivate: [AuthGuard]
   }
-  /* {
-    path: ':starId', component: StarInfoPageComponent,
-    children: [
-      { path: 'figures', component: StarContentListComponent, pathMatch: 'full' },
-      { path: 'figures/test', component: StarFigureContentComponent,  pathMatch: 'full' },
-
-    ]
-  }, */
 ];
 
 

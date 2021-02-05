@@ -1,23 +1,25 @@
-<ng-template [ngIf]="practices && !loading && !errorMsg">
-    <ul class="list-group">
-        <div class="row practice-list">
-            <div *ngFor="let practice of practices "
-                 class="col-12 d-flex align-items-center"
-                 style="font-weight: 600; padding: 10px 15px; box-shadow: inset 0 -1px 0 0 #afada1;">
-                <div class="date">
-                    <p>{{practice.createdAt}}</p>
-                </div>
-                <div class="comparable-video-text">
-                    <div *ngIf="practice.name"> {{practice.name}}</div>
-                </div>
-                <div (click)="deletePractice($event)" class="delete">
-                    <img style="height: 15px;" src="/assets/images/icons/trash.svg">
+<div class="figure-practices">
+    <ng-template [ngIf]="practices && !loading && !errorMsg" >
+        <ul class="list-group ">
+            <div class="row practice-list">
+                <div *ngFor="let practice of practices"
+                     [routerLink]="['../../../../practices/', practice._id]"
+                     class="col-12 d-flex practice-item">
+                        <div class="date d-flex flex-6">
+                            <p>{{practice.createdAt | danskillDate}}</p>
+                        </div>
+                        <div class="comparable-video-text">
+                            <div *ngIf="practice.name"> {{practice.name}}</div>
+                        </div>
+                    <!-- <div (click)="deletePractice($event)" class="delete">
+                        <img style="height: 15px;" src="/assets/images/icons/trash.svg">
+                    </div> -->
                 </div>
             </div>
-        </div>
-    </ul>
-</ng-template>
-
-<ng-template [ngIf]="loading">
-    <ui-preloader-inapp></ui-preloader-inapp>
-</ng-template>
+        </ul>
+    </ng-template>
+    
+    <ng-template [ngIf]="loading">
+        <ui-preloader-inapp></ui-preloader-inapp>
+    </ng-template>
+</div>

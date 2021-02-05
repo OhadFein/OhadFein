@@ -17,6 +17,16 @@ export const selectAllPracticesSorted = () => createSelector(
     }
 )
 
+export const selectAllPracticesByFigureId = (figureId) => createSelector(
+    selectPractices, (allPractices) => {
+        if (!t(allPractices, 'practices').isNullOrUndefined) {
+            return t(allPractices, 'practices').safeArray.filter(practice => practice.figureId === figureId);
+        } else {
+            return null;
+        }
+    }
+)
+
 export const selectPracticestMonth = () => createSelector(
     selectPractices, (state: any) => {
         return state.currentMonth ? state.currentMonth : null; 

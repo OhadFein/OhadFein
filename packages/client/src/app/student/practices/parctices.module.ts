@@ -6,10 +6,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { PracticePageComponent, PracticesPageComponent } from '.';
 import { PracticesRoutingModule } from './practices-routing.module';
 import {FormsModule} from '@angular/forms';
+import {SharedModule} from '../../shared/shared.module'
 
 @NgModule({
   imports: [
-    CommonModule, TranslateModule, NgbModule, InfraModule, PracticesRoutingModule, FormsModule
+    CommonModule, TranslateModule, NgbModule, InfraModule, PracticesRoutingModule, FormsModule, SharedModule
   ],
   declarations: [PracticePageComponent, PracticesPageComponent]
 })
