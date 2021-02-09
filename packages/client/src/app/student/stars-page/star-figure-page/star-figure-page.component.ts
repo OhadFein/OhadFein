@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Figure, LabItem, LabStarVideo, IStar, Video, VideoType, ETabs } from '@core/models';
 import * as FigureActions from '@app/_infra/store/actions/figures.actions';
@@ -30,7 +30,7 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
   comparableVideos: Array<Video> = [];
   additionalVideos: Array<Video> = [];
   promoVideo: Video = null;
-
+  currentVideo: Video = null;
   subs: Subscription[] = [];
   public activeTab: string;
   tabs = [ETabs.preview, ETabs.Principles, ETabs.Movements, ETabs.Practices]
@@ -40,10 +40,11 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private modalService: NgbModal,
     private router: Router,
-    private starFigureService: StarFigureService
+    private starFigureService: StarFigureService,
+    private cdRef: ChangeDetectorRef,
   ) {
     this.router.events.subscribe((event: Event) => {
-      if(event instanceof NavigationEnd ){
+      if (event instanceof NavigationEnd) {
         const url = event?.url;
         const routeLength = url?.split('/').length;
         const lastParam = url?.split('/')[routeLength - 1];
@@ -52,8 +53,13 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
         }
         else {
           this.activeTab = ETabs.preview
-        }      }
-      
+        }
+        if(this.figure){
+          // this.splitVideosByType();
+          // this.getCurrentVideo();
+        }
+      }
+
     });
 
 
@@ -61,14 +67,54 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
+  
     this.getFigureId();
-   
+
     this.getStar()
 
     this.getFigure();
+
+  
+
   }
 
-  getFigure(){
+  test(tab){
+    // console.log('tab :>> ', tab);
+    this.activeTab = tab; 
+    this.router.navigate([tab], {relativeTo: this.route})
+this.getCurrentVideo();
+  }
+
+  getCurrentVideo(){
+    if(this.activeTab === 'Outline'){
+      console.log("Outline")
+      this.currentVideo = this.promoVideo;     
+      // this.cdRef.detectChanges(); 
+   
+    }
+    if(this.activeTab === 'Principles'){
+      console.log("Principles")
+      this.currentVideo = this.basicPrinciplesVideos[0];
+      // this.cdRef.detectChanges(); 
+
+    }
+    if(this.activeTab === 'Movements'){
+      console.log("Movements")
+      this.currentVideo = this.comparableVideos[0];
+      // this.cdRef.detectChanges(); 
+    }
+    console.log('this.currentVideo :>> ', this.currentVideo);
+  }
+
+  onSwiper(swiper) {
+    console.log(55555);
+  }
+
+  onSlideChange() {
+    console.log(777777);
+  }
+  
+  getFigure() {
     this.subs.push(
       this.store.select(FigureSelectors.selectFigureById(this.figureId)).subscribe(
         figure => {
@@ -76,6 +122,8 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
             this.figure = { ...figure };
             this.splitVideosByType();
             this.starIsLoading = false;
+            this.getCurrentVideo();
+            
           } else {
             setTimeout(() => { this.store.dispatch(FigureActions.BeginGetFigureAction({ payload: this.figureId })); }, 1000);
           }
@@ -83,7 +131,7 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
     )
   }
 
-  getStar():void{
+  getStar(): void {
     this.subs.push(
       this.store.select(StarSelectors.selectStarBySlug(this.slug)).subscribe(
         star => {
@@ -97,7 +145,7 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
     )
   }
 
-  getFigureId() : void{
+  getFigureId(): void {
     this.subs.push(
       this.route.params.subscribe((params: ParamMap) => {
         this.slug = params['slug'];
@@ -109,6 +157,7 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
     this.basicPrinciplesVideos = [];
     this.comparableVideos = [];
     this.additionalVideos = [];
+
 
     this.figure.videos.forEach(video => {
       switch (video.type) {
@@ -127,7 +176,7 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
           // TODO: add additional video functionality
           break;
         case VideoType.PROMO:
-          this.promoVideo = { ...video }
+          this.promoVideo = video;
           break;
       }
     })

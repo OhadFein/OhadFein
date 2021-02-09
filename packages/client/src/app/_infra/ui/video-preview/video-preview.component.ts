@@ -23,6 +23,7 @@ export class VideoPreviewComponent implements OnInit, OnDestroy {
   }
 
   onPlayerReady(api) {
+    console.log('api :>> ', api);
     this.playerAPI = api;
     this.playerAPI.volume = 0;
     this.subs.push(
@@ -49,4 +50,10 @@ export class VideoPreviewComponent implements OnInit, OnDestroy {
     this.subs.forEach(s => { s.unsubscribe(); });
   }
 
+  ngOnChanges() {
+    /**********THIS FUNCTION WILL TRIGGER WHEN PARENT COMPONENT UPDATES 'someInput'**************/
+    //Write your code here
+     console.log(this.path);
+    //  this.onPlayerReady('');
+    }   
 }

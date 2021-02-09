@@ -138,7 +138,6 @@ export class LabPageComponent implements OnInit, OnDestroy {
 
     updateLabStore() {
         const payload: LabItem = {...this.labItem, userVideo: this.userVideo, practiceIsSaved: this.practiceIsSaved};
-        console.log('payload :>> ', payload);
         this.store.dispatch(LabActions.UpdateLabAction({payload}));
     }
 
@@ -149,9 +148,7 @@ export class LabPageComponent implements OnInit, OnDestroy {
         data.append('associatedVideoId', this.labItem.starVideo._id);
         data.append('video', this.labItem.userVideo.file);
         data.append('starId', this.labItem.star._id);
-        data.append('FigureId', this.labItem.figure._id);
-        console.log('this.userStamp :>> ', this.userStamp);
-        console.log('data :>> ', data);
+        data.append('figureId', this.labItem.figure._id);
         this.backgroundProcessesService.uploadPractice(data, `upload_practice_${this.userStamp}`);
         this.userVideo = this.labItem.userVideo;
         this.practiceIsSaved = true;
