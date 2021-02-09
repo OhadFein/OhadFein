@@ -138,15 +138,20 @@ export class LabPageComponent implements OnInit, OnDestroy {
 
     updateLabStore() {
         const payload: LabItem = {...this.labItem, userVideo: this.userVideo, practiceIsSaved: this.practiceIsSaved};
+        console.log('payload :>> ', payload);
         this.store.dispatch(LabActions.UpdateLabAction({payload}));
     }
 
     saveToPractices(): void {
+        console.log('this.labItem :>> ', this.labItem);
         const data: CreatePracticeData = new FormData();
         data.append('name', `${this.labItem.star.name.firstName} ${this.labItem.star.name.lastName} ${this.labItem.figure.name}`);
         data.append('associatedVideoId', this.labItem.starVideo._id);
         data.append('video', this.labItem.userVideo.file);
         data.append('starId', this.labItem.star._id);
+        data.append('FigureId', this.labItem.figure._id);
+        console.log('this.userStamp :>> ', this.userStamp);
+        console.log('data :>> ', data);
         this.backgroundProcessesService.uploadPractice(data, `upload_practice_${this.userStamp}`);
         this.userVideo = this.labItem.userVideo;
         this.practiceIsSaved = true;
