@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { VgAPI } from 'ngx-videogular';
 import { Subscription } from 'rxjs';
 
@@ -12,18 +12,25 @@ export class VideoPreviewComponent implements OnInit, OnDestroy {
 
   @Input() path: string;
   @Input() poster: string;
+  @Input() bla: string;
 
   playerAPI: VgAPI;
 
   subs: Subscription[] = [];
 
-  constructor() { }
+  constructor(private elRef: ElementRef) {
+    console.log(1111)
+
+  }
 
   ngOnInit() {
+    console.log(2222);
   }
 
   onPlayerReady(api) {
-    console.log('api :>> ', api);
+    console.log(333333)
+
+
     this.playerAPI = api;
     this.playerAPI.volume = 0;
     this.subs.push(
@@ -51,9 +58,18 @@ export class VideoPreviewComponent implements OnInit, OnDestroy {
   }
 
   ngOnChanges() {
-    /**********THIS FUNCTION WILL TRIGGER WHEN PARENT COMPONENT UPDATES 'someInput'**************/
-    //Write your code here
-     console.log(this.path);
-    //  this.onPlayerReady('');
-    }   
+    console.log(this.playerAPI);
+    if(this.playerAPI){
+      // this.onPlayerReady(this.playerAPI);    
+      // this.playerAPI.getDefaultMedia();
+      // const player = this.elRef.nativeElement.querySelector('video');
+      // player.load();
+  
+      // (<VgMedia>api.getDefaultMedia()).loadMedia();
+
+    }
+    // (<VgMedia>api.getDefaultMedia()).loadMedia();
+
+
+  }
 }

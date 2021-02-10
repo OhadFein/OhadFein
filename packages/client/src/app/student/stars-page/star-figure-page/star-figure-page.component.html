@@ -5,6 +5,7 @@
         <div class="col">
           <ui-video-preview *ngIf="currentVideo"
                             [path]="currentVideo.path"
+                            [bla]="currentVideo.type"
                             [poster]="currentVideo.thumbnail"></ui-video-preview>
           <div *ngIf="!currentVideo"
                class="embed-responsive embed-responsive-16by9">
@@ -25,13 +26,12 @@
       <swiper [slidesPerView]="4"
               [spaceBetween]="15"
               [setWrapperSize]="true"
-              (swiper)="onSwiper($event)"
               style="box-shadow: inset 0 -1px 0 0 #afada1">
         <ng-container *ngFor="let tab of tabs">
           <ng-template swiperSlide>
             <div class="tab-swiper d-flex flex-column h-100"
                  [ngClass]="tab === activeTab ? 'active' : ''"
-                 (click)="test(tab)">
+                 (click)="navigateToTab(tab)">
               <div class="figure-swiper-content text-center"><span>{{tab}}</span></div>
             </div>
           </ng-template>

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute, ParamMap, Router , NavigationEnd} from '@angular/router';
 import { Figure, LabItem, LabStarVideo, IStar, Video, VideoType, ETabs } from '@core/models';
@@ -21,6 +21,7 @@ export class FigurePrinciplesComponent implements OnInit {
   prinicipals: any = null;
   star: IStar = null;
   figure: Figure = null;
+  @Output() onVideoChanged = new EventEmitter<any>();
 
   constructor(private store: Store<any>, private router: Router, private route: ActivatedRoute) { }
 
@@ -29,6 +30,11 @@ export class FigurePrinciplesComponent implements OnInit {
     this.getFigure();
     this.getStar();
     this.getPrinicipals();
+    this.changeVideo();
+  }
+
+  changeVideo(){
+    this.onVideoChanged.emit(true);
   }
   getFigure():void{
     this.subs.push(
@@ -67,7 +73,6 @@ export class FigurePrinciplesComponent implements OnInit {
         videos => {
           if (videos) {
             this.prinicipals = videos ;
-            console.log('this.prinicipals :>> ', this.prinicipals);
           } else {
             setTimeout(() => { this.store.dispatch(FigureActions.BeginGetFigureAction({ payload: this.figureId })); }, 1000);
           }

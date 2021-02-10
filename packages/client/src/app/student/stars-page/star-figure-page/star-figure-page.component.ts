@@ -78,40 +78,28 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
 
   }
 
-  test(tab){
+  navigateToTab(tab){
     // console.log('tab :>> ', tab);
     this.activeTab = tab; 
     this.router.navigate([tab], {relativeTo: this.route})
-this.getCurrentVideo();
+    this.getCurrentVideo();
   }
 
   getCurrentVideo(){
     if(this.activeTab === 'Outline'){
-      console.log("Outline")
       this.currentVideo = this.promoVideo;     
       // this.cdRef.detectChanges(); 
    
     }
     if(this.activeTab === 'Principles'){
-      console.log("Principles")
       this.currentVideo = this.basicPrinciplesVideos[0];
       // this.cdRef.detectChanges(); 
 
     }
     if(this.activeTab === 'Movements'){
-      console.log("Movements")
       this.currentVideo = this.comparableVideos[0];
       // this.cdRef.detectChanges(); 
     }
-    console.log('this.currentVideo :>> ', this.currentVideo);
-  }
-
-  onSwiper(swiper) {
-    console.log(55555);
-  }
-
-  onSlideChange() {
-    console.log(777777);
   }
   
   getFigure() {
