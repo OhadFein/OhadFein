@@ -1,13 +1,14 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { from, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as FigureSelectors from '@infra/store/selectors/figures.selectors';
-import { ActivatedRoute, ParamMap, Router , NavigationEnd} from '@angular/router';
+import { ActivatedRoute, ParamMap, Router, NavigationEnd } from '@angular/router';
 import { Figure, LabItem, LabStarVideo, IStar, Video, VideoType, ETabs } from '@core/models';
 import * as FigureActions from '@app/_infra/store/actions/figures.actions';
 import * as StarSelectors from '@infra/store/selectors/stars.selectors';
 import * as StarsActions from '@app/_infra/store/actions/stars.actions';
 import * as LabActions from '@store/actions/lab.actions';
+import { SharedService } from '@app/_infra/core/services/shared.service';
 
 @Component({
   selector: 'dsapp-figure-movements',
@@ -22,8 +23,9 @@ export class FigureMovementsComponent implements OnInit {
   movements: any = null;
   star: IStar = null;
   figure: Figure = null;
+  @Output() onVideoSelected = new EventEmitter<any>();
 
-  constructor(private store: Store<any>, private router: Router, private route: ActivatedRoute) { 
+  constructor(private store: Store<any>, private router: Router, private route: ActivatedRoute, private sharedService: SharedService) {
   }
 
   ngOnInit(): void {
@@ -32,7 +34,12 @@ export class FigureMovementsComponent implements OnInit {
     this.getStar();
     this.getMovements();
   }
-  getFigure():void{
+
+  onVideoSelectedEvent() {
+    this.sharedService.emitChange('Data from child');
+
+  }
+  getFigure(): void {
     this.subs.push(
       this.store.select(FigureSelectors.selectFigureById(this.figureId)).subscribe(
         figure => {
@@ -45,7 +52,7 @@ export class FigureMovementsComponent implements OnInit {
     )
   }
 
-  getStar(): void{
+  getStar(): void {
     this.subs.push(
       this.store.select(StarSelectors.selectStarBySlug(this.slug)).subscribe(
         star => {
@@ -58,18 +65,18 @@ export class FigureMovementsComponent implements OnInit {
     )
   }
 
-  getFigureId() : void{
-    this.figureId = this.router.url.split('/')[this.router.url.split('/').length-2]
-    this.slug = this.router.url.split('/')[this.router.url.split('/').length-3];
+  getFigureId(): void {
+    this.figureId = this.router.url.split('/')[this.router.url.split('/').length - 2]
+    this.slug = this.router.url.split('/')[this.router.url.split('/').length - 3];
 
   }
 
-  getMovements(){
+  getMovements() {
     this.subs.push(
       this.store.select(FigureSelectors.selectFigureTabsById(this.figureId, 'comparable')).subscribe(
         videos => {
           if (videos) {
-            this.movements = videos ;
+            this.movements = videos;
           } else {
             setTimeout(() => { this.store.dispatch(FigureActions.BeginGetFigureAction({ payload: this.figureId })); }, 1000);
           }

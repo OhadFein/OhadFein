@@ -19,18 +19,11 @@ export class VideoPreviewComponent implements OnInit, OnDestroy {
   subs: Subscription[] = [];
 
   constructor(private elRef: ElementRef) {
-    console.log(1111)
-
   }
 
-  ngOnInit() {
-    console.log(2222);
-  }
+  ngOnInit() {}
 
   onPlayerReady(api) {
-    console.log(333333)
-
-
     this.playerAPI = api;
     this.playerAPI.volume = 0;
     this.subs.push(
@@ -58,18 +51,9 @@ export class VideoPreviewComponent implements OnInit, OnDestroy {
   }
 
   ngOnChanges() {
-    console.log(this.playerAPI);
     if(this.playerAPI){
-      // this.onPlayerReady(this.playerAPI);    
-      // this.playerAPI.getDefaultMedia();
-      // const player = this.elRef.nativeElement.querySelector('video');
-      // player.load();
-  
-      // (<VgMedia>api.getDefaultMedia()).loadMedia();
-
+      const player = this.elRef.nativeElement.querySelector('video');
+      player.load();
     }
-    // (<VgMedia>api.getDefaultMedia()).loadMedia();
-
-
   }
 }

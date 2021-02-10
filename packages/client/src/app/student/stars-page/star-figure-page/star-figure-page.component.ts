@@ -12,6 +12,7 @@ import * as LabActions from '@store/actions/lab.actions';
 import { from, Subscription } from 'rxjs';
 import { StarFigureService } from '../star-figure-page/figure-page.service'
 import { Event, NavigationEnd } from '@angular/router';
+import { SharedService } from '@app/_infra/core/services/shared.service';
 
 @Component({
   selector: 'dsapp-star-figure-page',
@@ -42,7 +43,16 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
     private router: Router,
     private starFigureService: StarFigureService,
     private cdRef: ChangeDetectorRef,
+    private sharedService: SharedService
   ) {
+
+
+
+    this.sharedService.changeEmitted$.subscribe(
+      text => {
+          console.log(text);
+      });
+
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         const url = event?.url;
@@ -54,7 +64,7 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
         else {
           this.activeTab = ETabs.preview
         }
-        if(this.figure){
+        if (this.figure) {
           // this.splitVideosByType();
           // this.getCurrentVideo();
         }
@@ -67,41 +77,43 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-  
+
     this.getFigureId();
 
     this.getStar()
 
     this.getFigure();
 
-  
 
   }
-
-  navigateToTab(tab){
+  test() {
+    console.log("testttt")
+  }
+  
+  navigateToTab(tab) {
     // console.log('tab :>> ', tab);
-    this.activeTab = tab; 
-    this.router.navigate([tab], {relativeTo: this.route})
+    this.activeTab = tab;
+    this.router.navigate([tab], { relativeTo: this.route })
     this.getCurrentVideo();
   }
 
-  getCurrentVideo(){
-    if(this.activeTab === 'Outline'){
-      this.currentVideo = this.promoVideo;     
+  getCurrentVideo() {
+    if (this.activeTab === 'Outline') {
+      this.currentVideo = this.promoVideo;
       // this.cdRef.detectChanges(); 
-   
+
     }
-    if(this.activeTab === 'Principles'){
+    if (this.activeTab === 'Principles') {
       this.currentVideo = this.basicPrinciplesVideos[0];
       // this.cdRef.detectChanges(); 
 
     }
-    if(this.activeTab === 'Movements'){
+    if (this.activeTab === 'Movements') {
       this.currentVideo = this.comparableVideos[0];
       // this.cdRef.detectChanges(); 
     }
   }
-  
+
   getFigure() {
     this.subs.push(
       this.store.select(FigureSelectors.selectFigureById(this.figureId)).subscribe(
@@ -111,7 +123,7 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
             this.splitVideosByType();
             this.starIsLoading = false;
             this.getCurrentVideo();
-            
+
           } else {
             setTimeout(() => { this.store.dispatch(FigureActions.BeginGetFigureAction({ payload: this.figureId })); }, 1000);
           }
