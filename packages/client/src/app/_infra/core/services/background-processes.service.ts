@@ -20,6 +20,7 @@ export class BackgroundProcessesService {
 
   // convenience methods
   uploadPractice(data: CreatePracticeData, processtId?: string) {
+    console.log('data :>> ', data);
     this.startBackgroundProcess(new BackgroundProcess({ type: BackgroundProcessType.UPLOAD_PRACTICE, processtId, data }));
   }
 

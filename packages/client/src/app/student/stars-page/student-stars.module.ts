@@ -20,7 +20,7 @@ import { FigureMovementsComponent } from './star-figure-page/figure-movements/fi
 import { FigurePrinciplesComponent } from './star-figure-page/figure-principles/figure-principles.component';
 import { FigurePracticesComponent } from './star-figure-page/figure-practices/figure-practices.component';
 import { FigurePreviewComponent } from './star-figure-page/figure-preview/figure-preview.component';
-
+import {SharedService} from '@app/_infra/core/services/shared.service';
 
 @NgModule({
   imports: [
@@ -29,6 +29,7 @@ import { FigurePreviewComponent } from './star-figure-page/figure-preview/figure
   ],
   declarations: [
     StarsPageComponent, StarInfoComponent, StarContentPageComponent, StarFigurePageComponent, StartFigureWrapperComponent, FigureMovementsComponent, FigurePrinciplesComponent, FigurePracticesComponent, FigurePreviewComponent
-  ]
+  ],
+  providers:[SharedService]
 })
 export class StudentStarsModule { }

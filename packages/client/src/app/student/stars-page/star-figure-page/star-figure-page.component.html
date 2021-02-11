@@ -1,35 +1,13 @@
-<!-- <ng-template [ngIf]="star">
-  <div class="row back-btn-row">
-    <div class="col-12">
-      <a class="btn-link dark-link"
-         [routerLink]="['../']">
-        <i class="icon-arrow-left"></i>
-        {{'STAR.FIGURES.backToStarLibrary' | translate}}
-      </a>
-    </div>
-  </div>
-  <div class="row figure-star-info">
-    <div
-         class="col d-flex flex-column justify-content-center align-items-center star-short-info">
-
-      <img [src]="star.logo.small"
-           class="rounded-circle display-block">
-
-      <h5 class="star-info-name"
-          dsappStarName
-          [name]="star.name"></h5>
-    </div>
-  </div>
-</ng-template> -->
 <ng-template [ngIf]="figure">
   <div class="star-figure">
     <div class="star-figure-header">
       <div class="row figure-info">
         <div class="col">
-          <ui-video-preview *ngIf="promoVideo"
-                            [path]="promoVideo.path"
-                            [poster]="promoVideo.thumbnail"></ui-video-preview>
-          <div *ngIf="!promoVideo"
+          <ui-video-preview *ngIf="currentVideo"
+                            [path]="currentVideo.path"
+                            [bla]="currentVideo.type"
+                            [poster]="currentVideo.thumbnail"></ui-video-preview>
+          <div *ngIf="!currentVideo"
                class="embed-responsive embed-responsive-16by9">
             <div class="embed-responsive-item cover-bg"
                  [style.backgroundImage]="'url('+ figure.logo +')'">
@@ -41,100 +19,23 @@
       <swiper [slidesPerView]="4"
               [spaceBetween]="15"
               [setWrapperSize]="true"
-              style="box-shadow: inset 0 -1px 0 0 #afada1"
-              >
+              style="box-shadow: inset 0 -1px 0 0 #afada1">
         <ng-container *ngFor="let tab of tabs">
           <ng-template swiperSlide>
-            <div class="tab-swiper d-flex flex-column h-100" [ngClass]="tab === activeTab ? 'active' : ''"
-                 [routerLink]="tab" 
-                 >
+            <div class="tab-swiper d-flex flex-column h-100"
+                 [ngClass]="tab === activeTab ? 'active' : ''"
+                 (click)="navigateToTab(tab)">
               <div class="figure-swiper-content text-center"><span>{{tab}}</span></div>
             </div>
           </ng-template>
         </ng-container>
       </swiper>
     </div>
-     <div class="star-figure-content">
-      <router-outlet ></router-outlet>
-
-     </div>
+    <div class="star-figure-content">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-
-
-  <!-- BASIC PRINCIPLES VIDEOS -->
-
-  <!-- <div *ngIf="basicPrinciplesVideos.length>0"
-       class=" figure-videos basic-principles-videos-wrapper">
-    <div class="row d-flex justify-content-center">
-      <div *ngFor="let video of basicPrinciplesVideos"
-           class="basic-principles-videos col-12 col-sm-6 col-md-3 col-lg-4">
-        <div class="basic-principles-video">
-          <div class="basic-principal-image">
-
-            <div class="embed-responsive embed-responsive-16by9 video-preview-container">
-              <div class="embed-responsive-item star-big-image cover-bg"
-                   [style.backgroundImage]="'url('+ video.thumbnail +')'"
-                   (click)="learnPrinciples(video.path, video.name)">
-              </div>
-
-            </div>
-
-          </div>
-          <div class="basic-principal-content">
-
-            <p>{{'STAR.FIGURES.basicPrinciples' | translate}}:</p>
-            <p *ngIf="video.name">{{video.name}}</p>
-            <button class="btn btn-sm btn-dark"
-                    (click)="learnPrinciples(video.path, video.name)">{{'STAR.FIGURES.learnPrinciples' | translate}}</button>
-
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- COMPARABLE VIDEOS -->
-
-  <!-- <div *ngIf="comparableVideos.length>0"
-       class=" figure-videos comparable-videos-wrapper">
-    <div class="row d-flex justify-content-center">
-      <div class="figure-video comparable-video col-12 col-sm-6 col-md-3 col-lg-4"
-           *ngFor="let video of comparableVideos">
-        <div class="comparable-video-inner">
-          <div class="comparable-video-image">
-            <div class="embed-responsive embed-responsive-16by9 video-preview-container">
-              <div class="embed-responsive-item star-big-image cover-bg"
-                   [style.backgroundImage]="'url('+ video.thumbnail +')'">
-              </div>
-
-            </div>
-          </div>
-          <div class="comparable-video-text">
-            <p>{{figure.name}}</p>
-            <p *ngIf="video.name">{{video.name}}</p>
-            <div *ngIf="video.view || video.participatesAmount"
-                 class="badges">
-              <span *ngIf="video.view"
-                    class="badge badge-pill badge-secondary">{{video.view}}
-                {{'STAR.FIGURES.view' | translate}}</span>
-              <span *ngIf="video.participatesAmount"
-                    class="badge badge-pill badge-secondary">
-                {{video.participatesAmount}}
-              </span>
-            </div>
-            <button class="btn btn-sm btn-success"
-                    (click)="openInLab(video)">{{'STAR.FIGURES.openInMyLab' | translate}}</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- ADDITIONAL VIDEOS -->
-
 </ng-template>
-
-
 
 <ng-template [ngIf]="starIsLoading && figureIsLoading">
   <ui-preloader-inapp></ui-preloader-inapp>

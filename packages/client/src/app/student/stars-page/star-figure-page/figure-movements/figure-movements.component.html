@@ -1,8 +1,8 @@
 <div *ngIf="movements"
      class="movements-wrapper">
     <div class="row">
-        <div *ngFor="let video of movements "
-             class="col-12 d-flex align-items-center movement-item" (click)="openInLab(video)">
+        <div *ngFor="let video of movements " (click)="onVideoSelectedEvent()"
+             class="col-12 d-flex align-items-center movement-item" >
             <div class="comparable-video-image mr-2">
                 <div class="embed-responsive embed-responsive-16by9 video-preview-container">
                     <div class="embed-responsive-item star-big-image cover-bg"
@@ -14,6 +14,7 @@
                 <div *ngIf="video.name">{{video.name}}</div>
                 <div *ngIf="">3.57</div>
             </div>
+            <div><button (click)="openInLab(video)">go to lab</button></div>
         </div>
     </div>
 </div>

@@ -20,7 +20,14 @@ export class PracticesService {
         }));
     }
 
-    uploadPractice(data: CreatePracticeData): Observable<any> {
+    uploadPractice(data: any): Observable<any> {
+        console.log('data :>> ', data);
+        for (var value of data.values()) {
+            console.log(value);
+         }
+         for (var value of data.keys()) {
+            console.log(value);
+         }
         const httpHeadersObj = new HttpHeaders()
             .set('Accept', 'application/json')
             .set('Cache-Control', 'no-cache')
@@ -30,6 +37,7 @@ export class PracticesService {
     }
 
     updatePractice(practice: Practice): Observable<Practice> {
+        console.log('practice :>> ', practice);
         return this.baseRestService.patch<UpdatePracticeItemsRestResponse>(`account/practices/${practice._id}`, {name: practice.name, notes: practice.notes}).pipe(
             map(
                 res => {
