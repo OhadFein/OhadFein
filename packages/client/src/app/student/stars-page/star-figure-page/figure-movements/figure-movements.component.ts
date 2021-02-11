@@ -35,10 +35,10 @@ export class FigureMovementsComponent implements OnInit {
     this.getMovements();
   }
 
-  onVideoSelectedEvent() {
-    this.sharedService.emitChange('Data from child');
-
+  onVideoSelectedEvent(video) {
+    this.sharedService.emitChange(video);
   }
+  
   getFigure(): void {
     this.subs.push(
       this.store.select(FigureSelectors.selectFigureById(this.figureId)).subscribe(

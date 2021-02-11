@@ -19,7 +19,6 @@ import { SharedService } from '@app/_infra/core/services/shared.service';
   templateUrl: './star-figure-page.component.html',
 })
 export class StarFigurePageComponent implements OnInit, OnDestroy {
-
   slug = null;
   star: IStar = null;
   figure: Figure = null;
@@ -35,7 +34,7 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
   subs: Subscription[] = [];
   public activeTab: string;
   tabs = [ETabs.preview, ETabs.Principles, ETabs.Movements, ETabs.Practices]
-
+  test: any; 
   constructor(
     private store: Store<any>,
     private route: ActivatedRoute,
@@ -46,13 +45,15 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
     private sharedService: SharedService
   ) {
 
-
-
-    this.sharedService.changeEmitted$.subscribe(
-      text => {
-          console.log(text);
-      });
-
+    this.subs.push(
+      this.sharedService.changeEmitted$.subscribe(
+        video => {
+          this.currentVideo = video;
+          // console.log('video :>> ', video);
+          console.log('video :>> ', video._id);
+          // this.test = video.path;
+        })
+    )
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         const url = event?.url;
@@ -64,34 +65,20 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
         else {
           this.activeTab = ETabs.preview
         }
-        if (this.figure) {
-          // this.splitVideosByType();
-          // this.getCurrentVideo();
-        }
       }
-
     });
-
-
   }
 
+
   ngOnInit() {
-
-
     this.getFigureId();
-
     this.getStar()
-
     this.getFigure();
 
 
   }
-  test() {
-    console.log("testttt")
-  }
-  
+
   navigateToTab(tab) {
-    // console.log('tab :>> ', tab);
     this.activeTab = tab;
     this.router.navigate([tab], { relativeTo: this.route })
     this.getCurrentVideo();
@@ -100,17 +87,12 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
   getCurrentVideo() {
     if (this.activeTab === 'Outline') {
       this.currentVideo = this.promoVideo;
-      // this.cdRef.detectChanges(); 
-
     }
     if (this.activeTab === 'Principles') {
       this.currentVideo = this.basicPrinciplesVideos[0];
-      // this.cdRef.detectChanges(); 
-
     }
     if (this.activeTab === 'Movements') {
       this.currentVideo = this.comparableVideos[0];
-      // this.cdRef.detectChanges(); 
     }
   }
 
@@ -153,12 +135,11 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
       })
     )
   }
+
   splitVideosByType(): void {
     this.basicPrinciplesVideos = [];
     this.comparableVideos = [];
     this.additionalVideos = [];
-
-
     this.figure.videos.forEach(video => {
       switch (video.type) {
         case VideoType.BASIC_PRINCIPLES:
@@ -197,7 +178,6 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
       starVideo
     }
     this.store.dispatch(LabActions.SetLabAction({ payload: labItem }));
-
     this.router.navigate(['/', 'student', 'lab']);
 
   }

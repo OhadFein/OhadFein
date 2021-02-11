@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { VgAPI } from 'ngx-videogular';
 import { Subscription } from 'rxjs';
+import { SharedService } from '@app/_infra/core/services/shared.service';
 
 
 @Component({
@@ -13,15 +14,15 @@ export class VideoPreviewComponent implements OnInit, OnDestroy {
   @Input() path: string;
   @Input() poster: string;
   @Input() bla: string;
-
   playerAPI: VgAPI;
-
   subs: Subscription[] = [];
 
-  constructor(private elRef: ElementRef) {
-  }
+  constructor(private elRef: ElementRef,     private sharedService: SharedService
+    ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(555)
+  }
 
   onPlayerReady(api) {
     this.playerAPI = api;
@@ -51,6 +52,7 @@ export class VideoPreviewComponent implements OnInit, OnDestroy {
   }
 
   ngOnChanges() {
+    console.log(11111)
     if(this.playerAPI){
       const player = this.elRef.nativeElement.querySelector('video');
       player.load();
