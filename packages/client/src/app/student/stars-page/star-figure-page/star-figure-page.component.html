@@ -1,4 +1,5 @@
 <ng-template [ngIf]="figure">
+  
   <div class="star-figure">
     <div class="star-figure-header">
       <div class="row figure-info">
@@ -16,6 +17,8 @@
           <h5 class="figure-name text-center pt-2">{{figure.name}}</h5>
         </div>
       </div>
+      <h1 *ngIf="test">{{test}}</h1>
+
       <swiper [slidesPerView]="4"
               [spaceBetween]="15"
               [setWrapperSize]="true"
