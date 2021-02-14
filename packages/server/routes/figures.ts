@@ -6,7 +6,7 @@ import { validate } from "../middleware/validation";
 
 const router = express.Router();
 
-router.get('/star/:starSlug', rules_getStarFigures, validate, asyncHandler(getFigures));
+router.get('/star/:figureId', rules_getStarFigures, validate, asyncHandler(getFigures));
 router.get('/:figureId', rules_getFigureById, validate, asyncHandler(getFigure));
 
 export default router;

@@ -39,8 +39,8 @@ export const getFigures = async (req: Request, res: Response) => {
     // const typedLevelString = req.query.level as keyof typeof EnumDanceLevel;
     // const typedTypeString = req.query.danceType as keyof typeof EnumDanceType;
 
-    const starSlug = req.params.starSlug;
-    const star = await getStarBySlug(starSlug);
+    const starId = new mongoose.mongo.ObjectId(req.params.starId);
+    const star = await getStarById(starId);
     await star?.populate("figures").execPopulate();
     const figures = star?.figures as unknown as IFigure[]; // TODO:
     // const filteredFigures = figures.filter((figure) =>

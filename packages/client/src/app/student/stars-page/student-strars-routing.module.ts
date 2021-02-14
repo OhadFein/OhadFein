@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: ':slug', component: StarContentPageComponent, canActivate: [AuthGuard] },
   {
     path: ':slug/:figureId', component: StarFigurePageComponent, children: [
-      { path: '', component: FigurePreviewComponent },
+      { path: '', component: FigureMovementsComponent },
       { path: 'Outline', component: FigurePreviewComponent },
       { path: 'Movements', component: FigureMovementsComponent },
       { path: 'Principles', component: FigurePrinciplesComponent },
