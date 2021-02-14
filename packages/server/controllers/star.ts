@@ -26,6 +26,22 @@ export const getStars = async (req: Request, res: Response) => {
  * get star info
  */
 
+export const getStarBySlug = async (slug: string): Promise<IStar | null> => (
+    new Promise((resolve, reject) => {
+        Star.findOne({ slug: slug })
+            .then(star => {
+                if (!star) {
+                    reject(new HttpException(404, "Star not found"));
+                } else {
+                    resolve(star);
+                }
+            })
+            .catch(err => {
+                reject(err);
+            });
+    })
+);
+
 
 export const getStarById = async (id: mongoose.Types.ObjectId): Promise<IStar | null> => (
     new Promise((resolve, reject) => {
