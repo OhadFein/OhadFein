@@ -15,7 +15,7 @@ const videoSchema = new mongoose.Schema(
         associatedModel: { type: EnumAssociateModel, enum: possibleAssociateModels, required: true },
         thumbnail: { type: String },
 
-        name: { type: String, required: true },
+        name: { type: String },
         key: { type: String, required: true },
         type: { type: EnumVideoType, enum: possibleVideoTypes, required: true },
         view: { type: EnumView, enum: possibleViews },
@@ -35,7 +35,7 @@ videoSchema.virtual('path').get(function (this: { key: string }) {
 interface IVideoSchema extends Document {
     _id: mongoose.Types.ObjectId;
     key: string;
-    name: string;
+    name?: string;
     path: string;
     view?: EnumView;
     participatesAmount?: EnumParticipatesAmount;
