@@ -44,14 +44,10 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
     private cdRef: ChangeDetectorRef,
     private sharedService: SharedService
   ) {
-// video id 5fd4d64feffcdbe000d0dc70
     this.subs.push(
       this.sharedService.changeEmitted$.subscribe(
         video => {
           this.currentVideo = video;
-          // console.log('video :>> ', video);
-          console.log('video :>> ', video._id);
-          // this.test = video.path;
         })
     )
     this.router.events.subscribe((event: Event) => {
@@ -63,7 +59,7 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
           this.activeTab = lastParam;
         }
         else {
-          this.activeTab = ETabs.preview
+          this.activeTab = ETabs.Movements
         }
       }
     });
@@ -74,8 +70,6 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
     this.getFigureId();
     this.getStar()
     this.getFigure();
-
-
   }
 
   navigateToTab(tab) {
