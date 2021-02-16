@@ -36,7 +36,7 @@
         <div [hidden]="!isPracticesOnThisMonth" class="row practices-list">
                 <ng-container *ngFor="let practice of practices; ">
                     <div class="col-12 col-lg-4 mb-3 " *ngIf="compareDates(practice.createdAt, currentDate) && !isHidden(practice.name)">
-                        <li class="list-group-item d-flex bg-light ">
+                        <li [routerLink]="[practice._id]" class="list-group-item d-flex bg-light ">
                             <div class="col-4 practice-date text-muted ">
                                 <p>{{practice.createdAt | danskillDate}}</p>
                             </div>

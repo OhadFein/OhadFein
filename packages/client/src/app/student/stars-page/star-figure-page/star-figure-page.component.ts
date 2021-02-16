@@ -44,7 +44,7 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
     private cdRef: ChangeDetectorRef,
     private sharedService: SharedService
   ) {
-
+// video id 5fd4d64feffcdbe000d0dc70
     this.subs.push(
       this.sharedService.changeEmitted$.subscribe(
         video => {
