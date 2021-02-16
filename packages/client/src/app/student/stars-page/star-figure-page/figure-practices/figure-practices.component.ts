@@ -53,9 +53,7 @@ export class FigurePracticesComponent implements OnInit {
         this.store.select(selectors.selectAllPracticesByFigureId(this.figureId)).subscribe(
             res => {
               if (res) {
-                console.log("res", res)
                 this.practices = [...res];
-                console.log('this.practices :>> ', this.practices);
                 this.loading = false;
               } else {
                 this.store.dispatch(PracticesActions.BeginGetPracticesAction());
@@ -78,9 +76,6 @@ export class FigurePracticesComponent implements OnInit {
 
   ngOnDestroy(): void { this.subs.forEach(s => s.unsubscribe()); }
 
-  deletePractice(e){
-    console.log('e :>> ', e);
-    console.log(1111)
-  
+  deletePractice(e){  
   }
 }

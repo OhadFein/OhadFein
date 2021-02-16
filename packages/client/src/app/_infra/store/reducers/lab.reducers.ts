@@ -14,7 +14,6 @@ const reducer = createReducer(
     }),
 
     on(LabActions.UpdateLabAction, (state: LabState, { payload }) => {
-        console.log('payload :>> ', payload);
         return { ...state, labItem: payload, error: null };
     }),
 

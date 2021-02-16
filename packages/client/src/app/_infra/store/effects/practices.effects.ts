@@ -33,7 +33,6 @@ export class PracticesEffects {
             mergeMap(action =>
                 this.practicesService.updatePractice(action.payload).pipe(
                     map((data: Practice) => {
-                        console.log('data :>> ', data);
                         return PracticsActions.SuccessUpdatePracticeItemAction({ payload: data });
                     }),
                     catchError((error: Error) => {
