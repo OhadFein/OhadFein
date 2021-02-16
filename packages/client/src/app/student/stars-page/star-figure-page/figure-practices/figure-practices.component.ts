@@ -6,6 +6,7 @@ import * as selectors from '@infra/store/selectors/practices.selector';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { ChangeDetectorRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dsapp-figure-practices',
@@ -28,11 +29,12 @@ export class FigurePracticesComponent implements OnInit {
   selectedValue = '';
   formattedDate;
   currentMonth: string;
-
+  figureId: string;
   constructor(
       private store: Store<any>,
       private errorService: AlertErrorService,
-      private cdRef:ChangeDetectorRef
+      private cdRef:ChangeDetectorRef,
+      private router: Router, 
   ) {  }
 
   ngAfterViewChecked()
@@ -40,10 +42,15 @@ export class FigurePracticesComponent implements OnInit {
     this.cdRef.detectChanges();
   }
 
+  getFigureId(): void {
+    this.figureId = this.router.url.split('/')[4]
+  }
+
   ngOnInit() {
 
+    this.getFigureId();
     this.subs.push(
-        this.store.select(selectors.selectAllPracticesByFigureId('5f53f50d6ffba730ca8df5fc')).subscribe(
+        this.store.select(selectors.selectAllPracticesByFigureId(this.figureId)).subscribe(
             res => {
               if (res) {
                 console.log("res", res)
