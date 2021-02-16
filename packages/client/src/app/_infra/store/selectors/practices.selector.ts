@@ -20,7 +20,7 @@ export const selectAllPracticesSorted = () => createSelector(
 export const selectAllPracticesByFigureId = (figureId) => createSelector(
     selectPractices, (allPractices) => {
         if (!t(allPractices, 'practices').isNullOrUndefined) {
-            return t(allPractices, 'practices').safeArray.filter(practice => practice.figureId === figureId);
+            return t(allPractices, 'practices').safeArray.filter(practice => practice.figure=== figureId);
         } else {
             return null;
         }
