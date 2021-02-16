@@ -23,6 +23,7 @@ export class FigureMovementsComponent implements OnInit {
   movements: any = null;
   star: IStar = null;
   figure: Figure = null;
+  currentVideoId: string = null;
   @Output() onVideoSelected = new EventEmitter<any>();
 
   constructor(private store: Store<any>, private router: Router, private route: ActivatedRoute, private sharedService: SharedService) {
@@ -36,6 +37,7 @@ export class FigureMovementsComponent implements OnInit {
   }
 
   onVideoSelectedEvent(video) {
+    this.currentVideoId = video._id;
     this.sharedService.emitChange(video);
   }
   
@@ -76,6 +78,7 @@ export class FigureMovementsComponent implements OnInit {
         videos => {
           if (videos) {
             this.movements = videos;
+            this.currentVideoId = videos[0]._id;
           } else {
             setTimeout(() => { this.store.dispatch(FigureActions.BeginGetFigureAction({ payload: this.figureId })); }, 1000);
           }

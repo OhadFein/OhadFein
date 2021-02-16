@@ -1,8 +1,8 @@
 <div *ngIf="prinicipals"
      class="prinicipals-wrapper">
     <div class="row">
-        <div *ngFor="let video of prinicipals"
-             class="col-12 d-flex align-items-center principale-item"
+        <div *ngFor="let video of prinicipals" (click)="onVideoSelectedEvent(video)"
+             class="col-12 d-flex align-items-center principale-item" [ngClass]="{'selected': video._id === currentVideoId}" 
              >
             <div class="comparable-video-image mr-2">
                 <div class="embed-responsive embed-responsive-16by9 video-preview-container">

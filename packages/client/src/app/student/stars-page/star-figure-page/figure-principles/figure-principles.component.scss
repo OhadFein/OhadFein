@@ -1,6 +1,9 @@
 .prinicipals-wrapper{
     .principale-item{
         font-weight: 600; padding: 10px 15px; box-shadow: inset 0 -1px 0 0 #afada1;
+        &.selected{
+            background-color: #c9c9d052;
+        }
         .comparable-video-image{
             height: 75px; width: 125px; 
         }

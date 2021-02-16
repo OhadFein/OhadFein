@@ -21,7 +21,6 @@ export class VideoPreviewComponent implements OnInit, OnDestroy {
     ) {}
 
   ngOnInit() {
-    console.log(555)
   }
 
   onPlayerReady(api) {
@@ -52,7 +51,6 @@ export class VideoPreviewComponent implements OnInit, OnDestroy {
   }
 
   ngOnChanges() {
-    console.log(11111)
     if(this.playerAPI){
       const player = this.elRef.nativeElement.querySelector('video');
       player.load();
