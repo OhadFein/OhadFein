@@ -8,6 +8,7 @@ import * as StarSelectors from '@infra/store/selectors/stars.selectors';
 import * as StarsActions from '@app/_infra/store/actions/stars.actions';
 import * as LabActions from '@store/actions/lab.actions';
 import * as FigureSelectors from '@infra/store/selectors/figures.selectors';
+import { SharedService } from '@app/_infra/core/services/shared.service';
 
 @Component({
   selector: 'dsapp-figure-principles',
@@ -22,8 +23,9 @@ export class FigurePrinciplesComponent implements OnInit {
   star: IStar = null;
   figure: Figure = null;
   @Output() onVideoChanged = new EventEmitter<any>();
+  currentVideoId: string = null;
 
-  constructor(private store: Store<any>, private router: Router, private route: ActivatedRoute) { }
+  constructor(private store: Store<any>, private router: Router, private route: ActivatedRoute,  private sharedService: SharedService) { }
 
   ngOnInit(): void {
     this.getFigureId();
@@ -31,6 +33,11 @@ export class FigurePrinciplesComponent implements OnInit {
     this.getStar();
     this.getPrinicipals();
     this.changeVideo();
+  }
+
+  onVideoSelectedEvent(video) {
+    this.currentVideoId = video._id;
+    this.sharedService.emitChange(video);
   }
 
   changeVideo(){
@@ -73,6 +80,7 @@ export class FigurePrinciplesComponent implements OnInit {
         videos => {
           if (videos) {
             this.prinicipals = videos ;
+            this.currentVideoId = videos[0]._id;
           } else {
             setTimeout(() => { this.store.dispatch(FigureActions.BeginGetFigureAction({ payload: this.figureId })); }, 1000);
           }
