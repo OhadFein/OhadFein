@@ -6,8 +6,8 @@
         </h5>
         <div *ngIf="getFiguresPerDance(dance)" class="col-12 d-flex">
             <swiper [ngClass]="{'one-item' : figuresPerType.length === 1}"
-                    [slidesPerView]="figuresPerType.length > 1 ? 2.2 : 1"
-                    [spaceBetween]="figuresPerType.length > 1 ? 15 : 35"
+                    [slidesPerView]="figuresPerType.length > 1 ? 2.2 : 2.2"
+                    [spaceBetween]="figuresPerType.length > 1 ? 15 : 15"
                     [centeredSlides]="false"
                     >
                 <ng-container *ngFor="let figure of figuresPerType">
