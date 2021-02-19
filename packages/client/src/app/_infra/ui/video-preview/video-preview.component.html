@@ -1,15 +1,22 @@
 <div class="embed-responsive embed-responsive-16by9 video-preview">
   <vg-player class="embed-responsive-item"
              (onPlayerReady)="onPlayerReady($event)">
+             
+             <vg-controls [vgAutohide]="true">
+               <vg-play-pause vgFor="previewVideo"></vg-play-pause>
+               <vg-fullscreen vgFor="previewVideo"></vg-fullscreen>
+               <vg-scrub-bar>
+                <vg-scrub-bar-buffering-time vgFor="previewVideo"></vg-scrub-bar-buffering-time>
+                <vg-scrub-bar-current-time vgFor="previewVideo"></vg-scrub-bar-current-time>
+           </vg-scrub-bar>
+            </vg-controls>
+
 
     <video [vgMedia]="video"
-           [poster]="poster"
-           [playbackRate]="0.5"
            #video
            id="previewVideo"
            preload="auto"
            autoplay
-           loop
            muted
            playsinline
            webkit-playsinline>

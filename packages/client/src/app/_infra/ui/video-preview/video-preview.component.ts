@@ -33,16 +33,7 @@ export class VideoPreviewComponent implements OnInit, OnDestroy {
         }
       )
     );
-    this.subs.push(
-      this.playerAPI.getDefaultMedia().subscriptions.ended.subscribe(
-        event => {
-          setTimeout(() => {
-            this.playerAPI.seekTime(0);
-            this.playerAPI.play();
-          }, 4000)
-        }
-      )
-    );
+
 
   }
 
