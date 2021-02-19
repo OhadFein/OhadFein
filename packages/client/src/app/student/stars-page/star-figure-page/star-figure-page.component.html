@@ -17,17 +17,15 @@
           <h5 class="figure-name text-center pt-2">{{figure.name}}</h5>
         </div>
       </div>
-      <h1 *ngIf="test">{{test}}</h1>
-
       <swiper [slidesPerView]="4"
               [spaceBetween]="15"
               [setWrapperSize]="true"
               style="box-shadow: inset 0 -1px 0 0 #afada1">
         <ng-container *ngFor="let tab of tabs">
           <ng-template swiperSlide>
-            <div class="tab-swiper d-flex flex-column h-100"
+            <div [routerLink]="['../',figureId, tab]" class="tab-swiper d-flex flex-column h-100"
                  [ngClass]="tab === activeTab ? 'active' : ''"
-                 (click)="navigateToTab(tab)">
+                >
               <div class="figure-swiper-content text-center"><span>{{tab}}</span></div>
             </div>
           </ng-template>

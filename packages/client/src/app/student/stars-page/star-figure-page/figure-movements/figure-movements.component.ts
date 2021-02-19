@@ -68,8 +68,15 @@ export class FigureMovementsComponent implements OnInit {
   }
 
   getFigureId(): void {
-    this.figureId = this.router.url.split('/')[4]
-    this.slug = this.router.url.split('/')[3];
+    if(this.route.params['_value'].length > 0){
+      this.figureId = this.route.params['_value'].figureId;
+      this.slug = this.route.params['_value'].slug;
+    }
+    else{
+      const splitedRoute = this.router.url.split('/'); 
+      this.figureId = this.router.url.split('/')[splitedRoute.length-2]
+    }
+    
   }
 
   getMovements() {

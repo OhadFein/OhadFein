@@ -16,12 +16,12 @@ const routes: Routes = [
   {
     path: ':slug/:figureId', component: StarFigurePageComponent, children: [
       { path: '', component: FigureMovementsComponent },
-      { path: 'Outline', component: FigurePreviewComponent },
-      { path: 'Movements', component: FigureMovementsComponent },
-      { path: 'Principles', component: FigurePrinciplesComponent },
+      { path: 'Outline', component: FigurePreviewComponent,  },
+      { path: 'Movements', component: FigureMovementsComponent,  },
+      { path: 'Principles', component: FigurePrinciplesComponent,  },
       {
         path: 'Practices', component: FigurePracticesComponent, children: [
-          { path: 'practiceId', component: StarContentPageComponent }
+          { path: 'practiceId', component: StarContentPageComponent, }
         ], canActivate: [AuthGuard]
       },
     ], canActivate: [AuthGuard]
