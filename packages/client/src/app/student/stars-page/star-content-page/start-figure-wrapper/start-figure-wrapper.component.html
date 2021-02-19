@@ -5,16 +5,16 @@
             {{dance}}
         </h5>
         <div *ngIf="getFiguresPerDance(dance)" class="col-12 d-flex">
-            <swiper 
-                    [slidesPerView]="2.2"
-                    [spaceBetween]="15"
-                    [setWrapperSize]="true"
+            <swiper [ngClass]="{'one-item' : figuresPerType.length === 1}"
+                    [slidesPerView]="figuresPerType.length > 1 ? 2.2 : 2.2"
+                    [spaceBetween]="figuresPerType.length > 1 ? 15 : 15"
+                    [centeredSlides]="false"
                     >
                 <ng-container *ngFor="let figure of figuresPerType">
                     <ng-template swiperSlide>
-                                 <div class="figure-swiper d-flex flex-column h-100" [routerLink]="[figure._id]">
-                                    <div class="figure-swiper-img-wrapper h-100">
-                                        <img class="figure-swiper-img w-100 h-100" src="{{figure.logo}}">
+                                 <div class="figure-swiper d-flex flex-column" [routerLink]="[figure._id]">
+                                    <div class="figure-swiper-img-wrapper">
+                                        <img class="figure-swiper-img" src="{{figure.logo}}">
                                     </div>
                                     <div  class="figure-swiper-content text-center"><span>{{figure.name}}</span></div>
                                  </div>
