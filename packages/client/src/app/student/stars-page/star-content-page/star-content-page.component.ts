@@ -47,10 +47,12 @@ export class StarContentPageComponent implements OnInit, OnDestroy {
 
     isOverflown(): void {
         setTimeout(() => {
+            if (this.starDescriptionEl) {
             const element = this.starDescriptionEl.nativeElement;
             if (element.scrollHeight > element.clientHeight || element.scrollWidth > element.clientWidth) {
                 this.isReadMore = true;
             }
+        }
         }, 1000);
     }
 
