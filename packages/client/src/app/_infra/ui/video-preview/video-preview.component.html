@@ -2,13 +2,20 @@
   <vg-player class="embed-responsive-item"
              (onPlayerReady)="onPlayerReady($event)">
              
+             <vg-scrub-bar [vgSlider]="true">
+              <vg-scrub-bar-current-time [vgSlider]="true"></vg-scrub-bar-current-time>
+              <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+          </vg-scrub-bar>
              <vg-controls [vgAutohide]="true">
                <vg-play-pause vgFor="previewVideo"></vg-play-pause>
                <vg-fullscreen vgFor="previewVideo"></vg-fullscreen>
-               <vg-scrub-bar>
-                <vg-scrub-bar-buffering-time vgFor="previewVideo"></vg-scrub-bar-buffering-time>
-                <vg-scrub-bar-current-time vgFor="previewVideo"></vg-scrub-bar-current-time>
-           </vg-scrub-bar>
+               <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+
+               <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+       
+               <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+               <vg-mute></vg-mute>
+               <vg-volume></vg-volume>
             </vg-controls>
 
 
