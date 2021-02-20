@@ -70,10 +70,8 @@ export class FigurePrinciplesComponent implements OnInit {
   }
 
   getFigureId() : void{
-    const el = document.createElement('a');
-    el.href = this.router.url;
-    const splittedPath = el.pathname.split('/');
-    
+    const splittedPath = location.pathname.split('/');
+
     this.slug = splittedPath[3];
     this.figureId = splittedPath[4];
   }
