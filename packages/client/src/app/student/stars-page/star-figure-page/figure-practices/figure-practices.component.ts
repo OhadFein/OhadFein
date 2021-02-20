@@ -43,9 +43,7 @@ export class FigurePracticesComponent implements OnInit {
   }
 
   getFigureId(): void {
-    const el = document.createElement('a');
-    el.href = this.router.url;
-    const splittedPath = el.pathname.split('/');
+    const splittedPath = location.pathname.split('/');
     
     this.figureId = splittedPath[4];
   }
