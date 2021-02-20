@@ -1,15 +1,4 @@
 <div class="lab-page {{labView}}">
-    <!--    BACK TO FIGURE PAGE -->
-    <div *ngIf="labItem"
-         class="row back-btn-row back-to-figure-page-row">
-        <div class="col-12">
-            <a class="btn-link dark-link"
-               [routerLink]="['/','student','star',labItem.star.slug, labItem.figure._id]">
-                <i class="icon-arrow-left"></i>
-                {{'STAR.FIGURES.backToFigurePage' | translate}}
-            </a>
-        </div>
-    </div>
     <div class="steps-bar-wrapper">
         <ul class="steps-bar">
             <li *ngFor="let step of steps" class="steps-bar-item" [ngClass]="step.id == currentStep ? 'active' : step.id < currentStep ? 'completed': ''">

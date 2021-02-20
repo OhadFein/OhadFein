@@ -4,6 +4,7 @@ import { AlertService, LoginService, MenuService } from '@core/services/';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AboutDanskillModalComponent } from '@ui/about-danskill-modal/about-danskill-modal.component';
 import { Observable } from 'rxjs';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'ui-header',
@@ -22,6 +23,7 @@ export class HeaderComponent implements OnInit {
     private modalService: NgbModal,
     private alertService: AlertService,
     private menuService: MenuService,
+    private location: Location
   ) { }
 
   @HostListener('window:beforeinstallprompt', ['$event'])
@@ -35,6 +37,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.menuIsOpen$ = this.menuService.menuOpenState$;
+  }
+
+  backButtonHandler() {
+    this.location.back();
   }
 
   toggleMenu() {

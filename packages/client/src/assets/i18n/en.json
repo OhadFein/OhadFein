@@ -120,7 +120,6 @@
             "MySkills": "My Skills",
             "Classes": "Classes",
             "dances": "Dances",
-            "backToStarsList": "Back to Stars List",
             "openCurrentChallenge": "open current challenge",
             "level": "level",
             "LEVEL": "level"
@@ -132,7 +131,6 @@
             "basicPrinciples": "Basic Principles",
             "learnPrinciples": "Learn principles",
             "openInMyLab": "Open in My Lab",
-            "backToStarLibrary": "Back to Star Library",
             "backToFigurePage": "Back to Figure page"
         },
         "ERRORS": {
