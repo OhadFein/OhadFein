@@ -43,7 +43,11 @@ export class FigurePracticesComponent implements OnInit {
   }
 
   getFigureId(): void {
-    this.figureId = this.router.url.split('/')[4]
+    const el = document.createElement('a');
+    el.href = this.router.url;
+    const splittedPath = el.pathname.split('/');
+    
+    this.figureId = splittedPath[4];
   }
 
   ngOnInit() {

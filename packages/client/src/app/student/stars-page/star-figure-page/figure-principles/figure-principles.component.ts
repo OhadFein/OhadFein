@@ -70,14 +70,12 @@ export class FigurePrinciplesComponent implements OnInit {
   }
 
   getFigureId() : void{
-    if(this.route.params['_value'].length > 0){
-      this.figureId = this.route.params['_value'].figureId;
-      this.slug = this.route.params['_value'].slug;
-    }
-    else{
-      const splitedRoute = this.router.url.split('/'); 
-      this.figureId = this.router.url.split('/')[splitedRoute.length-2]
-    }
+    const el = document.createElement('a');
+    el.href = this.router.url;
+    const splittedPath = el.pathname.split('/');
+    
+    this.slug = splittedPath[3];
+    this.figureId = splittedPath[4];
   }
 
   getPrinicipals(){
