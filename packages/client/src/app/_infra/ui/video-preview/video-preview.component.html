@@ -2,20 +2,25 @@
   <vg-player class="embed-responsive-item"
              (onPlayerReady)="onPlayerReady($event)">
              
+             <vg-overlay-play></vg-overlay-play>
+             <vg-buffering></vg-buffering>
+
              <vg-scrub-bar [vgSlider]="true">
               <vg-scrub-bar-current-time [vgSlider]="true"></vg-scrub-bar-current-time>
               <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
           </vg-scrub-bar>
-             <vg-controls [vgAutohide]="true">
-               <vg-play-pause vgFor="previewVideo"></vg-play-pause>
-               <vg-fullscreen vgFor="previewVideo"></vg-fullscreen>
-               <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+          
+          <vg-controls [vgAutohide]="true">
+            <vg-play-pause vgFor="previewVideo"></vg-play-pause>
+            <vg-playback-button></vg-playback-button>
 
-               <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
-       
-               <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
-               <vg-mute></vg-mute>
-               <vg-volume></vg-volume>
+            <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+            <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
+            <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+            
+            <vg-mute></vg-mute>
+            <vg-volume></vg-volume>
+            <vg-fullscreen vgFor="previewVideo"></vg-fullscreen>
             </vg-controls>
 
 
