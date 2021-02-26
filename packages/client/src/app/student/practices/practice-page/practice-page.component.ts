@@ -127,11 +127,6 @@ export class PracticePageComponent implements OnInit, OnDestroy {
         }
     }
 
-
-    backToPractices() {
-        this.router.navigate(['student/practices']);
-    }
-
     editTitle() {
         this.disabledTitle = false;
         this.disabled = false;

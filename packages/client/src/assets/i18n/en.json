@@ -130,8 +130,7 @@
             "learnFigure": "Learn figure",
             "basicPrinciples": "Basic Principles",
             "learnPrinciples": "Learn principles",
-            "openInMyLab": "Open in My Lab",
-            "backToFigurePage": "Back to Figure page"
+            "openInMyLab": "Open in My Lab"
         },
         "ERRORS": {
             "getStarsError": "There was an error fetching stars information. Try again later.",
@@ -145,7 +144,6 @@
     "PRACTICES": {
         "title": "Practices",
         "PRACTICE": {
-            "backToPractices": "Back to practives Page",
             "hideVideo": "Hide video",
             "showVideo": "Show video",
             "hideNotes": "Hide Notes",
