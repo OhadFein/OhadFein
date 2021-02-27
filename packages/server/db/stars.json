@@ -64,7 +64,8 @@
   "updatedAt": {
     "$date": "2020-12-12T14:33:06.234Z"
   },
-  "__v": 0
+  "__v": 0,
+  "description": "Finalists of Russian national championship. Semifinalists of Grand slam competitions. Winners and medalists of International open and World open competitions"
 },{
   "_id": {
     "$oid": "5f85981c5be43ca1943cdc96"
@@ -322,7 +323,8 @@
   "updatedAt": {
     "$date": "2020-09-05T20:29:01.222Z"
   },
-  "__v": 0
+  "__v": 0,
+  "description": "World champions youth Latin. 2 x World champions U21. Semifinalists in all Grand Slams. Semifinalists in amateur World and European Championships. World champions youth Latin. 2 x World champions U21. Semifinalists in all Grand Slams. Semifinalists in amateur World and European Championships."
 },{
   "_id": {
     "$oid": "5f7c9fd10a9ca1223e12ab36"
@@ -394,7 +396,11 @@
   "_id": {
     "$oid": "5f7ca0170a9ca1223e12ab37"
   },
-  "figures": [],
+  "figures": [
+    {
+      "$oid": "6028181f7086dd4637afc6ca"
+    }
+  ],
   "achievements": [
     "World Champions youth",
     "World champions youth under 21",
@@ -419,7 +425,7 @@
     "$date": "2020-10-06T16:49:27.766Z"
   },
   "updatedAt": {
-    "$date": "2020-10-06T16:49:27.766Z"
+    "$date": "2021-02-13T18:19:11.966Z"
   },
   "__v": 0
 },{
@@ -814,7 +820,11 @@
   "_id": {
     "$oid": "5f85d7a15be43ca1943cdc9f"
   },
-  "figures": [],
+  "figures": [
+    {
+      "$oid": "6028181f7086dd4637afc6ca"
+    }
+  ],
   "achievements": [
     "World Champions youth",
     "World champions youth under 21",
@@ -839,7 +849,7 @@
     "$date": "2020-10-06T16:49:27.766Z"
   },
   "updatedAt": {
-    "$date": "2020-10-06T16:49:27.766Z"
+    "$date": "2021-02-13T18:19:11.967Z"
   },
   "__v": 0
 },{
@@ -1142,6 +1152,40 @@
   },
   "updatedAt": {
     "$date": "2020-10-06T16:41:18.970Z"
+  },
+  "__v": 0
+},{
+  "_id": {
+    "$oid": "60281da1dced425384ec2189"
+  },
+  "figures": [
+    {
+      "$oid": "60282039dced425384ec218a"
+    },
+    {
+      "$oid": "602822aedced425384ec2191"
+    }
+  ],
+  "achievements": [],
+  "promoVideo": "",
+  "name": {
+    "firstName": "Soul",
+    "lastName": "Dance"
+  },
+  "location": {
+    "city": "Israel"
+  },
+  "logo": {
+    "small": "https://d7nb4rcaibu03.cloudfront.net/stars/SoulDance/WhatsApp%20Image%202021-02-05%20at%2012.13.22.jpeg",
+    "large": "https://d7nb4rcaibu03.cloudfront.net/stars/SoulDance/WhatsApp%20Image%202021-02-05%20at%2012.13.22.jpeg"
+  },
+  "about": "",
+  "slug": "soul-dance",
+  "createdAt": {
+    "$date": "2021-02-13T18:42:41.120Z"
+  },
+  "updatedAt": {
+    "$date": "2021-02-13T19:04:14.556Z"
   },
   "__v": 0
 }]
