@@ -1,40 +1,39 @@
 <div class="embed-responsive embed-responsive-16by9 video-preview">
-  <vg-player class="embed-responsive-item"
-             (onPlayerReady)="onPlayerReady($event)">
-             
-             <vg-overlay-play></vg-overlay-play>
-             <vg-buffering></vg-buffering>
+    <vg-player class="embed-responsive-item"
+               (onPlayerReady)="onPlayerReady($event)">
 
-             <vg-scrub-bar [vgSlider]="true">
-              <vg-scrub-bar-current-time [vgSlider]="true"></vg-scrub-bar-current-time>
-              <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
-          </vg-scrub-bar>
-          
-          <vg-controls [vgAutohide]="true">
+        <vg-overlay-play></vg-overlay-play>
+        <vg-buffering></vg-buffering>
+
+        <vg-scrub-bar [vgSlider]="false">
+            <vg-scrub-bar-current-time [vgSlider]="true"></vg-scrub-bar-current-time>
+            <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
+        </vg-scrub-bar>
+
+        <vg-controls [vgAutohide]="true" vgFor="previewVideo">
             <vg-play-pause vgFor="previewVideo"></vg-play-pause>
             <vg-playback-button></vg-playback-button>
 
             <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
             <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
             <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
-            
+
             <vg-mute></vg-mute>
             <vg-volume></vg-volume>
             <vg-fullscreen vgFor="previewVideo"></vg-fullscreen>
-            </vg-controls>
+        </vg-controls>
 
-
-    <video [vgMedia]="video"
-           #video
-           id="previewVideo"
-           preload="auto"
-           autoplay
-           muted
-           playsinline
-           webkit-playsinline>
-      <source *ngIf="path"
-              [src]="path"
-              type="video/mp4">
-    </video>
-  </vg-player>
+        <video [vgMedia]="video"
+               #video
+               id="previewVideo"
+               preload="auto"
+               autoplay
+               muted
+               playsinline
+               webkit-playsinline>
+            <source *ngIf="path"
+                    [src]="path"
+                    type="video/mp4">
+        </video>
+    </vg-player>
 </div>

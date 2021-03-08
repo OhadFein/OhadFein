@@ -7,6 +7,7 @@ import { SharedService } from '@app/_infra/core/services/shared.service';
 @Component({
   selector: 'ui-video-preview',
   templateUrl: './video-preview.component.html',
+  styleUrls: ['./video-preview.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VideoPreviewComponent implements OnInit, OnDestroy {
@@ -23,7 +24,7 @@ export class VideoPreviewComponent implements OnInit, OnDestroy {
   ngOnInit() {
   }
 
-  onPlayerReady(api) {
+  onPlayerReady(api: VgAPI) {
     this.playerAPI = api;
     this.playerAPI.volume = 0;
     this.subs.push(

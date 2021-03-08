@@ -1,6 +1,5 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnDestroy, Output} from '@angular/core';
 import {LabPlayerPlaybackOperator} from '@app/_infra/core/models';
-import {DeviceDetectorService} from 'ngx-device-detector';
 import {VgAPI} from 'ngx-videogular';
 import {Subscription} from 'rxjs';
 
@@ -8,8 +7,7 @@ import {Subscription} from 'rxjs';
     selector: 'ui-video-player-wrapper',
     templateUrl: './video-player-wrapper.component.html'
 })
-export class VideoPlayerWrapperComponent implements OnInit {
-
+export class VideoPlayerWrapperComponent implements OnDestroy {
     @Input() src: string;
     @Input() poster: string = null;
     @Input() synchronized = false;
@@ -29,10 +27,6 @@ export class VideoPlayerWrapperComponent implements OnInit {
     playbackRate = 1;
     subs: Subscription[] = [];
 
-
-    constructor(private deviceService: DeviceDetectorService) {
-    }
-
     onPlayerReady(api: VgAPI) {
         this.playerAPI = api;
         this.playerAPI.getDefaultMedia().subscriptions.loadedMetadata.subscribe(
@@ -49,19 +43,13 @@ export class VideoPlayerWrapperComponent implements OnInit {
         this.pushSubscriptions();
     }
 
-    ngOnInit() {
-
-    }
-
-
-    ngOnDestroy() {
+    ngOnDestroy(): void {
         this.subs.forEach(s => {
             s.unsubscribe();
         });
     }
 
     pushSubscriptions() {
-
         const videoStatusChangedEvent = (event) => {
             this.playerIsPlaying = ('playing' === this.playerAPI.state);
             this.playerEvent.emit(event);
