@@ -1,8 +1,6 @@
-import { ChangeDetectionStrategy, Component, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnDestroy} from '@angular/core';
 import { VgAPI } from 'ngx-videogular';
 import { Subscription } from 'rxjs';
-import { SharedService } from '@app/_infra/core/services/shared.service';
-
 
 @Component({
   selector: 'ui-video-preview',
@@ -10,7 +8,7 @@ import { SharedService } from '@app/_infra/core/services/shared.service';
   styleUrls: ['./video-preview.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class VideoPreviewComponent implements OnInit, OnDestroy {
+export class VideoPreviewComponent implements OnChanges, OnDestroy {
 
   @Input() path: string;
   @Input() poster: string;
@@ -18,11 +16,7 @@ export class VideoPreviewComponent implements OnInit, OnDestroy {
   playerAPI: VgAPI;
   subs: Subscription[] = [];
 
-  constructor(private elRef: ElementRef,     private sharedService: SharedService
-    ) {}
-
-  ngOnInit() {
-  }
+  constructor(private elRef: ElementRef) {}
 
   onPlayerReady(api: VgAPI) {
     this.playerAPI = api;
@@ -34,8 +28,6 @@ export class VideoPreviewComponent implements OnInit, OnDestroy {
         }
       )
     );
-
-
   }
 
   ngOnDestroy() {
