@@ -13,7 +13,8 @@ import {Subscription} from 'rxjs';
 
 @Component({
     selector: 'dsapp-lab-page',
-    templateUrl: './lab-page.component.html'
+    templateUrl: './lab-page.component.html',
+    styleUrls: ['./lab-page.component.scss']
 })
 export class LabPageComponent implements OnInit, OnDestroy {
 
