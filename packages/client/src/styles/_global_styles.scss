@@ -4,7 +4,6 @@ html {
 }
 
 body {
-    min-height: 100vh;
     font-size: 0.8rem;
     @include media-breakpoint-up(sm) {
         font-size: 0.9rem;
@@ -44,7 +43,7 @@ button:focus {
 }
 
 .full-height {
-    min-height: 100vh;
+    min-height: calc(100vh - 7rem); // 7 rem is a sum of top and bottom margin on the page
 }
 
 .full-mobile{
