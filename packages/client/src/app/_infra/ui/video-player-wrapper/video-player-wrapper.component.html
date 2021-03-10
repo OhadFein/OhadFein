@@ -1,17 +1,13 @@
 <div class="embed-responsive embed-responsive-16by9 video-wrapper">
+<!--     <div *ngIf="playerIsReady && !preview"-->
+<!--          class="top-controls onplayer-controls">-->
+<!--          <p class="time btn btn-sm">{{timePassed + '/' + totalTime}}</p>-->
 
-     <div *ngIf="playerIsReady && !preview"
-          class="top-controls onplayer-controls">
-          <p class="time btn btn-sm">{{timePassed + '/' + totalTime}}</p>
-
-          <ui-player-speed-controls *ngIf="!synchronized"
-                                    [playbackRate]="playbackRate"
-                                    (changePLayBackRate)="changePLayBackRate($event)">
-          </ui-player-speed-controls>
-
-     </div>
-
-
+<!--          <ui-player-speed-controls *ngIf="!synchronized"-->
+<!--                                    [playbackRate]="playbackRate"-->
+<!--                                    (changePLayBackRate)="changePLayBackRate($event)">-->
+<!--          </ui-player-speed-controls>-->
+<!--     </div>-->
 
      <vg-player class="embed-responsive-item"
                 (onPlayerReady)="onPlayerReady($event)">
@@ -21,8 +17,8 @@
           </vg-overlay-play>
 
           <vg-controls *ngIf="playerIsReady && preview"
-                       [vgAutohide]="true"
-                       [vgAutohideTime]="2">
+                       vgFor="mainVideo"
+                       [vgAutohide]="true">
                <vg-play-pause vgFor="mainVideo"></vg-play-pause>
                <vg-fullscreen vgFor="mainVideo"></vg-fullscreen>
           </vg-controls>
@@ -70,9 +66,9 @@
           </video>
      </vg-player>
 
-     <ng-template [ngIf]="!playerIsReady">
-          <ui-preloader-inapp></ui-preloader-inapp>
-     </ng-template>
+<!--     <ng-template [ngIf]="!playerIsReady">-->
+<!--          <ui-preloader-inapp></ui-preloader-inapp>-->
+<!--     </ng-template>-->
 
      <div *ngIf="!synchronized && !preview"
           class="touch-controls"
