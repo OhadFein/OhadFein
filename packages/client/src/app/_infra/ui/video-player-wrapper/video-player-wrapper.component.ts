@@ -5,7 +5,8 @@ import {Subscription} from 'rxjs';
 
 @Component({
     selector: 'ui-video-player-wrapper',
-    templateUrl: './video-player-wrapper.component.html'
+    templateUrl: './video-player-wrapper.component.html',
+    styleUrls: ['./video-player-wrapper.component.scss']
 })
 export class VideoPlayerWrapperComponent implements OnDestroy {
     @Input() src: string;
@@ -19,7 +20,7 @@ export class VideoPlayerWrapperComponent implements OnDestroy {
     @Output() clearVideoFile = new EventEmitter();
     @Output() isPlayerReady = new EventEmitter<boolean>();
     playerIsReady = false;
-    playerIsPlaying = false;
+    isPlaying = false;
     playerAPI: VgAPI;
     videoPlayed = false;
     timePassed = '0';
@@ -51,9 +52,9 @@ export class VideoPlayerWrapperComponent implements OnDestroy {
 
     pushSubscriptions() {
         const videoStatusChangedEvent = (event) => {
-            this.playerIsPlaying = ('playing' === this.playerAPI.state);
+            this.isPlaying = ('playing' === this.playerAPI.state);
             this.playerEvent.emit(event);
-            this.playerStateChange.emit(this.playerIsPlaying);
+            this.playerStateChange.emit(this.isPlaying);
         }
 
         this.subs.push(
@@ -90,14 +91,8 @@ export class VideoPlayerWrapperComponent implements OnDestroy {
         );
     }
 
-    togglePlay() {
-        if (!this.videoPlayed)
-            this.videoPlayed = true;
-        if (this.playerIsPlaying) {
-            this.pause();
-        } else {
-            this.play();
-        }
+    togglePlay(): void {
+        this.isPlaying ? this.pause() : this.play();
     }
 
     jump(direction) {
@@ -129,14 +124,13 @@ export class VideoPlayerWrapperComponent implements OnDestroy {
         this.pause();
     }
 
-    onPan(evt) {
-        if (this.videoPlayed) {
-            const devVelocity = evt.velocityX / 20;
-            const seekRatio = devVelocity;
-            const time = this.getCurrentTime();
-            const seekTo = seekRatio + time;
-            this.seekTo(seekTo);
+    onPan(timeShift: number) {
+        if (this.isPlaying) {
+            this.pause();
         }
+        const time = this.getCurrentTime();
+        const seekTo = time + timeShift;
+        this.seekTo(seekTo);
     }
 
     onTap(evt) {
@@ -144,12 +138,14 @@ export class VideoPlayerWrapperComponent implements OnDestroy {
     }
 
     seekTo(time: number) {
+        const duration = this.getDuration();
         let seekTo = time;
 
-        if (seekTo > this.getDuration())
-            seekTo = this.getDuration();
-        else if (seekTo < 0)
+        if (seekTo > duration) {
+            seekTo = duration;
+        } else if (seekTo < 0) {
             seekTo = 0;
+        }
 
         this.playerAPI.seekTime(seekTo);
     }

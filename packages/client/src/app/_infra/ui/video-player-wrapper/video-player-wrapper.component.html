@@ -24,30 +24,33 @@
           </vg-controls>
 
           <vg-controls *ngIf="playerIsReady && !synchronized && !preview"
+                       class="video-player-control-tool"
                        [vgAutohide]="true"
-                       [vgAutohideTime]="20">
+                       [vgAutohideTime]="5">
+              <dsapp-custom-lab-controls [isPlaying]="isPlaying"
+                                         (pan)="onPan($event)"
+                                         (togglePlay)="togglePlay()"></dsapp-custom-lab-controls>
 
 
-               <ui-player-controls *ngIf="playerIsReady"
-                                   [playing]="playerIsPlaying"
-                                   (toggleVideos)="togglePlay()"
-                                   (jump)="jump($event)"
-                                   (stop)="stop()"></ui-player-controls>
+<!--               <ui-player-controls *ngIf="playerIsReady"-->
+<!--                                   [playing]="playerIsPlaying"-->
+<!--                                   (toggleVideos)="togglePlay()"-->
+<!--                                   (jump)="jump($event)"-->
+<!--                                   (stop)="stop()"></ui-player-controls>-->
 
 
-               <div *ngIf="playerIsReady"
-                    class="right-side-controls">
+<!--               <div *ngIf="playerIsReady"-->
+<!--                    class="right-side-controls">-->
 
-                    <a class="btn btn-sm btn-link"
-                       (click)="clearVideo()">{{'LAB.removeVideo' | translate}}</a>
+<!--                    <a class="btn btn-sm btn-link"-->
+<!--                       (click)="clearVideo()">{{'LAB.removeVideo' | translate}}</a>-->
+<!--               </div>-->
 
-               </div>
 
-
-               <vg-scrub-bar>
-                    <vg-scrub-bar-buffering-time vgFor="mainVideo"></vg-scrub-bar-buffering-time>
-                    <vg-scrub-bar-current-time vgFor="mainVideo"></vg-scrub-bar-current-time>
-               </vg-scrub-bar>
+<!--               <vg-scrub-bar>-->
+<!--                    <vg-scrub-bar-buffering-time vgFor="mainVideo"></vg-scrub-bar-buffering-time>-->
+<!--                    <vg-scrub-bar-current-time vgFor="mainVideo"></vg-scrub-bar-current-time>-->
+<!--               </vg-scrub-bar>-->
 
 
           </vg-controls>
@@ -70,9 +73,9 @@
 <!--          <ui-preloader-inapp></ui-preloader-inapp>-->
 <!--     </ng-template>-->
 
-     <div *ngIf="!synchronized && !preview"
-          class="touch-controls"
-          (tap)="onTap($event)"
-          (panstart)="onPanStart($event)"
-          (pan)="onPan($event)"></div>
+<!--     <div *ngIf="!synchronized && !preview"-->
+<!--          class="touch-controls"-->
+<!--          (tap)="onTap($event)"-->
+<!--          (panstart)="onPanStart($event)"-->
+<!--          (pan)="onPan($event)"></div>-->
 </div>
