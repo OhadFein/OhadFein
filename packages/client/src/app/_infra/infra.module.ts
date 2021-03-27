@@ -63,7 +63,7 @@ import {
     VideoPlayerWrapperComponent, StarNameDirective, NgbDateStructTodateDirective, InpageErrorComponent,
     TagsHolderComponent, ImageFilePickerComponent, VideoFilePickerComponent, PlayerSpeedControlsComponent,
     PlayerControlsComponent, BackgroundProcessesComponent, UploadPracticeBgProcessComponent,
-    ToggleSwitchDirective, VideoPreviewComponent
+    ToggleSwitchDirective, VideoPreviewComponent, CustomLabControlsComponent
   ]
 })
 export class InfraModule { }

@@ -20,6 +20,8 @@ import { Observable, timer } from 'rxjs';
 })
 export class CustomLabControlsComponent implements OnInit, AfterViewInit {
   @Input() isPlaying: boolean;
+  @Input() isHiddenTime: boolean;
+  @Input() isHiddenPlayback: boolean;
   @Output() togglePlay = new EventEmitter<void>();
   @Output() pan = new EventEmitter<number>();
 

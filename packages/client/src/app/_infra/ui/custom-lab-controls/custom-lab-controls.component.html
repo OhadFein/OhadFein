@@ -14,5 +14,5 @@
     </div>
 </main>
 
-<vg-time-display class="custom-lab-time-icon" vgProperty="current"></vg-time-display>
-<vg-playback-button class="custom-lab-playback-icon"></vg-playback-button>
+<vg-time-display class="custom-lab-time-icon" vgProperty="current" *ngIf="!isHiddenTime"></vg-time-display>
+<vg-playback-button class="custom-lab-playback-icon" *ngIf="!isHiddenPlayback"></vg-playback-button>
