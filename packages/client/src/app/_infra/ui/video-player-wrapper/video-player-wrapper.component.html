@@ -1,64 +1,41 @@
 <div class="embed-responsive embed-responsive-16by9 video-wrapper">
-<!--     <div *ngIf="playerIsReady && !preview"-->
-<!--          class="top-controls onplayer-controls">-->
-<!--          <p class="time btn btn-sm">{{timePassed + '/' + totalTime}}</p>-->
+     <div *ngIf="playerIsReady && !preview && synchronized"
+          class="top-controls onplayer-controls">
+          <p class="time btn btn-sm">{{timePassed + '/' + totalTime}}</p>
 
-<!--          <ui-player-speed-controls *ngIf="!synchronized"-->
-<!--                                    [playbackRate]="playbackRate"-->
-<!--                                    (changePLayBackRate)="changePLayBackRate($event)">-->
-<!--          </ui-player-speed-controls>-->
-<!--     </div>-->
+          <div *ngIf="!isMasterVideo" class="close-video-control">
+               <span class="icon icon-cancel" (click)="clearVideo()"></span>
+          </div>
+     </div>
 
      <vg-player class="embed-responsive-item"
                 (onPlayerReady)="onPlayerReady($event)">
 
           <vg-overlay-play *ngIf="playerIsReady && preview"
-                           vgFor="mainVideo">
+                           [vgFor]="isMasterVideo? 'masterVideo' : 'studentVideo'">
           </vg-overlay-play>
 
           <vg-controls *ngIf="playerIsReady && preview"
-                       vgFor="mainVideo"
+                       [vgFor]="isMasterVideo? 'masterVideo' : 'studentVideo'"
                        [vgAutohide]="true">
-               <vg-play-pause vgFor="mainVideo"></vg-play-pause>
-               <vg-fullscreen vgFor="mainVideo"></vg-fullscreen>
+               <vg-play-pause [vgFor]="isMasterVideo? 'masterVideo' : 'studentVideo'"></vg-play-pause>
+               <vg-fullscreen></vg-fullscreen>
           </vg-controls>
 
           <vg-controls *ngIf="playerIsReady && !synchronized && !preview"
                        class="video-player-control-tool"
+                       [vgFor]="isMasterVideo? 'masterVideo' : 'studentVideo'"
                        [vgAutohide]="true"
                        [vgAutohideTime]="5">
               <dsapp-custom-lab-controls [isPlaying]="isPlaying"
                                          (pan)="onPan($event)"
                                          (togglePlay)="togglePlay()"></dsapp-custom-lab-controls>
-
-
-<!--               <ui-player-controls *ngIf="playerIsReady"-->
-<!--                                   [playing]="playerIsPlaying"-->
-<!--                                   (toggleVideos)="togglePlay()"-->
-<!--                                   (jump)="jump($event)"-->
-<!--                                   (stop)="stop()"></ui-player-controls>-->
-
-
-<!--               <div *ngIf="playerIsReady"-->
-<!--                    class="right-side-controls">-->
-
-<!--                    <a class="btn btn-sm btn-link"-->
-<!--                       (click)="clearVideo()">{{'LAB.removeVideo' | translate}}</a>-->
-<!--               </div>-->
-
-
-<!--               <vg-scrub-bar>-->
-<!--                    <vg-scrub-bar-buffering-time vgFor="mainVideo"></vg-scrub-bar-buffering-time>-->
-<!--                    <vg-scrub-bar-current-time vgFor="mainVideo"></vg-scrub-bar-current-time>-->
-<!--               </vg-scrub-bar>-->
-
-
           </vg-controls>
           <video [vgMedia]="video"
                  [playbackRate]="playbackRate"
                  [poster]="poster"
                  #video
-                 id="mainVideo"
+                 [id]="isMasterVideo? 'masterVideo' : 'studentVideo'"
                  preload="auto"
                  muted
                  playsinline

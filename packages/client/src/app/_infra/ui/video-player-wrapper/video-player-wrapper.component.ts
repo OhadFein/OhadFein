@@ -13,6 +13,7 @@ export class VideoPlayerWrapperComponent implements OnDestroy {
     @Input() poster: string = null;
     @Input() synchronized = false;
     @Input() preview = true;
+    @Input() isMasterVideo = true;
 
     @Output() durationEvent = new EventEmitter<number>();
     @Output() playerEvent = new EventEmitter();
@@ -175,6 +176,7 @@ export class VideoPlayerWrapperComponent implements OnDestroy {
     }
 
     clearVideo(): void {
+        // TODO: a prompt has to be added asking do you wanna close the video
         this.clearVideoFile.emit();
     }
 
