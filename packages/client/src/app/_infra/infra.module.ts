@@ -32,12 +32,15 @@ import {
   VideoPlayerModalComponent,
   VideoPlayerWrapperComponent,
   VideoPreviewComponent,
+  CustomLabControlsComponent
 } from './ui';
 
 
 @NgModule({
   imports: [
-    CommonModule, TranslateModule, RouterModule,
+    CommonModule,
+    TranslateModule,
+    RouterModule,
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
@@ -51,7 +54,7 @@ import {
     VideoPlayerWrapperComponent, StarNameDirective, NgbDateStructTodateDirective, InpageErrorComponent,
     TagsHolderComponent, ImageFilePickerComponent, VideoFilePickerComponent, PlayerSpeedControlsComponent,
     PlayerControlsComponent, BackgroundProcessesComponent, UploadPracticeBgProcessComponent, BaseBgProcessComponent,
-    ToggleSwitchDirective, VideoPreviewComponent
+    ToggleSwitchDirective, VideoPreviewComponent, CustomLabControlsComponent
   ],
   exports: [
     AlertsComponent, PageNotFoundComponent, NotificationsPageComponent,

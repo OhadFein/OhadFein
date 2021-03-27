@@ -19,3 +19,4 @@ export * from './video-player-wrapper/player-controls/player-controls.component'
 export * from './background-processes/background-processes.component';
 export * from './background-processes/upload-practice-bg-process/upload-practice-bg-process.component';
 export * from './video-preview/video-preview.component';
+export * from './custom-lab-controls/custom-lab-controls.component';

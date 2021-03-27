@@ -4,7 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ed527c0-12d5-4ae0-9bc4-1323668d1442" name="Default Changelist" comment="" />
+    <list default="true" id="0ed527c0-12d5-4ae0-9bc4-1323668d1442" name="Default Changelist" comment="clean up lots of css files">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/infra.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/infra.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/video-player-wrapper/player-controls/player-controls.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/video-player-wrapper/player-controls/player-controls.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/video-player-wrapper/player-controls/player-controls.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/video-player-wrapper/player-controls/player-controls.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/video-player-wrapper/video-player-wrapper.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/video-player-wrapper/video-player-wrapper.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/video-player-wrapper/video-player-wrapper.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/video-player-wrapper/video-player-wrapper.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/app-providers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/app-providers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/lab/lab-video-tool/lab-video-tool.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/lab/lab-video-tool/lab-video-tool.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/styles/elements/_player.scss" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/styles/elements/_player.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,9 +36,13 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
+  </component>
   <component name="ProjectId" id="1emEoVrJwe4CeMeod2iuyoB7nrF" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
@@ -36,7 +52,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/packages/client/src/assets/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -57,6 +73,26 @@
       <recent name="$PROJECT_DIR$/packages/client/src/assets/images/icons" />
       <recent name="$PROJECT_DIR$/packages/client/src/app/_infra/core/services" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="AlertsComponent" type="JavaScriptTestRunnerKarma" temporary="true" nameIsGenerated="true">
+      <config-file value="$PROJECT_DIR$/packages/client/karma.conf.js" />
+      <karma-package-dir value="$PROJECT_DIR$/node_modules/@angular/cli" />
+      <working-directory value="$PROJECT_DIR$/packages/client" />
+      <node-interpreter value="project" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file-path value="$PROJECT_DIR$/packages/client/src/app/_infra/ui/alerts/alerts.component.spec.ts" />
+      <test-names>
+        <test-name value="AlertsComponent" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Karma.AlertsComponent" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
@@ -85,7 +121,102 @@
       <workItem from="1610309573478" duration="742000" />
       <workItem from="1612978165970" duration="22000" />
       <workItem from="1613733455672" duration="19000" />
+      <workItem from="1614363715263" duration="6179000" />
+      <workItem from="1614424341756" duration="1873000" />
+      <workItem from="1614713606517" duration="353000" />
+      <workItem from="1614840642192" duration="5208000" />
+      <workItem from="1615022088790" duration="193000" />
+      <workItem from="1615044779289" duration="441000" />
+      <workItem from="1615057188044" duration="10641000" />
+      <workItem from="1615362708028" duration="3332000" />
+      <workItem from="1615395273845" duration="543000" />
+      <workItem from="1616325724420" duration="4293000" />
+      <workItem from="1616613221586" duration="109000" />
+      <workItem from="1616613379337" duration="47000" />
+      <workItem from="1616613473433" duration="30000" />
+      <workItem from="1616613615530" duration="154000" />
+      <workItem from="1616613781265" duration="1408000" />
+      <workItem from="1616616518297" duration="5419000" />
+      <workItem from="1616840531579" duration="9216000" />
     </task>
+    <task id="LOCAL-00001" summary="add css variables for VideoPlayerWrapper component&#10;remove redundant code">
+      <created>1615221223365</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1615221223365</updated>
+    </task>
+    <task id="LOCAL-00002" summary="get rid of useless css class">
+      <created>1615275957806</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1615275957806</updated>
+    </task>
+    <task id="LOCAL-00003" summary="clean up lots of css files">
+      <created>1615276156249</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1615276156249</updated>
+    </task>
+    <task id="LOCAL-00004" summary="add wrapper for a LabPage component&#10;add css file to fix sticked to the top page">
+      <created>1615276612063</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1615276612063</updated>
+    </task>
+    <task id="LOCAL-00005" summary="update styles for figure movement">
+      <created>1615365913462</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1615365913463</updated>
+    </task>
+    <task id="LOCAL-00006" summary="do not allow navigation to collapse on scroll down">
+      <created>1615366074673</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1615366074673</updated>
+    </task>
+    <task id="LOCAL-00007" summary="remove some css classes + redundant functions">
+      <created>1615366234377</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1615366234377</updated>
+    </task>
+    <task id="LOCAL-00008" summary="fix player layout">
+      <created>1615366280710</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1615366280710</updated>
+    </task>
+    <task id="LOCAL-00009" summary="update &quot;save to my practice&quot; button">
+      <created>1615366362586</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1615366362586</updated>
+    </task>
+    <task id="LOCAL-00010" summary="wip. move to default video player controls in the lab">
+      <created>1615366509669</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1615366509669</updated>
+    </task>
+    <task id="LOCAL-00011" summary="add CustomLabControls component with the scrollbar">
+      <created>1616860010962</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1616860010962</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,5 +231,31 @@
         <option value="1" />
       </list>
     </option>
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add css variables for VideoPlayerWrapper component&#10;remove redundant code" />
+    <MESSAGE value="get rid of useless css class" />
+    <MESSAGE value="clean up lots of css files" />
+    <MESSAGE value="add wrapper for a LabPage component&#10;add css file to fix sticked to the top page" />
+    <MESSAGE value="update styles for figure movement" />
+    <MESSAGE value="do not allow navigation to collapse on scroll down" />
+    <MESSAGE value="remove some css classes + redundant functions" />
+    <MESSAGE value="fix player layout" />
+    <MESSAGE value="update &quot;save to my practice&quot; button" />
+    <MESSAGE value="wip. move to default video player controls in the lab" />
+    <MESSAGE value="add CustomLabControls component with the scrollbar" />
+    <option name="LAST_COMMIT_MESSAGE" value="add CustomLabControls component with the scrollbar" />
   </component>
 </project>
