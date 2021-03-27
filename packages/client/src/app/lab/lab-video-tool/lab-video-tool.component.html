@@ -8,7 +8,9 @@
            class="icon"
            [ngClass]="{'vg-icon-fullscreen':!fullscreen, 'vg-icon-fullscreen_exit':fullscreen}"
            (click)="toggleFullScreen()"></div>
-
+      <div role="button"
+           class="icon icon-practices icon-save"
+           (click)="saveToPractices.emit()"></div>
     </div>
     <div class="right-side"
          (click)="toggleSync()">
@@ -37,40 +39,35 @@
     </ui-video-player-wrapper>
   </div>
 
-
-
-
   <div *ngIf="studentVideo"
        class="lab-tool-player-wrapper student-player-wrapper">
     <ui-video-player-wrapper #studentPLayer
                              [src]="studentVideo ? studentVideo.path : null"
                              [preview]="false"
                              [synchronized]="synchronized"
+                             [isMasterVideo]="false"
                              (playerEvent)="studentPLayerEvent($event)"
-                             (playerStateChange)="studentPLayerStateChange($event)"
                              (clearVideoFile)="studentVideoClear()">
     </ui-video-player-wrapper>
   </div>
 
-  <ng-template [ngIf]="synchronized && studentVideo">
-    <div class="linked-controls">
-      <ui-player-controls [playing]="playing"
-                          (toggleVideos)="toggleVideos()"
-                          (jump)="jump($event)"
-                          (stop)="stop()"></ui-player-controls>
-      <div class="right-side-controls">
+  <div class="lab-video-control" *ngIf="synchronized && studentVideo">
+    <dsapp-custom-lab-controls [isPlaying]="playing"
+                               [isHiddenTime]="true"
+                               [isHiddenPlayback]="true"
+                               (pan)="onPan($event)"
+                               (togglePlay)="toggleVideos()"></dsapp-custom-lab-controls>
+<!--    <div class="linked-controls">-->
+<!--      <ui-player-controls [playing]="playing"-->
+<!--                          (toggleVideos)="toggleVideos()"-->
+<!--                          (stop)="stop()"></ui-player-controls>-->
+<!--      <div class="right-side-controls">-->
 
-        <ui-player-speed-controls [playbackRate]="playbackRate"
-                                  (changePLayBackRate)="changePLayBackRate($event)">
-        </ui-player-speed-controls>
+<!--        <ui-player-speed-controls [playbackRate]="playbackRate"-->
+<!--                                  (changePLayBackRate)="changePLayBackRate($event)">-->
+<!--        </ui-player-speed-controls>-->
 
-      </div>
-    </div>
-  </ng-template>
-
-  <div *ngIf="synchronized"
-       class="touch-controls"
-       (tap)="onTap($event)"
-       (panstart)="onPanStart($event)"
-       (pan)="onPan($event)"></div>
+<!--      </div>-->
+<!--    </div>-->
+  </div>
 </div>

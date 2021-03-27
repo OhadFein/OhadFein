@@ -17,7 +17,7 @@ export class VideoPlayerWrapperComponent implements OnDestroy {
 
     @Output() durationEvent = new EventEmitter<number>();
     @Output() playerEvent = new EventEmitter();
-    @Output() playerStateChange = new EventEmitter();
+    @Output() playerStateChange = new EventEmitter<boolean>();
     @Output() clearVideoFile = new EventEmitter();
     @Output() isPlayerReady = new EventEmitter<boolean>();
     playerIsReady = false;

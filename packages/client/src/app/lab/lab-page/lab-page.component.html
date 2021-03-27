@@ -87,20 +87,15 @@
             <div class="col">
                 <dsapp-lab-video-tool [masterVideo]="labItem.starVideo ? labItem.starVideo : null"
                                       [studentVideo]="labItem.userVideo ? labItem.userVideo : null"
+                                      [disableSavePracticesButton]="practiceIsSaved || disableSavePracticesButton"
                                       (masterPlayerDurationReady)="setDurationLimit($event)"
                                       (isPlayerReady)="masterVideoReady()"
-                                      (clearVideo)="clearVideo($event)">
+                                      (clearVideo)="clearVideo($event)"
+                                      (saveToPractices)="saveToPractices()">
                 </dsapp-lab-video-tool>
             </div>
         </div>
     </ng-template>
-    <div *ngIf="labView=='full'"
-         class="mt-4 mb-4 d-flex justify-content-center">
-        <button class="btn btn-danger text-center"
-                [disabled]="practiceIsSaved || disableSavePracticesButton"
-                (click)="saveToPractices()">
-            <i class="icon icon-practices pr-2"></i>{{'LAB.saveToMyPractices' | translate}}</button>
-    </div>
     <video #videoMta
            style="display: none;"
            *ngIf="userVideo"

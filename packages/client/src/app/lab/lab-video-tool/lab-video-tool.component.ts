@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {
     LabPlayerJumpDirection,
     LabPlayerPlaybackOperator,
@@ -7,21 +7,22 @@ import {
     LabUserVideo,
 } from '@app/_infra/core/models';
 import {VideoPlayerWrapperComponent} from '@app/_infra/ui';
-import {User} from '@core/models';
 import {VgEvents} from 'ngx-videogular';
 
 @Component({
     selector: 'dsapp-lab-video-tool',
-    templateUrl: './lab-video-tool.component.html'
+    templateUrl: './lab-video-tool.component.html',
+    styleUrls: ['./lab-video-tool.component.scss']
 })
-export class LabVideoToolComponent implements OnInit {
-
+export class LabVideoToolComponent {
     @Input() masterVideo: LabStarVideo = null;
     @Input() studentVideo: LabUserVideo = null;
+    @Input() disableSavePracticesButton: boolean;
 
     @Output() masterPlayerDurationReady = new EventEmitter<number>();
     @Output() clearVideo = new EventEmitter<LabPlayerType>();
     @Output() isPlayerReady = new EventEmitter<boolean>();
+    @Output() saveToPractices = new EventEmitter<void>();
     @ViewChild('masterPLayer', {static: false}) masterPLayer: VideoPlayerWrapperComponent;
     @ViewChild('studentPLayer', {static: false}) studentPLayer: VideoPlayerWrapperComponent;
 
@@ -31,13 +32,6 @@ export class LabVideoToolComponent implements OnInit {
     playbackRate = 1;
 
     fullscreen = false;
-
-    constructor() {
-    }
-
-    ngOnInit() {
-    }
-
 
     toggleVideos() {
         if (this.playing) {
@@ -88,10 +82,6 @@ export class LabVideoToolComponent implements OnInit {
         this.playing = event;
     }
 
-    studentPLayerStateChange(event) {
-    }
-
-
     toggleSync() {
         if (!this.studentVideo) {
             return;
@@ -136,7 +126,6 @@ export class LabVideoToolComponent implements OnInit {
         const studentTime = this.studentPLayer.getCurrentTime();
         const masterTime = studentTime - this.timeDiff;
         this.masterPLayer.seekTo(masterTime);
-
     }
 
     resetPlayers() {
@@ -173,7 +162,6 @@ export class LabVideoToolComponent implements OnInit {
         const seekTo = devVelocity + time;
         this.masterPLayer.seekTo(seekTo);
         this.syncStudentPlayer();
-
     }
 
 
