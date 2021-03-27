@@ -83,7 +83,6 @@
     }
     vg-controls {
         justify-content: space-between;
-        background: rgba($black, 0.80);
         vg-scrub-bar {
             position: absolute;
             margin: 0;
@@ -104,6 +103,11 @@
                     background-color: rgba($white, 0.6);
                 }
             }
+        }
+    }
+    vg-playback-button {
+        & > span {
+            outline: none;
         }
     }
     video{
