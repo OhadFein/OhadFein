@@ -1,0 +1,67 @@
+$delimiterColor: whitesmoke;
+
+:host {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.custom-lab-scroll {
+  position: relative;
+  display: block;
+  width: auto;
+  height: 24px;
+  white-space: nowrap;
+  overflow: scroll hidden;
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.custom-lab-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.custom-lab-block {
+  position: relative;
+  display: inline-flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  width: 100px;
+  height: 100%;
+}
+
+.main-line {
+  width: 2px;
+  height: 100%;
+  background-color: $delimiterColor;
+}
+
+.sub-line {
+  width: 2px;
+  height: 50%;
+  background-color: darken($delimiterColor, 10%);
+}
+
+.custom-lab-play-pause-icon {
+  width: 36px;
+  height: 36px;
+  margin: 0 8px 0 16px;
+}
+
+.custom-lab-playback-icon {
+  width: 36px;
+  height: 36px;
+  margin: 0 8px 0 0;
+  font-weight: 400;
+}
+
+.custom-lab-time-icon {
+  display: flex;
+  align-items: center;
+  width: auto;
+  height: 36px;
+  margin: 0 4px 0 8px;
+  font-weight: 400;
+}
