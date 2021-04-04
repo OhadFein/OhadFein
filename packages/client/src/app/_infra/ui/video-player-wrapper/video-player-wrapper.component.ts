@@ -1,7 +1,7 @@
-import {Component, EventEmitter, Input, OnDestroy, Output} from '@angular/core';
-import {LabPlayerPlaybackOperator} from '@app/_infra/core/models';
-import {VgAPI} from 'ngx-videogular';
-import {Subscription} from 'rxjs';
+import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { VgAPI } from 'ngx-videogular';
+import { Subscription } from 'rxjs';
+import { LabPlayerPlaybackOperator } from '@app/_infra/core/models';
 
 @Component({
     selector: 'ui-video-player-wrapper',
@@ -31,9 +31,10 @@ export class VideoPlayerWrapperComponent implements OnDestroy {
 
     onPlayerReady(api: VgAPI) {
         this.playerAPI = api;
-        this.playerAPI.getDefaultMedia().subscriptions.loadedMetadata.subscribe(
-            this.initVideo.bind(this)
-        );
+        this.playerAPI.getDefaultMedia()
+            .subscriptions
+            .loadedMetadata
+            .subscribe(() => this.initVideo());
     }
 
     initVideo() {
@@ -43,12 +44,11 @@ export class VideoPlayerWrapperComponent implements OnDestroy {
         this.totalTime = duration.toFixed(2);
         this.durationEvent.emit(duration);
         this.pushSubscriptions();
+        this.forceForward();
     }
 
     ngOnDestroy(): void {
-        this.subs.forEach(s => {
-            s.unsubscribe();
-        });
+        this.subs.forEach(sub => (sub.unsubscribe()));
     }
 
     pushSubscriptions() {
@@ -96,49 +96,31 @@ export class VideoPlayerWrapperComponent implements OnDestroy {
         this.isPlaying ? this.pause() : this.play();
     }
 
-    jump(direction) {
-        // TODO: should we use seekTo instead of .currentTIme = ...?
-        switch (direction) {
-            case 'fwd':
-                this.playerAPI.getDefaultMedia().currentTime += 0.5;
-                break;
-            case 'bwd':
-                this.playerAPI.getDefaultMedia().currentTime -= 0.5;
-                break;
-        }
-    }
-
-    play() {
+    play(): void {
         this.playerAPI.play();
     }
 
-    pause() {
+    pause(): void {
         this.playerAPI.pause();
     }
 
-    stop() {
-        this.pause();
-        this.seekTo(0);
-    }
+    onPan(timeShift: number): void {
+        if (typeof timeShift !== 'number') {
+            return;
+        }
 
-    onPanStart(evt) {
-        this.pause();
-    }
-
-    onPan(timeShift: number) {
         if (this.isPlaying) {
             this.pause();
         }
-        const time = this.getCurrentTime();
-        const seekTo = time + timeShift;
-        this.seekTo(seekTo);
+
+        const currentTime = this.getCurrentTime();
+        // control the speed of scroll. set to 1/2 of an actual shift
+        const safeShift = ((timeShift * 50) || 1) / 100;
+        const seekTo = (currentTime + safeShift).toFixed(2);
+        this.seekTo(parseFloat(seekTo));
     }
 
-    onTap(evt) {
-        this.togglePlay();
-    }
-
-    seekTo(time: number) {
+    seekTo(time: number): void {
         const duration = this.getDuration();
         let seekTo = time;
 
@@ -147,7 +129,6 @@ export class VideoPlayerWrapperComponent implements OnDestroy {
         } else if (seekTo < 0) {
             seekTo = 0;
         }
-
         this.playerAPI.seekTime(seekTo);
     }
 
@@ -175,9 +156,20 @@ export class VideoPlayerWrapperComponent implements OnDestroy {
         }
     }
 
+    // TODO: a prompt has to be added asking do you wanna close the video
     clearVideo(): void {
-        // TODO: a prompt has to be added asking do you wanna close the video
         this.clearVideoFile.emit();
+    }
+
+    /**
+     * yes, it is a hack
+     * force the player to switch into play mode to initialize scroll bar on iOS devices
+     * playerApi on iOS devices cannot handle seekTo event on onPlayerReady event launch
+     * @private
+     */
+    private forceForward() {
+        this.play();
+        setTimeout(() => this.pause(), 100);
     }
 
 }

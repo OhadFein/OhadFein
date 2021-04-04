@@ -1,4 +1,5 @@
 <div class="embed-responsive embed-responsive-16by9 video-wrapper">
+     <!-- TODO: get rid of this block here -->
      <div *ngIf="playerIsReady && !preview && synchronized"
           class="top-controls onplayer-controls">
           <p class="time btn btn-sm">{{timePassed + '/' + totalTime}}</p>
@@ -33,7 +34,6 @@
           </vg-controls>
           <video [vgMedia]="video"
                  [playbackRate]="playbackRate"
-                 [poster]="poster"
                  #video
                  [id]="isMasterVideo? 'masterVideo' : 'studentVideo'"
                  preload="auto"
@@ -45,14 +45,4 @@
                        type="video/mp4">
           </video>
      </vg-player>
-
-<!--     <ng-template [ngIf]="!playerIsReady">-->
-<!--          <ui-preloader-inapp></ui-preloader-inapp>-->
-<!--     </ng-template>-->
-
-<!--     <div *ngIf="!synchronized && !preview"-->
-<!--          class="touch-controls"-->
-<!--          (tap)="onTap($event)"-->
-<!--          (panstart)="onPanStart($event)"-->
-<!--          (pan)="onPan($event)"></div>-->
 </div>
