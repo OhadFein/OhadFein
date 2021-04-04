@@ -12,6 +12,7 @@ import {
 } from '@angular/core';
 import { DSAPP_WINDOW } from '@core/global_variables/token';
 import { Observable, timer } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 
 @Component({
   selector: 'dsapp-custom-lab-controls',
@@ -35,6 +36,9 @@ export class CustomLabControlsComponent implements OnInit, AfterViewInit {
 
   private panMoveSource: Observable<number>;
 
+  /**
+   * it is important to recalculate amount of blocks necessary for a smooth scrolling on resize
+   */
   @HostListener('window:resize')
   onResize() {
     this.screenWidth = this.window.innerWidth;
@@ -67,17 +71,24 @@ export class CustomLabControlsComponent implements OnInit, AfterViewInit {
     this.window.requestAnimationFrame(() => this.scrollUpdate(event.deltaX));
   }
 
+  /**
+   * fire pan event on move
+   * @param event
+   */
   onPanMove(event): void {
     if (!this.panMoveSource) {
-      const eventToSend = event;
-      this.panMoveSource = timer(50);
-      this.panMoveSource.subscribe(() => {
-        this.pan.emit(eventToSend.velocityX);
-        this.panMoveSource = null;
-      })
+      this.panMoveSource = timer(50); // set a bandwidth to max 20 shift events per a second
+      this.panMoveSource
+          .pipe(finalize(() => (this.panMoveSource = null)))
+          .subscribe(() => (this.pan.emit(event.velocityX)));
     }
   }
 
+  /**
+   * update scroll bar position based on the direction
+   * @param shift
+   * @private
+   */
   private scrollUpdate(shift: number): void {
     if (shift < 0) {
       this.setScrollPosition(-shift);
@@ -86,13 +97,22 @@ export class CustomLabControlsComponent implements OnInit, AfterViewInit {
     }
   }
 
+  /**
+   * calculate a necessary number of blocks to be present in the DOM to allow smooth scrolling
+   * @private
+   */
   private getScrollBlocks(): number[] {
     const numberOfBlocks = Math.ceil((this.screenWidth || this.defaultMobileScreenWidth) * 3 / this.blockWidth);
     return Array(numberOfBlocks).fill(0);
   }
 
+  /**
+   * set scroll position with the use of setTimeout
+   * not the best option but couldn't find a way to assign to scrollLeft otherwise
+   * @param value
+   * @private
+   */
   private setScrollPosition(value: number): void {
-    // need this timeout to assign to a scrollLeft property a shift value
     setTimeout(() => {this.scroll.nativeElement.scrollLeft = value;}, 1);
   }
 
