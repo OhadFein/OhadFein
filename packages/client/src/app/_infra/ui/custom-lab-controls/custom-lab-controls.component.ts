@@ -6,8 +6,10 @@ import {
   HostListener,
   Inject,
   Input,
+  OnChanges,
   OnInit,
   Output,
+  SimpleChanges,
   ViewChild
 } from '@angular/core';
 import { DSAPP_WINDOW } from '@core/global_variables/token';
@@ -19,14 +21,21 @@ import { finalize } from 'rxjs/operators';
   templateUrl: './custom-lab-controls.component.html',
   styleUrls: ['./custom-lab-controls.component.scss']
 })
-export class CustomLabControlsComponent implements OnInit, AfterViewInit {
+export class CustomLabControlsComponent implements OnChanges, OnInit, AfterViewInit {
   @Input() isPlaying: boolean;
   @Input() isHiddenTime: boolean;
   @Input() isHiddenPlayback: boolean;
+  @Input() totalTimePassed: string;
+  @Input() duration: number;
+  @Input() playbackRate: number;
+
   @Output() togglePlay = new EventEmitter<void>();
   @Output() pan = new EventEmitter<number>();
+  @Output() changePlaybackRate = new EventEmitter<void>();
 
   @ViewChild('scroll') scroll: ElementRef<HTMLDivElement>;
+
+  formattedTime: string;
 
   blocks: number[];
   private screenWidth = 0;
@@ -50,6 +59,14 @@ export class CustomLabControlsComponent implements OnInit, AfterViewInit {
   }
 
   constructor(@Inject(DSAPP_WINDOW) private window: Window) {}
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes.totalTimePassed) {
+      const seconds = parseInt(this.totalTimePassed, 10) % 60;
+      const minutes = parseInt(this.totalTimePassed, 10) / 60;
+      this.formattedTime = `${this.getFormattedTime(minutes)}:${this.getFormattedTime(seconds)}`;
+    }
+  }
 
   ngOnInit(): void {
     this.screenWidth = this.window.innerWidth;
@@ -118,5 +135,15 @@ export class CustomLabControlsComponent implements OnInit, AfterViewInit {
 
   private getScrollPosition(): number {
     return this.scroll.nativeElement.scrollLeft - (this.scroll.nativeElement.clientLeft || 0);
+  }
+
+  /**
+   * get two digit formatted number
+   * @param time
+   * @private
+   */
+  private getFormattedTime(time: number): string {
+    const formattedTime = (Math.round(time * 100) / 100).toFixed(0);
+    return time < 10 ? `0${formattedTime}` : `${formattedTime}`;
   }
 }
