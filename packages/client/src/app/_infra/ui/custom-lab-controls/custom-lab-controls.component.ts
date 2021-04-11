@@ -36,6 +36,7 @@ export class CustomLabControlsComponent implements OnChanges, OnInit, AfterViewI
   @ViewChild('scroll') scroll: ElementRef<HTMLDivElement>;
 
   formattedTime: string;
+  playbackRateText: string;
 
   blocks: number[];
   private screenWidth = 0;
@@ -65,6 +66,10 @@ export class CustomLabControlsComponent implements OnChanges, OnInit, AfterViewI
       const seconds = parseInt(this.totalTimePassed, 10) % 60;
       const minutes = parseInt(this.totalTimePassed, 10) / 60;
       this.formattedTime = `${this.getFormattedTime(minutes)}:${this.getFormattedTime(seconds)}`;
+    }
+
+    if (changes.playbackRate) {
+      this.playbackRateText = `${this.playbackRate}x`;
     }
   }
 
