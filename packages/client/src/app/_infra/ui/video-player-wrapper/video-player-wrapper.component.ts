@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { VgAPI } from 'ngx-videogular';
 import { Subscription } from 'rxjs';
-import { LabPlayerPlaybackOperator } from '@app/_infra/core/models';
 
 @Component({
     selector: 'ui-video-player-wrapper',
@@ -18,8 +17,8 @@ export class VideoPlayerWrapperComponent implements OnDestroy {
     @Output() durationEvent = new EventEmitter<number>();
     @Output() playerEvent = new EventEmitter();
     @Output() playerStateChange = new EventEmitter<boolean>();
-    @Output() clearVideoFile = new EventEmitter();
     @Output() isPlayerReady = new EventEmitter<boolean>();
+
     playerIsReady = false;
     isPlaying = false;
     playerAPI: VgAPI;
@@ -140,26 +139,46 @@ export class VideoPlayerWrapperComponent implements OnDestroy {
         return this.playerAPI.getDefaultMedia().duration;
     }
 
-    changePLayBackRate(operator: LabPlayerPlaybackOperator) {
-        switch (operator) {
-            case 'plus':
-                const plus = parseFloat((this.playbackRate + 0.1).toFixed(1));
-                this.playbackRate = plus < 10 ? plus : 10;
+    changePlaybackRate(): void {
+        switch (this.playbackRate) {
+            case 0.5:
+            case 1.0:
+            case 1.5:
+                this.playbackRate = parseFloat((this.playbackRate + 0.5).toFixed(1));
                 break;
-            case 'minus':
-                const minus = parseFloat((this.playbackRate - 0.1).toFixed(1));
-                this.playbackRate = minus > 0.1 ? minus : 0.1;
+            case 2.0:
+                this.playbackRate = 0.5;
                 break;
-
-            default:
-                this.playbackRate = 1;
         }
     }
 
-    // TODO: a prompt has to be added asking do you wanna close the video
-    clearVideo(): void {
-        this.clearVideoFile.emit();
-    }
+    // changePLayBackRate(operator: LabPlayerPlaybackOperator) {
+    //     switch (operator) {
+    //         case 'plus':
+    //             const plus = parseFloat((this.playbackRate + 0.1).toFixed(1));
+    //             this.playbackRate = plus < 10 ? plus : 10;
+    //             break;
+    //         case 'minus':
+    //             const minus = parseFloat((this.playbackRate - 0.1).toFixed(1));
+    //             this.playbackRate = minus > 0.1 ? minus : 0.1;
+    //             break;
+    //
+    //         default:
+    //             this.playbackRate = 1;
+    //     }
+    // }
+    //
+    // jump(direction) {
+    //     // TODO: should we use seekTo instead of .currentTIme = ...?
+    //     switch (direction) {
+    //         case 'fwd':
+    //             this.playerAPI.getDefaultMedia().currentTime += 0.5;
+    //             break;
+    //         case 'bwd':
+    //             this.playerAPI.getDefaultMedia().currentTime -= 0.5;
+    //             break;
+    //     }
+    // }
 
     /**
      * yes, it is a hack

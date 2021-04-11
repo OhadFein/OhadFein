@@ -1,14 +1,4 @@
 <div class="embed-responsive embed-responsive-16by9 video-wrapper">
-     <!-- TODO: get rid of this block here -->
-     <div *ngIf="playerIsReady && !preview && synchronized"
-          class="top-controls onplayer-controls">
-          <p class="time btn btn-sm">{{timePassed + '/' + totalTime}}</p>
-
-          <div *ngIf="!isMasterVideo" class="close-video-control">
-               <span class="icon icon-cancel" (click)="clearVideo()"></span>
-          </div>
-     </div>
-
      <vg-player class="embed-responsive-item"
                 (onPlayerReady)="onPlayerReady($event)">
 
