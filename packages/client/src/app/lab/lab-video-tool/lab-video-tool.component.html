@@ -34,20 +34,22 @@
                              (durationEvent)="masterPlayerDuration($event)"
                              (playerEvent)="masterPLayerEvent($event)"
                              (playerStateChange)="masterPLayerStateChange($event)"
-                             (clearVideoFile)="masterVideoClear()"
                              (isPlayerReady)="masterVideoReady()">
     </ui-video-player-wrapper>
   </div>
 
   <div *ngIf="studentVideo"
        class="lab-tool-player-wrapper student-player-wrapper">
+    <div class="close-video-control">
+      <button (click)="studentVideoClear()">close</button>
+    </div>
     <ui-video-player-wrapper #studentPLayer
                              [src]="studentVideo ? studentVideo.path : null"
                              [preview]="false"
                              [synchronized]="synchronized"
                              [isMasterVideo]="false"
-                             (playerEvent)="studentPLayerEvent($event)"
-                             (clearVideoFile)="studentVideoClear()">
+                             (durationEvent)="studentPlayerDuration($event)"
+                             (playerEvent)="studentPLayerEvent($event)">
     </ui-video-player-wrapper>
   </div>
 
@@ -55,8 +57,12 @@
     <dsapp-custom-lab-controls [isPlaying]="playing"
                                [isHiddenTime]="true"
                                [isHiddenPlayback]="true"
+                               [duration]="videoDurationSync"
+                               [totalTimePassed]="studentPLayer.timePassed"
+                               [playbackRate]="playbackRate"
                                (pan)="onPan($event)"
-                               (togglePlay)="toggleVideos()"></dsapp-custom-lab-controls>
+                               (togglePlay)="toggleVideos()"
+                               (changePlaybackRate)="changePlaybackRate()"></dsapp-custom-lab-controls>
 <!--    <div class="linked-controls">-->
 <!--      <ui-player-controls [playing]="playing"-->
 <!--                          (toggleVideos)="toggleVideos()"-->

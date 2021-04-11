@@ -22,3 +22,19 @@
   line-height: 24px;
   font-size: 14px;
 }
+
+.close-video-control {
+  position: absolute;
+  right: 0;
+  z-index: 1;
+  font-size: 14px;
+  margin: 8px;
+
+  > button {
+    border: none;
+    background-color: transparent;
+    color: white;
+    box-shadow: 3px 3px 4px -4px rgb(0 0 0 / .4);
+  }
+}
+
