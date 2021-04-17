@@ -168,7 +168,7 @@
         "speed": "speed",
         "linkVideos": "link videos",
         "unlinkVideos": "unlink videos",
-        "saveToMyPractices": "Save to my practices",
+        "saveToMyPractices": "save to my practices",
         "MESSAGES": {
             "uploadStarted": "Video upload has been started",
             "uploadCompleted": "Video was successfully uploaded"
