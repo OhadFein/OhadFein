@@ -1,25 +1,26 @@
-<div class="lab-tool-wrapper video-wrapper"
+<div class="lab-tool-wrapper"
      [ngClass]="{'linked':synchronized, 'fullscreen':fullscreen}">
 
-  <div *ngIf="masterVideo && studentVideo"
-       class="controls-row">
+  <!-- TODO: has to be reworked with new icons -->
+  <div *ngIf="masterVideo && studentVideo" class="controls-row">
     <div class="left-side">
-      <div role="button"
-           class="icon"
-           [ngClass]="{'vg-icon-fullscreen':!fullscreen, 'vg-icon-fullscreen_exit':fullscreen}"
-           (click)="toggleFullScreen()"></div>
-
+      <button class="icon control-button"
+              [ngClass]="{'vg-icon-fullscreen':!fullscreen, 'vg-icon-fullscreen_exit':fullscreen}"
+              [style.font-size.rem]="'2'"
+              (click)="toggleFullScreen()"></button>
+      <!-- TODO: need another icon here to be more descriptive and with correct line width -->
+      <button class="icon icon-practices control-button"
+              [style.font-size.rem]="'1.1'"
+              (click)="saveToPractices.emit()">
+<!--        <span>{{'LAB.saveToMyPractices' | translate}}</span>-->
+      </button>
     </div>
     <div class="right-side"
          (click)="toggleSync()">
-      <label>{{synchronized ? ('LAB.unlinkVideos' | translate):('LAB.linkVideos' | translate)}}</label>
+      <span>{{synchronized ? ('LAB.unlinkVideos' | translate):('LAB.linkVideos' | translate)}}</span>
 
-      <div role="button"
-           uiToggleSwitch
-           [state]="synchronized"
-           [disabled]="!studentVideo"></div>
+      <button uiToggleSwitch class="control-button" [state]="synchronized" [disabled]="!studentVideo"></button>
     </div>
-
   </div>
 
   <div *ngIf="masterVideo"
@@ -32,46 +33,32 @@
                              (durationEvent)="masterPlayerDuration($event)"
                              (playerEvent)="masterPLayerEvent($event)"
                              (playerStateChange)="masterPLayerStateChange($event)"
-                             (clearVideoFile)="masterVideoClear()"
-                             (isPlayerReady)="masterVideoReady()"
-    >
+                             (isPlayerReady)="masterVideoReady()">
     </ui-video-player-wrapper>
   </div>
 
-
-
-
   <div *ngIf="studentVideo"
        class="lab-tool-player-wrapper student-player-wrapper">
+    <div class="close-video-control">
+      <button (click)="studentVideoClear()">close</button>
+    </div>
     <ui-video-player-wrapper #studentPLayer
                              [src]="studentVideo ? studentVideo.path : null"
                              [preview]="false"
                              [synchronized]="synchronized"
-                             (playerEvent)="studentPLayerEvent($event)"
-                             (playerStateChange)="studentPLayerStateChange($event)"
-                             (clearVideoFile)="studentVideoClear()">
+                             [isMasterVideo]="false"
+                             (durationEvent)="studentPlayerDuration($event)"
+                             (playerEvent)="studentPLayerEvent($event)">
     </ui-video-player-wrapper>
   </div>
 
-  <ng-template [ngIf]="synchronized && studentVideo">
-    <div class="linked-controls">
-      <ui-player-controls [playing]="playing"
-                          (toggleVideos)="toggleVideos()"
-                          (jump)="jump($event)"
-                          (stop)="stop()"></ui-player-controls>
-      <div class="right-side-controls">
-
-        <ui-player-speed-controls [playbackRate]="playbackRate"
-                                  (changePLayBackRate)="changePLayBackRate($event)">
-        </ui-player-speed-controls>
-
-      </div>
-    </div>
-  </ng-template>
-
-  <div *ngIf="synchronized"
-       class="touch-controls"
-       (tap)="onTap($event)"
-       (panstart)="onPanStart($event)"
-       (pan)="onPan($event)"></div>
+  <div class="lab-video-control" *ngIf="synchronized && studentVideo">
+    <dsapp-custom-lab-controls [isPlaying]="playing"
+                               [duration]="videoDurationSync"
+                               [totalTimePassed]="studentPLayer.timePassed"
+                               [playbackRate]="playbackRate"
+                               (pan)="onPan($event)"
+                               (togglePlay)="toggleVideos()"
+                               (changePlaybackRate)="changePlaybackRate()"></dsapp-custom-lab-controls>
+  </div>
 </div>

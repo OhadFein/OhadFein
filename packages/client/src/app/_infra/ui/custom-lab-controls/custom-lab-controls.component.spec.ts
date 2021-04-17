@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VideoPreviewComponent } from './video-preview.component';
+import { CustomLabControlsComponent } from './custom-lab-controls.component';
 
-describe('VideoPreviewComponent', () => {
-  let component: VideoPreviewComponent;
-  let fixture: ComponentFixture<VideoPreviewComponent>;
+describe('CustomLabControlsComponent', () => {
+  let component: CustomLabControlsComponent;
+  let fixture: ComponentFixture<CustomLabControlsComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VideoPreviewComponent ]
+      declarations: [ CustomLabControlsComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(VideoPreviewComponent);
+    fixture = TestBed.createComponent(CustomLabControlsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

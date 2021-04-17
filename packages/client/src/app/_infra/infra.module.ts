@@ -22,7 +22,6 @@ import {
   NotificationsPageComponent,
   PageNotFoundComponent,
   PlayerControlsComponent,
-  PlayerSpeedControlsComponent,
   PreloaderIconComponent,
   PreloaderInappComponent,
   TagsHolderComponent,
@@ -32,12 +31,15 @@ import {
   VideoPlayerModalComponent,
   VideoPlayerWrapperComponent,
   VideoPreviewComponent,
+  CustomLabControlsComponent
 } from './ui';
 
 
 @NgModule({
   imports: [
-    CommonModule, TranslateModule, RouterModule,
+    CommonModule,
+    TranslateModule,
+    RouterModule,
     VgCoreModule,
     VgControlsModule,
     VgOverlayPlayModule,
@@ -49,18 +51,18 @@ import {
     NavigationComponent, HeaderComponent, AboutDanskillModalComponent, VideoPlayerModalComponent,
     LogoComponent, PreloaderIconComponent, PreloaderInappComponent,
     VideoPlayerWrapperComponent, StarNameDirective, NgbDateStructTodateDirective, InpageErrorComponent,
-    TagsHolderComponent, ImageFilePickerComponent, VideoFilePickerComponent, PlayerSpeedControlsComponent,
+    TagsHolderComponent, ImageFilePickerComponent, VideoFilePickerComponent,
     PlayerControlsComponent, BackgroundProcessesComponent, UploadPracticeBgProcessComponent, BaseBgProcessComponent,
-    ToggleSwitchDirective, VideoPreviewComponent
+    ToggleSwitchDirective, VideoPreviewComponent, CustomLabControlsComponent
   ],
   exports: [
     AlertsComponent, PageNotFoundComponent, NotificationsPageComponent,
     NavigationComponent, HeaderComponent, AboutDanskillModalComponent, VideoPlayerModalComponent,
     LogoComponent, PreloaderIconComponent, PreloaderInappComponent,
     VideoPlayerWrapperComponent, StarNameDirective, NgbDateStructTodateDirective, InpageErrorComponent,
-    TagsHolderComponent, ImageFilePickerComponent, VideoFilePickerComponent, PlayerSpeedControlsComponent,
+    TagsHolderComponent, ImageFilePickerComponent, VideoFilePickerComponent,
     PlayerControlsComponent, BackgroundProcessesComponent, UploadPracticeBgProcessComponent,
-    ToggleSwitchDirective, VideoPreviewComponent
+    ToggleSwitchDirective, VideoPreviewComponent, CustomLabControlsComponent
   ]
 })
 export class InfraModule { }

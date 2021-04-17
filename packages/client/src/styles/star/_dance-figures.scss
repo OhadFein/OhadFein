@@ -1,6 +1,5 @@
 .star-figure{
   .star-figure-header{
-    position: fixed;
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -8,11 +7,7 @@
     overflow: hidden;
     background: white;
     z-index: 1;
-
   }
-  .star-figure-content{
-    padding-top: 75%;
-    }
 }
 
 // .figure-star-info {

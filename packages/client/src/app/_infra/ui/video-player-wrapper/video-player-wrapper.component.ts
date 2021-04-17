@@ -1,71 +1,59 @@
-import {Component, EventEmitter, Input, OnDestroy, OnInit, Output} from '@angular/core';
-import {LabPlayerPlaybackOperator} from '@app/_infra/core/models';
-import {DeviceDetectorService} from 'ngx-device-detector';
-import {VgAPI} from 'ngx-videogular';
-import {Subscription} from 'rxjs';
+import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
+import { VgAPI } from 'ngx-videogular';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'ui-video-player-wrapper',
-    templateUrl: './video-player-wrapper.component.html'
+    templateUrl: './video-player-wrapper.component.html',
+    styleUrls: ['./video-player-wrapper.component.scss']
 })
-export class VideoPlayerWrapperComponent implements OnInit {
-
+export class VideoPlayerWrapperComponent implements OnDestroy {
     @Input() src: string;
     @Input() poster: string = null;
     @Input() synchronized = false;
     @Input() preview = true;
+    @Input() isMasterVideo = true;
 
     @Output() durationEvent = new EventEmitter<number>();
     @Output() playerEvent = new EventEmitter();
-    @Output() playerStateChange = new EventEmitter();
-    @Output() clearVideoFile = new EventEmitter();
+    @Output() playerStateChange = new EventEmitter<boolean>();
     @Output() isPlayerReady = new EventEmitter<boolean>();
+
     playerIsReady = false;
-    playerIsPlaying = false;
+    isPlaying = false;
     playerAPI: VgAPI;
     videoPlayed = false;
     timePassed = '0';
-    totalTime = '0';
+    duration: number;
     playbackRate = 1;
     subs: Subscription[] = [];
 
-
-    constructor(private deviceService: DeviceDetectorService) {
-    }
-
     onPlayerReady(api: VgAPI) {
         this.playerAPI = api;
-        this.playerAPI.getDefaultMedia().subscriptions.loadedMetadata.subscribe(
-            this.initVideo.bind(this)
-        );
+        this.playerAPI.getDefaultMedia()
+            .subscriptions
+            .loadedMetadata
+            .subscribe(() => this.initVideo());
     }
 
     initVideo() {
         this.playerIsReady = true;
         this.isPlayerReady.emit(true);
-        const duration = this.getDuration();
-        this.totalTime = duration.toFixed(2);
-        this.durationEvent.emit(duration);
+        this.duration = this.getDuration();
+        this.durationEvent.emit(this.duration);
         this.pushSubscriptions();
+        this.forceForward();
     }
 
-    ngOnInit() {
-
-    }
-
-
-    ngOnDestroy() {
-        this.subs.forEach(s => {
-            s.unsubscribe();
-        });
+    ngOnDestroy(): void {
+        this.subs.forEach(sub => (sub.unsubscribe()));
     }
 
     pushSubscriptions() {
-
         const videoStatusChangedEvent = (event) => {
-            this.playerIsPlaying = ('playing' === this.playerAPI.state);
+            this.isPlaying = ('playing' === this.playerAPI.state);
             this.playerEvent.emit(event);
-            this.playerStateChange.emit(this.playerIsPlaying);
+            this.playerStateChange.emit(this.isPlaying);
         }
 
         this.subs.push(
@@ -102,67 +90,43 @@ export class VideoPlayerWrapperComponent implements OnInit {
         );
     }
 
-    togglePlay() {
-        if (!this.videoPlayed)
-            this.videoPlayed = true;
-        if (this.playerIsPlaying) {
-            this.pause();
-        } else {
-            this.play();
-        }
+    togglePlay(): void {
+        this.isPlaying ? this.pause() : this.play();
     }
 
-    jump(direction) {
-        // TODO: should we use seekTo instead of .currentTIme = ...?
-        switch (direction) {
-            case 'fwd':
-                this.playerAPI.getDefaultMedia().currentTime += 0.5;
-                break;
-            case 'bwd':
-                this.playerAPI.getDefaultMedia().currentTime -= 0.5;
-                break;
-        }
-    }
-
-    play() {
+    play(): void {
         this.playerAPI.play();
     }
 
-    pause() {
+    pause(): void {
         this.playerAPI.pause();
     }
 
-    stop() {
-        this.pause();
-        this.seekTo(0);
-    }
-
-    onPanStart(evt) {
-        this.pause();
-    }
-
-    onPan(evt) {
-        if (this.videoPlayed) {
-            const devVelocity = evt.velocityX / 20;
-            const seekRatio = devVelocity;
-            const time = this.getCurrentTime();
-            const seekTo = seekRatio + time;
-            this.seekTo(seekTo);
+    onPan(timeShift: number): void {
+        if (typeof timeShift !== 'number') {
+            return;
         }
+
+        if (this.isPlaying) {
+            this.pause();
+        }
+
+        const currentTime = this.getCurrentTime();
+        // control the speed of scroll. set to 1/2 of an actual shift
+        const safeShift = ((timeShift * 50) || 1) / 100;
+        const seekTo = (currentTime + safeShift).toFixed(2);
+        this.seekTo(parseFloat(seekTo));
     }
 
-    onTap(evt) {
-        this.togglePlay();
-    }
-
-    seekTo(time: number) {
+    seekTo(time: number): void {
+        const duration = this.getDuration();
         let seekTo = time;
 
-        if (seekTo > this.getDuration())
-            seekTo = this.getDuration();
-        else if (seekTo < 0)
+        if (seekTo > duration) {
+            seekTo = duration;
+        } else if (seekTo < 0) {
             seekTo = 0;
-
+        }
         this.playerAPI.seekTime(seekTo);
     }
 
@@ -174,24 +138,28 @@ export class VideoPlayerWrapperComponent implements OnInit {
         return this.playerAPI.getDefaultMedia().duration;
     }
 
-    changePLayBackRate(operator: LabPlayerPlaybackOperator) {
-        switch (operator) {
-            case 'plus':
-                const plus = parseFloat((this.playbackRate + 0.1).toFixed(1));
-                this.playbackRate = plus < 10 ? plus : 10;
+    changePlaybackRate(): void {
+        switch (this.playbackRate) {
+            case 0.5:
+            case 1.0:
+            case 1.5:
+                this.playbackRate = parseFloat((this.playbackRate + 0.5).toFixed(1));
                 break;
-            case 'minus':
-                const minus = parseFloat((this.playbackRate - 0.1).toFixed(1));
-                this.playbackRate = minus > 0.1 ? minus : 0.1;
+            case 2.0:
+                this.playbackRate = 0.5;
                 break;
-
-            default:
-                this.playbackRate = 1;
         }
     }
 
-    clearVideo(): void {
-        this.clearVideoFile.emit();
+    /**
+     * yes, it is a hack
+     * force the player to switch into play mode to initialize scroll bar on iOS devices
+     * playerApi on iOS devices cannot handle seekTo event on onPlayerReady event launch
+     * @private
+     */
+    private forceForward() {
+        this.play();
+        setTimeout(() => this.pause(), 100);
     }
 
 }
