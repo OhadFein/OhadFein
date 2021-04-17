@@ -55,8 +55,6 @@
 
   <div class="lab-video-control" *ngIf="synchronized && studentVideo">
     <dsapp-custom-lab-controls [isPlaying]="playing"
-                               [isHiddenTime]="true"
-                               [isHiddenPlayback]="true"
                                [duration]="videoDurationSync"
                                [totalTimePassed]="studentPLayer.timePassed"
                                [playbackRate]="playbackRate"

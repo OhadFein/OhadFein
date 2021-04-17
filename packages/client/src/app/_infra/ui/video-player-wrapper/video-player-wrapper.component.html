@@ -19,8 +19,12 @@
                        [vgAutohide]="true"
                        [vgAutohideTime]="5">
               <dsapp-custom-lab-controls [isPlaying]="isPlaying"
+                                         [duration]="duration"
+                                         [totalTimePassed]="timePassed"
+                                         [playbackRate]="playbackRate"
                                          (pan)="onPan($event)"
-                                         (togglePlay)="togglePlay()"></dsapp-custom-lab-controls>
+                                         (togglePlay)="togglePlay()"
+                                         (changePlaybackRate)="changePlaybackRate()"></dsapp-custom-lab-controls>
           </vg-controls>
           <video [vgMedia]="video"
                  [playbackRate]="playbackRate"

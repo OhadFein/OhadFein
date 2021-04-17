@@ -23,8 +23,6 @@ import { finalize } from 'rxjs/operators';
 })
 export class CustomLabControlsComponent implements OnChanges, OnInit, AfterViewInit {
   @Input() isPlaying: boolean;
-  @Input() isHiddenTime: boolean;
-  @Input() isHiddenPlayback: boolean;
   @Input() totalTimePassed: string;
   @Input() duration: number;
   @Input() playbackRate: number;
@@ -89,6 +87,10 @@ export class CustomLabControlsComponent implements OnChanges, OnInit, AfterViewI
     this.togglePlay.emit();
   }
 
+  /**
+   * update scroll element position
+   * @param event
+   */
   onPan(event): void {
     this.window.requestAnimationFrame(() => this.scrollUpdate(event.deltaX));
   }

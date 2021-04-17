@@ -24,7 +24,7 @@ export class VideoPlayerWrapperComponent implements OnDestroy {
     playerAPI: VgAPI;
     videoPlayed = false;
     timePassed = '0';
-    totalTime = '0';
+    duration: number;
     playbackRate = 1;
     subs: Subscription[] = [];
 
@@ -39,9 +39,8 @@ export class VideoPlayerWrapperComponent implements OnDestroy {
     initVideo() {
         this.playerIsReady = true;
         this.isPlayerReady.emit(true);
-        const duration = this.getDuration();
-        this.totalTime = duration.toFixed(2);
-        this.durationEvent.emit(duration);
+        this.duration = this.getDuration();
+        this.durationEvent.emit(this.duration);
         this.pushSubscriptions();
         this.forceForward();
     }
