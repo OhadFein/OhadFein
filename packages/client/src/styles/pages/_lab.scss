@@ -42,11 +42,9 @@
       width: 35%;
       font-size: 11px;
     }
-
   }
 
   .steps-bar-wrapper {
-    //display: flex;
     margin-top: 15px;
 
     .steps-bar {
@@ -56,11 +54,9 @@
       padding: 0;
 
       .steps-bar-item {
-        //border: 1px solid;
         width: 33%;
         display: flex;
         text-align: center;
-        //position: relative;
         font-size: 11px;
         justify-content: center;
         align-items: baseline;
@@ -79,18 +75,15 @@
 
         .step-item-num {
           font-size: 11px;
-          //border: 1px solid $indigo;
           background-color: $gray-500;
           color: $white;
           border-radius: 50px;
           width: 20px;
           height: 20px;
-          //margin: 0 auto;
           display: flex;
           align-items: center;
           justify-content: center;
           margin-right: 5px;
-
         }
       }
     }
@@ -131,46 +124,6 @@
 
     .lab-tool-player-wrapper {
       width: 100%;
-    }
-
-    .linked-controls {
-      position: absolute;
-      //bottom: 2px;
-      left: 2px;
-      z-index: +2;
-      width: calc(100% - 4px);
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      background: rgba($black, 0.8);
-      //top: 100%;
-      bottom: 0;
-
-
-      .speed-controls {
-        .btn {
-          color: $white;
-        }
-
-        .btn-sm {
-          padding: 0;
-        }
-
-        > span {
-          font-size: 0.66rem;
-          color: $white;
-        }
-      }
-
-      .center-controls {
-        .icon-btn {
-          padding-left: 0.1rem;
-
-          .icon-btn span {
-            font-size: 1.1rem;
-          }
-        }
-      }
     }
 
     .controls-row {
@@ -215,49 +168,6 @@
       }
 
 
-    }
-  }
-
-  .upload-placeholder {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-
-    .toolbox {
-      padding: 0 0.5rem;
-
-      h5 {
-        text-align: center;
-        font-size: 0.8rem;
-        line-height: 1.4;
-        font-weight: 400;
-        margin-bottom: 2rem;
-        max-width: 250px;
-      }
-
-      .btn {
-        // color: $white;
-        background: $white;
-        width: 12rem;
-        text-align: left;
-        font-weight: 700;
-      }
-    }
-
-    &.bg-secondary {
-      color: $gray-500;
-      pointer-events: none;
-
-      .step-number {
-        border-color: $gray-500;
-      }
-
-      .toolbox {
-        .btn {
-          color: $gray-500;
-        }
-      }
     }
   }
 }

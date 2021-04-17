@@ -22,7 +22,6 @@ import {
   NotificationsPageComponent,
   PageNotFoundComponent,
   PlayerControlsComponent,
-  PlayerSpeedControlsComponent,
   PreloaderIconComponent,
   PreloaderInappComponent,
   TagsHolderComponent,
@@ -52,7 +51,7 @@ import {
     NavigationComponent, HeaderComponent, AboutDanskillModalComponent, VideoPlayerModalComponent,
     LogoComponent, PreloaderIconComponent, PreloaderInappComponent,
     VideoPlayerWrapperComponent, StarNameDirective, NgbDateStructTodateDirective, InpageErrorComponent,
-    TagsHolderComponent, ImageFilePickerComponent, VideoFilePickerComponent, PlayerSpeedControlsComponent,
+    TagsHolderComponent, ImageFilePickerComponent, VideoFilePickerComponent,
     PlayerControlsComponent, BackgroundProcessesComponent, UploadPracticeBgProcessComponent, BaseBgProcessComponent,
     ToggleSwitchDirective, VideoPreviewComponent, CustomLabControlsComponent
   ],
@@ -61,7 +60,7 @@ import {
     NavigationComponent, HeaderComponent, AboutDanskillModalComponent, VideoPlayerModalComponent,
     LogoComponent, PreloaderIconComponent, PreloaderInappComponent,
     VideoPlayerWrapperComponent, StarNameDirective, NgbDateStructTodateDirective, InpageErrorComponent,
-    TagsHolderComponent, ImageFilePickerComponent, VideoFilePickerComponent, PlayerSpeedControlsComponent,
+    TagsHolderComponent, ImageFilePickerComponent, VideoFilePickerComponent,
     PlayerControlsComponent, BackgroundProcessesComponent, UploadPracticeBgProcessComponent,
     ToggleSwitchDirective, VideoPreviewComponent, CustomLabControlsComponent
   ]

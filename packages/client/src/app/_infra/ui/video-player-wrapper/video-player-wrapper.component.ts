@@ -151,34 +151,6 @@ export class VideoPlayerWrapperComponent implements OnDestroy {
         }
     }
 
-    // changePLayBackRate(operator: LabPlayerPlaybackOperator) {
-    //     switch (operator) {
-    //         case 'plus':
-    //             const plus = parseFloat((this.playbackRate + 0.1).toFixed(1));
-    //             this.playbackRate = plus < 10 ? plus : 10;
-    //             break;
-    //         case 'minus':
-    //             const minus = parseFloat((this.playbackRate - 0.1).toFixed(1));
-    //             this.playbackRate = minus > 0.1 ? minus : 0.1;
-    //             break;
-    //
-    //         default:
-    //             this.playbackRate = 1;
-    //     }
-    // }
-    //
-    // jump(direction) {
-    //     // TODO: should we use seekTo instead of .currentTIme = ...?
-    //     switch (direction) {
-    //         case 'fwd':
-    //             this.playerAPI.getDefaultMedia().currentTime += 0.5;
-    //             break;
-    //         case 'bwd':
-    //             this.playerAPI.getDefaultMedia().currentTime -= 0.5;
-    //             break;
-    //     }
-    // }
-
     /**
      * yes, it is a hack
      * force the player to switch into play mode to initialize scroll bar on iOS devices
