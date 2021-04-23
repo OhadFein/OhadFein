@@ -30,12 +30,6 @@ export enum EnumGender {
 }
 export const possibleGenders = Object.values(EnumGender);
 
-export enum EnumAgeGroup {
-  CHILD = 'child',
-  YOUNG = 'young',
-  ADULT = 'adult'
-}
-
 export enum EnumLanguage {
   english = 'en'
 }
@@ -62,6 +56,8 @@ export const possibleAssociateModels = Object.values(EnumAssociateModel);
 
 export enum EnumRole {
   user = 1,
+  coach = 5,
+  star = 10,
   admin = 99
 }
 export const possibleRoles = Object.values(EnumRole);
