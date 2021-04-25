@@ -30,7 +30,7 @@ export const getPracticeItems = async (req: Request, res: Response) => {
 
     res.status(200).json({
         success: true,
-        data: req.user.practiceItems
+        data: req.user.practices
     });
 }
 

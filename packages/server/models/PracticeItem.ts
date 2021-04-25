@@ -1,6 +1,6 @@
+import { IUser } from './User';
 import mongoose, { Document, Model, model } from 'mongoose';
 import { IFigure } from './Figure';
-import { IStar } from './Star';
 import { IVideo } from "./Video"
 
 const practiceItemSchema = new mongoose.Schema(
@@ -25,7 +25,7 @@ interface IPracticeItemBase extends IPracticeItemSchema {
 
 export interface IPracticeItem extends IPracticeItemBase {
     video: IVideo["_id"];
-    star: IStar["_id"];
+    star: IUser["_id"];
     figure: IFigure["_id"];
 }
 

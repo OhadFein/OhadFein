@@ -35,19 +35,6 @@ export enum EnumLanguage {
 }
 export const possibleLanguages = Object.values(EnumLanguage);
 
-
-export enum EnumView {
-  front = 'front',
-  back = 'back'
-}
-export const possibleViews = Object.values(EnumView);
-
-export enum EnumParticipatesAmount {
-  solo = 1,
-  couple = 2
-}
-export const possibleParticipatesAmounts = Object.values(EnumParticipatesAmount);
-
 export enum EnumAssociateModel {
   Video = "Video",
   Figure = "Figure"
@@ -55,10 +42,10 @@ export enum EnumAssociateModel {
 export const possibleAssociateModels = Object.values(EnumAssociateModel);
 
 export enum EnumRole {
-  user = 1,
-  coach = 5,
-  star = 10,
-  admin = 99
+  user = "user",
+  coach = "coach",
+  star = "star",
+  admin = "admin"
 }
 export const possibleRoles = Object.values(EnumRole);
 

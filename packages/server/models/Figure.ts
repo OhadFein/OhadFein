@@ -1,6 +1,6 @@
 import mongoose, { Document, Model, model } from 'mongoose';
 import { EnumDanceLevel, possibleDanceLevels, EnumDanceType, possibleDanceTypes } from "../shared/enums"
-import { IStar } from './Star';
+import { IUser } from './User';
 import { IVideo } from './Video';
 
 
@@ -31,7 +31,7 @@ interface IFigureBase extends IFigureSchema {
 }
 
 export interface IFigure extends IFigureBase {
-  stars: [IStar["_id"]];
+  stars: [IUser["_id"]];
   videos: [IVideo["_id"]];
 }
 

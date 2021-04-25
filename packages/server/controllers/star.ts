@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import mongoose from "mongoose"
-import Star, { IStar } from '../models/Star';
+import User, { IUser } from '../models/User';
+import { EnumRole } from "../shared/enums";
 import { HttpException } from "../shared/exceptions";
 
 /**
@@ -8,8 +9,11 @@ import { HttpException } from "../shared/exceptions";
  * get all stars
  */
 
-const getAllStars = async (): Promise<IStar[]> => (
-    await Star.find().sort({ "figures": -1 }).exec()
+const getAllStars = async (): Promise<IUser[]> => (
+    await User.find({ roles: { $in: [EnumRole.star] } })
+        .select("+star")
+        .sort({ "figures": -1 })
+        .exec()
 );
 
 export const getStars = async (req: Request, res: Response) => {
@@ -22,30 +26,13 @@ export const getStars = async (req: Request, res: Response) => {
 }
 
 /**
- * GET /:starId
- * get star info
+ * GET /:userName
+ * get star info by username
  */
 
-export const getStarBySlug = async (slug: string): Promise<IStar | null> => (
+export const getStarByUsername = async (username: string): Promise<IUser | null> => (
     new Promise((resolve, reject) => {
-        Star.findOne({ slug: slug })
-            .then(star => {
-                if (!star) {
-                    reject(new HttpException(404, "Star not found"));
-                } else {
-                    resolve(star);
-                }
-            })
-            .catch(err => {
-                reject(err);
-            });
-    })
-);
-
-
-export const getStarById = async (id: mongoose.Types.ObjectId): Promise<IStar | null> => (
-    new Promise((resolve, reject) => {
-        Star.findById(id)
+        User.findOne({ username: username, roles: { $in: [EnumRole.star] } }).select("+figures")
             .then(star => {
                 if (!star) {
                     reject(new HttpException(404, "Star not found"));
@@ -60,8 +47,7 @@ export const getStarById = async (id: mongoose.Types.ObjectId): Promise<IStar | 
 );
 
 export const getStar = async (req: Request, res: Response) => {
-    const starId = new mongoose.mongo.ObjectId(req.params.starId);
-    const star = await getStarById(starId);
+    const star = await getStarByUsername(req.params.starUsername);
     await star?.populate("figures").execPopulate();
 
     res.status(200).json({
