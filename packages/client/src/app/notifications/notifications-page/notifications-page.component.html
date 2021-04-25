@@ -1,1 +1,14 @@
-<p>notifications-page works!</p>
+<div class="notifications-wrapper">
+    <div class="row">
+        <div class="notifications-list">
+            <div *ngFor="let notification of notifications" class="col-12 notification-item" [ngClass]="{'not-read': !notification.isRead}">
+                <div class="title">
+                    {{notification.sourceUsername}}
+                </div>
+                <div class="time">
+                    {{notification.createdAt}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

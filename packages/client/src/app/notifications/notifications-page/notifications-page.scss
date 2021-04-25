@@ -1,0 +1,10 @@
+.notifications-wrapper {
+  .notifications-list {
+    .notification-item {
+      background: white;
+      &.not-read{
+        border-left: red 1px solid;
+      }
+    }
+  }
+}

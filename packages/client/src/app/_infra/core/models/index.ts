@@ -16,3 +16,4 @@ export * from './practices.model';
 export * from './lab.model';
 export * from './background.models';
 export * from './background-processes.models';
+export * from './notifications.model';
