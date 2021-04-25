@@ -28,6 +28,7 @@ export const activateStar = async (req: Request, res: Response) => {
 
     user.star.promo_video = req.body.promo_video;
     user.star.description = req.body.description;
+    user.star.logo = req.body.logo;
     user.roles.push(EnumRole.star);
     await user.save();
 

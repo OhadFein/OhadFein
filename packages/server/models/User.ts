@@ -18,6 +18,7 @@ interface tokenData {
 interface IStar {
   figures: [IFigure];
   description: string;
+  logo: string;
   promo_video: string;
 }
 
@@ -26,6 +27,9 @@ export interface dataStoredInToken {
   _id: string;
 }
 
+function concatAWSBucketPath(str: any) {
+  return process.env.AWS_BUCKET_PATH + str;
+}
 
 const userSchema = new Schema(
   {
@@ -63,6 +67,7 @@ const userSchema = new Schema(
       // select: ?
       figures: [{ type: mongoose.Schema.Types.ObjectId, ref: "Figure" }],
       description: { type: String },
+      logo: { type: String, get: concatAWSBucketPath },
       promo_video: { type: String },
     }
   },
@@ -70,7 +75,8 @@ const userSchema = new Schema(
 );
 
 userSchema.set('toJSON', {
-  virtuals: true
+  virtuals: true,
+  getters: true
 });
 
 /**
