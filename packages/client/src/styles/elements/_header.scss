@@ -9,6 +9,12 @@
   padding-right: 0;
   z-index: 1;
 
+.notification-icon{
+  height: auto;
+  width: 25px;
+  //padding: 0 15px;
+}
+
   .navbar-brand {
     display: flex;
     flex-direction: row;
