@@ -1,3 +1,34 @@
+.lab-tool-wrapper.fullscreen {
+  .lab-tool-player-wrapper {
+    height: calc(100% - 40px);
+
+    .lab-tool-player {
+      height: 100%;
+    }
+
+    &.lab-tool-player-wrapper--master-student {
+      @media only screen and (max-width: 420px) {
+        .lab-tool-player {
+          height: 50%;
+        }
+      }
+
+      @media only screen and (min-width: 421px) {
+        display: flex;
+        width: 100%;
+
+        .lab-tool-player {
+          width: 50%;
+        }
+      }
+    }
+  }
+
+  .close-video-control {
+    display: none;
+  }
+}
+
 .video-player-control-tool {
   position: absolute;
   display: flex;
@@ -6,11 +37,13 @@
 }
 
 .lab-video-control {
+  position: absolute;
+  bottom: 0;
   display: flex;
   align-items: center;
   width: 100%;
   height: 50px;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: rgba(0, 0, 0, 0.5);
   transition: bottom 1s;
   z-index: 1;
 }
@@ -43,4 +76,3 @@
   border: none;
   background-color: transparent;
 }
-
