@@ -316,3 +316,32 @@ export const postForgot = async (req: Request<ParamsDictionary, postForgotReques
     return next(error);
   }
 };
+
+
+/**
+ * GET /
+ * Get general info
+ */
+
+export const getGeneralInfo = async (req: Request, res: Response) => {
+  const user = await User.findById(req.user._id, { notifications: { $slice: -10 } }) // TODO: 10?
+    .select("+roles +notifications")
+    .populate({
+      path: 'notifications',
+      model: 'Notification',
+      populate: {
+        model: 'User',
+        path: 'performedActionUser',
+        select: "username"
+      }
+    })
+    .exec() as IUser;
+
+  return res.status(200).json({
+    success: true,
+    data: {
+      notifications: user.notifications,
+      roles: user.roles
+    }
+  });
+};

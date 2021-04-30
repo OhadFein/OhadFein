@@ -61,3 +61,11 @@ export enum EnumVideoType {
   // challenge = "challenge"
 }
 export const possibleVideoTypes = Object.values(EnumVideoType);
+
+
+export enum EnumNotificationType {
+  NEW_STAR_FIGURE = 'NEW_STAR_FIGURE',
+  NEW_USER_NOTE = 'NEW_USER_NOTE',
+  NEW_COACH_NOTE = 'NEW_COACH_NOTE'
+}
+export const possibleNotifications = Object.values(EnumNotificationType);

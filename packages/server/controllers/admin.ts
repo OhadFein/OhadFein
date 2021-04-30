@@ -1,4 +1,6 @@
+import { EnumNotificationType } from './../shared/enums';
 import mongoose from 'mongoose';
+import Notification from '../models/Notification'
 import User, { IUser } from './../models/User';
 import { Request, Response } from 'express';
 import { EnumAssociateModel, EnumRole } from '../shared/enums';
@@ -68,14 +70,42 @@ export const deactivateStar = async (req: Request, res: Response) => {
  * add figure
  */
 
+// Temporary, only until coach functionality and subscription feature will be ready
+const pushNotifcationToAllUsers = async (figure: IFigure, starsId: [mongoose.Types.ObjectId]) => {
+    User.find({ _id: { $not: { $in: starsId } } })
+        .select("+notifications")
+        .exec()
+        .then(async users => {
+            if (!users || users.length === 0) {
+                // TODO:
+            } else {
+                const notifications_promises = users.map(async (user) => {
+                    const newNotifcation = new Notification({
+                        type: EnumNotificationType.NEW_STAR_FIGURE,
+                        sourceUser: user._id,
+                        performedActionUser: starsId,
+                    });
+                    user.notifications.push(newNotifcation);
+
+                    return [await newNotifcation.save(), await user.save()];
+                })
+                await Promise.all(notifications_promises);
+            }
+        })
+        .catch(err => {
+            // TODO:
+        });
+}
+
+
 const buildFigureFromRequest = (req: Request): IFigure => {
     return new Figure({
         ...req.body
     })
 }
 
-const addfigureToStar = async (figure: IFigure, starIds: [mongoose.Types.ObjectId]) => {
-    const star_promises = starIds.map(async (starId) => (
+const addfigureToStars = async (figure: IFigure, starsIds: [mongoose.Types.ObjectId]) => {
+    const star_promises = starsIds.map(async (starId) => (
         // TODO:
         // eslint-disable-next-line @typescript-eslint/no-unsafe-return
         await User.updateOne({ _id: starId, roles: { $in: [EnumRole.star] } },
@@ -91,7 +121,8 @@ export const addFigure = async (req: Request, res: Response) => {
 
     const figureToAdd = buildFigureFromRequest(req);
     const figure = await figureToAdd.save();
-    await addfigureToStar(figureToAdd, req.body.stars);
+    await addfigureToStars(figureToAdd, req.body.stars);
+    await pushNotifcationToAllUsers(figureToAdd, req.body.stars);
 
     res.status(201).json({
         success: true,

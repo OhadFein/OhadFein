@@ -1,3 +1,4 @@
+import { INotification } from './Notification';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import mongoose, { Document, Model, model, Schema, Types } from 'mongoose';
@@ -7,7 +8,6 @@ import { IPracticeItem } from './PracticeItem';
 import User from './User';
 import { NextFunction } from 'express';
 import { IFigure } from './Figure';
-
 
 interface tokenData {
   refresh_token: string;
@@ -60,6 +60,11 @@ const userSchema = new Schema(
 
     practices: {
       type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'PracticeItem' }],
+      select: false
+    },
+
+    notifications: {
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Notifcation' }],
       select: false
     },
 
@@ -124,6 +129,7 @@ export interface IUser extends Document {
   about: string;
 
   practices: [IPracticeItem];
+  notifications: [INotification];
 
   star: IStar;
 }
