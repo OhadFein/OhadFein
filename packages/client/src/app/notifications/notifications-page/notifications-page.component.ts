@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NotificationsService} from '../notifications.service';
 import {INotifications, ISortedNotifications} from '@core/models';
-import * as moment from 'moment';
 
 @Component({
   selector: 'dsapp-notifications-page',
@@ -42,7 +41,6 @@ export class NotificationsPageComponent implements OnInit {
     }).sort((a, b) => {
       return new Date(b.date) as any - new Date(a.date) as any;
     });
-    console.log("this.sortedNotifications", this.sortedNotifications)
   }
 
   getNotifications(): void{
