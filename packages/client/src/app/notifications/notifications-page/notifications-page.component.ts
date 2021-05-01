@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NotificationsService} from '../notifications.service';
 import {INotifications, ISortedNotifications} from '@core/models';
+import * as moment from 'moment';
 
 @Component({
   selector: 'dsapp-notifications-page',
@@ -24,7 +25,12 @@ export class NotificationsPageComponent implements OnInit {
       if (!groups[date]) {
         groups[date] = [];
       }
-      groups[date].push(notification);
+      groups[date].push({sourceUsername: notification.sourceUsername,
+        performedActionUsername: notification.performedActionUsername,
+        type: notification.type,
+        createdAt: new Date(notification.createdAt),
+        isRead: notification.isRead
+      });
       return groups;
     }, {});
 
@@ -33,6 +39,8 @@ export class NotificationsPageComponent implements OnInit {
         date,
         notifications: groups[date]
       };
+    }).sort((a, b) => {
+      return new Date(b.date) as any - new Date(a.date) as any;
     });
     console.log("this.sortedNotifications", this.sortedNotifications)
   }
