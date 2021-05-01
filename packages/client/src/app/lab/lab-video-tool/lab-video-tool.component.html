@@ -1,10 +1,10 @@
 <div class="lab-tool-wrapper"
-     [ngClass]="{'linked':synchronized, 'fullscreen':fullscreen}">
+     [ngClass]="{'linked': synchronized, 'fullscreen': fullscreen}">
 
   <!-- TODO: has to be reworked with new icons -->
-  <div *ngIf="masterVideo && studentVideo" class="controls-row">
+  <div class="controls-row">
     <div class="left-side">
-      <button class="icon control-button"
+      <button class="icon control-button pl-0"
               [ngClass]="{'vg-icon-fullscreen':!fullscreen, 'vg-icon-fullscreen_exit':fullscreen}"
               [style.font-size.rem]="'2'"
               (click)="toggleFullScreen()"></button>
@@ -15,41 +15,45 @@
 <!--        <span>{{'LAB.saveToMyPractices' | translate}}</span>-->
       </button>
     </div>
-    <div class="right-side"
+    <div *ngIf="masterVideo && studentVideo"
+         class="right-side"
          (click)="toggleSync()">
       <span>{{synchronized ? ('LAB.unlinkVideos' | translate):('LAB.linkVideos' | translate)}}</span>
 
-      <button uiToggleSwitch class="control-button" [state]="synchronized" [disabled]="!studentVideo"></button>
+      <button uiToggleSwitch class="control-button pr-0" [state]="synchronized" [disabled]="!studentVideo"></button>
     </div>
   </div>
 
-  <div *ngIf="masterVideo"
-       class="lab-tool-player-wrapper star-player-wrapper">
-    <ui-video-player-wrapper #masterPLayer
-                             [src]="masterVideo.path"
-                             [poster]="masterVideo.thumbnail"
-                             [synchronized]="synchronized"
-                             [preview]="false"
-                             (durationEvent)="masterPlayerDuration($event)"
-                             (playerEvent)="masterPLayerEvent($event)"
-                             (playerStateChange)="masterPLayerStateChange($event)"
-                             (isPlayerReady)="masterVideoReady()">
-    </ui-video-player-wrapper>
-  </div>
-
-  <div *ngIf="studentVideo"
-       class="lab-tool-player-wrapper student-player-wrapper">
-    <div class="close-video-control">
-      <button (click)="studentVideoClear()">close</button>
+  <div class="lab-tool-player-wrapper"
+       [ngClass]="{'lab-tool-player-wrapper--master-student': masterVideo && studentVideo}">
+    <div *ngIf="masterVideo"
+         class="lab-tool-player star-player-wrapper">
+      <ui-video-player-wrapper #masterPLayer
+                               [src]="masterVideo.path"
+                               [poster]="masterVideo.thumbnail"
+                               [synchronized]="synchronized"
+                               [preview]="false"
+                               (durationEvent)="masterPlayerDuration($event)"
+                               (playerEvent)="masterPLayerEvent($event)"
+                               (playerStateChange)="masterPLayerStateChange($event)"
+                               (isPlayerReady)="masterVideoReady()">
+      </ui-video-player-wrapper>
     </div>
-    <ui-video-player-wrapper #studentPLayer
-                             [src]="studentVideo ? studentVideo.path : null"
-                             [preview]="false"
-                             [synchronized]="synchronized"
-                             [isMasterVideo]="false"
-                             (durationEvent)="studentPlayerDuration($event)"
-                             (playerEvent)="studentPLayerEvent($event)">
-    </ui-video-player-wrapper>
+
+    <div *ngIf="studentVideo"
+         class="lab-tool-player student-player-wrapper">
+      <div class="close-video-control">
+        <button (click)="studentVideoClear()">close</button>
+      </div>
+      <ui-video-player-wrapper #studentPLayer
+                               [src]="studentVideo ? studentVideo.path : null"
+                               [preview]="false"
+                               [synchronized]="synchronized"
+                               [isMasterVideo]="false"
+                               (durationEvent)="studentPlayerDuration($event)"
+                               (playerEvent)="studentPLayerEvent($event)">
+      </ui-video-player-wrapper>
+    </div>
   </div>
 
   <div class="lab-video-control" *ngIf="synchronized && studentVideo">
