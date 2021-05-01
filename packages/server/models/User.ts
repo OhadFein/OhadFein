@@ -58,6 +58,13 @@ const userSchema = new Schema(
 
     about: { type: String },
 
+    coach: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+
+    students: {
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+      select: false
+    },
+
     practices: {
       type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'PracticeItem' }],
       select: false
@@ -69,12 +76,15 @@ const userSchema = new Schema(
     },
 
     star: {
-      // select: ?
-      figures: [{ type: mongoose.Schema.Types.ObjectId, ref: "Figure" }],
-      description: { type: String },
-      logo: { type: String, get: concatAWSBucketPath },
-      promo_video: { type: String },
+      type: {
+        figures: [{ type: mongoose.Schema.Types.ObjectId, ref: "Figure" }],
+        description: { type: String },
+        logo: { type: String, get: concatAWSBucketPath },
+        promo_video: { type: String },
+      },
+      select: false
     }
+
   },
   { timestamps: true }
 );
@@ -132,6 +142,8 @@ export interface IUser extends Document {
   notifications: [INotification];
 
   star: IStar;
+  coach: IUser;
+  students: [IUser];
 }
 
 userSchema.methods.generateAuthToken = function (this: IUser): tokenData {

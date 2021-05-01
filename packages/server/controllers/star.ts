@@ -32,7 +32,7 @@ export const getStars = async (req: Request, res: Response) => {
 
 export const getStarByUsername = async (username: string): Promise<IUser | null> => (
     new Promise((resolve, reject) => {
-        User.findOne({ username: username, roles: { $in: [EnumRole.star] } }).select("+figures")
+        User.findOne({ username: username, roles: { $in: [EnumRole.star] } }).select("+star")
             .then(star => {
                 if (!star) {
                     reject(new HttpException(404, "Star not found"));
@@ -47,11 +47,15 @@ export const getStarByUsername = async (username: string): Promise<IUser | null>
 );
 
 export const getStar = async (req: Request, res: Response) => {
-    const star = await getStarByUsername(req.params.starUsername);
-    await star?.populate("figures").execPopulate();
+    const userWithStar = await getStarByUsername(req.params.starUsername);
+    await userWithStar?.populate({
+        path: 'star.figures',
+        model: 'Figure',
+    })
+        .execPopulate();
 
     res.status(200).json({
         success: true,
-        data: star
+        data: userWithStar
     });
 }

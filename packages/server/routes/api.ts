@@ -1,12 +1,14 @@
 import express, { Application } from "express";
 import { checkAuth } from '../middleware/checkAuth';
-import { checkAdminRights } from "../middleware/checkAdminRights";
+import { checkCoachPermissions, checkAdminPermissions } from "../middleware/checkPermissions";
 
 import user from './user';
 import account from './account';
 import stars from './stars';
 import figures from './figures';
 import videos from './videos';
+import coaches from './coaches'
+import students from './students'
 import admins from './admins'
 import notifications from './notifications'
 
@@ -18,6 +20,8 @@ app.use('/stars', checkAuth, stars);
 app.use('/figures', checkAuth, figures);
 app.use('/videos', checkAuth, videos);
 app.use('/notifications', checkAuth, notifications);
-app.use('/admins', [checkAuth, checkAdminRights], admins);
+app.use('/coaches', checkAuth, coaches);
+app.use('/students', [checkAuth, checkCoachPermissions], students);
+app.use('/admins', [checkAuth, checkAdminPermissions], admins);
 
 export default app;

@@ -14,6 +14,7 @@ const notificationSchema = new mongoose.Schema(
 
 interface INotificationSchema extends Document {
     _id: mongoose.Types.ObjectId;
+    isRead: Boolean;
     type: EnumNotificationType;
 }
 
