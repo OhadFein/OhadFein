@@ -1,9 +1,11 @@
 import express from "express";
-import { getStudents } from '../controllers/students';
+import { getStudents, getStudentPractices } from '../controllers/students';
 import asyncHandler from 'express-async-handler';
 
 const router = express.Router();
 
 router.get('/', asyncHandler(getStudents));
+router.get('/:studentId', asyncHandler(getStudentPractices)); // TODO: add validator
+
 
 export default router;
