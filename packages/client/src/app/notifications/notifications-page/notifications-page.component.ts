@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NotificationsService} from '../notifications.service';
-import {INotifications} from '@core/models';
+import {INotifications, ISortedNotifications} from '@core/models';
 
 @Component({
   selector: 'dsapp-notifications-page',
@@ -10,11 +10,31 @@ import {INotifications} from '@core/models';
 export class NotificationsPageComponent implements OnInit {
 
   public notifications: INotifications[]= [];
+  public sortedNotifications: ISortedNotifications[];
   constructor(private notificationsService: NotificationsService) { }
 
   ngOnInit(): void {
     this.getNotifications();
-    console.log("this.notifications", this.notifications)
+    this.sortNotifications();
+  }
+
+  sortNotifications(): void{
+    const groups = this.notifications.reduce((groups, notification) => {
+      const date = notification.createdAt.split('T')[0];
+      if (!groups[date]) {
+        groups[date] = [];
+      }
+      groups[date].push(notification);
+      return groups;
+    }, {});
+
+    this.sortedNotifications = Object.keys(groups).map((date) => {
+      return {
+        date,
+        notifications: groups[date]
+      };
+    });
+    console.log("this.sortedNotifications", this.sortedNotifications)
   }
 
   getNotifications(): void{

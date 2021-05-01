@@ -6,3 +6,8 @@ export interface INotifications {
     updatedAt?: string;
     isRead: boolean;
 }
+
+export interface ISortedNotifications{
+    date: string;
+    notifications?: INotifications[];
+}
