@@ -3,19 +3,19 @@
                 (onPlayerReady)="onPlayerReady($event)">
 
           <vg-overlay-play *ngIf="playerIsReady && preview"
-                           [vgFor]="isMasterVideo? 'masterVideo' : 'studentVideo'">
+                           [vgFor]="isMasterVideo ? 'masterVideo' : 'studentVideo'">
           </vg-overlay-play>
 
           <vg-controls *ngIf="playerIsReady && preview"
                        [vgFor]="isMasterVideo? 'masterVideo' : 'studentVideo'"
                        [vgAutohide]="true">
-               <vg-play-pause [vgFor]="isMasterVideo? 'masterVideo' : 'studentVideo'"></vg-play-pause>
+               <vg-play-pause [vgFor]="isMasterVideo ? 'masterVideo' : 'studentVideo'"></vg-play-pause>
                <vg-fullscreen></vg-fullscreen>
           </vg-controls>
 
           <vg-controls *ngIf="playerIsReady && !synchronized && !preview"
                        class="video-player-control-tool"
-                       [vgFor]="isMasterVideo? 'masterVideo' : 'studentVideo'"
+                       [vgFor]="isMasterVideo ? 'masterVideo' : 'studentVideo'"
                        [vgAutohide]="true"
                        [vgAutohideTime]="5">
               <dsapp-custom-lab-controls [isPlaying]="isPlaying"
@@ -23,13 +23,14 @@
                                          [totalTimePassed]="timePassed"
                                          [playbackRate]="playbackRate"
                                          (pan)="onPan($event)"
+                                         (jump)="onJump($event)"
                                          (togglePlay)="togglePlay()"
                                          (changePlaybackRate)="changePlaybackRate()"></dsapp-custom-lab-controls>
           </vg-controls>
           <video [vgMedia]="video"
                  [playbackRate]="playbackRate"
                  #video
-                 [id]="isMasterVideo? 'masterVideo' : 'studentVideo'"
+                 [id]="isMasterVideo ? 'masterVideo' : 'studentVideo'"
                  preload="auto"
                  muted
                  playsinline
