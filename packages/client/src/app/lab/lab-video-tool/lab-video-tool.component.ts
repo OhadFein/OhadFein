@@ -7,6 +7,11 @@ import {
 import {VideoPlayerWrapperComponent} from '@app/_infra/ui';
 import {VgEvents} from 'ngx-videogular';
 
+enum PlayerType {
+    master = 'master',
+    student = 'student'
+}
+
 @Component({
     selector: 'dsapp-lab-video-tool',
     templateUrl: './lab-video-tool.component.html',
@@ -31,17 +36,35 @@ export class LabVideoToolComponent {
 
     fullscreen = false;
 
+    /**
+     * duration of a shortest video clip
+     */
     videoDurationSync: number;
+    /**
+     * reference to a player in a sync mode (the one which holds a shortest video)
+     */
+    syncPlayer: VideoPlayerWrapperComponent;
+    /**
+     * start points for each video during a sync mode
+     * @private
+     */
+    private videoStartTimeSync = {
+        master: null,
+        student: null
+    };
+    /**
+     * duration of each video
+     * @private
+     */
     private videoDuration = {
         master: null,
         student: null
     }
 
-    toggleVideos() {
+    toggleVideos(): void {
         if (this.playing) {
             [this.masterPLayer, this.studentPLayer].map(p => p.pause());
         } else {
-            this.seekToSyncTime();
             [this.masterPLayer, this.studentPLayer].map(p => p.play());
         }
     }
@@ -57,33 +80,15 @@ export class LabVideoToolComponent {
 
     studentPlayerDuration(duration: number): void {
         this.videoDuration.student = duration;
-        this.videoDurationSync = this.videoDuration.master > duration ? duration : this.videoDuration.master;
     }
 
-    masterPLayerEvent(event) {
+    onPlayerEvent(event): void {
         if (!this.synchronized) {
             return;
         }
         switch (event.type) {
             case VgEvents.VG_ENDED:
-                /// synchronizing when master ended
-                this.stop();
-                break;
-            case VgEvents.VG_SEEKED:
-                this.syncStudentPlayer();
-                break;
-        }
-    }
-
-    studentPLayerEvent(event) {
-        if (!this.synchronized) {
-            return;
-        }
-        switch (event.type) {
-            case VgEvents.VG_ENDED:
-                /// synchronizing when master ended
-                [this.masterPLayer, this.studentPLayer].map(p => p.pause());
-                this.seekToSyncTime(0);
+                this.syncPlayersOnStart();
                 break;
         }
     }
@@ -92,32 +97,46 @@ export class LabVideoToolComponent {
         this.playing = event;
     }
 
+    /**
+     * this method check synchronized parameter and based on that
+     * sync or un-sync two videos
+     *
+     * the logic behind should follow the next rule:
+     * !!! the sync video duration has to be taken from the shortest video !!!
+     * same rule applies in regards to the sync video totalTimePassed or currentTime properties
+     */
     toggleSync() {
         if (!this.studentVideo) {
             return;
         }
 
         this.synchronized ? this.unsynchronize() : this.synchronize();
-        this.resetPlayers();
+        this.resetPlaybackRate();
     }
 
     synchronize() {
         this.synchronized = true;
-        this.resetPlayers();
-        const masterTime = Math.round(this.masterPLayer.getCurrentTime());
-        const studentTime = Math.round(this.studentPLayer.getCurrentTime());
-        this.timeDiff = masterTime - studentTime;
+        const { master, student } = this.videoDuration;
+        master > student
+            ? this.applySyncParameters(PlayerType.student)
+            : this.applySyncParameters(PlayerType.master);
+        this.timeDiff = Math.abs(this.masterPLayer.getCurrentTime() - this.studentPLayer.getCurrentTime());
     }
 
     unsynchronize() {
         this.synchronized = false;
-        this.resetPlayers();
+        this.videoDurationSync = 0;
+        this.syncPlayer = null;
+        this.videoStartTimeSync = {
+            master: null,
+            student: null
+        };
         this.timeDiff = 0;
     }
 
-    seekToSyncTime(time?: number) {
-        let masterTime = time !== undefined ? time : Math.round(this.masterPLayer.getCurrentTime());
-        let studentTime = masterTime - this.timeDiff;
+    seekToSyncTime(masterTimeSeconds: number, studentTimeInSeconds: number): void {
+        let masterTime = masterTimeSeconds ?? Math.round(this.masterPLayer.getCurrentTime());
+        let studentTime = studentTimeInSeconds ?? masterTime - this.timeDiff;
 
         if (studentTime < 0) {
             studentTime = 0;
@@ -127,13 +146,7 @@ export class LabVideoToolComponent {
         this.studentPLayer.seekTo(studentTime);
     }
 
-    syncMasterPlayer() {
-        const studentTime = this.studentPLayer.getCurrentTime();
-        const masterTime = studentTime - this.timeDiff;
-        this.masterPLayer.seekTo(masterTime);
-    }
-
-    resetPlayers() {
+    resetPlaybackRate(): void {
         [this.masterPLayer, this.studentPLayer].map(p => {
             p.pause();
             p.playbackRate = 1;
@@ -141,9 +154,9 @@ export class LabVideoToolComponent {
         this.playbackRate = 1;
     }
 
-    stop() {
+    syncPlayersOnStart(): void {
         [this.masterPLayer, this.studentPLayer].map(p => p.pause());
-        this.seekToSyncTime(0);
+        this.seekToSyncTime(this.videoStartTimeSync.master, this.videoStartTimeSync.student);
     }
 
     changePlaybackRate() {
@@ -151,10 +164,6 @@ export class LabVideoToolComponent {
         setTimeout(() => {
             this.playbackRate = this.masterPLayer.playbackRate;
         }, 200);
-    }
-
-    onPanStart(evt) {
-        [this.masterPLayer, this.studentPLayer].map(p => p.pause());
     }
 
     onPan(timeShift: number): void {
@@ -167,12 +176,6 @@ export class LabVideoToolComponent {
         this.studentPLayer.onJump(time);
     }
 
-    syncStudentPlayer() {
-        const masterTime = this.masterPLayer.getCurrentTime();
-        const studentTime = masterTime - this.timeDiff;
-        this.studentPLayer.seekTo(studentTime);
-    }
-
     masterVideoClear() {
         this.clearVideo.emit(LabPlayerType.MASTER);
     }
@@ -183,6 +186,20 @@ export class LabVideoToolComponent {
 
     studentVideoClear() {
         this.clearVideo.emit(LabPlayerType.STUDENT);
+    }
+
+    private applySyncParameters(playerType: PlayerType): void {
+        if (playerType === PlayerType.master) {
+            this.videoDurationSync = this.videoDuration.master;
+            this.syncPlayer = this.masterPLayer;
+        } else {
+            this.videoDurationSync = this.videoDuration.student;
+            this.syncPlayer = this.studentPLayer;
+        }
+        this.videoStartTimeSync = {
+            master: this.masterPLayer.timePassed,
+            student: this.studentPLayer.timePassed
+        };
     }
 
 }
