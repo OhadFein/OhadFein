@@ -122,6 +122,7 @@ $delimiterColor: whitesmoke;
 }
 
 .custom-lab-progress {
+  width: 0; // default value. updated as progress moves
   height: 4px;
   background-color: rgba(255, 255, 255, .8);
 }

@@ -26,6 +26,11 @@ export class CustomLabControlsComponent implements OnChanges, OnInit, AfterViewI
   @Input() totalTimePassed: string;
   @Input() duration: number;
   @Input() playbackRate: number;
+  /**
+   * required for sync players
+   * will trigger progress recalculation
+   */
+  @Input() isFullScreen: boolean;
 
   @Output() togglePlay = new EventEmitter<void>();
   @Output() pan = new EventEmitter<number>();
@@ -88,6 +93,10 @@ export class CustomLabControlsComponent implements OnChanges, OnInit, AfterViewI
     if (changes.playbackRate) {
       this.playbackRateText = `${this.playbackRate}x`;
     }
+
+    if (changes.isFullScreen) {
+      this.window.dispatchEvent(new Event('resize'));
+    }
   }
 
   ngOnInit(): void {
@@ -101,6 +110,7 @@ export class CustomLabControlsComponent implements OnChanges, OnInit, AfterViewI
       this.setScrollPosition(1);
     }
     this.progressBarWidth = this.getProgressBarWidth();
+    this.setProgressInSeconds(parseFloat(this.totalTimePassed));
   }
 
   onTogglePlay(): void {
