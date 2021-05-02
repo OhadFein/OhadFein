@@ -55,7 +55,7 @@ export class LabVideoToolComponent {
         this.videoDuration.master = duration;
     }
 
-    studentPlayerDuration(duration: number) {
+    studentPlayerDuration(duration: number): void {
         this.videoDuration.student = duration;
         this.videoDurationSync = this.videoDuration.master > duration ? duration : this.videoDuration.master;
     }
@@ -160,6 +160,11 @@ export class LabVideoToolComponent {
     onPan(timeShift: number): void {
         this.masterPLayer.onPan(timeShift);
         this.studentPLayer.onPan(timeShift);
+    }
+
+    onJump(time: number): void {
+        this.masterPLayer.onJump(time);
+        this.studentPLayer.onJump(time);
     }
 
     syncStudentPlayer() {

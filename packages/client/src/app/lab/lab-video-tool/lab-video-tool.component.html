@@ -62,6 +62,7 @@
                                [totalTimePassed]="studentPLayer.timePassed"
                                [playbackRate]="playbackRate"
                                (pan)="onPan($event)"
+                               (jump)="onJump($event)"
                                (togglePlay)="toggleVideos()"
                                (changePlaybackRate)="changePlaybackRate()"></dsapp-custom-lab-controls>
   </div>
