@@ -34,7 +34,7 @@
                                [synchronized]="synchronized"
                                [preview]="false"
                                (durationEvent)="masterPlayerDuration($event)"
-                               (playerEvent)="masterPLayerEvent($event)"
+                               (playerEvent)="onPlayerEvent($event)"
                                (playerStateChange)="masterPLayerStateChange($event)"
                                (isPlayerReady)="masterVideoReady()">
       </ui-video-player-wrapper>
@@ -51,7 +51,7 @@
                                [synchronized]="synchronized"
                                [isMasterVideo]="false"
                                (durationEvent)="studentPlayerDuration($event)"
-                               (playerEvent)="studentPLayerEvent($event)">
+                               (playerEvent)="onPlayerEvent($event)">
       </ui-video-player-wrapper>
     </div>
   </div>
@@ -59,9 +59,11 @@
   <div class="lab-video-control" *ngIf="synchronized && studentVideo">
     <dsapp-custom-lab-controls [isPlaying]="playing"
                                [duration]="videoDurationSync"
-                               [totalTimePassed]="studentPLayer.timePassed"
+                               [totalTimePassed]="syncPlayer?.timePassed"
                                [playbackRate]="playbackRate"
+                               [isFullScreen]="fullscreen"
                                (pan)="onPan($event)"
+                               (jump)="onJump($event)"
                                (togglePlay)="toggleVideos()"
                                (changePlaybackRate)="changePlaybackRate()"></dsapp-custom-lab-controls>
   </div>

@@ -118,6 +118,10 @@ export class VideoPlayerWrapperComponent implements OnDestroy {
         this.seekTo(parseFloat(seekTo));
     }
 
+    onJump(time: number): void {
+        this.seekTo(time);
+    }
+
     seekTo(time: number): void {
         const duration = this.getDuration();
         let seekTo = time;

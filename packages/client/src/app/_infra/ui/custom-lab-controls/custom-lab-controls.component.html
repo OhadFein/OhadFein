@@ -1,22 +1,31 @@
-<div role="button"
-     class="icon custom-lab-play-pause-icon"
-     [ngClass]="isPlaying ? 'icon-pause-1' : 'icon-play-1'"
-     (click)="onTogglePlay()"></div>
-
 <!-- TODO: move to a component on its own -->
-<div #scroll class="custom-lab-scroll" (pan)="onPan($event)" (panmove)="onPanMove($event)">
-    <div *ngFor="let block of blocks;" class="custom-lab-block">
-        <div class="main-line"></div>
-        <div class="sub-line"></div>
-        <div class="sub-line"></div>
-        <div class="sub-line"></div>
-        <div class="sub-line"></div>
-    </div>
+<div #progressBar class="custom-lab-progress-bar" (click)="onChangeProgress($event)">
+    <div #progress class="custom-lab-progress"></div>
+    <div #pointer class="custom-lab-progress-pointer"
+         [style.width.px]="minJumpShift"
+         [style.height.px]="minJumpShift"></div>
 </div>
+<div class="custom-lab-control-block">
+    <div role="button"
+         class="icon custom-lab-play-pause-icon"
+         [ngClass]="isPlaying ? 'icon-pause-1' : 'icon-play-1'"
+         (click)="onTogglePlay()"></div>
 
-<div class="vg-time-display custom-lab-time-icon">
-    <span>{{formattedTime}}</span>
-</div>
-<div class="custom-lab-playback-icon">
-    <button (click)="changePlaybackRate.emit()">{{playbackRateText}}</button>
+    <!-- TODO: move to a component on its own -->
+    <div #scroll class="custom-lab-scroll" (pan)="onPan($event)" (panmove)="onPanMove($event)">
+        <div *ngFor="let block of blocks;" class="custom-lab-block">
+            <div class="main-line"></div>
+            <div class="sub-line"></div>
+            <div class="sub-line"></div>
+            <div class="sub-line"></div>
+            <div class="sub-line"></div>
+        </div>
+    </div>
+
+    <div class="vg-time-display custom-lab-time-icon">
+        <div>{{formattedTime}}</div>
+    </div>
+    <div class="custom-lab-playback-icon">
+        <button (click)="changePlaybackRate.emit()">{{playbackRateText}}</button>
+    </div>
 </div>
