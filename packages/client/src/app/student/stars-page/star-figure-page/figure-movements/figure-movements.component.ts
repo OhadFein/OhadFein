@@ -3,7 +3,7 @@ import { from, Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as FigureSelectors from '@infra/store/selectors/figures.selectors';
 import { ActivatedRoute, ParamMap, Router, NavigationEnd } from '@angular/router';
-import { Figure, LabItem, LabStarVideo, IStar, Video, VideoType, ETabs } from '@core/models';
+import { Figure, LabItem, LabStarVideo, IUser, Video, VideoType, ETabs } from '@core/models';
 import * as FigureActions from '@app/_infra/store/actions/figures.actions';
 import * as StarSelectors from '@infra/store/selectors/stars.selectors';
 import * as StarsActions from '@app/_infra/store/actions/stars.actions';
@@ -21,7 +21,7 @@ export class FigureMovementsComponent implements OnInit {
   slug = null;
   figureId = null;
   movements: any = null;
-  star: IStar = null;
+  star: IUser = null;
   figure: Figure = null;
   currentVideoId: string = null;
   @Output() onVideoSelected = new EventEmitter<any>();

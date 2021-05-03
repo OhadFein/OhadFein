@@ -1,15 +1,14 @@
 <div 
      style="cursor: pointer;"
      class="star-info">
-  <div [routerLink]="[star.slug]" class="star-info-image video-preview-container star-big-image cover-bg"
-       [style.backgroundImage]="'url('+ star.logo.large +')'">
+  <div [routerLink]="[user.username]" class="star-info-image video-preview-container star-big-image cover-bg"
+       [style.backgroundImage]="'url('+ user.star.logo +')'">
   </div>
   <div class="star-info-inner justify-content-center">
     <div class="star-info-text text-center">
       <h5 class="star-info-name"
-          dsappStarName
-          [name]="star.name"></h5>
-      <p *ngIf="star.about"class="star-info-desc text-muted">{{star.about}}</p>
+          dsappStarName [familyName]="'FIX IT'" [givenName]="'FIX IT'"></h5>
+      <p *ngIf="user.about"class="star-info-desc text-muted">{{user.about}}</p>
       <div class=""> 120 subscriptions </div>
     </div>
   </div>

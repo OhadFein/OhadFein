@@ -1,14 +1,4 @@
-<!-- <div class="row page-title-row">
-    <div class="col text-center">
-        <button *ngIf="aboutVideoURL"
-                class="btn btn-outline-dark"
-                (click)="openPromoModal(aboutBtnTxt, aboutVideoURL)">{{'COMMON.About' | translate}}</button>
-        <h2 class="inner-page-title">
-            <span class="underline-warning">{{'STAR.title' | translate}}</span>
-        </h2>
-    </div>
-</div> -->
-<ng-template [ngIf]="stars && !errorMsg && !loading">
+<ng-template [ngIf]="users && !errorMsg && !loading">
 
     <div class="row page-search-row">
         <div class="col">
@@ -28,7 +18,7 @@
          class="row d-flex justify-content-center">
         <div *ngFor="let star of filteredStars"
              class="col-6 col-md-6 pb-2 col-lg-4 star-info-wrapper">
-            <dsapp-star-info [star]="star"></dsapp-star-info>
+            <dsapp-star-info [user]="star"></dsapp-star-info>
         </div>
 
     </div>
@@ -46,7 +36,7 @@
 </ng-template>
 
 
-<ng-template [ngIf]="!stars && errorMsg && !loading">
+<ng-template [ngIf]="!users && errorMsg && !loading">
     <div class="row mb-4">
         <div class="col">
             <dsapp-inpage-error [heading]="'ERRORS.InformationNotFound'"

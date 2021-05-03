@@ -1,7 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { VideoPlayerModalComponent } from '@app/_infra/ui';
-import { Name, IStar } from '@core/models/star.model';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { IUser } from '@core/models/star.model';
 
 @Component({
   selector: 'dsapp-star-info',
@@ -9,25 +7,11 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StarInfoComponent implements OnInit {
+  @Input() user: IUser;
 
-
-  @Input() star: IStar;
-
-  cuttedAchivments: Array<string> = [];
-
-  constructor(private modalService: NgbModal) { }
+  description: string;
 
   ngOnInit() {
-    if (this.star && this.star.achievements) {
-      this.cuttedAchivments = this.star.achievements.slice(0, 2);
-    }
+    this.description = this.user?.star?.description
   }
-
-  openPromoModal(starName: Name | string, promoUrl: string) {
-    const modalRef = this.modalService.open(VideoPlayerModalComponent, { size: 'xl', centered: true });
-    modalRef.componentInstance.videoURL = promoUrl;
-    modalRef.componentInstance.title = starName;
-    modalRef.componentInstance.autoplay = true;
-  }
-
 }

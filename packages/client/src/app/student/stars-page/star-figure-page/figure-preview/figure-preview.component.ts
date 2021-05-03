@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import * as FigureSelectors from '@infra/store/selectors/figures.selectors';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Figure, IStar, } from '@core/models';
+import { Figure, IUser } from '@core/models';
 import * as FigureActions from '@app/_infra/store/actions/figures.actions';
 
 @Component({
@@ -20,7 +20,7 @@ export class FigurePreviewComponent implements OnInit {
   slug = null;
   figureId = null;
   movements: any = null;
-  star: IStar = null;
+  star: IUser = null;
   figure: Figure = null;
   levels = ['beginners', 'intermediate', 'advanced']
 

@@ -12,8 +12,7 @@
       </dsapp-student-upic>
     </div>
     <div class="col">
-      <h4 dsappStarName
-          [name]="user.profile.name"></h4>
+      <h4 dsappStarName [givenName]="'FIX IT'" [familyName]="'FIX IT'"></h4>
       <p class="text-muted"
          *ngIf="user.profile.location && user.profile.location.city">
         {{user.profile.location.city}}, {{user.profile.location.country}}

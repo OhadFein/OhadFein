@@ -1,6 +1,6 @@
 import { AuthTokens } from './auth.model';
 import { Figure } from './figure.model';
-import { IStar } from './star.model';
+import { IUser } from './star.model';
 import { User } from './user.model';
 import {Practice} from "@models/practices.model";
 
@@ -24,7 +24,7 @@ export interface UserRestResponse extends IRestResponse {
 }
 
 export interface StarsRestResponse extends IRestResponse {
-    data?: Array<IStar>;
+    data?: Array<IUser>;
 }
 
 export interface FiguresRestResponse extends IRestResponse {
