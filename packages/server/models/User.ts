@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 import mongoose, { Document, Model, model, Schema, Types } from 'mongoose';
 import { jwtAccessPrivateKey, jwtRefreshPrivateKey, signOptionsAccessToken, signOptionsRefreshToken } from '../config/jwt';
 import { EnumGender, EnumLanguage, possibleGenders, possibleLanguages, EnumRole, possibleRoles } from '../shared/enums';
-import { IPracticeItem } from './PracticeItem';
+import { IPractice } from './Practice';
 import User from './User';
 import { NextFunction } from 'express';
 import { IFigure } from './Figure';
@@ -66,7 +66,7 @@ const userSchema = new Schema(
     },
 
     practices: {
-      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'PracticeItem' }],
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Practice' }],
       select: false
     },
 
@@ -136,14 +136,14 @@ export interface IUser extends Document {
   gender: EnumGender;
   locale: EnumLanguage;
 
-  about: string;
+  about?: string;
 
-  practices: [IPracticeItem];
-  notifications: [INotification];
+  practices: [IPractice["_id"]];
+  notifications: [INotification["_id"]];
 
   star: IStar;
   coach: IUser;
-  students: [IUser];
+  students: [IUser["_id"]];
 }
 
 userSchema.methods.generateAuthToken = function (this: IUser): tokenData {

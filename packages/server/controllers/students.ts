@@ -1,3 +1,4 @@
+import { INotification } from './../models/Notification';
 import { Request, Response } from 'express';
 import User, { IUser } from '../models/User';
 import mongoose from "mongoose"
@@ -20,14 +21,14 @@ const getAllStudents = async (id: mongoose.Types.ObjectId): Promise<IUser> => (
 
 // TODO: return value
 const coachAndStudents = (userAndStudentsAndNotifications: IUser) => {
-    const students = userAndStudentsAndNotifications.students;
-    const notifications = userAndStudentsAndNotifications.notifications;
+    const students = userAndStudentsAndNotifications.students as unknown as IUser[]; // TODO:
+    const notifications = userAndStudentsAndNotifications.notifications as unknown as INotification[]; // TODO:
 
     students.forEach(student => {
-        student.notifications = []; // TODO:
+        student.notifications = [] as any; // TODO:
         notifications.forEach(notification => {
             if (notification.sourceUser.equals(student._id) && notification.isRead == false) {
-                student.notifications.push(notification);
+                student.notifications.push(notification._id);
             }
         });
     });

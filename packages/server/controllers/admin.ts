@@ -17,7 +17,7 @@ import { deleteVideoFromDb, disassociateVideoFromCollection } from './video';
 
 export const activateStar = async (req: Request, res: Response) => {
     const user = await User.findOne({ username: req.params.starUsername })
-        .select("+roles")
+        .select("+roles +star")
         .exec()
     if (!user) {
         return res.status(404).json({ success: false, message: 'User not found' });
@@ -85,7 +85,7 @@ const pushNotifcationToAllUsers = async (figure: IFigure, starsId: [mongoose.Typ
                         sourceUser: user._id,
                         performedActionUser: starsId,
                     });
-                    user.notifications.push(newNotifcation);
+                    user.notifications.push(newNotifcation._id);
 
                     return [await newNotifcation.save(), await user.save()];
                 })

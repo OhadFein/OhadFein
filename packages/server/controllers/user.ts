@@ -9,7 +9,6 @@ import { sendForgotPasswordEmail, sendResetPasswordEmail, sendVerifyEmail } from
 import { Errors } from '../shared/erros';
 import { HttpException } from '../shared/exceptions';
 import { EnumGender, EnumLanguage } from '../shared/enums';
-import { String } from 'aws-sdk/clients/apigateway';
 
 const randomBytesAsync = promisify(crypto.randomBytes);
 

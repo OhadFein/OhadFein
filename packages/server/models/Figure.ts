@@ -6,7 +6,7 @@ import { IVideo } from './Video';
 
 const figureSchema = new mongoose.Schema(
   {
-    stars: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Star' }],
+    stars: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     videos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Video' }],
 
     type: { type: EnumDanceType, enum: possibleDanceTypes, required: true },
