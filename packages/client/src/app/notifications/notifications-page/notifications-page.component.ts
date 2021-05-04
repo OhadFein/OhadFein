@@ -19,7 +19,7 @@ export class NotificationsPageComponent implements OnInit {
   }
 
   sortNotifications(): void{
-    const groups = this.notifications.reduce((groups, notification) => {
+    const notificationGroups = this.notifications.reduce((groups, notification) => {
       const date = notification.createdAt.split('T')[0];
       if (!groups[date]) {
         groups[date] = [];
@@ -33,13 +33,13 @@ export class NotificationsPageComponent implements OnInit {
       return groups;
     }, {});
 
-    this.sortedNotifications = Object.keys(groups).map((date) => {
+    this.sortedNotifications = Object.keys(notificationGroups).map((date) => {
       return {
         date,
-        notifications: groups[date]
+        notifications: notificationGroups[date]
       };
     }).sort((a, b) => {
-      return new Date(b.date) as any - new Date(a.date) as any;
+      return new Date(b.date) as any - (new Date(a.date) as any);
     });
   }
 
