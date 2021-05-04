@@ -22,10 +22,9 @@ export class NotificationsService {
     // `stars/${starId}`
 
     setNotificationsAsRead(notificationId): any{
-        return this.baseRestService.post<IRestResponse>(`notifications/mark/read/${notificationId}`).pipe(
+        return this.baseRestService.post<IRestResponse>(`notifications/mark/read/${notificationId}`, {}).pipe(
             map(
                 res => {
-                    console.log("res", res)
                     if (res.success) {
                         return res.data;
                     } else {

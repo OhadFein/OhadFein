@@ -68,7 +68,7 @@ export class NotificationsPageComponent implements OnInit {
 
     setNotificationsAsRead(notification): any {
         notification.isRead = true;
-        this.store.dispatch(NotificationsActions.BeginUpdateNotificationsAction({ payload: notification._id }));
+        // this.store.dispatch(NotificationsActions.BeginUpdateNotificationsAction({ payload: notification._id }));
     }
 
 }
