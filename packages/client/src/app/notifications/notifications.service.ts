@@ -54,7 +54,7 @@ export class NotificationsService {
                 sourceUsername: 'sourceUsername 6',
                 performedActionUsername: 'performedActionUsername 6',
                 type: 'type 6',
-                createdAt: '2021-05-01T20:34:30+00:00',
+                createdAt: '2021-05-04T12:34:30+00:00',
                 updatedAt: 'updatedAt 6',
                 isRead: true,
             },

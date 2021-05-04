@@ -11,6 +11,7 @@ export class NotificationsPageComponent implements OnInit {
 
   public notifications: INotifications[]= [];
   public sortedNotifications: ISortedNotifications[];
+  public today: Date = new Date();
   constructor(private notificationsService: NotificationsService) { }
 
   ngOnInit(): void {
