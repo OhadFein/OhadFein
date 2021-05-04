@@ -14,6 +14,7 @@ import {
   StarsContentReducer,
   StarsReducer,
   UserReducer,
+  NotificationsReducer
 } from '@infra/store/reducers';
 import { AboutDanskillModalComponent, VideoPlayerModalComponent } from '@infra/ui';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -25,7 +26,7 @@ import { SocialLoginModule } from 'angularx-social-login';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 
 import { environment } from '../environments/environment';
-import { FiguresEffects, PracticesEffects, StarsContentEffects, StarsEffects, UserEffects } from './_infra/store/effects';
+import { FiguresEffects, PracticesEffects, StarsContentEffects, StarsEffects, UserEffects, NotificationsEffects } from './_infra/store/effects';
 import { APP_PROVIDERS } from './app-providers';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -57,9 +58,10 @@ export function HttpLoaderFactory(http: HttpClient) {
       starsContent: StarsContentReducer,
       practices: PracticesReducer,
       labItem: LabReducer,
-      figures: FiguresReducer
+      figures: FiguresReducer,
+      notifications: NotificationsReducer
     }, { metaReducers: [GlobalReducer] }),
-    EffectsModule.forRoot([UserEffects, StarsEffects, StarsContentEffects, PracticesEffects, FiguresEffects]),
+    EffectsModule.forRoot([UserEffects, StarsEffects, StarsContentEffects, PracticesEffects, FiguresEffects, NotificationsEffects]),
     HammerModule,
     SocialLoginModule,
     NgbModule,

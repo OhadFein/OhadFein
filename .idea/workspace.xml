@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0ed527c0-12d5-4ae0-9bc4-1323668d1442" name="Default Changelist" comment="" />
+    <list default="true" id="2aed641a-6609-4067-b661-784d12539bc4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/actions/notifications.actions.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/effects/notifications.effects.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/reducers/notifications.reducer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/selectors/notifications.selectors.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/state/notificationsState.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/core/models/notifications.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/core/models/notifications.model.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/store/actions/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/actions/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/store/effects/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/effects/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/store/reducers/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/reducers/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/store/state/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/state/index.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/app.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/app.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/notifications/notifications-page/notifications-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/notifications/notifications-page/notifications-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/notifications/notifications-page/notifications-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/notifications/notifications-page/notifications-page.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/notifications/notifications.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/notifications/notifications.service.ts" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

@@ -1,4 +1,4 @@
-<div class="notifications-wrapper">
+<div *ngIf="sortedNotifications" class="notifications-wrapper">
     <div class="row">
         <div class="notifications-list w-100">
             <div class="col-12" *ngFor="let notificationByDate of sortedNotifications">
