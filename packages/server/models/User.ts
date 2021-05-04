@@ -27,9 +27,19 @@ export interface dataStoredInToken {
   _id: string;
 }
 
-function concatAWSBucketPath(str: any) {
+export function concatAWSBucketPath(str: any) {
   return process.env.AWS_BUCKET_PATH + str;
 }
+
+const starSchema = new Schema(
+  {
+    figures: [{ type: mongoose.Schema.Types.ObjectId, ref: "Figure" }],
+    description: { type: String },
+    logo: { type: String, get: concatAWSBucketPath },
+    promo_video: { type: String },
+  },
+  { _id: false }
+);
 
 const userSchema = new Schema(
   {
@@ -75,15 +85,7 @@ const userSchema = new Schema(
       select: false
     },
 
-    star: {
-      type: {
-        figures: [{ type: mongoose.Schema.Types.ObjectId, ref: "Figure" }],
-        description: { type: String },
-        logo: { type: String, get: concatAWSBucketPath },
-        promo_video: { type: String },
-      },
-      select: false
-    }
+    star: { type: starSchema, select: false, default: () => ({}) }
 
   },
   { timestamps: true }

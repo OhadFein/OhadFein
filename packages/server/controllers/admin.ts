@@ -28,6 +28,7 @@ export const activateStar = async (req: Request, res: Response) => {
         return res.status(409).json({ success: false, message: req.params.starUsername + ' is already star' });
     }
 
+    console.log(req.body);
     user.star.promo_video = req.body.promo_video;
     user.star.description = req.body.description;
     user.star.logo = req.body.logo;
@@ -84,9 +85,10 @@ const pushNotifcationToAllUsers = async (figure: IFigure, starsId: [mongoose.Typ
                         type: EnumNotificationType.NEW_STAR_FIGURE,
                         sourceUser: user._id,
                         performedActionUser: starsId,
+                        linkedId: figure._id
                     });
                     user.notifications.push(newNotifcation._id);
-
+                    console.log(newNotifcation);
                     return [await newNotifcation.save(), await user.save()];
                 })
                 await Promise.all(notifications_promises);

@@ -3,11 +3,7 @@ import {
     EnumAssociateModel, possibleAssociateModels, EnumVideoType, possibleVideoTypes
 } from "../shared/enums"
 import { IFigure } from './Figure';
-import { IUser } from './User';
-
-function concatAWSBucketPath(str: any) {
-    return process.env.AWS_BUCKET_PATH + str;
-}
+import { concatAWSBucketPath, IUser } from './User';
 
 const videoSchema = new mongoose.Schema(
     {

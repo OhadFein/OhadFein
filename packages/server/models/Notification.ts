@@ -6,6 +6,7 @@ const notificationSchema = new mongoose.Schema(
     {
         sourceUser: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' },
         performedActionUser: [{ type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' }],
+        linkedId: { type: mongoose.Schema.Types.ObjectId, required: true }, // TODO: ref?
         isRead: { type: Boolean, default: false },
         type: { type: EnumNotificationType, enum: possibleNotifications, required: true },
     },
@@ -14,6 +15,7 @@ const notificationSchema = new mongoose.Schema(
 
 interface INotificationSchema extends Document {
     _id: mongoose.Types.ObjectId;
+    linkedId: mongoose.Types.ObjectId;
     isRead: Boolean;
     type: EnumNotificationType;
 }

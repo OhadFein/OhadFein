@@ -78,11 +78,12 @@ export const postSignup = async (req: Request<ParamsDictionary, signupRequestBod
 
   await verifyUserEmail(user);
   const tokens = await user.generateAuthToken();
+  const data = Object.assign({}, tokens, { "_id": user._id }, { "username": user.username });
 
   res.status(201).json({
     success: true,
     message: "User created",
-    data: tokens
+    data: data
   });
 };
 

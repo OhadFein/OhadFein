@@ -1,8 +1,7 @@
 import mongoose, { Document, Model, model } from 'mongoose';
 import { EnumDanceLevel, possibleDanceLevels, EnumDanceType, possibleDanceTypes } from "../shared/enums"
-import { IUser } from './User';
+import { concatAWSBucketPath, IUser } from './User';
 import { IVideo } from './Video';
-
 
 const figureSchema = new mongoose.Schema(
   {
@@ -12,11 +11,15 @@ const figureSchema = new mongoose.Schema(
     type: { type: EnumDanceType, enum: possibleDanceTypes, required: true },
     level: { type: EnumDanceLevel, enum: possibleDanceLevels, required: true },
     name: { type: String, required: true }, // TODO: should be changed to enum value?
-    logo: { type: String, required: true },
+    logo: { type: String, required: true, get: concatAWSBucketPath },
   },
   { timestamps: true }
 );
 
+figureSchema.set('toJSON', {
+  virtuals: true,
+  getters: true,
+});
 
 interface IFigureSchema extends Document {
   _id: mongoose.Types.ObjectId;
