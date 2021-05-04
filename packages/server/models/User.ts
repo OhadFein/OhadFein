@@ -36,10 +36,15 @@ const starSchema = new Schema(
     figures: [{ type: mongoose.Schema.Types.ObjectId, ref: "Figure" }],
     description: { type: String },
     logo: { type: String, get: concatAWSBucketPath },
-    promo_video: { type: String },
+    promo_video: { type: String, get: concatAWSBucketPath },
   },
-  { _id: false }
+  { _id: false, id: false }
 );
+
+starSchema.set('toJSON', {
+  virtuals: true,
+  getters: true
+});
 
 const userSchema = new Schema(
   {
