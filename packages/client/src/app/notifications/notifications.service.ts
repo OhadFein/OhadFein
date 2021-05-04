@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import {INotifications, IRestResponse} from '@core/models';
+import {INotifications, IRestResponse, UserRestResponse} from '@core/models';
 import {map} from "rxjs/operators";
 import {BaseRestService} from "@core/services";
-import {Observable} from "rxjs";
+import {Observable, throwError} from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -19,9 +19,24 @@ export class NotificationsService {
                 })
             );
     }
+    // `stars/${starId}`
 
-    setNotifications(): any{
-        return true;
+    setNotificationsAsRead(notificationId): any{
+        return this.baseRestService.post<IRestResponse>(`notifications/mark/read/${notificationId}`).pipe(
+            map(
+                res => {
+                    console.log("res", res)
+                    if (res.success) {
+                        return res.data;
+                    } else {
+                        throwError([res.message]); // TODO: add real error here
+                    }
+                },
+                error => {
+                    throwError(['ERRORS.GeneralBackendError']);
+                }
+            )
+        )
     }
 }
 

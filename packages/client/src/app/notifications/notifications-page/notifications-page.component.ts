@@ -5,7 +5,7 @@ import * as selectors from '@store/selectors/notifications.selectors';
 import * as NotificationsActions from '@store/actions/notifications.actions';
 import {Subscription} from 'rxjs';
 import {Store} from '@ngrx/store';
-import {not} from "rxjs/internal-compatibility";
+import * as UserActions from "@store/actions/user.actions";
 
 @Component({
     selector: 'dsapp-notifications-page',
@@ -24,7 +24,6 @@ export class NotificationsPageComponent implements OnInit {
 
     ngOnInit(): void {
         this.getNotifications();
-        // this.sortNotifications();
     }
 
     sortNotifications(): void {
@@ -38,7 +37,8 @@ export class NotificationsPageComponent implements OnInit {
                 performedActionUsername: notification.performedActionUsername,
                 type: notification.type,
                 createdAt: new Date(notification.createdAt),
-                isRead: notification.isRead
+                isRead: notification.isRead,
+                _id: notification._id
             });
             return groups;
         }, {});
@@ -66,8 +66,9 @@ export class NotificationsPageComponent implements OnInit {
                 }))
     }
 
-    setNotifications(): any {
-        this.notificationsService.setNotifications()
+    setNotificationsAsRead(notification): any {
+        notification.isRead = true;
+        this.store.dispatch(NotificationsActions.BeginUpdateNotificationsAction({ payload: notification._id }));
     }
 
 }

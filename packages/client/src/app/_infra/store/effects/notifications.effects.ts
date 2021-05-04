@@ -29,4 +29,21 @@ export class NotificationsEffects {
             )
         )
     );
+
+    setNotificationsAsRead$: Observable<Action> = createEffect(() =>
+        this.action$.pipe(
+            ofType(NotificationsActions.BeginUpdateNotificationsAction),
+            mergeMap(action =>
+                this.notificationsService.setNotificationsAsRead(action.payload).pipe(
+                    map((data: INotifications) => {
+                        console.log("data",data)
+                        return NotificationsActions.SuccessUpdateNotificationsAction({ payload: data });
+                    }),
+                    catchError((error: Error) => {
+                        return of(NotificationsActions.ErrorUpdateNotificationsAction(error));
+                    })
+                )
+            )
+        )
+    );
 }

@@ -9,6 +9,7 @@ export interface INotifications {
     isRead: boolean;
     linkedId: string;
     performedActionUser: IUser[];
+    _id: string;
 }
 
 export interface ISortedNotifications{
