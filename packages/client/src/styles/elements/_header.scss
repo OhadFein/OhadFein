@@ -1,5 +1,5 @@
 .header {
-  @include position_fixed (0, auto, 0, 0);
+  @include position_fixed(0, auto, 0, 0);
   background: $white;
   border-bottom: $navigation-border;
   display: flex;
@@ -9,11 +9,11 @@
   padding-right: 0;
   z-index: 1;
 
-.notification-icon{
-  height: auto;
-  width: 25px;
-  //padding: 0 15px;
-}
+  .notification-icon {
+    //width: 20px;
+    height: 21px;
+    margin-right: 20px;
+  }
 
   .navbar-brand {
     display: flex;
@@ -21,7 +21,7 @@
     justify-content: center;
     align-items: center;
     flex: 1 1 auto;
-    height: $navigation-menubtn-width;
+    //height: $navigation-menubtn-width;
     padding: 0;
     margin: 0;
     margin-left: $navigation-menubtn-width;
@@ -70,7 +70,8 @@
       }
     }
 
-    .menu-title {}
+    .menu-title {
+    }
 
     .menu-separator {
       width: 100%;
@@ -83,19 +84,24 @@
     padding: 0;
     margin: 0;
     cursor: pointer;
+    margin-right: 8px;
+    img{
+      width: 16px;
+      height: 21px;
+    }
 
     &:focus {
       outline: 0;
     }
 
     .animated-icon {
-      width: $navigation-menubtn-width;
-      height: 21px;
+      //width: $navigation-menubtn-width;
+      //height: 21px;
       position: relative;
       margin: 0px;
 
-      @include trans_form (rotate(0deg));
-      @include trans_ition (.5s ease-in-out);
+      @include trans_form(rotate(0deg));
+      @include trans_ition(.5s ease-in-out);
 
       &:focus {
         outline: 0;
@@ -111,8 +117,8 @@
         background: $dark;
         border: none;
 
-        @include trans_form (rotate(0deg));
-        @include trans_ition (.25s ease-in-out);
+        @include trans_form(rotate(0deg));
+        @include trans_ition(.25s ease-in-out);
 
         &:nth-child(1) {
           top: 0px;
@@ -134,7 +140,7 @@
         span {
           &:nth-child(1) {
             top: 8px;
-            @include trans_form (rotate(135deg));
+            @include trans_form(rotate(135deg));
           }
 
           &:nth-child(2) {
@@ -144,7 +150,7 @@
           &:nth-child(3) {
             width: 100%;
             top: 8px;
-            @include trans_form (rotate(-135deg));
+            @include trans_form(rotate(-135deg));
           }
         }
       }
