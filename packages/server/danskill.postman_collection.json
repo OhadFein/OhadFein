@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "eb73e0e7-9cb3-48c1-a685-5bb2da4a61e3",
+		"_postman_id": "66f4f003-4fe1-48e5-9ae4-43c681194994",
 		"name": "danskill",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -41,7 +41,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"email\": \"ohad2121@gmail.com\",\n\t\"password\": \"somePassword\",\n\t\"confirmPassword\": \"somePassword\",\n\t\"birthDate\": \"1992-12-31\",\n\t\"name\": {\n\t\t\"firstName\": \"roy\",\n\t\t\"lastName\": \"roy\"\n\t}\n}",
+							"raw": "{\n\t\"email\": \"ohad2121@gmail.com\",\n\t\"password\": \"somePassword\",\n\t\"confirmPassword\": \"somePassword\",\n\t\"birthdate\": \"1992-12-31\",\n    \"username\": \"Ohad2121\",\n\t\"given_name\": \"Ohad\",\n\t\"family_name\": \"Fein\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -177,7 +177,7 @@
 					},
 					"response": [
 						{
-							"name": "Existing user",
+							"name": "Forgot password - invalid email",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -190,7 +190,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"email\": \"some@gmail.com\"\n}",
+									"raw": "{\n\t\"email\": \"oh!com\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -248,7 +248,7 @@
 							"body": "{\n    \"success\": true\n}"
 						},
 						{
-							"name": "Forgot password - invalid email",
+							"name": "Existing user",
 							"originalRequest": {
 								"method": "POST",
 								"header": [
@@ -261,7 +261,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n\t\"email\": \"oh!com\"\n}",
+									"raw": "{\n\t\"email\": \"some@gmail.com\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -536,7 +536,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\":{\n\t\t\"firstName\": \"Ohadd\",\n\t\t\"lastName\": \"Fein\"\n\t},\n\t\"website\": \"www.google.com\",\n\t\"birthDate\":{\n        \"date\": \"1991-12-30\"\n    },\n\t\"gender\": \"male\",\n\t\"language\": \"en\"\n}",
+							"raw": "{\n    \"given_name\": \"Ohadd\",\n    \"family_name\": \"Fein\",\n\t\"birthdate\": \"1991-12-30\",\n\t\"gender\": \"male\",\n\t\"language\": \"en\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -602,6 +602,61 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "Get general info",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Sign up\", function () {",
+									"    if (responseCode.code === 201)",
+									"    {",
+									"        const tokens = pm.response.json().data;",
+									"        pm.environment.set(\"access_token\", tokens.access_token);",
+									"        pm.environment.set(\"refresh_token\", tokens.refresh_token);",
+									"    }",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"event": [
@@ -632,7 +687,7 @@
 					"name": "Stars",
 					"item": [
 						{
-							"name": "add star",
+							"name": "activate star",
 							"event": [
 								{
 									"listen": "test",
@@ -664,7 +719,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"promoVideo\": \"https://danskill-streaming-video-optimized.s3-eu-west-1.amazonaws.com/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4\",\r\n  \"name\": {\r\n    \"firstName\": \"Olessia\",\r\n    \"lastName\": \"Getsko\"\r\n  },\r\n  \"location\": {\r\n    \"city\": \"Ukraine\"\r\n  },\r\n  \"logo\": {\r\n  \t\"small\": \"https://danskill-streaming-video-optimized.s3-eu-west-1.amazonaws.com/stars/Olessia+Getsko/Getsko_400x225.jpg\",\r\n    \"large\": \"https://danskill-streaming-video-optimized.s3-eu-west-1.amazonaws.com/stars/Olessia+Getsko/Getsko_400x225.jpg\"\r\n  },\r\n   \"about\": \"\",\r\n   \"achievements\": [\r\n\"2 times world champions 10 dance\",\r\n\"World and European cup champions\",\r\n\"Semi-Finalists Blackpool,Uk and International\",\r\n\"Semi-Finalists World championship\",\r\n\"Ukrainian champions\"\r\n       ],\r\n   \"slug\": \"Olessia-Getsko\"\r\n}",
+									"raw": "{\r\n  \"promo_video\": \"https://danskill-streaming-video-optimized.s3-eu-west-1.amazonaws.com/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4\",\r\n   \"description\":\"2 times world champions 10 dance\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -672,20 +727,21 @@
 									}
 								},
 								"url": {
-									"raw": "{{baseURL}}/admins/stars",
+									"raw": "{{baseURL}}/admins/stars/{{username}}",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
 										"admins",
-										"stars"
+										"stars",
+										"{{username}}"
 									]
 								}
 							},
 							"response": []
 						},
 						{
-							"name": "delete star",
+							"name": "deactivate star",
 							"event": [
 								{
 									"listen": "test",
@@ -714,388 +770,14 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{baseURL}}/admins/stars/{{starId}}",
+									"raw": "{{baseURL}}/admins/stars/{{username}}",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
 										"admins",
 										"stars",
-										"{{starId}}"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Videos",
-					"item": [
-						{
-							"name": "upload star video",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Add star video\", function () {\r",
-											"    if (responseCode.code === 201) {\r",
-											"        const video = pm.response.json().data;\r",
-											"        pm.environment.set(\"videoId\", video._id);\r",
-											"    }\r",
-											"\r",
-											"    pm.response.to.have.status(201);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "path",
-											"value": "stars/Paul Moldovan/Opening Out",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "videoKey",
-											"value": "stars/paul_moldovan/Rumba/Level 3/Opening Out/RUMBA_L3_OPENING_OUT_MY_LAB_PAUL.mp4",
-											"type": "text"
-										},
-										{
-											"key": "name",
-											"value": "basic principles",
-											"description": "video name",
-											"type": "text",
-											"disabled": true
-										},
-										{
-											"key": "view",
-											"value": "front",
-											"description": "valid values: front/back",
-											"type": "text"
-										},
-										{
-											"key": "type",
-											"value": "comparable",
-											"description": "promo/basicPrinciples/tips/exercises/comparable",
-											"type": "text"
-										},
-										{
-											"key": "participatesAmount",
-											"value": "couple",
-											"description": "valid values: solo/couple",
-											"type": "text"
-										},
-										{
-											"key": "associatedObject",
-											"value": "{{figureId}}",
-											"description": "figure id",
-											"type": "text"
-										},
-										{
-											"key": "thumbnail",
-											"value": "https://danskill1.s3-eu-west-1.amazonaws.com/stars/paul_moldovan/Rumba/Level+3/Opening+Out/RUMBA_L3_OPENING_OUT_MY_LAB_PAUL.mp4",
-											"type": "text"
-										},
-										{
-											"key": "video",
-											"description": "video file",
-											"type": "file",
-											"src": "/home/ohad/Downloads/Paul Moldovan-20200814T133944Z-001/Paul Moldovan/Opening Out/Roy (user) - fake it till you make it.mp4",
-											"disabled": true
-										},
-										{
-											"key": "videoUrl",
-											"value": "https://danskill1.s3-eu-west-1.amazonaws.com/stars/paul_moldovan/Rumba/Level+3/Opening+Out/RUMBA_L3_OPENING_OUT_BASIC_PRINCIPLE_PAUL.mp4",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{baseURL}}/admins/videos/",
-									"host": [
-										"{{baseURL}}"
-									],
-									"path": [
-										"admins",
-										"videos",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "delete video",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Delete video\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{baseURL}}/admins/videos/{{videoId}}",
-									"host": [
-										"{{baseURL}}"
-									],
-									"path": [
-										"admins",
-										"videos",
-										"{{videoId}}"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "S3 objects",
-					"item": [
-						{
-							"name": "delete s3 object",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Delete video\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"key\": \"stars/Paul Moldovan/logo.jpg\"\n}"
-								},
-								"url": {
-									"raw": "{{baseURL}}/admins/s3Objects/",
-									"host": [
-										"{{baseURL}}"
-									],
-									"path": [
-										"admins",
-										"s3Objects",
-										""
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "upload s3 star logo",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Add video\", function () {\r",
-											"    if (responseCode.code === 201) {\r",
-											"        const video = pm.response.json().data;\r",
-											"        pm.environment.set(\"videoId\", video._id);\r",
-											"    }\r",
-											"\r",
-											"    pm.response.to.have.status(201);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "path",
-											"value": "stars/Paul Moldovan",
-											"description": "video name",
-											"type": "text"
-										},
-										{
-											"key": "object",
-											"description": "Must be the last parameter!!!!!",
-											"type": "file",
-											"src": "/home/ohad/Downloads/Paul Moldovan-20200814T133944Z-001/Paul Moldovan/photos/logo.jpg"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{baseURL}}/admins/s3Objects",
-									"host": [
-										"{{baseURL}}"
-									],
-									"path": [
-										"admins",
-										"s3Objects"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "upload s3 star promo",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Add video\", function () {\r",
-											"    if (responseCode.code === 201) {\r",
-											"        const video = pm.response.json().data;\r",
-											"        pm.environment.set(\"videoId\", video._id);\r",
-											"    }\r",
-											"\r",
-											"    pm.response.to.have.status(201);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "path",
-											"value": "stars/Paul Moldovan",
-											"description": "video name",
-											"type": "text"
-										},
-										{
-											"key": "object",
-											"description": "Must be the last parameter!!!!!",
-											"type": "file",
-											"src": "/home/ohad/Downloads/Paul Moldovan-20200814T133944Z-001/Paul Moldovan/promo.MP4"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{baseURL}}/admins/s3Objects",
-									"host": [
-										"{{baseURL}}"
-									],
-									"path": [
-										"admins",
-										"s3Objects"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "list s3 objects",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Add video\", function () {\r",
-											"    if (responseCode.code === 201) {\r",
-											"        const video = pm.response.json().data;\r",
-											"        pm.environment.set(\"videoId\", video._id);\r",
-											"    }\r",
-											"\r",
-											"    pm.response.to.have.status(201);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "GET",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": ""
-								},
-								"url": {
-									"raw": "{{baseURL}}/admins/s3Objects",
-									"host": [
-										"{{baseURL}}"
-									],
-									"path": [
-										"admins",
-										"s3Objects"
+										"{{username}}"
 									]
 								}
 							},
@@ -1139,7 +821,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n\t\"stars\": [\"{{starId}}\"],\r\n\t\"type\": \"rumba\",\r\n\t\"level\": \"3\",\r\n\t\"name\": \"Opening Out\",\r\n\t\"logo\": \"https://danskill1.s3-eu-west-1.amazonaws.com/stars/paul_moldovan/Rumba/Level+3/Opening+Out/logo.png\"\r\n}",
+									"raw": "{\r\n\t\"stars\": [\"6089cbba06e29af7211d2ba4\"],\r\n\t\"name\": \"figure 1\",\r\n\t\"type\": \"samba\",\r\n\t\"level\": \"1\",\r\n\t\"logo\": \"https://d7nb4rcaibu03.cloudfront.net/stars/SoulDance/riccardo_yulia‏/maxresdefault.jpg\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1189,15 +871,111 @@
 									"formdata": []
 								},
 								"url": {
-									"raw": "{{baseURL}}/admins/figures//{{figureId}}",
+									"raw": "{{baseURL}}/admins/figures/{{figureId}}",
 									"host": [
 										"{{baseURL}}"
 									],
 									"path": [
 										"admins",
 										"figures",
-										"",
 										"{{figureId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Videos",
+					"item": [
+						{
+							"name": "add video",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Add star video\", function () {\r",
+											"    if (responseCode.code === 201) {\r",
+											"        const video = pm.response.json().data;\r",
+											"        pm.environment.set(\"videoId\", video._id);\r",
+											"    }\r",
+											"\r",
+											"    pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"figureId\": \"{{figureId}}\",\n    \"key\": \"stars/SoulDance/nina/Batuchado.MOV\",\n    \"name\": \"Front view\",\n    \"thumbnail\": \"stars/paul_moldovan/Rumba/opening_out/14570766_531615306963253_7292340220612807962_o.jpg\",\n    \"type\": \"comparable\"\n}"
+								},
+								"url": {
+									"raw": "{{baseURL}}/admins/videos/",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"admins",
+										"videos",
+										""
+									]
+								},
+								"description": "type = basicPrinciples | comparable"
+							},
+							"response": []
+						},
+						{
+							"name": "delete video",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Delete video\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{baseURL}}/admins/videos/{{videoId}}",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"admins",
+										"videos",
+										"{{videoId}}"
 									]
 								}
 							},
@@ -1272,13 +1050,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{baseURL}}/stars/{{starId}}",
+							"raw": "{{baseURL}}/stars/{{username}}",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
 								"stars",
-								"{{starId}}"
+								"{{username}}"
 							]
 						}
 					},
@@ -1289,6 +1067,50 @@
 		{
 			"name": "Figures",
 			"item": [
+				{
+					"name": "get all star figures",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{baseURL}}/figures/star/{{username}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"figures",
+								"star",
+								"{{username}}"
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "get figure by id",
 					"event": [
@@ -1327,137 +1149,6 @@
 							"path": [
 								"figures",
 								"{{figureId}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get all star figures",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{baseURL}}/figures/star/all/{{starId}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"figures",
-								"star",
-								"all",
-								"{{starId}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get figures by type and level",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{baseURL}}/figures/star/{{starId}}?danceType=rumba&level=advanced",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"figures",
-								"star",
-								"{{starId}}"
-							],
-							"query": [
-								{
-									"key": "danceType",
-									"value": "rumba"
-								},
-								{
-									"key": "level",
-									"value": "advanced"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get figures by type and level Copy",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{baseURL}}/figures/star/{{starId}}?danceType=rumba&level=advanced",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"figures",
-								"star",
-								"{{starId}}"
-							],
-							"query": [
-								{
-									"key": "danceType",
-									"value": "rumba"
-								},
-								{
-									"key": "level",
-									"value": "advanced"
-								}
 							]
 						}
 					},
@@ -1527,12 +1218,6 @@
 							"script": {
 								"exec": [
 									"pm.test(\"Add practice item\", function () {\r",
-									"    if (responseCode.code === 201) {\r",
-									"        const practice = pm.response.json().data;\r",
-									"        pm.environment.set(\"practiceId\", practice._id);\r",
-									"        pm.environment.set(\"videoId\", practice.video);\r",
-									"    }\r",
-									"\r",
 									"    pm.response.to.have.status(201);\r",
 									"});"
 								],
@@ -1551,27 +1236,8 @@
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "name",
-									"value": "fake it till you make it #1",
-									"description": "practice name",
-									"type": "text"
-								},
-								{
-									"key": "associatedVideoId",
-									"value": "{{videoId}}",
-									"description": "video id",
-									"type": "text"
-								},
-								{
-									"key": "video",
-									"description": "video file",
-									"type": "file",
-									"src": "/home/ohad/Downloads/Paul Moldovan-20200814T133944Z-001/Paul Moldovan/Opening Out/Roy (user) - fake it till you make it.mp4"
-								}
-							]
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"fake it till you make it #1\",\n    \"video\": \"{{videoId}}\",\n    \"star\": \"{{starId}}\",\n    \"figure\": \"{{figureId}}\",\n    \"filename\": \"SampleVideo_1280x720_2mb.mp4\"\n}"
 						},
 						"url": {
 							"raw": "{{baseURL}}/account/practices",
@@ -1581,49 +1247,6 @@
 							"path": [
 								"account",
 								"practices"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "edit practice item",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Edit practice item\", function () {\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"name\": \"fake it till you make it #11\",\n    \"notes\": \"Note #1\"\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/account/practices/{{practiceId}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"account",
-								"practices",
-								"{{practiceId}}"
 							]
 						}
 					},
@@ -1659,8 +1282,8 @@
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": []
+							"mode": "raw",
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{baseURL}}/account/practices",
@@ -1705,18 +1328,109 @@
 							}
 						],
 						"body": {
-							"mode": "formdata",
-							"formdata": []
+							"mode": "raw",
+							"raw": "{\n    \"key\": \"2021-01-13T10-21-12.647Z_SampleVideo_1280x720_2mb.mp4\"\n}"
 						},
 						"url": {
-							"raw": "{{baseURL}}/account/practices/{{practiceId}}",
+							"raw": "{{baseURL}}/account/practices/2021-01-14T07-55-07.714Z_SampleVideo_1280x720_2mb.mp4",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
 								"account",
 								"practices",
-								"{{practiceId}}"
+								"2021-01-14T07-55-07.714Z_SampleVideo_1280x720_2mb.mp4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get practice item by figure id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get practice item by id\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"key\": \"2021-01-13T10-21-12.647Z_SampleVideo_1280x720_2mb.mp4\"\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/account/practices/figure/{{figureId}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"account",
+								"practices",
+								"figure",
+								"{{figureId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit practice item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Edit practice item\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"fake it till you make it #11\",\n    \"note\": \"Note #1\"\n}"
+						},
+						"url": {
+							"raw": "{{baseURL}}/account/practices/2021-01-22T18-48-29.268Z_SampleVideo_1280x720_2mb.mp4",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"account",
+								"practices",
+								"2021-01-22T18-48-29.268Z_SampleVideo_1280x720_2mb.mp4"
 							]
 						}
 					},
@@ -1752,14 +1466,255 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{baseURL}}/account/practices/{{practiceId}}",
+							"raw": "{{baseURL}}/account/practices/2021-01-13T10-21-12.647Z_SampleVideo_1280x720_2mb.mp4",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
 								"account",
 								"practices",
-								"{{practiceId}}"
+								"2021-01-13T10-21-12.647Z_SampleVideo_1280x720_2mb.mp4"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notifcations",
+			"item": [
+				{
+					"name": "get all notifications",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get all practice items\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/notifications",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"notifications"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mark notification as read",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get all practice items\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/notifications/mark/read/{{notificationId}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"notifications",
+								"mark",
+								"read",
+								"{{notificationId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Coaches",
+			"item": [
+				{
+					"name": "get all coaches",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get all practice items\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/coaches",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"coaches"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Students",
+			"item": [
+				{
+					"name": "get all my students",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get all practice items\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/students",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get student practices",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get all practice items\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/students/6089d24b19923dc1519d077c",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"students",
+								"6089d24b19923dc1519d077c"
 							]
 						}
 					},

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LabItem, LabStarVideo, Practice, PracticeError, LabUserVideo, IStar, Figure } from '@app/_infra/core/models';
+import { LabItem, LabStarVideo, Practice, PracticeError, LabUserVideo, Figure } from '@app/_infra/core/models';
 import { AlertErrorService } from '@app/_infra/core/services';
 import * as PracticeAction from '@app/_infra/store/actions/practices.actions';
 import * as selectors from '@app/_infra/store/selectors/practices.selector';

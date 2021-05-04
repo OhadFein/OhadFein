@@ -1,4 +1,4 @@
-import { IStar } from '@core/models/';
+import { IUser } from '@core/models/';
 import { createAction, props } from '@ngrx/store';
 
 export enum StarsActionType {
@@ -15,7 +15,7 @@ export const BeginGetStarsAction = createAction(StarsActionType.BeginGetStarsAct
 
 export const SuccessGetStarsAction = createAction(
     StarsActionType.SuccessGetStarsAction,
-    props<{ payload: IStar[] }>()
+    props<{ payload: IUser[] }>()
 );
 
 export const ErrorStarsAction = createAction(StarsActionType.ErrorStarsAction, props<Error>());

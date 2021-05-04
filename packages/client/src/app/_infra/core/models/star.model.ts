@@ -1,21 +1,26 @@
-import { IStarContent } from './star-content.model';
-import { Tag } from './tag.model';
-import { Location } from './user.model';
-
+export interface IUser {
+    birthdate: Date;
+    createdAt: Date;
+    family_name: string;
+    given_name: string;
+    id: string;
+    star: IStar;
+    updatedAt: Date;
+    username: string;
+    about?: string;
+    _id: string;
+}
 
 export interface IStar {
-    _id: string;
-    name: Name;
-    slug: string;
-    location: Location;
-    logo: StarUserPics;
-    promoVideo: string;
-    achievements?: Array<string>;
-    about?: string;
-    figures?: Array<any>
-    createdAt?: Date;
-    updatedAt?: Date;
+    figures: IFigure[];
     description: string;
+    logo: string;
+    promo_video: string;
+}
+
+export interface IFigure {
+    stars: string[],
+    videos: string[]
 }
 
 export interface Name {

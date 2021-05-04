@@ -1,146 +1,68 @@
-import { Request, Response } from 'express';
+import { EnumNotificationType } from './../shared/enums';
 import mongoose from 'mongoose';
-
+import Notification from '../models/Notification'
+import User, { IUser } from './../models/User';
+import { Request, Response } from 'express';
+import { EnumAssociateModel, EnumRole } from '../shared/enums';
+import HttpException from '../shared/exceptions';
+import { Errors } from '../shared/erros';
 import Figure, { IFigure } from '../models/Figure';
 import Video, { IVideo } from '../models/Video';
-import { EnumAssociateModel } from '../shared/enums';
-import { awsDelete, awsListObjects } from '../services/aws';
-import { deleteVideoFromDb, disassociateVideoFromCollection } from './video'
-import Star, { IStar } from '../models/Star';
-import { HttpException } from '../shared/exceptions';
-
+import { deleteVideoFromDb, disassociateVideoFromCollection } from './video';
 
 /**
- * POST /admins/stars/add
- * add star
+ * POST /admins/stars/
+ * activate star
  */
 
-// TODO: slug should be converted from (firstName + lastName) with slugify (toLowerCase is needed?)
-const buildStarFromRequest = (req: Request): IStar => {
-    return new Star({
-        ...req.body
-    })
-}
+export const activateStar = async (req: Request, res: Response) => {
+    const user = await User.findOne({ username: req.params.starUsername })
+        .select("+roles +star")
+        .exec()
+    if (!user) {
+        return res.status(404).json({ success: false, message: 'User not found' });
+    }
 
-export const addStar = async (req: Request, res: Response) => {
-    const star = buildStarFromRequest(req);
-    await star.save();
+    const isAlreadyStar = user.roles.includes(EnumRole.star);
+    if (isAlreadyStar) {
+        return res.status(409).json({ success: false, message: req.params.starUsername + ' is already star' });
+    }
+
+    console.log(req.body);
+    user.star.promo_video = req.body.promo_video;
+    user.star.description = req.body.description;
+    user.star.logo = req.body.logo;
+    user.roles.push(EnumRole.star);
+    await user.save();
 
     res.status(201).json({
         success: true,
-        message: "Created star successfully",
-        data: star
+        message: "Activated star successfully",
     });
 }
 
 /**
  * DELETE /admins/stars/:starId
- * remove star
+ * deactivate star
  */
 
-export const removeStar = async (req: Request, res: Response) => {
-    await Star.deleteOne({ _id: req.params.starId })
+export const deactivateStar = async (req: Request, res: Response) => {
+    const user = await User.findOne({ username: req.params.starUsername })
+        .select("+roles")
+        .exec()
+    if (!user) {
+        return res.status(404).json({ success: false, message: 'User not found' });
+    }
+    const isAlreadyStar = user.roles.includes(EnumRole.star);
+    if (!isAlreadyStar) {
+        return res.status(404).json({ success: false, message: req.params.starUsername + ' is not a star' });
+    }
+
+    user.roles.splice(user.roles.indexOf(EnumRole.star));
+    await user.save();
 
     res.status(201).json({
         success: true,
-    });
-}
-
-/**
- * POST /admins/videos/:starId
- * add video
- */
-
-const buildVideoFromRequest = (req: Request, videoKey: string): IVideo => {
-    return new Video({
-        ...req.body,
-        ownerUser: req.user._id,
-        associatedModel: EnumAssociateModel.Figure,
-        key: videoKey,
-    })
-}
-
-export const associateVideoWithFigure = async (associatedId: mongoose.Types.ObjectId,
-    newVideoId: mongoose.Types.ObjectId) => (
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-    await Figure.updateOne({ _id: associatedId }, { $addToSet: { videos: newVideoId } }).exec()
-);
-
-export const addVideo = async (req: Request, res: Response) => {
-    // TODO: validation for req.file
-
-    const videoKey = req.file ? (req.file as any).key : req.body.videoKey;
-    const video = buildVideoFromRequest(req, videoKey);
-
-    await video.save();
-    await associateVideoWithFigure(video.associatedObject, video._id);
-
-    // TODO: select params for video
-
-    res.status(201).json({
-        success: true,
-        message: 'Upload video successfully completed',
-        data: video // TODO:
-    });
-}
-
-/**
- * DELETE /admins/videos/:starId
- * delete video
- */
-
-export const deleteVideo = async (req: Request, res: Response) => {
-    const videoId = new mongoose.mongo.ObjectId(req.params.videoId);
-    const video = await deleteVideoFromDb(videoId);
-    await disassociateVideoFromCollection(video.associatedModel, video.associatedObject, video._id);
-
-    await awsDelete(video.key);
-
-    res.status(200).json({
-        success: true,
-        message: 'Video successfully deleted'
-    });
-}
-
-
-/**
- * GET /admins/s3objects/
- * list s3 objects
- */
-
-export const listS3Object = async (req: Request, res: Response) => {
-    const objects = await awsListObjects(req.body.prefix);
-
-    res.status(200).json({
-        data: objects
-    });
-}
-
-/**
- * POST /admins/s3objects/:path
- * add s3 object
- */
-
-
-export const addS3Object = (req: Request, res: Response) => {
-    res.status(201).json({
-        success: true,
-        message: 'Upload successfully completed',
-        data: (req.file as any).location
-    });
-}
-
-/**
- * DELETE /admins/s3objects/:path
- * delete s3 object
- */
-
-export const deleteS3Object = async (req: Request, res: Response) => {
-    await awsDelete(req.body.key);
-
-    res.status(200).json({
-        success: true,
-        message: 'Object successfully deleted'
     });
 }
 
@@ -149,19 +71,51 @@ export const deleteS3Object = async (req: Request, res: Response) => {
  * add figure
  */
 
+// Temporary, only until coach functionality and subscription feature will be ready
+const pushNotifcationToAllUsers = async (figure: IFigure, starsId: [mongoose.Types.ObjectId]) => {
+    User.find({ _id: { $not: { $in: starsId } } })
+        .select("+notifications")
+        .exec()
+        .then(async users => {
+            if (!users || users.length === 0) {
+                // TODO:
+            } else {
+                const notifications_promises = users.map(async (user) => {
+                    const newNotifcation = new Notification({
+                        type: EnumNotificationType.NEW_STAR_FIGURE,
+                        sourceUser: user._id,
+                        performedActionUser: starsId,
+                        linkedId: figure._id
+                    });
+                    user.notifications.push(newNotifcation._id);
+                    console.log(newNotifcation);
+                    return [await newNotifcation.save(), await user.save()];
+                })
+                await Promise.all(notifications_promises);
+            }
+        })
+        .catch(err => {
+            // TODO:
+        });
+}
+
+
 const buildFigureFromRequest = (req: Request): IFigure => {
     return new Figure({
         ...req.body
     })
 }
 
-const addfigureToStar = async (figure: IFigure, starIds: [mongoose.Types.ObjectId]) => {
-    const star_promises = starIds.map(async (starId) => (
+const addfigureToStars = async (figure: IFigure, starsIds: [mongoose.Types.ObjectId]) => {
+    const star_promises = starsIds.map(async (starId) => (
         // TODO:
         // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-        await Star.updateOne({ _id: starId }, { $addToSet: { figures: figure._id } }).exec()
+        await User.updateOne({ _id: starId, roles: { $in: [EnumRole.star] } },
+            { $addToSet: { "star.figures": figure._id } }).exec()
     ))
-    await Promise.all(star_promises);
+    const res: any = await Promise.all(star_promises);
+    if (res[0].n == 0)
+        throw new HttpException(409, Errors.INVALID_USERNAME)
 }
 
 export const addFigure = async (req: Request, res: Response) => {
@@ -169,7 +123,8 @@ export const addFigure = async (req: Request, res: Response) => {
 
     const figureToAdd = buildFigureFromRequest(req);
     const figure = await figureToAdd.save();
-    await addfigureToStar(figureToAdd, req.body.stars);
+    await addfigureToStars(figureToAdd, req.body.stars);
+    await pushNotifcationToAllUsers(figureToAdd, req.body.stars);
 
     res.status(201).json({
         success: true,
@@ -204,7 +159,7 @@ const removeFigureFromFiguresCollection = (figureId: mongoose.Types.ObjectId): P
 const removeFigureFromStar = async (figure: IFigure) => {
     const star_promises = figure.stars.map(async (starId: mongoose.Types.ObjectId) => (
         // eslint-disable-next-line @typescript-eslint/no-unsafe-return
-        await Star.updateOne({ _id: starId }, { $pull: { figures: figure._id } }).exec()
+        await User.updateOne({ _id: starId }, { $pull: { "star.figures": figure._id } }).exec()
     ))
     await Promise.all(star_promises);
 }
@@ -217,5 +172,64 @@ export const deleteFigure = async (req: Request, res: Response) => {
     res.status(200).json({
         success: true,
         message: "Figure removed"
+    });
+}
+
+/**
+ * POST /admins/videos/:starId
+ * add video
+ */
+
+const buildVideoFromRequest = (req: Request, videoKey: string): IVideo => {
+    return new Video({
+        ownerUser: req.user._id,
+        associatedObject: req.body.figureId,
+        associatedModel: EnumAssociateModel.Figure,
+        key: req.body.key,
+        name: req.body.name,
+        thumbnail: req.body.thumbnail,
+    })
+}
+
+export const associateVideoWithFigure = async (associatedId: mongoose.Types.ObjectId,
+    newVideoId: mongoose.Types.ObjectId) => (
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-return
+    await Figure.updateOne({ _id: associatedId }, { $addToSet: { videos: newVideoId } }).exec()
+);
+
+export const addVideo = async (req: Request, res: Response) => {
+    const key = req.body.key;
+
+    const figure = await Figure.findById(req.body.figureId).exec();
+    if (!figure) {
+        return res.status(404).json({ success: false, message: 'Figure not found' });
+    }
+
+    const video = buildVideoFromRequest(req, key);
+    await video.save();
+
+    await associateVideoWithFigure(video.associatedObject, video._id);
+
+    // TODO: select params for video
+
+    res.status(201).json({
+        success: true,
+        message: 'Upload video successfully completed',
+        data: video // TODO:
+    });
+}
+
+
+
+export const deleteVideo = async (req: Request, res: Response) => {
+    const videoId = new mongoose.mongo.ObjectId(req.params.videoId);
+    const video = await deleteVideoFromDb(videoId);
+    await disassociateVideoFromCollection(video.associatedModel, video.associatedObject, video._id);
+
+    // await awsDelete(video.key);
+
+    res.status(200).json({
+        success: true,
+        message: 'Video successfully deleted'
     });
 }

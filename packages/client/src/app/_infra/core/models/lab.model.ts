@@ -1,9 +1,9 @@
 import { Figure } from './figure.model';
-import { IStar } from './star.model';
+import { IUser } from './star.model';
 import { LabStarVideo, LabUserVideo } from './video.model';
 
 export interface LabItem {
-    star: IStar;
+    star: IUser;
     figure: Figure;
     starVideo: LabStarVideo;
     userVideo?: LabUserVideo;

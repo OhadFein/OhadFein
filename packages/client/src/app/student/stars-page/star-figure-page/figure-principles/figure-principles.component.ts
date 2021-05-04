@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ActivatedRoute, ParamMap, Router , NavigationEnd} from '@angular/router';
-import { Figure, LabItem, LabStarVideo, IStar, Video, VideoType, ETabs } from '@core/models';
+import { Figure, LabItem, LabStarVideo, IUser, Video, VideoType, ETabs } from '@core/models';
 import { from, Subscription } from 'rxjs';
 import * as FigureActions from '@app/_infra/store/actions/figures.actions';
 import * as StarSelectors from '@infra/store/selectors/stars.selectors';
@@ -20,7 +20,7 @@ export class FigurePrinciplesComponent implements OnInit {
   slug = null;
   figureId = null;
   prinicipals: any = null;
-  star: IStar = null;
+  star: IUser = null;
   figure: Figure = null;
   @Output() onVideoChanged = new EventEmitter<any>();
   currentVideoId: string = null;

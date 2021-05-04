@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { Name, IStar } from '@app/_infra/core/models';
+import { Name, IUser } from '@app/_infra/core/models';
 import * as StarsActions from '@app/_infra/store/actions/stars.actions';
 import * as selectors from '@infra/store/selectors/stars.selectors';
 import { Store } from '@ngrx/store';
@@ -16,7 +16,7 @@ import { ElementRef } from '@angular/core';
 export class StarContentPageComponent implements OnInit, OnDestroy {
 
     slug = null;
-    star: IStar = null;
+    user: IUser = null;
     loading = true;
     subs: Subscription[] = [];
     @ViewChild('stardescription') starDescriptionEl: ElementRef;
@@ -29,14 +29,14 @@ export class StarContentPageComponent implements OnInit, OnDestroy {
         this.isOverflown();
         this.subs.push(
             this.route.params.subscribe((params: ParamMap) => {
-                this.slug = params['slug'];
+                this.slug = params['username'];
             })
         )
         this.subs.push(
             this.store.select(selectors.selectStarBySlug(this.slug)).subscribe(
                 star => {
                     if (star) {
-                        this.star = { ...star };
+                        this.user = { ...star };
                         this.loading = false;
                     } else {
                         this.store.dispatch(StarsActions.BeginGetStarsAction());

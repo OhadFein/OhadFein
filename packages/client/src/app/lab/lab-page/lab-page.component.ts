@@ -144,7 +144,7 @@ export class LabPageComponent implements OnInit, OnDestroy {
 
     saveToPractices(): void {
         const data: CreatePracticeData = new FormData();
-        data.append('name', `${this.labItem.star.name.firstName} ${this.labItem.star.name.lastName} ${this.labItem.figure.name}`);
+        data.append('name', `${this.labItem.star.given_name} ${this.labItem.star.family_name} ${this.labItem.figure.name}`);
         data.append('associatedVideoId', this.labItem.starVideo._id);
         data.append('video', this.labItem.userVideo.file);
         data.append('starId', this.labItem.star._id);
