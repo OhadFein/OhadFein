@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import mongoose from "mongoose"
-import User from '../models/User';
+import User, { IUser } from '../models/User';
 import { buildVideoFromRequest, associateVideoWithStarVideo, disassociateVideoFromCollection, deleteVideoFromDb } from "./video"
 import Practice, { IPractice } from '../models/Practice';
 import { IVideo } from '../models/Video';
@@ -13,25 +13,34 @@ import Note, { INote } from '../models/Note';
  * get all practices
  */
 
-export const getPracticeItems = async (req: Request, res: Response) => {
-    await req.user.populate({
-        path: 'practices',
-        populate: {
-            path: 'star video',
+
+
+export const getPracticeItemsByUser = async (id: mongoose.Types.ObjectId) => (
+    User.findById(id)
+        //.select() // TODO: select is needed
+        .populate({
+            path: 'practices',
             populate: {
-                model: 'Video',
-                path: 'associatedObject',
+                path: 'star video',
                 populate: {
-                    model: 'Figure',
+                    model: 'Video',
                     path: 'associatedObject',
+                    populate: {
+                        model: 'Figure',
+                        path: 'associatedObject',
+                    }
                 }
             }
-        }
-    }).execPopulate();
+        })
+        .exec()
+);
+
+export const getPracticeItems = async (req: Request, res: Response) => {
+    const userWithPractices = await getPracticeItemsByUser(req.user._id);
 
     res.status(200).json({
         success: true,
-        data: req.user.practices
+        data: userWithPractices?.practices
     });
 }
 
