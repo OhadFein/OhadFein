@@ -84,11 +84,11 @@ export const getPracticeItemsByFigureId = async (figureId: mongoose.Types.Object
 
 export const getPracticeItemByFigure = async (req: Request, res: Response) => {
     const figureId = new mongoose.mongo.ObjectId(req.params.figureId);
-    const practiceItems = await getPracticeItemsByFigureId(figureId);
+    const practices = await getPracticeItemsByFigureId(figureId);
 
     res.status(200).json({
         success: true,
-        data: practiceItems
+        data: practices
     });
 }
 
@@ -296,7 +296,7 @@ export const addNoteToPractice = async (req: Request, res: Response) => {
 
     await Practice.updateOne({ _id: practiceId }, { $addToSet: { notes: note._id } }).exec();
     if (req.user.coach) {
-        await pushNotifcationToCoach(req.user.coach, req.user._id, note._id);
+        await pushNotifcationToCoach(req.user.coach as unknown as mongoose.Types.ObjectId, req.user._id, note._id); // TODO:
     }
 
     res.status(201).json({
