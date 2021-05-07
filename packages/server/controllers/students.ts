@@ -1,8 +1,16 @@
-import { INotification } from './../models/Notification';
+import Notification, { INotification } from './../models/Notification';
 import { Request, Response } from 'express';
 import User, { IUser } from '../models/User';
 import mongoose from "mongoose"
+import { EnumNotificationType } from '../shared/enums';
+import { buildNote } from './practice';
+import Practice from '../models/Practice';
 
+
+/**
+ * GET /
+ * get all students
+ */
 
 const getAllStudents = async (id: mongoose.Types.ObjectId): Promise<IUser> => (
     await User.findById(id)
@@ -35,6 +43,11 @@ const coachAndStudents = (userAndStudentsAndNotifications: IUser) => {
 
     return students;
 }
+
+/**
+ * GET /
+ * get students list
+ */
 
 export const getStudents = async (req: Request, res: Response) => {
     const coachAndStudentsAndNotifications = await getAllStudents(req.user._id)
@@ -71,12 +84,62 @@ const getAllStudentPractices = async (studentId: mongoose.Types.ObjectId): Promi
 
 export const getStudentPractices = async (req: Request, res: Response) => {
     const studentId = new mongoose.mongo.ObjectId(req.params.studentId);
-    const student = await getAllStudentPractices(studentId)
-    console.log(student);
+    const student = await getAllStudentPractices(studentId);
+
     if (!student?.coach?._id.equals(req.user._id)) {
         return res.status(401).json({ success: false, message: 'User not found!' }); // Invalid permissions
     }
 
+    res.status(201).json({
+        success: true,
+        data: student
+    });
+}
+
+/**
+ * POST /
+ * add user note for practice
+ */
+
+const pushNotifcationToStudent = async (coachId: mongoose.Types.ObjectId, studentId: mongoose.Types.ObjectId, noteId: mongoose.Types.ObjectId) => {
+    User.findById(coachId)
+        .select("+notifications")
+        .exec()
+        .then(async coach => {
+            if (!coach) {
+                // TODO:
+            } else {
+                const newNotifcation = new Notification({
+                    type: EnumNotificationType.NEW_USER_NOTE,
+                    sourceUser: coachId,
+                    performedActionUser: studentId,
+                    linkedId: noteId
+                });
+
+                coach.notifications.push(newNotifcation._id);
+                await newNotifcation.save();
+                await coach.save();
+            }
+        })
+        .catch(err => {
+            // TODO:
+        });
+}
+
+export const addStudentPracticeNote = async (req: Request, res: Response) => {
+    const practiceId = new mongoose.mongo.ObjectId(req.body.practiceId);
+    const studentId = new mongoose.mongo.ObjectId(req.params.studentId);
+    const student = await getAllStudentPractices(studentId);
+
+    if (!student?.coach?._id.equals(req.user._id)) {
+        return res.status(401).json({ success: false, message: 'User not found!' }); // Invalid permissions
+    }
+
+    const note = buildNote(req.body.content, practiceId);
+    await note.save();
+
+    await Practice.updateOne({ _id: practiceId }, { $addToSet: { notes: note._id } }).exec();
+    await pushNotifcationToStudent(req.user._id, studentId, note._id); // TODO:
 
     res.status(201).json({
         success: true,

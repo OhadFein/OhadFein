@@ -280,7 +280,7 @@ const pushNotifcationToCoach = async (coachId: mongoose.Types.ObjectId, userId: 
         });
 }
 
-const buildNote = (content: string, practiceId: mongoose.Types.ObjectId): INote => {
+export const buildNote = (content: string, practiceId: mongoose.Types.ObjectId): INote => {
     return new Note({
         content: content,
         practice: practiceId
