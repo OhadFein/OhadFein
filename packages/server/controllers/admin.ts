@@ -88,7 +88,6 @@ const pushNotifcationToAllUsers = async (figure: IFigure, starsId: [mongoose.Typ
                         linkedId: figure._id
                     });
                     user.notifications.push(newNotifcation._id);
-                    console.log(newNotifcation);
                     return [await newNotifcation.save(), await user.save()];
                 })
                 await Promise.all(notifications_promises);

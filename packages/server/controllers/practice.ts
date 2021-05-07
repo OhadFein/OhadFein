@@ -7,6 +7,8 @@ import { IVideo } from '../models/Video';
 import { awsDelete } from '../services/aws';
 import HttpException from '../shared/exceptions';
 import Note, { INote } from '../models/Note';
+import { EnumNotificationType } from '../shared/enums';
+import Notification from '../models/Notification'
 
 /**
  * GET /
@@ -253,6 +255,31 @@ export const editPracticeItem = async (req: Request, res: Response) => {
  * add new note to practice
  */
 
+const pushNotifcationToCoach = async (coachId: mongoose.Types.ObjectId, userId: mongoose.Types.ObjectId, noteId: mongoose.Types.ObjectId) => {
+    User.findById(coachId)
+        .select("+notifications")
+        .exec()
+        .then(async coach => {
+            if (!coach) {
+                // TODO:
+            } else {
+                const newNotifcation = new Notification({
+                    type: EnumNotificationType.NEW_USER_NOTE,
+                    sourceUser: coachId,
+                    performedActionUser: userId,
+                    linkedId: noteId
+                });
+
+                coach.notifications.push(newNotifcation._id);
+                await newNotifcation.save();
+                await coach.save();
+            }
+        })
+        .catch(err => {
+            // TODO:
+        });
+}
+
 const buildNote = (content: string, practiceId: mongoose.Types.ObjectId): INote => {
     return new Note({
         content: content,
@@ -262,17 +289,20 @@ const buildNote = (content: string, practiceId: mongoose.Types.ObjectId): INote 
 
 export const addNoteToPractice = async (req: Request, res: Response) => {
     const practiceId = new mongoose.mongo.ObjectId(req.body.practiceId);
-    const practice = await getPracticeItemById(practiceId);
+    // const practice = await getPracticeItemById(practiceId);
 
     const note = buildNote(req.body.content, practiceId);
     await note.save();
 
     await Practice.updateOne({ _id: practiceId }, { $addToSet: { notes: note._id } }).exec();
+    if (req.user.coach) {
+        await pushNotifcationToCoach(req.user.coach, req.user._id, note._id);
+    }
 
     res.status(201).json({
         success: true,
         message: 'Note added to practice ' + req.body.practiceId,
-        data: note // TODO: or practice?
+        data: note
     });
 }
 
