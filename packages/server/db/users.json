@@ -37,7 +37,7 @@
     ],
     "description": "2 times world champions 10 dance",
     "logo": "stars/paul_moldovan/Moldovan_400x225.jpg",
-    "promo_video": "https://danskill-streaming-video-optimized.s3-eu-west-1.amazonaws.com/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4"
+    "promo_video": "stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4"
   },
   "createdAt": {
     "$date": "2021-05-04T17:31:53.570Z"

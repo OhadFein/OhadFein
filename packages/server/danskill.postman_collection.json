@@ -18,9 +18,11 @@
 									"pm.test(\"Sign up\", function () {",
 									"    if (responseCode.code === 201)",
 									"    {",
-									"        const tokens = pm.response.json().data;",
-									"        pm.environment.set(\"access_token\", tokens.access_token);",
-									"        pm.environment.set(\"refresh_token\", tokens.refresh_token);",
+									"        const data = pm.response.json().data;",
+									"        pm.environment.set(\"access_token\", data.access_token);",
+									"        pm.environment.set(\"refresh_token\", data.refresh_token);",
+									"        pm.environment.set(\"userId\", data._id);",
+									"        pm.environment.set(\"username\", data.username);",
 									"    }",
 									"    pm.response.to.have.status(201);",
 									"});"
@@ -694,7 +696,7 @@
 									"script": {
 										"exec": [
 											"pm.test(\"Add star\", function () {",
-											"        if (responseCode.code === 201)",
+											"    if (responseCode.code === 201)",
 											"    {",
 											"        const star = pm.response.json().data;",
 											"        pm.environment.set(\"starId\", star._id);",
@@ -719,7 +721,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n  \"promo_video\": \"https://danskill-streaming-video-optimized.s3-eu-west-1.amazonaws.com/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4\",\r\n   \"description\":\"2 times world champions 10 dance\"\r\n}",
+									"raw": "{\r\n  \"promo_video\": \"https://danskill-streaming-video-optimized.s3-eu-west-1.amazonaws.com/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4\",\r\n  \"description\":\"2 times world champions 10 dance\",\r\n  \"logo\": \"stars/paul_moldovan/Moldovan_400x225.jpg\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -821,7 +823,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\r\n\t\"stars\": [\"6089cbba06e29af7211d2ba4\"],\r\n\t\"name\": \"figure 1\",\r\n\t\"type\": \"samba\",\r\n\t\"level\": \"1\",\r\n\t\"logo\": \"https://d7nb4rcaibu03.cloudfront.net/stars/SoulDance/riccardo_yulia‏/maxresdefault.jpg\"\r\n}",
+									"raw": "{\r\n\t\"stars\": [\"{{userId}}\"],\r\n\t\"name\": \"figure 1\",\r\n\t\"type\": \"samba\",\r\n\t\"level\": \"1\",\r\n\t\"logo\": \"stars/SoulDance/riccardo_yulia‏/maxresdefault.jpg\"\r\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -1211,13 +1213,115 @@
 			"name": "Practices",
 			"item": [
 				{
-					"name": "add practice item",
+					"name": "Notes",
+					"item": [
+						{
+							"name": "add note",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Add note\", function () {\r",
+											"    if (responseCode.code === 201)\r",
+											"    {\r",
+											"        const figure = pm.response.json().data;\r",
+											"        pm.environment.set(\"noteId\", figure._id);\r",
+											"    }\r",
+											"    \r",
+											"    pm.response.to.have.status(201);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"practiceId\": \"{{practiceId}}\",\n    \"cotent\": \"check\"\n}"
+								},
+								"url": {
+									"raw": "{{baseURL}}/account/notes",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"account",
+										"notes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete note",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Delete practice item\", function () {\r",
+											"    pm.response.to.have.status(200);\r",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": []
+								},
+								"url": {
+									"raw": "{{baseURL}}/account/notes/{{noteId}}",
+									"host": [
+										"{{baseURL}}"
+									],
+									"path": [
+										"account",
+										"notes",
+										"{{noteId}}"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "add practice",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Add practice item\", function () {\r",
+									"pm.test(\"Add practice\", function () {\r",
+									"    if (responseCode.code === 201)\r",
+									"    {\r",
+									"        const figure = pm.response.json().data;\r",
+									"        pm.environment.set(\"practiceId\", figure._id);\r",
+									"    }\r",
+									"    \r",
 									"    pm.response.to.have.status(201);\r",
 									"});"
 								],
@@ -1236,8 +1340,34 @@
 							}
 						],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"name\": \"fake it till you make it #1\",\n    \"video\": \"{{videoId}}\",\n    \"star\": \"{{starId}}\",\n    \"figure\": \"{{figureId}}\",\n    \"filename\": \"SampleVideo_1280x720_2mb.mp4\"\n}"
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "video",
+									"type": "file",
+									"src": "/home/ohad/Videos/SampleVideo_1280x720_2mb.mp4"
+								},
+								{
+									"key": "name",
+									"value": "check",
+									"type": "text"
+								},
+								{
+									"key": "starId",
+									"value": "{{starId}}",
+									"type": "text"
+								},
+								{
+									"key": "videoId",
+									"value": "{{videoId}}",
+									"type": "text"
+								},
+								{
+									"key": "figureId",
+									"value": "{{figureId}}",
+									"type": "text"
+								}
+							]
 						},
 						"url": {
 							"raw": "{{baseURL}}/account/practices",
@@ -1253,7 +1383,7 @@
 					"response": []
 				},
 				{
-					"name": "get all practice items",
+					"name": "get all practices",
 					"event": [
 						{
 							"listen": "test",
@@ -1286,20 +1416,21 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseURL}}/account/practices",
+							"raw": "{{baseURL}}/account/practices/all",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
 								"account",
-								"practices"
+								"practices",
+								"all"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "get practice item",
+					"name": "get practice",
 					"event": [
 						{
 							"listen": "test",
@@ -1332,27 +1463,28 @@
 							"raw": "{\n    \"key\": \"2021-01-13T10-21-12.647Z_SampleVideo_1280x720_2mb.mp4\"\n}"
 						},
 						"url": {
-							"raw": "{{baseURL}}/account/practices/2021-01-14T07-55-07.714Z_SampleVideo_1280x720_2mb.mp4",
+							"raw": "{{baseURL}}/account/practices/single/{{practiceId}}",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
 								"account",
 								"practices",
-								"2021-01-14T07-55-07.714Z_SampleVideo_1280x720_2mb.mp4"
+								"single",
+								"{{practiceId}}"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "get practice item by figure id",
+					"name": "get practice by figure id",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Get practice item by id\", function () {\r",
+									"pm.test(\"Get practice by figure id\", function () {\r",
 									"\r",
 									"    pm.response.to.have.status(200);\r",
 									"});"
@@ -1376,7 +1508,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"key\": \"2021-01-13T10-21-12.647Z_SampleVideo_1280x720_2mb.mp4\"\n}"
+							"raw": ""
 						},
 						"url": {
 							"raw": "{{baseURL}}/account/practices/figure/{{figureId}}",
@@ -1394,7 +1526,7 @@
 					"response": []
 				},
 				{
-					"name": "edit practice item",
+					"name": "edit practice",
 					"event": [
 						{
 							"listen": "test",
@@ -1420,24 +1552,24 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"fake it till you make it #11\",\n    \"note\": \"Note #1\"\n}"
+							"raw": "{\n\t\"name\": \"fake it till you make it #11\"\n}"
 						},
 						"url": {
-							"raw": "{{baseURL}}/account/practices/2021-01-22T18-48-29.268Z_SampleVideo_1280x720_2mb.mp4",
+							"raw": "{{baseURL}}/account/practices/{{practiceId}}",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
 								"account",
 								"practices",
-								"2021-01-22T18-48-29.268Z_SampleVideo_1280x720_2mb.mp4"
+								"{{practiceId}}"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "delete practices item",
+					"name": "delete practices",
 					"event": [
 						{
 							"listen": "test",
@@ -1466,14 +1598,14 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{baseURL}}/account/practices/2021-01-13T10-21-12.647Z_SampleVideo_1280x720_2mb.mp4",
+							"raw": "{{baseURL}}/account/notes/{{noteId}}",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
 								"account",
-								"practices",
-								"2021-01-13T10-21-12.647Z_SampleVideo_1280x720_2mb.mp4"
+								"notes",
+								"{{noteId}}"
 							]
 						}
 					},
@@ -1623,6 +1755,49 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "set my coach",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get all practice items\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/coaches/{{username}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"coaches",
+								"{{username}}"
+							]
+						}
+					},
+					"response": []
 				}
 			]
 		},
@@ -1675,6 +1850,51 @@
 					"response": []
 				},
 				{
+					"name": "Add note to practice",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get all practice items\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{baseURL}}/students/{{studentId}}/note/{{practiceId}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"students",
+								"{{studentId}}",
+								"note",
+								"{{practiceId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "get student practices",
 					"event": [
 						{
@@ -1708,13 +1928,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseURL}}/students/6089d24b19923dc1519d077c",
+							"raw": "{{baseURL}}/students/{{studentId}}",
 							"host": [
 								"{{baseURL}}"
 							],
 							"path": [
 								"students",
-								"6089d24b19923dc1519d077c"
+								"{{studentId}}"
 							]
 						}
 					},

@@ -12,6 +12,12 @@ export interface INotifications {
     _id: string;
 }
 
+export enum ENotificationType {
+    NEW_STAR_FIGURE = 'NEW_STAR_FIGURE',
+    NEW_USER_NOTE = 'NEW_USER_NOTE',
+    NEW_COACH_NOTE = 'NEW_COACH_NOTE'
+}
+
 export interface ISortedNotifications{
     date: string;
     notifications?: INotifications[];

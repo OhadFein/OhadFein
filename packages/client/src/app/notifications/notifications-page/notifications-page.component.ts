@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {NotificationsService} from '../notifications.service';
-import {INotifications, ISortedNotifications} from '@core/models';
+import {INotifications, ISortedNotifications, ENotificationType} from '@core/models';
 import * as selectors from '@store/selectors/notifications.selectors';
 import * as NotificationsActions from '@store/actions/notifications.actions';
 import {Subscription} from 'rxjs';
 import {Store} from '@ngrx/store';
-import * as UserActions from "@store/actions/user.actions";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'dsapp-notifications-page',
@@ -17,9 +17,10 @@ export class NotificationsPageComponent implements OnInit {
     public notifications: INotifications[] = [];
     public sortedNotifications: ISortedNotifications[];
     public today: Date = new Date();
+    public ENotificationType = ENotificationType;
     subs: Subscription[] = [];
 
-    constructor(private notificationsService: NotificationsService, private store: Store<any>) {
+    constructor(private notificationsService: NotificationsService, private store: Store<any>, private router: Router) {
     }
 
     ngOnInit(): void {
@@ -32,13 +33,17 @@ export class NotificationsPageComponent implements OnInit {
             if (!groups[date]) {
                 groups[date] = [];
             }
+            console.log("notification.performedActionUsername", notification.performedActionUser[0].username)
+
             groups[date].push({
+                userName: notification.performedActionUser[0].username,
                 sourceUser: notification.sourceUser,
                 performedActionUsername: notification.performedActionUsername,
                 type: notification.type,
                 createdAt: new Date(notification.createdAt),
                 isRead: notification.isRead,
-                _id: notification._id
+                _id: notification._id,
+                link: notification.type === ENotificationType.NEW_STAR_FIGURE ? '../student/start/figures/'+notification.linkedId: '',
             });
             return groups;
         }, {});
@@ -68,7 +73,8 @@ export class NotificationsPageComponent implements OnInit {
 
     setNotificationsAsRead(notification): any {
         notification.isRead = true;
-        // this.store.dispatch(NotificationsActions.BeginUpdateNotificationsAction({ payload: notification._id }));
+        // this.router.navigate([notification.link]);
+        this.store.dispatch(NotificationsActions.BeginUpdateNotificationsAction({ payload: notification._id }));
     }
 
 }

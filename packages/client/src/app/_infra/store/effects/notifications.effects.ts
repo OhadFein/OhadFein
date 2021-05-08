@@ -19,7 +19,6 @@ export class NotificationsEffects {
             mergeMap(action =>
                 this.notificationsService.getNotifications().pipe(
                     map((notifications: INotifications[]) => {
-                        console.log("notifications", notifications)
                         return NotificationsActions.SuccessGetNotificationsAction({ payload: notifications });
                     }),
                     catchError((error: Error) => {
@@ -33,10 +32,9 @@ export class NotificationsEffects {
     setNotificationsAsRead$: Observable<Action> = createEffect(() =>
         this.action$.pipe(
             ofType(NotificationsActions.BeginUpdateNotificationsAction),
-            mergeMap(action =>
+            mergeMap((action) =>
                 this.notificationsService.setNotificationsAsRead(action.payload).pipe(
                     map((data: INotifications) => {
-                        console.log("data",data)
                         return NotificationsActions.SuccessUpdateNotificationsAction({ payload: data });
                     }),
                     catchError((error: Error) => {
