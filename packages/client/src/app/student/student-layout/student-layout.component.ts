@@ -1,12 +1,12 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MenuData, MenuItemFunction, NavButton } from '@core/models/';
-import {Router, Event, NavigationStart, NavigationEnd, NavigationError} from '@angular/router';
+import { Router, Event, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'dsapp-student-layout',
   templateUrl: './student-layout.component.html'
 })
-export class StudentLayoutComponent implements OnInit {
+export class StudentLayoutComponent {
   currentRoute: string;
   studentMenuData: MenuData = {
     notificationBtn: { routerLink: '/student/notifications' },
@@ -38,15 +38,12 @@ export class StudentLayoutComponent implements OnInit {
     { label: 'STUDENT.NAV.Practices', routerLink: '/student/practices', icon: 'icon-practices' }
   ];
 
-
   constructor(private router: Router) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         const lastRoute = this.router.url.split('/');
-        this.currentRoute=  lastRoute[lastRoute.length-1]
+        this.currentRoute = lastRoute[lastRoute.length - 1]
       }
     });
   }
-
-  ngOnInit() {}
 }

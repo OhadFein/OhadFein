@@ -1,0 +1,10 @@
+$zindex-vg-controls: 300;
+$zindex-vg-scrub-bar: 301;
+
+vg-scrub-bar {
+  z-index: $zindex-vg-scrub-bar;
+}
+
+vg-controls {
+  z-index: $zindex-vg-controls;
+}

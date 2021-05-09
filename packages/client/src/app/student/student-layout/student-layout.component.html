@@ -1,5 +1,5 @@
-<div class="container inner-page-container full-height" [ngClass]="currentRoute == 'lab' ? 'full-mobile': ''">
+<ui-header [menuData]="studentMenuData"></ui-header>
+<div class="container inner-page-container full-height">
   <router-outlet></router-outlet>
 </div>
-<ui-header [menuData]="studentMenuData"></ui-header>
 <ui-navigation [navButtons]="studentNavButtons"></ui-navigation>
