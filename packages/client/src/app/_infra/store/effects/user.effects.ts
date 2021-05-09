@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { User } from '@app/_infra/core/models';
+import {INotifications, User} from '@app/_infra/core/models';
 import { UserService } from '@infra/core/services';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
@@ -44,6 +44,22 @@ export class UserEffects {
                     })
                 )
 
+            )
+        )
+    );
+
+    getGeneralInfo$: Observable<Action> = createEffect(() =>
+        this.action$.pipe(
+            ofType(UserActions.BeginGetGeneralInfoAction),
+            mergeMap(action =>
+                this.userService.getGeneralInfo().pipe(
+                    map((data: INotifications[]) => {
+                        return UserActions.SuccessGetGeneralInfoAction({ payload: data });
+                    }),
+                    catchError((error: Error) => {
+                        return of(UserActions.ErrorGetGeneralInfoAction(error));
+                    })
+                )
             )
         )
     );

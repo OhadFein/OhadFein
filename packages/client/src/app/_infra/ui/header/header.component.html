@@ -8,6 +8,7 @@
             <!-- Collapse button -->
             <div [routerLink]="['../notifications']" class="notification-icon">
                 <img class="w-100" src="assets/images/icons/bell.svg">
+                <div class="notifications-number">+{{notificationsNUmber}}</div>
             </div>
             <div *ngIf="menuData.menuItemsGroups" class="navbar-toggler" (click)="toggleMenu()">
                 <div class="animated-icon" [ngClass]="{'open':menuIsOpen$ | async}">

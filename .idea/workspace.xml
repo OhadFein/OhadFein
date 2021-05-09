@@ -6,20 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="2aed641a-6609-4067-b661-784d12539bc4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/core/models/notifications.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/core/models/notifications.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/store/effects/notifications.effects.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/effects/notifications.effects.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/notifications/notifications-page/notifications-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/notifications/notifications-page/notifications-page.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/core/services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/core/services/user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/store/actions/user.actions.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/actions/user.actions.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/store/effects/user.effects.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/effects/user.effects.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/store/reducers/user.reducers.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/reducers/user.reducers.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/store/selectors/user.selectors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/selectors/user.selectors.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/store/state/user.state.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/store/state/user.state.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/header/header.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/header/header.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/app.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/app.component.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/client/src/app/notifications/notifications-page/notifications-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/notifications/notifications-page/notifications-page.component.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/notifications/notifications.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/notifications/notifications.service.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/controllers/admin.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/controllers/admin.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/controllers/coaches.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/controllers/coaches.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/controllers/practice.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/controllers/practice.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/controllers/students.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/controllers/students.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/danskill.postman_collection.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/danskill.postman_collection.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/db/users.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/db/users.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/models/User.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/models/User.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/routes/coaches.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/routes/coaches.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/server/routes/students.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/server/routes/students.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/notifications/notifications-page/notifications-page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/notifications/notifications-page/notifications-page.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/styles/elements/_header.scss" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/styles/elements/_header.scss" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

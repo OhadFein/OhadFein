@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { User, UserRestResponse as UserRestResponse } from '../models';
+import {INotifications, IRestResponse, User, UserRestResponse as UserRestResponse} from '../models';
 import { BaseRestService } from './base-rest.service';
 
 
@@ -32,7 +32,22 @@ export class UserService {
     );
   }
 
-
+    getGeneralInfo(): Observable<INotifications[]> {
+        return this.baseRestService.get<IRestResponse>('').pipe(
+            map(
+                res => {
+                    if (res.success) {
+                        return res.data;
+                    } else {
+                        throwError([res.message]); // TODO: add real error here
+                    }
+                },
+                error => {
+                    throwError(['ERRORS.GeneralBackendError']);
+                }
+            )
+        );
+    }
 
   updateUser(user: User): Observable<User> {
 

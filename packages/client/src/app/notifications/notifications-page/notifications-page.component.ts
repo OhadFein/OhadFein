@@ -1,18 +1,18 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {NotificationsService} from '../notifications.service';
 import {INotifications, ISortedNotifications, ENotificationType} from '@core/models';
 import * as selectors from '@store/selectors/notifications.selectors';
 import * as NotificationsActions from '@store/actions/notifications.actions';
 import {Subscription} from 'rxjs';
 import {Store} from '@ngrx/store';
-import {Router} from "@angular/router";
+import {Router} from '@angular/router';
 
 @Component({
     selector: 'dsapp-notifications-page',
     templateUrl: './notifications-page.component.html',
     styleUrls: ['./notifications-page.scss']
 })
-export class NotificationsPageComponent implements OnInit {
+export class NotificationsPageComponent implements OnInit,OnDestroy {
 
     public notifications: INotifications[] = [];
     public sortedNotifications: ISortedNotifications[];
@@ -33,8 +33,6 @@ export class NotificationsPageComponent implements OnInit {
             if (!groups[date]) {
                 groups[date] = [];
             }
-            console.log("notification.performedActionUsername", notification.performedActionUser[0].username)
-
             groups[date].push({
                 userName: notification.performedActionUser[0].username,
                 sourceUser: notification.sourceUser,
@@ -77,4 +75,7 @@ export class NotificationsPageComponent implements OnInit {
         this.store.dispatch(NotificationsActions.BeginUpdateNotificationsAction({ payload: notification._id }));
     }
 
+    ngOnDestroy(): void {
+        this.subs.forEach(s => s.unsubscribe());
+    }
 }
