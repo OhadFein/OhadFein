@@ -2,11 +2,15 @@ import {Location} from '@angular/common';
 import {Component, OnDestroy, OnInit, HostListener, ViewChild} from '@angular/core';
 import {NavigationEnd, NavigationStart, Router} from '@angular/router';
 import {BackgroundPosition} from '@core/models/';
-import {MenuService} from '@core/services';
+import {MenuService, UserService} from '@core/services';
 import {environment} from '@environments/environment';
 import {TranslateService} from '@ngx-translate/core';
 import {Subscription} from 'rxjs';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import * as selectors from '@store/selectors/user.selectors';
+import * as UserAction from '@store/actions/user.actions';
+import {Store} from '@ngrx/store';
+import {map, mergeMap} from "rxjs/operators";
 
 declare let gtag: any;
 declare var $: any;
@@ -31,7 +35,9 @@ export class AppComponent implements OnInit, OnDestroy {
         public router: Router,
         public location: Location,
         private menuService: MenuService,
-        private modalService: NgbModal
+        private modalService: NgbModal,
+        private store: Store<any>,
+        private userService: UserService
     ) {
         translate.setDefaultLang('en');
         translate.use('en');
@@ -52,6 +58,7 @@ export class AppComponent implements OnInit, OnDestroy {
     ngOnInit(): void {
         this.updateOrientatioState();
         this.changeBgPosition();
+        this.getGeneralInfo();
         this.subs.push(
             this.router.events.subscribe(event => {
                 if (event instanceof NavigationStart) {
@@ -68,6 +75,13 @@ export class AppComponent implements OnInit, OnDestroy {
             })
         );
 
+    }
+
+    getGeneralInfo(){
+        this.userService.getGeneralInfo().pipe(map((res: any) => {
+            const notificationsNumber = res.notifications.filter(n => n.isRead === false).length;
+            sessionStorage.setItem('notifications', JSON.stringify(notificationsNumber));
+        })).subscribe()
     }
 
     changeBgPosition() {

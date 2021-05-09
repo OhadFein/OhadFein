@@ -1,0 +1,25 @@
+<div *ngIf="sortedNotifications" class="notifications-wrapper">
+    <div class="row">
+        <div class="notifications-list w-100">
+            <div class="col-12" *ngFor="let notificationByDate of sortedNotifications">
+                <div class="notifications-date">{{notificationByDate.date | date}}</div>
+                <div class="notification-item d-flex align-items-center"
+                     (click)="setNotificationsAsRead(notification);"
+                     *ngFor="let notification of notificationByDate.notifications"
+                     [ngClass]="{'not-read': !notification.isRead}">
+                    <div class="notification-icon">
+                        <img src="/assets/images/icons/notification.svg">
+                    </div>
+                    <div class="content">
+                        <div class="title">
+                            {{notification.userName}} , {{notification.type}}
+                        </div>
+                        <div class="time">
+                            {{notification.createdAt | timeAgo}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

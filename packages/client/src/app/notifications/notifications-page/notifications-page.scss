@@ -1,0 +1,43 @@
+.notifications-wrapper {
+  //padding-top: 30px;
+  .notifications-list {
+    .notifications-date{
+      // TODO: general css
+      font-size: 12px;
+      color: #A1A1A1;
+      line-height: 18px;
+      font-weight: 500;
+      margin-bottom: 20px;
+      margin-top: 28px;
+    }
+    .notification-item {
+      background: white;
+      box-shadow: 1.5px 1.5px 7px rgba(205, 205, 205, 0.25);
+      border-radius: 5px;
+      margin-bottom: 10px;
+      padding: 8px 11px;
+      // TODO: color - general css
+      color: #343434;
+      &.not-read{
+        padding: 8px 11px 8px 7px;
+        // TODO: color - general css
+        border-left: #FF5963 4px solid;
+      }
+      .title{
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 20px;
+      }
+      .time{
+        font-size: 12px;
+        line-height: 18px;
+        font-weight: 500;
+        color: #A1A1A1;
+      }
+      .notification-icon{
+        position: relative;
+        margin-right: 10px;
+      }
+    }
+  }
+}

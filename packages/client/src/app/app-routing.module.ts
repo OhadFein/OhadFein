@@ -13,6 +13,11 @@ const routes: Routes = [
     loadChildren: () => import('./student/student.module').then(m => m.StudentModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'notifications',
+    loadChildren: () => import('./notifications/notifications.module').then(m => m.NotificationsModule),
+    canActivate: [AuthGuard]
+  },
   { path: '**', component: PageNotFoundComponent }
 ];
 

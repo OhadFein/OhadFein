@@ -5,7 +5,7 @@ import { UserState } from '../state';
 
 
 
-export const initialState = { user: null, error: null };
+export const initialState = { user: null, error: null, notifictions: null };
 
 const reducer = createReducer(
   initialState,
@@ -38,7 +38,11 @@ const reducer = createReducer(
 
   on(UserActions.ClearUserAction, state => {
     return { user: null, error: null };
-  })
+  }),
+
+    // on(UserActions.SuccessGetGeneralInfoAction, (state: UserState, { payload }) => {
+    //   return { ...state, notifications: payload, error: null };
+    // }),
 );
 
 
