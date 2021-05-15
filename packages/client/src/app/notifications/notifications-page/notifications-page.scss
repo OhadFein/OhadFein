@@ -9,19 +9,44 @@
       font-weight: 500;
       margin-bottom: 20px;
       margin-top: 28px;
+      padding: 0 18px;
     }
     .notification-item {
-      background: white;
-      box-shadow: 1.5px 1.5px 7px rgba(205, 205, 205, 0.25);
-      border-radius: 5px;
-      margin-bottom: 10px;
-      padding: 8px 11px;
+      //background: white;
+      //box-shadow: 1.5px 1.5px 7px rgba(205, 205, 205, 0.25);
+      //border-radius: 5px;
+      //margin-bottom: 10px;
+      padding: 15px 30px;
       // TODO: color - general css
       color: #343434;
+      position: relative;
+
+      &:after{
+        content: '';
+        height: 1px;
+        padding: 0 11px;
+        position: absolute;
+        bottom: 0;
+        background-color: #E6E6E6;
+        left: 18px;
+        right: 18px;
+      }
       &.not-read{
-        padding: 8px 11px 8px 7px;
+        //padding: 15px 11px 15px 7px;
         // TODO: color - general css
-        border-left: #FF5963 4px solid;
+        &:before{
+          content : '';
+          height: calc(100% - 7px);
+          position: absolute;
+          //top: 15px;
+          //bottom: 15px;
+          left: 0;
+          width: 4px;
+          background-color: #FF5170;
+          border-bottom-right-radius: 50px;
+          border-top-right-radius: 50px;
+        }
+        //border-left: #FF5963 4px solid;
       }
       .title{
         font-size: 13px;
