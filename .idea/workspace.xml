@@ -7,7 +7,7 @@
     <list default="true" id="2aed641a-6609-4067-b661-784d12539bc4" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/core/models/notifications.model.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/core/models/notifications.model.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/header/header.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/header/header.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/_infra/ui/header/header.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/client/src/app/notifications/notifications-page/notifications-page.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/notifications/notifications-page/notifications-page.component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/client/src/app/notifications/notifications-page/notifications-page.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/client/src/app/notifications/notifications-page/notifications-page.component.ts" afterDir="false" />
     </list>

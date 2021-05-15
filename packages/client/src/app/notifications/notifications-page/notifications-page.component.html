@@ -12,7 +12,7 @@
                     </div>
                     <div class="content">
                         <div class="title">
-                            {{notification.userName}} upload a {{getNotificationType(notification)}}
+                            {{notification.userName}} upload a {{getNotificationType(notification) | lowercase}}
                         </div>
                         <div class="time">
                             {{notification.createdAt | timeAgo}}

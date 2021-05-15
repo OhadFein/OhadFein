@@ -13,9 +13,9 @@ export interface INotifications {
 }
 
 export enum ENotificationType {
-    NEW_STAR_FIGURE = 'new star figure',
-    NEW_USER_NOTE = 'new star note',
-    NEW_COACH_NOTE = 'new coach note'
+    NEW_STAR_FIGURE = 'NEW STAR FIGURE',
+    NEW_USER_NOTE = 'NEW STAR NOTE',
+    NEW_COACH_NOTE = 'NEW COACH NOTE'
 }
 
 export interface ISortedNotifications{
