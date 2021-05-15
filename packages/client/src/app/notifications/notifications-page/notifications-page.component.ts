@@ -56,6 +56,10 @@ export class NotificationsPageComponent implements OnInit,OnDestroy {
         });
     }
 
+    getNotificationType(notification: INotifications): string{
+        return ENotificationType[notification.type]
+    }
+
     getNotifications(): void {
         this.subs.push(
             this.store.select(selectors.selectAllNotifications()).subscribe(
