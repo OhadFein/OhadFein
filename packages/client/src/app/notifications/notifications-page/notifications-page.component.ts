@@ -41,7 +41,8 @@ export class NotificationsPageComponent implements OnInit,OnDestroy {
                 createdAt: new Date(notification.createdAt),
                 isRead: notification.isRead,
                 _id: notification._id,
-                link: notification.type === ENotificationType.NEW_STAR_FIGURE ? '../student/start/figures/'+notification.linkedId: '',
+                link: notification.type === ENotificationType.NEW_STAR_FIGURE.split(' ').join('_')
+                    ? '../student/star/figures/'+notification.linkedId: '',
             });
             return groups;
         }, {});
@@ -54,6 +55,10 @@ export class NotificationsPageComponent implements OnInit,OnDestroy {
         }).sort((a, b) => {
             return new Date(b.date) as any - (new Date(a.date) as any);
         });
+    }
+
+    getNotificationType(notification: INotifications): string{
+        return ENotificationType[notification.type]
     }
 
     getNotifications(): void {
@@ -71,7 +76,7 @@ export class NotificationsPageComponent implements OnInit,OnDestroy {
 
     setNotificationsAsRead(notification): any {
         notification.isRead = true;
-        // this.router.navigate([notification.link]);
+        this.router.navigate([notification.link]);
         this.store.dispatch(NotificationsActions.BeginUpdateNotificationsAction({ payload: notification._id }));
     }
 
