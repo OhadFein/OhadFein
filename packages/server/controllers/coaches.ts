@@ -51,7 +51,7 @@ export const setCoach = async (req: Request, res: Response) => {
     const coach = await getCoach(req.params.coachUsername);
     const user = req.user;
 
-    user.coach = coach._id; // TODO:
+    user.coach = coach._id as any; // TODO:
     await user.save();
 
     res.status(201).json({
