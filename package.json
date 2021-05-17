@@ -16,6 +16,6 @@
     "postinstall": "cp lock.js node_modules/@angular/compiler-cli/ngcc/src/execution/lock_file.js && ngcc --create-ivy-entry-points"
   },
   "devDependencies": {
-    "lerna": "^3.18.3"
+    "lerna": "4.0.0"
   }
 }
