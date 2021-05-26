@@ -1,14 +1,31 @@
 import { NgbDateStruct } from '@ng-bootstrap/ng-bootstrap';
-
 import { Language } from './language.model';
-import { Name } from './star.model';
-import { Tag } from './tag.model';
+import { IStar } from './star.model';
+
+export interface IUser {
+  birthdate: Date;
+  createdAt: Date;
+  family_name: string;
+  given_name: string;
+  id: string;
+  star: IStar;
+  updatedAt: Date;
+  username: string;
+  about?: string;
+  _id: string;
+}
+
+export interface IName {
+  firstName: string;
+  lastName: string;
+  nickname?: string;
+}
 
 export class UserRegistrationData {
   email: string;
   password: string;
   confirmPassword: string;
-  name: Name;
+  name: IName;
   birthDate?: string;
 }
 
@@ -24,7 +41,7 @@ export class User {
 }
 
 export class UserProfile {
-  name: Name;
+  name: IName;
   language: Language = Language.english;
   permissions?: UserPermissions[];
   gender?: Gender | '';

@@ -12,7 +12,6 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import t from 'typy';
 
-
 @Component({
   selector: 'dsapp-student-edit-profile-page',
   templateUrl: './student-edit-profile-page.component.html',
@@ -82,9 +81,9 @@ export class StudentEditProfilePageComponent implements OnInit, OnDestroy {
           }, 3000);
         })
     );
-
   }
 
+  // TODO: sverkunov check what is inside L92-L93 firstName, lastName
   initForm(): void {
     this.changeProfileForm = this.formBuilder.group({
       email: { value: this.user.email, disabled: true },

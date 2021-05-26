@@ -1,5 +1,4 @@
 <ng-template [ngIf]="users && !errorMsg && !loading">
-
     <div class="row page-search-row">
         <div class="col">
             <div class="input-group input-group-sm">
@@ -20,7 +19,6 @@
              class="col-6 col-md-6 pb-2 col-lg-4 star-info-wrapper">
             <dsapp-star-info [user]="star"></dsapp-star-info>
         </div>
-
     </div>
 
     <div *ngIf="filteredStars.length === 0"
@@ -30,9 +28,7 @@
                 {{'ERRORS.noSerchResults' | translate:{param:searchString} }}
             </p>
         </div>
-
     </div>
-
 </ng-template>
 
 
@@ -44,9 +40,7 @@
                                 (action)="tryAgain()"></dsapp-inpage-error>
         </div>
     </div>
-
 </ng-template>
-
 
 <ng-template [ngIf]="loading">
     <ui-preloader-inapp></ui-preloader-inapp>

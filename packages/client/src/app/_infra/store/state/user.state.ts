@@ -1,4 +1,4 @@
-import {INotifications, User} from '@core/models';
+import { INotifications, User } from '@core/models';
 
 export class UserState {
   user: User | null;
@@ -7,5 +7,5 @@ export class UserState {
 }
 
 export const initializeUserState = () => {
-  return { user: null, notifications: null, error: null };
+  return {user: null, notifications: null, error: null};
 };

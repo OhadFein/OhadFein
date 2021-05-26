@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { IUser } from '@core/models/star.model';
+import { IUser } from '@core/models';
 
 @Component({
   selector: 'dsapp-star-info',
@@ -12,6 +12,6 @@ export class StarInfoComponent implements OnInit {
   description: string;
 
   ngOnInit() {
-    this.description = this.user?.star?.description
+	this.description = this.user?.star?.description
   }
 }

@@ -1,11 +1,13 @@
 <div class="lab-page {{labView}}">
     <div class="steps-bar-wrapper">
         <ul class="steps-bar">
-            <li *ngFor="let step of steps" class="steps-bar-item" [ngClass]="step.id == currentStep ? 'active' : step.id < currentStep ? 'completed': ''">
-                <div class="step-item-num">{{step.id}}</div><div>{{step.name}}</div></li>
+            <li *ngFor="let step of steps" class="steps-bar-item"
+                [ngClass]="step.id == currentStep ? 'active' : step.id < currentStep ? 'completed': ''">
+                <div class="step-item-num">{{step.id}}</div>
+                <div>{{step.name}}</div>
+            </li>
         </ul>
     </div>
-
 
     <!--    PAGE TITLES-->
     <div class="row lab-row page-title-row figure-title-row">
@@ -18,7 +20,7 @@
         <!-- PAGE SUB TITLE - AFTER STARR VIDEO UPLOADED -->
         <div *ngIf="labItem" class="col-12 pb-2 text-center">
             <span dsappStarName
-                [givenName]="labItem.star.given_name" [familyName]="labItem.star.family_name">
+                  [givenName]="labItem.user.given_name" [familyName]="labItem.user.family_name">
             </span>
             <span> - </span>
             <span>{{labItem.figure.name}},
@@ -44,7 +46,6 @@
     </ng-container>
 
 
-
 </div>
 
 <!-- STAR VIDEO IS NOT SELECTED --->
@@ -57,7 +58,7 @@
                     <button class="btn lab-button start-button"
                             tabindex="0"
                             [routerLink]="['/student','star']">
-<!--                        <span class="icon-video-2"></span>-->
+                        <!--                        <span class="icon-video-2"></span>-->
                         {{'LAB.chooseVideo' | translate}}
                     </button>
                 </div>

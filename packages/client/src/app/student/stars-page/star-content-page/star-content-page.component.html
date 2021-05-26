@@ -19,7 +19,7 @@
 
                 <div class="star-info-text text-center">
                     <h5 class="star-info-name"
-                        dsappStarName [givenName]="'FIX IT'" familyName="'FIX IT'"></h5>
+                        dsappStarName [givenName]="user.given_name" [familyName]="user.family_name"></h5>
                     <div>
                         <p #stardescription
                            *ngIf="user.star.description"

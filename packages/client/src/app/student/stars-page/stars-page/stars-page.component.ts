@@ -133,6 +133,5 @@ export class StarsPageComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.store.dispatch(StarsActions.BeginGetStarsAction());
     }, 2000);
-
   }
 }
