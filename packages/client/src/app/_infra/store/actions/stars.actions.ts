@@ -1,4 +1,4 @@
-import { IUser } from '@core/models/';
+import { IUser } from '@core/models';
 import { createAction, props } from '@ngrx/store';
 
 export enum StarsActionType {

@@ -1,10 +1,10 @@
-import { Figure } from './figure.model';
+import { IFigure } from './figure.model';
 
 export interface IStarContent {
     about: string;
     achievements: string[];
     createdAt: string;
-    figures: Figure[];
+    figures: IFigure[];
     location: IStarContentLocation;
     logo: IStarContentLogo;
     name: IStarContentName;
@@ -30,7 +30,7 @@ export interface IStarContentLocation {
 
 
 export enum DanceType {
-    //Latin
+    // Latin
     CHA_CHA_CHA = 'cha cha cha',
     SAMBA = 'samba',
     RUMBA = 'rumba',
@@ -52,7 +52,7 @@ export interface StarContentDance {
 
 export interface StarDanceLevel {
     level: string;
-    figures: Array<Figure>;
+    figures: IFigure[];
 }
 
 

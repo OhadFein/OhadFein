@@ -1,7 +1,5 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
-import { Name } from '../models';
-
 @Directive({
   selector: '[dsappStarName]'
 })
