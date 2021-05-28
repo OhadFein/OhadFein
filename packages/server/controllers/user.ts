@@ -9,7 +9,6 @@ import { sendForgotPasswordEmail, sendResetPasswordEmail, sendVerifyEmail } from
 import { Errors } from '../shared/erros';
 import { HttpException } from '../shared/exceptions';
 import { EnumGender, EnumLanguage } from '../shared/enums';
-import { Name } from '../models/User'
 
 const randomBytesAsync = promisify(crypto.randomBytes);
 
@@ -59,30 +58,32 @@ export const refreshToken = async (req: Request, res: Response) => {
 interface signupRequestBody {
   email: string,
   password: string;
-  name: Name;
-  birthDate?: Date;
+  given_name: string;
+  family_name: string;
+  birthdate?: Date;
+  username: string;
 }
 
 export const postSignup = async (req: Request<ParamsDictionary, signupRequestBody, signupRequestBody>, res: Response) => {
   const user = new User({
     email: req.body.email,
     password: req.body.password,
-    profile: {
-      name: req.body.name,
-      birthDate: {
-        date: req.body.birthDate
-      }
-    }
+    given_name: req.body.given_name,
+    family_name: req.body.family_name,
+    birthdate: req.body.birthdate,
+    username: req.body.username,
   });
 
   await user.save();
+
   await verifyUserEmail(user);
   const tokens = await user.generateAuthToken();
+  const data = Object.assign({}, tokens, { "_id": user._id }, { "username": user.username });
 
   res.status(201).json({
     success: true,
     message: "User created",
-    data: tokens
+    data: data
   });
 };
 
@@ -92,12 +93,12 @@ export const postSignup = async (req: Request<ParamsDictionary, signupRequestBod
  */
 
 interface updateProfileRequestBody {
-  name: Name;
-  birthDate: {
-    date: Date
-  }
-  language: EnumLanguage;
+  password: string;
+  given_name: string;
+  family_name: string;
+  birthdate: string;
   gender: EnumGender;
+  locale: EnumLanguage;
   about: string;
 }
 
@@ -105,20 +106,12 @@ interface updateProfileRequestBody {
 export const patchUpdateProfile = async (req: Request<ParamsDictionary, updateProfileRequestBody, updateProfileRequestBody>, res: Response) => {
   const user = req.user;
 
-  // TODO: email cannot be changed (?)
-  // if (user.email !== req.body.email) user.emailVerified = false;
-  // user.email = req.body.email || '';
-
-  user.profile = {
-    name: req.body.name || '',
-    gender: req.body.gender || '',
-    language: req.body.language || '',
-    // picture: req.body.picture || '',
-    birthDate: {
-      date: req.body.birthDate.date
-    },
-    about: req.body.about || ''
-  };
+  user.given_name = req.body.given_name || '';
+  user.gender = req.body.gender || '';
+  user.locale = req.body.locale || '';
+  // user.picture = req.body.picture || ''; // TODO:
+  user.birthdate = new Date(req.body.birthdate);
+  user.about = req.body.about || '';
 
   const savedUser = await user.save();
 
@@ -136,7 +129,7 @@ export const patchUpdateProfile = async (req: Request<ParamsDictionary, updatePr
  */
 
 const getMyProfileInfo = async (id: mongoose.Types.ObjectId) => (
-  await User.findById(id).select("email profile").exec()
+  await User.findById(id).exec()
 );
 
 export const getProfileInfo = async (req: Request, res: Response) => {
@@ -204,22 +197,22 @@ export const getReset = async (req: Request, res: Response) => {
 export const getVerifyEmailToken = async (req: Request, res: Response) => {
   const user = req.user;
 
-  if (user.emailVerified) {
+  if (user.email_verified) {
     return res.json({
       success: false,
       errors: [{ msg: Errors.ALREADY_VERIFIED }]
     });
   }
 
-  if (req.params.token !== user.emailVerificationToken) {
+  if (req.params.token !== user.email_verification_token) {
     return res.json({
       success: false,
       errors: [{ msg: Errors.TOKEN_MISMATCH }]
     })
   }
 
-  user.emailVerificationToken = '';
-  user.emailVerified = true;
+  user.email_verification_token = '';
+  user.email_verified = true;
   const savedUser = await user.save();
 
   res.json({
@@ -241,12 +234,12 @@ export const getVerifyEmail = async (req: Request, res: Response) => {
 };
 
 const verifyUserEmail = async (user: IUser) => {
-  if (user.emailVerified) {
+  if (user.email_verified) {
     throw new HttpException(409, Errors.ALREADY_VERIFIED)
   }
   const token = await randomBytesAsync(16).then(buf => buf.toString('hex'));
   // eslint-disable-next-line require-atomic-updates
-  user.emailVerificationToken = token;
+  user.email_verification_token = token;
   await user.save();
   // await sendVerifyEmail(user.email, token);
 };
@@ -278,8 +271,8 @@ export const postReset = async (req: Request<ParamsDictionary, postResetRequestB
     });
   }
   user.password = req.body.password;
-  user.passwordResetToken = "";
-  user.passwordResetExpires = 0;
+  user.password_reset_token = "";
+  user.password_reset_expires = 0;
 
   await user.save();
   await sendResetPasswordEmail(user.email);
@@ -311,8 +304,8 @@ export const postForgot = async (req: Request<ParamsDictionary, postForgotReques
       });
     }
 
-    user.passwordResetToken = token;
-    user.passwordResetExpires = Date.now() + 3600000; // 1 hour
+    user.password_reset_token = token;
+    user.password_reset_expires = Date.now() + 3600000; // 1 hour
     await user.save();
     await sendForgotPasswordEmail(user.email, token);
 
@@ -322,4 +315,27 @@ export const postForgot = async (req: Request<ParamsDictionary, postForgotReques
   } catch (error) {
     return next(error);
   }
+};
+
+
+/**
+ * GET /
+ * Get general info
+ */
+
+//  const user = await User.findById(req.user._id, { notifications: { $slice: -10 } }) // TODO: 10?
+// .select("+roles +notifications")
+
+export const getGeneralInfo = async (req: Request, res: Response) => {
+  const user = await User.findById(req.user._id)
+    .select("+roles +notifications")
+    .exec() as IUser;
+
+  return res.status(200).json({
+    success: true,
+    data: {
+      notifications: user.notifications,
+      roles: user.roles
+    }
+  });
 };

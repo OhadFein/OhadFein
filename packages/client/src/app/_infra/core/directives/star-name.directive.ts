@@ -1,25 +1,16 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
-import { Name } from '../models';
-
 @Directive({
   selector: '[dsappStarName]'
 })
 export class StarNameDirective implements OnInit {
-
-  @Input() name: Name;
+  @Input() givenName: string;
+  @Input() familyName: string;
 
   constructor(private elementRef: ElementRef) { }
 
   ngOnInit() {
-    let formatedName = this.name.firstName;
-
-    if (this.name.nickname) {
-      formatedName = `${formatedName} (${this.name.nickname})`;
-    }
-
-    formatedName = `${formatedName} ${this.name.lastName}`;
-
+    const formatedName = `${this.givenName} ${this.familyName}`;
     this.elementRef.nativeElement.innerHTML = formatedName;
   }
 

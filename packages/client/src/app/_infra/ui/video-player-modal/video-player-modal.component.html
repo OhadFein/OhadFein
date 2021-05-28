@@ -3,8 +3,7 @@
       class="modal-title">{{title | translate}}</h5>
   <h5 *ngIf="!isString"
       class="modal-title"
-      dsappStarName
-      [name]="title"></h5>
+      dsappStarName [givenName]="title" [familyName]="title"></h5>
   <button type="button"
           class="close"
           aria-label="Close"

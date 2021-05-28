@@ -1,4 +1,4 @@
-import { User } from '@core/models';
+import { INotifications, User } from '@core/models';
 import { createAction, props } from '@ngrx/store';
 
 export enum UserActionType {
@@ -11,13 +11,13 @@ export enum UserActionType {
   SuccessUpdateUserAction = '[user] - Success Update user',
   ErrorUpdateUserAction = '[user] - Error Update user',
   ErrorUserAction = '[user] - Error',
-  ClearUserAction = '[user] - Clear user'
+  ClearUserAction = '[user] - Clear user',
+  BeginGetGeneralInfoAction = '[user] - Begin Get GeneralInfo',
+  SuccessGetGeneralInfoAction = '[user] - Success Get GeneralInfo',
+  ErrorGetGeneralInfoAction = '[user] - Error Get GeneralInfo',
 }
 
-
-
 /// get
-
 export const GetUserAction = createAction(UserActionType.GetUserAction);
 
 export const BeginGetUserAction = createAction(UserActionType.BeginGetUserAction);
@@ -56,3 +56,17 @@ export const ErrorUserAction = createAction(UserActionType.ErrorUserAction, prop
 
 // Clear user data
 export const ClearUserAction = createAction(UserActionType.ClearUserAction);
+
+// export const GetUserAction = createAction(UserActionType.GetUserAction);
+
+export const BeginGetGeneralInfoAction = createAction(UserActionType.BeginGetUserAction);
+
+export const SuccessGetGeneralInfoAction = createAction(
+  UserActionType.SuccessGetGeneralInfoAction,
+  props<{ payload: INotifications[] }>()
+);
+
+export const ErrorGetGeneralInfoAction = createAction(
+  UserActionType.ErrorGetGeneralInfoAction,
+  props<Error>()
+);

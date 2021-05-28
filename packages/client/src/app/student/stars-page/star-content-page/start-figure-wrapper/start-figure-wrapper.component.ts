@@ -1,63 +1,62 @@
-import { Component, OnInit, Input, ViewChild, ChangeDetectorRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, ChangeDetectorRef, AfterViewInit } from '@angular/core';
 import * as selectors from '@infra/store/selectors/stars-content.selectors';
 import * as StarContentActions from '@app/_infra/store/actions/stars-content.actions';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
-import { Figure } from '@app/_infra/core/models';
-import SwiperCore, { Navigation, Pagination, Scrollbar, A11y } from 'swiper/core';
+import { IFigure } from '@app/_infra/core/models';
+import SwiperCore, { Pagination, Scrollbar, A11y } from 'swiper/core';
 
 SwiperCore.use([Pagination, Scrollbar, A11y]);
 
 @Component({
   selector: 'dsapp-start-figure-wrapper',
-  templateUrl: './start-figure-wrapper.component.html',
-  styles: [
-  ]
+  templateUrl: './start-figure-wrapper.component.html'
 })
-export class StartFigureWrapperComponent implements OnInit {
+export class StartFigureWrapperComponent implements OnInit, AfterViewInit {
   subs: Subscription[] = [];
   star: any;
   content: any;
   selectDance: any[];
   loading: boolean;
-  figures: Figure[];
+  figures: IFigure[];
   danceTypes: string[];
-  figuresPerType: Figure[];
+  figuresPerType: IFigure[];
   @Input() starId: string;
 
-  constructor(private store: Store<any>, private cdr: ChangeDetectorRef) { }
+  constructor(private store: Store<any>, private cdr: ChangeDetectorRef) {
+  }
 
   ngAfterViewInit() {
-    this.cdr.detectChanges();
+	this.cdr.detectChanges();
   }
 
   ngOnInit(): void {
-    this.getStarContent();
+	this.getStarContent();
   }
 
   manageTypes() {
-    this.danceTypes = [...new Set(this.figures.map(item => item.type))];
+	this.danceTypes = [...new Set(this.figures.map(item => item.type))];
   }
 
-  getFiguresPerDance(dance): Figure[] {
-    return this.figuresPerType = this.figures.filter((figure)=> figure.type === dance);
+  getFiguresPerDance(dance): IFigure[] {
+	return this.figuresPerType = this.figures.filter((figure) => figure.type === dance);
   }
 
   getStarContent() {
-    this.subs.push(
-      this.store.select(selectors.selectStarContentByStarId(this.starId)).subscribe(
-        content => {
-          if (content) {
-            this.content = { ...content };
-            this.figures = this.content.figures;
-            this.manageTypes();
-            // this.getFiguresPerDance('samba');
-            this.loading = false;
-          } else {
-            this.store.dispatch(StarContentActions.BeginGetStarsContentAction({ payload: this.starId }));
-          }
-        }
-      )
-    );
+	this.subs.push(
+	  this.store.select(selectors.selectStarContentByStarId(this.starId)).subscribe(
+		content => {
+		  if (content) {
+			this.content = {...content};
+			this.figures = this.content.figures;
+			this.manageTypes();
+			// this.getFiguresPerDance('samba');
+			this.loading = false;
+		  } else {
+			this.store.dispatch(StarContentActions.BeginGetStarsContentAction({payload: this.starId}));
+		  }
+		}
+	  )
+	);
   }
 }

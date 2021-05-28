@@ -1,16 +1,13 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-import { DeviceDetectorService } from 'ngx-device-detector';
 import { VgAPI } from 'ngx-videogular';
 import { Subscription } from 'rxjs';
-
 
 @Component({
   selector: 'dsapp-video-player-modal',
   templateUrl: './video-player-modal.component.html'
 })
 export class VideoPlayerModalComponent implements OnInit, OnDestroy {
-
   @Input() videoURL: string;
   @Input() autoplay = false;
   @Input() title: any;
@@ -22,13 +19,10 @@ export class VideoPlayerModalComponent implements OnInit, OnDestroy {
 
   subs: Subscription[] = [];
 
-  constructor(public activeModal: NgbActiveModal, private deviceService: DeviceDetectorService) { }
+  constructor(public activeModal: NgbActiveModal) { }
 
   ngOnInit() {
     this.isString = (typeof this.title === 'string');
-    const deviceInfo = this.deviceService.getDeviceInfo();
-
-    // this.isMuted = deviceInfo.os.toLocaleLowerCase() === 'ios';
   }
 
   onPlayerReady(api) {
@@ -48,8 +42,4 @@ export class VideoPlayerModalComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     this.subs.forEach(s => { s.unsubscribe(); });
   }
-
-
-
-
 }

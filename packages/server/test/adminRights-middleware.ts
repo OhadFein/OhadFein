@@ -10,7 +10,7 @@ const getUser = (role: EnumRole) => {
         "_id": "5f53e610c57684288918a92d",
         "profile": {
             "birthDate": "1992-12-31T00:00:00.000Z",
-            "name": { "firstName": "roy", "lastName": "roy" },
+            "name": { "given_name": "roy", "family_name": "roy" },
             "language": "en"
         },
         "emailVerified": false,

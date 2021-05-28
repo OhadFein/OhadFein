@@ -2269,11 +2269,6 @@
     "@types/minimatch" "*"
     "@types/node" "*"
 
-"@types/hammerjs@^2.0.39":
-  version "2.0.39"
-  resolved "https://registry.yarnpkg.com/@types/hammerjs/-/hammerjs-2.0.39.tgz#4be64bbacf3813c79c0dab895c6b0fdc7d5e513f"
-  integrity sha512-lYR2Y/tV2ujpk/WyUc7S0VLI0a9hrtVIN9EwnrNo5oSEJI2cK2/XrgwOQmXLL3eTulOESvh9qP6si9+DWM9cOA==
-
 "@types/helmet@0.0.46":
   version "0.0.46"
   resolved "https://registry.yarnpkg.com/@types/helmet/-/helmet-0.0.46.tgz#8093232608a52d3209dd31da8526167fd93f4d27"
@@ -10061,6 +10056,13 @@ ngx-owl-carousel-o@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/ngx-owl-carousel-o/-/ngx-owl-carousel-o-4.0.0.tgz#b196dba24fd18a1d0918fee997cdef4467390342"
   integrity sha512-CaHiC9XyTgk4bMSVdYivUUFnvLU8ghouCPwxK25419SDfLeCo/gtfqkLQf5HdS1qIIQ0niAKSN8tQBz1HX0OKA==
+  dependencies:
+    tslib "^2.0.0"
+
+ngx-pipes@^2.7.5:
+  version "2.7.5"
+  resolved "https://registry.yarnpkg.com/ngx-pipes/-/ngx-pipes-2.7.5.tgz#22e2e4b7015ae9103210dfa2dacd6f4ae4411639"
+  integrity sha512-hlxHzu+snGJ038Z+HdkgEZRlZeE7suDTLWJD1yUP11eAM+xLPJAur1QtvvtZTHRHutOc7Wij1keBtuWIS9D0JQ==
   dependencies:
     tslib "^2.0.0"
 

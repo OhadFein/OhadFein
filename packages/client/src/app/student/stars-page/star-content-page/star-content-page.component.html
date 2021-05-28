@@ -1,12 +1,12 @@
-<ng-template [ngIf]="star && !loading">
+<ng-template [ngIf]="user && !loading">
     <div class="row d-flex justify-content-center">
         <div class="col">
             <div class="star-info-vertical">
                 <div class="star-info-image">
                     <div class="embed-responsive embed-responsive-16by9 video-preview-container"
-                         (click)="openPromoModal(star.name, star.promoVideo)">
+                         (click)="openPromoModal(user.given_name + ' ' + user.family_name, user.star.promo_video)">
                         <div class="embed-responsive-item star-big-image cover-bg"
-                             [style.backgroundImage]="'url('+ star.logo.large +')'">
+                             [style.backgroundImage]="'url('+ user.star.logo +')'">
                         </div>
                         <div class="play-btn-container">
                             <i class="icon-play"></i>
@@ -19,13 +19,12 @@
 
                 <div class="star-info-text text-center">
                     <h5 class="star-info-name"
-                        dsappStarName
-                        [name]="star.name"></h5>
+                        dsappStarName [givenName]="user.given_name" [familyName]="user.family_name"></h5>
                     <div>
                         <p #stardescription
-                           *ngIf="star.description"
+                           *ngIf="user.star.description"
                            class="star-info-desc text-muted"
-                           [ngClass]="isReadMore === true ? 'show-less' : isReadMore === false ? 'read-more' : ''">{{star.description}}</p>
+                           [ngClass]="isReadMore === true ? 'show-less' : isReadMore === false ? 'read-more' : ''">{{user.star.description}}</p>
                     </div>
 
                     <div *ngIf="isReadMore===true"
@@ -47,7 +46,7 @@
             </div>
         </div>
     </div>
-    <dsapp-start-figure-wrapper [starId]="star._id"></dsapp-start-figure-wrapper>
+    <dsapp-start-figure-wrapper [starId]="user._id"></dsapp-start-figure-wrapper>
 </ng-template>
 
 <ng-template [ngIf]="loading">

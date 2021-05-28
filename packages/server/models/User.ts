@@ -1,108 +1,105 @@
+import { INotification } from './Notification';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import mongoose, { Document, Model, model, Types } from 'mongoose';
+import mongoose, { Document, Model, model, Schema, Types } from 'mongoose';
 import { jwtAccessPrivateKey, jwtRefreshPrivateKey, signOptionsAccessToken, signOptionsRefreshToken } from '../config/jwt';
-import { EnumAgeGroup, EnumGender, EnumLanguage, possibleGenders, possibleLanguages, EnumRole, possibleRoles } from '../shared/enums';
-import { IPracticeItem } from './PracticeItem';
+import { EnumGender, EnumLanguage, possibleGenders, possibleLanguages, EnumRole, possibleRoles } from '../shared/enums';
+import { IPractice } from './Practice';
 import User from './User';
 import { NextFunction } from 'express';
-
+import { IFigure } from './Figure';
 
 interface tokenData {
-  refresh_token: string
-  access_token: string
-  expired_at: Date
+  refresh_token: string;
+  access_token: string;
+  expired_at: Date;
 }
+
+interface IStar {
+  figures: [IFigure];
+  description: string;
+  logo: string;
+  promo_video: string;
+}
+
 
 export interface dataStoredInToken {
   _id: string;
 }
 
-interface BirthDate {
-  date?: Date;
-  group?: EnumAgeGroup;
+export function concatAWSBucketPath(str: any) {
+  return process.env.AWS_BUCKET_PATH + str;
 }
 
-export interface Name {
-  firstName: string;
-  lastName: string;
-  nickname?: string;
-}
-
-interface IProfile {
-  gender?: EnumGender,
-  language: EnumLanguage,
-  birthDate?: BirthDate,
-  name: Name,
-  about?: string
-}
-
-const userSchema = new mongoose.Schema(
+const starSchema = new Schema(
   {
-    email: { type: String, unique: true },
+    figures: [{ type: mongoose.Schema.Types.ObjectId, ref: "Figure" }],
+    description: { type: String },
+    logo: { type: String, get: concatAWSBucketPath },
+    promo_video: { type: String, get: concatAWSBucketPath },
+  },
+  { _id: false, id: false }
+);
+
+starSchema.set('toJSON', {
+  virtuals: true,
+  getters: true
+});
+
+const userSchema = new Schema(
+  {
+    // open id parameters:
+    email: { type: String, unique: true, select: false },
+    username: { type: String, required: true, unique: true, lowercase: true }, // TODO: a-z A-Z 0-9 .  mabye - _ too
     password: { type: String, required: true, select: false },
-    role: { type: EnumRole, enum: possibleRoles, default: EnumRole.user },
-    passwordResetToken: { type: String },
-    passwordResetExpires: { type: Number },
-    emailVerificationToken: { type: String },
-    emailVerified: { type: Boolean, default: false },
+    roles: {
+      type: [{ type: String, enum: possibleRoles }],
+      default: [EnumRole.user],
+      select: false,
+    },
 
-    // TODO: this properties are needed?
-    // facebook: String,
-    // google: String,
-    // tokens: [{ type: String }],
+    password_reset_token: { type: String, select: false },
+    password_reset_expires: { type: Number, select: false },
+    email_verification_token: { type: String, select: false },
+    email_verified: { type: Boolean, default: false, select: false },
 
-    practiceItems: [{ type: mongoose.Schema.Types.ObjectId, ref: 'PracticeItem' }],
+    given_name: { type: String, required: true },
+    family_name: { type: String, required: true },
+    picture: { type: String, },
+    birthdate: { type: Date },
+    gender: { type: EnumGender, enum: possibleGenders },
+    // TODO: should be changed to Enumlocale instead of language according to open id protocol)
+    locale: { type: EnumLanguage, enum: possibleLanguages, required: true, default: EnumLanguage.english, select: false },
 
-    profile: {
-      gender: { type: EnumGender, enum: possibleGenders }, // TODO: required: true?
-      language: { type: EnumLanguage, enum: possibleLanguages, required: true, default: EnumLanguage.english },
-      birthDate: {
-        date: { type: Date },
-      },
-      name: {
-        firstName: { type: String, required: true },
-        lastName: { type: String, required: true },
-        nickname: { type: String },
-      },
-      about: { type: String },
-    }
+    about: { type: String },
+
+    coach: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+
+    students: {
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+      select: false
+    },
+
+    practices: {
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Practice' }],
+      select: false
+    },
+
+    notifications: {
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Notifcation' }],
+      select: false
+    },
+
+    star: { type: starSchema, select: false, default: () => ({}) }
+
   },
   { timestamps: true }
 );
 
 userSchema.set('toJSON', {
-  virtuals: true
+  virtuals: true,
+  getters: true
 });
-
-const getAge = (birthday: Date) => {
-  const ageDifMs = Date.now() - birthday.getTime();
-  const ageDate = new Date(ageDifMs); // miliseconds from epoch
-  return Math.abs(ageDate.getUTCFullYear() - 1970);
-}
-
-userSchema.virtual('profile.birthDate.group').get(function (this: { profile: IProfile }) {
-  let age, group;
-  if (this.profile && this.profile.birthDate && this.profile.birthDate.date) {
-    age = getAge(this.profile.birthDate.date);
-
-    switch (true) {
-      case (age < 12):
-        group = EnumAgeGroup.CHILD;
-        break;
-      case (age < 18):
-        group = EnumAgeGroup.YOUNG;
-        break;
-      default:
-        group = EnumAgeGroup.ADULT;
-        break;
-    }
-  }
-
-  return group;
-});
-
-
 
 /**
  * Password hash middleware.
@@ -125,25 +122,35 @@ userSchema.pre('save', async function save(this: IUser, next: NextFunction) {
 /**
  * Helper method for validating user's password.
  */
-interface IUserSchema extends Document {
+export interface IUser extends Document {
   _id: mongoose.Types.ObjectId;
-  email: string;
-  password: string;
-  role: EnumRole;
-  passwordResetToken: string;
-  passwordResetExpires: number;
-  emailVerificationToken: string;
-  emailVerified: boolean;
-
-  facebook: string;
-  google: string;
-  tokens: Types.Array<string>;
-
-  profile: IProfile;
-}
-
-interface IUserBase extends IUserSchema {
   generateAuthToken(): Promise<tokenData>;
+
+  email: string;
+  username: string;
+  password: string;
+  roles: [EnumRole];
+
+  password_reset_token: string;
+  password_reset_expires: number;
+  email_verification_token: string;
+  email_verified: boolean;
+
+  given_name: string;
+  family_name: string;
+  picture: string;
+  birthdate: Date;
+  gender: EnumGender;
+  locale: EnumLanguage;
+
+  about?: string;
+
+  practices: [IPractice["_id"]];
+  notifications: [INotification["_id"]];
+
+  star: IStar;
+  coach: IUser;
+  students: [IUser["_id"]];
 }
 
 userSchema.methods.generateAuthToken = function (this: IUser): tokenData {
@@ -156,11 +163,6 @@ userSchema.methods.generateAuthToken = function (this: IUser): tokenData {
     "expired_at": new Date(Date.now() + (15 * 60 * 1000)) // TODO: 15m
   };
 }
-
-export interface IUser extends IUserBase {
-  practiceItems: [IPracticeItem["_id"]];
-}
-
 
 // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
 userSchema.statics.findByCredentials = async (email: string, password: string): Promise<IUser> => {

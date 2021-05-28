@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { DanceType, Figure, IStarContent, StarContentDance, StarDanceLevel } from '@core/models';
-import { FiguresService, StarsService } from '@core/services';
+import { IStarContent } from '@core/models';
+import { StarsService } from '@core/services';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
 
 import * as StarsContentActions from '../actions/stars-content.actions';
-
 
 @Injectable()
 export class StarsContentEffects {

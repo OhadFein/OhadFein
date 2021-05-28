@@ -30,29 +30,10 @@ export enum EnumGender {
 }
 export const possibleGenders = Object.values(EnumGender);
 
-export enum EnumAgeGroup {
-  CHILD = 'child',
-  YOUNG = 'young',
-  ADULT = 'adult'
-}
-
 export enum EnumLanguage {
   english = 'en'
 }
 export const possibleLanguages = Object.values(EnumLanguage);
-
-
-export enum EnumView {
-  front = 'front',
-  back = 'back'
-}
-export const possibleViews = Object.values(EnumView);
-
-export enum EnumParticipatesAmount {
-  solo = 1,
-  couple = 2
-}
-export const possibleParticipatesAmounts = Object.values(EnumParticipatesAmount);
 
 export enum EnumAssociateModel {
   Video = "Video",
@@ -61,8 +42,10 @@ export enum EnumAssociateModel {
 export const possibleAssociateModels = Object.values(EnumAssociateModel);
 
 export enum EnumRole {
-  user = 1,
-  admin = 99
+  user = "user",
+  coach = "coach",
+  star = "star",
+  admin = "admin"
 }
 export const possibleRoles = Object.values(EnumRole);
 
@@ -78,3 +61,11 @@ export enum EnumVideoType {
   // challenge = "challenge"
 }
 export const possibleVideoTypes = Object.values(EnumVideoType);
+
+
+export enum EnumNotificationType {
+  NEW_STAR_FIGURE = 'NEW_STAR_FIGURE',
+  NEW_USER_NOTE = 'NEW_USER_NOTE',
+  NEW_COACH_NOTE = 'NEW_COACH_NOTE'
+}
+export const possibleNotifications = Object.values(EnumNotificationType);
