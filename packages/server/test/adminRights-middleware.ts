@@ -1,33 +1,75 @@
 import { expect } from 'chai';
-import { } from 'mocha';
+import { after, before } from 'mocha';
+import jwt from 'jsonwebtoken';
+import mongoose from 'mongoose';
 
-import { checkAdminRights } from '../middleware/checkAdminRights';
+import sinon from 'sinon';
 import User from '../models/User';
+
+import dotenv from 'dotenv';
+dotenv.config({ path: '.env' });
+
+const sandbox = sinon.createSandbox();
+const MONGODB_DEV_URI = (process.env.NODE_ENV === 'development') ?
+    process.env.MONGODB_DEVELOPMENT_TEST_URI : process.env.MONGODB_PRODUCTION_TEST_URI;
+import { checkAdminPermissions } from "../middleware/checkPermissions";
 import { EnumRole } from '../shared/enums';
 
-const getUser = (role: EnumRole) => {
-    return new User({
-        "_id": "5f53e610c57684288918a92d",
-        "profile": {
-            "birthDate": "1992-12-31T00:00:00.000Z",
-            "name": { "given_name": "roy", "family_name": "roy" },
-            "language": "en"
-        },
-        "emailVerified": false,
-        "tokens": [],
-        "role": role,
-        "email": "ohad2121@gmail.com",
-        "password": "$2b$10$..IxTSeyHB5RvZkTHYFDt.Y/d.f52cH3vkzqkOaii5xkUeC3KJPhC",
-        "emailVerificationToken": "5f53b898a8ee00bc3ee2b3ca21ff78a4"
-    });
-}
+const regularUser = new User({
+    "_id": "609185093c81fa77f81faf00",
+    "roles": [EnumRole.user],
+    "email": "ohad2121@gmail.com",
+    "password": "$2b$10$3Yj2HBLGwbih4Xgc7wP/luMJRcsVXUX8KifzvuDYRir2H/ANrJTMC",
+    "username": "ohad2121",
+    "given_name": "Ohad",
+    "family_name": "Fein",
+});
+
+
+const adminUser = new User({
+    "_id": "609185093c81fa77f81faf01",
+    "roles": [EnumRole.admin],
+    "email": "ohad2121@gmail.com",
+    "password": "$2b$10$3Yj2HBLGwbih4Xgc7wP/luMJRcsVXUX8KifzvuDYRir2H/ANrJTMC",
+    "username": "ohad2121",
+    "given_name": "Ohad",
+    "family_name": "Fein",
+});
+
+
 
 describe('adminRights middleware', () => {
 
-    it('should return 401 status if there is no admin rights for a regular user,', () => {
+    before(async () => {
+        await mongoose.connect(MONGODB_DEV_URI, {
+            autoIndex: false, useCreateIndex: true,
+            useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false
+        })
+
+        await regularUser.save();
+        await adminUser.save();
+        return;
+    });
+
+    beforeEach(function () {
+        // const data: any = { _id: new mongoose.mongo.ObjectId('5f53e610c57684288918a92d') };
+        // sandbox.stub(jwt, 'verify').returns(data);
+    });
+
+    after(async () => {
+        await User.deleteMany({})
+        await mongoose.disconnect();
+    });
+
+    afterEach(function () {
+        sandbox.restore();
+    });
+
+    it('should return 401 status if there is no admin rights for a regular user,', async () => {
         const req: any = {
-            user: getUser(EnumRole.user)
+            user: regularUser
         };
+
         const res: any = {
             status: function (code: number) {
                 this.status = code;
@@ -38,14 +80,14 @@ describe('adminRights middleware', () => {
             }
         };
 
-        checkAdminRights(req, res, () => { });
+        await checkAdminPermissions(req, res, () => { });
         expect(res.status).to.be.equal(401);
         expect(res.message).to.be.equal('Invalid permissions!');
     });
 
-    it('should call next if for admins,', () => {
+    it('should call next if for admins,', async () => {
         const req: any = {
-            user: getUser(EnumRole.admin)
+            user: adminUser
         };
         const res: any = {
             status: function (code: number) {
@@ -58,7 +100,7 @@ describe('adminRights middleware', () => {
         };
 
         let nextIsCalled = false;
-        checkAdminRights(req, res, () => { nextIsCalled = true });
+        await checkAdminPermissions(req, res, () => { nextIsCalled = true });
         expect(nextIsCalled).to.be.equal(true);
     });
 
