@@ -14,7 +14,6 @@ import mongoose from 'mongoose';
 import { checkAuth, checkRefreshToken } from '../middleware/checkAuth';
 import sinon from 'sinon';
 import User from '../models/User';
-import { EnumRole } from '../shared/enums';
 
 import dotenv from 'dotenv';
 dotenv.config({ path: '.env' });
@@ -23,6 +22,25 @@ const sandbox = sinon.createSandbox();
 const MONGODB_DEV_URI = (process.env.NODE_ENV === 'development') ?
   process.env.MONGODB_DEVELOPMENT_TEST_URI : process.env.MONGODB_PRODUCTION_TEST_URI;
 
+const user = new User({
+  "_id": "609185093c81fa77f81faf00",
+  "roles": ["user", "admin", "star", "coach"],
+  "email_verified": false,
+  "locale": "en",
+  "students": ["6091853e19923dc1519d077d"],
+  "practices": [],
+  "email": "ohad2121@gmail.com",
+  "password": "$2b$10$3Yj2HBLGwbih4Xgc7wP/luMJRcsVXUX8KifzvuDYRir2H/ANrJTMC",
+  "given_name": "Ohad",
+  "family_name": "Fein",
+  "birthdate": "1992-12-31T00:00:00.000Z",
+  "username": "ohad2121",
+  "createdAt": "2021-05-04T17:31:53.570Z",
+  "updatedAt": "2021-05-07T18:36:58.080Z",
+  "email_verification_token": "3817a585915510f66bb3e8af359ea2fd",
+  "coach": "609185093c81fa77f81faf00"
+});
+
 describe('Auth middleware', () => {
 
   before(async () => {
@@ -30,20 +48,7 @@ describe('Auth middleware', () => {
       autoIndex: false, useCreateIndex: true,
       useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false
     })
-    const user = new User({
-      "_id": "5f53e610c57684288918a92d",
-      "profile": {
-        "birthDate": "1992-12-31T00:00:00.000Z",
-        "name": { "given_name": "roy", "family_name": "roy" },
-        "language": "en"
-      },
-      "role": EnumRole.admin,
-      "emailVerified": false,
-      "tokens": [],
-      "email": "ohad2121@gmail.com",
-      "password": "$2b$10$..IxTSeyHB5RvZkTHYFDt.Y/d.f52cH3vkzqkOaii5xkUeC3KJPhC",
-      "emailVerificationToken": "5f53b898a8ee00bc3ee2b3ca21ff78a4"
-    });
+
     return await user.save();
   });
 
@@ -61,7 +66,7 @@ describe('Auth middleware', () => {
     sandbox.restore();
   });
 
-  it('should return 401 status and "Not authenticated!" message if header is not present', async () => {
+  it('Should return 401 status and "Not authenticated!" message if header is not present', async () => {
     const req: any = {
       get: function () {
         return null;
@@ -97,12 +102,14 @@ describe('Auth middleware', () => {
       }
     };
 
-    const data: any = { _id: new mongoose.mongo.ObjectId('5f53e610c57684288918a92d') };
-    sandbox.stub(jwt, 'verify').returns(data);
     let nextCallsCounter = 0;
+    const data: any = { _id: user._id };
+
+    sandbox.stub(jwt, 'verify').returns(data);
     await checkAuth(req, res, () => { nextCallsCounter++; });
+
     expect(req).to.have.property('user');
-    expect(req.user).to.have.property('email', 'ohad2121@gmail.com');
+    expect(req.user).to.have.property('username', user.username);
     expect((jwt.verify as any).called).to.be.true;
     expect(nextCallsCounter).to.be.equal(1);
   });
@@ -184,11 +191,11 @@ describe('Auth middleware', () => {
       }
     };
 
-    const data: any = { _id: new mongoose.mongo.ObjectId('5f53e610c57684288918a92d') };
+    const data: any = { _id: new mongoose.mongo.ObjectId('609185093c81fa77f81faf00') };
     sandbox.stub(jwt, 'verify').returns(data);
     await checkRefreshToken(req, res, () => { });
     expect(req).to.have.property('user');
-    expect(req.user).to.have.property('email', 'ohad2121@gmail.com');
+    expect(req.user).to.have.property('username', 'ohad2121');
     expect((jwt.verify as any).called).to.be.true;
   });
 
