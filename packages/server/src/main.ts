@@ -1,0 +1,20 @@
+import { Logger, ValidationPipe } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { AllExceptionsFilter } from './common/filters/http-exception.filter';
+import * as helmet from 'helmet';
+import * as compression from 'compression';
+
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  app.useGlobalFilters(new AllExceptionsFilter());
+  app.useGlobalPipes(new ValidationPipe());
+  app.enableCors();
+  app.use(helmet());
+  app.use(compression());
+
+  await app.listen(3000);
+}
+bootstrap()
+  .then(() => Logger.log(`App is running on port 3000`))
+  .catch((error) => Logger.error(`Server failed`, error));
