@@ -1,3 +1,5 @@
+@import 'units';
+
 /// BOOOTSRTAP VARIABLES
 
 $white: #fff;
@@ -39,16 +41,12 @@ $link-color: $body-color;
 // Font, line-height, and color for body text, headings, and more.
 
 // stylelint-disable value-keyword-case
-$font-family-sans-serif: "Futura",
-Arial,
-sans-serif;
-$font-family-monospace: "Serifa",
-"Times New Roman",
-serif;
+$font-family-sans-serif: "Poppins", Arial, sans-serif;
+$font-family-monospace: "Serifa", "Times New Roman", serif;
 $font-family-base: $font-family-sans-serif;
 // stylelint-enable value-keyword-case
 
-$font-size-base: 0.9rem; // Assumes the browser default, typically `16px`
+$font-size-base: 1rem;
 $font-size-lg: $font-size-base * 1.25;
 $font-size-sm: $font-size-base * .875;
 
@@ -62,37 +60,17 @@ $font-weight-bolder: bolder;
 $font-weight-base: $font-weight-normal;
 $line-height-base: 1.5;
 
-$h1-font-size: $font-size-base * 2.5;
-$h2-font-size: $font-size-base * 2;
-$h3-font-size: $font-size-base * 1.75;
-$h4-font-size: $font-size-base * 1.5;
-$h5-font-size: $font-size-base * 1.25;
-$h6-font-size: $font-size-base;
-
-
+$h1-font-size: rem(17px);
+$h2-font-size: rem(14px);
+$h3-font-size: rem(13px);
+$h4-font-size: rem(12px);
+$h5-font-size: rem(10px);
+$h6-font-size: rem(8px);
 
 $headings-font-family: $font-family-sans-serif;
 $headings-font-weight: 700;
 $headings-line-height: 1.2;
 $headings-color: null;
-
-
-
-// Badges
-
-$badge-font-size: 75%;
-$badge-font-weight: 500;
-$badge-padding-y: 0.45em;
-$badge-padding-x: 0.5em;
-// $badge-border-radius: $border-radius !default;
-
-// $badge-transition: $btn-transition !default;
-// $badge-focus-width: $input-btn-focus-width !default;
-
-// $badge-pill-padding-x: .6em !default;
-// Use a higher than normal value to ensure completely rounded edges when
-// customizing padding or font-size on labels.
-// $badge-pill-border-radius: 10rem !default;
 
 // Modals
 

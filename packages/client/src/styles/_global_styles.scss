@@ -74,7 +74,7 @@ button:focus {
         top: calc(50% - 6px);
         right: 20px;
         color: $gray-600;
-        font-size: $label-font;
+        font-size: $font-size-base * 0.7;
         font-weight: $font-weight-bold-light;
     }
     .password-btn {
