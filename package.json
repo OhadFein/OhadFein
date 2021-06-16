@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "dance-web",
+  "name": "@danskill/workspace",
   "version": "1.0.0",
   "main": "index.js",
   "workspaces": [

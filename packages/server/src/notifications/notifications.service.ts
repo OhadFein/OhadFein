@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import {
   CreateNotificationDto,
-  UpdateNotificationDto,
 } from '@danskill/contract';
 
 @Injectable()
@@ -16,10 +15,6 @@ export class NotificationsService {
 
   findOne(id: number) {
     return `This action returns a #${id} notification`;
-  }
-
-  update(id: number, updateNotificationDto: UpdateNotificationDto) {
-    return `This action updates a #${id} notification`;
   }
 
   remove(id: number) {

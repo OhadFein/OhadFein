@@ -3,14 +3,12 @@ import {
   Get,
   Post,
   Body,
-  Patch,
   Param,
   Delete,
 } from '@nestjs/common';
 import { NotificationsService } from './notifications.service';
 import {
   CreateNotificationDto,
-  UpdateNotificationDto,
 } from '@danskill/contract';
 
 @Controller('notifications')
@@ -30,14 +28,6 @@ export class NotificationsController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.notificationsService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(
-    @Param('id') id: string,
-    @Body() updateNotificationDto: UpdateNotificationDto
-  ) {
-    return this.notificationsService.update(+id, updateNotificationDto);
   }
 
   @Delete(':id')
