@@ -1,6 +1,16 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { CustomLabControlsComponent } from './custom-lab-controls.component';
+import { DSAPP_WINDOW } from '../../core/global_variables/token';
+
+function windowFactory() {
+  return {
+    requestAnimationFrame: () => {},
+    dispatchEvent: () => {},
+    innerWidth: 100
+  }
+}
 
 describe('CustomLabControlsComponent', () => {
   let component: CustomLabControlsComponent;
@@ -8,7 +18,12 @@ describe('CustomLabControlsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CustomLabControlsComponent ]
+      declarations: [ CustomLabControlsComponent ],
+      providers: [{
+        provide: DSAPP_WINDOW,
+        useFactory: windowFactory
+      }],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })
     .compileComponents();
   }));
