@@ -1,10 +1,9 @@
-import { animate, state, style, transition, trigger } from '@angular/animations';
+import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   BackgroundProcess,
   BackgroundProcessCallbackAction,
-  BackgroundProcessCallbackData,
-  BackgroundProcessType,
+  BackgroundProcessCallbackData
 } from '@core/models';
 import { BackgroundProcessesService } from '@core/services';
 import { Subscription } from 'rxjs';
@@ -61,8 +60,5 @@ export class BackgroundProcessesComponent implements OnInit, OnDestroy {
     if (this.subscription) {
       this.subscription.unsubscribe();
     }
-
   }
-
-
 }

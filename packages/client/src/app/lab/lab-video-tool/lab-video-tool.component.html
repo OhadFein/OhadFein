@@ -18,7 +18,7 @@
     <div *ngIf="masterVideo && studentVideo"
          class="right-side"
          (click)="toggleSync()">
-      <span>{{synchronized ? ('LAB.unlinkVideos' | translate):('LAB.linkVideos' | translate)}}</span>
+      <span>{{synchronized ? ('LAB.unlinkVideos' | translate) : ('LAB.linkVideos' | translate)}}</span>
 
       <button uiToggleSwitch class="control-button pr-0" [state]="synchronized" [disabled]="!studentVideo"></button>
     </div>

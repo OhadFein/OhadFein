@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BuildType, Configuration } from '@app/_infra/core/models';
 import { ConfigurationService } from '@core/services/configuration.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
