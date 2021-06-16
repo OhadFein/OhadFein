@@ -13,6 +13,9 @@
     "target": "es2015",
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2018", "dom"],
+    "incremental": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
     "paths": {
       "@app/*": ["src/app/*"],
       "@infra/*": ["src/app/_infra/*"],
@@ -21,7 +24,8 @@
       "@ui/*": ["src/app/_infra/ui/*"],
       "@store/*": ["src/app/_infra/store/*"],
       "@lab/*": ["src/app/lab/*"],
-      "@environments/*": ["src/environments/*"]
+      "@environments/*": ["src/environments/*"],
+      "@testing/*": ["src/testing/*"]
     }
   },
   "angularCompilerOptions": {
@@ -29,5 +33,6 @@
     "allowEmptyCodegenFiles": true,
     "fullTemplateTypeCheck": true,
     "strictInjectionParameters": true
-  }
+  },
+  "exclude": ["node_modules", "**/*.spec.ts"]
 }
