@@ -92,7 +92,6 @@ describe('validateLogin', () => {
       username: 'test',
       password: 'test',
     });
-    expect(res.success).toEqual(true);
-    expect(res.data.access_token).toBeDefined();
+    expect(res.access_token).toBeDefined();
   });
 });

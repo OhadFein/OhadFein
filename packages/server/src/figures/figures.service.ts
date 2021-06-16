@@ -3,7 +3,7 @@ import { Types, Model } from 'mongoose';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Figure, FigureDocument } from './schemas/figure.schema';
-import { GetAllFiguresDto } from '@danskill/contract/lib/figures/';
+import { GetAllFiguresDto } from '@danskill/contract';
 
 @Injectable()
 export class FiguresService {

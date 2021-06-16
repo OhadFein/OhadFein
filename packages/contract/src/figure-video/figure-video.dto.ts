@@ -1,5 +1,5 @@
 import { Types } from 'mongoose';
-import { EnumVideoType } from '@danskill/contract/lib/common/enums';
+import { EnumVideoType } from '@danskill/contract';
 import { Figure } from 'src/figures/schemas/figure.schema';
 import { User } from 'src/users/schemas/user.schema';
 

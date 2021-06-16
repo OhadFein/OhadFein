@@ -4,7 +4,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 import { EnumRole } from 'src/common/enums/role.enum';
 import { PrepareUrl } from 'src/common/utils/prepare-url';
-import { UserDto } from '../../../../contract/lib/users';
+import { UserDto } from '@danskill/contract';
 
 export type UserDocument = User & Document;
 

@@ -18,7 +18,9 @@ import { NotesModule } from './notes/notes.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/danskill', { useCreateIndex: true }),
+    MongooseModule.forRoot('mongodb://localhost:27017/danskill', {
+      useCreateIndex: true,
+    }),
     ConfigModule.forRoot(),
     AuthModule,
     UsersModule,

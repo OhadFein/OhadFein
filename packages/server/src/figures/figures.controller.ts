@@ -3,7 +3,7 @@ import { Types } from 'mongoose';
 import { Figure } from './schemas/figure.schema';
 import { FiguresService } from './figures.service';
 import { JwtAuthGuard } from 'src/common/guards/jwt-auth.guard';
-import { GetAllFiguresDto } from '@danskill/contract/lib/figures/';
+import { GetAllFiguresDto } from '@danskill/contract';
 
 @UseGuards(JwtAuthGuard)
 @Controller('figures')

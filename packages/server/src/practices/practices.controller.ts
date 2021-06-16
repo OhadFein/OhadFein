@@ -20,7 +20,7 @@ import { User } from 'src/users/schemas/user.schema';
 import { JwtAuthGuard } from 'src/common/guards/jwt-auth.guard';
 import { FigureVideoService } from 'src/figure-video/figure-video.service';
 import { S3Service } from 'src/s3/s3.service';
-import { GetAllPracticesDto } from '@danskill/contract/lib/practices/get-all-practices';
+import { GetAllPracticesDto } from '@danskill/contract';
 
 
 @UseGuards(JwtAuthGuard)

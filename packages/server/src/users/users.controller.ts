@@ -10,7 +10,7 @@ import {
 import { UsersService } from './users.service';
 import { User } from './schemas/user.schema';
 import { Skip } from 'src/common/decorators/skip.decorator';
-import { CreateUserDto, GetAllUsersDto } from '../../../contract/lib/users';
+import { CreateUserDto, GetAllUsersDto } from '@danskill/contract';
 
 @Controller('users')
 export class UsersController {
@@ -18,9 +18,9 @@ export class UsersController {
 
   @Skip()
   @Post()
+  // TODO: return value shouldn't be the user!
   async create(@Body() createUserDto: CreateUserDto): Promise<User> {
     const user = await this.usersService.create(createUserDto);
-    if (!user) throw new HttpException('User not found', HttpStatus.NOT_FOUND);
 
     return user;
   }

@@ -1,5 +1,5 @@
 import { Types } from 'mongoose';
-import { EnumDanceType, EnumDanceLevel } from '@danskill/contract/lib/common/enums';
+import { EnumDanceType, EnumDanceLevel } from '@danskill/contract';
 import { FigureVideoDto } from '../figure-video/figure-video.dto';
 import { UserDto } from '../users';
 

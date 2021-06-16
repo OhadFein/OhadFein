@@ -23,7 +23,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
       status = exception.getStatus();
 
       if (typeof httpResponse === 'object')
-        message = (httpResponse as any).message;
+        message = (httpResponse as any).message; // TODO:
     } else if (exception instanceof HttpException) {
       const httpResponse = (exception as HttpException).getResponse();
       status = exception.getStatus();

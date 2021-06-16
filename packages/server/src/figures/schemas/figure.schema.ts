@@ -1,10 +1,9 @@
-import { EnumDanceType, EnumDanceLevel } from '@danskill/contract/lib/common/enums';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 import { PrepareUrl } from 'src/common/utils/prepare-url';
 import { User } from 'src/users/schemas/user.schema';
 import { FigureVideo } from 'src/figure-video/schemas/figure-video.schema';
-import { FigureDto } from '@danskill/contract/lib/figures/';
+import { FigureDto, EnumDanceType, EnumDanceLevel } from '@danskill/contract';
 
 export type FigureDocument = Figure & Document;
 

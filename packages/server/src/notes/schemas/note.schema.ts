@@ -2,7 +2,7 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 import { Practice } from 'src/practices/schemas/practice.schema';
 import { User } from 'src/users/schemas/user.schema';
-import { NoteDto } from '@danskill/contract/lib/notes/note.dto';
+import { NoteDto } from '@danskill/contract';
 
 export type NoteDocument = Note & Document;
 

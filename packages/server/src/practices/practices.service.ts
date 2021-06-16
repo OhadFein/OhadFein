@@ -1,4 +1,3 @@
-import { GetAllPracticesDto } from './../../../contract/lib/practices/';
 import { FigureVideoService } from './../figure-video/figure-video.service';
 import { S3 } from 'aws-sdk';
 import { Model, Types } from 'mongoose';
@@ -12,6 +11,7 @@ import { FiguresService } from 'src/figures/figures.service';
 import { S3Service } from 'src/s3/s3.service';
 import { UsersService } from 'src/users/users.service';
 import { Note } from 'src/notes/schemas/note.schema';
+import { GetAllPracticesDto } from '@danskill/contract';
 
 @Injectable()
 export class PracticesService {

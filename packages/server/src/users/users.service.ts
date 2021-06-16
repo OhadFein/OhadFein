@@ -1,8 +1,9 @@
-import { CreateUserDto, GetAllUsersDto } from '@danskill/contract/lib/users';
 import { Model, Types } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from './schemas/user.schema';
+import { CreateUserDto, GetAllUsersDto } from '@danskill/contract';
+const bcrypt = require('bcrypt');
 
 @Injectable()
 export class UsersService {
@@ -12,9 +13,11 @@ export class UsersService {
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(createUserDto.password, salt);
     const createdUser = new this.userModel({
       email: createUserDto.email,
-      password: createUserDto.password,
+      password: hash,
       username: createUserDto.username,
       given_name: createUserDto.given_name,
       family_name: createUserDto.family_name,

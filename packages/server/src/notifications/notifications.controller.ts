@@ -11,7 +11,7 @@ import { NotificationsService } from './notifications.service';
 import {
   CreateNotificationDto,
   UpdateNotificationDto,
-} from '@danskill/contract/lib/notifications';
+} from '@danskill/contract';
 
 @Controller('notifications')
 export class NotificationsController {

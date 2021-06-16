@@ -3,7 +3,7 @@ import { NotesService } from './notes.service';
 import { Types } from 'mongoose';
 import { RequestUser } from 'src/common/decorators/request-user.decorator';
 import { User } from 'src/users/schemas/user.schema';
-import { CreateNoteDto } from '@danskill/contract/lib/notes';
+import { CreateNoteDto } from '@danskill/contract';
 
 @Controller('notes')
 export class NotesController {

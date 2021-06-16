@@ -4,7 +4,7 @@ import { Types, Model } from 'mongoose';
 import { PracticesService } from 'src/practices/practices.service';
 import { User } from 'src/users/schemas/user.schema';
 import { Note, NoteDocument } from './schemas/note.schema';
-import { CreateNoteDto } from '@danskill/contract/lib/notes/create-note.dto';
+import { CreateNoteDto } from '@danskill/contract';
 
 @Injectable()
 export class NotesService {

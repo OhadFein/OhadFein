@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import {
   CreateNotificationDto,
   UpdateNotificationDto,
-} from '@danskill/contract/lib/notifications';
+} from '@danskill/contract';
 
 @Injectable()
 export class NotificationsService {
