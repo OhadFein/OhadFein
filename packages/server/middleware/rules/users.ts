@@ -28,8 +28,10 @@ export const rules_signup = [
                 throw new Error(Errors.PASSWORD_MISMATCH);
             }
             return true;
-        })
-    // TODO: add validation for: birthDate, name
+        }),
+    body("username", Errors.INVALID_USERNAME).notEmpty(), // TODO:
+    body("given_name", Errors.INVALID_GIVEN_NAME).notEmpty(), // TODO:
+    body("family_name", Errors.INVALID_FAMILY_NAME).notEmpty(), // TODO:
 ]
 
 export const rules_login = [

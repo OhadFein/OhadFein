@@ -70,7 +70,6 @@ export const postSignup = async (req: Request<ParamsDictionary, signupRequestBod
     password: req.body.password,
     given_name: req.body.given_name,
     family_name: req.body.family_name,
-    birthdate: req.body.birthdate,
     username: req.body.username,
   });
 
