@@ -1,623 +1,25 @@
 {
 	"info": {
-		"_postman_id": "66f4f003-4fe1-48e5-9ae4-43c681194994",
-		"name": "danskill",
+		"_postman_id": "db5b4ced-2f89-4b25-9142-e7705607cbc7",
+		"name": "danskill - nestjs",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "Users",
+			"name": "Auth",
 			"item": [
 				{
-					"name": "/signup",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Sign up\", function () {",
-									"    if (responseCode.code === 201)",
-									"    {",
-									"        const data = pm.response.json().data;",
-									"        pm.environment.set(\"access_token\", data.access_token);",
-									"        pm.environment.set(\"refresh_token\", data.refresh_token);",
-									"        pm.environment.set(\"userId\", data._id);",
-									"        pm.environment.set(\"username\", data.username);",
-									"    }",
-									"    pm.response.to.have.status(201);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"email\": \"ohad2121@gmail.com\",\n\t\"password\": \"somePassword\",\n\t\"confirmPassword\": \"somePassword\",\n\t\"birthdate\": \"1992-12-31\",\n    \"username\": \"Ohad2121\",\n\t\"given_name\": \"Ohad\",\n\t\"family_name\": \"Fein\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseURL}}/signup",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"signup"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/login",
+					"name": "login",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
 									"pm.test(\"login\", function () {",
-									"    if (responseCode.code === 200)",
-									"    {",
-									"        const tokens = pm.response.json().data;",
-									"        pm.environment.set(\"access_token\", tokens.access_token);",
-									"        pm.environment.set(\"refresh_token\", tokens.refresh_token);",
-									"    }",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"email\": \"ohad2121@gmail.com\",\n\t\"password\": \"somePassword\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseURL}}/login",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"login"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/forgot",
-					"event": [
-						{
-							"listen": "prerequest",
-							"script": {
-								"exec": [
-									"",
-									"",
-									"// const baseURL = pm.variables.get(\"baseURL\");",
-									"",
-									"// pm.sendRequest({",
-									"//     url: `${baseURL}/signup`,",
-									"//     header: 'content-type:application/json',",
-									"//     method: 'POST',",
-									"//     body: {",
-									"//         mode: 'raw',",
-									"//         raw: JSON.stringify({",
-									"//             email: 'some@email.com',",
-									"//             password: 'somepassword',",
-									"//             confirmPassword: 'somepassword'",
-									"//         })",
-									"//     }",
-									"    ",
-									"// }, function (err, response) {",
-									"//     console.log(response.json());",
-									"// });",
-									"",
-									"// pm.environment.set(\"variable_key\", \"variable_value\");"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"email\": \"non-existing\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseURL}}/forgot",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"forgot"
-							]
-						}
-					},
-					"response": [
-						{
-							"name": "Forgot password - invalid email",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n\t\"email\": \"oh!com\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseURL}}/forgot",
-									"host": [
-										"{{baseURL}}"
-									],
-									"path": [
-										"forgot"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "x-frame-options",
-									"value": "SAMEORIGIN"
-								},
-								{
-									"key": "x-xss-protection",
-									"value": "1; mode=block"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "16"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\""
-								},
-								{
-									"key": "Vary",
-									"value": "Accept-Encoding"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 18 Nov 2019 05:51:49 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"success\": true\n}"
-						},
-						{
-							"name": "Existing user",
-							"originalRequest": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"value": "application/json",
-										"type": "text"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n\t\"email\": \"some@gmail.com\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseURL}}/forgot",
-									"host": [
-										"{{baseURL}}"
-									],
-									"path": [
-										"forgot"
-									]
-								}
-							},
-							"status": "OK",
-							"code": 200,
-							"_postman_previewlanguage": "json",
-							"header": [
-								{
-									"key": "x-frame-options",
-									"value": "SAMEORIGIN"
-								},
-								{
-									"key": "x-xss-protection",
-									"value": "1; mode=block"
-								},
-								{
-									"key": "Content-Type",
-									"value": "application/json; charset=utf-8"
-								},
-								{
-									"key": "Content-Length",
-									"value": "16"
-								},
-								{
-									"key": "ETag",
-									"value": "W/\"10-oV4hJxRVSENxc/wX8+mA4/Pe4tA\""
-								},
-								{
-									"key": "Vary",
-									"value": "Accept-Encoding"
-								},
-								{
-									"key": "Date",
-									"value": "Mon, 18 Nov 2019 05:51:49 GMT"
-								},
-								{
-									"key": "Connection",
-									"value": "keep-alive"
-								}
-							],
-							"cookie": [],
-							"body": "{\n    \"success\": true\n}"
-						}
-					]
-				},
-				{
-					"name": "/refreshToken",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Refresh token\", function () {",
-									"    if (responseCode.code === 200)",
-									"    {",
-									"        const tokens = pm.response.json().data;",
-									"        pm.environment.set(\"access_token\", tokens.access_token);",
-									"        pm.environment.set(\"refresh_token\", tokens.refresh_token);",
-									"    }",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseURL}}/refreshToken/{{refresh_token}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"refreshToken",
-								"{{refresh_token}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "/reset/:token",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseURL}}/reset/{{reset_token}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"reset",
-								"{{reset_token}}"
-							]
-						},
-						"description": "Confirm reset token - if success is returned, password reset form can be presented"
-					},
-					"response": []
-				},
-				{
-					"name": "/reset/:token",
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"value": "application/json",
-								"type": "text"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"password\": \"somePassword\",\n\t\"confirmPassword\": \"somePassword\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseURL}}/reset/{{reset_token}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"reset",
-								"{{reset_token}}"
-							]
-						},
-						"description": "commit reset token - change password for a user based on reset password form"
-					},
-					"response": []
-				},
-				{
-					"name": "🔑 /account/verify",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "{{baseURL}}/account/verify/",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"account",
-								"verify",
-								""
-							]
-						},
-						"description": "send verification email for new user - user is extracted from jwt token of the request"
-					},
-					"response": []
-				},
-				{
-					"name": "🔑 /account/verify/:token",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": ""
-						},
-						"description": "Mark user email as verified based on token."
-					},
-					"response": []
-				},
-				{
-					"name": "get my profile info",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Get my profile info\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseURL}}/account/profile",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"account",
-								"profile"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "edit my profile info",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Edit my profile info\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"given_name\": \"Ohadd\",\n    \"family_name\": \"Fein\",\n\t\"birthdate\": \"1991-12-30\",\n\t\"gender\": \"male\",\n\t\"language\": \"en\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseURL}}/account/profile",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"account",
-								"profile"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "edit password",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Edit password\", function () {",
-									"    pm.response.to.have.status(200);",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "PATCH",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"password\": \"somePassword\",\n\t\"confirmPassword\": \"somePassword\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{baseURL}}/account/password",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"account",
-								"password"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get general info",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Sign up\", function () {",
 									"    if (responseCode.code === 201)",
 									"    {",
-									"        const tokens = pm.response.json().data;",
-									"        pm.environment.set(\"access_token\", tokens.access_token);",
-									"        pm.environment.set(\"refresh_token\", tokens.refresh_token);",
+									"        const data = pm.response.json().data;",
+									"        pm.environment.set(\"access_token_nest\", data.access_token);",
 									"    }",
 									"    pm.response.to.have.status(201);",
 									"});"
@@ -626,19 +28,71 @@
 							}
 						}
 					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"username\": \"ohad2121@gmail.com\",\n\t\"password\": \"check\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/auth/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Sign up",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"ohad2121@gmail.com\",\n    \"password\": \"check\",\n    \"username\": \"ohad2121\",\n    \"given_name\": \"ohad\",\n    \"family_name\": \"ohad\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get user",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
+						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "",
@@ -649,416 +103,76 @@
 							}
 						},
 						"url": {
-							"raw": "{{baseURL}}/",
+							"raw": "{{url}}/users/single/{{username}}",
 							"host": [
-								"{{baseURL}}"
+								"{{url}}"
 							],
 							"path": [
-								""
-							]
-						}
-					},
-					"response": []
-				}
-			],
-			"event": [
-				{
-					"listen": "prerequest",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				},
-				{
-					"listen": "test",
-					"script": {
-						"type": "text/javascript",
-						"exec": [
-							""
-						]
-					}
-				}
-			]
-		},
-		{
-			"name": "Admins",
-			"item": [
-				{
-					"name": "Stars",
-					"item": [
-						{
-							"name": "activate star",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Add star\", function () {",
-											"    if (responseCode.code === 201)",
-											"    {",
-											"        const star = pm.response.json().data;",
-											"        pm.environment.set(\"starId\", star._id);",
-											"    }",
-											"    ",
-											"    pm.response.to.have.status(201);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n  \"promo_video\": \"https://danskill-streaming-video-optimized.s3-eu-west-1.amazonaws.com/stars/paul_moldovan/PROMO_OF_PAUL_MOLDOVAN.mp4\",\r\n  \"description\":\"2 times world champions 10 dance\",\r\n  \"logo\": \"stars/paul_moldovan/Moldovan_400x225.jpg\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseURL}}/admins/stars/{{username}}",
-									"host": [
-										"{{baseURL}}"
-									],
-									"path": [
-										"admins",
-										"stars",
-										"{{username}}"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "deactivate star",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Delete star\", function () {",
-											"    pm.response.to.have.status(200);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{baseURL}}/admins/stars/{{username}}",
-									"host": [
-										"{{baseURL}}"
-									],
-									"path": [
-										"admins",
-										"stars",
-										"{{username}}"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "FIgures",
-					"item": [
-						{
-							"name": "add figure",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Add figure\", function () {",
-											"    if (responseCode.code === 201)",
-											"    {",
-											"        const figure = pm.response.json().data;",
-											"        pm.environment.set(\"figureId\", figure._id);",
-											"    }",
-											"    ",
-											"    pm.response.to.have.status(201);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\r\n\t\"stars\": [\"{{userId}}\"],\r\n\t\"name\": \"figure 1\",\r\n\t\"type\": \"samba\",\r\n\t\"level\": \"1\",\r\n\t\"logo\": \"stars/SoulDance/riccardo_yulia‏/maxresdefault.jpg\"\r\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseURL}}/admins/figures",
-									"host": [
-										"{{baseURL}}"
-									],
-									"path": [
-										"admins",
-										"figures"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "delete figure",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Delete figure\", function () {",
-											"    pm.response.to.have.status(200);",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{baseURL}}/admins/figures/{{figureId}}",
-									"host": [
-										"{{baseURL}}"
-									],
-									"path": [
-										"admins",
-										"figures",
-										"{{figureId}}"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "Videos",
-					"item": [
-						{
-							"name": "add video",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Add star video\", function () {\r",
-											"    if (responseCode.code === 201) {\r",
-											"        const video = pm.response.json().data;\r",
-											"        pm.environment.set(\"videoId\", video._id);\r",
-											"    }\r",
-											"\r",
-											"    pm.response.to.have.status(201);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"figureId\": \"{{figureId}}\",\n    \"key\": \"stars/SoulDance/nina/Batuchado.MOV\",\n    \"name\": \"Front view\",\n    \"thumbnail\": \"stars/paul_moldovan/Rumba/opening_out/14570766_531615306963253_7292340220612807962_o.jpg\",\n    \"type\": \"comparable\"\n}"
-								},
-								"url": {
-									"raw": "{{baseURL}}/admins/videos/",
-									"host": [
-										"{{baseURL}}"
-									],
-									"path": [
-										"admins",
-										"videos",
-										""
-									]
-								},
-								"description": "type = basicPrinciples | comparable"
-							},
-							"response": []
-						},
-						{
-							"name": "delete video",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Delete video\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{baseURL}}/admins/videos/{{videoId}}",
-									"host": [
-										"{{baseURL}}"
-									],
-									"path": [
-										"admins",
-										"videos",
-										"{{videoId}}"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				}
-			]
-		},
-		{
-			"name": "Stars",
-			"item": [
-				{
-					"name": "get all stars",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{baseURL}}/stars",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"stars"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get star info",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "formdata",
-							"formdata": []
-						},
-						"url": {
-							"raw": "{{baseURL}}/stars/{{username}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"stars",
+								"users",
+								"single",
 								"{{username}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all stars",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/all/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"all",
+								"user"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all coaches",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/all/coach",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"all",
+								"coach"
 							]
 						}
 					},
@@ -1070,51 +184,38 @@
 			"name": "Figures",
 			"item": [
 				{
-					"name": "get all star figures",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									""
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
+					"name": "Get figure by id",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
 					"request": {
 						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
+						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": []
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "{{baseURL}}/figures/star/{{username}}",
+							"raw": "{{url}}/figures/single/{{figureId}}",
 							"host": [
-								"{{baseURL}}"
+								"{{url}}"
 							],
 							"path": [
 								"figures",
-								"star",
-								"{{username}}"
+								"single",
+								"{{figureId}}"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "get figure by id",
+					"name": "Get all figures",
 					"event": [
 						{
 							"listen": "test",
@@ -1131,47 +232,37 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
+						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": []
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "{{baseURL}}/figures/{{figureId}}",
+							"raw": "{{url}}/figures/all",
 							"host": [
-								"{{baseURL}}"
+								"{{url}}"
 							],
 							"path": [
 								"figures",
-								"{{figureId}}"
+								"all"
 							]
 						}
 					},
 					"response": []
-				}
-			]
-		},
-		{
-			"name": "Video",
-			"item": [
+				},
 				{
-					"name": "get video",
+					"name": "Get all star figures",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Get video\", function () {\r",
-									"\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
+									""
 								],
 								"type": "text/javascript"
 							}
@@ -1182,28 +273,33 @@
 					},
 					"request": {
 						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
+						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": []
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
 						},
 						"url": {
-							"raw": "{{baseURL}}/videos/{{videoId}}",
+							"raw": "{{url}}/figures/all?starUsername={{username}}",
 							"host": [
-								"{{baseURL}}"
+								"{{url}}"
 							],
 							"path": [
-								"videos",
-								"{{videoId}}"
+								"figures",
+								"all"
+							],
+							"query": [
+								{
+									"key": "starUsername",
+									"value": "{{username}}"
+								}
 							]
-						}
+						},
+						"description": "Currently, it is possible to filter only by star username but additional parameters will be added soon"
 					},
 					"response": []
 				}
@@ -1213,103 +309,7 @@
 			"name": "Practices",
 			"item": [
 				{
-					"name": "Notes",
-					"item": [
-						{
-							"name": "add note",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Add note\", function () {\r",
-											"    if (responseCode.code === 201)\r",
-											"    {\r",
-											"        const figure = pm.response.json().data;\r",
-											"        pm.environment.set(\"noteId\", figure._id);\r",
-											"    }\r",
-											"    \r",
-											"    pm.response.to.have.status(201);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"practiceId\": \"{{practiceId}}\",\n    \"cotent\": \"check\"\n}"
-								},
-								"url": {
-									"raw": "{{baseURL}}/account/notes",
-									"host": [
-										"{{baseURL}}"
-									],
-									"path": [
-										"account",
-										"notes"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "delete note",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"exec": [
-											"pm.test(\"Delete practice item\", function () {\r",
-											"    pm.response.to.have.status(200);\r",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"request": {
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Content-Type",
-										"name": "Content-Type",
-										"type": "text",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "formdata",
-									"formdata": []
-								},
-								"url": {
-									"raw": "{{baseURL}}/account/notes/{{noteId}}",
-									"host": [
-										"{{baseURL}}"
-									],
-									"path": [
-										"account",
-										"notes",
-										"{{noteId}}"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
-					"name": "add practice",
+					"name": "Add practice",
 					"event": [
 						{
 							"listen": "test",
@@ -1318,8 +318,8 @@
 									"pm.test(\"Add practice\", function () {\r",
 									"    if (responseCode.code === 201)\r",
 									"    {\r",
-									"        const figure = pm.response.json().data;\r",
-									"        pm.environment.set(\"practiceId\", figure._id);\r",
+									"        const practice = pm.response.json();\r",
+									"        pm.environment.set(\"practiceId\", practice._id);\r",
 									"    }\r",
 									"    \r",
 									"    pm.response.to.have.status(201);\r",
@@ -1346,44 +346,71 @@
 									"key": "video",
 									"type": "file",
 									"src": "/home/ohad/Videos/SampleVideo_1280x720_2mb.mp4"
-								},
-								{
-									"key": "name",
-									"value": "check",
-									"type": "text"
-								},
-								{
-									"key": "starId",
-									"value": "{{starId}}",
-									"type": "text"
-								},
-								{
-									"key": "videoId",
-									"value": "{{videoId}}",
-									"type": "text"
-								},
-								{
-									"key": "figureId",
-									"value": "{{figureId}}",
-									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "{{baseURL}}/account/practices",
+							"raw": "{{url}}/practices/{{videoId}}",
 							"host": [
-								"{{baseURL}}"
+								"{{url}}"
 							],
 							"path": [
-								"account",
-								"practices"
+								"practices",
+								"{{videoId}}"
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "get all practices",
+					"name": "Get practice by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get practice item by id\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/practices/single/{{practiceId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"practices",
+								"single",
+								"{{practiceId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all practices",
 					"event": [
 						{
 							"listen": "test",
@@ -1416,12 +443,11 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseURL}}/account/practices/all",
+							"raw": "{{url}}/practices/all",
 							"host": [
-								"{{baseURL}}"
+								"{{url}}"
 							],
 							"path": [
-								"account",
 								"practices",
 								"all"
 							]
@@ -1430,55 +456,7 @@
 					"response": []
 				},
 				{
-					"name": "get practice",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Get practice item by id\", function () {\r",
-									"\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"key\": \"2021-01-13T10-21-12.647Z_SampleVideo_1280x720_2mb.mp4\"\n}"
-						},
-						"url": {
-							"raw": "{{baseURL}}/account/practices/single/{{practiceId}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"account",
-								"practices",
-								"single",
-								"{{practiceId}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get practice by figure id",
+					"name": "Get practice by figure id",
 					"event": [
 						{
 							"listen": "test",
@@ -1511,28 +489,33 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseURL}}/account/practices/figure/{{figureId}}",
+							"raw": "{{url}}/practices/all?figureId={{figureId}}",
 							"host": [
-								"{{baseURL}}"
+								"{{url}}"
 							],
 							"path": [
-								"account",
 								"practices",
-								"figure",
-								"{{figureId}}"
+								"all"
+							],
+							"query": [
+								{
+									"key": "figureId",
+									"value": "{{figureId}}"
+								}
 							]
 						}
 					},
 					"response": []
 				},
 				{
-					"name": "edit practice",
+					"name": "Delete practice",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Edit practice item\", function () {\r",
+									"pm.test(\"Get practice by figure id\", function () {\r",
+									"\r",
 									"    pm.response.to.have.status(200);\r",
 									"});"
 								],
@@ -1541,7 +524,7 @@
 						}
 					],
 					"request": {
-						"method": "PATCH",
+						"method": "DELETE",
 						"header": [
 							{
 								"key": "Content-Type",
@@ -1552,16 +535,69 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"fake it till you make it #11\"\n}"
+							"raw": ""
 						},
 						"url": {
-							"raw": "{{baseURL}}/account/practices/{{practiceId}}",
+							"raw": "{{url}}/practices/single/{{practiceId}}",
 							"host": [
-								"{{baseURL}}"
+								"{{url}}"
 							],
 							"path": [
-								"account",
 								"practices",
+								"single",
+								"{{practiceId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Notes",
+			"item": [
+				{
+					"name": "Add note",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Add note\", function () {\r",
+									"    if (responseCode.code === 201)\r",
+									"    {\r",
+									"        const figure = pm.response.json().data;\r",
+									"        pm.environment.set(\"noteId\", figure._id);\r",
+									"    }\r",
+									"    \r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Title #1\",\n    \"content\": \"check\"\n}"
+						},
+						"url": {
+							"raw": "{{url}}/notes/{{practiceId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"notes",
 								"{{practiceId}}"
 							]
 						}
@@ -1569,7 +605,7 @@
 					"response": []
 				},
 				{
-					"name": "delete practices",
+					"name": "Delete note",
 					"event": [
 						{
 							"listen": "test",
@@ -1598,343 +634,13 @@
 							"formdata": []
 						},
 						"url": {
-							"raw": "{{baseURL}}/account/notes/{{noteId}}",
+							"raw": "{{url}}/notes/{{noteId}}",
 							"host": [
-								"{{baseURL}}"
+								"{{url}}"
 							],
 							"path": [
-								"account",
 								"notes",
 								"{{noteId}}"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Notifcations",
-			"item": [
-				{
-					"name": "get all notifications",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Get all practice items\", function () {\r",
-									"\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{baseURL}}/notifications",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"notifications"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "mark notification as read",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Get all practice items\", function () {\r",
-									"\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{baseURL}}/notifications/mark/read/{{notificationId}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"notifications",
-								"mark",
-								"read",
-								"{{notificationId}}"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Coaches",
-			"item": [
-				{
-					"name": "get all coaches",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Get all practice items\", function () {\r",
-									"\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{baseURL}}/coaches",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"coaches"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "set my coach",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Get all practice items\", function () {\r",
-									"\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{baseURL}}/coaches/{{username}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"coaches",
-								"{{username}}"
-							]
-						}
-					},
-					"response": []
-				}
-			]
-		},
-		{
-			"name": "Students",
-			"item": [
-				{
-					"name": "get all my students",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Get all practice items\", function () {\r",
-									"\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{baseURL}}/students",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"students"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Add note to practice",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Get all practice items\", function () {\r",
-									"\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"request": {
-						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{baseURL}}/students/{{studentId}}/note/{{practiceId}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"students",
-								"{{studentId}}",
-								"note",
-								"{{practiceId}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "get student practices",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Get all practice items\", function () {\r",
-									"\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{baseURL}}/students/{{studentId}}",
-							"host": [
-								"{{baseURL}}"
-							],
-							"path": [
-								"students",
-								"{{studentId}}"
 							]
 						}
 					},
@@ -1948,7 +654,7 @@
 		"bearer": [
 			{
 				"key": "token",
-				"value": "{{access_token}}",
+				"value": "{{access_token_nest}}",
 				"type": "string"
 			}
 		]
