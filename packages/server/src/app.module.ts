@@ -15,13 +15,14 @@ import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './common/guards/jwt-auth.guard';
 import { RolesGuard } from './common/guards/roles.guard';
 import { NotesModule } from './notes/notes.module';
+import { validate } from './env.validation';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/danskill', {
+    ConfigModule.forRoot({ validate }),
+    MongooseModule.forRoot(process.env.MONGODB_DEVELOPMENT_URI, {
       useCreateIndex: true,
     }),
-    ConfigModule.forRoot(),
     AuthModule,
     UsersModule,
     FiguresModule,

@@ -12,9 +12,11 @@ async function bootstrap() {
   app.enableCors();
   app.use(helmet());
   app.use(compression());
+  app.setGlobalPrefix('api/v1');
 
-  await app.listen(3000);
+  await app.listen(process.env.PORT);
 }
+
 bootstrap()
-  .then(() => Logger.log(`App is running on port 3000`))
+  .then(() => Logger.log(`App is running at http://localhost:${process.env.PORT} in ${process.env.NODE_ENV} mode `))
   .catch((error) => Logger.error(`Server failed`, error));
