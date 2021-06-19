@@ -2,7 +2,7 @@ import { Model, Types } from 'mongoose';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument } from './schemas/user.schema';
-import { CreateUserDto, GetAllUsersDto } from '@danskill/contract';
+import { AddUserDetailsDTO, CreateUserDto, GetAllUsersDto } from '@danskill/contract';
 const bcrypt = require('bcrypt');
 
 @Injectable()
@@ -22,6 +22,23 @@ export class UsersService {
       given_name: createUserDto.given_name,
       family_name: createUserDto.family_name,
       birthdate: createUserDto.birthdate,
+    });
+
+    await createdUser.save();
+
+    return createdUser;
+  }
+
+  async addUserDetails(addUserDetailsDTO: AddUserDetailsDTO): Promise<User> {
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash("testPass" ,salt);
+    // TODO decide what are we going to do with the existing model (remove password / create a new model)
+    const createdUser = new this.userModel({
+      email: addUserDetailsDTO.email,
+      password: hash,
+      username: addUserDetailsDTO.username,
+      given_name: addUserDetailsDTO.firstName,
+      family_name: addUserDetailsDTO.lastName,
     });
 
     await createdUser.save();

@@ -10,7 +10,7 @@ import {
 import { UsersService } from './users.service';
 import { User } from './schemas/user.schema';
 import { Skip } from 'src/common/decorators/skip.decorator';
-import { CreateUserDto, GetAllUsersDto } from '@danskill/contract';
+import { CreateUserDto, GetAllUsersDto, AddUserDetailsDTO } from '@danskill/contract';
 
 @Controller('users')
 export class UsersController {
@@ -36,6 +36,13 @@ export class UsersController {
   @Get('all/:role')
   async findAll(@Param() getAllUsersDto: GetAllUsersDto): Promise<User[]> {
     return await this.usersService.findAll(getAllUsersDto);
+  }
+
+  @Post('add_details')
+  async add_user_details(@Body() addUserDetailsDTO: AddUserDetailsDTO): Promise<User> {
+    const user = await this.usersService.addUserDetails(addUserDetailsDTO);
+
+    return user;
   }
 
   // @Patch(':id')
