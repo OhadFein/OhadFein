@@ -42,14 +42,14 @@ export class User implements UserDto {
   @Prop({
     type: [{ type: Types.ObjectId, ref: Practice.name }],
   })
-  practices: Practice[];
+  practices: Practice[] | Types.ObjectId[];
 
   // @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Notifcation' }] })
   // notifications: Notification[];
 
   // star attributes:
   @Prop({ type: [{ type: Types.ObjectId, ref: Figure.name }] })
-  figures?: Figure[];
+  figures?: Figure[] | Types.ObjectId[];
 
   @Prop({})
   about?: string;

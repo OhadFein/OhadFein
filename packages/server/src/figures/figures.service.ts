@@ -1,5 +1,5 @@
 import { UsersService } from './../users/users.service';
-import { Types, Model } from 'mongoose';
+import { Types, Model, FilterQuery } from 'mongoose';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Figure, FigureDocument } from './schemas/figure.schema';
@@ -21,8 +21,7 @@ export class FiguresService {
   }
 
   async findAll(getAllFiguresDto: GetAllFiguresDto): Promise<Figure[]> {
-    // TODO: add some queries and create interface for query var
-    const query: any = {};
+    const query: FilterQuery<FigureDocument> = {};
 
     if (getAllFiguresDto.starUsername) {
       const star = await this.usersService.findOne(

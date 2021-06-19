@@ -11,10 +11,10 @@ export class Note implements NoteDto {
   readonly _id: Types.ObjectId;
 
   @Prop({ type: Types.ObjectId, ref: 'User', required: true }) // TODO: change to User.name
-  user: User;
+  user: User | Types.ObjectId;
 
   @Prop({ type: Types.ObjectId, ref: 'Practice', required: true }) // TODO: change to Practice.name
-  practice: Practice;
+  practice: Practice | Types.ObjectId;
 
   @Prop({ required: true })
   title: string;

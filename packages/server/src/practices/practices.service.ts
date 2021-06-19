@@ -1,6 +1,6 @@
 import { FigureVideoService } from './../figure-video/figure-video.service';
 import { S3 } from 'aws-sdk';
-import { Model, Types } from 'mongoose';
+import { FilterQuery, Model, Types } from 'mongoose';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 
@@ -47,9 +47,7 @@ export class PracticesService {
   }
 
   async findAll(getAllPracticesDto: GetAllPracticesDto) {
-    // TODO: add some queries and create interface for query var
-    const query: any = {};
-    query.figure;
+    const query: FilterQuery<PracticeDocument> = {};
 
     if (getAllPracticesDto.figureId) {
       const figure = await this.figuresService.findOne(
@@ -57,7 +55,7 @@ export class PracticesService {
       );
       if (!figure)
         throw new HttpException('Figure not found', HttpStatus.NOT_FOUND);
-      query.figure = { $eq: figure._id };
+      query.figure = { $eq: figure._id  };
     }
 
     return await this.practiceModel.find(query).exec();

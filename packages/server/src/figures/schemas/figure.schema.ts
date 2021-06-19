@@ -12,10 +12,10 @@ export class Figure implements FigureDto {
   readonly _id: Types.ObjectId;
 
   @Prop({ type: [{ type: Types.ObjectId, ref: 'User' }] }) // TODO: change to User.name
-  stars: User[];
+  stars: User[] | Types.ObjectId[];
 
-  @Prop({ type: [{ type: Types.ObjectId, ref: 'FigureVideo' }] }) // TODO: change to FigureVideo.name
-  videos: FigureVideo[];
+  @Prop({ type: [{ type: Types.ObjectId, ref: FigureVideo.name }] })
+  videos: FigureVideo[] | Types.ObjectId[];
 
   @Prop({ required: true })
   name: string;

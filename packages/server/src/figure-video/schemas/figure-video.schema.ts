@@ -13,10 +13,10 @@ export class FigureVideo implements FigureVideoDto {
   readonly _id: Types.ObjectId;
 
   @Prop({ type: [{ type: Types.ObjectId, ref: 'User' }], required: true })
-  stars: User[]; // participants stars
+  stars: User[] | Types.ObjectId[]; // participants stars
 
   @Prop({ type: Types.ObjectId, ref: 'Figure', required: true })
-  figure: Figure;
+  figure: Figure | Types.ObjectId;
 
   @Prop({ required: true })
   key: string;
