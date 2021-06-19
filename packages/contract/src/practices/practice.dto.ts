@@ -7,7 +7,7 @@ import { NoteDto } from '../notes/note.dto';
 export interface PracticeDto {
   readonly _id: Types.ObjectId;
   user: Types.ObjectId | UserDto;
-  figure: Types.ObjectId | FigureDto;
+  figure: Types.ObjectId | FigureDto; // TODO: used for query all figure practices
   video: Types.ObjectId | FigureVideoDto;
   notes: Types.ObjectId[] | NoteDto[];
   key: string;

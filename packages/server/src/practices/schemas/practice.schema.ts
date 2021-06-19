@@ -5,7 +5,7 @@ import { PrepareUrl } from 'src/common/utils/prepare-url';
 import { Figure } from 'src/figures/schemas/figure.schema';
 import { FigureVideo } from 'src/figure-video/schemas/figure-video.schema';
 import { Note } from 'src/notes/schemas/note.schema';
-import { PracticeDto } from '@danskill/contract'
+import { PracticeDto } from '@danskill/contract';
 
 export type PracticeDocument = Practice & Document;
 
