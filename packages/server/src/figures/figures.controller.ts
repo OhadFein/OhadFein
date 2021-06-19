@@ -11,7 +11,7 @@ export class FiguresController {
   constructor(private readonly figuresService: FiguresService) {}
 
   @Get('single/:id')
-  async findOne(@Param() id: Types.ObjectId): Promise<Figure> {
+  async findOne(@Param('id') id: Types.ObjectId): Promise<Figure> {
     return await this.figuresService.findOne(id);
   }
 
