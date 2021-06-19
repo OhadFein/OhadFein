@@ -1,11 +1,13 @@
+import { FigureDto } from './../figures/figure.dto';
+import { UserDto } from './../users/user.dto';
 import { Types } from 'mongoose';
 import { EnumVideoType } from '@danskill/contract';
-import { Figure } from 'src/figures/schemas/figure.schema';
 import { User } from 'src/users/schemas/user.schema';
+import { Figure } from 'src/figures/schemas/figure.schema';
 
 export interface FigureVideoDto {
   readonly _id: Types.ObjectId;
-  users: Types.ObjectId[] | User[]; // participants users
+  stars: Types.ObjectId[] | User[]; // participants stars
   figure: Types.ObjectId | Figure;
   key: string;
   readonly url: string;

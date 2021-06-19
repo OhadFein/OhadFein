@@ -3,8 +3,7 @@ import { PrepareUrl } from 'src/common/utils/prepare-url';
 import { User } from 'src/users/schemas/user.schema';
 import { Types } from 'mongoose';
 import { Figure } from 'src/figures/schemas/figure.schema';
-import { FigureVideoDto } from '@danskill/contract';
-import { EnumVideoType } from '@danskill/contract';
+import { FigureVideoDto, EnumVideoType } from '@danskill/contract';
 
 
 export type FigureVideoDocument = FigureVideo & Document;
@@ -14,7 +13,7 @@ export class FigureVideo implements FigureVideoDto {
   readonly _id: Types.ObjectId;
 
   @Prop({ type: [{ type: Types.ObjectId, ref: 'User' }], required: true })
-  users: User[];
+  stars: User[]; // participants stars
 
   @Prop({ type: Types.ObjectId, ref: 'Figure', required: true })
   figure: Figure;
