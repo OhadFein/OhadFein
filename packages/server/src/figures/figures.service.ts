@@ -37,7 +37,6 @@ export class FiguresService {
   }
 
   async create(createFigureDto: CreateFigureDto): Promise<Figure> {
-    console.log(createFigureDto.stars);
     const createdFigure = new this.figureModel({
       stars: createFigureDto.stars,
       name: createFigureDto.name,
@@ -49,5 +48,9 @@ export class FiguresService {
     await createdFigure.save();
 
     return createdFigure;
+  }
+
+  async remove(id: Types.ObjectId): Promise<Figure> {
+    return await this.figureModel.findByIdAndRemove({ _id: id }).exec();
   }
 }

@@ -1,5 +1,16 @@
 import { CreateFigureDto } from '@danskill/contract';
-import { Controller, Get, Param, Query, UseGuards, Post, Body } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Param,
+  Query,
+  UseGuards,
+  Post,
+  Body,
+  Delete,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
 import { Types } from 'mongoose';
 import { Figure } from './schemas/figure.schema';
 import { FiguresService } from './figures.service';
@@ -20,17 +31,25 @@ export class FiguresController {
 
   @Get('all')
   async findAll(
-    @Query() getAllFiguresDto: GetAllFiguresDto,
+    @Query() getAllFiguresDto: GetAllFiguresDto
   ): Promise<Figure[]> {
     return await this.figuresService.findAll(getAllFiguresDto);
   }
 
   @Roles(EnumRole.Admin)
   @Post()
-  async create(
-    @Body() createFigureDto: CreateFigureDto,
-  ): Promise<Figure> {
-    console.log(createFigureDto)
+  async create(@Body() createFigureDto: CreateFigureDto): Promise<Figure> {
     return await this.figuresService.create(createFigureDto);
+  }
+
+  @Roles(EnumRole.Admin)
+  @Delete(':id')
+  async remove(@Param('id') id: Types.ObjectId): Promise<Figure> {
+    const deletedFigure = await this.figuresService.remove(id);
+    if (!deletedFigure) {
+      throw new HttpException('Figure not found', HttpStatus.NOT_FOUND);
+    }
+
+    return deletedFigure;
   }
 }
