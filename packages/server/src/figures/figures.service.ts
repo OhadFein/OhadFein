@@ -3,14 +3,14 @@ import { Types, Model, FilterQuery } from 'mongoose';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Figure, FigureDocument } from './schemas/figure.schema';
-import { GetAllFiguresDto } from '@danskill/contract';
+import { CreateFigureDto, GetAllFiguresDto } from '@danskill/contract';
 
 @Injectable()
 export class FiguresService {
   constructor(
     @InjectModel(Figure.name)
     private readonly figureModel: Model<FigureDocument>,
-    private readonly usersService: UsersService,
+    private readonly usersService: UsersService
   ) {}
 
   async findOne(id: Types.ObjectId): Promise<Figure> {
@@ -25,7 +25,7 @@ export class FiguresService {
 
     if (getAllFiguresDto.starUsername) {
       const star = await this.usersService.findOne(
-        getAllFiguresDto.starUsername,
+        getAllFiguresDto.starUsername
       );
       if (!star)
         throw new HttpException('Star not found', HttpStatus.NOT_FOUND);
@@ -34,5 +34,20 @@ export class FiguresService {
     }
 
     return this.figureModel.find(query).populate('videos').exec();
+  }
+
+  async create(createFigureDto: CreateFigureDto): Promise<Figure> {
+    console.log(createFigureDto.stars);
+    const createdFigure = new this.figureModel({
+      stars: createFigureDto.stars,
+      name: createFigureDto.name,
+      logo: createFigureDto.logo,
+      type: createFigureDto.type,
+      level: createFigureDto.level,
+    });
+
+    await createdFigure.save();
+
+    return createdFigure;
   }
 }
