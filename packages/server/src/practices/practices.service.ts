@@ -55,15 +55,17 @@ export class PracticesService {
       );
       if (!figure)
         throw new HttpException('Figure not found', HttpStatus.NOT_FOUND);
-      query.figure = { $eq: figure._id  };
+      query.figure = { $eq: figure._id };
     }
 
     return await this.practiceModel.find(query).exec();
   }
 
   async remove(user: User, id: Types.ObjectId) {
-    const figureVideo = await this.figureVideoService.remove(id);
-    await this.s3Service.remove(figureVideo.key);
+    const practice = await this.practiceModel
+      .findByIdAndRemove({ _id: id })
+      .exec();
+    await this.s3Service.remove(practice.key);
     await this.usersService.removePractice(user, id);
 
     return; // TODO:
