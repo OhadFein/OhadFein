@@ -22,6 +22,7 @@ import { validate } from './env.validation';
     ConfigModule.forRoot({ validate }),
     MongooseModule.forRoot(process.env.MONGODB_DEVELOPMENT_URI, {
       useCreateIndex: true,
+      useFindAndModify: false,
     }),
     AuthModule,
     UsersModule,
