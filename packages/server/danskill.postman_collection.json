@@ -9,7 +9,7 @@
 			"name": "Auth",
 			"item": [
 				{
-					"name": "login",
+					"name": "Login",
 					"event": [
 						{
 							"listen": "test",
@@ -18,7 +18,7 @@
 									"pm.test(\"login\", function () {",
 									"    if (responseCode.code === 201)",
 									"    {",
-									"        const data = pm.response.json().data;",
+									"        const data = pm.response.json();",
 									"        pm.environment.set(\"access_token_nest\", data.access_token);",
 									"    }",
 									"    pm.response.to.have.status(201);",
@@ -60,6 +60,26 @@
 			"item": [
 				{
 					"name": "Sign up",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Add user (sign up)\", function () {",
+									"    if (responseCode.code === 201)",
+									"    {",
+									"        const user = pm.response.json();",
+									"        pm.environment.set(\"userId\", user._id);",
+									"        pm.environment.set(\"username\", user.username);",
+									"    }",
+									"    ",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -87,6 +107,20 @@
 				},
 				{
 					"name": "Get user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get user\", function () {",
+									"",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -118,6 +152,20 @@
 				},
 				{
 					"name": "Get all stars",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get all stars\", function () {",
+									"",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -149,6 +197,20 @@
 				},
 				{
 					"name": "Get all coaches",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get all coaches\", function () {",
+									"",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -184,7 +246,112 @@
 			"name": "Figures",
 			"item": [
 				{
+					"name": "🔑  Add figure",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Add figure\", function () {",
+									"    if (responseCode.code === 201)",
+									"    {",
+									"        const figure = pm.response.json();",
+									"        pm.environment.set(\"figureId\", figure._id);",
+									"    }",
+									"    ",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"stars\": [\"{{userId}}\"],\n\t\"name\": \"figure 1\",\n\t\"type\": \"samba\",\n\t\"level\": \"advanced\",\n\t\"logo\": \"stars/benedetto_ferruggia/dance.JPG\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/figures",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"figures"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "🔑 Delete figure",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Delete figure\", function () {",
+									"    if (responseCode.code === 200)",
+									"    {",
+									"        const figure = pm.response.json();",
+									"        pm.environment.unset(\"figureId\");",
+									"    }",
+									"    ",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/figures/{{figureId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"figures",
+								"{{figureId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get figure by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get figure by id\", function () {",
+									"",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -221,7 +388,10 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									""
+									"pm.test(\"Get all figures\", function () {",
+									"",
+									"    pm.response.to.have.status(200);",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -262,7 +432,10 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									""
+									"pm.test(\"Get all star figures\", function () {",
+									"",
+									"    pm.response.to.have.status(200);",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -306,23 +479,23 @@
 			]
 		},
 		{
-			"name": "Practices",
+			"name": "FIgure Videos",
 			"item": [
 				{
-					"name": "Add practice",
+					"name": "🔑  Add figure video",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Add practice\", function () {\r",
-									"    if (responseCode.code === 201)\r",
-									"    {\r",
-									"        const practice = pm.response.json();\r",
-									"        pm.environment.set(\"practiceId\", practice._id);\r",
-									"    }\r",
-									"    \r",
-									"    pm.response.to.have.status(201);\r",
+									"pm.test(\"Add figure video\", function () {",
+									"    if (responseCode.code === 201)",
+									"    {",
+									"        const figureVideo = pm.response.json();",
+									"        pm.environment.set(\"figureVideoId\", figureVideo._id);",
+									"    }",
+									"    ",
+									"    pm.response.to.have.status(201);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -331,37 +504,80 @@
 					],
 					"request": {
 						"method": "POST",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
+						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "video",
-									"type": "file",
-									"src": "/home/ohad/Videos/SampleVideo_1280x720_2mb.mp4"
+							"mode": "raw",
+							"raw": "{\n    \"stars\": [\"{{userId}}\"],\n    \"key\": \"stars/SoulDance/nina/Batuchado.MOV\",\n    \"thumbnail\": \"stars/paul_moldovan/Rumba/opening_out/14570766_531615306963253_7292340220612807962_o.jpg\",\n    \"type\": \"comparable\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
-							"raw": "{{url}}/practices/{{videoId}}",
+							"raw": "{{url}}/figure-video/{{figureId}}",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
-								"practices",
-								"{{videoId}}"
+								"figure-video",
+								"{{figureId}}"
 							]
 						}
 					},
 					"response": []
 				},
+				{
+					"name": "🔑 Delete figure video",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Delete figure video\", function () {",
+									"    if (responseCode.code === 200)",
+									"    {",
+									"        const figureVideo = pm.response.json();",
+									"        pm.environment.unset(\"figureVideoId\");",
+									"    }",
+									"    ",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/figure-video/{{figureVideoId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"figure-video",
+								"{{figureVideoId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Practices",
+			"item": [
 				{
 					"name": "Get practice by id",
 					"event": [
@@ -508,14 +724,73 @@
 					"response": []
 				},
 				{
+					"name": "Add practice",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Add practice\", function () {\r",
+									"    if (responseCode.code === 201)\r",
+									"    {\r",
+									"        const practice = pm.response.json();\r",
+									"        pm.environment.set(\"practiceId\", practice._id);\r",
+									"    }\r",
+									"    \r",
+									"    pm.response.to.have.status(201);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "video",
+									"type": "file",
+									"src": "/home/ohad/Videos/SampleVideo_1280x720_2mb.mp4"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/practices/{{videoId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"practices",
+								"{{videoId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Delete practice",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Get practice by figure id\", function () {\r",
-									"\r",
+									"pm.test(\"Delete practice\", function () {\r",
+									"    if (responseCode.code === 200)\r",
+									"    {\r",
+									"        const figure = pm.response.json();\r",
+									"        pm.environment.unset(\"practiceId\");\r",
+									"    }\r",
+									"    \r",
 									"    pm.response.to.have.status(200);\r",
 									"});"
 								],
