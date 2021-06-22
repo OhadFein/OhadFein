@@ -30,6 +30,7 @@ export class FigureVideoController {
   @Roles(EnumRole.Admin)
   @Delete(':id')
   async remove(@Param('id') id: Types.ObjectId): Promise<FigureVideo> {
+    // TODO: check if id is valid
     const deletedFigureVideo = await this.figureVideoService.remove(id);
     if (!deletedFigureVideo) {
       throw new HttpException('Figure video not found', HttpStatus.NOT_FOUND);

@@ -1,4 +1,4 @@
-import { UsersService } from './../users/users.service';
+import { UsersService } from 'src/users/users.service';
 import { Types, Model, FilterQuery } from 'mongoose';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';

@@ -14,10 +14,10 @@ export class Practice implements PracticeDto {
   readonly _id: Types.ObjectId;
 
   @Prop({ type: Types.ObjectId, ref: 'User', required: true }) // TODO: change to User.name
-  user: User | Types.ObjectId;
+  user: Types.ObjectId;
 
   @Prop({ type: Types.ObjectId, ref: Figure.name, required: true })
-  figure: Figure | Types.ObjectId;
+  figure: Types.ObjectId;
 
   @Prop({ type: Types.ObjectId, ref: FigureVideo.name, required: true })
   video: FigureVideo | Types.ObjectId;

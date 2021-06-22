@@ -1,16 +1,13 @@
-import { FigureDto } from './../figures/figure.dto';
-import { UserDto } from './../users/user.dto';
 import { Types } from 'mongoose';
 import { EnumVideoType } from '@danskill/contract';
 
-export interface FigureVideoDto {
+// TODO: add Expose and Exclude
+export class FigureVideoDto {
   readonly _id: Types.ObjectId;
-  stars: Types.ObjectId[] | UserDto[]; // participants stars
-  figure: Types.ObjectId | FigureDto;
+  stars: Types.ObjectId[]; // participants stars
+  figure: Types.ObjectId;
   key: string;
   readonly url: string;
   thumbnail: string;
   type: EnumVideoType;
-  readonly createdAt: Date;
-  readonly updatedAt: Date;
 }

@@ -22,6 +22,6 @@ import { FiguresModule } from 'src/figures/figures.module';
   ],
   controllers: [PracticesController],
   providers: [PracticesService],
-  exports: [PracticesService],
+  exports: [PracticesService, MongooseModule],
 })
 export class PracticesModule {}

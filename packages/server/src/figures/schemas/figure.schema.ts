@@ -15,7 +15,7 @@ export class Figure implements FigureDto {
   stars: User[] | Types.ObjectId[];
 
   @Prop({ type: [{ type: Types.ObjectId, ref: FigureVideo.name }] })
-  videos: FigureVideo[] | Types.ObjectId[];
+  videos: FigureVideo[];
 
   @Prop({ required: true })
   name: string;
@@ -28,9 +28,6 @@ export class Figure implements FigureDto {
 
   @Prop({ required: true })
   level: EnumDanceLevel;
-
-  readonly createdAt: Date;
-  readonly updatedAt: Date;
 }
 
 export const FigureSchema = SchemaFactory.createForClass(Figure);

@@ -20,7 +20,6 @@ import { User } from 'src/users/schemas/user.schema';
 import { JwtAuthGuard } from 'src/common/guards/jwt-auth.guard';
 import { FigureVideoService } from 'src/figure-video/figure-video.service';
 import { S3Service } from 'src/s3/s3.service';
-import { GetAllPracticesDto } from '@danskill/contract';
 
 
 @UseGuards(JwtAuthGuard)
@@ -52,13 +51,6 @@ export class PracticesController {
   @Get('single/:id')
   async findOne(@Param() id: Types.ObjectId): Promise<Practice> {
     return await this.practicesService.findOne(id);
-  }
-
-  @Get('all')
-  async findAll(
-    @Query() getAllFiguresDto: GetAllPracticesDto,
-  ): Promise<Practice[]> {
-    return await this.practicesService.findAll(getAllFiguresDto);
   }
 
   @Delete('single/:id')

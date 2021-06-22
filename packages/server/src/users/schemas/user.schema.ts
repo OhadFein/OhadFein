@@ -4,24 +4,24 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 import { EnumRole } from 'src/common/enums/role.enum';
 import { PrepareUrl } from 'src/common/utils/prepare-url';
-import { UserDto } from '@danskill/contract';
+import { StarDto, CoachDto, BaseUserDto } from '@danskill/contract';
 
-export type UserDocument = User & Document;
+export type UserDocument = User & Star & Coach & Document;
 
 @Schema({ timestamps: true, toJSON: { getters: true } })
-export class User implements UserDto {
+export class User implements BaseUserDto {
   _id: Types.ObjectId;
 
-  @Prop({ required: true, select: false, unique: true })
+  @Prop({ required: true, unique: true })
   email: string;
 
   @Prop({ required: true, unique: true })
   username: string;
 
-  @Prop({ required: true, select: false })
+  @Prop({ required: true })
   password: string;
 
-  @Prop({ default: [EnumRole.User], select: false })
+  @Prop({ default: [EnumRole.User] })
   roles: EnumRole[];
 
   @Prop({ required: true })
@@ -36,32 +36,41 @@ export class User implements UserDto {
   @Prop({ type: Types.ObjectId, ref: User.name })
   coach?: User;
 
-  // @Prop({ type: [{ type: Types.ObjectId, ref: User.name }] })
-  // students?: User[];
-
   @Prop({
     type: [{ type: Types.ObjectId, ref: Practice.name }],
   })
-  practices: Practice[] | Types.ObjectId[];
+  practices: Types.ObjectId[] | Practice[];
 
   // @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Notifcation' }] })
   // notifications: Notification[];
 
+  // coach attributes:
+  @Prop({ type: [{ type: Types.ObjectId, ref: User.name }] })
+  students: Types.ObjectId[] | User[];
+
   // star attributes:
   @Prop({ type: [{ type: Types.ObjectId, ref: Figure.name }] })
-  figures?: Figure[] | Types.ObjectId[];
+  figures: Types.ObjectId[] | Figure[];
 
-  @Prop({})
-  about?: string;
-
-  @Prop({ get: PrepareUrl })
-  logo?: string;
+  @Prop({ })
+  about: string;
 
   @Prop({ get: PrepareUrl })
-  promo_video?: string;
+  logo: string;
 
-  readonly createdAt: Date;
-  readonly updatedAt: Date;
+  @Prop({ get: PrepareUrl })
+  promo_video: string;
+}
+
+export class Star extends User implements StarDto {
+  figures: Figure[];
+  promo_video: string;
+  about: string;
+  logo: string;
+}
+
+export class Coach extends User implements CoachDto {
+  students: User[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);

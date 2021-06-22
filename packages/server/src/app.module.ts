@@ -37,7 +37,6 @@ import { validate } from './env.validation';
   controllers: [AppController],
   providers: [
     AppService,
-    S3Service,
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard,

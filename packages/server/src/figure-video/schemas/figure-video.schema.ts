@@ -13,10 +13,10 @@ export class FigureVideo implements FigureVideoDto {
   readonly _id: Types.ObjectId;
 
   @Prop({ type: [{ type: Types.ObjectId, ref: 'User' }], required: true })
-  stars: User[] | Types.ObjectId[]; // participants stars
+  stars: Types.ObjectId[]; // participants stars
 
   @Prop({ type: Types.ObjectId, ref: 'Figure', required: true })
-  figure: Figure | Types.ObjectId;
+  figure: Types.ObjectId;
 
   @Prop({ required: true })
   key: string;
@@ -27,12 +27,6 @@ export class FigureVideo implements FigureVideoDto {
 
   @Prop({ required: true })
   type: EnumVideoType;
-
-  readonly createdAt: Date;
-  readonly updatedAt: Date;
-
-  // @Prop()
-  // name?: string;
 }
 
 export const FigureVideoSchema = SchemaFactory.createForClass(FigureVideo);

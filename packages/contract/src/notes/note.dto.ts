@@ -1,11 +1,10 @@
 import { Types } from 'mongoose';
-import { PracticeDto } from '../practices';
-import { UserDto } from '../users';
 
-export interface NoteDto {
+// TODO: add Expose and Exclude
+export class NoteDto {
   readonly _id: Types.ObjectId;
-  user: Types.ObjectId | UserDto;
-  practice: Types.ObjectId | PracticeDto;
+  user: Types.ObjectId;
+  practice: Types.ObjectId;
   title: string;
   content: string;
   readonly createdAt: Date;
