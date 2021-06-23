@@ -1,10 +1,8 @@
-import { Model } from 'mongoose';
-import { InjectModel } from '@nestjs/mongoose';
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { jwtConstants } from '../constants';
-import { User, UserDocument } from 'src/users/schemas/user.schema';
+import { User } from 'src/users/schemas/user.schema';
 import { UsersService } from 'src/users/users.service';
 
 @Injectable()
