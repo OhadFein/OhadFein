@@ -17,12 +17,9 @@ import {
   CoachDto,
   BaseUserDto,
   UserDto,
-  GetAllPracticesDto,
-  PracticeDto,
 } from '@danskill/contract';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
 import { RequestUser } from 'src/common/decorators/request-user.decorator';
-import { Practice } from 'src/practices/schemas/practice.schema';
 
 @Controller('users')
 export class UsersController {
@@ -65,20 +62,5 @@ export class UsersController {
   @UseInterceptors(new TransformInterceptor(CoachDto))
   async findAllCoaches(): Promise<Coach[]> {
     return await this.usersService.findAllCoaches();
-  }
-
-  @Get('practices/:username?')
-  @UseInterceptors(new TransformInterceptor(PracticeDto))
-  async getPractices(
-    @RequestUser() reqUser: User,
-    getAllPracticesDto?: GetAllPracticesDto,
-    @Param('username') username?: string
-  ): Promise<Practice[]> {
-    const practices = await this.usersService.getPractices(
-      username ?? reqUser.username,
-      getAllPracticesDto
-    );
-
-    return practices;
   }
 }

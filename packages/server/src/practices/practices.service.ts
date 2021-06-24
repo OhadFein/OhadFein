@@ -9,6 +9,7 @@ import { FigureVideo } from 'src/figure-video/schemas/figure-video.schema';
 import { S3Service } from 'src/s3/s3.service';
 import { UsersService } from 'src/users/users.service';
 import { Note } from 'src/notes/schemas/note.schema';
+import { GetAllPracticesDto } from '@danskill/contract';
 
 @Injectable()
 export class PracticesService {
@@ -35,6 +36,13 @@ export class PracticesService {
     await this.usersService.addPractice(user, createdPractice._id);
 
     return createdPractice;
+  }
+
+  async findAllUsersPractices(
+    username: string,
+    getAllPracticesDto?: GetAllPracticesDto
+  ): Promise<Practice[]> {
+    return await this.usersService.getPractices(username, getAllPracticesDto);
   }
 
   async findOne(id: Types.ObjectId): Promise<Practice> {

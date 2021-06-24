@@ -12,5 +12,6 @@ import { PracticesModule } from 'src/practices/practices.module';
   ],
   controllers: [NotesController],
   providers: [NotesService],
+  exports: [NotesService],
 })
 export class NotesModule {}

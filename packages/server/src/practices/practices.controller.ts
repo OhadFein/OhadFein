@@ -7,7 +7,6 @@ import {
   UseInterceptors,
   UploadedFile,
   UseGuards,
-  Query,
   HttpStatus,
   HttpException,
   Delete,
@@ -20,6 +19,8 @@ import { User } from 'src/users/schemas/user.schema';
 import { JwtAuthGuard } from 'src/common/guards/jwt-auth.guard';
 import { FigureVideoService } from 'src/figure-video/figure-video.service';
 import { S3Service } from 'src/s3/s3.service';
+import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
+import { GetAllPracticesDto, PracticeDto } from '@danskill/contract';
 
 
 @UseGuards(JwtAuthGuard)
@@ -46,6 +47,21 @@ export class PracticesController {
 
     const s3video = await this.s3Service.upload(videoFile, user.username);
     return await this.practicesService.create(user, video, s3video);
+  }
+
+  @Get('all/:username?')
+  @UseInterceptors(new TransformInterceptor(PracticeDto))
+  async getPractices(
+    @RequestUser() reqUser: User,
+    getAllPracticesDto?: GetAllPracticesDto,
+    @Param('username') username?: string
+  ): Promise<Practice[]> {
+    const practices = await this.practicesService.findAllUsersPractices(
+      username ?? reqUser.username,
+      getAllPracticesDto
+    );
+
+    return practices;
   }
 
   @Get('single/:id')
