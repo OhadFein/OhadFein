@@ -46,11 +46,11 @@ export class User implements UserBaseDto {
 
   // coach attributes:
   @Prop({ type: [{ type: Types.ObjectId, ref: User.name }] })
-  students: Types.ObjectId[] | UserBaseDto[];
+  students: Types.ObjectId[] | User[];
 
   // star attributes:
   @Prop({ type: [{ type: Types.ObjectId, ref: Figure.name }] })
-  figures: Types.ObjectId[] | FigureBaseDto[];
+  figures: Types.ObjectId[] | Figure[];
 
   @Prop({ })
   about: string;
@@ -63,14 +63,14 @@ export class User implements UserBaseDto {
 }
 
 export class Star extends User implements StarDto {
-  figures: FigureBaseDto[];
+  figures: Figure[];
   promo_video: string;
   about: string;
   logo: string;
 }
 
 export class Coach extends User implements CoachDto {
-  students: UserBaseDto[];
+  students: User[];
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
