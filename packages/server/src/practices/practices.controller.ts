@@ -1,4 +1,3 @@
-import { DetailedPracticeDto } from './../../../contract/src/practices/detailed-practice.dto';
 import { Types } from 'mongoose';
 import {
   Controller,
@@ -21,7 +20,7 @@ import { JwtAuthGuard } from 'src/common/guards/jwt-auth.guard';
 import { FigureVideoService } from 'src/figure-video/figure-video.service';
 import { S3Service } from 'src/s3/s3.service';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
-import { GetAllPracticesDto, PracticeBaseDto } from '@danskill/contract';
+import { DetailedPracticeDto, GetAllPracticesDto, PracticeBaseDto } from '@danskill/contract';
 
 @UseGuards(JwtAuthGuard)
 @Controller('practices')
@@ -40,8 +39,7 @@ export class PracticesController {
     @UploadedFile() videoFile: Express.Multer.File
   ) {
     const video = await this.figureVideosService.findOne(videoId);
-    if (!video || !video.figure)
-      throw new HttpException('Video not found', HttpStatus.NOT_FOUND);
+    if (!video || !video.figure) throw new HttpException('Video not found', HttpStatus.NOT_FOUND);
 
     const s3video = await this.s3Service.upload(videoFile, user.username);
     return await this.practicesService.create(user, video, s3video);
@@ -55,7 +53,8 @@ export class PracticesController {
     @Param('username') username?: string
   ): Promise<Practice[]> {
     const practices = await this.practicesService.findAllUsersPractices(
-      username ?? reqUser.username,
+      reqUser,
+      username,
       getAllPracticesDto
     );
 

@@ -34,7 +34,7 @@ export class User implements UserBaseDto {
   birthdate?: Date;
 
   @Prop({ type: Types.ObjectId, ref: User.name })
-  coach?: User;
+  coach?: Types.ObjectId;
 
   @Prop({
     type: [{ type: Types.ObjectId, ref: Practice.name }],

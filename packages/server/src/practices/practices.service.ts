@@ -1,6 +1,7 @@
+import { EnumRole } from './../common/enums/role.enum';
 import { S3 } from 'aws-sdk';
 import { Model, Types } from 'mongoose';
-import { forwardRef, Inject, Injectable } from '@nestjs/common';
+import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 
 import { Practice, PracticeDocument } from './schemas/practice.schema';
@@ -10,6 +11,7 @@ import { S3Service } from 'src/s3/s3.service';
 import { UsersService } from 'src/users/users.service';
 import { Note } from 'src/notes/schemas/note.schema';
 import { GetAllPracticesDto } from '@danskill/contract';
+import { matchRoles } from 'src/common/utils/match-roles';
 
 @Injectable()
 export class PracticesService {
@@ -40,10 +42,24 @@ export class PracticesService {
   }
 
   async findAllUsersPractices(
-    username: string,
+    reqUser: User,
+    username?: string,
     getAllPracticesDto?: GetAllPracticesDto
   ): Promise<Practice[]> {
-    return await this.usersService.getPractices(username, getAllPracticesDto);
+    let usernameToFind: string;
+
+    if (username && username != reqUser.username) {
+      const user = await this.usersService.findOne(username);
+      if (matchRoles(reqUser, [EnumRole.Coach]) && user.coach.equals(reqUser._id)) {
+        usernameToFind = username;
+      } else {
+        throw new HttpException('', HttpStatus.UNAUTHORIZED);
+      }
+    } else {
+      usernameToFind = reqUser.username;
+    }
+
+    return await this.usersService.getPractices(usernameToFind, getAllPracticesDto);
   }
 
   async findOne(id: Types.ObjectId): Promise<Practice> {
@@ -51,9 +67,7 @@ export class PracticesService {
   }
 
   async remove(user: User, id: Types.ObjectId) {
-    const practice = await this.practiceModel
-      .findByIdAndRemove({ _id: id })
-      .exec();
+    const practice = await this.practiceModel.findByIdAndRemove({ _id: id }).exec();
     await this.s3Service.remove(practice.key);
     await this.usersService.removePractice(user, id);
 

@@ -1,6 +1,12 @@
 import { EnumRole } from './../common/enums/role.enum';
 import { FilterQuery, Model, Types } from 'mongoose';
-import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
+import {
+  forwardRef,
+  HttpException,
+  HttpStatus,
+  Inject,
+  Injectable,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument, Coach, Star } from './schemas/user.schema';
 import { CreateUserDto, GetAllPracticesDto } from '@danskill/contract';
@@ -46,10 +52,7 @@ export class UsersService {
   }
 
   async findOne(username: string): Promise<User> {
-    return this.userModel
-      .findOne({ username: username })
-      .populate('coach')
-      .exec();
+    return this.userModel.findOne({ username: username }).exec();
   }
 
   async findAllUsers(): Promise<User[]> {
@@ -98,12 +101,12 @@ export class UsersService {
 
     // TOODO: check the query
     const userWithPractices = await this.userModel
-    .findOne({ username: username })
-    .populate({
-      path: 'practices',
-      match: query
-    })
-    .exec();
+      .findOne({ username: username })
+      .populate({
+        path: 'practices',
+        match: query,
+      })
+      .exec();
 
     return userWithPractices.practices as Practice[];
   }
