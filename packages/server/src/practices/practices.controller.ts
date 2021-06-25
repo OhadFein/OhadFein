@@ -20,7 +20,7 @@ import { JwtAuthGuard } from 'src/common/guards/jwt-auth.guard';
 import { FigureVideoService } from 'src/figure-video/figure-video.service';
 import { S3Service } from 'src/s3/s3.service';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
-import { DetailedPracticeDto, GetAllPracticesDto, PracticeBaseDto } from '@danskill/contract';
+import { PracticeDto, GetAllPracticesDto, PracticeBaseDto } from '@danskill/contract';
 
 @UseGuards(JwtAuthGuard)
 @Controller('practices')
@@ -63,7 +63,7 @@ export class PracticesController {
   }
 
   @Get('single/:id')
-  @UseInterceptors(new TransformInterceptor(DetailedPracticeDto))
+  @UseInterceptors(new TransformInterceptor(PracticeDto))
   async findOne(@Param('id') id: Types.ObjectId): Promise<Practice> {
     return await this.practicesService.findOne(id);
   }

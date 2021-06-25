@@ -4,7 +4,7 @@ import { NoteBaseDto } from '../notes/note-base.dto';
 import { Exclude, Expose, Type } from 'class-transformer';
 
 @Exclude()
-export class DetailedPracticeDto extends PracticeBaseDto  {
+export class PracticeDto extends PracticeBaseDto  {
   @Expose()
   @Type(() => FigureVideoBaseDto)
   video: FigureVideoBaseDto;
