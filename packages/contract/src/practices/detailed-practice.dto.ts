@@ -5,12 +5,11 @@ import { Exclude, Expose, Type } from 'class-transformer';
 
 @Exclude()
 export class DetailedPracticeDto extends PracticeDto  {
-
+  @Expose()
+  @Type(() => FigureVideoDto)
+  video: FigureVideoDto;
 
   @Expose()
   @Type(() => NoteDto)
   notes: NoteDto[];
-  @Expose()
-  @Type(() => FigureVideoDto)
-  video: FigureVideoDto;
 }
