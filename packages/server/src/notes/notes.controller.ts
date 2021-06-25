@@ -10,19 +10,19 @@ import { TransformInterceptor } from 'src/common/interceptors/transform.intercep
 export class NotesController {
   constructor(private readonly notesService: NotesService) {}
 
-  @Post(':practiceId')
+  @Post(':noteId')
   @UseInterceptors(new TransformInterceptor(NoteDto))
   create(
     @RequestUser() user: User,
     @Body() createNoteDto: CreateNoteDto,
-    @Param('practiceId') practiceId: Types.ObjectId,
+    @Param('noteId') noteId: Types.ObjectId,
   ) {
-    return this.notesService.create(user, practiceId, createNoteDto);
+    return this.notesService.create(user, noteId, createNoteDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: Types.ObjectId) {
-    const deletedNote = this.notesService.remove(id);
+  async remove(@Param('id') id: Types.ObjectId) {
+    const deletedNote = await this.notesService.remove(id);
     if (!deletedNote) {
       throw new HttpException('Note not found', HttpStatus.NOT_FOUND);
     }

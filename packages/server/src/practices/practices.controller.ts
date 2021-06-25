@@ -33,6 +33,7 @@ export class PracticesController {
 
   @Post(':videoId')
   @UseInterceptors(FileInterceptor('video'))
+  @UseInterceptors(new TransformInterceptor(PracticeBaseDto))
   async create(
     @RequestUser() user: User,
     @Param('videoId') videoId: Types.ObjectId,

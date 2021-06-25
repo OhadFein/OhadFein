@@ -42,6 +42,7 @@ export class FiguresController {
 
   @Roles(EnumRole.Admin)
   @Post()
+  @UseInterceptors(new TransformInterceptor(FigureBaseDto))
   async create(@Body() createFigureDto: CreateFigureDto): Promise<Figure> {
     return await this.figuresService.create(createFigureDto);
   }

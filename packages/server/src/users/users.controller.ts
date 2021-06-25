@@ -1,3 +1,4 @@
+import { FigureBaseDto } from './../../../contract/src/figures/figure-base.dto';
 import {
   Body,
   Controller,
@@ -27,11 +28,10 @@ export class UsersController {
 
   @Skip()
   @Post()
-  // TODO: return value shouldn't be the user!
   async create(@Body() createUserDto: CreateUserDto): Promise<User> {
     const user = await this.usersService.create(createUserDto);
 
-    return user;
+    return;
   }
 
   @Get('single/:username?')
