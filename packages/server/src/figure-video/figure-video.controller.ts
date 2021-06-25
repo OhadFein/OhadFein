@@ -36,6 +36,6 @@ export class FigureVideoController {
       throw new HttpException('Figure video not found', HttpStatus.NOT_FOUND);
     }
 
-    return deletedFigureVideo;
+    return;
   }
 }

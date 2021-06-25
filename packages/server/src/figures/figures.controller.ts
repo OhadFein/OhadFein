@@ -54,6 +54,6 @@ export class FiguresController {
       throw new HttpException('Figure not found', HttpStatus.NOT_FOUND);
     }
 
-    return deletedFigure;
+    return;
   }
 }

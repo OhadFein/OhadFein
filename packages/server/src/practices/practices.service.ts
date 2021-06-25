@@ -66,12 +66,12 @@ export class PracticesService {
     return await this.practiceModel.findOne({ _id: id }).populate('video notes').exec();
   }
 
-  async remove(user: User, id: Types.ObjectId) {
+  async remove(user: User, id: Types.ObjectId): Promise<Practice> {
     const practice = await this.practiceModel.findByIdAndRemove({ _id: id }).exec();
     await this.s3Service.remove(practice.key);
     await this.usersService.removePractice(user, id);
 
-    return; // TODO:
+    return practice;
   }
 
   async addNote(note: Note) {

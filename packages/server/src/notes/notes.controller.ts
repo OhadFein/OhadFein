@@ -1,4 +1,4 @@
-import { Controller, Post, Body, Param, Delete, UseInterceptors } from '@nestjs/common';
+import { Controller, Post, Body, Param, Delete, UseInterceptors, HttpException, HttpStatus } from '@nestjs/common';
 import { NotesService } from './notes.service';
 import { Types } from 'mongoose';
 import { RequestUser } from 'src/common/decorators/request-user.decorator';
@@ -21,8 +21,12 @@ export class NotesController {
   }
 
   @Delete(':id')
-  @UseInterceptors(new TransformInterceptor(NoteDto))
   remove(@Param('id') id: Types.ObjectId) {
-    return this.notesService.remove(id);
+    const deletedNote = this.notesService.remove(id);
+    if (!deletedNote) {
+      throw new HttpException('Note not found', HttpStatus.NOT_FOUND);
+    }
+
+    return;
   }
 }

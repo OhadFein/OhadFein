@@ -69,6 +69,11 @@ export class PracticesController {
 
   @Delete('single/:id')
   async remove(@RequestUser() user: User, @Param('id') id: Types.ObjectId) {
-    return await this.practicesService.remove(user, id);
+    const deletedPractice = await this.practicesService.remove(user, id);
+    if (!deletedPractice) {
+      throw new HttpException('Practice not found', HttpStatus.NOT_FOUND);
+    }
+
+    return;
   }
 }
