@@ -65,4 +65,10 @@ export class PracticesService {
       .updateOne({ _id: note.practice }, { $addToSet: { notes: note._id } })
       .exec();
   }
+
+  async removeNote(note: Note) {
+    return this.practiceModel
+      .updateOne({ _id: note.practice }, { $pull: { notes: note._id } })
+      .exec();
+  }
 }

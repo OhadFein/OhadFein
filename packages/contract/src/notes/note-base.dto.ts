@@ -7,12 +7,6 @@ export class NoteBaseDto {
   readonly _id: Types.ObjectId;
 
   @Expose()
-  user: Types.ObjectId;
-
-  @Expose()
-  practice: Types.ObjectId;
-
-  @Expose()
   title: string;
 
   @Expose()

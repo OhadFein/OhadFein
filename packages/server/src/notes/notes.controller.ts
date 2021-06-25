@@ -1,15 +1,17 @@
-import { Controller, Post, Body, Param, Delete } from '@nestjs/common';
+import { Controller, Post, Body, Param, Delete, UseInterceptors } from '@nestjs/common';
 import { NotesService } from './notes.service';
 import { Types } from 'mongoose';
 import { RequestUser } from 'src/common/decorators/request-user.decorator';
 import { User } from 'src/users/schemas/user.schema';
-import { CreateNoteDto } from '@danskill/contract';
+import { CreateNoteDto, NoteDto } from '@danskill/contract';
+import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
 
 @Controller('notes')
 export class NotesController {
   constructor(private readonly notesService: NotesService) {}
 
   @Post(':practiceId')
+  @UseInterceptors(new TransformInterceptor(NoteDto)) // TODO: NoteDto or NoteBaseDto?
   create(
     @RequestUser() user: User,
     @Body() createNoteDto: CreateNoteDto,
@@ -19,7 +21,8 @@ export class NotesController {
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.notesService.remove(+id);
+  @UseInterceptors(new TransformInterceptor(NoteDto)) // TODO: NoteDto or NoteBaseDto?
+  remove(@Param('id') id: Types.ObjectId) {
+    return this.notesService.remove(id);
   }
 }

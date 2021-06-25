@@ -35,7 +35,11 @@ export class NotesService {
     return createdNote;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} note`;
+  async remove(id: Types.ObjectId) {
+    const note = await this.noteModel.findByIdAndRemove({ _id: id }).exec();
+    await this.practicesService.removeNote(note);
+
+    return; // TODO:
+
   }
 }
