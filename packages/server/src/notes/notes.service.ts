@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Types, Model } from 'mongoose';
 import { PracticesService } from 'src/practices/practices.service';
@@ -11,6 +11,7 @@ export class NotesService {
   constructor(
     @InjectModel(Note.name)
     private readonly noteModel: Model<NoteDocument>,
+    @Inject(forwardRef(() => PracticesService))
     private readonly practicesService: PracticesService,
   ) {}
 

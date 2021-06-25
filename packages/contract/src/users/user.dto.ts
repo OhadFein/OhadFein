@@ -5,5 +5,5 @@ import { BaseUserDto } from './base-user.dto';
 export class UserDto extends BaseUserDto {
   @Expose()
   @Type(() => BaseUserDto)
-  coach?: UserDto;
+  coach?: BaseUserDto;
 }

@@ -1,6 +1,6 @@
 import { S3 } from 'aws-sdk';
 import { Model, Types } from 'mongoose';
-import { Injectable } from '@nestjs/common';
+import { forwardRef, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 
 import { Practice, PracticeDocument } from './schemas/practice.schema';
@@ -16,6 +16,7 @@ export class PracticesService {
   constructor(
     @InjectModel(Practice.name)
     private readonly practiceModel: Model<PracticeDocument>,
+    @Inject(forwardRef(() => UsersService))
     private readonly usersService: UsersService,
     private readonly s3Service: S3Service
   ) {}
@@ -46,7 +47,7 @@ export class PracticesService {
   }
 
   async findOne(id: Types.ObjectId): Promise<Practice> {
-    return await this.practiceModel.findOne({ _id: id }).exec();
+    return await this.practiceModel.findOne({ _id: id }).populate('video notes').exec();
   }
 
   async remove(user: User, id: Types.ObjectId) {

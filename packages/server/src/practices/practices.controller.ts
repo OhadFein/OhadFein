@@ -1,3 +1,4 @@
+import { DetailedPracticeDto } from './../../../contract/src/practices/detailed-practice.dto';
 import { Types } from 'mongoose';
 import {
   Controller,
@@ -22,14 +23,13 @@ import { S3Service } from 'src/s3/s3.service';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
 import { GetAllPracticesDto, PracticeDto } from '@danskill/contract';
 
-
 @UseGuards(JwtAuthGuard)
 @Controller('practices')
 export class PracticesController {
   constructor(
     private readonly figureVideosService: FigureVideoService,
     private readonly practicesService: PracticesService,
-    private readonly s3Service: S3Service,
+    private readonly s3Service: S3Service
   ) {}
 
   @Post(':videoId')
@@ -37,10 +37,8 @@ export class PracticesController {
   async create(
     @RequestUser() user: User,
     @Param('videoId') videoId: Types.ObjectId,
-    @UploadedFile() videoFile: Express.Multer.File,
+    @UploadedFile() videoFile: Express.Multer.File
   ) {
-    // TODO: move to practices.service.ts? mongodb transactions?
-
     const video = await this.figureVideosService.findOne(videoId);
     if (!video || !video.figure)
       throw new HttpException('Video not found', HttpStatus.NOT_FOUND);
@@ -65,7 +63,8 @@ export class PracticesController {
   }
 
   @Get('single/:id')
-  async findOne(@Param() id: Types.ObjectId): Promise<Practice> {
+  @UseInterceptors(new TransformInterceptor(DetailedPracticeDto))
+  async findOne(@Param('id') id: Types.ObjectId): Promise<Practice> {
     return await this.practicesService.findOne(id);
   }
 

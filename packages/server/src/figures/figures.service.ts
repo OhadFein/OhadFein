@@ -1,6 +1,6 @@
 import { UsersService } from 'src/users/users.service';
 import { Types, Model, FilterQuery } from 'mongoose';
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Figure, FigureDocument } from './schemas/figure.schema';
 import { CreateFigureDto, GetAllFiguresDto } from '@danskill/contract';
@@ -10,6 +10,7 @@ export class FiguresService {
   constructor(
     @InjectModel(Figure.name)
     private readonly figureModel: Model<FigureDocument>,
+    @Inject(forwardRef(() => UsersService))
     private readonly usersService: UsersService
   ) {}
 

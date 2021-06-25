@@ -1,16 +1,25 @@
 import { Types } from 'mongoose';
-import { FigureDto } from '../figures/figure.dto';
 import { FigureVideoDto } from '../figure-video/figure-video.dto';
 import { NoteDto } from '../notes/note.dto';
+import { Exclude, Expose } from 'class-transformer';
 
-// TODO: add Expose and Exclude
+@Exclude()
 export class PracticeDto {
+  @Expose()
   readonly _id: Types.ObjectId;
-  user: Types.ObjectId;
-  figure: Types.ObjectId; // TODO: used for query all figure practices
-  video: Types.ObjectId | FigureVideoDto;
-  notes: Types.ObjectId[] | NoteDto[];
+
+  @Expose()
+  user: Types.ObjectId; // TODO: needed?
+
+  @Expose()
+  figure: Types.ObjectId; // TODO: needed? (used for query all figure practices)
+
+  @Expose()
   key: string;
+
+  @Expose()
   readonly url: string;
+
+  @Expose()
   readonly createdAt: Date;
 }

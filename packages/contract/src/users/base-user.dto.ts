@@ -1,5 +1,5 @@
 import { Types } from 'mongoose';
-import { Exclude, Expose, Transform } from 'class-transformer';
+import { Exclude, Expose } from 'class-transformer';
 
 @Exclude()
 export class BaseUserDto {

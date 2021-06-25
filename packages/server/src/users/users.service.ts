@@ -1,6 +1,6 @@
 import { EnumRole } from './../common/enums/role.enum';
 import { FilterQuery, Model, Types } from 'mongoose';
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument, Coach, Star } from './schemas/user.schema';
 import { CreateUserDto, GetAllPracticesDto } from '@danskill/contract';
@@ -13,6 +13,7 @@ export class UsersService {
   constructor(
     @InjectModel(User.name)
     private readonly userModel: Model<UserDocument>,
+    @Inject(forwardRef(() => FiguresService))
     private readonly figuresService: FiguresService
   ) {}
 
