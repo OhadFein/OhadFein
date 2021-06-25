@@ -1,13 +1,15 @@
-import { BaseUserDto } from './../users/base-user.dto';
-import { FigureVideoBaseDto } from '@danskill/contract';
+import { UserBaseDto } from '../users/user-base.dto';
 import { FigureBaseDto } from './figure-base.dto';
-import { Exclude, Expose } from 'class-transformer';
+import { FigureVideoBaseDto } from '../figure-video'
+import { Exclude, Expose, Type } from 'class-transformer';
 
 @Exclude()
 export class FigureDto extends FigureBaseDto {
   @Expose()
-  stars: BaseUserDto[];
+  @Type(() => UserBaseDto)
+  stars: UserBaseDto[];
 
   @Expose()
+  @Type(() => FigureVideoBaseDto)
   videos: FigureVideoBaseDto[];
 }

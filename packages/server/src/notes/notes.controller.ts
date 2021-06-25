@@ -11,7 +11,7 @@ export class NotesController {
   constructor(private readonly notesService: NotesService) {}
 
   @Post(':practiceId')
-  @UseInterceptors(new TransformInterceptor(NoteDto)) // TODO: NoteDto or NoteBaseDto?
+  @UseInterceptors(new TransformInterceptor(NoteDto))
   create(
     @RequestUser() user: User,
     @Body() createNoteDto: CreateNoteDto,
@@ -21,7 +21,7 @@ export class NotesController {
   }
 
   @Delete(':id')
-  @UseInterceptors(new TransformInterceptor(NoteDto)) // TODO: NoteDto or NoteBaseDto?
+  @UseInterceptors(new TransformInterceptor(NoteDto))
   remove(@Param('id') id: Types.ObjectId) {
     return this.notesService.remove(id);
   }

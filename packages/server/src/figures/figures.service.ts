@@ -1,3 +1,4 @@
+import { FigureVideo } from './../figure-video/schemas/figure-video.schema';
 import { UsersService } from 'src/users/users.service';
 import { Types, Model, FilterQuery } from 'mongoose';
 import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
@@ -17,7 +18,7 @@ export class FiguresService {
   async findOne(id: Types.ObjectId): Promise<Figure> {
     return await this.figureModel
       .findOne({ _id: id })
-      .populate('videos')
+      .populate('videos stars')
       .exec();
   }
 
@@ -53,5 +54,17 @@ export class FiguresService {
 
   async remove(id: Types.ObjectId): Promise<Figure> {
     return await this.figureModel.findByIdAndRemove({ _id: id }).exec();
+  }
+
+  async addVideo(video: FigureVideo) {
+    return this.figureModel
+      .updateOne({ _id: video.figure }, { $addToSet: { videos: video._id } })
+      .exec();
+  }
+
+  async removeVideo(video: FigureVideo) {
+    return this.figureModel
+      .updateOne({ _id: video.figure }, { $pull: { videos: video._id } })
+      .exec();
   }
 }

@@ -8,12 +8,6 @@ export class FigureBaseDto {
   readonly _id: Types.ObjectId;
 
   @Expose()
-  stars: Types.ObjectId[];
-
-  @Expose()
-  videos: Types.ObjectId[];
-
-  @Expose()
   name: string;
 
   @Expose()
