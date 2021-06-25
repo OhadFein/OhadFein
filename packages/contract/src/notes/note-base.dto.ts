@@ -1,12 +1,26 @@
 import { Types } from 'mongoose';
+import { Exclude, Expose } from 'class-transformer';
 
-// TODO: add Expose and Exclude
-export class NoteDto {
+@Exclude()
+export class NoteBaseDto {
+  @Expose()
   readonly _id: Types.ObjectId;
+
+  @Expose()
   user: Types.ObjectId;
+
+  @Expose()
   practice: Types.ObjectId;
+
+  @Expose()
   title: string;
+
+  @Expose()
   content: string;
+
+  @Expose()
   readonly createdAt: Date;
+
+  @Expose()
   readonly updatedAt: Date;
 }

@@ -21,7 +21,7 @@ import { JwtAuthGuard } from 'src/common/guards/jwt-auth.guard';
 import { FigureVideoService } from 'src/figure-video/figure-video.service';
 import { S3Service } from 'src/s3/s3.service';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
-import { GetAllPracticesDto, PracticeDto } from '@danskill/contract';
+import { GetAllPracticesDto, PracticeBaseDto } from '@danskill/contract';
 
 @UseGuards(JwtAuthGuard)
 @Controller('practices')
@@ -48,7 +48,7 @@ export class PracticesController {
   }
 
   @Get('all/:username?')
-  @UseInterceptors(new TransformInterceptor(PracticeDto))
+  @UseInterceptors(new TransformInterceptor(PracticeBaseDto))
   async getPractices(
     @RequestUser() reqUser: User,
     getAllPracticesDto?: GetAllPracticesDto,

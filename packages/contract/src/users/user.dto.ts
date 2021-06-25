@@ -1,9 +1,9 @@
 import { Exclude, Expose, Type } from 'class-transformer';
-import { BaseUserDto } from './base-user.dto';
+import { UserBaseDto } from './user-base.dto';
 
 @Exclude()
-export class UserDto extends BaseUserDto {
+export class UserDto extends UserBaseDto {
   @Expose()
-  @Type(() => BaseUserDto)
-  coach?: BaseUserDto;
+  @Type(() => UserBaseDto)
+  coach?: UserBaseDto;
 }

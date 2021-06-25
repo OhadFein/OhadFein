@@ -1,4 +1,4 @@
-export * from './practice.dto';
+export * from './practice-base.dto';
 export * from './detailed-practice.dto';
 export * from './delete-practice.dto';
 export * from './create-practice.dto';

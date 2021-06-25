@@ -1,15 +1,13 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { PrepareUrl } from 'src/common/utils/prepare-url';
-import { User } from 'src/users/schemas/user.schema';
 import { Types } from 'mongoose';
-import { Figure } from 'src/figures/schemas/figure.schema';
-import { FigureVideoDto, EnumVideoType } from '@danskill/contract';
+import { FigureVideoBaseDto, EnumVideoType } from '@danskill/contract';
 
 
 export type FigureVideoDocument = FigureVideo & Document;
 
 @Schema({ timestamps: true, toJSON: { getters: true } })
-export class FigureVideo implements FigureVideoDto {
+export class FigureVideo implements FigureVideoBaseDto {
   readonly _id: Types.ObjectId;
 
   @Prop({ type: [{ type: Types.ObjectId, ref: 'User' }], required: true })

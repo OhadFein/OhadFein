@@ -1,21 +1,20 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 import { PrepareUrl } from 'src/common/utils/prepare-url';
-import { User } from 'src/users/schemas/user.schema';
 import { FigureVideo } from 'src/figure-video/schemas/figure-video.schema';
-import { FigureDto, EnumDanceType, EnumDanceLevel } from '@danskill/contract';
+import { FigureBaseDto, EnumDanceType, EnumDanceLevel } from '@danskill/contract';
 
 export type FigureDocument = Figure & Document;
 
 @Schema({ timestamps: true, toJSON: { getters: true } })
-export class Figure implements FigureDto {
+export class Figure implements FigureBaseDto {
   readonly _id: Types.ObjectId;
 
   @Prop({ type: [{ type: Types.ObjectId, ref: 'User' }] }) // TODO: change to User.name
-  stars: User[] | Types.ObjectId[];
+  stars: Types.ObjectId[];
 
   @Prop({ type: [{ type: Types.ObjectId, ref: FigureVideo.name }] })
-  videos: FigureVideo[];
+  videos: Types.ObjectId[];
 
   @Prop({ required: true })
   name: string;

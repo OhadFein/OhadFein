@@ -2,7 +2,7 @@ import { Types } from 'mongoose';
 import { Exclude, Expose } from 'class-transformer';
 
 @Exclude()
-export class BaseUserDto {
+export class UserBaseDto {
   @Expose()
   readonly _id: Types.ObjectId;
   

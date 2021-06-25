@@ -1,10 +1,9 @@
 import { Types } from 'mongoose';
-import { FigureVideoDto } from '../figure-video/figure-video.dto';
-import { NoteDto } from '../notes/note.dto';
+import { NoteBaseDto } from '../notes/note-base.dto';
 import { Exclude, Expose } from 'class-transformer';
 
 @Exclude()
-export class PracticeDto {
+export class PracticeBaseDto {
   @Expose()
   readonly _id: Types.ObjectId;
 

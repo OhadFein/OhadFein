@@ -1,11 +1,11 @@
-import { FigureDto } from '../figures';
-import { BaseUserDto } from './base-user.dto'
+import { FigureBaseDto } from '../figures';
+import { UserBaseDto } from './user-base.dto'
 import { Exclude, Expose } from 'class-transformer';
 
 @Exclude()
-export class StarDto extends BaseUserDto {
+export class StarDto extends UserBaseDto {
   @Expose()
-  figures: FigureDto[];
+  figures: FigureBaseDto[];
   
   @Expose()
   promo_video: string;

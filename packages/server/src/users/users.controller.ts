@@ -15,7 +15,7 @@ import {
   CreateUserDto,
   StarDto,
   CoachDto,
-  BaseUserDto,
+  UserBaseDto,
   UserDto,
 } from '@danskill/contract';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
@@ -47,7 +47,7 @@ export class UsersController {
   }
 
   @Get('all/users')
-  @UseInterceptors(new TransformInterceptor(BaseUserDto))
+  @UseInterceptors(new TransformInterceptor(UserBaseDto))
   async findAllUsers(): Promise<User[]> {
     return await this.usersService.findAllUsers();
   }

@@ -4,12 +4,12 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 import { EnumRole } from 'src/common/enums/role.enum';
 import { PrepareUrl } from 'src/common/utils/prepare-url';
-import { StarDto, CoachDto, BaseUserDto } from '@danskill/contract';
+import { StarDto, CoachDto, UserBaseDto, FigureBaseDto } from '@danskill/contract';
 
 export type UserDocument = User & Star & Coach & Document;
 
 @Schema({ timestamps: true, toJSON: { getters: true } })
-export class User implements BaseUserDto {
+export class User implements UserBaseDto {
   _id: Types.ObjectId;
 
   @Prop({ required: true, unique: true })
@@ -63,7 +63,7 @@ export class User implements BaseUserDto {
 }
 
 export class Star extends User implements StarDto {
-  figures: Figure[];
+  figures: FigureBaseDto[];
   promo_video: string;
   about: string;
   logo: string;

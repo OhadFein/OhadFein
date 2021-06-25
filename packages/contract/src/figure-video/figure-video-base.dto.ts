@@ -1,9 +1,9 @@
 import { Types } from 'mongoose';
-import { EnumVideoType } from '@danskill/contract';
+import { EnumVideoType } from '../common/enums/video-type.enum';
 import { Exclude, Expose, Type } from 'class-transformer';
 
 @Exclude()
-export class FigureVideoDto {
+export class FigureVideoBaseDto {
   @Expose()
   readonly _id: Types.ObjectId;
 

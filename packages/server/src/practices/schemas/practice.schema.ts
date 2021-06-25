@@ -5,12 +5,12 @@ import { PrepareUrl } from 'src/common/utils/prepare-url';
 import { Figure } from 'src/figures/schemas/figure.schema';
 import { FigureVideo } from 'src/figure-video/schemas/figure-video.schema';
 import { Note } from 'src/notes/schemas/note.schema';
-import { PracticeDto } from '@danskill/contract';
+import { PracticeBaseDto } from '@danskill/contract';
 
 export type PracticeDocument = Practice & Document;
 
 @Schema({ timestamps: true, toJSON: { getters: true } })
-export class Practice implements PracticeDto {
+export class Practice implements PracticeBaseDto {
   readonly _id: Types.ObjectId;
 
   @Prop({ type: Types.ObjectId, ref: 'User', required: true }) // TODO: change to User.name
