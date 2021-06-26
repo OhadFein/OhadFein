@@ -3,9 +3,10 @@
   "name": "@danskill/workspace",
   "version": "1.0.0",
   "main": "index.js",
-  "workspaces": [
-    "packages/*"
-  ],
+  "workspaces": {
+    "packages": ["packages/*"],
+    "nohoist": ["**/@types/jasmine", "**/@types/jasmine/**"]
+  },
   "scripts": {
     "dev": "lerna run dev --stream",
     "test": "lerna run test",
