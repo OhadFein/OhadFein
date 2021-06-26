@@ -32,6 +32,7 @@ import {
   VideoPreviewComponent,
   CustomLabControlsComponent
 } from './ui';
+import { StarNameDirective } from '@core/derectives';
 
 const components = [
   AlertsComponent,
@@ -55,7 +56,8 @@ const components = [
   BaseBgProcessComponent,
   ToggleSwitchDirective,
   VideoPreviewComponent,
-  CustomLabControlsComponent
+  CustomLabControlsComponent,
+  StarNameDirective
 ];
 
 @NgModule({

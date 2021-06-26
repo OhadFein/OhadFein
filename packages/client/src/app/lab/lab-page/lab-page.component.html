@@ -19,8 +19,7 @@
         </div>
         <!-- PAGE SUB TITLE - AFTER STARR VIDEO UPLOADED -->
         <div *ngIf="labItem" class="col-12 pb-2 text-center">
-            <span dsappStarName
-                  [givenName]="labItem.user.given_name" [familyName]="labItem.user.family_name">
+            <span dsappStarName [givenName]="labItem.user.given_name" [familyName]="labItem.user.family_name">
             </span>
             <span> - </span>
             <span>{{labItem.figure.name}},

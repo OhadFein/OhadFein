@@ -4,11 +4,11 @@
   </div>
   <div class="login-tabs w-100 d-inline-flex" >
     <a  [routerLink]="'/register'" class="danskill-tab-btn register"
-        [ngClass]="!isLoginSelected ? 'selected' : ''" (click)="setSelected($event)">
+        [ngClass]="!isLoginSelected ? 'selected' : ''" (click)="setSelected()">
       {{'LOGIN.Register' | translate}}
     </a>
     <a [routerLink]="'/login'" class="danskill-tab-btn login"
-       [ngClass]="isLoginSelected ? 'selected' : ''" (click)="setSelected($event)">
+       [ngClass]="isLoginSelected ? 'selected' : ''" (click)="setSelected()">
       {{'LOGIN.Login' | translate}}
     </a>
   </div>
