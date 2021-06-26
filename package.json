@@ -13,9 +13,25 @@
     "setup": "lerna bootstrap",
     "build": "lerna run build --parallel",
     "start": "yarn workspace webapp-server start",
-    "postinstall": "cp lock.js node_modules/@angular/compiler-cli/ngcc/src/execution/lock_file.js && ngcc --create-ivy-entry-points"
+    "postinstall": "cp lock.js node_modules/@angular/compiler-cli/ngcc/src/execution/lock_file.js && ngcc --create-ivy-entry-points",
+    "precommit": "pretty-quick --staged && lint-staged",
+    "prepare": "husky install"
   },
   "devDependencies": {
-    "lerna": "4.0.0"
+    "lerna": "4.0.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "eslint-plugin-prettier": "^3.0.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{html,css,scss,json}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
