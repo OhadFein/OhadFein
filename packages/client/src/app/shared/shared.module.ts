@@ -9,4 +9,10 @@ import { NgPipesModule } from 'ngx-pipes';
   declarations: [DanskillDatePipe],
   exports: [DanskillDatePipe, CommonModule, FormsModule, NgPipesModule]
 })
-export class SharedModule {}
+export class SharedModule {
+  constructor() {
+    console.log(
+      'sajdhkasjh kajshd kah dkjdjhdjkshaskjdh kjashdjk ashdkj hkjsdh kjakjajasdhjk hdkadkasdkadkahk jhaksakdakdakhh aksjdhaskdh'
+    );
+  }
+}
