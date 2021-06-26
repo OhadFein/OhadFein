@@ -14,9 +14,7 @@ export class FiguresService {
   getFigure(figureId): Observable<IFigure> {
 	return this.baseRestService.get<SingleFigureRestResponse>(`figures/${figureId}`)
 	  .pipe(
-		map((response) => {
-		  return response.data ? response.data : null;
-		})
+		map((response) => response.data ?? null)
 	  );
   }
 }

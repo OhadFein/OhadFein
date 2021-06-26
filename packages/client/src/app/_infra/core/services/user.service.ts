@@ -24,7 +24,7 @@ export class UserService {
 		  }
 		},
 		error => {
-		  throwError(['ERRORS.GeneralBackendError']);
+		  throwError(['ERRORS.GeneralBackendError']); //TODO: sverkunov.
 		}
 	  )
 	);

@@ -51,5 +51,4 @@ export class AlertErrorService {
     this.alertService.error(errorMsg);
     return errorMsg;
   }
-
 }

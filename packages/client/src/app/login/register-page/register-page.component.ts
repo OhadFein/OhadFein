@@ -7,8 +7,7 @@ import { RegisterValidators } from '@core/validators';
 
 @Component({
   selector: 'dsapp-register-page',
-  templateUrl: './register-page.component.html',
-  styles: []
+  templateUrl: './register-page.component.html'
 })
 export class RegisterPageComponent implements OnInit {
   registerForm: FormGroup;
@@ -43,7 +42,7 @@ export class RegisterPageComponent implements OnInit {
 	);
   }
 
-  register() {
+  register(): void {
 	this.isSubmitted = true;
 
 	if (this.registerForm.invalid) {
@@ -57,9 +56,5 @@ export class RegisterPageComponent implements OnInit {
 	setTimeout(() => {
 	  this.isSubmitted = false;
 	}, 3000);
-  }
-
-  registerFacebook() {
-
   }
 }

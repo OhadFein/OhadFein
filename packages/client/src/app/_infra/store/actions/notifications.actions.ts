@@ -1,7 +1,6 @@
 import { INotifications } from '@core/models';
 import { createAction, props } from '@ngrx/store';
 
-
 export enum NotificationsActionType {
   GetNotificationsAction = '[notifications] - Get notifications',
   BeginGetNotificationsAction = '[notifications] - Begin Get notifications',

@@ -6,8 +6,6 @@ import { AlertService } from './alert.service';
 import { BaseRestService } from './base-rest.service';
 import { TokenService } from './token.service';
 
-
-
 @Injectable({
   providedIn: 'root'
 })

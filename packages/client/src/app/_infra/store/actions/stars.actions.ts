@@ -8,7 +8,6 @@ export enum StarsActionType {
     ErrorStarsAction = '[stars] - Error'
 }
 
-
 export const GetStarsAction = createAction(StarsActionType.GetStarsAction);
 
 export const BeginGetStarsAction = createAction(StarsActionType.BeginGetStarsAction);
