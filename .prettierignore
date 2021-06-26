@@ -1,0 +1,9 @@
+dist
+packages/server
+*.d.ts
+coverage
+.coverage
+.nyc_output
+*.html
+.platform
+.vscode
