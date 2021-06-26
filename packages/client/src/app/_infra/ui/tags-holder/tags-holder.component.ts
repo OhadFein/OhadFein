@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnInit
+} from '@angular/core';
 import { Tag } from '@core/models';
 
 @Component({
@@ -7,12 +12,9 @@ import { Tag } from '@core/models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TagsHolderComponent implements OnInit {
-
   @Input() tags: Array<Tag> = [];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

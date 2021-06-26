@@ -82,7 +82,7 @@ export enum AgeGroup {
 export enum LoginMethod {
   REGULAR = 'regular',
   FACEBOOK = 'facebook',
-  GOOGLE = 'google',
+  GOOGLE = 'google'
 }
 
 export enum UserError {
@@ -91,6 +91,4 @@ export enum UserError {
   GENERAL = 'ERRORS.GeneralBackendError'
 }
 
-export const MIN_DATE: NgbDateStruct = { year: 1920, day: 1, month: 1 }
-
-
+export const MIN_DATE: NgbDateStruct = { year: 1920, day: 1, month: 1 };

@@ -8,9 +8,8 @@ describe('StartFigureWrapperComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StartFigureWrapperComponent ]
-    })
-    .compileComponents();
+      declarations: [StartFigureWrapperComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

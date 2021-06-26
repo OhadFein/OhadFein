@@ -9,11 +9,11 @@ export class MenuService {
   menuOpenState$ = this.menuOpenStateSource.asObservable();
 
   setMenuOpenState(state: boolean) {
-	this.menuOpenStateSource.next(state);
+    this.menuOpenStateSource.next(state);
   }
 
   toggleMenuOpenState() {
-	const currentState = this.menuOpenStateSource.getValue();
-	this.menuOpenStateSource.next(!currentState);
+    const currentState = this.menuOpenStateSource.getValue();
+    this.menuOpenStateSource.next(!currentState);
   }
 }

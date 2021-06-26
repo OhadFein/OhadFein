@@ -1,7 +1,6 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
 export class RegisterValidators {
-
   static patternValidator(regex: RegExp, error: ValidationErrors): ValidatorFn {
     return (control: AbstractControl): { [key: string]: any } => {
       if (!control.value) {
@@ -26,5 +25,4 @@ export class RegisterValidators {
       control.get('confirmPassword').setErrors({ PASSWORD_MISMATCH: true });
     }
   }
-
 }

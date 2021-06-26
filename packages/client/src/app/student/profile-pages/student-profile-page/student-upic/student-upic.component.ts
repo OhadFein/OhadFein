@@ -1,4 +1,12 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output,
+  ViewChild
+} from '@angular/core';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { AlertService } from '@app/_infra/core/services';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -10,7 +18,6 @@ import { ImageCroppedEvent } from 'ngx-image-cropper';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class StudentUpicComponent implements OnInit {
-
   @Input() picBase64: string = null;
   @Output() picChange = new EventEmitter();
 
@@ -23,22 +30,26 @@ export class StudentUpicComponent implements OnInit {
 
   imageIsLoading = false;
 
-  constructor(private sanitizer: DomSanitizer, private modalService: NgbModal, private alertService: AlertService) { }
+  constructor(
+    private sanitizer: DomSanitizer,
+    private modalService: NgbModal,
+    private alertService: AlertService
+  ) {}
 
   ngOnInit(): void {
     this.showAction = this.picChange.observers.length > 0;
   }
 
   openEditor(content) {
-    this.modalService.open(content, { size: 'sm', ariaLabelledBy: 'edit-modal-title' }).result.then((result) => {
-      // console.log(result);
-    });
+    this.modalService
+      .open(content, { size: 'sm', ariaLabelledBy: 'edit-modal-title' })
+      .result.then(() => {});
   }
 
   rotateCanvas(dir: 'left' | 'right') {
-    this.canvasRotation = dir === 'left' ? this.canvasRotation - 0.25 : this.canvasRotation + 0.25;
+    this.canvasRotation =
+      dir === 'left' ? this.canvasRotation - 0.25 : this.canvasRotation + 0.25;
   }
-
 
   fileChangeEvent(event: any): void {
     this.imageIsLoading = true;
@@ -79,11 +90,9 @@ export class StudentUpicComponent implements OnInit {
   onPicChangeClick($event): void {
     $event.preventDefault();
     this.openEditor(this.editorModal);
-
   }
 
   picIsChanged(picBase64: string): void {
     this.picChange.emit(picBase64);
   }
-
 }

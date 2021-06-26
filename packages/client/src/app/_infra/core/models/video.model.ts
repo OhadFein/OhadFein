@@ -14,13 +14,13 @@ export interface Video {
   thumbnail?: string;
   createdAt?: string;
   updatedAt?: string;
-  __v?: number
+  __v?: number;
 }
 
 export interface UploadVideoData {
   name: string;
-  associatedObject: string,
-  video: File
+  associatedObject: string;
+  video: File;
 }
 
 export enum View {
@@ -77,6 +77,6 @@ export class LabUserVideo {
   readonly type: VideoType = VideoType.COMPARABLE;
 
   constructor(init?: Partial<LabUserVideo>) {
-	Object.assign(this, init);
+    Object.assign(this, init);
   }
 }

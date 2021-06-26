@@ -3,11 +3,22 @@ import { RouterModule } from '@angular/router';
 import { Routes } from '@angular/router';
 import { AuthGuard } from '@app/_infra/core/guards/auth.guard';
 
-import { StudentEditProfilePageComponent, StudentProfilePageComponent } from '.';
+import {
+  StudentEditProfilePageComponent,
+  StudentProfilePageComponent
+} from '.';
 
 const routes: Routes = [
-  { path: '', component: StudentProfilePageComponent, canActivate: [AuthGuard] },
-  { path: 'edit', component: StudentEditProfilePageComponent, canActivate: [AuthGuard] },
+  {
+    path: '',
+    component: StudentProfilePageComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit',
+    component: StudentEditProfilePageComponent,
+    canActivate: [AuthGuard]
+  }
 ];
 
 @NgModule({
@@ -15,4 +26,4 @@ const routes: Routes = [
 
   exports: [RouterModule]
 })
-export class StudentProfileRoutingModule { }
+export class StudentProfileRoutingModule {}

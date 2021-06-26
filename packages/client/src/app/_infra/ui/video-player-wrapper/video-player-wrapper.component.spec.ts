@@ -9,9 +9,8 @@ describe('VideoPlayerWrapperComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VideoPlayerWrapperComponent ]
-    })
-    .compileComponents();
+      declarations: [VideoPlayerWrapperComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

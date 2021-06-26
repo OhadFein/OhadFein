@@ -14,47 +14,48 @@ export class RegisterPageComponent implements OnInit {
   isSubmitted = false;
 
   get formControls() {
-	return this.registerForm.controls;
+    return this.registerForm.controls;
   }
 
   constructor(
-	private registerService: RegisterService,
-	private formBuilder: FormBuilder
+    private registerService: RegisterService,
+    private formBuilder: FormBuilder
   ) {}
 
   ngOnInit() {
-	this.registerForm = this.formBuilder.group(
-	  {
-		email: [
-		  '',
-		  Validators.compose([Validators.required, Validators.email])
-		],
-		password: ['', Validators.compose(PASSWORD_VALIDATORS)],
-		confirmPassword: ['', Validators.compose([Validators.required])],
-		name: this.formBuilder.group({
-		  firstName: ['', [Validators.required]],
-		  lastName: ['', [Validators.required]]
-		})
-	  },
-	  {
-		validator: RegisterValidators.passwordMatchValidator
-	  }
-	);
+    this.registerForm = this.formBuilder.group(
+      {
+        email: [
+          '',
+          Validators.compose([Validators.required, Validators.email])
+        ],
+        password: ['', Validators.compose(PASSWORD_VALIDATORS)],
+        confirmPassword: ['', Validators.compose([Validators.required])],
+        name: this.formBuilder.group({
+          firstName: ['', [Validators.required]],
+          lastName: ['', [Validators.required]]
+        })
+      },
+      {
+        validator: RegisterValidators.passwordMatchValidator
+      }
+    );
   }
 
   register(): void {
-	this.isSubmitted = true;
+    this.isSubmitted = true;
 
-	if (this.registerForm.invalid) {
-	  this.isSubmitted = false;
-	  return;
-	}
+    if (this.registerForm.invalid) {
+      this.isSubmitted = false;
 
-	const user: UserRegistrationData = {...this.registerForm.value};
+      return;
+    }
 
-	this.registerService.register(user);
-	setTimeout(() => {
-	  this.isSubmitted = false;
-	}, 3000);
+    const user: UserRegistrationData = { ...this.registerForm.value };
+
+    this.registerService.register(user);
+    setTimeout(() => {
+      this.isSubmitted = false;
+    }, 3000);
   }
 }

@@ -12,7 +12,7 @@ export class AlertService {
 
   constructor(private router: Router) {
     // clear alert messages on route change unless 'keepAfterRouteChange' flag is true
-    this.router.events.subscribe(event => {
+    this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
         if (this.keepAfterRouteChange) {
           // only keep for a single route change
@@ -27,24 +27,78 @@ export class AlertService {
 
   // enable subscribing to alerts observable
   onAlert(alertId?: string): Observable<Alert> {
-    return this.subject.asObservable().pipe(filter(x => x && x.alertId === alertId));
+    return this.subject
+      .asObservable()
+      .pipe(filter((x) => x && x.alertId === alertId));
   }
 
   // convenience methods
-  success(message: string, param?: string, alertId?: string, keepAfterRouteChange = true) {
-    this.alert(new Alert({ message, param, type: AlertType.Success, alertId, keepAfterRouteChange }));
+  success(
+    message: string,
+    param?: string,
+    alertId?: string,
+    keepAfterRouteChange = true
+  ) {
+    this.alert(
+      new Alert({
+        message,
+        param,
+        type: AlertType.Success,
+        alertId,
+        keepAfterRouteChange
+      })
+    );
   }
 
-  error(message: string, param?: string, alertId?: string, keepAfterRouteChange = true) {
-    this.alert(new Alert({ message, param, type: AlertType.Error, alertId, keepAfterRouteChange }));
+  error(
+    message: string,
+    param?: string,
+    alertId?: string,
+    keepAfterRouteChange = true
+  ) {
+    this.alert(
+      new Alert({
+        message,
+        param,
+        type: AlertType.Error,
+        alertId,
+        keepAfterRouteChange
+      })
+    );
   }
 
-  info(message: string, param?: string, alertId?: string, keepAfterRouteChange = true) {
-    this.alert(new Alert({ message, param, type: AlertType.Info, alertId, keepAfterRouteChange }));
+  info(
+    message: string,
+    param?: string,
+    alertId?: string,
+    keepAfterRouteChange = true
+  ) {
+    this.alert(
+      new Alert({
+        message,
+        param,
+        type: AlertType.Info,
+        alertId,
+        keepAfterRouteChange
+      })
+    );
   }
 
-  warn(message: string, param?: string, alertId?: string, keepAfterRouteChange = true) {
-    this.alert(new Alert({ message, param, type: AlertType.Warning, alertId, keepAfterRouteChange }));
+  warn(
+    message: string,
+    param?: string,
+    alertId?: string,
+    keepAfterRouteChange = true
+  ) {
+    this.alert(
+      new Alert({
+        message,
+        param,
+        type: AlertType.Warning,
+        alertId,
+        keepAfterRouteChange
+      })
+    );
   }
 
   // main alert method

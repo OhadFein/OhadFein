@@ -9,37 +9,46 @@ import * as NotificationsActions from '../actions/notifications.actions';
 
 @Injectable()
 export class NotificationsEffects {
-  constructor(private action$: Actions, private notificationsService: NotificationsService) {}
+  constructor(
+    private action$: Actions,
+    private notificationsService: NotificationsService
+  ) {}
 
   getNotifications$: Observable<Action> = createEffect(() =>
-	this.action$.pipe(
-	  ofType(NotificationsActions.BeginGetNotificationsAction),
-	  mergeMap(action =>
-		this.notificationsService.getNotifications().pipe(
-		  map((notifications: INotifications[]) => {
-			return NotificationsActions.SuccessGetNotificationsAction({payload: notifications});
-		  }),
-		  catchError((error: Error) => {
-			return of(NotificationsActions.ErrorNotificationsAction(error));
-		  })
-		)
-	  )
-	)
+    this.action$.pipe(
+      ofType(NotificationsActions.BeginGetNotificationsAction),
+      mergeMap(() =>
+        this.notificationsService.getNotifications().pipe(
+          map((notifications: INotifications[]) => {
+            return NotificationsActions.SuccessGetNotificationsAction({
+              payload: notifications
+            });
+          }),
+          catchError((error: Error) => {
+            return of(NotificationsActions.ErrorNotificationsAction(error));
+          })
+        )
+      )
+    )
   );
 
   setNotificationsAsRead$: Observable<Action> = createEffect(() =>
-	this.action$.pipe(
-	  ofType(NotificationsActions.BeginUpdateNotificationsAction),
-	  mergeMap((action) =>
-		this.notificationsService.setNotificationsAsRead(action.payload).pipe(
-		  map((data: INotifications) => {
-			return NotificationsActions.SuccessUpdateNotificationsAction({payload: data});
-		  }),
-		  catchError((error: Error) => {
-			return of(NotificationsActions.ErrorUpdateNotificationsAction(error));
-		  })
-		)
-	  )
-	)
+    this.action$.pipe(
+      ofType(NotificationsActions.BeginUpdateNotificationsAction),
+      mergeMap((action) =>
+        this.notificationsService.setNotificationsAsRead(action.payload).pipe(
+          map((data: INotifications) => {
+            return NotificationsActions.SuccessUpdateNotificationsAction({
+              payload: data
+            });
+          }),
+          catchError((error: Error) => {
+            return of(
+              NotificationsActions.ErrorUpdateNotificationsAction(error)
+            );
+          })
+        )
+      )
+    )
   );
 }

@@ -17,7 +17,6 @@ import '@angular/localize/init';
 import 'web-animations-js';
 import 'zone.js/dist/zone';
 
-
 /***************************************************************************************************
  * BROWSER POLYFILLS
  */

@@ -3,7 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   BackgroundProcessCallbackAction,
   BackgroundProcessCallbackData,
-  BaseBgProcessComponent,
+  BaseBgProcessComponent
 } from '@app/_infra/core/models';
 import * as PracticesActions from '@app/_infra/store/actions/practices.actions';
 import { PracticesService } from '@core/services';
@@ -14,17 +14,19 @@ import { Subscription } from 'rxjs';
   selector: 'ui-upload-practice-bg-process',
   templateUrl: './upload-practice-bg-process.component.html'
 })
-export class UploadPracticeBgProcessComponent extends BaseBgProcessComponent implements OnInit, OnDestroy {
-
+export class UploadPracticeBgProcessComponent extends BaseBgProcessComponent
+  implements OnInit, OnDestroy {
   httpSub: Subscription;
   isError = false;
   message = '';
   progress = 0;
 
-  constructor(private practicesService: PracticesService, private store: Store<any>) {
+  constructor(
+    private practicesService: PracticesService,
+    private store: Store<any>
+  ) {
     super();
   }
-
 
   ngOnInit() {
     this.subscribe();
@@ -35,23 +37,29 @@ export class UploadPracticeBgProcessComponent extends BaseBgProcessComponent imp
     this.subscribe();
   }
   cancel(): void {
-    const data: BackgroundProcessCallbackData = { process: this.process, action: BackgroundProcessCallbackAction.CANCEL }
+    const data: BackgroundProcessCallbackData = {
+      process: this.process,
+      action: BackgroundProcessCallbackAction.CANCEL
+    };
     this.processCallback.emit(data);
   }
 
   subscribe(): void {
-    this.httpSub = this.practicesService.uploadPractice(this.process.data)
+    this.httpSub = this.practicesService
+      .uploadPractice(this.process.data)
       .subscribe(
         (event: HttpEvent<any>) => {
           switch (event.type) {
             case HttpEventType.Sent:
               this.message = 'LAB.MESSAGES.uploadStarted';
-              setTimeout(() => { this.message = ''; }, 3000);
+              setTimeout(() => {
+                this.message = '';
+              }, 3000);
               break;
             case HttpEventType.ResponseHeader:
               break;
             case HttpEventType.UploadProgress:
-              this.progress = Math.round(event.loaded / event.total * 100);
+              this.progress = Math.round((event.loaded / event.total) * 100);
               break;
             case HttpEventType.Response:
               this.message = 'LAB.MESSAGES.uploadCompleted';
@@ -61,11 +69,11 @@ export class UploadPracticeBgProcessComponent extends BaseBgProcessComponent imp
               }, 4000);
           }
         },
-        error => {
+        () => {
           this.isError = true;
           this.unsubscribe();
         }
-      )
+      );
   }
 
   unsubscribe(): void {
@@ -77,5 +85,4 @@ export class UploadPracticeBgProcessComponent extends BaseBgProcessComponent imp
   ngOnDestroy(): void {
     this.unsubscribe();
   }
-
 }

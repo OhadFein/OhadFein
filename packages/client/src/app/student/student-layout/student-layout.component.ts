@@ -33,16 +33,28 @@ export class StudentLayoutComponent {
   };
 
   studentNavButtons: NavButton[] = [
-    { label: 'STUDENT.NAV.Stars', routerLink: '/student/star', icon: 'icon-stars' },
-    { label: 'STUDENT.NAV.MyLab', routerLink: '/student/lab', icon: ' icon-lab' },
-    { label: 'STUDENT.NAV.Practices', routerLink: '/student/practices', icon: 'icon-practices' }
+    {
+      label: 'STUDENT.NAV.Stars',
+      routerLink: '/student/star',
+      icon: 'icon-stars'
+    },
+    {
+      label: 'STUDENT.NAV.MyLab',
+      routerLink: '/student/lab',
+      icon: ' icon-lab'
+    },
+    {
+      label: 'STUDENT.NAV.Practices',
+      routerLink: '/student/practices',
+      icon: 'icon-practices'
+    }
   ];
 
   constructor(private router: Router) {
     this.router.events.subscribe((event: Event) => {
       if (event instanceof NavigationEnd) {
         const lastRoute = this.router.url.split('/');
-        this.currentRoute = lastRoute[lastRoute.length - 1]
+        this.currentRoute = lastRoute[lastRoute.length - 1];
       }
     });
   }

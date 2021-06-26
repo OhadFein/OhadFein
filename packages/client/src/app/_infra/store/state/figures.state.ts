@@ -6,5 +6,5 @@ export class FiguresState {
 }
 
 export const initializeFiguresState = () => {
-  return {figures: Array<IFigure>(), error: null};
+  return { figures: Array<IFigure>(), error: null };
 };

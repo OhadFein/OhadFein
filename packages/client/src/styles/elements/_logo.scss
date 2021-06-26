@@ -1,12 +1,11 @@
 svg {
-    &.logo {
-        .st0 {
-            fill: $indigo;
-        }
-
-        .st1 {
-            fill: url(#SVGID_1_);
-        }
-
+  &.logo {
+    .st0 {
+      fill: $indigo;
     }
+
+    .st1 {
+      fill: url(#SVGID_1_);
+    }
+  }
 }

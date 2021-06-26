@@ -2,10 +2,12 @@
 $navigation-border-width: 1px;
 $navigation-border-style: solid;
 $navigation-border-color: $gray-500;
-$navigation-border: $navigation-border-width $navigation-border-style $navigation-border-color;
+$navigation-border: $navigation-border-width $navigation-border-style
+  $navigation-border-color;
 
 $navigation-selected-border-width: 5px;
-$navigation-selected-border: $navigation-selected-border-width $navigation-border-style transparent;
+$navigation-selected-border: $navigation-selected-border-width
+  $navigation-border-style transparent;
 
 $navigation-menubtn-width: 24px;
 

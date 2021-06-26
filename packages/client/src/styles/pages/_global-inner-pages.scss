@@ -1,11 +1,11 @@
 .app-bg {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-attachment: fixed;
-    background-repeat: no-repeat;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
 }
 
 // .ap-bg-one {
@@ -21,45 +21,43 @@
 // }
 
 .inner-page-container {
-    margin-top: 3rem;
-    margin-bottom: 4rem;
+  margin-top: 3rem;
+  margin-bottom: 4rem;
 }
 
 .page-title-row {
+  .btn {
+    display: inline-block;
+    min-width: 8rem;
+  }
 
-    .btn {
-        display: inline-block;
-        min-width: 8rem;
-    }
+  .inner-page-title {
+    display: block;
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
 
-    .inner-page-title {
-        display: block;
-        margin-top: 1rem;
-        text-align: center;
-        font-size: 1.2rem;
-        font-weight: 600;
-
-    }
-
-    .inner-page-sub-title {
-        text-align: center;
-        font-size: 1rem;
-    }
+  .inner-page-sub-title {
+    text-align: center;
+    font-size: 1rem;
+  }
 }
 
 .page-search-row {
-    margin-top: $paragraph-margin-bottom;
-    margin-bottom: $paragraph-margin-bottom;
+  margin-top: $paragraph-margin-bottom;
+  margin-bottom: $paragraph-margin-bottom;
 
-    .input-group {
-        .form-control {
-            border-right: none;
-        }
-
-        .input-group-append {
-            .input-group-text {
-                border-left: none;
-            }
-        }
+  .input-group {
+    .form-control {
+      border-right: none;
     }
+
+    .input-group-append {
+      .input-group-text {
+        border-left: none;
+      }
+    }
+  }
 }

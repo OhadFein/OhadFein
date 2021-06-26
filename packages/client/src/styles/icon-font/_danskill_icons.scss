@@ -1,7 +1,8 @@
 @font-face {
   font-family: 'danskill_icons';
   src: url('assets/fonts/danskill_icons.eot?17586455');
-  src: url('assets/fonts/danskill_icons.eot?17586455#iefix') format('embedded-opentype'),
+  src: url('assets/fonts/danskill_icons.eot?17586455#iefix')
+      format('embedded-opentype'),
     url('assets/fonts/danskill_icons.woff2?17586455') format('woff2'),
     url('assets/fonts/danskill_icons.woff?17586455') format('woff'),
     url('assets/fonts/danskill_icons.ttf?17586455') format('truetype'),
@@ -10,20 +11,20 @@
   font-style: normal;
 }
 
-
 /* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
 /* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
 
-@media screen and (-webkit-min-device-pixel-ratio:0) {
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
   @font-face {
     font-family: 'danskill_icons';
-    src: url('assets/fonts/danskill_icons.svg?17586455#danskill_icons') format('svg');
+    src: url('assets/fonts/danskill_icons.svg?17586455#danskill_icons')
+      format('svg');
   }
 }
 
-[class^="icon-"]:before,
-[class*=" icon-"]:before {
-  font-family: "danskill_icons";
+[class^='icon-']:before,
+[class*=' icon-']:before {
+  font-family: 'danskill_icons';
   font-style: normal;
   font-weight: normal;
   speak: never;
@@ -31,7 +32,7 @@
   display: inline-block;
   text-decoration: inherit;
   width: 1em;
-  margin-right: .2em;
+  margin-right: 0.2em;
   text-align: center;
   /* opacity: .8; */
 
@@ -44,7 +45,7 @@
 
   /* Animation center compensation - margins should be symmetric */
   /* remove if not needed */
-  margin-left: .2em;
+  margin-left: 0.2em;
 
   /* you can be more comfortable with increased icons size */
   /* font-size: 120%; */
@@ -56,7 +57,6 @@
   /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
-
 
 .icon-warning:before {
   content: '\e800';

@@ -15,41 +15,41 @@ export class StudentProfilePageComponent implements OnInit, OnDestroy {
   user: User = null;
   errorMsg: UserError | string = null;
 
-  constructor(private store: Store<any>, private errorService: AlertErrorService) {}
+  constructor(
+    private store: Store<any>,
+    private errorService: AlertErrorService
+  ) {}
 
   ngOnInit() {
-	this.subs.push(
-	  this.store.select(
-		selectors.selectCurrentUser()).subscribe(res => {
-		if (res) {
-		  this.user = {...res};
-		  this.errorMsg = null;
-		} else {
-		  this.store.dispatch(UserActions.BeginGetUserAction());
-		}
-	  })
-	);
+    this.subs.push(
+      this.store.select(selectors.selectCurrentUser()).subscribe((res) => {
+        if (res) {
+          this.user = { ...res };
+          this.errorMsg = null;
+        } else {
+          this.store.dispatch(UserActions.BeginGetUserAction());
+        }
+      })
+    );
 
-	this.subs.push(
-	  this.store.select(
-		selectors.selectCurrentUserError()).subscribe(res => {
-		if (res && res.type) {
-		  this.errorMsg = this.errorService.alertUserError(res.type);
-		}
-	  })
-	);
+    this.subs.push(
+      this.store.select(selectors.selectCurrentUserError()).subscribe((res) => {
+        if (res && res.type) {
+          this.errorMsg = this.errorService.alertUserError(res.type);
+        }
+      })
+    );
   }
 
   tryAgain() {
-	this.user = null;
-	this.errorMsg = null;
-	setTimeout(() => {
-	  this.store.dispatch(UserActions.BeginGetUserAction());
-	}, 2000);
-
+    this.user = null;
+    this.errorMsg = null;
+    setTimeout(() => {
+      this.store.dispatch(UserActions.BeginGetUserAction());
+    }, 2000);
   }
 
   ngOnDestroy(): void {
-	this.subs.forEach(sub => sub.unsubscribe());
+    this.subs.forEach((sub) => sub.unsubscribe());
   }
 }

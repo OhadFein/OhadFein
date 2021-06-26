@@ -10,7 +10,6 @@ import { Subscription } from 'rxjs';
   styles: []
 })
 export class ForgotPasswordPageComponent implements OnInit, OnDestroy {
-
   forgotPasswordForm: FormGroup;
   isSubmitted = false;
   isSend = false;
@@ -18,7 +17,9 @@ export class ForgotPasswordPageComponent implements OnInit, OnDestroy {
 
   subs: Subscription[] = [];
 
-  get formControls() { return this.forgotPasswordForm.controls; }
+  get formControls() {
+    return this.forgotPasswordForm.controls;
+  }
 
   constructor(
     private formBuilder: FormBuilder,
@@ -26,31 +27,27 @@ export class ForgotPasswordPageComponent implements OnInit, OnDestroy {
     private alertService: AlertService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit() {
-
     this.token = this.route.snapshot.paramMap.get('token');
     if (this.token) {
       /// user has reset token from email
       this.subs.push(
         this.loginService.validateResetToken(this.token).subscribe(
-          res => {
+          (res) => {
             if (res.message) {
               this.router.navigate(['/reset', 'edit', this.token]);
-
             } else if (res.message) {
-
               const errorStr = `${res.message}`;
               this.alertService.error(errorStr);
               this.router.navigate(['/reset']);
-
             } else {
               this.alertService.error('ERRORS.GeneralBackendError');
               this.router.navigate(['/reset']);
             }
           },
-          error => {
+          () => {
             this.alertService.error('ERRORS.GeneralBackendError');
             this.router.navigate(['/reset']);
           }
@@ -63,7 +60,7 @@ export class ForgotPasswordPageComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subs.forEach(s => s.unsubscribe());
+    this.subs.forEach((s) => s.unsubscribe());
   }
 
   resetPassword() {
@@ -71,32 +68,30 @@ export class ForgotPasswordPageComponent implements OnInit, OnDestroy {
 
     if (this.forgotPasswordForm.invalid) {
       this.isSubmitted = false;
+
       return;
     }
 
     this.subs.push(
-      this.loginService.forgotPassword(this.forgotPasswordForm.value)
-        .subscribe(
-          res => {
-            if (res.message) {
-              this.isSend = true;
-              this.isSubmitted = false;
-            } else if (res.message) {
-              const errorStr = `${res.message}`;
-              this.alertService.error(errorStr);
-              this.isSubmitted = false;
-
-            } else {
-              this.isSubmitted = false;
-              this.alertService.error('LOGIN.ResetPasswordFailedMsg');
-            }
-          },
-          error => {
+      this.loginService.forgotPassword(this.forgotPasswordForm.value).subscribe(
+        (res) => {
+          if (res.message) {
+            this.isSend = true;
+            this.isSubmitted = false;
+          } else if (res.message) {
+            const errorStr = `${res.message}`;
+            this.alertService.error(errorStr);
+            this.isSubmitted = false;
+          } else {
             this.isSubmitted = false;
             this.alertService.error('LOGIN.ResetPasswordFailedMsg');
           }
-        )
+        },
+        () => {
+          this.isSubmitted = false;
+          this.alertService.error('LOGIN.ResetPasswordFailedMsg');
+        }
+      )
     );
   }
-
 }

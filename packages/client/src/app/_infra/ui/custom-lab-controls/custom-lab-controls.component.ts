@@ -21,7 +21,8 @@ import { finalize } from 'rxjs/operators';
   templateUrl: './custom-lab-controls.component.html',
   styleUrls: ['./custom-lab-controls.component.scss']
 })
-export class CustomLabControlsComponent implements OnChanges, OnInit, AfterViewInit {
+export class CustomLabControlsComponent
+  implements OnChanges, OnInit, AfterViewInit {
   @Input() isPlaying: boolean;
   @Input() totalTimePassed: string;
   @Input() duration: number;
@@ -133,13 +134,16 @@ export class CustomLabControlsComponent implements OnChanges, OnInit, AfterViewI
     if (!this.panMoveSource) {
       this.panMoveSource = timer(50); // set a bandwidth to max 20 shift events per a second
       this.panMoveSource
-          .pipe(finalize(() => (this.panMoveSource = null)))
-          .subscribe(() => (this.pan.emit(event.velocityX)));
+        .pipe(finalize(() => (this.panMoveSource = null)))
+        .subscribe(() => this.pan.emit(event.velocityX));
     }
   }
 
   onChangeProgress(event: MouseEvent): void {
-    if (event.offsetX > this.minJumpShift && event.offsetX <= this.progressBarWidth) {
+    if (
+      event.offsetX > this.minJumpShift &&
+      event.offsetX <= this.progressBarWidth
+    ) {
       this.setProgressInPixels(event.offsetX);
       this.jumpToTime(event.offsetX);
     }
@@ -163,7 +167,11 @@ export class CustomLabControlsComponent implements OnChanges, OnInit, AfterViewI
    * @private
    */
   private getScrollBlocks(): number[] {
-    const numberOfBlocks = Math.ceil((this.screenWidth || this.defaultMobileScreenWidth) * 3 / this.blockWidth);
+    const numberOfBlocks = Math.ceil(
+      ((this.screenWidth || this.defaultMobileScreenWidth) * 3) /
+        this.blockWidth
+    );
+
     return Array(numberOfBlocks).fill(0);
   }
 
@@ -174,11 +182,16 @@ export class CustomLabControlsComponent implements OnChanges, OnInit, AfterViewI
    * @private
    */
   private setScrollPosition(value: number): void {
-    setTimeout(() => {this.scroll.nativeElement.scrollLeft = value;}, 1);
+    setTimeout(() => {
+      this.scroll.nativeElement.scrollLeft = value;
+    }, 1);
   }
 
   private getScrollPosition(): number {
-    return this.scroll.nativeElement.scrollLeft - (this.scroll.nativeElement.clientLeft || 0);
+    return (
+      this.scroll.nativeElement.scrollLeft -
+      (this.scroll.nativeElement.clientLeft || 0)
+    );
   }
 
   /**
@@ -189,7 +202,10 @@ export class CustomLabControlsComponent implements OnChanges, OnInit, AfterViewI
     const seconds = parseInt(this.totalTimePassed, 10) % 60;
     const secondsToMinutes = parseInt(this.totalTimePassed, 10) / 60;
     const minutes = Math.floor(secondsToMinutes);
-    return `${this.getFormattedTimeToString(minutes)}:${this.getFormattedTimeToString(seconds)}`;
+
+    return `${this.getFormattedTimeToString(
+      minutes
+    )}:${this.getFormattedTimeToString(seconds)}`;
   }
 
   /**
@@ -199,6 +215,7 @@ export class CustomLabControlsComponent implements OnChanges, OnInit, AfterViewI
    */
   private getFormattedTimeToString(time: number): string {
     const formattedTime = (Math.round(time * 100) / 100).toFixed(0);
+
     return time < 10 ? `0${formattedTime}` : `${formattedTime}`;
   }
 
@@ -217,7 +234,9 @@ export class CustomLabControlsComponent implements OnChanges, OnInit, AfterViewI
    * @private
    */
   private setProgressInSeconds(seconds: number): void {
-    const totalTimePassedInPercents = parseFloat((seconds / this.duration).toFixed(2));
+    const totalTimePassedInPercents = parseFloat(
+      (seconds / this.duration).toFixed(2)
+    );
     const progress = this.progressBarWidth * totalTimePassedInPercents;
 
     this.progress.nativeElement.style.width = `${progress}px`;

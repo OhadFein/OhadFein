@@ -7,19 +7,20 @@ import * as FigureActions from '@app/_infra/store/actions/figures.actions';
   providedIn: 'root'
 })
 export class StarFigureService {
-
   constructor(private store: Store<any>) {}
 
   getFigure(figureId): any {
-	this.store.select(FigureSelectors.selectFigureById(figureId)).subscribe(
-	  figure => {
-		if (figure) {
-		  return figure;
-		} else {
-		  setTimeout(() => {
-			this.store.dispatch(FigureActions.BeginGetFigureAction({payload: figureId}));
-		  }, 1000);
-		}
-	  })
+    this.store
+      .select(FigureSelectors.selectFigureById(figureId))
+      .subscribe((figure) => {
+        if (figure) {
+          return figure;
+        }
+        setTimeout(() => {
+          this.store.dispatch(
+            FigureActions.BeginGetFigureAction({ payload: figureId })
+          );
+        }, 1000);
+      });
   }
 }

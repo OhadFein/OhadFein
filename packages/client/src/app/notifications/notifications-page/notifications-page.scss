@@ -1,10 +1,10 @@
 .notifications-wrapper {
   //padding-top: 30px;
   .notifications-list {
-    .notifications-date{
+    .notifications-date {
       // TODO: general css
       font-size: 12px;
-      color: #A1A1A1;
+      color: #a1a1a1;
       line-height: 18px;
       font-weight: 500;
       margin-bottom: 20px;
@@ -21,45 +21,45 @@
       color: #343434;
       position: relative;
 
-      &:after{
+      &:after {
         content: '';
         height: 1px;
         padding: 0 11px;
         position: absolute;
         bottom: 0;
-        background-color: #E6E6E6;
+        background-color: #e6e6e6;
         left: 18px;
         right: 18px;
       }
-      &.not-read{
+      &.not-read {
         //padding: 15px 11px 15px 7px;
         // TODO: color - general css
-        &:before{
-          content : '';
+        &:before {
+          content: '';
           height: calc(100% - 7px);
           position: absolute;
           //top: 15px;
           //bottom: 15px;
           left: 0;
           width: 4px;
-          background-color: #FF5170;
+          background-color: #ff5170;
           border-bottom-right-radius: 50px;
           border-top-right-radius: 50px;
         }
         //border-left: #FF5963 4px solid;
       }
-      .title{
+      .title {
         font-size: 13px;
         font-weight: 400;
         line-height: 20px;
       }
-      .time{
+      .time {
         font-size: 12px;
         line-height: 18px;
         font-weight: 500;
-        color: #A1A1A1;
+        color: #a1a1a1;
       }
-      .notification-icon{
+      .notification-icon {
         position: relative;
         margin-right: 10px;
       }

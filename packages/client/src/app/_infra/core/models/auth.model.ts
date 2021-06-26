@@ -3,4 +3,3 @@ export interface AuthTokens {
   refresh_token: string;
   expired_at: string;
 }
-

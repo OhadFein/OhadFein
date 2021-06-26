@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { PASSWORD_VALIDATORS } from '@app/_infra/core/global_variables';
 import { AlertService, LoginService, RegisterService } from '@core/services';
 import { RegisterValidators } from '@core/validators';
@@ -11,7 +11,6 @@ import { RegisterValidators } from '@core/validators';
   styles: []
 })
 export class ResetPasswordPageComponent implements OnInit {
-
   newPasswordForm: FormGroup;
   token: string;
   isSubmitted = false;
@@ -26,10 +25,9 @@ export class ResetPasswordPageComponent implements OnInit {
     private alertService: AlertService,
     private route: ActivatedRoute,
     private registerService: RegisterService
-  ) { }
+  ) {}
 
   ngOnInit() {
-
     this.token = this.route.snapshot.paramMap.get('token');
     if (!this.token) {
       this.alertService.error('ERRORS.SessionIsExpired');
@@ -52,6 +50,7 @@ export class ResetPasswordPageComponent implements OnInit {
 
     if (this.newPasswordForm.invalid) {
       this.isSubmitted = false;
+
       return;
     }
 
@@ -60,5 +59,4 @@ export class ResetPasswordPageComponent implements OnInit {
       this.isSubmitted = false;
     }, 3000);
   }
-
 }

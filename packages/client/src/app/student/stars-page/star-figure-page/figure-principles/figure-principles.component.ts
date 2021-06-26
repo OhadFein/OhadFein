@@ -26,90 +26,97 @@ export class FigurePrinciplesComponent implements OnInit {
   currentVideoId: string = null;
 
   constructor(
-	private store: Store<any>,
-	private router: Router,
-	private route: ActivatedRoute,
-	private sharedService: SharedService
-  ) {
-  }
+    private store: Store<any>,
+    private router: Router,
+    private route: ActivatedRoute,
+    private sharedService: SharedService
+  ) {}
 
   ngOnInit(): void {
-	this.getFigureId();
-	this.getFigure();
-	this.getStar();
-	this.getPrinicipals();
-	this.changeVideo();
+    this.getFigureId();
+    this.getFigure();
+    this.getStar();
+    this.getPrinicipals();
+    this.changeVideo();
   }
 
   onVideoSelectedEvent(video) {
-	this.currentVideoId = video._id;
-	this.sharedService.emitChange(video);
+    this.currentVideoId = video._id;
+    this.sharedService.emitChange(video);
   }
 
   changeVideo() {
-	this.onVideoChanged.emit(true);
+    this.onVideoChanged.emit(true);
   }
 
   getFigure(): void {
-	this.subs.push(
-	  this.store.select(FigureSelectors.selectFigureById(this.figureId)).subscribe(
-		figure => {
-		  if (figure) {
-			this.figure = {...figure};
-		  } else {
-			setTimeout(() => {
-			  this.store.dispatch(FigureActions.BeginGetFigureAction({payload: this.figureId}));
-			}, 1000);
-		  }
-		})
-	)
+    this.subs.push(
+      this.store
+        .select(FigureSelectors.selectFigureById(this.figureId))
+        .subscribe((figure) => {
+          if (figure) {
+            this.figure = { ...figure };
+          } else {
+            setTimeout(() => {
+              this.store.dispatch(
+                FigureActions.BeginGetFigureAction({ payload: this.figureId })
+              );
+            }, 1000);
+          }
+        })
+    );
   }
 
   getStar(): void {
-	this.subs.push(
-	  this.store.select(StarSelectors.selectStarBySlug(this.slug)).subscribe(
-		star => {
-		  if (star) {
-			this.star = {...star};
-		  } else {
-			this.store.dispatch(StarsActions.BeginGetStarsAction());
-		  }
-		})
-	)
+    this.subs.push(
+      this.store
+        .select(StarSelectors.selectStarBySlug(this.slug))
+        .subscribe((star) => {
+          if (star) {
+            this.star = { ...star };
+          } else {
+            this.store.dispatch(StarsActions.BeginGetStarsAction());
+          }
+        })
+    );
   }
 
   getFigureId(): void {
-	const splittedPath = location.pathname.split('/');
+    const splittedPath = location.pathname.split('/');
 
-	this.slug = splittedPath[3];
-	this.figureId = splittedPath[4];
+    this.slug = splittedPath[3];
+    this.figureId = splittedPath[4];
   }
 
   getPrinicipals() {
-	this.subs.push(
-	  this.store.select(FigureSelectors.selectFigureTabsById(this.figureId, 'basicPrinciples')).subscribe(
-		videos => {
-		  if (videos) {
-			this.prinicipals = videos;
-			this.currentVideoId = videos[0]._id;
-		  } else {
-			setTimeout(() => {
-			  this.store.dispatch(FigureActions.BeginGetFigureAction({payload: this.figureId}));
-			}, 1000);
-		  }
-		})
-	)
+    this.subs.push(
+      this.store
+        .select(
+          FigureSelectors.selectFigureTabsById(this.figureId, 'basicPrinciples')
+        )
+        .subscribe((videos) => {
+          if (videos) {
+            this.prinicipals = videos;
+            this.currentVideoId = videos[0]._id;
+          } else {
+            setTimeout(() => {
+              this.store.dispatch(
+                FigureActions.BeginGetFigureAction({ payload: this.figureId })
+              );
+            }, 1000);
+          }
+        })
+    );
   }
 
   openInLab(starVideo: LabStarVideo): void {
-	const labItem: LabItem = {
-	  user: this.star,
-	  figure: this.figure,
-	  starVideo
-	}
-	this.store.dispatch(LabActions.SetLabAction({payload: labItem}));
+    const labItem: LabItem = {
+      user: this.star,
+      figure: this.figure,
+      starVideo
+    };
+    this.store.dispatch(LabActions.SetLabAction({ payload: labItem }));
 
-	this.router.navigate(['/', 'student', 'lab']);
-
+    this.router.navigate(['/', 'student', 'lab']);
   }
 }

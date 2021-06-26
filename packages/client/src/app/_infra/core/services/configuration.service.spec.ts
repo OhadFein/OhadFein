@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
-
-import { TestBed, async, inject } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { ConfigurationService } from './configuration.service';
 
 describe('Service: Configuration', () => {
@@ -10,7 +8,10 @@ describe('Service: Configuration', () => {
     });
   });
 
-  it('should ...', inject([ConfigurationService], (service: ConfigurationService) => {
-    expect(service).toBeTruthy();
-  }));
+  it('should ...', inject(
+    [ConfigurationService],
+    (service: ConfigurationService) => {
+      expect(service).toBeTruthy();
+    }
+  ));
 });

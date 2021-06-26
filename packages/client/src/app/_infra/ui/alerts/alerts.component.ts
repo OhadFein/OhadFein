@@ -20,25 +20,28 @@ import { Subscription } from 'rxjs';
   ]
 })
 export class AlertsComponent implements OnInit, OnDestroy {
-
   @Input() id: string;
 
   alerts: Alert[] = [];
   subscription: Subscription;
 
-  constructor(private alertService: AlertService) { }
+  constructor(private alertService: AlertService) {}
   ngOnInit() {
-    this.subscription = this.alertService.onAlert(this.id)
-      .subscribe(alert => {
+    this.subscription = this.alertService
+      .onAlert(this.id)
+      .subscribe((alert) => {
         if (!alert.message) {
           // clear alerts when an empty alert is received
           this.alerts = [];
+
           return;
         }
 
         // add alert to array
         this.alerts.push(alert);
-        setTimeout(() => { this.removeAlert(alert); }, ALERT_TIMEOUT);
+        setTimeout(() => {
+          this.removeAlert(alert);
+        }, ALERT_TIMEOUT);
       });
   }
 
@@ -49,7 +52,7 @@ export class AlertsComponent implements OnInit, OnDestroy {
 
   removeAlert(alert: Alert) {
     // remove specified alert from array
-    this.alerts = this.alerts.filter(x => x !== alert);
+    this.alerts = this.alerts.filter((x) => x !== alert);
   }
 
   cssClass(alert: Alert) {
@@ -69,6 +72,4 @@ export class AlertsComponent implements OnInit, OnDestroy {
         return 'alert alert-warning';
     }
   }
-
-
 }

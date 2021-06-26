@@ -14,7 +14,7 @@
     height: 21px;
     margin-right: 20px;
     position: relative;
-    .notifications-number{
+    .notifications-number {
       position: absolute;
       top: 1px;
       left: -7px;
@@ -22,12 +22,11 @@
       width: 16px;
       height: 16px;
       // TODO: general css
-      background-color: #FF5170;
+      background-color: #ff5170;
       font-size: 9px;
       font-weight: 600;
       color: white;
     }
-
   }
 
   .navbar-brand {
@@ -100,7 +99,7 @@
     margin: 0;
     cursor: pointer;
     margin-right: 8px;
-    img{
+    img {
       width: 16px;
       height: 21px;
     }
@@ -116,7 +115,7 @@
       margin: 0px;
 
       @include trans_form(rotate(0deg));
-      @include trans_ition(.5s ease-in-out);
+      @include trans_ition(0.5s ease-in-out);
 
       &:focus {
         outline: 0;
@@ -133,7 +132,7 @@
         border: none;
 
         @include trans_form(rotate(0deg));
-        @include trans_ition(.25s ease-in-out);
+        @include trans_ition(0.25s ease-in-out);
 
         &:nth-child(1) {
           top: 0px;

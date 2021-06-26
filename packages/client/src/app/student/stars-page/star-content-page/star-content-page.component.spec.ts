@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
 import { StarContentPageComponent } from './star-content-page.component';
 
@@ -11,9 +8,8 @@ describe('StarContentPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StarContentPageComponent ]
-    })
-    .compileComponents();
+      declarations: [StarContentPageComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

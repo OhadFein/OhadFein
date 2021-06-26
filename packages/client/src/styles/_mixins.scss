@@ -1,8 +1,14 @@
-@import "./mixins/round-buttons";
-@import "./mixins/underline";
-@import "./mixins/animate-spin";
+@import './mixins/round-buttons';
+@import './mixins/underline';
+@import './mixins/animate-spin';
 
-@mixin position_fixed($top: auto, $bottom: auto, $left:auto, $right :auto, $width: 100%) {
+@mixin position_fixed(
+  $top: auto,
+  $bottom: auto,
+  $left: auto,
+  $right: auto,
+  $width: 100%
+) {
   position: fixed;
   top: $top;
   bottom: $bottom;
@@ -11,7 +17,7 @@
   width: $width;
 }
 
-@mixin border ($width: 1px, $style: solid, $color: $black) {
+@mixin border($width: 1px, $style: solid, $color: $black) {
   border: $width $style $color;
 }
 
@@ -21,8 +27,7 @@
   text-overflow: ellipsis;
 }
 
-
-@mixin trans_form ($trans) {
+@mixin trans_form($trans) {
   -webkit-transform: $trans;
   -moz-transform: $trans;
   -o-transform: $trans;
@@ -30,7 +35,7 @@
   -ms-transform: $trans;
 }
 
-@mixin trans_ition ($trans) {
+@mixin trans_ition($trans) {
   -webkit-transition: $trans;
   -moz-transition: $trans;
   -o-transition: $trans;
@@ -48,7 +53,7 @@
   }
 }
 
-@mixin list-item-image ($width) {
+@mixin list-item-image($width) {
   // border: green 5px solid;
   width: 100%;
 
@@ -57,7 +62,7 @@
   }
 }
 
-@mixin list-item-text ($width) {
+@mixin list-item-text($width) {
   width: 100%;
 
   @include media-breakpoint-down(sm) {
@@ -70,12 +75,19 @@
   }
 }
 
-@mixin text-shadow($x1:2px, $y1:2px, $blur1:5px, $color1:black, $x2:null, $y2:null, $blur2:null, $color2:null) {
+@mixin text-shadow(
+  $x1: 2px,
+  $y1: 2px,
+  $blur1: 5px,
+  $color1: black,
+  $x2: null,
+  $y2: null,
+  $blur2: null,
+  $color2: null
+) {
   @if ($x2) {
     text-shadow: $x1 $y1 $blur1 $color1, $x2 $y2 $blur2 $color2;
-  }
-
-  @else {
+  } @else {
     text-shadow: $x1 $y1 $blur1 $color1;
   }
 }

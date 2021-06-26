@@ -4,24 +4,24 @@
 
 $white: #fff;
 
-$gray-100: #FCFCFC; /// danskill gray one
-$gray-200: #F0F0F0; /// danskill gray two
+$gray-100: #fcfcfc; /// danskill gray one
+$gray-200: #f0f0f0; /// danskill gray two
 $gray-300: #dee2e6;
 $gray-400: #ced4da;
-$gray-500: #B2B2B2; /// danskill gray three
+$gray-500: #b2b2b2; /// danskill gray three
 $gray-600: #707070; /// danskill gray four
 $gray-700: #495057;
 $gray-800: #343a40;
 $gray-900: #212529;
 $black: #000;
 
-$blue: #39BFE6;
-$indigo: #1B154B;
+$blue: #39bfe6;
+$indigo: #1b154b;
 $purple: #6f42c1;
-$pink: #E02177;
+$pink: #e02177;
 $red: #dc3545;
-$orange: #D7B627;
-$yellow: #FFD500;
+$orange: #d7b627;
+$yellow: #ffd500;
 $green: #258900;
 $teal: #20c997;
 $cyan: $blue;
@@ -29,7 +29,6 @@ $cyan: $blue;
 $dark: $indigo;
 
 $enable-rounded: true;
-
 
 $body-bg: $gray-100;
 $body-color: $dark;
@@ -41,14 +40,14 @@ $link-color: $body-color;
 // Font, line-height, and color for body text, headings, and more.
 
 // stylelint-disable value-keyword-case
-$font-family-sans-serif: "Poppins", Arial, sans-serif;
-$font-family-monospace: "Serifa", "Times New Roman", serif;
+$font-family-sans-serif: 'Poppins', Arial, sans-serif;
+$font-family-monospace: 'Serifa', 'Times New Roman', serif;
 $font-family-base: $font-family-sans-serif;
 // stylelint-enable value-keyword-case
 
 $font-size-base: 1rem;
 $font-size-lg: $font-size-base * 1.25;
-$font-size-sm: $font-size-base * .875;
+$font-size-sm: $font-size-base * 0.875;
 
 $font-weight-lighter: lighter;
 $font-weight-light: 100;
@@ -91,7 +90,7 @@ $modal-content-box-shadow-xs: 0 .25rem .5rem rgba($black, .5) !default;
 $modal-content-box-shadow-sm-up: 0 .5rem 1rem rgba($black, .5) !default;  */
 
 $modal-backdrop-bg: $black;
-$modal-backdrop-opacity: .7;
+$modal-backdrop-opacity: 0.7;
 $modal-header-border-color: transparent;
 $modal-footer-border-color: $modal-header-border-color !default;
 $modal-header-border-width: $modal-content-border-width !default;
@@ -107,7 +106,7 @@ $modal-sm: 300px !default; */
 
 $modal-fade-transform: translate(0, -180px);
 $modal-show-transform: translate(0, 0);
-$modal-transition: transform .5s ease-out;
+$modal-transition: transform 0.5s ease-out;
 
 // Paragraphs
 //
@@ -116,10 +115,8 @@ $modal-transition: transform .5s ease-out;
 $paragraph-margin-bottom: 0.5rem;
 $headings-margin-bottom: $paragraph-margin-bottom;
 
-
 //Buttons
-$btn-disabled-opacity: .4;
-
+$btn-disabled-opacity: 0.4;
 
 //Forms
 

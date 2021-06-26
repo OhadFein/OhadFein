@@ -1,62 +1,60 @@
 import { IFigure } from './figure.model';
 
 export interface IStarContent {
-    about: string;
-    achievements: string[];
-    createdAt: string;
-    figures: IFigure[];
-    location: IStarContentLocation;
-    logo: IStarContentLogo;
-    name: IStarContentName;
-    promoVideo: string;
-    slug: string;
-    updatedAt: string;
-    _id: string;
+  about: string;
+  achievements: string[];
+  createdAt: string;
+  figures: IFigure[];
+  location: IStarContentLocation;
+  logo: IStarContentLogo;
+  name: IStarContentName;
+  promoVideo: string;
+  slug: string;
+  updatedAt: string;
+  _id: string;
 }
 
 export interface IStarContentName {
-    firstName: string;
-    lastName: string;
+  firstName: string;
+  lastName: string;
 }
 
 export interface IStarContentLogo {
-    large: string;
-    small: string;
+  large: string;
+  small: string;
 }
 
 export interface IStarContentLocation {
-    city: string;
+  city: string;
 }
 
-
 export enum DanceType {
-    // Latin
-    CHA_CHA_CHA = 'cha cha cha',
-    SAMBA = 'samba',
-    RUMBA = 'rumba',
-    PASODOBLE = 'pasodoble',
-    JIVE = 'jive',
+  // Latin
+  CHA_CHA_CHA = 'cha cha cha',
+  SAMBA = 'samba',
+  RUMBA = 'rumba',
+  PASODOBLE = 'pasodoble',
+  JIVE = 'jive',
 
-    // Standard
-    WALTZ = 'waltz',
-    TANGO = 'tango',
-    VIENNESE_WALTZ = 'viennese waltz',
-    FOXTROT = 'foxtrot',
-    QUICKSTEP = 'quickstep',
+  // Standard
+  WALTZ = 'waltz',
+  TANGO = 'tango',
+  VIENNESE_WALTZ = 'viennese waltz',
+  FOXTROT = 'foxtrot',
+  QUICKSTEP = 'quickstep'
 }
 
 export interface StarContentDance {
-    type: DanceType;
-    levels: Array<StarDanceLevel>;
+  type: DanceType;
+  levels: Array<StarDanceLevel>;
 }
 
 export interface StarDanceLevel {
-    level: string;
-    figures: IFigure[];
+  level: string;
+  figures: IFigure[];
 }
 
-
 export enum StarContentError {
-    GET = 'STAR.ERRORS.getStarContentError',
-    GENERAL = 'ERRORS.GeneralBackendError'
+  GET = 'STAR.ERRORS.getStarContentError',
+  GENERAL = 'ERRORS.GeneralBackendError'
 }

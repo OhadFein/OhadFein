@@ -6,5 +6,5 @@ export class StarsState {
 }
 
 export const initializeStarsState = () => {
-  return {stars: null, error: null};
+  return { stars: null, error: null };
 };

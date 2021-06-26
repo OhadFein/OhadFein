@@ -7,13 +7,14 @@ import {
   LoginLayoutComponent,
   LoginPageComponent,
   RegisterPageComponent,
-  ResetPasswordPageComponent,
+  ResetPasswordPageComponent
 } from '.';
-
 
 const routes: Routes = [
   {
-    path: '', component: LoginLayoutComponent, children: [
+    path: '',
+    component: LoginLayoutComponent,
+    children: [
       { path: 'login', component: LoginPageComponent },
       { path: 'register', component: RegisterPageComponent },
       { path: 'reset', component: ForgotPasswordPageComponent },
@@ -22,11 +23,10 @@ const routes: Routes = [
       { path: '', redirectTo: 'login', pathMatch: 'full' }
     ]
   }
-
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class LoginRoutingModule { }
+export class LoginRoutingModule {}

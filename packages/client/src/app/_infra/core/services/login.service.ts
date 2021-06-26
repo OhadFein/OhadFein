@@ -12,12 +12,10 @@ import { AlertService } from './alert.service';
 import { BaseRestService } from './base-rest.service';
 import { TokenService } from './token.service';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-
   constructor(
     private router: Router,
     private alertService: AlertService,
@@ -25,18 +23,17 @@ export class LoginService {
     private store: Store<any>,
     private tokenService: TokenService,
     private baseRestService: BaseRestService
-  ) { }
+  ) {}
 
   login({ email, password }) {
     this.store.dispatch(GlobalActions.Logout());
     this.baseRestService
       .post<AuthRestResponse>('login', { email, password })
       .subscribe(
-        res => {
+        (res) => {
           if (res.success) {
             this.tokenService.storeTokens(res.data);
             this.afterLoginRoute();
-
           } else if (!res.success && res.message) {
             const errorStr = `${res.message}`;
             this.alertService.error(errorStr);
@@ -44,7 +41,7 @@ export class LoginService {
             this.alertService.error('LOGIN.LoginFailedMsg');
           }
         },
-        error => {
+        () => {
           this.alertService.error('LOGIN.LoginFailedMsg');
         }
       );
@@ -52,10 +49,10 @@ export class LoginService {
 
   loginFacebook() {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
-      res => {
+      (res) => {
         console.log('FACEBOOK LOGIN: ', res);
       },
-      error => {
+      () => {
         this.alertService.error('LOGIN.LoginFailedMsg');
       }
     );
@@ -64,7 +61,7 @@ export class LoginService {
   logout(showMsg = true) {
     this.store.dispatch(GlobalActions.Logout());
 
-      this.tokenService.deleteStoredTokens();
+    this.tokenService.deleteStoredTokens();
     if (showMsg) {
       this.alertService.info('LOGIN.LogOutMsg');
     }
@@ -86,20 +83,20 @@ export class LoginService {
 
   refreshToken() {
     const refreshToken = this.tokenService.getStoredRefreshToken();
-    return this.baseRestService.post<AuthRestResponse>(`refreshToken/${refreshToken}`, {})
+
+    return this.baseRestService
+      .post<AuthRestResponse>(`refreshToken/${refreshToken}`, {})
       .pipe(
-        tap(
-          res => {
-            if (res.success) {
-              this.tokenService.storeTokens(res.data);
-            } else if (!res.success && res.message) {
-              const errorStr = `${res.message}`;
-              this.alertService.error(errorStr);
-            } else {
-              this.alertService.error('LOGIN.LoginFailedMsg');
-            }
+        tap((res) => {
+          if (res.success) {
+            this.tokenService.storeTokens(res.data);
+          } else if (!res.success && res.message) {
+            const errorStr = `${res.message}`;
+            this.alertService.error(errorStr);
+          } else {
+            this.alertService.error('LOGIN.LoginFailedMsg');
           }
-        )
-      )
+        })
+      );
   }
 }

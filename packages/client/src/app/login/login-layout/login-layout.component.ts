@@ -1,26 +1,21 @@
-import { Component, OnInit } from '@angular/core';
-import {Router} from '@angular/router';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dsapp-login-layout',
   templateUrl: './login-layout.component.html',
   styles: []
 })
-export class LoginLayoutComponent implements OnInit {
-
+export class LoginLayoutComponent {
   isLoginSelected: boolean;
   constructor(private router: Router) {
     this.isLoginSelected = true;
-    if(this.router.url.split('/')[1] === 'register'){
+    if (this.router.url.split('/')[1] === 'register') {
       this.isLoginSelected = false;
     }
   }
 
-  ngOnInit() {
-
+  setSelected() {
+    this.isLoginSelected = !this.isLoginSelected;
   }
-  setSelected(event){
-    this.isLoginSelected = !this.isLoginSelected
-  }
-
 }

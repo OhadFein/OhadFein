@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BuildType, Configuration } from '@app/_infra/core/models';
 import { ConfigurationService } from '@core/services/configuration.service';
 import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -9,16 +8,15 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styles: []
 })
 export class AboutDanskillModalComponent implements OnInit {
-
-
   version = '';
 
-  constructor(public activeModal: NgbActiveModal, protected configService: ConfigurationService) {
+  constructor(
+    public activeModal: NgbActiveModal,
+    protected configService: ConfigurationService
+  ) {
     const version: string = configService.getVersionString();
     this.version = version ? version : '';
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

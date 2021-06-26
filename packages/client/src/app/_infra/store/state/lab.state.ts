@@ -6,5 +6,5 @@ export class LabState {
 }
 
 export const initializeLabState = () => {
-  return {labItem: null, error: null};
+  return { labItem: null, error: null };
 };

@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
 import { ResetPasswordPageComponent } from './reset-password-page.component';
 
@@ -11,9 +8,8 @@ describe('ResetPasswordPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResetPasswordPageComponent ]
-    })
-    .compileComponents();
+      declarations: [ResetPasswordPageComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

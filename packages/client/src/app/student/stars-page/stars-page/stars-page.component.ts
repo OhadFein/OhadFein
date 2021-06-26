@@ -43,10 +43,10 @@ export class StarsPageComponent implements OnInit, OnDestroy {
     const vURL: string = this.configService.getAboutVideoURL();
     this.aboutVideoURL = vURL ? vURL : '';
 
-
     this.subs.push(
-      this.store.select(selectors.selectAllStars()).subscribe(
-          (res: IUser[]) => {
+      this.store
+        .select(selectors.selectAllStars())
+        .subscribe((res: IUser[]) => {
           if (res) {
             this.users = [...res];
             this.filterStars(null);
@@ -54,28 +54,29 @@ export class StarsPageComponent implements OnInit, OnDestroy {
           } else {
             this.store.dispatch(StarsActions.BeginGetStarsAction());
           }
-        }
-      )
-    );
-
-    this.subs.push(
-      this.store.select(
-        selectors.selectStarsError()).subscribe(res => {
-          if (res && res.type) {
-            this.users = null;
-            this.loading = false;
-            this.errorMsg = this.errorService.alertStarsError(res.type);
-          }
         })
     );
 
     this.subs.push(
-      this.search.valueChanges.pipe(startWith(''), debounceTime(700), distinctUntilChanged())
-        .subscribe(val => this.filterStars(val))
-    )
+      this.store.select(selectors.selectStarsError()).subscribe((res) => {
+        if (res && res.type) {
+          this.users = null;
+          this.loading = false;
+          this.errorMsg = this.errorService.alertStarsError(res.type);
+        }
+      })
+    );
+
+    this.subs.push(
+      this.search.valueChanges
+        .pipe(startWith(''), debounceTime(700), distinctUntilChanged())
+        .subscribe((val) => this.filterStars(val))
+    );
   }
 
-  ngOnDestroy(): void { this.subs.forEach(s => s.unsubscribe()); }
+  ngOnDestroy(): void {
+    this.subs.forEach((s) => s.unsubscribe());
+  }
 
   filterStars(searchString: string) {
     this.searchString = searchString;
@@ -85,10 +86,12 @@ export class StarsPageComponent implements OnInit, OnDestroy {
 
       let tempFiltered = [];
       if (searchString) {
-
         searchString = searchString.toLocaleLowerCase().trim();
         tempFiltered = this.users.filter((starsUser: IUser) => {
-          const starName = this.getStarNameString(starsUser.given_name, starsUser.family_name);
+          const starName = this.getStarNameString(
+            starsUser.given_name,
+            starsUser.family_name
+          );
           if (starName.indexOf(searchString) !== -1) {
             return starsUser;
           }
@@ -101,7 +104,6 @@ export class StarsPageComponent implements OnInit, OnDestroy {
 
       this.loading = false;
     }
-
   }
 
   sortStars = (user1: IUser, user2: IUser): number => {
@@ -110,17 +112,27 @@ export class StarsPageComponent implements OnInit, OnDestroy {
         return user2.star.figures.length - user1.star.figures.length;
 
       case StarSortingOptions.NAME:
-        const starName1 = this.getStarNameString(user1.given_name, user1.family_name);
-        const starName2 = this.getStarNameString(user2.given_name, user2.family_name);
+        // eslint-disable-next-line no-case-declarations
+        const starName1 = this.getStarNameString(
+          user1.given_name,
+          user1.family_name
+        );
+        // eslint-disable-next-line no-case-declarations
+        const starName2 = this.getStarNameString(
+          user2.given_name,
+          user2.family_name
+        );
+        // eslint-disable-next-line no-case-declarations
         let comparison = 0;
         if (starName1 > starName2) {
           comparison = 1;
         } else if (starName1 < starName2) {
           comparison = -1;
         }
+
         return comparison;
     }
-  }
+  };
 
   getStarNameString(givenName: string, familyName: string): string {
     return `${givenName} ${familyName}`.toLocaleLowerCase();

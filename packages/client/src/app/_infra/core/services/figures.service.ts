@@ -8,14 +8,11 @@ import { BaseRestService } from './base-rest.service';
   providedIn: 'root'
 })
 export class FiguresService {
-
   constructor(private baseRestService: BaseRestService) {}
 
   getFigure(figureId): Observable<IFigure> {
-	return this.baseRestService.get<SingleFigureRestResponse>(`figures/${figureId}`)
-	  .pipe(
-		map((response) => response.data ?? null)
-	  );
+    return this.baseRestService
+      .get<SingleFigureRestResponse>(`figures/${figureId}`)
+      .pipe(map((response) => response.data ?? null));
   }
 }
-

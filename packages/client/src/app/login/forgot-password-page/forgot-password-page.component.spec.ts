@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
 import { ForgotPasswordPageComponent } from './forgot-password-page.component';
 
@@ -11,9 +8,8 @@ describe('ForgotPasswordPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ForgotPasswordPageComponent ]
-    })
-    .compileComponents();
+      declarations: [ForgotPasswordPageComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

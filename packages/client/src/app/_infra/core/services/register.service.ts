@@ -17,41 +17,39 @@ export class RegisterService {
     private alertService: AlertService,
     private tokenService: TokenService,
     private baseRestService: BaseRestService
-  ) { }
+  ) {}
 
   register(user: UserRegistrationData) {
-    this.baseRestService
-      .post<AuthRestResponse>('signup', user)
-      .subscribe(
-        res => {
-          if (res.success) {
-            this.tokenService.storeTokens(res.data);
-            this.afterLoginRoute();
-          } else if (!res.success && res.message) {
-            const errorStr = `${res.message}`;
-            this.alertService.error(errorStr);
-          } else {
-            this.alertService.error('LOGIN.RegistrationFailedMsg');
-          }
-        },
-        error => {
+    this.baseRestService.post<AuthRestResponse>('signup', user).subscribe(
+      (res) => {
+        if (res.success) {
+          this.tokenService.storeTokens(res.data);
+          this.afterLoginRoute();
+        } else if (!res.success && res.message) {
+          const errorStr = `${res.message}`;
+          this.alertService.error(errorStr);
+        } else {
           this.alertService.error('LOGIN.RegistrationFailedMsg');
         }
-      );
+      },
+      () => {
+        this.alertService.error('LOGIN.RegistrationFailedMsg');
+      }
+    );
   }
 
   afterLoginRoute() {
     this.alertService.success('LOGIN.RegisterSuccessMsg');
-    this.router.navigate(['/student']);// TODO: smart redirect
+    this.router.navigate(['/student']); // TODO: smart redirect
   }
 
   changePassword({ password, confirmPassword }, token: string) {
-
     const payload = { password, confirm: confirmPassword };
 
-    this.baseRestService.post<AuthRestResponse>(`reset/${token}`, payload)
+    this.baseRestService
+      .post<AuthRestResponse>(`reset/${token}`, payload)
       .subscribe(
-        res => {
+        (res) => {
           if (res.success) {
             this.tokenService.storeTokens(res.data);
             this.afterLoginRoute();
@@ -62,7 +60,7 @@ export class RegisterService {
             this.alertService.error('ERRORS.GeneralBackendError');
           }
         },
-        error => {
+        () => {
           this.alertService.error('ERRORS.GeneralBackendError');
         }
       );

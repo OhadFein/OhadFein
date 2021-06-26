@@ -1,58 +1,56 @@
-.page-title-row{
-    .practice-title{
-        margin: 0;
-    }
+.page-title-row {
+  .practice-title {
+    margin: 0;
+  }
 
-    .search-wrapper{
-        position: relative;
+  .search-wrapper {
+    position: relative;
 
-        input{
-            border-right: none;
-            border-radius: 5px;
-            padding: 0 40px;
-            text-align: center;
-        }
-        .clear-btn{
-            position: absolute;
-            top: calc(50% - 7px);
-            right: 15px;
-        }
-        .search-btn{
-            position: absolute;
-            top: calc(50% - 7px);
-            left: 15px;
-        }
+    input {
+      border-right: none;
+      border-radius: 5px;
+      padding: 0 40px;
+      text-align: center;
     }
-   
+    .clear-btn {
+      position: absolute;
+      top: calc(50% - 7px);
+      right: 15px;
+    }
+    .search-btn {
+      position: absolute;
+      top: calc(50% - 7px);
+      left: 15px;
+    }
+  }
 }
 
-.practices-dates{
-    // border: 1px solid;
+.practices-dates {
+  // border: 1px solid;
 }
 
-.practices-list{
-    // border: 1px solid;
+.practices-list {
+  // border: 1px solid;
 
-    .practice-title{
-        font-size: 0.9rem;
-        margin: 0;
+  .practice-title {
+    font-size: 0.9rem;
+    margin: 0;
+  }
+  .practice-date {
+    display: flex;
+    align-items: center;
+    p {
+      margin: 0;
+      font-size: 0.7rem;
     }
-    .practice-date{
-        display: flex;
-        align-items: center;
-        p{
-            margin: 0;
-            font-size: 0.7rem;
-        }
-       &:after{
-           content: ' ';
-           position: absolute;
-           right: 0;
-           top: 0;
-           border: 1px grey solid;
-           width: 1px;
-           height: 100%;
-       }
+    &:after {
+      content: ' ';
+      position: absolute;
+      right: 0;
+      top: 0;
+      border: 1px grey solid;
+      width: 1px;
+      height: 100%;
     }
+  }
 }
-

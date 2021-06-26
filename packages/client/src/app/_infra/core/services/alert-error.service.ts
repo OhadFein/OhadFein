@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
 import { StarContentError, StarError, UserError } from '@core/models';
-import { StarsActionType, StarsContentActionType, UserActionType } from '@infra/store/actions';
+import {
+  StarsActionType,
+  StarsContentActionType,
+  UserActionType
+} from '@infra/store/actions';
 
 import { AlertService } from './alert.service';
 
@@ -8,8 +12,7 @@ import { AlertService } from './alert.service';
   providedIn: 'root'
 })
 export class AlertErrorService {
-
-  constructor(private alertService: AlertService) { }
+  constructor(private alertService: AlertService) {}
 
   alertUserError(errorType: UserActionType | string): UserError {
     // this.alertService.error('LOGIN.LoginFailedMsg');
@@ -24,6 +27,7 @@ export class AlertErrorService {
     }
 
     this.alertService.error(errorMsg);
+
     return errorMsg;
   }
 
@@ -36,11 +40,13 @@ export class AlertErrorService {
     }
 
     this.alertService.error(errorMsg);
+
     return errorMsg;
   }
 
-
-  alertStarsContentError(errorType: StarsContentActionType | string): StarContentError {
+  alertStarsContentError(
+    errorType: StarsContentActionType | string
+  ): StarContentError {
     let errorMsg: StarContentError = StarContentError.GENERAL;
     switch (errorType) {
       case StarsContentActionType.ErrorStarsContentAction:
@@ -49,6 +55,7 @@ export class AlertErrorService {
     }
 
     this.alertService.error(errorMsg);
+
     return errorMsg;
   }
 }

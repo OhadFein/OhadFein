@@ -10,6 +10,6 @@ export class SharedService {
 
   // Service message commands
   emitChange(change: any) {
-	this.emitChangeSource.next(change);
+    this.emitChangeSource.next(change);
   }
 }

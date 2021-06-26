@@ -1,5 +1,5 @@
-.star-figure{
-  .star-figure-header{
+.star-figure {
+  .star-figure-header {
     left: 0;
     right: 0;
     margin: 0 auto;
@@ -45,30 +45,27 @@
 //   }
 // }
 
-.tab-swiper{
+.tab-swiper {
   // border: 1px solid;
   padding: 10px 0;
-  &.active{
+  &.active {
     border-bottom: 1px solid;
     outline: none;
   }
 }
 
 .basic-principles-videos-wrapper {
-
   .basic-principles-videos {
     .basic-principles-video {
       @include list-item;
 
       .basic-principal-image {
         @include list-item-image(50%);
-
       }
 
       .basic-principal-content {
         @include list-item-text(50%);
       }
-
     }
   }
 }
@@ -79,7 +76,6 @@
 
     .comparable-video-image {
       @include list-item-image(50%);
-
     }
 
     .comparable-video-text {
@@ -90,7 +86,6 @@
           margin-right: 0.2rem;
         }
       }
-
     }
   }
 }

@@ -34,25 +34,40 @@ import {
 } from './ui';
 
 const components = [
-  AlertsComponent, PageNotFoundComponent, NotificationsPageComponent,
-  NavigationComponent, HeaderComponent, AboutDanskillModalComponent, VideoPlayerModalComponent,
-  LogoComponent, PreloaderIconComponent, PreloaderInappComponent,
-  VideoPlayerWrapperComponent, InpageErrorComponent,
-  TagsHolderComponent, ImageFilePickerComponent, VideoFilePickerComponent,
-  PlayerControlsComponent, BackgroundProcessesComponent, UploadPracticeBgProcessComponent, BaseBgProcessComponent,
-  ToggleSwitchDirective, VideoPreviewComponent, CustomLabControlsComponent
+  AlertsComponent,
+  PageNotFoundComponent,
+  NotificationsPageComponent,
+  NavigationComponent,
+  HeaderComponent,
+  AboutDanskillModalComponent,
+  VideoPlayerModalComponent,
+  LogoComponent,
+  PreloaderIconComponent,
+  PreloaderInappComponent,
+  VideoPlayerWrapperComponent,
+  InpageErrorComponent,
+  TagsHolderComponent,
+  ImageFilePickerComponent,
+  VideoFilePickerComponent,
+  PlayerControlsComponent,
+  BackgroundProcessesComponent,
+  UploadPracticeBgProcessComponent,
+  BaseBgProcessComponent,
+  ToggleSwitchDirective,
+  VideoPreviewComponent,
+  CustomLabControlsComponent
 ];
 
 @NgModule({
   imports: [
-	CommonModule,
-	TranslateModule,
-	RouterModule,
-	VgCoreModule,
-	VgControlsModule,
-	VgOverlayPlayModule,
-	VgBufferingModule,
-	ImageCropperModule
+    CommonModule,
+    TranslateModule,
+    RouterModule,
+    VgCoreModule,
+    VgControlsModule,
+    VgOverlayPlayModule,
+    VgBufferingModule,
+    ImageCropperModule
   ],
   declarations: [components],
   exports: [components]

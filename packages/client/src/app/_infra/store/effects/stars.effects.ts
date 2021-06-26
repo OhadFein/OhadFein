@@ -12,18 +12,18 @@ export class StarsEffects {
   constructor(private action$: Actions, private starsService: StarsService) {}
 
   getStars$: Observable<Action> = createEffect(() =>
-	this.action$.pipe(
-	  ofType(StarsActions.BeginGetStarsAction),
-	  mergeMap(action =>
-		this.starsService.getStars().pipe(
-		  map((stars) => {
-			return StarsActions.SuccessGetStarsAction({payload: stars});
-		  }),
-		  catchError((error: Error) => {
-			return of(StarsActions.ErrorStarsAction(error));
-		  })
-		)
-	  )
-	)
+    this.action$.pipe(
+      ofType(StarsActions.BeginGetStarsAction),
+      mergeMap(() =>
+        this.starsService.getStars().pipe(
+          map((stars) => {
+            return StarsActions.SuccessGetStarsAction({ payload: stars });
+          }),
+          catchError((error: Error) => {
+            return of(StarsActions.ErrorStarsAction(error));
+          })
+        )
+      )
+    )
   );
 }

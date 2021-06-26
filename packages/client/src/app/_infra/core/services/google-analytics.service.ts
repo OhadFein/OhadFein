@@ -8,10 +8,15 @@ declare let gtag: (...any) => void;
 })
 export class GoogleAnalyticsService {
   public sendGAEvent(data: GoogleAnalyticsEventData): void {
-	const {eventName, eventCategory, eventLabel} = data;
-	const eventAction = data.eventAction ? data.eventAction : null;
-	const eventValue = data.eventValue ? data.eventValue : null;
+    const { eventName, eventCategory, eventLabel } = data;
+    const eventAction = data.eventAction ? data.eventAction : null;
+    const eventValue = data.eventValue ? data.eventValue : null;
 
-	gtag('event', eventName, {eventCategory, eventLabel, eventAction, eventValue});
+    gtag('event', eventName, {
+      eventCategory,
+      eventLabel,
+      eventAction,
+      eventValue
+    });
   }
 }
