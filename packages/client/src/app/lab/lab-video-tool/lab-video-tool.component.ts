@@ -1,11 +1,11 @@
-import {Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import {
     LabPlayerType,
     LabStarVideo,
     LabUserVideo,
 } from '@app/_infra/core/models';
-import {VideoPlayerWrapperComponent} from '@app/_infra/ui';
-import {VgEvents} from 'ngx-videogular';
+import { VideoPlayerWrapperComponent } from '@app/_infra/ui';
+import { VgEvents } from 'ngx-videogular';
 
 enum PlayerType {
     master = 'master',

@@ -1,4 +1,4 @@
-import { Directive, ElementRef, HostBinding, Input, OnChanges, OnInit, Renderer2 } from '@angular/core';
+import { Directive, HostBinding, Input, OnChanges } from '@angular/core';
 
 @Directive({
   selector: '[uiToggleSwitch]'
@@ -11,8 +11,6 @@ export class ToggleSwitchDirective implements OnChanges {
   @HostBinding('class') classes = '';
 
   baseClass = 'toggle-switch';
-
-  constructor(private el: ElementRef, private renderer: Renderer2) { }
 
   ngOnChanges() {
     const cls = this.state ? 'on' : 'off';
