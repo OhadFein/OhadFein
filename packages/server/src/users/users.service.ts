@@ -105,7 +105,7 @@ export class UsersService {
   }
 
   async setCoach(reqUser: User, username: string) {
-    // TODO: transaction, use assert.ok
+    // TODO: use transactions https://mongoosejs.com/docs/transactions.html
     const newCoach = await this.findOne(username);
     if (!newCoach || !matchRoles(newCoach, [EnumRole.Coach]))
       throw new HttpException('Coach not found', HttpStatus.NOT_FOUND);
