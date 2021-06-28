@@ -110,7 +110,6 @@ export class UsersService {
     if (!newCoach || !matchRoles(newCoach, [EnumRole.Coach]))
       throw new HttpException('Coach not found', HttpStatus.NOT_FOUND);
 
-    console.log(reqUser.coach);
     if (!reqUser.coach || !reqUser.coach.equals(newCoach._id)) {
       if (reqUser.coach) await this.removeStudent(reqUser.coach, reqUser);
       await this.userModel.updateOne({ _id: reqUser._id }, { $set: { coach: newCoach._id } });
