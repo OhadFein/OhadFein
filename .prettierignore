@@ -3,7 +3,6 @@ dist
 
 coverage
 packages/server
-packages/admin
 
 *.log
 *.html

@@ -42,7 +42,7 @@ module.exports = {
       {
         arrowParens: 'always',
         bracketSpacing: true,
-        printWidth: 80,
+        printWidth: 100,
         proseWrap: 'preserve',
         semi: true,
         singleQuote: true,
