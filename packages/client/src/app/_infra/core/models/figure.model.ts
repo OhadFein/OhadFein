@@ -9,9 +9,7 @@ export interface IFigure {
   logo: string;
   type: DanceType;
   level: string;
-  createdAt?: Date,
-  updatedAt?: Date
-  description: string
+  createdAt?: Date;
+  updatedAt?: Date;
+  description: string;
 }
-
-

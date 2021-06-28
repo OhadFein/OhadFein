@@ -11,7 +11,6 @@ import { Location } from '@angular/common';
   templateUrl: './header.component.html'
 })
 export class HeaderComponent implements OnInit {
-
   @Input() menuData: MenuData;
 
   menuIsOpen$: Observable<boolean>;
@@ -20,71 +19,68 @@ export class HeaderComponent implements OnInit {
   public notificationsNUmber: number;
 
   constructor(
-	private loginService: LoginService,
-	private modalService: NgbModal,
-	private alertService: AlertService,
-	private menuService: MenuService,
-	private location: Location
+    private loginService: LoginService,
+    private modalService: NgbModal,
+    private alertService: AlertService,
+    private menuService: MenuService,
+    private location: Location
   ) {
-
-	this.notificationsNUmber = JSON.parse(sessionStorage.getItem('notifications'));
+    this.notificationsNUmber = JSON.parse(sessionStorage.getItem('notifications'));
   }
 
   @HostListener('window:beforeinstallprompt', ['$event'])
   onbeforeinstallprompt(e) {
-	// Prevent Chrome 67 and earlier from automatically showing the prompt
-	e.preventDefault();
-	// Stash the event so it can be triggered later.
-	this.deferredPrompt = e;
-	this.showAddToHomeButton = true;
+    // Prevent Chrome 67 and earlier from automatically showing the prompt
+    e.preventDefault();
+    // Stash the event so it can be triggered later.
+    this.deferredPrompt = e;
+    this.showAddToHomeButton = true;
   }
 
   ngOnInit() {
-	this.menuIsOpen$ = this.menuService.menuOpenState$;
+    this.menuIsOpen$ = this.menuService.menuOpenState$;
   }
 
   backButtonHandler() {
-	this.location.back();
+    this.location.back();
   }
 
   toggleMenu() {
-	this.menuService.toggleMenuOpenState();
+    this.menuService.toggleMenuOpenState();
   }
 
   closeMenu() {
-	this.menuService.setMenuOpenState(false);
+    this.menuService.setMenuOpenState(false);
   }
 
   menuItemFunction(fType: MenuItemFunction) {
-	switch (fType) {
-	  case MenuItemFunction.about:
-		this.modalService.open(AboutDanskillModalComponent);
-		break;
-	  case MenuItemFunction.logout:
-		this.loginService.logout();
-		break;
-	}
+    switch (fType) {
+      case MenuItemFunction.about:
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-case-declarations
+        const modalRef = this.modalService.open(AboutDanskillModalComponent);
+        break;
+      case MenuItemFunction.logout:
+        this.loginService.logout();
+        break;
+    }
   }
 
   addToHomeScreen() {
-
-	// Show the prompt
-	this.deferredPrompt.prompt();
-	// Wait for the user to respond to the prompt
-	this.deferredPrompt.userChoice
-	  .then((choiceResult) => {
-		if (choiceResult.outcome === 'accepted') {
-		  /// User accepted the A2HS prompt
-		  // hide our user interface that shows our A2HS button
-		  this.showAddToHomeButton = false;
-		  this.deferredPrompt = null;
-		  this.alertService.success('COMMON.AddToHomeSuccess');
-		  this.closeMenu();
-		} else {
-		  // User dismissed the A2HS prompt
-		  this.alertService.error('COMMON.AddToHomeError');
-		}
-	  });
+    // Show the prompt
+    this.deferredPrompt.prompt();
+    // Wait for the user to respond to the prompt
+    this.deferredPrompt.userChoice.then((choiceResult) => {
+      if (choiceResult.outcome === 'accepted') {
+        /// User accepted the A2HS prompt
+        // hide our user interface that shows our A2HS button
+        this.showAddToHomeButton = false;
+        this.deferredPrompt = null;
+        this.alertService.success('COMMON.AddToHomeSuccess');
+        this.closeMenu();
+      } else {
+        // User dismissed the A2HS prompt
+        this.alertService.error('COMMON.AddToHomeError');
+      }
+    });
   }
-
 }

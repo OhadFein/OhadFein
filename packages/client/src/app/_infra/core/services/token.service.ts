@@ -7,8 +7,7 @@ import { AuthTokens } from '../models';
   providedIn: 'root'
 })
 export class TokenService {
-
-  constructor() { }
+  constructor() {}
 
   storeTokens(tokens: AuthTokens) {
     localStorage.setItem('access_token', tokens.access_token);
@@ -22,6 +21,7 @@ export class TokenService {
 
   checkStoredAccessToken(): boolean {
     const exists = localStorage.getItem('access_token') !== null;
+
     return exists;
   }
 
@@ -31,6 +31,7 @@ export class TokenService {
 
   checkStoredRefreshToken(): boolean {
     const exists = localStorage.getItem('refresh_token') !== null;
+
     return exists;
   }
 
@@ -48,8 +49,8 @@ export class TokenService {
           Authorization: `Bearer ${token}`
         }
       });
-    } else {
-      return request;
     }
+
+    return request;
   }
 }

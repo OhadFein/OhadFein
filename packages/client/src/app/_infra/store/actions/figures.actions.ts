@@ -10,7 +10,8 @@ export enum FiguresActionType {
 
 export const GetFiguresAction = createAction(FiguresActionType.GetFiguresAction);
 
-export const BeginGetFigureAction = createAction(FiguresActionType.BeginGetFigureAction,
+export const BeginGetFigureAction = createAction(
+  FiguresActionType.BeginGetFigureAction,
   props<{ payload: string }>()
 );
 

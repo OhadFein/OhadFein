@@ -5,4 +5,4 @@ export * from './practices.state';
 export * from './figures.state';
 export * from './lab.state';
 export * from './global.state';
-export * from './notificationsState'
+export * from './notificationsState';

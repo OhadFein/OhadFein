@@ -3,7 +3,6 @@
   min-height: 5rem;
 
   .star-dances-pills-row {
-
     .owl-carousel {
       position: relative;
 
@@ -19,7 +18,7 @@
           display: none;
         }
 
-        [class*=owl-] {
+        [class*='owl-'] {
           position: absolute;
           background: transparent;
           border: none;
@@ -37,7 +36,6 @@
           right: 0;
           margin-right: -17px;
         }
-
       }
 
       .owl-item {
@@ -99,14 +97,12 @@
       }
 
       &.more-then-one {
-
         li {
           float: left;
 
           &:nth-child(1) {
             a {
               border-left: none;
-
             }
           }
 
@@ -117,20 +113,15 @@
           }
         }
       }
-
-
     }
   }
 
   .figure-preview {
-
     .figure-preview-inner {
       @include list-item;
 
       .preview-img-wrapper {
         @include list-item-image(50%);
-
-
       }
 
       .preview-content-wrapper {
@@ -143,7 +134,6 @@
             font-size: 0.8rem;
             margin-bottom: 0.3rem;
           }
-
         }
 
         p {
@@ -152,12 +142,7 @@
             margin-bottom: 0.3rem;
           }
         }
-
-
-
       }
     }
-
-
   }
 }

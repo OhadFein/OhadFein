@@ -9,7 +9,7 @@ function windowFactory() {
     requestAnimationFrame: () => {},
     dispatchEvent: () => {},
     innerWidth: 100
-  }
+  };
 }
 
 describe('CustomLabControlsComponent', () => {
@@ -18,14 +18,15 @@ describe('CustomLabControlsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ CustomLabControlsComponent ],
-      providers: [{
-        provide: DSAPP_WINDOW,
-        useFactory: windowFactory
-      }],
+      declarations: [CustomLabControlsComponent],
+      providers: [
+        {
+          provide: DSAPP_WINDOW,
+          useFactory: windowFactory
+        }
+      ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

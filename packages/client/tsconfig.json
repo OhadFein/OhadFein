@@ -16,6 +16,8 @@
     "incremental": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
     "paths": {
       "@app/*": ["src/app/*"],
       "@infra/*": ["src/app/_infra/*"],

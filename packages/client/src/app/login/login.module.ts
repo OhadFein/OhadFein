@@ -8,11 +8,10 @@ import {
   LoginLayoutComponent,
   LoginPageComponent,
   RegisterPageComponent,
-  ResetPasswordPageComponent,
+  ResetPasswordPageComponent
 } from '.';
 import { LoginRoutingModule } from './login-routing.module';
-import {InfraModule} from "@infra/infra.module";
-
+import { InfraModule } from '@infra/infra.module';
 
 @NgModule({
   imports: [
@@ -23,6 +22,12 @@ import {InfraModule} from "@infra/infra.module";
     LoginRoutingModule,
     InfraModule
   ],
-  declarations: [LoginPageComponent, RegisterPageComponent, LoginLayoutComponent, ForgotPasswordPageComponent, ResetPasswordPageComponent]
+  declarations: [
+    LoginPageComponent,
+    RegisterPageComponent,
+    LoginLayoutComponent,
+    ForgotPasswordPageComponent,
+    ResetPasswordPageComponent
+  ]
 })
-export class LoginModule { }
+export class LoginModule {}

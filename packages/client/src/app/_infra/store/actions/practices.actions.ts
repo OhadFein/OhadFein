@@ -24,7 +24,6 @@ export const SuccessGetPracticesAction = createAction(
 
 export const updatePracticeItemAction = createAction(PracticesActionType.updatePracticeItemAction);
 
-
 export const BeginUpdatePracticeItemAction = createAction(
   PracticesActionType.BeginUpdatePracticeItemAction,
   props<{ payload: Practice }>()
@@ -35,8 +34,10 @@ export const SuccessUpdatePracticeItemAction = createAction(
   props<{ payload: Practice }>()
 );
 
-export const ErrorPracticesAction = createAction(PracticesActionType.ErrorPracticesAction, props<Error>());
-
+export const ErrorPracticesAction = createAction(
+  PracticesActionType.ErrorPracticesAction,
+  props<Error>()
+);
 
 export const SaveCurrentMonth = createAction(
   PracticesActionType.SaveCurrentMonth,

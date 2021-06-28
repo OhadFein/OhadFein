@@ -7,7 +7,6 @@ import { AuthServiceConfig } from 'angularx-social-login';
 import { FacebookLoginProvider } from 'angularx-social-login';
 import { DSAPP_WINDOW, windowFactory } from '@core/global_variables/token';
 
-
 const config = new AuthServiceConfig([
   {
     id: FacebookLoginProvider.PROVIDER_ID,
@@ -38,4 +37,3 @@ export const APP_PROVIDERS = [
   { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   { provide: DSAPP_WINDOW, useFactory: windowFactory }
 ];
-

@@ -15,9 +15,7 @@ import t from 'typy';
 @Component({
   selector: 'dsapp-student-edit-profile-page',
   templateUrl: './student-edit-profile-page.component.html',
-  providers: [
-    { provide: NgbDateAdapter, useClass: NgbDateNativeAdapter }
-  ],
+  providers: [{ provide: NgbDateAdapter, useClass: NgbDateNativeAdapter }]
 })
 export class StudentEditProfilePageComponent implements OnInit, OnDestroy {
   subs: Subscription[] = [];
@@ -38,7 +36,6 @@ export class StudentEditProfilePageComponent implements OnInit, OnDestroy {
     return this.changeProfileForm.controls;
   }
 
-
   constructor(
     private router: Router,
     private store: Store<any>,
@@ -48,9 +45,7 @@ export class StudentEditProfilePageComponent implements OnInit, OnDestroy {
     actions$: Actions
   ) {
     this.subs.push(
-      actions$.pipe(
-        ofType(UserActionType.SuccessUpdateUserAction),
-      ).subscribe(action => {
+      actions$.pipe(ofType(UserActionType.SuccessUpdateUserAction)).subscribe(() => {
         this.alertService.success('STUDENT.PROFILE.ProfileSaveSuccess');
         this.router.navigate(['/student/profile']);
       })
@@ -59,27 +54,25 @@ export class StudentEditProfilePageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subs.push(
-      this.store.select(selectors.selectCurrentUser())
-        .subscribe(res => {
-          if (res) {
-            this.user = { ...res };
-            this.initForm();
-            this.errorMsg = null;
-          } else {
-            this.store.dispatch(UserActions.BeginGetUserAction());
-          }
-        })
+      this.store.select(selectors.selectCurrentUser()).subscribe((res) => {
+        if (res) {
+          this.user = { ...res };
+          this.initForm();
+          this.errorMsg = null;
+        } else {
+          this.store.dispatch(UserActions.BeginGetUserAction());
+        }
+      })
     );
     this.subs.push(
-      this.store.select(selectors.selectCurrentUserError())
-        .subscribe(res => {
-          if (res && res.type) {
-            this.errorMsg = this.errorService.alertUserError(res.type);
-          }
-          setTimeout(() => {
-            this.isSubmitted = false;
-          }, 3000);
-        })
+      this.store.select(selectors.selectCurrentUserError()).subscribe((res) => {
+        if (res && res.type) {
+          this.errorMsg = this.errorService.alertUserError(res.type);
+        }
+        setTimeout(() => {
+          this.isSubmitted = false;
+        }, 3000);
+      })
     );
   }
 
@@ -91,13 +84,17 @@ export class StudentEditProfilePageComponent implements OnInit, OnDestroy {
         name: this.formBuilder.group({
           firstName: [this.user.profile.name.firstName, [Validators.required]],
           lastName: [this.user.profile.name.lastName, [Validators.required]],
-          nickname: [t(this.user, 'profile.name.nickname').isDefined ? t(this.user, 'profile.name.nickname').safeObject : '']
+          nickname: [
+            t(this.user, 'profile.name.nickname').isDefined
+              ? t(this.user, 'profile.name.nickname').safeObject
+              : ''
+          ]
         }),
         birthDate: this.formBuilder.group({
           date: [
-            t(this.user, 'profile.birthDate.date').isDefined ?
-              new Date((t(this.user, 'profile.birthDate.date').safeObject)) :
-              new Date('1990')
+            t(this.user, 'profile.birthDate.date').isDefined
+              ? new Date(t(this.user, 'profile.birthDate.date').safeObject)
+              : new Date('1990')
           ]
         }),
         language: [Language.english],
@@ -120,7 +117,6 @@ export class StudentEditProfilePageComponent implements OnInit, OnDestroy {
   }
 
   saveProfile(): void {
-
     if (this.changeProfileForm.invalid) {
       return;
     }
@@ -128,13 +124,11 @@ export class StudentEditProfilePageComponent implements OnInit, OnDestroy {
     this.isSubmitted = true;
     const payload = this.changeProfileForm.getRawValue();
     this.store.dispatch(UserActions.BeginUpdateUserAction({ payload }));
-
   }
 
   cancel(): void {
     this.router.navigate(['/student/profile']);
   }
-
 
   tryAgain(): void {
     this.user = null;
@@ -142,10 +136,9 @@ export class StudentEditProfilePageComponent implements OnInit, OnDestroy {
     setTimeout(() => {
       this.store.dispatch(UserActions.BeginGetUserAction());
     }, 2000);
-
   }
 
   ngOnDestroy(): void {
-    this.subs.forEach(sub => sub.unsubscribe());
+    this.subs.forEach((sub) => sub.unsubscribe());
   }
 }

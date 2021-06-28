@@ -10,21 +10,23 @@ import * as StarsContentActions from '../actions/stars-content.actions';
 
 @Injectable()
 export class StarsContentEffects {
-    constructor(private action$: Actions, private starsService: StarsService) { }
+  constructor(private action$: Actions, private starsService: StarsService) {}
 
-    getStarContent$: Observable<Action> = createEffect(() =>
-        this.action$.pipe(
-            ofType(StarsContentActions.BeginGetStarsContentAction),
-            mergeMap(action =>
-                this.starsService.getStarContent(action.payload).pipe(
-                    map((starContent: IStarContent) => {
-                        return StarsContentActions.SuccessGetStarsContentAction({ payload: starContent });
-                    }),
-                    catchError((error: Error) => {
-                        return of(StarsContentActions.ErrorStarsContentAction(error));
-                    })
-                )
-            )
+  getStarContent$: Observable<Action> = createEffect(() =>
+    this.action$.pipe(
+      ofType(StarsContentActions.BeginGetStarsContentAction),
+      mergeMap((action) =>
+        this.starsService.getStarContent(action.payload).pipe(
+          map((starContent: IStarContent) => {
+            return StarsContentActions.SuccessGetStarsContentAction({
+              payload: starContent
+            });
+          }),
+          catchError((error: Error) => {
+            return of(StarsContentActions.ErrorStarsContentAction(error));
+          })
         )
-    );
+      )
+    )
+  );
 }

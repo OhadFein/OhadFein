@@ -4,7 +4,6 @@ import { Directive, HostBinding, Input, OnChanges } from '@angular/core';
   selector: '[uiToggleSwitch]'
 })
 export class ToggleSwitchDirective implements OnChanges {
-
   @Input() state = true;
   @Input() disabled = false;
 
@@ -17,5 +16,4 @@ export class ToggleSwitchDirective implements OnChanges {
     const dis = this.disabled ? 'disabled' : '';
     this.classes = `${this.baseClass} icon-toggle-${cls} ${dis}`;
   }
-
 }

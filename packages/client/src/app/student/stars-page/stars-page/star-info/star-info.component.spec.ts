@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
 import { StarInfoComponent } from './star-info.component';
 
@@ -11,9 +8,8 @@ describe('StarInfoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ StarInfoComponent ]
-    })
-    .compileComponents();
+      declarations: [StarInfoComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

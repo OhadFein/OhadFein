@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
 import { VideoFilePickerComponent } from './video-file-picker.component';
 
@@ -11,9 +8,8 @@ describe('VideoFilePickerComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VideoFilePickerComponent ]
-    })
-    .compileComponents();
+      declarations: [VideoFilePickerComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

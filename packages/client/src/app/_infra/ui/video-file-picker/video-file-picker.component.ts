@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output , Input} from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Input } from '@angular/core';
 import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
@@ -6,12 +6,11 @@ import { DeviceDetectorService } from 'ngx-device-detector';
   templateUrl: './video-file-picker.component.html'
 })
 export class VideoFilePickerComponent implements OnInit {
-
   @Output() videoChange = new EventEmitter<Event>();
-@Input() disableButtons;
+  @Input() disableButtons;
   isDesktop: boolean;
 
-  constructor(private deviceService: DeviceDetectorService) { }
+  constructor(private deviceService: DeviceDetectorService) {}
 
   ngOnInit() {
     this.isDesktop = this.deviceService.isDesktop();
@@ -20,6 +19,4 @@ export class VideoFilePickerComponent implements OnInit {
   fileChangeEvent(event: Event): void {
     this.videoChange.emit(event);
   }
-
-
 }

@@ -1,5 +1,4 @@
 .login-layout {
-
   padding-bottom: 5rem;
 
   .logo {
@@ -39,7 +38,6 @@
       &.register {
         margin: 0 5px 0 -15px;
 
-
         &.selected {
           color: $white;
           background-color: $green;
@@ -58,9 +56,7 @@
     width: 100%;
 
     .login-card {
-
       .form-group {
-
         &.facebook-form-group {
           button {
             border: $dark 2px solid;
@@ -75,18 +71,13 @@
             }
           }
         }
-
       }
-
-
     }
   }
 
   dsapp-register-page {
     width: 100%;
   }
-
-
 }
 
 .submit-form-group {

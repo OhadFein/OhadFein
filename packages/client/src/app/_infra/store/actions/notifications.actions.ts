@@ -1,7 +1,6 @@
 import { INotifications } from '@core/models';
 import { createAction, props } from '@ngrx/store';
 
-
 export enum NotificationsActionType {
   GetNotificationsAction = '[notifications] - Get notifications',
   BeginGetNotificationsAction = '[notifications] - Begin Get notifications',
@@ -9,19 +8,24 @@ export enum NotificationsActionType {
   ErrorNotificationsAction = '[notifications] - Error',
   BeginUpdateNotificationsAction = '[notifications] - Begin Update notifications',
   SuccessUpdateNotificationsAction = '[notifications] - Success Update notifications',
-  ErrorUpdateNotificationsAction = '[notifications] - Error Update notifications',
+  ErrorUpdateNotificationsAction = '[notifications] - Error Update notifications'
 }
 
 export const GetNotificationsAction = createAction(NotificationsActionType.GetNotificationsAction);
 
-export const BeginGetNotificationsAction = createAction(NotificationsActionType.BeginGetNotificationsAction);
+export const BeginGetNotificationsAction = createAction(
+  NotificationsActionType.BeginGetNotificationsAction
+);
 
 export const SuccessGetNotificationsAction = createAction(
   NotificationsActionType.SuccessGetNotificationsAction,
   props<{ payload: INotifications[] }>()
 );
 
-export const ErrorNotificationsAction = createAction(NotificationsActionType.ErrorNotificationsAction, props<Error>());
+export const ErrorNotificationsAction = createAction(
+  NotificationsActionType.ErrorNotificationsAction,
+  props<Error>()
+);
 
 export const BeginUpdateNotificationsAction = createAction(
   NotificationsActionType.BeginUpdateNotificationsAction,

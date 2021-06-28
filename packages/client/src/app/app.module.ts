@@ -25,12 +25,17 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SocialLoginModule } from 'angularx-social-login';
 import { DeviceDetectorModule } from 'ngx-device-detector';
 
-import { environment } from '../environments/environment';
-import { FiguresEffects, PracticesEffects, StarsContentEffects, StarsEffects, UserEffects, NotificationsEffects } from './_infra/store/effects';
+import {
+  FiguresEffects,
+  PracticesEffects,
+  StarsContentEffects,
+  StarsEffects,
+  UserEffects,
+  NotificationsEffects
+} from './_infra/store/effects';
 import { APP_PROVIDERS } from './app-providers';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -38,9 +43,7 @@ export function HttpLoaderFactory(http: HttpClient) {
 }
 
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -52,16 +55,26 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    StoreModule.forRoot({
-      user: UserReducer,
-      stars: StarsReducer,
-      starsContent: StarsContentReducer,
-      practices: PracticesReducer,
-      labItem: LabReducer,
-      figures: FiguresReducer,
-      notifications: NotificationsReducer
-    }, { metaReducers: [GlobalReducer] }),
-    EffectsModule.forRoot([UserEffects, StarsEffects, StarsContentEffects, PracticesEffects, FiguresEffects, NotificationsEffects]),
+    StoreModule.forRoot(
+      {
+        user: UserReducer,
+        stars: StarsReducer,
+        starsContent: StarsContentReducer,
+        practices: PracticesReducer,
+        labItem: LabReducer,
+        figures: FiguresReducer,
+        notifications: NotificationsReducer
+      },
+      { metaReducers: [GlobalReducer] }
+    ),
+    EffectsModule.forRoot([
+      UserEffects,
+      StarsEffects,
+      StarsContentEffects,
+      PracticesEffects,
+      FiguresEffects,
+      NotificationsEffects
+    ]),
     HammerModule,
     SocialLoginModule,
     NgbModule,
@@ -72,11 +85,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     StudentModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: false })
   ],
-  entryComponents: [
-    AboutDanskillModalComponent,
-    VideoPlayerModalComponent
-  ],
+  entryComponents: [AboutDanskillModalComponent, VideoPlayerModalComponent],
   providers: [...APP_PROVIDERS],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

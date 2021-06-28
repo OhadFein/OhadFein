@@ -1,181 +1,181 @@
 {
-    "COMMON": {
-        "Welcome": "Welcome",
-        "About": "About DanSkill",
-        "Profile": "Profile",
-        "AddToHome": "Add to Home Screen",
-        "AddToHomeSuccess": "DanSkill was successfully added to your Home Screen",
-        "AddToHomeError": "There was an error adding shortcut to your Home Screen",
-        "Save": "Save",
-        "Cancel": "Cancel",
-        "preview": "Preview",
-        "NotSelected": "Not Selected",
-        "tryAgain": "Try again",
-        "landscapeTitle": "Currently, the landscape view is not optimally supported.",
-        "landscapeSubTitle": "In order to enjoy a maximum user experience, we recommend that you rotate the screen back.",
-        "showMore": "Show more",
-        "showLess": "Show less"
+  "COMMON": {
+    "Welcome": "Welcome",
+    "About": "About DanSkill",
+    "Profile": "Profile",
+    "AddToHome": "Add to Home Screen",
+    "AddToHomeSuccess": "DanSkill was successfully added to your Home Screen",
+    "AddToHomeError": "There was an error adding shortcut to your Home Screen",
+    "Save": "Save",
+    "Cancel": "Cancel",
+    "preview": "Preview",
+    "NotSelected": "Not Selected",
+    "tryAgain": "Try again",
+    "landscapeTitle": "Currently, the landscape view is not optimally supported.",
+    "landscapeSubTitle": "In order to enjoy a maximum user experience, we recommend that you rotate the screen back.",
+    "showMore": "Show more",
+    "showLess": "Show less"
+  },
+  "ERRORS": {
+    "Error": "Error",
+    "PageNotFound": "Page not found",
+    "InformationNotFound": "Information not found",
+    "BackToHome": "Back to Home Page",
+    "SessionIsExpired": "Session is Expired. Please, log in again.",
+    "GeneralBackendError": "Response error, please try again later",
+    "noSerchResults": "Sorry, we couldn't  find any results matching \"{{param}}\" ..."
+  },
+  "LOGIN": {
+    "registerMsg": "Don't have an Account?",
+    "orLoginWith": "Or login with",
+    "Register": "Register",
+    "loginMsg": "Already have an Account?",
+    "Login": "Login",
+    "LoginWithFacebook": "Login with Facebook",
+    "registerWithFacebook": "Register with Facebook",
+    "EmailAddress": "Email address",
+    "Password": "Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password",
+    "LoginSuccessMsg": "You were logged in successfully!",
+    "RegisterSuccessMsg": "Your registration was successful!",
+    "LoginFailedMsg": "Login Error!",
+    "RegistrationFailedMsg": "Registration Error!",
+    "ResetPasswordFailedMsg": "Reset Password Error!",
+    "Logout": "Logout",
+    "LogOutMsg": "You are logged out",
+    "iForgotMyPassword": "I forgot my password",
+    "resetYourPassword": "Reset Your Password",
+    "changeYourPassword": "Change Your Password",
+    "resetPassword_Instructions": "Follow these instructions if you forgot your password and need to create a new one:",
+    "resetPassword_Step_1": "Enter the email address associated with your DanSkill account.",
+    "resetPassword_Step_2": "Click Reset Password.",
+    "resetPassword_Step_3": "We’ll send a password reset email to your address. Use this email to reset your password.",
+    "resetPassword": "Reset Password",
+    "resetPasswordSend": "Password reset email was send to your address. Please check your inbox/spam folder and follow instructions to reset your password.",
+    "didntGetResetEmail": "I didn't got reset password email",
+    "FORM": {
+      "emailIsRequired": "Email is required",
+      "INVALID_EMAIL": "Invalid email",
+      "BLANK_PASSWORD": "Password is required",
+      "passwordNumber": "Password must contain at least 1 number",
+      "hasCapitalCase": "Password must contain at least 1 in Capital Case",
+      "hasSmallCase": "Password must contain at least 1 Letter in Small Case",
+      "hasSpecialCharacters": "Password must contain at least 1 Special Character",
+      "PASSWORD_SHORT": "Password must be at least 8 characters long",
+      "PASSWORD_MISMATCH": "Password do not match",
+      "fnameIsRequired": "First Name is required",
+      "lnameIsRequired": "Last Name is required",
+      "USER_EXISTS": "This user already exists",
+      "NON_EXISTING_USER": "This email is not registered",
+      "SIGN_PROVIDER_NO_CREDENTIALS": "Wrong Email or Password",
+      "INVALID_TOKEN": "Invalid token, please retry"
+    }
+  },
+  "USER": {
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "midName": "Middle Name",
+    "nickname": "Nickname",
+    "Language": "Language",
+    "Gender": "Gender",
+    "AboutMe": "About Me",
+    "DateOfBirth": "Date of Birth",
+    "ERRORS": {
+      "getUserError": "There was an error fetching user information. Try again later.",
+      "updateUserError": "There was an error updating user information. Try again later.",
+      "loadImageError": "There was an error loading image. Try again later."
+    }
+  },
+  "STUDENT": {
+    "Student": "Student",
+    "NAV": {
+      "Stars": "Stars",
+      "Star": "Star",
+      "MyLab": "My Lab",
+      "Practices": "Practices",
+      "Challenges": "Challenges"
+    },
+    "PROFILE": {
+      "title": "My Profile",
+      "EditProfile": "Edit Profile",
+      "ProfileSaveSuccess": "Profile Saved Successfully",
+      "ProfileSaveError": "Error in Profile Saving",
+      "ChangeUserPic": "Change User Picture",
+      "TakeFromCamera": "Take picture from Camera",
+      "UploadFromComputer": "Upload Picture from Computer",
+      "UploadFromDevice": "Upload Picture from Device",
+      "FORM": {}
+    }
+  },
+  "STAR": {
+    "openLibrary": "Open library",
+    "more": "more",
+    "title": "Welcome to our Library",
+    "currentChallenge": "current challenge",
+    "challengeFinished": "challenge finished",
+    "chooseYourTeacher": "Choose your teacher",
+    "STAR_INFO_PAGE": {
+      "WatchPromo": "Watch Promo",
+      "MySkills": "My Skills",
+      "Classes": "Classes",
+      "dances": "Dances",
+      "openCurrentChallenge": "open current challenge",
+      "level": "level",
+      "LEVEL": "level"
+    },
+    "FIGURES": {
+      "Figure": "Figure",
+      "view": "view",
+      "learnFigure": "Learn figure",
+      "basicPrinciples": "Basic Principles",
+      "learnPrinciples": "Learn principles",
+      "openInMyLab": "Open in My Lab"
     },
     "ERRORS": {
-        "Error": "Error",
-        "PageNotFound": "Page not found",
-        "InformationNotFound": "Information not found",
-        "BackToHome": "Back to Home Page",
-        "SessionIsExpired": "Session is Expired. Please, log in again.",
-        "GeneralBackendError": "Response error, please try again later",
-        "noSerchResults": "Sorry, we couldn't  find any results matching \"{{param}}\" ..."
-    },
-    "LOGIN": {
-        "registerMsg": "Don't have an Account?",
-        "orLoginWith": "Or login with",
-        "Register": "Register",
-        "loginMsg": "Already have an Account?",
-        "Login": "Login",
-        "LoginWithFacebook": "Login with Facebook",
-        "registerWithFacebook": "Register with Facebook",
-        "EmailAddress": "Email address",
-        "Password": "Password",
-        "newPassword": "New Password",
-        "confirmPassword": "Confirm Password",
-        "LoginSuccessMsg": "You were logged in successfully!",
-        "RegisterSuccessMsg": "Your registration was successful!",
-        "LoginFailedMsg": "Login Error!",
-        "RegistrationFailedMsg": "Registration Error!",
-        "ResetPasswordFailedMsg": "Reset Password Error!",
-        "Logout": "Logout",
-        "LogOutMsg": "You are logged out",
-        "iForgotMyPassword": "I forgot my password",
-        "resetYourPassword": "Reset Your Password",
-        "changeYourPassword": "Change Your Password",
-        "resetPassword_Instructions": "Follow these instructions if you forgot your password and need to create a new one:",
-        "resetPassword_Step_1": "Enter the email address associated with your DanSkill account.",
-        "resetPassword_Step_2": "Click Reset Password.",
-        "resetPassword_Step_3": "We’ll send a password reset email to your address. Use this email to reset your password.",
-        "resetPassword": "Reset Password",
-        "resetPasswordSend": "Password reset email was send to your address. Please check your inbox/spam folder and follow instructions to reset your password.",
-        "didntGetResetEmail": "I didn't got reset password email",
-        "FORM": {
-            "emailIsRequired": "Email is required",
-            "INVALID_EMAIL": "Invalid email",
-            "BLANK_PASSWORD": "Password is required",
-            "passwordNumber": "Password must contain at least 1 number",
-            "hasCapitalCase": "Password must contain at least 1 in Capital Case",
-            "hasSmallCase": "Password must contain at least 1 Letter in Small Case",
-            "hasSpecialCharacters": "Password must contain at least 1 Special Character",
-            "PASSWORD_SHORT": "Password must be at least 8 characters long",
-            "PASSWORD_MISMATCH": "Password do not match",
-            "fnameIsRequired": "First Name is required",
-            "lnameIsRequired": "Last Name is required",
-            "USER_EXISTS": "This user already exists",
-            "NON_EXISTING_USER": "This email is not registered",
-            "SIGN_PROVIDER_NO_CREDENTIALS": "Wrong Email or Password",
-            "INVALID_TOKEN": "Invalid token, please retry"
-        }
-    },
-    "USER": {
-        "firstName": "First Name",
-        "lastName": "Last Name",
-        "midName": "Middle Name",
-        "nickname": "Nickname",
-        "Language": "Language",
-        "Gender": "Gender",
-        "AboutMe": "About Me",
-        "DateOfBirth": "Date of Birth",
-        "ERRORS": {
-            "getUserError": "There was an error fetching user information. Try again later.",
-            "updateUserError": "There was an error updating user information. Try again later.",
-            "loadImageError": "There was an error loading image. Try again later."
-        }
-    },
-    "STUDENT": {
-        "Student": "Student",
-        "NAV": {
-            "Stars": "Stars",
-            "Star": "Star",
-            "MyLab": "My Lab",
-            "Practices": "Practices",
-            "Challenges": "Challenges"
-        },
-        "PROFILE": {
-            "title": "My Profile",
-            "EditProfile": "Edit Profile",
-            "ProfileSaveSuccess": "Profile Saved Successfully",
-            "ProfileSaveError": "Error in Profile Saving",
-            "ChangeUserPic": "Change User Picture",
-            "TakeFromCamera": "Take picture from Camera",
-            "UploadFromComputer": "Upload Picture from Computer",
-            "UploadFromDevice": "Upload Picture from Device",
-            "FORM": {}
-        }
-    },
-    "STAR": {
-        "openLibrary": "Open library",
-        "more": "more",
-        "title": "Welcome to our Library",
-        "currentChallenge": "current challenge",
-        "challengeFinished": "challenge finished",
-        "chooseYourTeacher": "Choose your teacher",
-        "STAR_INFO_PAGE": {
-            "WatchPromo": "Watch Promo",
-            "MySkills": "My Skills",
-            "Classes": "Classes",
-            "dances": "Dances",
-            "openCurrentChallenge": "open current challenge",
-            "level": "level",
-            "LEVEL": "level"
-        },
-        "FIGURES": {
-            "Figure": "Figure",
-            "view": "view",
-            "learnFigure": "Learn figure",
-            "basicPrinciples": "Basic Principles",
-            "learnPrinciples": "Learn principles",
-            "openInMyLab": "Open in My Lab"
-        },
-        "ERRORS": {
-            "getStarsError": "There was an error fetching stars information. Try again later.",
-            "getStarContentError": "There was an error fetching star content. Try again later."
-        }
-    },
-    "ABOUT": {
-        "title": "About DanSkill",
-        "content": "Danskill is an online learning platform that brings to you all the necessary tools needed to study and practice the world's best athletes' coordination skills, using state of the art technology."
-    },
-    "PRACTICES": {
-        "title": "Practices",
-        "PRACTICE": {
-            "hideVideo": "Hide video",
-            "showVideo": "Show video",
-            "hideNotes": "Hide Notes",
-            "showNotes": "Show Notes",
-            "saveChanges": "Save changes",
-            "noPracticesMonth": "No Practices on this month"
-        },
-        "ERRORS": {
-            "getPracticesError": "There was an error fetching practices information. Try again later.",
-            "getPracticeError": "There was an error fetching practice information. Try again later."
-        }
-    },
-    "LAB": {
-        "title": "Welcome to My Lab",
-        "instruction": "Start using the lab tool, click on 'Choose video' or select a figure from our library",
-        "chooseVideo": "Choose video",
-        "uploadVideo": "Upload your video",
-        "FilmVideo": "Film Video",
-        "UploadVideo": "Upload Video",
-        "chooseAnotherVideo": "choose another video",
-        "removeVideo": "remove video",
-        "speed": "speed",
-        "linkVideos": "link videos",
-        "unlinkVideos": "unlink videos",
-        "saveToMyPractices": "save to my practices",
-        "MESSAGES": {
-            "uploadStarted": "Video upload has been started",
-            "uploadCompleted": "Video was successfully uploaded"
-        },
-        "ERRORS": {
-            "userDurationError": "Your video is too long. Please, film video less than {{param}} seconds",
-            "errorUploading": "Error uploading your video. Retry?"
-        }
+      "getStarsError": "There was an error fetching stars information. Try again later.",
+      "getStarContentError": "There was an error fetching star content. Try again later."
     }
+  },
+  "ABOUT": {
+    "title": "About DanSkill",
+    "content": "Danskill is an online learning platform that brings to you all the necessary tools needed to study and practice the world's best athletes' coordination skills, using state of the art technology."
+  },
+  "PRACTICES": {
+    "title": "Practices",
+    "PRACTICE": {
+      "hideVideo": "Hide video",
+      "showVideo": "Show video",
+      "hideNotes": "Hide Notes",
+      "showNotes": "Show Notes",
+      "saveChanges": "Save changes",
+      "noPracticesMonth": "No Practices on this month"
+    },
+    "ERRORS": {
+      "getPracticesError": "There was an error fetching practices information. Try again later.",
+      "getPracticeError": "There was an error fetching practice information. Try again later."
+    }
+  },
+  "LAB": {
+    "title": "Welcome to My Lab",
+    "instruction": "Start using the lab tool, click on 'Choose video' or select a figure from our library",
+    "chooseVideo": "Choose video",
+    "uploadVideo": "Upload your video",
+    "FilmVideo": "Film Video",
+    "UploadVideo": "Upload Video",
+    "chooseAnotherVideo": "choose another video",
+    "removeVideo": "remove video",
+    "speed": "speed",
+    "linkVideos": "link videos",
+    "unlinkVideos": "unlink videos",
+    "saveToMyPractices": "save to my practices",
+    "MESSAGES": {
+      "uploadStarted": "Video upload has been started",
+      "uploadCompleted": "Video was successfully uploaded"
+    },
+    "ERRORS": {
+      "userDurationError": "Your video is too long. Please, film video less than {{param}} seconds",
+      "errorUploading": "Error uploading your video. Retry?"
+    }
+  }
 }

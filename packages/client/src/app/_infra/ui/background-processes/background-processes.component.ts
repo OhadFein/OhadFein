@@ -24,17 +24,16 @@ import { Subscription } from 'rxjs';
   ]
 })
 export class BackgroundProcessesComponent implements OnInit, OnDestroy {
-
-
   processes: BackgroundProcess[] = [];
   subscription: Subscription;
 
-  constructor(private backgroundProcessesService: BackgroundProcessesService) { }
+  constructor(private backgroundProcessesService: BackgroundProcessesService) {}
 
   ngOnInit() {
-    this.subscription = this.backgroundProcessesService.onBackgroundProcess()
-      .subscribe(process => {
-        const check = this.processes.some(obj => obj.processtId === process.processtId);
+    this.subscription = this.backgroundProcessesService
+      .onBackgroundProcess()
+      .subscribe((process) => {
+        const check = this.processes.some((obj) => obj.processtId === process.processtId);
         if (!check) {
           this.processes.push(process);
         }
@@ -42,7 +41,6 @@ export class BackgroundProcessesComponent implements OnInit, OnDestroy {
   }
 
   handleProcessCallback(data: BackgroundProcessCallbackData) {
-
     switch (data.action) {
       case BackgroundProcessCallbackAction.CANCEL:
         this.removeProcess(data.process);
@@ -50,10 +48,9 @@ export class BackgroundProcessesComponent implements OnInit, OnDestroy {
     }
   }
 
-
   removeProcess(process: BackgroundProcess) {
     // remove specified alert from array
-    this.processes = this.processes.filter(x => x !== process);
+    this.processes = this.processes.filter((x) => x !== process);
   }
 
   ngOnDestroy(): void {

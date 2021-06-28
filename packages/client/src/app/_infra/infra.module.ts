@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { NgbDateStructTodateDirective, StarNameDirective } from '@core/directives';
 import { TranslateModule } from '@ngx-translate/core';
 import { ImageCropperModule } from 'ngx-image-cropper';
 import { VgBufferingModule } from 'ngx-videogular';
@@ -33,7 +32,33 @@ import {
   VideoPreviewComponent,
   CustomLabControlsComponent
 } from './ui';
+import { StarNameDirective } from '@core/derectives';
 
+const components = [
+  AlertsComponent,
+  PageNotFoundComponent,
+  NotificationsPageComponent,
+  NavigationComponent,
+  HeaderComponent,
+  AboutDanskillModalComponent,
+  VideoPlayerModalComponent,
+  LogoComponent,
+  PreloaderIconComponent,
+  PreloaderInappComponent,
+  VideoPlayerWrapperComponent,
+  InpageErrorComponent,
+  TagsHolderComponent,
+  ImageFilePickerComponent,
+  VideoFilePickerComponent,
+  PlayerControlsComponent,
+  BackgroundProcessesComponent,
+  UploadPracticeBgProcessComponent,
+  BaseBgProcessComponent,
+  ToggleSwitchDirective,
+  VideoPreviewComponent,
+  CustomLabControlsComponent,
+  StarNameDirective
+];
 
 @NgModule({
   imports: [
@@ -46,23 +71,7 @@ import {
     VgBufferingModule,
     ImageCropperModule
   ],
-  declarations: [
-    AlertsComponent, PageNotFoundComponent, NotificationsPageComponent,
-    NavigationComponent, HeaderComponent, AboutDanskillModalComponent, VideoPlayerModalComponent,
-    LogoComponent, PreloaderIconComponent, PreloaderInappComponent,
-    VideoPlayerWrapperComponent, StarNameDirective, NgbDateStructTodateDirective, InpageErrorComponent,
-    TagsHolderComponent, ImageFilePickerComponent, VideoFilePickerComponent,
-    PlayerControlsComponent, BackgroundProcessesComponent, UploadPracticeBgProcessComponent, BaseBgProcessComponent,
-    ToggleSwitchDirective, VideoPreviewComponent, CustomLabControlsComponent
-  ],
-  exports: [
-    AlertsComponent, PageNotFoundComponent, NotificationsPageComponent,
-    NavigationComponent, HeaderComponent, AboutDanskillModalComponent, VideoPlayerModalComponent,
-    LogoComponent, PreloaderIconComponent, PreloaderInappComponent,
-    VideoPlayerWrapperComponent, StarNameDirective, NgbDateStructTodateDirective, InpageErrorComponent,
-    TagsHolderComponent, ImageFilePickerComponent, VideoFilePickerComponent,
-    PlayerControlsComponent, BackgroundProcessesComponent, UploadPracticeBgProcessComponent,
-    ToggleSwitchDirective, VideoPreviewComponent, CustomLabControlsComponent
-  ]
+  declarations: [components],
+  exports: [components]
 })
-export class InfraModule { }
+export class InfraModule {}

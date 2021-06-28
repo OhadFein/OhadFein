@@ -2,20 +2,19 @@
   .star-info-image {
     height: 140px;
     position: relative;
-    margin-bottom: 5px; 
+    margin-bottom: 5px;
     @include list-item-image(100%);
     @include media-breakpoint-up(md) {
     }
     border-radius: 4px;
   }
-  .star-info-inner{
+  .star-info-inner {
     // border: red 2px solid;
     display: flex;
     align-items: center;
-  
 
-    .watch-promo-button{
-      img{
+    .watch-promo-button {
+      img {
         width: 100%;
         height: 25px;
       }
@@ -26,30 +25,29 @@
         line-height: 1.05;
         margin: 0;
         // text-align: center;
-  
+
         @include media-breakpoint-down(sm) {
           font-size: 0.9rem;
         }
       }
-  
+
       .star-info-desc {
         display: block;
         margin-bottom: $paragraph-margin-bottom / 2;
-  
+
         @include media-breakpoint-down(sm) {
           font-size: 0.76rem;
           //line-height: 1.2;
           max-height: 2.2rem;
           display: -webkit-box;
-  
+
           -webkit-line-clamp: 2;
           -webkit-box-orient: vertical;
           overflow: hidden;
           text-overflow: ellipsis;
         }
-       
       }
-  
+
       .star-info-achivments {
         list-style: none;
         margin: 0;
@@ -60,16 +58,16 @@
         display: block;
         position: relative;
         max-width: 100%;
-        overflow:hidden; 
-        white-space:nowrap; 
+        overflow: hidden;
+        white-space: nowrap;
         text-overflow: ellipsis;
-  
+
         li {
           @include truncate;
           display: block;
           max-width: 100%;
         }
-  
+
         button {
           padding: 0;
           padding-left: 3px;
@@ -79,19 +77,17 @@
           bottom: 6px;
           right: 0;
         }
-  
+
         @include media-breakpoint-down(sm) {
           font-size: 0.7rem;
-  
+
           button {
             font-size: 0.7rem;
           }
         }
-  
       }
-  
+
       .star-info-btns {
-  
         .btn {
           @include media-breakpoint-down(sm) {
             width: 100%;
@@ -101,8 +97,6 @@
         }
       }
     }
-
-    
   }
 }
 
@@ -112,8 +106,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    .read-less-button, .read-more-button{
-      img{
+    .read-less-button,
+    .read-more-button {
+      img {
         width: 10px;
       }
     }
@@ -130,24 +125,23 @@
       max-height: 65px;
       overflow: hidden;
       margin: 0;
-      &.show-less{
+      &.show-less {
         &:before {
-          content: "";
+          content: '';
           width: 100%;
           height: 65px;
           position: absolute;
           left: 0;
-          background:linear-gradient(to top, #fff 0, #fff 0, rgba(255, 255, 255, 0));      
+          background: linear-gradient(to top, #fff 0, #fff 0, rgba(255, 255, 255, 0));
         }
       }
-      
-      &.read-more{
+
+      &.read-more {
         max-height: max-content;
-        &:before{
+        &:before {
           content: none;
         }
       }
-     
     }
 
     .star-info-achivments {

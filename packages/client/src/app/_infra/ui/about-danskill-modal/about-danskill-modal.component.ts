@@ -8,8 +8,6 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
   styles: []
 })
 export class AboutDanskillModalComponent implements OnInit {
-
-
   version = '';
 
   constructor(public activeModal: NgbActiveModal, protected configService: ConfigurationService) {
@@ -17,7 +15,5 @@ export class AboutDanskillModalComponent implements OnInit {
     this.version = version ? version : '';
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

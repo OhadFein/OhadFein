@@ -13,6 +13,7 @@
     },
     "eslint.workingDirectories": [
         "packages/server",
+        "packages/client"
     ],
     "html.format.wrapAttributes": "force-aligned",
     "html.format.wrapLineLength": 0

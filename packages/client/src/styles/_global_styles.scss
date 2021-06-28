@@ -1,30 +1,30 @@
 body,
 html {
-    min-height: 100%;
+  min-height: 100%;
 }
 
 body {
-    font-size: 0.8rem;
-    @include media-breakpoint-up(sm) {
-        font-size: 0.9rem;
-    }
-    @include media-breakpoint-up(md) {
-        font-size: 1rem;
-    }
+  font-size: 0.8rem;
+  @include media-breakpoint-up(sm) {
+    font-size: 0.9rem;
+  }
+  @include media-breakpoint-up(md) {
+    font-size: 1rem;
+  }
 }
-.landscape-modal{
-    background: radial-gradient(black, transparent);
-    //display: block;
-    .modal-body{
-        padding: 15px;
-        .modal-message{
-            padding: 15px;
-            word-break: break-word;
-        }
+.landscape-modal {
+  background: radial-gradient(black, transparent);
+  //display: block;
+  .modal-body {
+    padding: 15px;
+    .modal-message {
+      padding: 15px;
+      word-break: break-word;
     }
+  }
 }
 @viewport {
-    orientation: portrait;
+  orientation: portrait;
 }
 
 //  remove blue background on chrome autocomplete
@@ -35,137 +35,137 @@ textarea:-webkit-autofill:hover textarea:-webkit-autofill:focus,
 select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
+  -webkit-box-shadow: 0 0 0px 1000px #ffffff inset !important;
 }
 
 button:focus {
-    outline: none;
+  outline: none;
 }
 
 .full-height {
-    min-height: calc(100vh - 7rem); // 7 rem is a sum of top and bottom margin on the page
+  min-height: calc(100vh - 7rem); // 7 rem is a sum of top and bottom margin on the page
 }
 
-.full-mobile{
-    height: 100vh;
+.full-mobile {
+  height: 100vh;
 }
 
 .cover-bg {
-    background-position: center;
-    background-size: cover;
+  background-position: center;
+  background-size: cover;
 }
 
 //Buttons
 .danskill-btn {
-    border: none;
-    background: transparent;
+  border: none;
+  background: transparent;
 }
 
 .danskill-form-group {
-    position: relative;
-    .form-control {
-        &.is-invalid {
-            background: none;
-            margin-bottom: 25px;
-        }
+  position: relative;
+  .form-control {
+    &.is-invalid {
+      background: none;
+      margin-bottom: 25px;
     }
-    label {
-        position: absolute;
-        top: calc(50% - 6px);
-        right: 20px;
-        color: $gray-600;
-        font-size: $label-font;
-        font-weight: $font-weight-bold-light;
-    }
-    .password-btn {
-        position: absolute;
-        width: 35px;
-        height: 100%;
-        top: 0;
-        right: 0;
-        color: $gray-500;
-        font-size: 1.2rem;
-        padding-top: 0.55rem;
-    }
-    .invalid-feedback {
-        position: absolute;
-        bottom: -20px;
-    }
+  }
+  label {
+    position: absolute;
+    top: calc(50% - 6px);
+    right: 20px;
+    color: $gray-600;
+    font-size: $font-size-base * 0.7;
+    font-weight: $font-weight-bold-light;
+  }
+  .password-btn {
+    position: absolute;
+    width: 35px;
+    height: 100%;
+    top: 0;
+    right: 0;
+    color: $gray-500;
+    font-size: 1.2rem;
+    padding-top: 0.55rem;
+  }
+  .invalid-feedback {
+    position: absolute;
+    bottom: -20px;
+  }
 }
 
 .danskill-next-btn {
-    height: 60px;
-    width: 100%;
-    opacity: 1;
-    border-radius: 0;
-    .arrow {
-        width: 15px;
-    }
+  height: 60px;
+  width: 100%;
+  opacity: 1;
+  border-radius: 0;
+  .arrow {
+    width: 15px;
+  }
 }
 
 .danskill-icon-btn {
-    @extend .danskill-btn;
-    background-size: 100% 100%;
-    height: 15px;
-    width: 15px;
+  @extend .danskill-btn;
+  background-size: 100% 100%;
+  height: 15px;
+  width: 15px;
 }
 
 .danskill-tab-btn {
-    @extend .danskill-btn;
-    height: 60px;
-    width: 100%;
-    position: relative;
-    text-align: center;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-    color: $dark;
-    &.selected:after {
-        content: "";
-        position: absolute;
-        bottom: -15px;
-        border-width: 15px 10px 0;
-        border-style: solid;
-        display: block;
-        width: 0;
-    }
+  @extend .danskill-btn;
+  height: 60px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  color: $dark;
+  &.selected:after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    border-width: 15px 10px 0;
+    border-style: solid;
+    display: block;
+    width: 0;
+  }
 }
 
 .edit-btn {
-    @extend .danskill-icon-btn;
-    background-image: url('./assets/images/icons/edit.svg');
+  @extend .danskill-icon-btn;
+  background-image: url('./assets/images/icons/edit.svg');
 }
 
 .hide-btn {
-    @extend .danskill-btn;
+  @extend .danskill-btn;
 }
 
 .title-input {
-    @extend .danskill-btn;
+  @extend .danskill-btn;
 }
 
 .btn.btn-dark {
-    border: none;
-    &:not(:disabled).active {
-        background-color: $gray-500;
-    }
+  border: none;
+  &:not(:disabled).active {
+    background-color: $gray-500;
+  }
 }
 
 .dark-link {
-    color: $dark;
-    font-size: $font-size-sm;
-    @include media-breakpoint-down(sm) {
-        font-size: 0.7rem;
-    }
+  color: $dark;
+  font-size: $font-size-sm;
+  @include media-breakpoint-down(sm) {
+    font-size: 0.7rem;
+  }
 }
 
 .bg-dark {
-    color: $white;
+  color: $white;
 }
 
 .back-btn-row {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 //.tab-btn{
@@ -176,21 +176,21 @@ button:focus {
 //  }
 //}
 .clear-btn {
-    @extend .danskill-icon-btn;
-    background-image: url('./assets/images/icons/close.svg');
+  @extend .danskill-icon-btn;
+  background-image: url('./assets/images/icons/close.svg');
 }
 
 .search-btn {
-    @extend .danskill-icon-btn;
-    background-image: url('./assets/images/icons/search.svg');
+  @extend .danskill-icon-btn;
+  background-image: url('./assets/images/icons/search.svg');
 }
 
 .next-btn {
-    @extend .danskill-icon-btn;
-    background-image: url('./assets/images/icons/next.svg');
+  @extend .danskill-icon-btn;
+  background-image: url('./assets/images/icons/next.svg');
 }
 
 .prev-btn {
-    @extend .danskill-icon-btn;
-    background-image: url('./assets/images/icons/back.svg');
+  @extend .danskill-icon-btn;
+  background-image: url('./assets/images/icons/back.svg');
 }

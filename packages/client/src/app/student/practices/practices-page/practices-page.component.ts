@@ -7,14 +7,11 @@ import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
 import { ChangeDetectorRef } from '@angular/core';
 
-
 @Component({
   selector: 'dsapp-practices-page',
   templateUrl: './practices-page.component.html'
 })
-
 export class PracticesPageComponent implements OnInit, OnDestroy, AfterViewChecked {
-
   loading = true;
   errorMsg: PracticeError | string = null;
   startDate: Date = new Date('1/1/2020');
@@ -35,64 +32,56 @@ export class PracticesPageComponent implements OnInit, OnDestroy, AfterViewCheck
   currentMonth: string;
 
   constructor(
-      private store: Store<any>,
-      private errorService: AlertErrorService,
-      private cdRef:ChangeDetectorRef
+    private store: Store<any>,
+    private errorService: AlertErrorService,
+    private cdRef: ChangeDetectorRef
   ) {
     this.currentDate = this.lastDate;
   }
 
-  ngAfterViewChecked()
-  {
+  ngAfterViewChecked() {
     this.cdRef.detectChanges();
   }
 
   ngOnInit() {
-
-
     // this.setMonthsLength();
 
     this.maxMonthLength = this.monthLength;
 
     this.setDisabledBtn();
 
-
     this.subs.push(
-      this.store.select(selectors.selectPracticestMonth()).subscribe(
-        res => {
-          if(res){
-            this.currentDate = res; 
-          }
+      this.store.select(selectors.selectPracticestMonth()).subscribe((res) => {
+        if (res) {
+          this.currentDate = res;
         }
-      )
-    )
+      })
+    );
     this.subs.push(
-        this.store.select(selectors.selectAllPracticesSorted()).subscribe(
-            res => {
-              if (res) {
-                this.practices = [...res];
-                this.loading = false;
-              } else {
-                this.store.dispatch(PracticesActions.BeginGetPracticesAction());
-              }
-            }
-        )
+      this.store.select(selectors.selectAllPracticesSorted()).subscribe((res) => {
+        if (res) {
+          this.practices = [...res];
+          this.loading = false;
+        } else {
+          this.store.dispatch(PracticesActions.BeginGetPracticesAction());
+        }
+      })
     );
 
     this.subs.push(
-        this.store.select(
-            selectors.selectPracticesError()).subscribe(res => {
-          if (res && res.type) {
-            this.practices = null;
-            this.loading = false;
-            this.errorMsg = this.errorService.alertStarsError(res.type);
-          }
-        })
+      this.store.select(selectors.selectPracticesError()).subscribe((res) => {
+        if (res && res.type) {
+          this.practices = null;
+          this.loading = false;
+          this.errorMsg = this.errorService.alertStarsError(res.type);
+        }
+      })
     );
-
   }
 
-  ngOnDestroy(): void { this.subs.forEach(s => s.unsubscribe()); }
+  ngOnDestroy(): void {
+    this.subs.forEach((s) => s.unsubscribe());
+  }
 
   setMonthsLength() {
     const yearDelta = 12 * (this.currentDate.getFullYear() - this.startDate.getFullYear());
@@ -100,15 +89,14 @@ export class PracticesPageComponent implements OnInit, OnDestroy, AfterViewCheck
   }
 
   setDisabledBtn() {
-    if (this.monthLength === this.maxMonthLength)
+    if (this.monthLength === this.maxMonthLength) {
       this.nextBtndisabled = true;
-    else if (this.monthLength === 1)
+    } else if (this.monthLength === 1) {
       this.prevBtndisabled = true;
-    else {
+    } else {
       this.prevBtndisabled = false;
       this.nextBtndisabled = false;
     }
-
   }
 
   increaseMonths() {
@@ -116,11 +104,11 @@ export class PracticesPageComponent implements OnInit, OnDestroy, AfterViewCheck
     this.setMonthsLength();
     this.setDisabledBtn();
     this.isPracticesOnThisMonth = false;
-    this.currentMonth = this.getCurrentMonth(); 
-    this.store.dispatch(PracticesActions.SaveCurrentMonth({payload: this.currentDate}))
+    this.currentMonth = this.getCurrentMonth();
+    this.store.dispatch(PracticesActions.SaveCurrentMonth({ payload: this.currentDate }));
   }
 
-  getCurrentMonth(){
+  getCurrentMonth() {
     return this.currentDate.toLocaleString('default', { month: 'long' });
   }
 
@@ -129,20 +117,23 @@ export class PracticesPageComponent implements OnInit, OnDestroy, AfterViewCheck
     this.setMonthsLength();
     this.setDisabledBtn();
     this.isPracticesOnThisMonth = false;
-     this.currentMonth = this.getCurrentMonth(); 
-     this.store.dispatch(PracticesActions.SaveCurrentMonth({payload: this.currentDate}))
-    }
+    this.currentMonth = this.getCurrentMonth();
+    this.store.dispatch(PracticesActions.SaveCurrentMonth({ payload: this.currentDate }));
+  }
 
   compareDates(firstDate, secondDate) {
     firstDate = new Date(firstDate);
-    if (firstDate.getMonth() === secondDate.getMonth() && firstDate.getFullYear() === secondDate.getFullYear()){
+    if (
+      firstDate.getMonth() === secondDate.getMonth() &&
+      firstDate.getFullYear() === secondDate.getFullYear()
+    ) {
       this.isPracticesOnThisMonth = true;
+
       return true;
     }
-    else
-      return false;
-  }
 
+    return false;
+  }
 
   isHidden(title) {
     return !title.includes(this.selectedValue);
@@ -156,7 +147,4 @@ export class PracticesPageComponent implements OnInit, OnDestroy, AfterViewCheck
     this.searchTerm = '';
     this.selectedValue = '';
   }
-
-
-
 }

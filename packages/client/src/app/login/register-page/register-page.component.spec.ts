@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
 import { RegisterPageComponent } from './register-page.component';
 
@@ -11,9 +8,8 @@ describe('RegisterPageComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegisterPageComponent ]
-    })
-    .compileComponents();
+      declarations: [RegisterPageComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

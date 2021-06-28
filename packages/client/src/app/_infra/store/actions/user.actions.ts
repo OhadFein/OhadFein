@@ -14,7 +14,7 @@ export enum UserActionType {
   ClearUserAction = '[user] - Clear user',
   BeginGetGeneralInfoAction = '[user] - Begin Get GeneralInfo',
   SuccessGetGeneralInfoAction = '[user] - Success Get GeneralInfo',
-  ErrorGetGeneralInfoAction = '[user] - Error Get GeneralInfo',
+  ErrorGetGeneralInfoAction = '[user] - Error Get GeneralInfo'
 }
 
 /// get
@@ -27,11 +27,7 @@ export const SuccessGetUserAction = createAction(
   props<{ payload: User }>()
 );
 
-export const ErrorGetUserAction = createAction(
-  UserActionType.ErrorGetUserAction,
-  props<Error>()
-);
-
+export const ErrorGetUserAction = createAction(UserActionType.ErrorGetUserAction, props<Error>());
 
 // update
 export const UpdateUserAction = createAction(UserActionType.UpdateUserAction);

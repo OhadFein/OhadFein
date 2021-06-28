@@ -19,27 +19,27 @@ export class VideoPlayerModalComponent implements OnInit, OnDestroy {
 
   subs: Subscription[] = [];
 
-  constructor(public activeModal: NgbActiveModal) { }
+  constructor(public activeModal: NgbActiveModal) {}
 
   ngOnInit() {
-    this.isString = (typeof this.title === 'string');
+    this.isString = typeof this.title === 'string';
   }
 
   onPlayerReady(api) {
     this.playerAPI = api;
 
     this.subs.push(
-      this.playerAPI.getDefaultMedia().subscriptions.canPlay.subscribe(
-        event => {
-          if (this.autoplay) {
-            this.playerAPI.play();
-          }
+      this.playerAPI.getDefaultMedia().subscriptions.canPlay.subscribe(() => {
+        if (this.autoplay) {
+          this.playerAPI.play();
         }
-      )
+      })
     );
   }
 
   ngOnDestroy() {
-    this.subs.forEach(s => { s.unsubscribe(); });
+    this.subs.forEach((s) => {
+      s.unsubscribe();
+    });
   }
 }
