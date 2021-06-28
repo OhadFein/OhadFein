@@ -21,8 +21,7 @@ import { finalize } from 'rxjs/operators';
   templateUrl: './custom-lab-controls.component.html',
   styleUrls: ['./custom-lab-controls.component.scss']
 })
-export class CustomLabControlsComponent
-  implements OnChanges, OnInit, AfterViewInit {
+export class CustomLabControlsComponent implements OnChanges, OnInit, AfterViewInit {
   @Input() isPlaying: boolean;
   @Input() totalTimePassed: string;
   @Input() duration: number;
@@ -140,10 +139,7 @@ export class CustomLabControlsComponent
   }
 
   onChangeProgress(event: MouseEvent): void {
-    if (
-      event.offsetX > this.minJumpShift &&
-      event.offsetX <= this.progressBarWidth
-    ) {
+    if (event.offsetX > this.minJumpShift && event.offsetX <= this.progressBarWidth) {
       this.setProgressInPixels(event.offsetX);
       this.jumpToTime(event.offsetX);
     }
@@ -168,8 +164,7 @@ export class CustomLabControlsComponent
    */
   private getScrollBlocks(): number[] {
     const numberOfBlocks = Math.ceil(
-      ((this.screenWidth || this.defaultMobileScreenWidth) * 3) /
-        this.blockWidth
+      ((this.screenWidth || this.defaultMobileScreenWidth) * 3) / this.blockWidth
     );
 
     return Array(numberOfBlocks).fill(0);
@@ -188,10 +183,7 @@ export class CustomLabControlsComponent
   }
 
   private getScrollPosition(): number {
-    return (
-      this.scroll.nativeElement.scrollLeft -
-      (this.scroll.nativeElement.clientLeft || 0)
-    );
+    return this.scroll.nativeElement.scrollLeft - (this.scroll.nativeElement.clientLeft || 0);
   }
 
   /**
@@ -203,9 +195,7 @@ export class CustomLabControlsComponent
     const secondsToMinutes = parseInt(this.totalTimePassed, 10) / 60;
     const minutes = Math.floor(secondsToMinutes);
 
-    return `${this.getFormattedTimeToString(
-      minutes
-    )}:${this.getFormattedTimeToString(seconds)}`;
+    return `${this.getFormattedTimeToString(minutes)}:${this.getFormattedTimeToString(seconds)}`;
   }
 
   /**
@@ -234,9 +224,7 @@ export class CustomLabControlsComponent
    * @private
    */
   private setProgressInSeconds(seconds: number): void {
-    const totalTimePassedInPercents = parseFloat(
-      (seconds / this.duration).toFixed(2)
-    );
+    const totalTimePassedInPercents = parseFloat((seconds / this.duration).toFixed(2));
     const progress = this.progressBarWidth * totalTimePassedInPercents;
 
     this.progress.nativeElement.style.width = `${progress}px`;

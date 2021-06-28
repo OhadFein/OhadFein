@@ -33,9 +33,7 @@ export class BackgroundProcessesComponent implements OnInit, OnDestroy {
     this.subscription = this.backgroundProcessesService
       .onBackgroundProcess()
       .subscribe((process) => {
-        const check = this.processes.some(
-          (obj) => obj.processtId === process.processtId
-        );
+        const check = this.processes.some((obj) => obj.processtId === process.processtId);
         if (!check) {
           this.processes.push(process);
         }

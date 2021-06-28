@@ -1,10 +1,6 @@
 import { Injectable } from '@angular/core';
 import { StarContentError, StarError, UserError } from '@core/models';
-import {
-  StarsActionType,
-  StarsContentActionType,
-  UserActionType
-} from '@infra/store/actions';
+import { StarsActionType, StarsContentActionType, UserActionType } from '@infra/store/actions';
 
 import { AlertService } from './alert.service';
 
@@ -44,9 +40,7 @@ export class AlertErrorService {
     return errorMsg;
   }
 
-  alertStarsContentError(
-    errorType: StarsContentActionType | string
-  ): StarContentError {
+  alertStarsContentError(errorType: StarsContentActionType | string): StarContentError {
     let errorMsg: StarContentError = StarContentError.GENERAL;
     switch (errorType) {
       case StarsContentActionType.ErrorStarsContentAction:

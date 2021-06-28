@@ -10,10 +10,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 export class AboutDanskillModalComponent implements OnInit {
   version = '';
 
-  constructor(
-    public activeModal: NgbActiveModal,
-    protected configService: ConfigurationService
-  ) {
+  constructor(public activeModal: NgbActiveModal, protected configService: ConfigurationService) {
     const version: string = configService.getVersionString();
     this.version = version ? version : '';
   }

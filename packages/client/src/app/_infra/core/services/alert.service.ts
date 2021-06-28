@@ -27,18 +27,11 @@ export class AlertService {
 
   // enable subscribing to alerts observable
   onAlert(alertId?: string): Observable<Alert> {
-    return this.subject
-      .asObservable()
-      .pipe(filter((x) => x && x.alertId === alertId));
+    return this.subject.asObservable().pipe(filter((x) => x && x.alertId === alertId));
   }
 
   // convenience methods
-  success(
-    message: string,
-    param?: string,
-    alertId?: string,
-    keepAfterRouteChange = true
-  ) {
+  success(message: string, param?: string, alertId?: string, keepAfterRouteChange = true) {
     this.alert(
       new Alert({
         message,
@@ -50,12 +43,7 @@ export class AlertService {
     );
   }
 
-  error(
-    message: string,
-    param?: string,
-    alertId?: string,
-    keepAfterRouteChange = true
-  ) {
+  error(message: string, param?: string, alertId?: string, keepAfterRouteChange = true) {
     this.alert(
       new Alert({
         message,
@@ -67,12 +55,7 @@ export class AlertService {
     );
   }
 
-  info(
-    message: string,
-    param?: string,
-    alertId?: string,
-    keepAfterRouteChange = true
-  ) {
+  info(message: string, param?: string, alertId?: string, keepAfterRouteChange = true) {
     this.alert(
       new Alert({
         message,
@@ -84,12 +67,7 @@ export class AlertService {
     );
   }
 
-  warn(
-    message: string,
-    param?: string,
-    alertId?: string,
-    keepAfterRouteChange = true
-  ) {
+  warn(message: string, param?: string, alertId?: string, keepAfterRouteChange = true) {
     this.alert(
       new Alert({
         message,

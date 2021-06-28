@@ -47,8 +47,7 @@ export class StudentUpicComponent implements OnInit {
   }
 
   rotateCanvas(dir: 'left' | 'right') {
-    this.canvasRotation =
-      dir === 'left' ? this.canvasRotation - 0.25 : this.canvasRotation + 0.25;
+    this.canvasRotation = dir === 'left' ? this.canvasRotation - 0.25 : this.canvasRotation + 0.25;
   }
 
   fileChangeEvent(event: any): void {

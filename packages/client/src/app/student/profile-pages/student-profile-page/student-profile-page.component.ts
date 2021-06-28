@@ -15,10 +15,7 @@ export class StudentProfilePageComponent implements OnInit, OnDestroy {
   user: User = null;
   errorMsg: UserError | string = null;
 
-  constructor(
-    private store: Store<any>,
-    private errorService: AlertErrorService
-  ) {}
+  constructor(private store: Store<any>, private errorService: AlertErrorService) {}
 
   ngOnInit() {
     this.subs.push(

@@ -48,16 +48,14 @@ export class FigurePracticesComponent implements OnInit {
   ngOnInit() {
     this.getFigureId();
     this.subs.push(
-      this.store
-        .select(selectors.selectAllPracticesByFigureId(this.figureId))
-        .subscribe((res) => {
-          if (res) {
-            this.practices = [...res];
-            this.loading = false;
-          } else {
-            this.store.dispatch(PracticesActions.BeginGetPracticesAction());
-          }
-        })
+      this.store.select(selectors.selectAllPracticesByFigureId(this.figureId)).subscribe((res) => {
+        if (res) {
+          this.practices = [...res];
+          this.loading = false;
+        } else {
+          this.store.dispatch(PracticesActions.BeginGetPracticesAction());
+        }
+      })
     );
 
     this.subs.push(

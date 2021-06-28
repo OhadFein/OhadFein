@@ -35,9 +35,7 @@ export const selectPracticestMonth = () =>
 export const selectPracticeById = (id) =>
   createSelector(selectPractices, (allPractices) => {
     if (!t(allPractices, 'practices').isNullOrUndefined) {
-      return t(allPractices, 'practices').safeArray.find(
-        (practice) => practice._id === id
-      );
+      return t(allPractices, 'practices').safeArray.find((practice) => practice._id === id);
     }
 
     return null;

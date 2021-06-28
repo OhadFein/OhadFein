@@ -1,9 +1,4 @@
-import {
-  HttpEvent,
-  HttpHandler,
-  HttpInterceptor,
-  HttpRequest
-} from '@angular/common/http';
+import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AlertService, LoginService, TokenService } from '@core/services/';
@@ -21,10 +16,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     private tokenService: TokenService
   ) {}
 
-  intercept(
-    request: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     return next.handle(request).pipe(
       catchError((err) => {
         if (err.status === 401) {
@@ -46,10 +38,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     );
   }
 
-  private handle401Error(
-    request: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<any> {
+  private handle401Error(request: HttpRequest<any>, next: HttpHandler): Observable<any> {
     this.refreshTokenInProgress = true;
 
     return this.loginService.refreshToken().pipe(

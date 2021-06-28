@@ -1,21 +1,12 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import {
-  Gender,
-  Language,
-  MIN_DATE,
-  User,
-  UserError
-} from '@app/_infra/core/models';
+import { Gender, Language, MIN_DATE, User, UserError } from '@app/_infra/core/models';
 import { AlertErrorService, AlertService } from '@app/_infra/core/services';
 import * as UserActions from '@app/_infra/store/actions/user.actions';
 import * as selectors from '@app/_infra/store/selectors/user.selectors';
 import { UserActionType } from '@infra/store/actions';
-import {
-  NgbDateAdapter,
-  NgbDateNativeAdapter
-} from '@ng-bootstrap/ng-bootstrap';
+import { NgbDateAdapter, NgbDateNativeAdapter } from '@ng-bootstrap/ng-bootstrap';
 import { Actions, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs';
@@ -54,12 +45,10 @@ export class StudentEditProfilePageComponent implements OnInit, OnDestroy {
     actions$: Actions
   ) {
     this.subs.push(
-      actions$
-        .pipe(ofType(UserActionType.SuccessUpdateUserAction))
-        .subscribe(() => {
-          this.alertService.success('STUDENT.PROFILE.ProfileSaveSuccess');
-          this.router.navigate(['/student/profile']);
-        })
+      actions$.pipe(ofType(UserActionType.SuccessUpdateUserAction)).subscribe(() => {
+        this.alertService.success('STUDENT.PROFILE.ProfileSaveSuccess');
+        this.router.navigate(['/student/profile']);
+      })
     );
   }
 
@@ -109,33 +98,15 @@ export class StudentEditProfilePageComponent implements OnInit, OnDestroy {
           ]
         }),
         language: [Language.english],
-        gender: [
-          t(this.user, 'profile.gender').isDefined
-            ? this.user.profile.gender
-            : ''
-        ],
-        about: [
-          t(this.user, 'profile.about').isDefined ? this.user.profile.about : ''
-        ],
-        picture: [
-          t(this.user, 'profile.picture').isDefined
-            ? this.user.profile.picture
-            : ''
-        ]
+        gender: [t(this.user, 'profile.gender').isDefined ? this.user.profile.gender : ''],
+        about: [t(this.user, 'profile.about').isDefined ? this.user.profile.about : ''],
+        picture: [t(this.user, 'profile.picture').isDefined ? this.user.profile.picture : '']
       })
     });
 
     setTimeout(() => {
-      this.changeProfileForm
-        .get('profile')
-        .get('birthDate')
-        .get('date')
-        .clearValidators();
-      this.changeProfileForm
-        .get('profile')
-        .get('birthDate')
-        .get('date')
-        .updateValueAndValidity();
+      this.changeProfileForm.get('profile').get('birthDate').get('date').clearValidators();
+      this.changeProfileForm.get('profile').get('birthDate').get('date').updateValueAndValidity();
     }, 500);
 
     this.formIsReady = true;

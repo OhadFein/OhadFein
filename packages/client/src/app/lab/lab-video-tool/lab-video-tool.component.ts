@@ -1,15 +1,5 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  Output,
-  ViewChild
-} from '@angular/core';
-import {
-  LabPlayerType,
-  LabStarVideo,
-  LabUserVideo
-} from '@app/_infra/core/models';
+import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
+import { LabPlayerType, LabStarVideo, LabUserVideo } from '@app/_infra/core/models';
 import { VideoPlayerWrapperComponent } from '@app/_infra/ui';
 import { VgEvents } from 'ngx-videogular';
 
@@ -144,12 +134,8 @@ export class LabVideoToolComponent {
     this.timeDiff = 0;
   }
 
-  seekToSyncTime(
-    masterTimeSeconds: number,
-    studentTimeInSeconds: number
-  ): void {
-    let masterTime =
-      masterTimeSeconds ?? Math.round(this.masterPLayer.getCurrentTime());
+  seekToSyncTime(masterTimeSeconds: number, studentTimeInSeconds: number): void {
+    let masterTime = masterTimeSeconds ?? Math.round(this.masterPLayer.getCurrentTime());
     let studentTime = studentTimeInSeconds ?? masterTime - this.timeDiff;
 
     if (studentTime < 0) {
@@ -170,10 +156,7 @@ export class LabVideoToolComponent {
 
   syncPlayersOnStart(): void {
     [this.masterPLayer, this.studentPLayer].map((p) => p.pause());
-    this.seekToSyncTime(
-      this.videoStartTimeSync.master,
-      this.videoStartTimeSync.student
-    );
+    this.seekToSyncTime(this.videoStartTimeSync.master, this.videoStartTimeSync.student);
   }
 
   changePlaybackRate() {

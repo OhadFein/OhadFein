@@ -10,10 +10,7 @@ import { TokenService } from './token.service';
 export class ConfigurationService {
   private config: Configuration;
 
-  constructor(
-    private httpClient: HttpClient,
-    private tokenService: TokenService
-  ) {}
+  constructor(private httpClient: HttpClient, private tokenService: TokenService) {}
 
   load(url: string) {
     return new Promise((resolve) => {

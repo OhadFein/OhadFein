@@ -1,10 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  ActivatedRouteSnapshot,
-  CanActivate,
-  Router,
-  RouterStateSnapshot
-} from '@angular/router';
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
 import { AlertService, TokenService } from '@core/services';
 
 @Injectable({ providedIn: 'root' })
@@ -15,10 +10,7 @@ export class AuthGuard implements CanActivate {
     private tokenService: TokenService
   ) {}
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): boolean {
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     // server takes care of session
     // return true;
     if (this.tokenService.checkStoredAccessToken()) {

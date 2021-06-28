@@ -10,10 +10,7 @@ export enum LabActionType {
 
 export const GetLabAction = createAction(LabActionType.GetLabAction);
 
-export const SetLabAction = createAction(
-  LabActionType.SetLabAction,
-  props<{ payload: LabItem }>()
-);
+export const SetLabAction = createAction(LabActionType.SetLabAction, props<{ payload: LabItem }>());
 
 export const UpdateLabAction = createAction(
   LabActionType.UpdateLabAction,

@@ -46,23 +46,21 @@ export class RegisterService {
   changePassword({ password, confirmPassword }, token: string) {
     const payload = { password, confirm: confirmPassword };
 
-    this.baseRestService
-      .post<AuthRestResponse>(`reset/${token}`, payload)
-      .subscribe(
-        (res) => {
-          if (res.success) {
-            this.tokenService.storeTokens(res.data);
-            this.afterLoginRoute();
-          } else if (!res.success && res.message) {
-            const errorStr = `${res.message}`;
-            this.alertService.error(errorStr);
-          } else {
-            this.alertService.error('ERRORS.GeneralBackendError');
-          }
-        },
-        () => {
+    this.baseRestService.post<AuthRestResponse>(`reset/${token}`, payload).subscribe(
+      (res) => {
+        if (res.success) {
+          this.tokenService.storeTokens(res.data);
+          this.afterLoginRoute();
+        } else if (!res.success && res.message) {
+          const errorStr = `${res.message}`;
+          this.alertService.error(errorStr);
+        } else {
           this.alertService.error('ERRORS.GeneralBackendError');
         }
-      );
+      },
+      () => {
+        this.alertService.error('ERRORS.GeneralBackendError');
+      }
+    );
   }
 }

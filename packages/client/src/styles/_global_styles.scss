@@ -43,9 +43,7 @@ button:focus {
 }
 
 .full-height {
-  min-height: calc(
-    100vh - 7rem
-  ); // 7 rem is a sum of top and bottom margin on the page
+  min-height: calc(100vh - 7rem); // 7 rem is a sum of top and bottom margin on the page
 }
 
 .full-mobile {

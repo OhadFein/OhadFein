@@ -9,21 +9,15 @@ const reducer = createReducer(
   initialFiguresState,
   on(FiguresActions.GetFiguresAction, (state) => state),
 
-  on(
-    FiguresActions.SuccessGetFigureAction,
-    (state: FiguresState, { payload }) => {
-      return { ...state, figures: [...state.figures, payload], error: null };
-    }
-  ),
+  on(FiguresActions.SuccessGetFigureAction, (state: FiguresState, { payload }) => {
+    return { ...state, figures: [...state.figures, payload], error: null };
+  }),
 
   on(FiguresActions.ErrorFiguresAction, (state: FiguresState, error: Error) => {
     return { ...state, error };
   })
 );
 
-export function FiguresReducer(
-  state: FiguresState | undefined,
-  action: Action
-) {
+export function FiguresReducer(state: FiguresState | undefined, action: Action) {
   return reducer(state, action);
 }

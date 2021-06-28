@@ -3,10 +3,7 @@ import { RouterModule } from '@angular/router';
 import { Routes } from '@angular/router';
 import { AuthGuard } from '@app/_infra/core/guards/auth.guard';
 
-import {
-  StudentEditProfilePageComponent,
-  StudentProfilePageComponent
-} from '.';
+import { StudentEditProfilePageComponent, StudentProfilePageComponent } from '.';
 
 const routes: Routes = [
   {

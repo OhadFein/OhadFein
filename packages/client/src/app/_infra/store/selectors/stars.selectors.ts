@@ -7,9 +7,7 @@ export const selectStars = (state: StarsState) => state.stars;
 
 export const selectAllStars = () =>
   createSelector(selectStars, (allStars) => {
-    return !t(allStars, 'stars').isNullOrUndefined
-      ? t(allStars, 'stars').safeObject
-      : null;
+    return !t(allStars, 'stars').isNullOrUndefined ? t(allStars, 'stars').safeObject : null;
   });
 
 export const selectStarBySlug = (slug: string) =>

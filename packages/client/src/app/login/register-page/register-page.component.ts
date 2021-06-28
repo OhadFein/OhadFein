@@ -17,18 +17,12 @@ export class RegisterPageComponent implements OnInit {
     return this.registerForm.controls;
   }
 
-  constructor(
-    private registerService: RegisterService,
-    private formBuilder: FormBuilder
-  ) {}
+  constructor(private registerService: RegisterService, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group(
       {
-        email: [
-          '',
-          Validators.compose([Validators.required, Validators.email])
-        ],
+        email: ['', Validators.compose([Validators.required, Validators.email])],
         password: ['', Validators.compose(PASSWORD_VALIDATORS)],
         confirmPassword: ['', Validators.compose([Validators.required])],
         name: this.formBuilder.group({

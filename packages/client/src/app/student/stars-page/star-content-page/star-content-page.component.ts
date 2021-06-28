@@ -36,16 +36,14 @@ export class StarContentPageComponent implements OnInit, OnDestroy {
       })
     );
     this.subs.push(
-      this.store
-        .select(selectors.selectStarBySlug(this.slug))
-        .subscribe((star) => {
-          if (star) {
-            this.user = { ...star };
-            this.loading = false;
-          } else {
-            this.store.dispatch(StarsActions.BeginGetStarsAction());
-          }
-        })
+      this.store.select(selectors.selectStarBySlug(this.slug)).subscribe((star) => {
+        if (star) {
+          this.user = { ...star };
+          this.loading = false;
+        } else {
+          this.store.dispatch(StarsActions.BeginGetStarsAction());
+        }
+      })
     );
   }
 

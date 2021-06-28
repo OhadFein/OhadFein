@@ -31,17 +31,13 @@ export class FigurePreviewComponent implements OnInit {
 
   getFigure(): void {
     this.subs.push(
-      this.store
-        .select(FigureSelectors.selectFigureById(this.figureId))
-        .subscribe((figure) => {
-          if (figure) {
-            this.figure = figure;
-          } else {
-            this.store.dispatch(
-              FigureActions.BeginGetFigureAction({ payload: this.figureId })
-            );
-          }
-        })
+      this.store.select(FigureSelectors.selectFigureById(this.figureId)).subscribe((figure) => {
+        if (figure) {
+          this.figure = figure;
+        } else {
+          this.store.dispatch(FigureActions.BeginGetFigureAction({ payload: this.figureId }));
+        }
+      })
     );
   }
 

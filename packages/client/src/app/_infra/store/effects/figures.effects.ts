@@ -10,10 +10,7 @@ import * as FiguresActions from '../actions/figures.actions';
 
 @Injectable()
 export class FiguresEffects {
-  constructor(
-    private action$: Actions,
-    private figuresService: FiguresService
-  ) {}
+  constructor(private action$: Actions, private figuresService: FiguresService) {}
 
   getFigure$: Observable<Action> = createEffect(() =>
     this.action$.pipe(

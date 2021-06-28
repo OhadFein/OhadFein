@@ -1,11 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
-import {
-  BackgroundProcess,
-  BackgroundProcessType,
-  CreatePracticeData
-} from '../models';
+import { BackgroundProcess, BackgroundProcessType, CreatePracticeData } from '../models';
 
 @Injectable({
   providedIn: 'root'

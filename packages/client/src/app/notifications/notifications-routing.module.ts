@@ -11,8 +11,7 @@ const routes: Routes = [
     children: [
       {
         path: 'notifications',
-        loadChildren: () =>
-          import('./notifications.module').then((m) => m.NotificationsModule),
+        loadChildren: () => import('./notifications.module').then((m) => m.NotificationsModule),
         canActivate: [AuthGuard]
       },
       { path: '', redirectTo: 'star', pathMatch: 'full' }

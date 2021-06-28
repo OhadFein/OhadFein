@@ -1,8 +1,7 @@
 @font-face {
   font-family: 'danskill_icons';
   src: url('assets/fonts/danskill_icons.eot?17586455');
-  src: url('assets/fonts/danskill_icons.eot?17586455#iefix')
-      format('embedded-opentype'),
+  src: url('assets/fonts/danskill_icons.eot?17586455#iefix') format('embedded-opentype'),
     url('assets/fonts/danskill_icons.woff2?17586455') format('woff2'),
     url('assets/fonts/danskill_icons.woff?17586455') format('woff'),
     url('assets/fonts/danskill_icons.ttf?17586455') format('truetype'),
@@ -17,8 +16,7 @@
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
   @font-face {
     font-family: 'danskill_icons';
-    src: url('assets/fonts/danskill_icons.svg?17586455#danskill_icons')
-      format('svg');
+    src: url('assets/fonts/danskill_icons.svg?17586455#danskill_icons') format('svg');
   }
 }
 

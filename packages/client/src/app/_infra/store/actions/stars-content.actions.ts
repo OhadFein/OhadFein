@@ -7,9 +7,7 @@ export enum StarsContentActionType {
   ErrorStarsContentAction = '[starsContent] - Error'
 }
 
-export const GetStarsContentAction = createAction(
-  StarsContentActionType.GetStarsContentAction
-);
+export const GetStarsContentAction = createAction(StarsContentActionType.GetStarsContentAction);
 
 export const BeginGetStarsContentAction = createAction(
   StarsContentActionType.BeginGetStarsContentAction,

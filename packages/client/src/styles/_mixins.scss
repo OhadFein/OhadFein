@@ -2,13 +2,7 @@
 @import './mixins/underline';
 @import './mixins/animate-spin';
 
-@mixin position_fixed(
-  $top: auto,
-  $bottom: auto,
-  $left: auto,
-  $right: auto,
-  $width: 100%
-) {
+@mixin position_fixed($top: auto, $bottom: auto, $left: auto, $right: auto, $width: 100%) {
   position: fixed;
   top: $top;
   bottom: $bottom;

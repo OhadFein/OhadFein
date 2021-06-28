@@ -15,17 +15,11 @@ const reducer = createReducer(
     }
   ),
 
-  on(
-    NotificationsActions.ErrorNotificationsAction,
-    (state: NotificationsState, error: Error) => {
-      return { ...state, error };
-    }
-  )
+  on(NotificationsActions.ErrorNotificationsAction, (state: NotificationsState, error: Error) => {
+    return { ...state, error };
+  })
 );
 
-export function NotificationsReducer(
-  state: NotificationsState | undefined,
-  action: Action
-) {
+export function NotificationsReducer(state: NotificationsState | undefined, action: Action) {
   return reducer(state, action);
 }

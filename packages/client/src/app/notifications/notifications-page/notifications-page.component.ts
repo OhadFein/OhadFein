@@ -1,10 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NotificationsService } from '../notifications.service';
-import {
-  INotifications,
-  ISortedNotifications,
-  ENotificationType
-} from '@core/models';
+import { INotifications, ISortedNotifications, ENotificationType } from '@core/models';
 import * as selectors from '@store/selectors/notifications.selectors';
 import * as NotificationsActions from '@store/actions/notifications.actions';
 import { Subscription } from 'rxjs';
@@ -34,31 +30,27 @@ export class NotificationsPageComponent implements OnInit, OnDestroy {
   }
 
   sortNotifications(): void {
-    const notificationGroups = this.notifications.reduce(
-      (groups, notification) => {
-        const date = notification.createdAt.split('T')[0];
-        if (!groups[date]) {
-          groups[date] = [];
-        }
-        groups[date].push({
-          userName: notification.performedActionUser[0].username,
-          sourceUser: notification.sourceUser,
-          performedActionUsername: notification.performedActionUsername,
-          type: notification.type,
-          createdAt: new Date(notification.createdAt),
-          isRead: notification.isRead,
-          _id: notification._id,
-          link:
-            notification.type ===
-            ENotificationType.NEW_STAR_FIGURE.split(' ').join('_')
-              ? '../student/star/figures/' + notification.linkedId
-              : ''
-        });
+    const notificationGroups = this.notifications.reduce((groups, notification) => {
+      const date = notification.createdAt.split('T')[0];
+      if (!groups[date]) {
+        groups[date] = [];
+      }
+      groups[date].push({
+        userName: notification.performedActionUser[0].username,
+        sourceUser: notification.sourceUser,
+        performedActionUsername: notification.performedActionUsername,
+        type: notification.type,
+        createdAt: new Date(notification.createdAt),
+        isRead: notification.isRead,
+        _id: notification._id,
+        link:
+          notification.type === ENotificationType.NEW_STAR_FIGURE.split(' ').join('_')
+            ? '../student/star/figures/' + notification.linkedId
+            : ''
+      });
 
-        return groups;
-      },
-      {}
-    );
+      return groups;
+    }, {});
 
     this.sortedNotifications = Object.keys(notificationGroups)
       .map((date) => {
@@ -78,18 +70,14 @@ export class NotificationsPageComponent implements OnInit, OnDestroy {
 
   getNotifications(): void {
     this.subs.push(
-      this.store
-        .select(selectors.selectAllNotifications())
-        .subscribe((notifications) => {
-          if (notifications) {
-            this.notifications = notifications;
-            this.sortNotifications();
-          } else {
-            this.store.dispatch(
-              NotificationsActions.BeginGetNotificationsAction()
-            );
-          }
-        })
+      this.store.select(selectors.selectAllNotifications()).subscribe((notifications) => {
+        if (notifications) {
+          this.notifications = notifications;
+          this.sortNotifications();
+        } else {
+          this.store.dispatch(NotificationsActions.BeginGetNotificationsAction());
+        }
+      })
     );
   }
 

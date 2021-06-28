@@ -1,14 +1,6 @@
 import { Component, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import {
-  IFigure,
-  LabItem,
-  LabStarVideo,
-  IUser,
-  Video,
-  VideoType,
-  ETabs
-} from '@core/models';
+import { IFigure, LabItem, LabStarVideo, IUser, Video, VideoType, ETabs } from '@core/models';
 import * as FigureActions from '@app/_infra/store/actions/figures.actions';
 import * as StarsActions from '@app/_infra/store/actions/stars.actions';
 import { VideoPlayerModalComponent } from '@app/_infra/ui';
@@ -98,37 +90,31 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
 
   getFigure() {
     this.subs.push(
-      this.store
-        .select(FigureSelectors.selectFigureById(this.figureId))
-        .subscribe((figure) => {
-          if (figure) {
-            this.figure = { ...figure };
-            this.splitVideosByType();
-            this.starIsLoading = false;
-            this.getCurrentVideo();
-          } else {
-            setTimeout(() => {
-              this.store.dispatch(
-                FigureActions.BeginGetFigureAction({ payload: this.figureId })
-              );
-            }, 1000);
-          }
-        })
+      this.store.select(FigureSelectors.selectFigureById(this.figureId)).subscribe((figure) => {
+        if (figure) {
+          this.figure = { ...figure };
+          this.splitVideosByType();
+          this.starIsLoading = false;
+          this.getCurrentVideo();
+        } else {
+          setTimeout(() => {
+            this.store.dispatch(FigureActions.BeginGetFigureAction({ payload: this.figureId }));
+          }, 1000);
+        }
+      })
     );
   }
 
   getStar(): void {
     this.subs.push(
-      this.store
-        .select(StarSelectors.selectStarBySlug(this.slug))
-        .subscribe((user) => {
-          if (user) {
-            this.user = { ...user };
-            this.starIsLoading = false;
-          } else {
-            this.store.dispatch(StarsActions.BeginGetStarsAction());
-          }
-        })
+      this.store.select(StarSelectors.selectStarBySlug(this.slug)).subscribe((user) => {
+        if (user) {
+          this.user = { ...user };
+          this.starIsLoading = false;
+        } else {
+          this.store.dispatch(StarsActions.BeginGetStarsAction());
+        }
+      })
     );
   }
 

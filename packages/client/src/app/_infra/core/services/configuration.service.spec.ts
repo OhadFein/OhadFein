@@ -8,10 +8,7 @@ describe('Service: Configuration', () => {
     });
   });
 
-  it('should ...', inject(
-    [ConfigurationService],
-    (service: ConfigurationService) => {
-      expect(service).toBeTruthy();
-    }
-  ));
+  it('should ...', inject([ConfigurationService], (service: ConfigurationService) => {
+    expect(service).toBeTruthy();
+  }));
 });

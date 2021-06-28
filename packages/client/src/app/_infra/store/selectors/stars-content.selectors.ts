@@ -3,15 +3,12 @@ import t from 'typy';
 
 import { StarContentState } from '../state';
 
-export const selectStarsContent = (state: StarContentState) =>
-  state.starsContent;
+export const selectStarsContent = (state: StarContentState) => state.starsContent;
 
 export const selectStarContentByStarId = (starId) =>
   createSelector(selectStarsContent, (allStarsContent) => {
     if (!t(allStarsContent, 'starsContent').isNullOrUndefined) {
-      return t(allStarsContent, 'starsContent').safeArray.find(
-        (content) => content._id === starId
-      );
+      return t(allStarsContent, 'starsContent').safeArray.find((content) => content._id === starId);
     }
 
     return null;

@@ -13,29 +13,23 @@ const routes: Routes = [
       {
         path: 'star',
         loadChildren: () =>
-          import('./stars-page/student-stars.module').then(
-            (m) => m.StudentStarsModule
-          ),
+          import('./stars-page/student-stars.module').then((m) => m.StudentStarsModule),
         canActivate: [AuthGuard]
       },
       {
         path: 'lab',
-        loadChildren: () =>
-          import('../lab/lab.module').then((m) => m.LabModule),
+        loadChildren: () => import('../lab/lab.module').then((m) => m.LabModule),
         canActivate: [AuthGuard]
       },
       {
         path: 'practices',
-        loadChildren: () =>
-          import('./practices/parctices.module').then((m) => m.PracticesModule),
+        loadChildren: () => import('./practices/parctices.module').then((m) => m.PracticesModule),
         canActivate: [AuthGuard]
       },
       {
         path: 'profile',
         loadChildren: () =>
-          import('./profile-pages/student-profile.module').then(
-            (m) => m.StudentProfileModule
-          ),
+          import('./profile-pages/student-profile.module').then((m) => m.StudentProfileModule),
         canActivate: [AuthGuard]
       },
       { path: '', redirectTo: 'star', pathMatch: 'full' }

@@ -11,8 +11,7 @@ import { ChangeDetectorRef } from '@angular/core';
   selector: 'dsapp-practices-page',
   templateUrl: './practices-page.component.html'
 })
-export class PracticesPageComponent
-  implements OnInit, OnDestroy, AfterViewChecked {
+export class PracticesPageComponent implements OnInit, OnDestroy, AfterViewChecked {
   loading = true;
   errorMsg: PracticeError | string = null;
   startDate: Date = new Date('1/1/2020');
@@ -59,16 +58,14 @@ export class PracticesPageComponent
       })
     );
     this.subs.push(
-      this.store
-        .select(selectors.selectAllPracticesSorted())
-        .subscribe((res) => {
-          if (res) {
-            this.practices = [...res];
-            this.loading = false;
-          } else {
-            this.store.dispatch(PracticesActions.BeginGetPracticesAction());
-          }
-        })
+      this.store.select(selectors.selectAllPracticesSorted()).subscribe((res) => {
+        if (res) {
+          this.practices = [...res];
+          this.loading = false;
+        } else {
+          this.store.dispatch(PracticesActions.BeginGetPracticesAction());
+        }
+      })
     );
 
     this.subs.push(
@@ -87,10 +84,8 @@ export class PracticesPageComponent
   }
 
   setMonthsLength() {
-    const yearDelta =
-      12 * (this.currentDate.getFullYear() - this.startDate.getFullYear());
-    this.monthLength =
-      this.currentDate.getMonth() - this.startDate.getMonth() + yearDelta + 1;
+    const yearDelta = 12 * (this.currentDate.getFullYear() - this.startDate.getFullYear());
+    this.monthLength = this.currentDate.getMonth() - this.startDate.getMonth() + yearDelta + 1;
   }
 
   setDisabledBtn() {
@@ -105,16 +100,12 @@ export class PracticesPageComponent
   }
 
   increaseMonths() {
-    this.currentDate = new Date(
-      this.currentDate.setMonth(this.currentDate.getMonth() + 1)
-    );
+    this.currentDate = new Date(this.currentDate.setMonth(this.currentDate.getMonth() + 1));
     this.setMonthsLength();
     this.setDisabledBtn();
     this.isPracticesOnThisMonth = false;
     this.currentMonth = this.getCurrentMonth();
-    this.store.dispatch(
-      PracticesActions.SaveCurrentMonth({ payload: this.currentDate })
-    );
+    this.store.dispatch(PracticesActions.SaveCurrentMonth({ payload: this.currentDate }));
   }
 
   getCurrentMonth() {
@@ -122,16 +113,12 @@ export class PracticesPageComponent
   }
 
   decreaseMonths() {
-    this.currentDate = new Date(
-      this.currentDate.setMonth(this.currentDate.getMonth() - 1)
-    );
+    this.currentDate = new Date(this.currentDate.setMonth(this.currentDate.getMonth() - 1));
     this.setMonthsLength();
     this.setDisabledBtn();
     this.isPracticesOnThisMonth = false;
     this.currentMonth = this.getCurrentMonth();
-    this.store.dispatch(
-      PracticesActions.SaveCurrentMonth({ payload: this.currentDate })
-    );
+    this.store.dispatch(PracticesActions.SaveCurrentMonth({ payload: this.currentDate }));
   }
 
   compareDates(firstDate, secondDate) {

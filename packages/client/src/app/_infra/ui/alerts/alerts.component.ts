@@ -13,9 +13,7 @@ import { Subscription } from 'rxjs';
         style({ transform: 'translateY(300%)' }),
         animate('300ms ease-in-out', style({ transform: 'translateY(0%)' }))
       ]),
-      transition(':leave', [
-        animate('300ms ease-in-out', style({ transform: 'translateY(300%)' }))
-      ])
+      transition(':leave', [animate('300ms ease-in-out', style({ transform: 'translateY(300%)' }))])
     ])
   ]
 })
@@ -27,22 +25,20 @@ export class AlertsComponent implements OnInit, OnDestroy {
 
   constructor(private alertService: AlertService) {}
   ngOnInit() {
-    this.subscription = this.alertService
-      .onAlert(this.id)
-      .subscribe((alert) => {
-        if (!alert.message) {
-          // clear alerts when an empty alert is received
-          this.alerts = [];
+    this.subscription = this.alertService.onAlert(this.id).subscribe((alert) => {
+      if (!alert.message) {
+        // clear alerts when an empty alert is received
+        this.alerts = [];
 
-          return;
-        }
+        return;
+      }
 
-        // add alert to array
-        this.alerts.push(alert);
-        setTimeout(() => {
-          this.removeAlert(alert);
-        }, ALERT_TIMEOUT);
-      });
+      // add alert to array
+      this.alerts.push(alert);
+      setTimeout(() => {
+        this.removeAlert(alert);
+      }, ALERT_TIMEOUT);
+    });
   }
 
   ngOnDestroy() {

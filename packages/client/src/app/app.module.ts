@@ -16,10 +16,7 @@ import {
   UserReducer,
   NotificationsReducer
 } from '@infra/store/reducers';
-import {
-  AboutDanskillModalComponent,
-  VideoPlayerModalComponent
-} from '@infra/ui';
+import { AboutDanskillModalComponent, VideoPlayerModalComponent } from '@infra/ui';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
@@ -42,11 +39,7 @@ import { AppComponent } from './app.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(
-    http,
-    '/assets/i18n/',
-    '.json?ob=' + new Date().getTime()
-  );
+  return new TranslateHttpLoader(http, '/assets/i18n/', '.json?ob=' + new Date().getTime());
 }
 
 @NgModule({

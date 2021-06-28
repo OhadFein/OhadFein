@@ -25,9 +25,7 @@ export class HeaderComponent implements OnInit {
     private menuService: MenuService,
     private location: Location
   ) {
-    this.notificationsNUmber = JSON.parse(
-      sessionStorage.getItem('notifications')
-    );
+    this.notificationsNUmber = JSON.parse(sessionStorage.getItem('notifications'));
   }
 
   @HostListener('window:beforeinstallprompt', ['$event'])

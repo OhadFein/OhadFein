@@ -46,33 +46,27 @@ export class FigureMovementsComponent implements OnInit {
 
   getFigure(): void {
     this.subs.push(
-      this.store
-        .select(FigureSelectors.selectFigureById(this.figureId))
-        .subscribe((figure) => {
-          if (figure) {
-            this.figure = { ...figure };
-          } else {
-            setTimeout(() => {
-              this.store.dispatch(
-                FigureActions.BeginGetFigureAction({ payload: this.figureId })
-              );
-            }, 1000);
-          }
-        })
+      this.store.select(FigureSelectors.selectFigureById(this.figureId)).subscribe((figure) => {
+        if (figure) {
+          this.figure = { ...figure };
+        } else {
+          setTimeout(() => {
+            this.store.dispatch(FigureActions.BeginGetFigureAction({ payload: this.figureId }));
+          }, 1000);
+        }
+      })
     );
   }
 
   getStar(): void {
     this.subs.push(
-      this.store
-        .select(StarSelectors.selectStarBySlug(this.slug))
-        .subscribe((star) => {
-          if (star) {
-            this.star = { ...star };
-          } else {
-            this.store.dispatch(StarsActions.BeginGetStarsAction());
-          }
-        })
+      this.store.select(StarSelectors.selectStarBySlug(this.slug)).subscribe((star) => {
+        if (star) {
+          this.star = { ...star };
+        } else {
+          this.store.dispatch(StarsActions.BeginGetStarsAction());
+        }
+      })
     );
   }
 
@@ -86,18 +80,14 @@ export class FigureMovementsComponent implements OnInit {
   getMovements() {
     this.subs.push(
       this.store
-        .select(
-          FigureSelectors.selectFigureTabsById(this.figureId, 'comparable')
-        )
+        .select(FigureSelectors.selectFigureTabsById(this.figureId, 'comparable'))
         .subscribe((videos) => {
           if (videos) {
             this.movements = videos;
             this.currentVideoId = videos[0]._id;
           } else {
             setTimeout(() => {
-              this.store.dispatch(
-                FigureActions.BeginGetFigureAction({ payload: this.figureId })
-              );
+              this.store.dispatch(FigureActions.BeginGetFigureAction({ payload: this.figureId }));
             }, 1000);
           }
         })

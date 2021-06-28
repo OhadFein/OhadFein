@@ -2,12 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import {
-  IUser,
-  StarsRestResponse,
-  IStarContent,
-  IRestResponse
-} from '@core/models';
+import { IUser, StarsRestResponse, IStarContent, IRestResponse } from '@core/models';
 import { BaseRestService } from './base-rest.service';
 
 @Injectable({
@@ -23,8 +18,6 @@ export class StarsService {
   }
 
   getStars(): Observable<IUser[]> {
-    return this.baseRestService
-      .get<StarsRestResponse>('stars')
-      .pipe(map((res) => res.data ?? []));
+    return this.baseRestService.get<StarsRestResponse>('stars').pipe(map((res) => res.data ?? []));
   }
 }

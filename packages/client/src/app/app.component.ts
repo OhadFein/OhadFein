@@ -1,11 +1,5 @@
 import { Location } from '@angular/common';
-import {
-  Component,
-  OnDestroy,
-  OnInit,
-  HostListener,
-  ViewChild
-} from '@angular/core';
+import { Component, OnDestroy, OnInit, HostListener, ViewChild } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { BackgroundPosition } from '@core/models/';
 import { MenuService, UserService } from '@core/services';
@@ -85,13 +79,8 @@ export class AppComponent implements OnInit, OnDestroy {
       .getGeneralInfo()
       .pipe(
         map((res: any) => {
-          const notificationsNumber = res.notifications.filter(
-            (n) => n.isRead === false
-          ).length;
-          sessionStorage.setItem(
-            'notifications',
-            JSON.stringify(notificationsNumber)
-          );
+          const notificationsNumber = res.notifications.filter((n) => n.isRead === false).length;
+          sessionStorage.setItem('notifications', JSON.stringify(notificationsNumber));
         })
       )
       .subscribe();

@@ -5,11 +5,7 @@ import { FigureMovementsComponent } from './star-figure-page/figure-movements/fi
 import { FigurePreviewComponent } from './star-figure-page/figure-preview/figure-preview.component';
 import { FigurePrinciplesComponent } from './star-figure-page/figure-principles/figure-principles.component';
 import { FigurePracticesComponent } from './star-figure-page/figure-practices/figure-practices.component';
-import {
-  StarContentPageComponent,
-  StarFigurePageComponent,
-  StarsPageComponent
-} from '.';
+import { StarContentPageComponent, StarFigurePageComponent, StarsPageComponent } from '.';
 
 const routes: Routes = [
   { path: '', component: StarsPageComponent, canActivate: [AuthGuard] },

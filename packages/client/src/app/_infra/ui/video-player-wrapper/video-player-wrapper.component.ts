@@ -1,10 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  Input,
-  OnDestroy,
-  Output
-} from '@angular/core';
+import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
 import { VgAPI } from 'ngx-videogular';
 import { Subscription } from 'rxjs';
 
@@ -36,9 +30,7 @@ export class VideoPlayerWrapperComponent implements OnDestroy {
 
   onPlayerReady(api: VgAPI) {
     this.playerAPI = api;
-    this.playerAPI
-      .getDefaultMedia()
-      .subscriptions.loadedMetadata.subscribe(() => this.initVideo());
+    this.playerAPI.getDefaultMedia().subscriptions.loadedMetadata.subscribe(() => this.initVideo());
   }
 
   initVideo() {
@@ -62,48 +54,32 @@ export class VideoPlayerWrapperComponent implements OnDestroy {
     };
 
     this.subs.push(
-      this.playerAPI
-        .getDefaultMedia()
-        .subscriptions.abort.subscribe(videoStatusChangedEvent)
+      this.playerAPI.getDefaultMedia().subscriptions.abort.subscribe(videoStatusChangedEvent)
     );
     this.subs.push(
-      this.playerAPI
-        .getDefaultMedia()
-        .subscriptions.error.subscribe(videoStatusChangedEvent)
+      this.playerAPI.getDefaultMedia().subscriptions.error.subscribe(videoStatusChangedEvent)
     );
     this.subs.push(
-      this.playerAPI
-        .getDefaultMedia()
-        .subscriptions.ended.subscribe(videoStatusChangedEvent)
+      this.playerAPI.getDefaultMedia().subscriptions.ended.subscribe(videoStatusChangedEvent)
     );
     this.subs.push(
-      this.playerAPI
-        .getDefaultMedia()
-        .subscriptions.playing.subscribe(videoStatusChangedEvent)
+      this.playerAPI.getDefaultMedia().subscriptions.playing.subscribe(videoStatusChangedEvent)
     );
     this.subs.push(
-      this.playerAPI
-        .getDefaultMedia()
-        .subscriptions.pause.subscribe(videoStatusChangedEvent)
+      this.playerAPI.getDefaultMedia().subscriptions.pause.subscribe(videoStatusChangedEvent)
     );
 
     this.subs.push(
-      this.playerAPI
-        .getDefaultMedia()
-        .subscriptions.seeked.subscribe((event) => {
-          this.playerEvent.emit(event);
-        })
+      this.playerAPI.getDefaultMedia().subscriptions.seeked.subscribe((event) => {
+        this.playerEvent.emit(event);
+      })
     );
 
     this.subs.push(
-      this.playerAPI
-        .getDefaultMedia()
-        .subscriptions.timeUpdate.subscribe((event) => {
-          this.timePassed = (
-            Math.round(this.getCurrentTime() * 100) / 100
-          ).toFixed(2);
-          this.playerEvent.emit(event);
-        })
+      this.playerAPI.getDefaultMedia().subscriptions.timeUpdate.subscribe((event) => {
+        this.timePassed = (Math.round(this.getCurrentTime() * 100) / 100).toFixed(2);
+        this.playerEvent.emit(event);
+      })
     );
   }
 

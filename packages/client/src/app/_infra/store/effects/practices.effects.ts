@@ -9,10 +9,7 @@ import * as PracticsActions from '../actions/practices.actions';
 
 @Injectable()
 export class PracticesEffects {
-  constructor(
-    private action$: Actions,
-    private practicesService: PracticesService
-  ) {}
+  constructor(private action$: Actions, private practicesService: PracticesService) {}
 
   getPractices$: Observable<Action> = createEffect(() =>
     this.action$.pipe(

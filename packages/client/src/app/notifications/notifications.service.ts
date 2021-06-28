@@ -20,20 +20,18 @@ export class NotificationsService {
   // `stars/${starId}`
 
   setNotificationsAsRead(notificationId): Observable<any> {
-    return this.baseRestService
-      .post<any>(`notifications/mark/read/${notificationId}`, {})
-      .pipe(
-        map(
-          (res) => {
-            if (res.success) {
-              return res.data;
-            }
-            throwError([res.message]); // TODO: add real error here
-          },
-          () => {
-            throwError(['ERRORS.GeneralBackendError']);
+    return this.baseRestService.post<any>(`notifications/mark/read/${notificationId}`, {}).pipe(
+      map(
+        (res) => {
+          if (res.success) {
+            return res.data;
           }
-        )
-      );
+          throwError([res.message]); // TODO: add real error here
+        },
+        () => {
+          throwError(['ERRORS.GeneralBackendError']);
+        }
+      )
+    );
   }
 }

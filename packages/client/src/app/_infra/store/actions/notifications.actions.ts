@@ -11,9 +11,7 @@ export enum NotificationsActionType {
   ErrorUpdateNotificationsAction = '[notifications] - Error Update notifications'
 }
 
-export const GetNotificationsAction = createAction(
-  NotificationsActionType.GetNotificationsAction
-);
+export const GetNotificationsAction = createAction(NotificationsActionType.GetNotificationsAction);
 
 export const BeginGetNotificationsAction = createAction(
   NotificationsActionType.BeginGetNotificationsAction

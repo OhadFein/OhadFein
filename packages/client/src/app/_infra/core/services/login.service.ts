@@ -84,19 +84,17 @@ export class LoginService {
   refreshToken() {
     const refreshToken = this.tokenService.getStoredRefreshToken();
 
-    return this.baseRestService
-      .post<AuthRestResponse>(`refreshToken/${refreshToken}`, {})
-      .pipe(
-        tap((res) => {
-          if (res.success) {
-            this.tokenService.storeTokens(res.data);
-          } else if (!res.success && res.message) {
-            const errorStr = `${res.message}`;
-            this.alertService.error(errorStr);
-          } else {
-            this.alertService.error('LOGIN.LoginFailedMsg');
-          }
-        })
-      );
+    return this.baseRestService.post<AuthRestResponse>(`refreshToken/${refreshToken}`, {}).pipe(
+      tap((res) => {
+        if (res.success) {
+          this.tokenService.storeTokens(res.data);
+        } else if (!res.success && res.message) {
+          const errorStr = `${res.message}`;
+          this.alertService.error(errorStr);
+        } else {
+          this.alertService.error('LOGIN.LoginFailedMsg');
+        }
+      })
+    );
   }
 }

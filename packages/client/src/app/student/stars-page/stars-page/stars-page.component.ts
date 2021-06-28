@@ -44,17 +44,15 @@ export class StarsPageComponent implements OnInit, OnDestroy {
     this.aboutVideoURL = vURL ? vURL : '';
 
     this.subs.push(
-      this.store
-        .select(selectors.selectAllStars())
-        .subscribe((res: IUser[]) => {
-          if (res) {
-            this.users = [...res];
-            this.filterStars(null);
-            this.loading = false;
-          } else {
-            this.store.dispatch(StarsActions.BeginGetStarsAction());
-          }
-        })
+      this.store.select(selectors.selectAllStars()).subscribe((res: IUser[]) => {
+        if (res) {
+          this.users = [...res];
+          this.filterStars(null);
+          this.loading = false;
+        } else {
+          this.store.dispatch(StarsActions.BeginGetStarsAction());
+        }
+      })
     );
 
     this.subs.push(
@@ -88,10 +86,7 @@ export class StarsPageComponent implements OnInit, OnDestroy {
       if (searchString) {
         searchString = searchString.toLocaleLowerCase().trim();
         tempFiltered = this.users.filter((starsUser: IUser) => {
-          const starName = this.getStarNameString(
-            starsUser.given_name,
-            starsUser.family_name
-          );
+          const starName = this.getStarNameString(starsUser.given_name, starsUser.family_name);
           if (starName.indexOf(searchString) !== -1) {
             return starsUser;
           }
@@ -113,15 +108,9 @@ export class StarsPageComponent implements OnInit, OnDestroy {
 
       case StarSortingOptions.NAME:
         // eslint-disable-next-line no-case-declarations
-        const starName1 = this.getStarNameString(
-          user1.given_name,
-          user1.family_name
-        );
+        const starName1 = this.getStarNameString(user1.given_name, user1.family_name);
         // eslint-disable-next-line no-case-declarations
-        const starName2 = this.getStarNameString(
-          user2.given_name,
-          user2.family_name
-        );
+        const starName2 = this.getStarNameString(user2.given_name, user2.family_name);
         // eslint-disable-next-line no-case-declarations
         let comparison = 0;
         if (starName1 > starName2) {

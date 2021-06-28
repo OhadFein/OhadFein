@@ -10,16 +10,11 @@ export enum StarsActionType {
 
 export const GetStarsAction = createAction(StarsActionType.GetStarsAction);
 
-export const BeginGetStarsAction = createAction(
-  StarsActionType.BeginGetStarsAction
-);
+export const BeginGetStarsAction = createAction(StarsActionType.BeginGetStarsAction);
 
 export const SuccessGetStarsAction = createAction(
   StarsActionType.SuccessGetStarsAction,
   props<{ payload: IUser[] }>()
 );
 
-export const ErrorStarsAction = createAction(
-  StarsActionType.ErrorStarsAction,
-  props<Error>()
-);
+export const ErrorStarsAction = createAction(StarsActionType.ErrorStarsAction, props<Error>());

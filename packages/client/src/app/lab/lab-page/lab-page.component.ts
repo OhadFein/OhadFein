@@ -1,10 +1,4 @@
-import {
-  Component,
-  EventEmitter,
-  OnDestroy,
-  OnInit,
-  Output
-} from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AlertService } from '@app/_infra/core/services';
 import * as UserActions from '@app/_infra/store/actions/user.actions';
@@ -58,15 +52,13 @@ export class LabPageComponent implements OnInit, OnDestroy {
     ];
 
     this.subs.push(
-      this.store
-        .select(labSelectors.selectCurrentLabItem())
-        .subscribe((res) => {
-          if (res && res.practiceIsSaved === undefined && res.userVideo) {
-            this.disableSavePracticesButton = true;
-          }
-          this.labItem = res ? { ...res } : null;
-          this.setLabView();
-        })
+      this.store.select(labSelectors.selectCurrentLabItem()).subscribe((res) => {
+        if (res && res.practiceIsSaved === undefined && res.userVideo) {
+          this.disableSavePracticesButton = true;
+        }
+        this.labItem = res ? { ...res } : null;
+        this.setLabView();
+      })
     );
     this.subs.push(
       this.store.select(userSelectors.selectCurrentUser()).subscribe((res) => {
@@ -85,9 +77,7 @@ export class LabPageComponent implements OnInit, OnDestroy {
       this.labView = LabViewType.EMPTY;
     } else {
       this.labView =
-        this.labItem.starVideo && this.labItem.userVideo
-          ? LabViewType.FULL
-          : LabViewType.PREVIEW;
+        this.labItem.starVideo && this.labItem.userVideo ? LabViewType.FULL : LabViewType.PREVIEW;
       this.practiceIsSaved = this.labItem.practiceIsSaved;
     }
     const currentStep = this.steps.filter((step) => step.key === this.labView);
@@ -115,10 +105,7 @@ export class LabPageComponent implements OnInit, OnDestroy {
     const duration = event.target.duration;
     if (duration > this.maxVideoDuration) {
       this.clearUserVideo();
-      this.alertService.error(
-        'LAB.ERRORS.userDurationError',
-        this.maxVideoDuration.toString()
-      );
+      this.alertService.error('LAB.ERRORS.userDurationError', this.maxVideoDuration.toString());
     } else {
       this.practiceIsSaved = false;
       this.updateLabStore();
@@ -169,10 +156,7 @@ export class LabPageComponent implements OnInit, OnDestroy {
     data.append('video', this.labItem.userVideo.file);
     data.append('starId', this.labItem.user._id);
     data.append('figureId', this.labItem.figure._id);
-    this.backgroundProcessesService.uploadPractice(
-      data,
-      `upload_practice_${this.userStamp}`
-    );
+    this.backgroundProcessesService.uploadPractice(data, `upload_practice_${this.userStamp}`);
     this.userVideo = this.labItem.userVideo;
     this.practiceIsSaved = true;
 

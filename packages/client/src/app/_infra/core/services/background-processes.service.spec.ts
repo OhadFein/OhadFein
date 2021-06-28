@@ -8,10 +8,7 @@ describe('Service: BackgroundProcesses', () => {
     });
   });
 
-  it('should ...', inject(
-    [BackgroundProcessesService],
-    (service: BackgroundProcessesService) => {
-      expect(service).toBeTruthy();
-    }
-  ));
+  it('should ...', inject([BackgroundProcessesService], (service: BackgroundProcessesService) => {
+    expect(service).toBeTruthy();
+  }));
 });

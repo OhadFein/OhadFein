@@ -12,21 +12,15 @@ export class StudentLayoutComponent {
     notificationBtn: { routerLink: '/student/notifications' },
     menuItemsGroups: [
       {
-        menuItems: [
-          { label: 'COMMON.Profile', routerLink: '/student/profile' }
-        ],
+        menuItems: [{ label: 'COMMON.Profile', routerLink: '/student/profile' }],
         hasSeparator: true
       },
       {
-        menuItems: [
-          { label: 'COMMON.About', function: MenuItemFunction.about }
-        ],
+        menuItems: [{ label: 'COMMON.About', function: MenuItemFunction.about }],
         hasSeparator: true
       },
       {
-        menuItems: [
-          { label: 'LOGIN.Logout', function: MenuItemFunction.logout }
-        ],
+        menuItems: [{ label: 'LOGIN.Logout', function: MenuItemFunction.logout }],
         hasSeparator: false
       }
     ]

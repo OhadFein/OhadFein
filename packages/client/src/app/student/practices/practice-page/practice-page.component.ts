@@ -91,17 +91,13 @@ export class PracticePageComponent implements OnInit, OnDestroy {
   }
 
   translateContent() {
-    this.translate
-      .get('PRACTICES.PRACTICE.hideNotes')
-      .subscribe((res: string) => {
-        this.noteButtonText = res;
-      });
+    this.translate.get('PRACTICES.PRACTICE.hideNotes').subscribe((res: string) => {
+      this.noteButtonText = res;
+    });
 
-    this.translate
-      .get('PRACTICES.PRACTICE.hideVideo')
-      .subscribe((res: string) => {
-        this.videoButtonText = res;
-      });
+    this.translate.get('PRACTICES.PRACTICE.hideVideo').subscribe((res: string) => {
+      this.videoButtonText = res;
+    });
   }
 
   openInLab(practice: Practice): void {
@@ -131,35 +127,25 @@ export class PracticePageComponent implements OnInit, OnDestroy {
   saveChanges() {
     this.practice.name = this.practiceTitleInput;
     this.practice.notes = this.practiceNotes;
-    this.store.dispatch(
-      PracticesAction.BeginUpdatePracticeItemAction({ payload: this.practice })
-    );
+    this.store.dispatch(PracticesAction.BeginUpdatePracticeItemAction({ payload: this.practice }));
     this.getPractice(true, this.practice.notes);
   }
 
   toggleVideo() {
     this.hiddenVideo = !this.hiddenVideo;
     if (this.hiddenVideo) {
-      this.videoButtonText = this.translateButtons(
-        'PRACTICES.PRACTICE.showVideo'
-      );
+      this.videoButtonText = this.translateButtons('PRACTICES.PRACTICE.showVideo');
     } else {
-      this.videoButtonText = this.translateButtons(
-        'PRACTICES.PRACTICE.hideVideo'
-      );
+      this.videoButtonText = this.translateButtons('PRACTICES.PRACTICE.hideVideo');
     }
   }
 
   toggleNotes() {
     this.hiddenNotes = !this.hiddenNotes;
     if (this.hiddenNotes) {
-      this.noteButtonText = this.translateButtons(
-        'PRACTICES.PRACTICE.showNotes'
-      );
+      this.noteButtonText = this.translateButtons('PRACTICES.PRACTICE.showNotes');
     } else {
-      this.noteButtonText = this.translateButtons(
-        'PRACTICES.PRACTICE.hideNotes'
-      );
+      this.noteButtonText = this.translateButtons('PRACTICES.PRACTICE.hideNotes');
     }
   }
 

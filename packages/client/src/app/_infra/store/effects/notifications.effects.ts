@@ -9,10 +9,7 @@ import * as NotificationsActions from '../actions/notifications.actions';
 
 @Injectable()
 export class NotificationsEffects {
-  constructor(
-    private action$: Actions,
-    private notificationsService: NotificationsService
-  ) {}
+  constructor(private action$: Actions, private notificationsService: NotificationsService) {}
 
   getNotifications$: Observable<Action> = createEffect(() =>
     this.action$.pipe(
@@ -43,9 +40,7 @@ export class NotificationsEffects {
             });
           }),
           catchError((error: Error) => {
-            return of(
-              NotificationsActions.ErrorUpdateNotificationsAction(error)
-            );
+            return of(NotificationsActions.ErrorUpdateNotificationsAction(error));
           })
         )
       )

@@ -8,9 +8,7 @@ export enum FiguresActionType {
   ErrorFigureAction = '[figure] - Error'
 }
 
-export const GetFiguresAction = createAction(
-  FiguresActionType.GetFiguresAction
-);
+export const GetFiguresAction = createAction(FiguresActionType.GetFiguresAction);
 
 export const BeginGetFigureAction = createAction(
   FiguresActionType.BeginGetFigureAction,
@@ -22,7 +20,4 @@ export const SuccessGetFigureAction = createAction(
   props<{ payload: IFigure }>()
 );
 
-export const ErrorFiguresAction = createAction(
-  FiguresActionType.ErrorFigureAction,
-  props<Error>()
-);
+export const ErrorFiguresAction = createAction(FiguresActionType.ErrorFigureAction, props<Error>());
