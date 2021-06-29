@@ -16,13 +16,6 @@ phases:
   build:
     commands:
       - echo `pwd`
-
-      - echo yarn TEST started on `date`
-      - cd packages/server
-      - yarn test
-      - cd ../..
-      - echo yarn TEST completed on `date`
-
       - echo BUILD started on `date`
       - yarn run build
       - echo BUILD completed on `date`
