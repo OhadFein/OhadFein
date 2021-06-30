@@ -36,12 +36,12 @@ export class UsersService {
   }
 
   async addUserDetails(addUserDetailsDTO: AddUserDetailsDTO): Promise<User> {
-    const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hash("testPass" ,salt);
+    const salt = await genSalt(10);
+    const some_hash = await hash("testPass" ,salt);
     // TODO decide what are we going to do with the existing model (remove password / create a new model)
     const createdUser = new this.userModel({
       email: addUserDetailsDTO.email,
-      password: hash,
+      password: some_hash,
       username: addUserDetailsDTO.username,
       given_name: addUserDetailsDTO.firstName,
       family_name: addUserDetailsDTO.lastName,

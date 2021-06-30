@@ -19,7 +19,6 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       audience: process.env.COGNITO_CLIENT_ID,
       issuer: process.env.COGNITO_AUTHORITY,
       algorithms: ['RS256'],
-      ignoreExpiration: true,
     });
     
   }

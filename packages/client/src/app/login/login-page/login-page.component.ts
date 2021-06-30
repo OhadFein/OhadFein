@@ -6,6 +6,7 @@ import { Auth } from 'aws-amplify';
 
 @Component({
   selector: 'dsapp-login-page',
+  templateUrl: './login-page.component.html'
 })
 export class LoginPageComponent implements OnInit {
 
