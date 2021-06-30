@@ -2,6 +2,7 @@ import { HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { AuthTokens } from '../models';
+import { Auth } from 'aws-amplify';
 
 @Injectable({
   providedIn: 'root'
@@ -20,18 +21,9 @@ export class TokenService {
     return localStorage.getItem('access_token');
   }
 
-  checkStoredAccessToken(): boolean {
-    const exists = localStorage.getItem('access_token') !== null;
-    return exists;
-  }
-
-  getStoredRefreshToken(): string {
-    return localStorage.getItem('refresh_token');
-  }
-
-  checkStoredRefreshToken(): boolean {
-    const exists = localStorage.getItem('refresh_token') !== null;
-    return exists;
+  async checkStoredAccessToken(): Promise<boolean> {
+    const token = await Auth.currentSession()
+    return token.getAccessToken() !== null
   }
 
   deleteStoredTokens() {
@@ -40,16 +32,19 @@ export class TokenService {
     localStorage.removeItem('expired_at');
   }
 
-  addToken(request: HttpRequest<any>): HttpRequest<any> {
-    const token = this.getStoredAccessToken();
-    if (token) {
+  async addToken(request: HttpRequest<any>): Promise<HttpRequest<any>> {
+    const token = await Auth.currentSession();
+    const id_token = token.getIdToken()
+
+    if (id_token) {
       return request.clone({
         setHeaders: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${id_token.getJwtToken()}`
         }
       });
     } else {
       return request;
     }
   }
+
 }

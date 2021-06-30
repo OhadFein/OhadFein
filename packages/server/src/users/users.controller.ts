@@ -32,14 +32,14 @@ export class UsersController {
 
     return user;
   }
-
+  
   @Get('all/:role')
   async findAll(@Param() getAllUsersDto: GetAllUsersDto): Promise<User[]> {
     return await this.usersService.findAll(getAllUsersDto);
   }
 
-  @Post('add_details')
-  async add_user_details(@Body() addUserDetailsDTO: AddUserDetailsDTO): Promise<User> {
+  @Post('addDetails')
+  async addUserDetails(@Body() addUserDetailsDTO: AddUserDetailsDTO): Promise<User> {
     const user = await this.usersService.addUserDetails(addUserDetailsDTO);
 
     return user;

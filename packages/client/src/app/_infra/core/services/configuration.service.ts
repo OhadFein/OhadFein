@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { Configuration } from '../models';
 import { TokenService } from './token.service';
+import { Auth } from 'aws-amplify';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +34,7 @@ export class ConfigurationService {
   }
 
   getGlobalHttpHeaders(): HttpHeaders {
-    const storedToken = this.tokenService.getStoredAccessToken();
+    const storedToken = Auth.currentSession().then(session => session.getAccessToken())
     const headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
       .set('Accept', '*/*')
