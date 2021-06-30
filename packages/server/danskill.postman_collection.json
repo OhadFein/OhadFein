@@ -9,7 +9,7 @@
 			"name": "Auth",
 			"item": [
 				{
-					"name": "login",
+					"name": "Login",
 					"event": [
 						{
 							"listen": "test",
@@ -18,7 +18,7 @@
 									"pm.test(\"login\", function () {",
 									"    if (responseCode.code === 201)",
 									"    {",
-									"        const data = pm.response.json().data;",
+									"        const data = pm.response.json();",
 									"        pm.environment.set(\"access_token_nest\", data.access_token);",
 									"    }",
 									"    pm.response.to.have.status(201);",
@@ -59,7 +59,76 @@
 			"name": "Users",
 			"item": [
 				{
+					"name": "Coaches",
+					"item": [
+						{
+							"name": "Get students",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"pm.test(\"Get students\", function () {",
+											"",
+											"    pm.response.to.have.status(200);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/users/students",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users",
+										"students"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Sign up",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Add user (sign up)\", function () {",
+									"    if (responseCode.code === 201)",
+									"    {",
+									"        const user = pm.response.json();",
+									"        pm.environment.set(\"userId\", user._id);",
+									"        pm.environment.set(\"username\", user.username);",
+									"    }",
+									"    ",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -87,6 +156,20 @@
 				},
 				{
 					"name": "Get user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get user\", function () {",
+									"",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -117,7 +200,21 @@
 					"response": []
 				},
 				{
-					"name": "Get all stars",
+					"name": "Get all users",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get all stars\", function () {",
+									"",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -134,14 +231,59 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/users/all/user",
+							"raw": "{{url}}/users/all/users",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"users",
 								"all",
-								"user"
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all stars",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get all stars\", function () {",
+									"",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/all/stars",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"all",
+								"stars"
 							]
 						}
 					},
@@ -149,6 +291,20 @@
 				},
 				{
 					"name": "Get all coaches",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get all coaches\", function () {",
+									"",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -165,14 +321,56 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/users/all/coach",
+							"raw": "{{url}}/users/all/coaches",
 							"host": [
 								"{{url}}"
 							],
 							"path": [
 								"users",
 								"all",
-								"coach"
+								"coaches"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Set coach",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Set coach\", function () {",
+									"",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/users/coach/{{username}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users",
+								"coach",
+								"{{username}}"
 							]
 						}
 					},
@@ -184,7 +382,112 @@
 			"name": "Figures",
 			"item": [
 				{
+					"name": "🔑  Add figure",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Add figure\", function () {",
+									"    if (responseCode.code === 201)",
+									"    {",
+									"        const figure = pm.response.json();",
+									"        pm.environment.set(\"figureId\", figure._id);",
+									"    }",
+									"    ",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"stars\": [\"{{userId}}\"],\n\t\"name\": \"figure 1\",\n\t\"type\": \"samba\",\n\t\"level\": \"advanced\",\n\t\"logo\": \"stars/benedetto_ferruggia/dance.JPG\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/figures",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"figures"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "🔑 Delete figure",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Delete figure\", function () {",
+									"    if (responseCode.code === 200)",
+									"    {",
+									"        const figure = pm.response.json();",
+									"        pm.environment.unset(\"figureId\");",
+									"    }",
+									"    ",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/figures/{{figureId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"figures",
+								"{{figureId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Get figure by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get figure by id\", function () {",
+									"",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
 					},
@@ -221,7 +524,10 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									""
+									"pm.test(\"Get all figures\", function () {",
+									"",
+									"    pm.response.to.have.status(200);",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -262,7 +568,10 @@
 							"listen": "test",
 							"script": {
 								"exec": [
-									""
+									"pm.test(\"Get all star figures\", function () {",
+									"",
+									"    pm.response.to.have.status(200);",
+									"});"
 								],
 								"type": "text/javascript"
 							}
@@ -306,8 +615,297 @@
 			]
 		},
 		{
+			"name": "FIgure Videos",
+			"item": [
+				{
+					"name": "🔑  Add figure video",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Add figure video\", function () {",
+									"    if (responseCode.code === 201)",
+									"    {",
+									"        const figureVideo = pm.response.json();",
+									"        pm.environment.set(\"videoId\", figureVideo._id);",
+									"    }",
+									"    ",
+									"    pm.response.to.have.status(201);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"stars\": [\"{{userId}}\"],\n    \"key\": \"stars/SoulDance/nina/Batuchado.MOV\",\n    \"thumbnail\": \"stars/paul_moldovan/Rumba/opening_out/14570766_531615306963253_7292340220612807962_o.jpg\",\n    \"type\": \"comparable\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/figure-video/{{figureId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"figure-video",
+								"{{figureId}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "🔑 Delete figure video",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Delete figure video\", function () {",
+									"    if (responseCode.code === 200)",
+									"    {",
+									"        const figureVideo = pm.response.json();",
+									"        pm.environment.unset(\"figureVideoId\");",
+									"    }",
+									"    ",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/figure-video/{{videoId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"figure-video",
+								"{{videoId}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Practices",
 			"item": [
+				{
+					"name": "Get my practices",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get all practice items\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/practices/all",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"practices",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get student practices",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get all practice items\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/practices/all/{{username}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"practices",
+								"all",
+								"{{username}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get my practices of a figure",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get practice by figure id\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/practices/all?figureId={{figureId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"practices",
+								"all"
+							],
+							"query": [
+								{
+									"key": "figureId",
+									"value": "{{figureId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get practice by id",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Get practice item by id\", function () {\r",
+									"\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{url}}/practices/single/{{practiceId}}",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"practices",
+								"single",
+								"{{practiceId}}"
+							]
+						}
+					},
+					"response": []
+				},
 				{
 					"name": "Add practice",
 					"event": [
@@ -363,159 +961,19 @@
 					"response": []
 				},
 				{
-					"name": "Get practice by id",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Get practice item by id\", function () {\r",
-									"\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/practices/single/{{practiceId}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"practices",
-								"single",
-								"{{practiceId}}"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get all practices",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Get all practice items\", function () {\r",
-									"\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/practices/all",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"practices",
-								"all"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Get practice by figure id",
-					"event": [
-						{
-							"listen": "test",
-							"script": {
-								"exec": [
-									"pm.test(\"Get practice by figure id\", function () {\r",
-									"\r",
-									"    pm.response.to.have.status(200);\r",
-									"});"
-								],
-								"type": "text/javascript"
-							}
-						}
-					],
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Content-Type",
-								"name": "Content-Type",
-								"type": "text",
-								"value": "application/json"
-							}
-						],
-						"body": {
-							"mode": "raw",
-							"raw": ""
-						},
-						"url": {
-							"raw": "{{url}}/practices/all?figureId={{figureId}}",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"practices",
-								"all"
-							],
-							"query": [
-								{
-									"key": "figureId",
-									"value": "{{figureId}}"
-								}
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Delete practice",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"Get practice by figure id\", function () {\r",
-									"\r",
+									"pm.test(\"Delete practice\", function () {\r",
+									"    if (responseCode.code === 200)\r",
+									"    {\r",
+									"        const figure = pm.response.json();\r",
+									"        pm.environment.unset(\"practiceId\");\r",
+									"    }\r",
+									"    \r",
 									"    pm.response.to.have.status(200);\r",
 									"});"
 								],
@@ -566,7 +1024,7 @@
 									"pm.test(\"Add note\", function () {\r",
 									"    if (responseCode.code === 201)\r",
 									"    {\r",
-									"        const figure = pm.response.json().data;\r",
+									"        const figure = pm.response.json();\r",
 									"        pm.environment.set(\"noteId\", figure._id);\r",
 									"    }\r",
 									"    \r",

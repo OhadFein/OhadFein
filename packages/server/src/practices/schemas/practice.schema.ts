@@ -5,29 +5,29 @@ import { PrepareUrl } from 'src/common/utils/prepare-url';
 import { Figure } from 'src/figures/schemas/figure.schema';
 import { FigureVideo } from 'src/figure-video/schemas/figure-video.schema';
 import { Note } from 'src/notes/schemas/note.schema';
-import { PracticeDto } from '@danskill/contract'
+import { PracticeBaseDto } from '@danskill/contract';
 
 export type PracticeDocument = Practice & Document;
 
 @Schema({ timestamps: true, toJSON: { getters: true } })
-export class Practice implements PracticeDto {
+export class Practice implements PracticeBaseDto {
   readonly _id: Types.ObjectId;
 
   @Prop({ type: Types.ObjectId, ref: 'User', required: true }) // TODO: change to User.name
-  user: User;
+  user: Types.ObjectId;
 
-  @Prop({ type: Types.ObjectId, ref: 'Figure', required: true }) // TODO: change to Figure.name
-  figure: Figure;
+  @Prop({ type: Types.ObjectId, ref: Figure.name, required: true })
+  figure: Types.ObjectId;
 
   @Prop({ type: Types.ObjectId, ref: FigureVideo.name, required: true })
-  video: FigureVideo;
+  video: FigureVideo | Types.ObjectId;
 
   @Prop({ required: true })
   key: string;
   readonly url: string;
 
   @Prop({ type: [{ type: Types.ObjectId, ref: Note.name }] })
-  notes: Note[];
+  notes: Note[] | Types.ObjectId[];
 
   readonly createdAt: Date;
   readonly updatedAt: Date;

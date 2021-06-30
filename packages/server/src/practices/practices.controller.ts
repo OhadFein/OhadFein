@@ -7,7 +7,6 @@ import {
   UseInterceptors,
   UploadedFile,
   UseGuards,
-  Query,
   HttpStatus,
   HttpException,
   Delete,
@@ -20,8 +19,8 @@ import { User } from 'src/users/schemas/user.schema';
 import { JwtAuthGuard } from 'src/common/guards/jwt-auth.guard';
 import { FigureVideoService } from 'src/figure-video/figure-video.service';
 import { S3Service } from 'src/s3/s3.service';
-import { GetAllPracticesDto } from '@danskill/contract';
-
+import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
+import { PracticeDto, GetAllPracticesDto, PracticeBaseDto } from '@danskill/contract';
 
 @UseGuards(JwtAuthGuard)
 @Controller('practices')
@@ -29,40 +28,53 @@ export class PracticesController {
   constructor(
     private readonly figureVideosService: FigureVideoService,
     private readonly practicesService: PracticesService,
-    private readonly s3Service: S3Service,
+    private readonly s3Service: S3Service
   ) {}
 
   @Post(':videoId')
   @UseInterceptors(FileInterceptor('video'))
+  @UseInterceptors(new TransformInterceptor(PracticeBaseDto))
   async create(
     @RequestUser() user: User,
     @Param('videoId') videoId: Types.ObjectId,
-    @UploadedFile() videoFile: Express.Multer.File,
+    @UploadedFile() videoFile: Express.Multer.File
   ) {
-    // TODO: move to practices.service.ts? mongodb transactions?
-
     const video = await this.figureVideosService.findOne(videoId);
-    if (!video || !video.figure)
-      throw new HttpException('Video not found', HttpStatus.NOT_FOUND);
+    if (!video || !video.figure) throw new HttpException('Video not found', HttpStatus.NOT_FOUND);
 
     const s3video = await this.s3Service.upload(videoFile, user.username);
     return await this.practicesService.create(user, video, s3video);
   }
 
-  @Get('single/:id')
-  async findOne(@Param() id: Types.ObjectId): Promise<Practice> {
-    return await this.practicesService.findOne(id);
+  @Get('all/:username?')
+  @UseInterceptors(new TransformInterceptor(PracticeBaseDto))
+  async getPractices(
+    @RequestUser() reqUser: User,
+    getAllPracticesDto?: GetAllPracticesDto,
+    @Param('username') username?: string
+  ): Promise<Practice[]> {
+    const practices = await this.practicesService.findAllUsersPractices(
+      reqUser,
+      username,
+      getAllPracticesDto
+    );
+
+    return practices;
   }
 
-  @Get('all')
-  async findAll(
-    @Query() getAllFiguresDto: GetAllPracticesDto,
-  ): Promise<Practice[]> {
-    return await this.practicesService.findAll(getAllFiguresDto);
+  @Get('single/:id')
+  @UseInterceptors(new TransformInterceptor(PracticeDto))
+  async findOne(@Param('id') id: Types.ObjectId): Promise<Practice> {
+    return await this.practicesService.findOne(id);
   }
 
   @Delete('single/:id')
   async remove(@RequestUser() user: User, @Param('id') id: Types.ObjectId) {
-    return await this.practicesService.remove(user, id);
+    const deletedPractice = await this.practicesService.remove(user, id);
+    if (!deletedPractice) {
+      throw new HttpException('Practice not found', HttpStatus.NOT_FOUND);
+    }
+
+    return;
   }
 }

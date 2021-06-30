@@ -1,17 +1,15 @@
-import { Types } from 'mongoose';
-import { UserDto } from '../users';
-import { FigureDto } from '../figures/figure.dto';
-import { FigureVideoDto } from '../figure-video/figure-video.dto';
-import { NoteDto } from '../notes/note.dto';
+import { FigureVideoBaseDto } from '../figure-video/figure-video-base.dto';
+import { PracticeBaseDto } from './practice-base.dto';
+import { NoteBaseDto } from '../notes/note-base.dto';
+import { Exclude, Expose, Type } from 'class-transformer';
 
-export interface PracticeDto {
-  readonly _id: Types.ObjectId;
-  user: Types.ObjectId | UserDto;
-  figure: Types.ObjectId | FigureDto;
-  video: Types.ObjectId | FigureVideoDto;
-  notes: Types.ObjectId[] | NoteDto[];
-  key: string;
-  readonly url: string;
-  readonly createdAt: Date;
-  readonly updatedAt: Date;
+@Exclude()
+export class PracticeDto extends PracticeBaseDto  {
+  @Expose()
+  @Type(() => FigureVideoBaseDto)
+  video: FigureVideoBaseDto;
+
+  @Expose()
+  @Type(() => NoteBaseDto)
+  notes: NoteBaseDto[];
 }

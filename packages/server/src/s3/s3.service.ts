@@ -20,7 +20,6 @@ export class S3Service {
     return await this.uploadS3(file.buffer, default_bucket_name, filename);
   }
 
-  // TODO: change function name
   private async uploadS3(
     file: Buffer,
     bucket: string,
@@ -44,7 +43,6 @@ export class S3Service {
   }
 
   private getAggregatedS3() {
-    // TODO:
     return new S3({
       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
       secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,

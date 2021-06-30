@@ -11,9 +11,9 @@ import { JwtStrategy } from 'src/auth/strategies/jwt.strategy';
 @Module({
   imports: [
     MongooseModule.forFeature([{ name: User.name, schema: UserSchema }]),
-    FiguresModule,
-    FigureVideoModule,
     forwardRef(() => PracticesModule),
+    forwardRef(() => FiguresModule),
+    forwardRef(() => FigureVideoModule),
   ],
   controllers: [UsersController],
   providers: [UsersService, JwtStrategy],

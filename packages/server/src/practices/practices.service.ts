@@ -1,26 +1,25 @@
-import { FigureVideoService } from './../figure-video/figure-video.service';
+import { EnumRole } from './../common/enums/role.enum';
 import { S3 } from 'aws-sdk';
 import { Model, Types } from 'mongoose';
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 
 import { Practice, PracticeDocument } from './schemas/practice.schema';
 import { User } from 'src/users/schemas/user.schema';
 import { FigureVideo } from 'src/figure-video/schemas/figure-video.schema';
-import { FiguresService } from 'src/figures/figures.service';
 import { S3Service } from 'src/s3/s3.service';
 import { UsersService } from 'src/users/users.service';
 import { Note } from 'src/notes/schemas/note.schema';
 import { GetAllPracticesDto } from '@danskill/contract';
+import { matchRoles } from 'src/common/utils/match-roles';
 
 @Injectable()
 export class PracticesService {
   constructor(
     @InjectModel(Practice.name)
     private readonly practiceModel: Model<PracticeDocument>,
-    private readonly figuresService: FiguresService,
+    @Inject(forwardRef(() => UsersService))
     private readonly usersService: UsersService,
-    private readonly figureVideoService: FigureVideoService,
     private readonly s3Service: S3Service
   ) {}
 
@@ -42,38 +41,48 @@ export class PracticesService {
     return createdPractice;
   }
 
-  async findOne(id: Types.ObjectId): Promise<Practice> {
-    return await this.practiceModel.findOne({ _id: id }).exec();
-  }
+  async findAllUsersPractices(
+    reqUser: User,
+    username?: string,
+    getAllPracticesDto?: GetAllPracticesDto
+  ): Promise<Practice[]> {
+    let usernameToFind: string;
 
-  async findAll(getAllPracticesDto: GetAllPracticesDto) {
-    // TODO: add some queries and create interface for query var
-    const query: any = {};
-    query.figure;
-
-    if (getAllPracticesDto.figureId) {
-      const figure = await this.figuresService.findOne(
-        getAllPracticesDto.figureId
-      );
-      if (!figure)
-        throw new HttpException('Figure not found', HttpStatus.NOT_FOUND);
-      query.figure = { $eq: figure._id };
+    if (username && username != reqUser.username) {
+      const user = await this.usersService.findOne(username);
+      if (matchRoles(reqUser, [EnumRole.Coach]) && user.coach.equals(reqUser._id)) {
+        usernameToFind = username;
+      } else {
+        throw new HttpException('', HttpStatus.UNAUTHORIZED);
+      }
+    } else {
+      usernameToFind = reqUser.username;
     }
 
-    return await this.practiceModel.find(query).exec();
+    return await this.usersService.getPractices(usernameToFind, getAllPracticesDto);
   }
 
-  async remove(user: User, id: Types.ObjectId) {
-    const figureVideo = await this.figureVideoService.remove(id);
-    await this.s3Service.remove(figureVideo.key);
+  async findOne(id: Types.ObjectId): Promise<Practice> {
+    return await this.practiceModel.findOne({ _id: id }).populate('video notes').exec();
+  }
+
+  async remove(user: User, id: Types.ObjectId): Promise<Practice> {
+    const practice = await this.practiceModel.findByIdAndRemove({ _id: id }).exec();
+    await this.s3Service.remove(practice.key);
     await this.usersService.removePractice(user, id);
 
-    return; // TODO:
+    return practice;
   }
 
   async addNote(note: Note) {
     return this.practiceModel
       .updateOne({ _id: note.practice }, { $addToSet: { notes: note._id } })
+      .exec();
+  }
+
+  async removeNote(note: Note) {
+    return this.practiceModel
+      .updateOne({ _id: note.practice }, { $pull: { notes: note._id } })
       .exec();
   }
 }
