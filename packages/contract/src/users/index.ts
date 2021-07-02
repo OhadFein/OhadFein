@@ -1,5 +1,4 @@
 export * from './create-user.dto';
-export * from './add-user-details.dto';
 export * from './user-base.dto';
 export * from './user.dto';
 export * from './star.dto'

@@ -11,7 +11,7 @@ import {
 import { UsersService } from './users.service';
 import { User, Coach, Star } from './schemas/user.schema';
 import { Skip } from 'src/common/decorators/skip.decorator';
-import { CreateUserDto, StarDto, CoachDto, UserBaseDto, UserDto, AddUserDetailsDTO } from '@danskill/contract';
+import { CreateUserDto, StarDto, CoachDto, UserBaseDto, UserDto } from '@danskill/contract';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
 import { RequestUser } from 'src/common/decorators/request-user.decorator';
 import { Roles } from 'src/common/decorators/roles.decorator';
@@ -27,6 +27,12 @@ export class UsersController {
     const user = await this.usersService.create(createUserDto);
 
     return;
+  }
+
+  @Get('exists/:email')
+  async doesUserExists(@Param('email') email: string): Promise<boolean> {
+    const user = await this.usersService.findOneForAuth(email)
+    return user !== null
   }
 
   @Get('single/:username?')
@@ -68,13 +74,6 @@ export class UsersController {
     await this.usersService.setCoach(reqUser, username);
     
     return;
-  }
-
-  @Post('addDetails')
-  async addUserDetails(@Body() addUserDetailsDTO: AddUserDetailsDTO): Promise<User> {
-    const user = await this.usersService.addUserDetails(addUserDetailsDTO);
-
-    return user;
   }
 
 }
