@@ -8,9 +8,9 @@ import { compare } from 'bcryptjs';
 export class AuthService {
   constructor(
     private readonly usersService: UsersService,
-    private readonly jwtService: JwtService,
   ) {}
 
+  // TODO probably delete
   async validateUser(email: string, password: string): Promise<any> {
     const user = await this.usersService.findOneForAuth(email);
     const isPasswordMatch = await compare(password, user.password);
@@ -24,11 +24,12 @@ export class AuthService {
     return null;
   }
 
+  // TODO probably delete
   async login(user: User) {
     const payload = { _id: user._id };
 
     return {
-      access_token: this.jwtService.sign(payload),
+      access_token: "",
     };
   }
 }

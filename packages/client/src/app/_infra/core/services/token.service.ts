@@ -2,6 +2,7 @@ import { HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { AuthTokens } from '../models';
+import { Auth } from 'aws-amplify';
 
 @Injectable({
   providedIn: 'root'
@@ -20,36 +21,34 @@ export class TokenService {
     return localStorage.getItem('access_token');
   }
 
-  checkStoredAccessToken(): boolean {
-    const exists = localStorage.getItem('access_token') !== null;
-    return exists;
+  async checkStoredAccessToken(): Promise<boolean> {
+    return await this.getCurrentJwtToken() !== null
   }
 
-  getStoredRefreshToken(): string {
-    return localStorage.getItem('refresh_token');
+  async getCurrentJwtToken(): Promise<string> {
+    const token = await Auth.currentSession().then(session => { return session.getIdToken() }).catch(error => { return null });
+    return token ? token.getJwtToken() : null
   }
 
-  checkStoredRefreshToken(): boolean {
-    const exists = localStorage.getItem('refresh_token') !== null;
-    return exists;
+  async deleteStoredTokens() {
+    await Auth.signOut().then(m => console.log("Logged out")).catch(error => {
+      console.log("Error while logging out")
+      console.log(error)
+    })
   }
 
-  deleteStoredTokens() {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
-    localStorage.removeItem('expired_at');
-  }
+  async addToken(request: HttpRequest<any>): Promise<HttpRequest<any>> {
+    const jwt_token = await this.getCurrentJwtToken()
 
-  addToken(request: HttpRequest<any>): HttpRequest<any> {
-    const token = this.getStoredAccessToken();
-    if (token) {
+    if (jwt_token) {
       return request.clone({
         setHeaders: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${jwt_token}`
         }
       });
     } else {
       return request;
     }
   }
+
 }

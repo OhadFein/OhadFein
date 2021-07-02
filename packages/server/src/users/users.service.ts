@@ -4,7 +4,7 @@ import { FilterQuery, Model, Types } from 'mongoose';
 import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument, Coach, Star } from './schemas/user.schema';
-import { CreateUserDto, GetAllPracticesDto } from '@danskill/contract';
+import { AddUserDetailsDto, CreateUserDto, GetAllPracticesDto } from '@danskill/contract';
 import { genSalt, hash } from 'bcryptjs';
 import { Practice } from 'src/practices/schemas/practice.schema';
 import { FiguresService } from 'src/figures/figures.service';
