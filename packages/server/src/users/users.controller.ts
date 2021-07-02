@@ -29,6 +29,12 @@ export class UsersController {
     return;
   }
 
+  @Get('exists/:email')
+  async doesUserExists(@Param('email') email: string): Promise<boolean> {
+    const user = await this.usersService.findOneForAuth(email)
+    return user !== null
+  }
+
   @Get('single/:username?')
   @UseInterceptors(new TransformInterceptor(UserDto))
   async findOne(@RequestUser() reqUser: User, @Param('username') username?: string): Promise<User> {
@@ -69,4 +75,5 @@ export class UsersController {
     
     return;
   }
+
 }
