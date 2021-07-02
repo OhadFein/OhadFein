@@ -1,11 +1,12 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { passportJwtSecret} from 'jwks-rsa';
+import { UsersService } from 'src/users/users.service';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
-  constructor() {
+  constructor(private readonly userService: UsersService) {
 
     super({      
       secretOrKeyProvider: passportJwtSecret({
@@ -24,7 +25,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
   }
 
   public async validate(payload: any) {
-    // TODO we will need to query the user from the db and add to the request headers
-    return !!payload.sub;
+    const user = await this.userService.findOneForJwt(payload.sub)
+    return user ? user : payload.sub
   }
 }

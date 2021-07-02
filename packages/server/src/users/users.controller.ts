@@ -16,22 +16,23 @@ import { TransformInterceptor } from 'src/common/interceptors/transform.intercep
 import { RequestUser } from 'src/common/decorators/request-user.decorator';
 import { Roles } from 'src/common/decorators/roles.decorator';
 import { EnumRole } from 'src/common/enums/role.enum';
+import { RequestUserSub } from 'src/common/decorators/request-user-sub.decorator';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Skip()
   @Post()
+  @UseInterceptors(new TransformInterceptor(UserDto))
   async create(@Body() createUserDto: CreateUserDto): Promise<User> {
     const user = await this.usersService.create(createUserDto);
 
-    return;
+    return user;
   }
 
-  @Get('exists/:email')
-  async doesUserExists(@Param('email') email: string): Promise<boolean> {
-    const user = await this.usersService.findOneForAuth(email)
+  @Get('exists')
+  async doesUserExists(@RequestUserSub() sub: string): Promise<boolean> {
+    const user = await this.usersService.findOneForJwt(sub)
     return user !== null
   }
 

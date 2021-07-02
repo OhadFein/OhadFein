@@ -13,25 +13,13 @@ export class User implements UserBaseDto {
   _id: Types.ObjectId;
 
   @Prop({ required: true, unique: true })
-  email: string;
-
-  @Prop({ required: true, unique: true })
   username: string;
 
-  @Prop({ required: true })
-  password: string;
+  @Prop({ required: true, unique: true })
+  sub: string;
 
   @Prop({ default: [EnumRole.User] })
   roles: EnumRole[];
-
-  @Prop({ required: true })
-  given_name: string;
-
-  @Prop({ required: true })
-  family_name: string;
-
-  @Prop()
-  birthdate?: Date;
 
   @Prop({ type: Types.ObjectId, ref: User.name })
   coach?: Types.ObjectId;
