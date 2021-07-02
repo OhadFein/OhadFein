@@ -30,12 +30,49 @@ import { FiguresEffects, PracticesEffects, StarsContentEffects, StarsEffects, Us
 import { APP_PROVIDERS } from './app-providers';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import Amplify from 'aws-amplify';
 
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, '/assets/i18n/', '.json?ob=' + new Date().getTime());
 }
+
+Amplify.configure({
+  Auth: {
+
+      // REQUIRED - Amazon Cognito Region
+      region: 'eu-west-1',
+
+      // OPTIONAL - Amazon Cognito User Pool ID
+      userPoolId: 'eu-west-1_Xb86k2ih2',
+
+      // OPTIONAL - Amazon Cognito Web Client ID (26-char alphanumeric string)
+      userPoolWebClientId: '6i8231msqr1lrmj3pf2qjfa102',
+
+      // OPTIONAL - Enforce user authentication prior to accessing AWS resources or not
+      mandatorySignIn: true,
+
+      // OPTIONAL - customized storage object
+      storage: localStorage,
+
+      // OPTIONAL - Manually set the authentication flow type. Default is 'USER_SRP_AUTH'
+      authenticationFlowType: 'USER_PASSWORD_AUTH',
+
+      // OPTIONAL - Manually set key value pairs that can be passed to Cognito Lambda Triggers
+      clientMetadata: { myCustomKey: 'myCustomValue' },
+
+      // OPTIONAL - Hosted UI configuration
+      oauth: {
+          domain: 'danskill.auth.eu-west-1.amazoncognito.com',
+          scope: ['phone', 'email', 'profile', 'openid', 'aws.cognito.signin.user.admin'],
+          redirectSignIn: 'http://localhost:4200/student',
+          redirectSignOut: 'http://localhost:4200/',
+          responseType: 'code' // or 'token', note that REFRESH token will only be generated when the responseType is code
+      }
+  }
+});
+
 
 @NgModule({
   declarations: [
