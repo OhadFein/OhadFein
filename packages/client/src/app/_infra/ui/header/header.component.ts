@@ -55,13 +55,13 @@ export class HeaderComponent implements OnInit {
 	this.menuService.setMenuOpenState(false);
   }
 
-  menuItemFunction(fType: MenuItemFunction) {
+  async menuItemFunction(fType: MenuItemFunction) {
 	switch (fType) {
 	  case MenuItemFunction.about:
 		this.modalService.open(AboutDanskillModalComponent);
 		break;
 	  case MenuItemFunction.logout:
-		this.loginService.logout();
+		await this.loginService.logout();
 		break;
 	}
   }

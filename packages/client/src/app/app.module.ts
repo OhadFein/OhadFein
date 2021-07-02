@@ -67,7 +67,7 @@ Amplify.configure({
           domain: 'danskill.auth.eu-west-1.amazoncognito.com',
           scope: ['phone', 'email', 'profile', 'openid', 'aws.cognito.signin.user.admin'],
           redirectSignIn: 'http://localhost:4200/student',
-          redirectSignOut: '',
+          redirectSignOut: 'http://localhost:4200/',
           responseType: 'code' // or 'token', note that REFRESH token will only be generated when the responseType is code
       }
   }

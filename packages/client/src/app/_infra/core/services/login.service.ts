@@ -61,14 +61,14 @@ export class LoginService {
     );
   }
 
-  logout(showMsg = true) {
+  async logout(showMsg = true) {
     this.store.dispatch(GlobalActions.Logout());
 
-      this.tokenService.deleteStoredTokens();
+    await this.tokenService.deleteStoredTokens();
     if (showMsg) {
       this.alertService.info('LOGIN.LogOutMsg');
     }
-    this.router.navigate(['/login']);
+    this.router.navigate(['/']);
   }
 
   afterLoginRoute() {
