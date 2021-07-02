@@ -8,7 +8,7 @@ export class PracticeBaseDto {
   readonly _id: Types.ObjectId;
 
   @Expose()
-  user: Types.ObjectId; // TODO: needed?
+  user: Types.ObjectId;
 
   @Expose()
   figure: Types.ObjectId; // TODO: needed? (used for query all figure practices)
