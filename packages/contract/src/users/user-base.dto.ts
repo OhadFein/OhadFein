@@ -8,6 +8,9 @@ export class UserBaseDto {
 
   @Expose()
   sub: string;
+
+  @Expose()
+  username: string;
   
   // @Expose() notifications: Notifcation[];
 }

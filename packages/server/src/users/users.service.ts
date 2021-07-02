@@ -19,7 +19,7 @@ export class UsersService {
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
-    const username = this.getUniqueUsername(createUserDto)
+    const username = await this.getUniqueUsername(createUserDto)
     const createdUser = new this.userModel({
       username: username,
       sub: createUserDto.sub
