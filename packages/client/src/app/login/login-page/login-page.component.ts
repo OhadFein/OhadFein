@@ -6,7 +6,7 @@ import { Auth } from 'aws-amplify';
 
 @Component({
   selector: 'dsapp-login-page',
-  templateUrl: './login-page.component.html'
+  template: ''
 })
 export class LoginPageComponent implements OnInit {
 
@@ -15,11 +15,14 @@ export class LoginPageComponent implements OnInit {
     private router: Router,
   ) { }
 
-  ngOnInit() {
-    /// if token exist in local store - redirect user
-    if (this.tokenService.checkStoredAccessToken()) { this.router.navigate(['/student']); }
-
-    Auth.federatedSignIn()
+  async ngOnInit() {
+    /// if token exist - redirect user
+    if (await this.tokenService.checkStoredAccessToken()) {
+      this.router.navigate(['/student']);
+    }
+    else {
+      Auth.federatedSignIn()
+    }
   }
 
 }

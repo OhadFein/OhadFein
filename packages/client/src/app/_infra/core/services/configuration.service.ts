@@ -33,15 +33,6 @@ export class ConfigurationService {
     return version;
   }
 
-  getGlobalHttpHeaders(): HttpHeaders {
-    const storedToken = Auth.currentSession().then(session => session.getAccessToken())
-    const headers = new HttpHeaders()
-      .set('Content-Type', 'application/json')
-      .set('Accept', '*/*')
-      .set('Authorization', `Bearer${storedToken}` )
-    return headers;
-  }
-
 }
 
 

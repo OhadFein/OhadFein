@@ -22,8 +22,12 @@ export class TokenService {
   }
 
   async checkStoredAccessToken(): Promise<boolean> {
-    const token = await Auth.currentSession()
-    return token.getAccessToken() !== null
+    return await this.getCurrentJwtToken() !== null
+  }
+
+  async getCurrentJwtToken(): Promise<string> {
+    const token = await Auth.currentSession().then(session => { return session.getIdToken() }).catch(error => { return null });
+    return token ? token.getJwtToken() : null
   }
 
   deleteStoredTokens() {
@@ -33,13 +37,12 @@ export class TokenService {
   }
 
   async addToken(request: HttpRequest<any>): Promise<HttpRequest<any>> {
-    const token = await Auth.currentSession();
-    const id_token = token.getIdToken()
+    const jwt_token = await this.getCurrentJwtToken()
 
-    if (id_token) {
+    if (jwt_token) {
       return request.clone({
         setHeaders: {
-          Authorization: `Bearer ${id_token.getJwtToken()}`
+          Authorization: `Bearer ${jwt_token}`
         }
       });
     } else {
