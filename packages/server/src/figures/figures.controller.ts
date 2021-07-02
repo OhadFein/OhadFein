@@ -49,7 +49,7 @@ export class FiguresController {
 
   @Roles(EnumRole.Admin)
   @Delete(':id')
-  async remove(@Param('id') id: Types.ObjectId): Promise<Figure> {
+  async remove(@Param('id') id: Types.ObjectId): Promise<void> {
     const deletedFigure = await this.figuresService.remove(id);
     if (!deletedFigure) {
       throw new HttpException('Figure not found', HttpStatus.NOT_FOUND);
