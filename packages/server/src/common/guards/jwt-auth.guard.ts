@@ -11,6 +11,6 @@ export class JwtAuthGuard extends AuthGuard('jwt') {
     const shouldSkip = this.reflector.get<string>('skip', context.getHandler());
     if (shouldSkip) return true;
 
-    return (await super.canActivate(context)) as boolean;
+    return super.canActivate(context) as Promise<boolean>;
   }
 }

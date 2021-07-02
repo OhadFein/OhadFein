@@ -18,6 +18,5 @@ export class UserBaseDto {
   @Expose()
   birthdate?: Date;
 
-  // @Expose() students?: User[]; // TODO: fix students
   // @Expose() notifications: Notifcation[];
 }

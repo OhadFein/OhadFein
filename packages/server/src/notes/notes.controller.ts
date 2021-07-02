@@ -21,7 +21,7 @@ export class NotesController {
   }
 
   @Delete(':id')
-  async remove(@Param('id') id: Types.ObjectId) {
+  async remove(@Param('id') id: Types.ObjectId): Promise<void> {
     const deletedNote = await this.notesService.remove(id);
     if (!deletedNote) {
       throw new HttpException('Note not found', HttpStatus.NOT_FOUND);
