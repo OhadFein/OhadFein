@@ -7,12 +7,12 @@ import { passportJwtSecret} from 'jwks-rsa';
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor() {
 
-    super({
+    super({      
       secretOrKeyProvider: passportJwtSecret({
         cache: true,
         rateLimit: true,
         jwksRequestsPerMinute: 5,
-        jwksUri: 'https://cognito-idp.eu-west-1.amazonaws.com/eu-west-1_Xb86k2ih2/.well-known/jwks.json',
+        jwksUri: `${process.env.COGNITO_AUTHORITY}/.well-known/jwks.json`,
       }),
 
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
