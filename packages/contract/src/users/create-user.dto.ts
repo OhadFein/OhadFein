@@ -1,12 +1,14 @@
 import { IsOptional, IsDate, IsMongoId, IsString } from 'class-validator';
-import { Types } from 'mongoose';
 
 export class CreateUserDto {
-  @IsString()
-  firstName: string;
+
+  constructor(username: string, sub: string) {
+    this.username = username;
+    this.sub = sub;
+  }
 
   @IsString()
-  lastName: string;
+  username: string;
 
   @IsString()
   sub: string;

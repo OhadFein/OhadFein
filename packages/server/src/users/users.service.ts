@@ -5,7 +5,6 @@ import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nest
 import { InjectModel } from '@nestjs/mongoose';
 import { User, UserDocument, Coach, Star } from './schemas/user.schema';
 import { CreateUserDto, GetAllPracticesDto } from '@danskill/contract';
-import { genSalt, hash } from 'bcryptjs';
 import { Practice } from 'src/practices/schemas/practice.schema';
 import { FiguresService } from 'src/figures/figures.service';
 
@@ -31,7 +30,7 @@ export class UsersService {
   }
 
   async getUniqueUsername(createUserDto: CreateUserDto) {
-    let currUserName = createUserDto.firstName.charAt(0).toUpperCase() +createUserDto.firstName.slice(1) + createUserDto.lastName.charAt(0).toUpperCase() +createUserDto.lastName.slice(1)
+    let currUserName = createUserDto.username
     let i = 1
     while (await this.findOne(currUserName) !== null) {
       currUserName = currUserName + i

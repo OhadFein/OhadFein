@@ -25,7 +25,8 @@
       "@store/*": ["src/app/_infra/store/*"],
       "@lab/*": ["src/app/lab/*"],
       "@environments/*": ["src/environments/*"],
-      "@testing/*": ["src/testing/*"]
+      "@testing/*": ["src/testing/*"],
+      "@danskill/contract": ["../contract/src"],
     }
   },
   "angularCompilerOptions": {
