@@ -18,10 +18,10 @@ export class UsersService {
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
-    const username = await this.getUniqueUsername(createUserDto)
+    const username = await this.getUniqueUsername(createUserDto);
     const createdUser = new this.userModel({
       username: username,
-      sub: createUserDto.sub
+      sub: createUserDto.sub,
     });
 
     await createdUser.save();
@@ -30,13 +30,13 @@ export class UsersService {
   }
 
   async getUniqueUsername(createUserDto: CreateUserDto) {
-    let currUserName = createUserDto.username
-    let i = 1
-    while (await this.findOne(currUserName) !== null) {
-      currUserName = currUserName + i
-      i ++
+    let currUserName = createUserDto.username;
+    let i = 1;
+    while ((await this.findOne(currUserName)) !== null) {
+      currUserName = currUserName + i;
+      i++;
     }
-    return currUserName
+    return currUserName;
   }
 
   async findOneForAuth(email: string): Promise<User> {

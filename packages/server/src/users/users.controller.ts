@@ -38,9 +38,9 @@ export class UsersController {
   @Skip()
   @UseGuards(NonRegisteredJwtGuard)
   async doesUserExists(@Request() req: any): Promise<boolean> {
-    const sub = req.user
-    const user = await this.usersService.findOneForJwt(sub)
-    return user !== null
+    const sub = req.user;
+    const user = await this.usersService.findOneForJwt(sub);
+    return user !== null;
   }
 
   @Get('single/:username?')
@@ -80,8 +80,7 @@ export class UsersController {
   @Post('coach/:username')
   async setCoach(@RequestUser() reqUser: User, @Param('username') username: string) {
     await this.usersService.setCoach(reqUser, username);
-    
+
     return;
   }
-
 }
