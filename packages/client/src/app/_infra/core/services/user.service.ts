@@ -35,8 +35,8 @@ export class UserService {
 	  return this.baseRestService.get<boolean>('users/exists').toPromise()
   }
 
-  createNewUser(firstName: string, lastName: string, sub: string): Promise<UserDto> {
-	const createUserDto = new CreateUserDto(firstName, lastName, sub)
+  createNewUser(username: string, sub: string): Promise<UserDto> {
+	const createUserDto = new CreateUserDto(username, sub)
 	return this.baseRestService.post<UserDto>('users', createUserDto).toPromise()
 }
 

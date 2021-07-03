@@ -19,9 +19,17 @@ export class AfterLoginPageComponent implements OnInit {
     const userExists = await this.usersService.userExists()
     if (!userExists) {
       const loggedInUser = await Auth.currentUserInfo()
-      await this.usersService.createNewUser(loggedInUser.attributes.given_name, loggedInUser.attributes.family_name, loggedInUser.attributes.sub)
+      const username = this.extractUserName(loggedInUser)
+      await this.usersService.createNewUser(username, loggedInUser.attributes.sub)
     }
     this.router.navigate(['/student']);
+  }
+  extractUserName(loggedInUser) {
+    const cognitoUsername: string= loggedInUser.username
+    if (cognitoUsername.includes("facebook")) {
+      return loggedInUser.attributes.given_name.toLowerCase() + "-" + loggedInUser.attributes.family_name.toLowerCase()
+    }
+    return cognitoUsername
   }
 
 }
