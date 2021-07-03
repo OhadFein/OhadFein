@@ -58,14 +58,14 @@ export class UsersService {
   async findAllStars(): Promise<Star[]> {
     return this.userModel
       .find({ roles: { $in: [EnumRole.Star] } })
-      .populate('figures')
+      .populate('figures')  // TODO: replace the strings with fixed values
       .exec();
   }
 
   async findAllCoaches(): Promise<Coach[]> {
     return this.userModel
       .find({ roles: { $in: [EnumRole.Coach] } })
-      .populate('students')
+      .populate('students')  // TODO: replace the strings with fixed values
       .exec();
   }
 
@@ -94,7 +94,7 @@ export class UsersService {
     const userWithPractices = await this.userModel
       .findOne({ username: username })
       .populate({
-        path: 'practices',
+        path: 'practices',  // TODO: replace the strings with fixed values
         match: query,
       })
       .exec();
@@ -103,7 +103,7 @@ export class UsersService {
   }
 
   async getStudents(reqUser: User): Promise<User[]> {
-    const userWithStudents = await this.userModel.findById(reqUser._id).populate('students').exec();
+    const userWithStudents = await this.userModel.findById(reqUser._id).populate('students').exec();  // TODO: replace the strings with fixed values
 
     return userWithStudents.students;
   }

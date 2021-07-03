@@ -18,7 +18,7 @@ export class FiguresService {
   async findOne(id: Types.ObjectId): Promise<Figure> {
     return await this.figureModel
       .findOne({ _id: id })
-      .populate('videos stars')
+      .populate('videos stars') // TODO: replace the strings with fixed values
       .exec();
   }
 
@@ -35,7 +35,7 @@ export class FiguresService {
       query.stars = { $in: [star._id] };
     }
 
-    return this.figureModel.find(query).populate('videos').exec();
+    return this.figureModel.find(query).populate('videos').exec();  // TODO: replace the strings with fixed values
   }
 
   async create(createFigureDto: CreateFigureDto): Promise<Figure> {
