@@ -77,6 +77,7 @@ export class AppComponent implements OnInit, OnDestroy {
     );
   }
   configureAmplifyAuth() {
+    const domain: string = this.confifurationService.getBuildType() === BuildType.DEV ? 'http://localhost:4200/' : 'https://dev.danskill.com/';
     Amplify.configure({
       Auth: {
         // REQUIRED - Amazon Cognito Region
@@ -98,14 +99,8 @@ export class AppComponent implements OnInit, OnDestroy {
         oauth: {
           domain: 'danskill.auth.eu-west-1.amazoncognito.com',
           scope: ['phone', 'email', 'profile', 'openid', 'aws.cognito.signin.user.admin'],
-          redirectSignIn:
-            this.confifurationService.getBuildType() === BuildType.DEV
-              ? 'http://localhost:4200/afterLogin'
-              : 'https://dev.danskill.com/afterLogin',
-          redirectSignOut:
-            this.confifurationService.getBuildType() === BuildType.DEV
-              ? 'http://localhost:4200/'
-              : 'https://dev.danskill.com/',
+          redirectSignIn: domain + 'afterLogin',
+          redirectSignOut: domain,
           responseType: 'code', // or 'token', note that REFRESH token will only be generated when the responseType is code
         },
       },
