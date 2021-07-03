@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { TokenService, UserService } from '@core/services';
+import { UserService } from '@core/services';
 import { Auth } from 'aws-amplify';
 
 
@@ -18,9 +18,9 @@ export class AfterLoginPageComponent implements OnInit {
   async ngOnInit() {
     const userExists = await this.usersService.userExists()
     if (!userExists) {
-      // Create new user
+      const loggedInUser = await Auth.currentUserInfo()
+      await this.usersService.createNewUser(loggedInUser.attributes.given_name, loggedInUser.attributes.family_name, loggedInUser.attributes.sub)
     }
-
     this.router.navigate(['/student']);
   }
 

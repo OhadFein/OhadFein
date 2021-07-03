@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { CreateUserDto, UserDto } from '@danskill/contract';
 
 import { INotifications, IRestResponse, User, UserRestResponse } from '../models';
 import { BaseRestService } from './base-rest.service';
@@ -33,6 +34,11 @@ export class UserService {
   userExists(): Promise<boolean> {
 	  return this.baseRestService.get<boolean>('users/exists').toPromise()
   }
+
+  createNewUser(firstName: string, lastName: string, sub: string): Promise<UserDto> {
+	const createUserDto = new CreateUserDto(firstName, lastName, sub)
+	return this.baseRestService.post<UserDto>('users', createUserDto).toPromise()
+}
 
   getGeneralInfo(): Observable<INotifications[]> {
 	return this.baseRestService.get<IRestResponse>('').pipe(
