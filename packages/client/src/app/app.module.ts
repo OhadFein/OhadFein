@@ -45,10 +45,10 @@ Amplify.configure({
       region: 'eu-west-1',
 
       // OPTIONAL - Amazon Cognito User Pool ID
-      userPoolId: 'eu-west-1_Xb86k2ih2',
+      userPoolId: 'eu-west-1_9IvsJvKAY',
 
       // OPTIONAL - Amazon Cognito Web Client ID (26-char alphanumeric string)
-      userPoolWebClientId: '6i8231msqr1lrmj3pf2qjfa102',
+      userPoolWebClientId: '5viisfon23qk9d0ummirte9nrc',
 
       // OPTIONAL - Enforce user authentication prior to accessing AWS resources or not
       mandatorySignIn: true,
@@ -58,9 +58,6 @@ Amplify.configure({
 
       // OPTIONAL - Manually set the authentication flow type. Default is 'USER_SRP_AUTH'
       authenticationFlowType: 'USER_PASSWORD_AUTH',
-
-      // OPTIONAL - Manually set key value pairs that can be passed to Cognito Lambda Triggers
-      clientMetadata: { myCustomKey: 'myCustomValue' },
 
       // OPTIONAL - Hosted UI configuration
       oauth: {

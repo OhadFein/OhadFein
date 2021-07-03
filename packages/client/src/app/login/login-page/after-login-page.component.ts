@@ -31,11 +31,7 @@ export class AfterLoginPageComponent implements OnInit {
     this.router.navigate(['/student']);
   }
   extractUserName(loggedInUser) {
-    const cognitoUsername: string= loggedInUser.username
-    if (cognitoUsername.includes("facebook")) {
-      return loggedInUser.attributes.given_name.toLowerCase() + loggedInUser.attributes.family_name.toLowerCase()
-    }
-    return cognitoUsername
+    const email : string = loggedInUser.attributes.email
+    return email.split("@")[0]
   }
-
 }
