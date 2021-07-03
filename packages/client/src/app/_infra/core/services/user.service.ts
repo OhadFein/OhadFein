@@ -30,6 +30,10 @@ export class UserService {
 	);
   }
 
+  userExists(): Promise<boolean> {
+	  return this.baseRestService.get<boolean>('users/exists').toPromise()
+  }
+
   getGeneralInfo(): Observable<INotifications[]> {
 	return this.baseRestService.get<IRestResponse>('').pipe(
 	  map(

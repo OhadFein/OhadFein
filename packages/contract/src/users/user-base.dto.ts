@@ -5,18 +5,12 @@ import { Exclude, Expose } from 'class-transformer';
 export class UserBaseDto {
   @Expose()
   readonly _id: Types.ObjectId;
-  
+
+  @Expose()
+  sub: string;
+
   @Expose()
   username: string;
-
-  @Expose()
-  given_name: string;
-
-  @Expose()
-  family_name: string;
-
-  @Expose()
-  birthdate?: Date;
-
+  
   // @Expose() notifications: Notifcation[];
 }

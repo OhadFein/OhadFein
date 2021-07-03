@@ -19,15 +19,10 @@ export class UsersService {
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
-    const salt = await genSalt(10);
-    const password = await hash(createUserDto.password, salt);
+    const username = await this.getUniqueUsername(createUserDto)
     const createdUser = new this.userModel({
-      email: createUserDto.email,
-      password: password,
-      username: createUserDto.username,
-      given_name: createUserDto.given_name,
-      family_name: createUserDto.family_name,
-      birthdate: createUserDto.birthdate,
+      username: username,
+      sub: createUserDto.sub
     });
 
     await createdUser.save();
@@ -35,12 +30,22 @@ export class UsersService {
     return createdUser;
   }
 
+  async getUniqueUsername(createUserDto: CreateUserDto) {
+    let currUserName = createUserDto.firstName.charAt(0).toUpperCase() +createUserDto.firstName.slice(1) + createUserDto.lastName.charAt(0).toUpperCase() +createUserDto.lastName.slice(1)
+    let i = 1
+    while (await this.findOne(currUserName) !== null) {
+      currUserName = currUserName + i
+      i ++
+    }
+    return currUserName
+  }
+
   async findOneForAuth(email: string): Promise<User> {
     return await this.userModel.findOne({ email: email }).select('+password').exec();
   }
 
-  async findOneForJwt(_id: Types.ObjectId): Promise<User> {
-    return await this.userModel.findById(_id).select('+roles').exec();
+  async findOneForJwt(sub: string): Promise<User> {
+    return await this.userModel.findOne({ sub: sub }).select('+roles').exec();
   }
 
   async findOne(username: string): Promise<User> {

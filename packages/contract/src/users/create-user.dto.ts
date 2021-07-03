@@ -3,25 +3,11 @@ import { Types } from 'mongoose';
 
 export class CreateUserDto {
   @IsString()
-  email: string;
+  firstName: string;
 
   @IsString()
-  password: string;
+  lastName: string;
 
   @IsString()
-  username: string;
-
-  @IsString()
-  given_name: string;
-
-  @IsString()
-  family_name: string;
-
-  @IsOptional()
-  @IsDate()
-  birthdate?: Date;
-
-  @IsOptional()
-  @IsMongoId()
-  coach?: Types.ObjectId;
+  sub: string;
 }

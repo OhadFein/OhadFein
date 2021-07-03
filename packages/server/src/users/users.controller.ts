@@ -6,6 +6,8 @@ import {
   HttpStatus,
   Param,
   Post,
+  Request,
+  UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { UsersService } from './users.service';
@@ -16,22 +18,28 @@ import { TransformInterceptor } from 'src/common/interceptors/transform.intercep
 import { RequestUser } from 'src/common/decorators/request-user.decorator';
 import { Roles } from 'src/common/decorators/roles.decorator';
 import { EnumRole } from 'src/common/enums/role.enum';
+import { NonRegisteredJwtGuard } from 'src/common/guards/non-registered-jwt-auth.guard';
 
 @Controller('users')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
-  @Skip()
   @Post()
+  @Skip()
+  @UseGuards(NonRegisteredJwtGuard)
+  @UseInterceptors(new TransformInterceptor(UserDto))
   async create(@Body() createUserDto: CreateUserDto): Promise<User> {
     const user = await this.usersService.create(createUserDto);
 
-    return;
+    return user;
   }
 
-  @Get('exists/:email')
-  async doesUserExists(@Param('email') email: string): Promise<boolean> {
-    const user = await this.usersService.findOneForAuth(email)
+  @Get('exists')
+  @Skip()
+  @UseGuards(NonRegisteredJwtGuard)
+  async doesUserExists(@Request() req: any): Promise<boolean> {
+    const sub = req.user
+    const user = await this.usersService.findOneForJwt(sub)
     return user !== null
   }
 

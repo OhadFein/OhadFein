@@ -12,14 +12,14 @@ export class AuthService {
 
   // TODO probably delete
   async validateUser(email: string, password: string): Promise<any> {
-    const user = await this.usersService.findOneForAuth(email);
-    const isPasswordMatch = await compare(password, user.password);
-    if (user && isPasswordMatch) {
-      // TODO: remove password from result?
-      const result = user;
+    // const user = await this.usersService.findOneForAuth(email);
+    // const isPasswordMatch = await compare(password, user.password);
+    // if (user && isPasswordMatch) {
+    //   // TODO: remove password from result?
+    //   const result = user;
 
-      return result;
-    }
+    //   return result;
+    // }
 
     return null;
   }
