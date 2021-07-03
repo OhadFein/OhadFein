@@ -5,7 +5,7 @@ import { passportJwtSecret} from 'jwks-rsa';
 import { UsersService } from 'src/users/users.service';
 
 @Injectable()
-export class JwtStrategy extends PassportStrategy(Strategy) {
+export class NonRegisteredUsersJwtStrategy extends PassportStrategy(Strategy, 'nonRegisteredUserStrategy'){
   constructor(protected userService: UsersService) {
 
     super({      
@@ -21,12 +21,12 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
       issuer: process.env.COGNITO_AUTHORITY,
       algorithms: ['RS256'],
       
-    });
+    }
+    );
     
   }
 
   public async validate(payload: any) {
-    const user = await this.userService.findOneForJwt(payload.sub)
-    return user ? user : payload.sub
+    return payload.sub
   }
 }
