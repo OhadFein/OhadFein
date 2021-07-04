@@ -3,13 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
-import {
-  ForgotPasswordPageComponent,
-  LoginLayoutComponent,
-  LoginPageComponent,
-  RegisterPageComponent,
-  ResetPasswordPageComponent
-} from '.';
+import { LoginPageComponent } from '.';
 import { LoginRoutingModule } from './login-routing.module';
 import { InfraModule } from '@infra/infra.module';
 
@@ -22,12 +16,6 @@ import { InfraModule } from '@infra/infra.module';
     LoginRoutingModule,
     InfraModule
   ],
-  declarations: [
-    LoginPageComponent,
-    RegisterPageComponent,
-    LoginLayoutComponent,
-    ForgotPasswordPageComponent,
-    ResetPasswordPageComponent
-  ]
+  declarations: [LoginPageComponent]
 })
 export class LoginModule {}

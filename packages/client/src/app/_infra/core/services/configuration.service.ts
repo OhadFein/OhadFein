@@ -1,8 +1,9 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
-import { Configuration } from '../models';
+import { BuildType, Configuration } from '../models';
 import { TokenService } from './token.service';
+import { Auth } from 'aws-amplify';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class ConfigurationService {
 
   constructor(private httpClient: HttpClient, private tokenService: TokenService) {}
 
-  load(url: string) {
+  load(url: string): Promise<void> {
     return new Promise((resolve) => {
       this.httpClient.get<Configuration>(url).subscribe((result) => {
         this.config = result;
@@ -33,17 +34,11 @@ export class ConfigurationService {
     return this.config.aboutVideoURL;
   }
 
-  getVersionString(): string {
-    return `${this.config.buildType}:${this.config.majorVersion}.${this.config.minorVersion}.${this.config.buildVersion}`;
+  getBuildType(): BuildType {
+    return this.config.buildType;
   }
 
-  getGlobalHttpHeaders(): HttpHeaders {
-    const storedToken = this.tokenService.getStoredAccessToken();
-    const headers = new HttpHeaders()
-      .set('Content-Type', 'application/json')
-      .set('Accept', '*/*')
-      .set('Authorization', `Bearer${storedToken}`);
-
-    return headers;
+  getVersionString(): string {
+    return `${this.config.buildType}:${this.config.majorVersion}.${this.config.minorVersion}.${this.config.buildVersion}`;
   }
 }

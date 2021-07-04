@@ -2,24 +2,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Routes } from '@angular/router';
 
-import {
-  ForgotPasswordPageComponent,
-  LoginLayoutComponent,
-  LoginPageComponent,
-  RegisterPageComponent,
-  ResetPasswordPageComponent
-} from '.';
+import { LoginPageComponent } from '.';
+import { AfterLoginPageComponent } from './login-page/after-login-page.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginLayoutComponent,
     children: [
       { path: 'login', component: LoginPageComponent },
-      { path: 'register', component: RegisterPageComponent },
-      { path: 'reset', component: ForgotPasswordPageComponent },
-      { path: 'reset/:token', component: ForgotPasswordPageComponent },
-      { path: 'reset/edit/:token', component: ResetPasswordPageComponent },
+      { path: 'afterLogin', component: AfterLoginPageComponent },
       { path: '', redirectTo: 'login', pathMatch: 'full' }
     ]
   }

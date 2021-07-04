@@ -53,14 +53,13 @@ export class HeaderComponent implements OnInit {
     this.menuService.setMenuOpenState(false);
   }
 
-  menuItemFunction(fType: MenuItemFunction) {
+  async menuItemFunction(fType: MenuItemFunction) {
     switch (fType) {
       case MenuItemFunction.about:
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-case-declarations
-        const modalRef = this.modalService.open(AboutDanskillModalComponent);
+        this.modalService.open(AboutDanskillModalComponent);
         break;
       case MenuItemFunction.logout:
-        this.loginService.logout();
+        await this.loginService.logout();
         break;
     }
   }

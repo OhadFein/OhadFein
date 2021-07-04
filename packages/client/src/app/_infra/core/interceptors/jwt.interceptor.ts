@@ -1,14 +1,20 @@
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TokenService } from '@core/services/';
-import { Observable } from 'rxjs';
+import { from, Observable } from 'rxjs';
 
 @Injectable()
 export class JwtInterceptor implements HttpInterceptor {
-  constructor(private tokenService: TokenService) {}
+  constructor(private tokenService: TokenService) { }
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // add authorization header with jwt token if available
-    return next.handle(this.tokenService.addToken(request));
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    return from(this.handle(req, next))
   }
+
+  async handle(req: HttpRequest<any>, next: HttpHandler) {
+    const authReq = await this.tokenService.addToken(req)
+
+    return next.handle(authReq).toPromise()
+  }
+
 }

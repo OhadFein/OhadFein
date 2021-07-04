@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "dance-web",
+  "name": "@danskill/workspace",
   "version": "1.0.0",
   "main": "index.js",
   "workspaces": {
@@ -18,7 +18,6 @@
     "setup": "lerna bootstrap",
     "build": "lerna run build --parallel",
     "start": "yarn workspace webapp-server start",
-    "postinstall": "cp lock.js node_modules/@angular/compiler-cli/ngcc/src/execution/lock_file.js && ngcc --create-ivy-entry-points",
     "precommit": "pretty-quick --staged && lint-staged --config packages/client/.eslintrc.js",
     "prepare": "husky install"
   },
