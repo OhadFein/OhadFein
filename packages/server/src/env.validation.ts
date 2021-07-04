@@ -4,7 +4,7 @@ import { IsEnum, IsNumber, IsString, validateSync } from 'class-validator';
 // TODO: add all environment vars
 // TODO: use this.configService.get<string>('database.host')
 
-enum Environment {
+export enum Environment {
   Development = "development",
   Production = "production",
   Test = "test",
