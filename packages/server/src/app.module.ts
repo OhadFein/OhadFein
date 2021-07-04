@@ -14,14 +14,15 @@ import { APP_GUARD } from '@nestjs/core';
 import { JwtAuthGuard } from './common/guards/jwt-auth.guard';
 import { RolesGuard } from './common/guards/roles.guard';
 import { NotesModule } from './notes/notes.module';
-import { validate } from './env.validation';
+import { Environment, validate } from './env.validation';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 
 @Module({
   imports: [
     ConfigModule.forRoot({ validate }),
-    MongooseModule.forRoot(process.env.MONGODB_DEVELOPMENT_URI, {
+    MongooseModule.forRoot(process.env.NODE_ENV === Environment.Production ?
+      process.env.MONGODB_PRODUCTION_URI : process.env.MONGODB_DEVELOPMENT_URI, {
       useCreateIndex: true,
       useFindAndModify: false,
     }),

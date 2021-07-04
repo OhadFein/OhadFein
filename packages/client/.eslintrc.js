@@ -8,7 +8,8 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 2017,
-    sourceType: 'module'
+    sourceType: 'module',
+    project: ['packages/client/tsconfig.json']
   },
   env: {
     node: true,
