@@ -18,7 +18,7 @@ export class FiguresService {
   async findOne(id: Types.ObjectId): Promise<Figure> {
     return await this.figureModel
       .findOne({ _id: id })
-      .populate('videos stars') // TODO: replace the strings with fixed values
+      .populate('videos stars check12313213213123213check12313213213123213check12313213213123213check12313213213123213') // TODO: replace the strings with fixed values
       .exec();
   }
 
