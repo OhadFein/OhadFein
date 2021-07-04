@@ -91,7 +91,7 @@ module.exports = {
     '^@ui$': '<rootDir>/src/app/_infra/ui',
     '^@ui/(.*)$': '<rootDir>/src/app/_infra/ui/$1',
     '^@testing$': '<rootDir>/src/testing',
-    '^@testing/(.*)$': '<rootDir>/src/testing/$1',
+    '^@testing/(.*)$': '<rootDir>/src/testing/$1'
   },
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
@@ -186,7 +186,7 @@ module.exports = {
   },
 
   // An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
-  transformIgnorePatterns: ["/node_modules/"],
+  transformIgnorePatterns: ['/node_modules/']
 
   // An array of regexp pattern strings that are matched against all modules before the module loader will automatically return a mock for them
   // unmockedModulePathPatterns: undefined,

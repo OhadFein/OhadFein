@@ -4,17 +4,38 @@
   "version": "1.0.0",
   "main": "index.js",
   "workspaces": {
-    "packages": ["packages/*"],
-    "nohoist": ["**/@types/jasmine", "**/@types/jasmine/**"]
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/@types/jasmine",
+      "**/@types/jasmine/**"
+    ]
   },
   "scripts": {
     "dev": "lerna run dev --stream",
     "test": "lerna run test",
     "setup": "lerna bootstrap",
     "build": "lerna run build --parallel",
-    "start": "yarn workspace @danskill/backend start"
+    "start": "yarn workspace webapp-server start",
+    "precommit": "pretty-quick --staged && lint-staged --config packages/client/.eslintrc.js",
+    "prepare": "husky install"
   },
   "devDependencies": {
-    "lerna": "4.0.0"
+    "lerna": "4.0.0",
+    "husky": "^6.0.0",
+    "lint-staged": "^11.0.0",
+    "eslint-plugin-prettier": "^3.0.1"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "*.{html,css,scss,json}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

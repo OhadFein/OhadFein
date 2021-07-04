@@ -2,7 +2,7 @@ export interface Configuration {
   majorVersion: number;
   minorVersion: number;
   buildVersion: number;
-  buildType: BuildType,
+  buildType: BuildType;
   restURL: string;
   aboutVideoURL: string;
 }

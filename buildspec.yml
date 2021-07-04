@@ -1,36 +1,29 @@
 version: 0.2
 
 phases:
-    install:
-        commands:
-            - echo install commands started on `date`
-            - echo install commands completed on `date`
-            
-    pre_build:
-        commands:
-            - echo `pwd`
-            - echo yarn INSTALL started on `date`
-            - yarn install
-            - echo yarn INSTALL completed on `date`
-            
-    build:
-        commands:
-            - echo `pwd`
-            
-            - echo yarn TEST started on `date`
-            - cd packages/server
-            - yarn test
-            - cd ../..
-            - echo yarn TEST completed on `date`
-            
-            - echo BUILD started on `date`
-            - yarn run build
-            - echo BUILD completed on `date`
-            
+  install:
+    commands:
+      - echo install commands started on `date`
+      - echo install commands completed on `date`
+
+  pre_build:
+    commands:
+      - echo `pwd`
+      - echo yarn INSTALL started on `date`
+      - yarn install
+      - echo yarn INSTALL completed on `date`
+
+  build:
+    commands:
+      - echo `pwd`
+      - echo BUILD started on `date`
+      - yarn run build
+      - echo BUILD completed on `date`
+
 artifacts:
-    files:
-        - '**/*'
-        
+  files:
+    - '**/*'
+
 cache:
-    paths:
-        - 'node_modules/**/*'
+  paths:
+    - 'node_modules/**/*'

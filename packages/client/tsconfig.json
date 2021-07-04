@@ -16,6 +16,8 @@
     "incremental": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
+    "noImplicitAny": false,
+    "noUnusedLocals": false,
     "paths": {
       "@app/*": ["src/app/*"],
       "@infra/*": ["src/app/_infra/*"],
@@ -26,7 +28,7 @@
       "@lab/*": ["src/app/lab/*"],
       "@environments/*": ["src/environments/*"],
       "@testing/*": ["src/testing/*"],
-      "@danskill/contract": ["../contract/src"],
+      "@danskill/contract": ["../contract/src"]
     }
   },
   "angularCompilerOptions": {

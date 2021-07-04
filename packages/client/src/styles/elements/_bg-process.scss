@@ -1,88 +1,86 @@
 .bg-processes-container {
-    position: fixed;
-    z-index: 1001;
-    top: 70px;
-    left: 0;
+  position: fixed;
+  z-index: 1001;
+  top: 70px;
+  left: 0;
 
-    .background-process {
+  .background-process {
+    .bg-upload-process {
+      background: $success;
+      border: $navigation-border;
+      border-left: none;
+      border-radius: 0 2rem 2rem 0;
+      padding: 0.2rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
 
-        .bg-upload-process {
-            background: $success;
-            border: $navigation-border;
-            border-left: none;
-            border-radius: 0 2rem 2rem 0;
-            padding: 0.2rem;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
+      &.error {
+        background-color: $danger;
+        border-color: $danger;
+        color: $white;
+      }
 
-            &.error {
-                background-color: $danger;
-                border-color: $danger;
-                color: $white;
-            }
+      .process-icon {
+        display: block;
+        position: absolute;
+        color: $white;
+        font-size: 18px;
+        font-weight: 900;
+        z-index: +1;
+        top: 6px;
+        left: 5px;
+      }
 
-            .process-icon {
-                display: block;
-                position: absolute;
-                color: $white;
-                font-size: 18px;
-                font-weight: 900;
-                z-index: +1;
-                top: 6px;
-                left: 5px;
-            }
+      .info-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
 
-            .info-container {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-
-                label {
-                    display: block;
-                    color: $white;
-                    margin: 0 0.3rem;
-                }
-            }
-
-            .error-container {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-
-                >* {
-                    padding-left: 0.3rem;
-                    padding-right: 0.3rem;
-                }
-
-                label {
-                    display: block;
-                    margin: 0;
-                }
-
-                .buttons {
-                    .btn {
-                        display: inline-block;
-                        border-radius: 50%;
-                        width: 35px;
-                        height: 35px;
-                        padding-left: 0.35rem;
-                        padding-right: 0.35rem;
-                        font-size: 1.3rem;
-                        line-height: 1;
-                        margin-right: 0.3rem;
-
-                        &:before {
-                            margin: 0;
-                            line-height: 1;
-                        }
-
-                    }
-                }
-            }
+        label {
+          display: block;
+          color: $white;
+          margin: 0 0.3rem;
         }
+      }
+
+      .error-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        > * {
+          padding-left: 0.3rem;
+          padding-right: 0.3rem;
+        }
+
+        label {
+          display: block;
+          margin: 0;
+        }
+
+        .buttons {
+          .btn {
+            display: inline-block;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            padding-left: 0.35rem;
+            padding-right: 0.35rem;
+            font-size: 1.3rem;
+            line-height: 1;
+            margin-right: 0.3rem;
+
+            &:before {
+              margin: 0;
+              line-height: 1;
+            }
+          }
+        }
+      }
     }
+  }
 }

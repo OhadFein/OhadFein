@@ -6,11 +6,10 @@ import { NavButton } from '@core/models';
   templateUrl: './navigation.component.html'
 })
 export class NavigationComponent {
-
   @Input() navButtons: NavButton[];
   userScrolled = false;
 
-  constructor() { }
+  constructor() {}
 
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
@@ -20,5 +19,4 @@ export class NavigationComponent {
   detectScrollPosition() {
     // this.userScrolled = document.documentElement.scrollTop > 20; TODO: consider not to do it
   }
-
 }

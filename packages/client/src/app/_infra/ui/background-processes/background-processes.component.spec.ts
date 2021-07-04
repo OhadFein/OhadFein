@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
 import { BackgroundProcessesComponent } from './background-processes.component';
 
@@ -11,9 +8,8 @@ describe('BackgroundProcessesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ BackgroundProcessesComponent ]
-    })
-    .compileComponents();
+      declarations: [BackgroundProcessesComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

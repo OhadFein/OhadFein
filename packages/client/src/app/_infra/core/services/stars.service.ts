@@ -12,17 +12,16 @@ export class StarsService {
   constructor(private baseRestService: BaseRestService) {}
 
   getStarContent(starId): Observable<IStarContent> {
-	return this.baseRestService.get<IRestResponse>(`stars/${starId}`)
-	  .pipe(
-		map((response) => {
-		  return response.data ? response.data : [];
-		})
-	  );
+    return this.baseRestService
+      .get<IRestResponse>(`stars/${starId}`)
+      .pipe(map((response) => response.data ?? []));
   }
 
   getStars(): Observable<IUser[]> {
-	return this.baseRestService.get<StarsRestResponse>('users/all/stars').pipe(map(res => {
-	  return res.data ? res.data : [];
-	}));
+    return this.baseRestService.get<StarsRestResponse>('users/all/stars').pipe(
+      map((res) => {
+        return res.data ? res.data : [];
+      })
+    );
   }
 }

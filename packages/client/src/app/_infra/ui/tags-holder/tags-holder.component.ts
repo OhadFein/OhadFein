@@ -7,12 +7,9 @@ import { Tag } from '@core/models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TagsHolderComponent implements OnInit {
-
   @Input() tags: Array<Tag> = [];
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

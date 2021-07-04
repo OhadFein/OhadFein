@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  OnInit,
+  Output
+} from '@angular/core';
 import { AlertType } from '@infra/core/models';
 
 @Component({
@@ -7,16 +14,15 @@ import { AlertType } from '@infra/core/models';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InpageErrorComponent implements OnInit {
-
   @Input() heading: string = null;
   @Input() msg: string = null;
-  @Input() btnLabel?= 'COMMON.tryAgain';
+  @Input() btnLabel? = 'COMMON.tryAgain';
   @Input() type?: AlertType = AlertType.Error;
   @Output() action = new EventEmitter();
 
   showAction = false;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
     this.showAction = this.action.observers.length > 0;
@@ -39,5 +45,4 @@ export class InpageErrorComponent implements OnInit {
         return 'alert alert-warning';
     }
   }
-
 }

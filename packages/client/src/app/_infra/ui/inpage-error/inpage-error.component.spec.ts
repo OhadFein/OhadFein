@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
 import { InpageErrorComponent } from './inpage-error.component';
 
@@ -11,9 +8,8 @@ describe('InpageErrorComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ InpageErrorComponent ]
-    })
-    .compileComponents();
+      declarations: [InpageErrorComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

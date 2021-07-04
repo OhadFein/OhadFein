@@ -133,8 +133,8 @@ export class CustomLabControlsComponent implements OnChanges, OnInit, AfterViewI
     if (!this.panMoveSource) {
       this.panMoveSource = timer(50); // set a bandwidth to max 20 shift events per a second
       this.panMoveSource
-          .pipe(finalize(() => (this.panMoveSource = null)))
-          .subscribe(() => (this.pan.emit(event.velocityX)));
+        .pipe(finalize(() => (this.panMoveSource = null)))
+        .subscribe(() => this.pan.emit(event.velocityX));
     }
   }
 
@@ -163,7 +163,10 @@ export class CustomLabControlsComponent implements OnChanges, OnInit, AfterViewI
    * @private
    */
   private getScrollBlocks(): number[] {
-    const numberOfBlocks = Math.ceil((this.screenWidth || this.defaultMobileScreenWidth) * 3 / this.blockWidth);
+    const numberOfBlocks = Math.ceil(
+      ((this.screenWidth || this.defaultMobileScreenWidth) * 3) / this.blockWidth
+    );
+
     return Array(numberOfBlocks).fill(0);
   }
 
@@ -174,7 +177,9 @@ export class CustomLabControlsComponent implements OnChanges, OnInit, AfterViewI
    * @private
    */
   private setScrollPosition(value: number): void {
-    setTimeout(() => {this.scroll.nativeElement.scrollLeft = value;}, 1);
+    setTimeout(() => {
+      this.scroll.nativeElement.scrollLeft = value;
+    }, 1);
   }
 
   private getScrollPosition(): number {
@@ -189,6 +194,7 @@ export class CustomLabControlsComponent implements OnChanges, OnInit, AfterViewI
     const seconds = parseInt(this.totalTimePassed, 10) % 60;
     const secondsToMinutes = parseInt(this.totalTimePassed, 10) / 60;
     const minutes = Math.floor(secondsToMinutes);
+
     return `${this.getFormattedTimeToString(minutes)}:${this.getFormattedTimeToString(seconds)}`;
   }
 
@@ -199,6 +205,7 @@ export class CustomLabControlsComponent implements OnChanges, OnInit, AfterViewI
    */
   private getFormattedTimeToString(time: number): string {
     const formattedTime = (Math.round(time * 100) / 100).toFixed(0);
+
     return time < 10 ? `0${formattedTime}` : `${formattedTime}`;
   }
 

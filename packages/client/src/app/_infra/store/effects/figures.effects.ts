@@ -13,18 +13,18 @@ export class FiguresEffects {
   constructor(private action$: Actions, private figuresService: FiguresService) {}
 
   getFigure$: Observable<Action> = createEffect(() =>
-	this.action$.pipe(
-	  ofType(FiguresActions.BeginGetFigureAction),
-	  mergeMap(action =>
-		this.figuresService.getFigure(action.payload).pipe(
-		  map((figure: IFigure) => {
-			return FiguresActions.SuccessGetFigureAction({payload: figure});
-		  }),
-		  catchError((error: Error) => {
-			return of(FiguresActions.ErrorFiguresAction(error));
-		  })
-		)
-	  )
-	)
+    this.action$.pipe(
+      ofType(FiguresActions.BeginGetFigureAction),
+      mergeMap((action) =>
+        this.figuresService.getFigure(action.payload).pipe(
+          map((figure: IFigure) => {
+            return FiguresActions.SuccessGetFigureAction({ payload: figure });
+          }),
+          catchError((error: Error) => {
+            return of(FiguresActions.ErrorFiguresAction(error));
+          })
+        )
+      )
+    )
   );
 }

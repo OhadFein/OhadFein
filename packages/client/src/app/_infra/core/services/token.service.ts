@@ -8,8 +8,7 @@ import { Auth } from 'aws-amplify';
   providedIn: 'root'
 })
 export class TokenService {
-
-  constructor() { }
+  constructor() {}
 
   storeTokens(tokens: AuthTokens) {
     localStorage.setItem('access_token', tokens.access_token);
@@ -22,23 +21,32 @@ export class TokenService {
   }
 
   async checkStoredAccessToken(): Promise<boolean> {
-    return await this.getCurrentJwtToken() !== null
+    return (await this.getCurrentJwtToken()) !== null;
   }
 
   async getCurrentJwtToken(): Promise<string> {
-    const token = await Auth.currentSession().then(session => { return session.getIdToken() }).catch(error => { return null });
-    return token ? token.getJwtToken() : null
+    const token = await Auth.currentSession()
+      .then((session) => {
+        return session.getIdToken();
+      })
+      .catch((error) => {
+        return null;
+      });
+
+    return token ? token.getJwtToken() : null;
   }
 
   async deleteStoredTokens() {
-    await Auth.signOut().then(m => console.log("Logged out")).catch(error => {
-      console.log("Error while logging out")
-      console.log(error)
-    })
+    await Auth.signOut()
+      .then((m) => console.log('Logged out'))
+      .catch((error) => {
+        console.log('Error while logging out');
+        console.log(error);
+      });
   }
 
   async addToken(request: HttpRequest<any>): Promise<HttpRequest<any>> {
-    const jwt_token = await this.getCurrentJwtToken()
+    const jwt_token = await this.getCurrentJwtToken();
 
     if (jwt_token) {
       return request.clone({
@@ -46,9 +54,8 @@ export class TokenService {
           Authorization: `Bearer ${jwt_token}`
         }
       });
-    } else {
-      return request;
     }
-  }
 
+    return request;
+  }
 }

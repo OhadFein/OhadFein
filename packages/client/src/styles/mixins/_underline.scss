@@ -1,9 +1,8 @@
-@mixin underline ($border) {
-    display:inline-block;
-    padding-bottom: 0.2rem;
-    border-bottom: 2px solid $border;
+@mixin underline($border) {
+  display: inline-block;
+  padding-bottom: 0.2rem;
+  border-bottom: 2px solid $border;
 }
-
 
 @each $color, $value in $theme-colors {
   .underline-#{$color} {

@@ -16,7 +16,6 @@
 import '@angular/localize/init';
 import 'web-animations-js';
 import 'zone.js/dist/zone';
-import 'regenerator-runtime/runtime';
 
 /***************************************************************************************************
  * BROWSER POLYFILLS
@@ -61,4 +60,4 @@ import 'regenerator-runtime/runtime';
 /***************************************************************************************************
  * APPLICATION IMPORTS
  */
- (window as any).global = window
+(window as any).global = window;

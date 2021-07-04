@@ -1,11 +1,11 @@
 .tags-holder {
-    margin-bottom: $paragraph-margin-bottom /2;
+  margin-bottom: $paragraph-margin-bottom / 2;
 
-    .tag {
-        margin: 0.1rem 0.2rem;
+  .tag {
+    margin: 0.1rem 0.2rem;
 
-        @include media-breakpoint-down(xs) {
-            font-size: 0.75rem;
-        }
+    @include media-breakpoint-down(xs) {
+      font-size: 0.75rem;
     }
+  }
 }

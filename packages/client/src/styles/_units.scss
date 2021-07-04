@@ -1,0 +1,23 @@
+$browser-context: 16;
+
+@function no-number($value) {
+  @return type-of($value) != 'number';
+}
+
+// convert pixels to rem
+@function rem($pixels, $context: $browser-context) {
+  @if (no-number($pixels)) {
+    @error "Sorry, but `#{$pixels}` is not a numeric value.";
+  }
+
+  @if (unitless($pixels)) {
+    @warn 'Assuming value `#{$pixels}` to be in pixels; attempting to convert it.';
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1rem;
+}

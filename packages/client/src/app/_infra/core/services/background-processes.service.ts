@@ -7,19 +7,22 @@ import { BackgroundProcess, BackgroundProcessType, CreatePracticeData } from '..
   providedIn: 'root'
 })
 export class BackgroundProcessesService {
-
   private subject = new Subject<BackgroundProcess>();
 
-  constructor() { }
-
   // enable subscribing to processes observable
-  onBackgroundProcess(processtId?: string): Observable<BackgroundProcess> {
+  onBackgroundProcess(): Observable<BackgroundProcess> {
     return this.subject.asObservable();
   }
 
   // convenience methods
   uploadPractice(data: CreatePracticeData, processtId?: string) {
-    this.startBackgroundProcess(new BackgroundProcess({ type: BackgroundProcessType.UPLOAD_PRACTICE, processtId, data }));
+    this.startBackgroundProcess(
+      new BackgroundProcess({
+        type: BackgroundProcessType.UPLOAD_PRACTICE,
+        processtId,
+        data
+      })
+    );
   }
 
   // main process method
@@ -31,5 +34,4 @@ export class BackgroundProcessesService {
   clear(processtId?: string) {
     this.subject.next(new BackgroundProcess({ processtId }));
   }
-
 }

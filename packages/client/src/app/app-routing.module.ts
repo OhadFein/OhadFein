@@ -6,16 +6,17 @@ import { PageNotFoundComponent } from '@infra/ui/';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginModule)
+    loadChildren: () => import('./login/login.module').then((m) => m.LoginModule)
   },
   {
     path: 'student',
-    loadChildren: () => import('./student/student.module').then(m => m.StudentModule),
+    loadChildren: () => import('./student/student.module').then((m) => m.StudentModule),
     canActivate: [AuthGuard]
   },
   {
     path: 'notifications',
-    loadChildren: () => import('./notifications/notifications.module').then(m => m.NotificationsModule),
+    loadChildren: () =>
+      import('./notifications/notifications.module').then((m) => m.NotificationsModule),
     canActivate: [AuthGuard]
   },
   { path: '**', component: PageNotFoundComponent }
@@ -25,4 +26,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes, { scrollPositionRestoration: 'enabled' })],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

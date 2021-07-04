@@ -12,6 +12,6 @@ export class StarInfoComponent implements OnInit {
   description: string;
 
   ngOnInit() {
-	this.description = this.user?.star?.description
+    this.description = this.user?.star?.description;
   }
 }

@@ -1,6 +1,3 @@
-/* tslint:disable:no-unused-variable */
-
-import { TestBed, async } from '@angular/core/testing';
 import { ToggleSwitchDirective } from './toggle-switch.directive';
 
 describe('Directive: ToggleSwitch', () => {

@@ -1,23 +1,23 @@
 .toggle-switch {
-    font-weight: 700;
-    font-size: 2.1rem;
-    line-height: 0;
-    display: inline-block;
-    width: auto;
-    background: $white;
+  font-weight: 700;
+  font-size: 2.1rem;
+  line-height: 0;
+  display: inline-block;
+  width: auto;
+  background: $white;
 
-    @include trans_ition (color 0.2s ease-in-out);
+  @include trans_ition(color 0.2s ease-in-out);
 
-    &.icon-toggle-off {
-        color: $body-color;
-    }
+  &.icon-toggle-off {
+    color: $body-color;
+  }
 
-    &.icon-toggle-on {
-        color: $success;
-    }
+  &.icon-toggle-on {
+    color: $success;
+  }
 
-    &.disabled {
-        color: $gray-600;
-        pointer-events: none;
-    }
+  &.disabled {
+    color: $gray-600;
+    pointer-events: none;
+  }
 }

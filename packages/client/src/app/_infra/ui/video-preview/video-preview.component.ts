@@ -1,4 +1,11 @@
-import {ChangeDetectionStrategy, Component, ElementRef, Input, OnChanges, OnDestroy} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnDestroy
+} from '@angular/core';
 import { VgAPI } from 'ngx-videogular';
 import { Subscription } from 'rxjs';
 
@@ -9,7 +16,6 @@ import { Subscription } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class VideoPreviewComponent implements OnChanges, OnDestroy {
-
   @Input() path: string;
   @Input() poster: string;
   @Input() bla: string;
@@ -22,20 +28,20 @@ export class VideoPreviewComponent implements OnChanges, OnDestroy {
     this.playerAPI = api;
     this.playerAPI.volume = 0;
     this.subs.push(
-      this.playerAPI.getDefaultMedia().subscriptions.canPlay.subscribe(
-        event => {
-          this.playerAPI.play();
-        }
-      )
+      this.playerAPI.getDefaultMedia().subscriptions.canPlay.subscribe(() => {
+        this.playerAPI.play();
+      })
     );
   }
 
   ngOnDestroy() {
-    this.subs.forEach(s => { s.unsubscribe(); });
+    this.subs.forEach((s) => {
+      s.unsubscribe();
+    });
   }
 
   ngOnChanges() {
-    if(this.playerAPI){
+    if (this.playerAPI) {
       const player = this.elRef.nativeElement.querySelector('video');
       player.load();
     }

@@ -8,8 +8,7 @@ import { AlertService } from './alert.service';
   providedIn: 'root'
 })
 export class AlertErrorService {
-
-  constructor(private alertService: AlertService) { }
+  constructor(private alertService: AlertService) {}
 
   alertUserError(errorType: UserActionType | string): UserError {
     // this.alertService.error('LOGIN.LoginFailedMsg');
@@ -24,6 +23,7 @@ export class AlertErrorService {
     }
 
     this.alertService.error(errorMsg);
+
     return errorMsg;
   }
 
@@ -36,9 +36,9 @@ export class AlertErrorService {
     }
 
     this.alertService.error(errorMsg);
+
     return errorMsg;
   }
-
 
   alertStarsContentError(errorType: StarsContentActionType | string): StarContentError {
     let errorMsg: StarContentError = StarContentError.GENERAL;
@@ -49,7 +49,7 @@ export class AlertErrorService {
     }
 
     this.alertService.error(errorMsg);
+
     return errorMsg;
   }
-
 }

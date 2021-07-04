@@ -11,13 +11,13 @@ const routes: Routes = [
     children: [
       { path: 'login', component: LoginPageComponent },
       { path: 'afterLogin', component: AfterLoginPageComponent },
-      { path: '', redirectTo: 'login', pathMatch: 'full' },
-    ],
-  },
+      { path: '', redirectTo: 'login', pathMatch: 'full' }
+    ]
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
 export class LoginRoutingModule {}

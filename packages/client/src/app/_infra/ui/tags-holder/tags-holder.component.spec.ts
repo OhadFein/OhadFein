@@ -1,7 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { By } from '@angular/platform-browser';
-import { DebugElement } from '@angular/core';
 
 import { TagsHolderComponent } from './tags-holder.component';
 
@@ -11,9 +8,8 @@ describe('TagsHolderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TagsHolderComponent ]
-    })
-    .compileComponents();
+      declarations: [TagsHolderComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {

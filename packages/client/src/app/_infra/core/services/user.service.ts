@@ -15,64 +15,60 @@ export class UserService {
   constructor(private baseRestService: BaseRestService) {}
 
   getUser(): Observable<User> {
-	return this.baseRestService.get<UserRestResponse>('account/profile').pipe(
-	  map(
-		res => {
-		  if (res.success) {
-			return res.data;
-		  } else {
-			throwError([res.message]); // TODO: add real error here
-		  }
-		},
-		error => {
-		  throwError(['ERRORS.GeneralBackendError']);
-		}
-	  )
-	);
+    return this.baseRestService.get<UserRestResponse>('account/profile').pipe(
+      map(
+        (res) => {
+          if (res.success) {
+            return res.data;
+          }
+          throwError([res.message]); // TODO: add real error here
+        },
+        () => {
+          throwError(['ERRORS.GeneralBackendError']); //TODO: sverkunov.
+        }
+      )
+    );
   }
 
   userExists(): Promise<boolean> {
-	  return this.baseRestService.get<boolean>('users/exists').toPromise()
+    return this.baseRestService.get<boolean>('users/exists').toPromise();
   }
 
   createNewUser(username: string, sub: string): Promise<UserDto> {
-	const createUserDto = new CreateUserDto(username, sub)
-	return this.baseRestService.post<UserDto>('users', createUserDto).toPromise()
-}
+    const createUserDto = new CreateUserDto(username, sub);
+
+    return this.baseRestService.post<UserDto>('users', createUserDto).toPromise();
+  }
 
   getGeneralInfo(): Observable<INotifications[]> {
-	return this.baseRestService.get<IRestResponse>('').pipe(
-	  map(
-		res => {
-		  if (res.success) {
-			return res.data;
-		  } else {
-			throwError([res.message]); // TODO: add real error here
-		  }
-		},
-		error => {
-		  throwError(['ERRORS.GeneralBackendError']);
-		}
-	  )
-	);
+    return this.baseRestService.get<IRestResponse>('').pipe(
+      map(
+        (res) => {
+          if (res.success) {
+            return res.data;
+          }
+          throwError([res.message]); // TODO: add real error here
+        },
+        () => {
+          throwError(['ERRORS.GeneralBackendError']);
+        }
+      )
+    );
   }
 
   updateUser(user: User): Observable<User> {
-
-	return this.baseRestService.patch<UserRestResponse>('account/profile', user.profile).pipe(
-	  map(
-		res => {
-		  if (res.success) {
-			return user;
-		  } else {
-			throwError([res.message]); // TODO: add real error here
-		  }
-		},
-		error => {
-		  throwError(['ERRORS.GeneralBackendError']);
-		}
-	  )
-	)
+    return this.baseRestService.patch<UserRestResponse>('account/profile', user.profile).pipe(
+      map(
+        (res) => {
+          if (res.success) {
+            return user;
+          }
+          throwError([res.message]); // TODO: add real error here
+        },
+        () => {
+          throwError(['ERRORS.GeneralBackendError']);
+        }
+      )
+    );
   }
-
 }

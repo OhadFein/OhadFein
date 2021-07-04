@@ -8,7 +8,6 @@ import { ConfigurationService } from './configuration.service';
   providedIn: 'root'
 })
 export class BaseRestService {
-
   REST_URL = '';
 
   HTTP_HEADERS = new HttpHeaders()
@@ -17,24 +16,27 @@ export class BaseRestService {
     .set('Cache-Control', 'no-cache')
     .set('Pragma', 'no-cache');
 
-  constructor(
-    private http: HttpClient,
-    private configService: ConfigurationService
-  ) { }
+  constructor(private http: HttpClient, private configService: ConfigurationService) {}
 
   get<T>(endpoint: string, httpHeadersObj?: HttpHeaders): Observable<T> {
     this.getRestUrl();
     const headersObj: HttpHeaders = httpHeadersObj ? httpHeadersObj : this.HTTP_HEADERS;
     const options = { headers: headersObj, method: 'GET' };
+
     return this.http.get<T>(`${this.REST_URL}/${endpoint}`, options);
   }
 
-  post<T>(endpoint: string, body: any, httpHeadersObj?: HttpHeaders, reportProgress = false): Observable<T> {
+  post<T>(
+    endpoint: string,
+    body: any,
+    httpHeadersObj?: HttpHeaders,
+    reportProgress = false
+  ): Observable<T> {
     this.getRestUrl();
     const headersObj: HttpHeaders = httpHeadersObj ? httpHeadersObj : this.HTTP_HEADERS;
     let options = { headers: headersObj, method: 'POST', reportProgress };
     if (reportProgress) {
-      options = { ...options, ... { observe: 'events' } };
+      options = { ...options, ...{ observe: 'events' } };
     }
 
     return this.http.post<T>(`${this.REST_URL}/${endpoint}`, body, options);
@@ -44,6 +46,7 @@ export class BaseRestService {
     this.getRestUrl();
     const headersObj: HttpHeaders = httpHeadersObj ? httpHeadersObj : this.HTTP_HEADERS;
     const options = { headers: headersObj, method: 'PATCH' };
+
     return this.http.patch<T>(`${this.REST_URL}/${endpoint}`, body, options);
   }
 
@@ -53,5 +56,4 @@ export class BaseRestService {
       this.REST_URL = url;
     }
   }
-
 }

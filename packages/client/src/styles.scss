@@ -1,4 +1,10 @@
-/* FONTS */
+/* units */
+@import 'styles/units';
+
+/* palette */
+@import 'styles/palette';
+
+/* fonts */
 @import 'styles/fonts';
 @import 'styles/icon-font/danskill_icons';
 
@@ -17,7 +23,6 @@
 @import 'styles/mixins';
 
 /*global stylings */
-@import 'styles/forms';
 @import 'styles/global_styles';
 @import 'styles/bootstrap-overrides';
 
@@ -28,7 +33,6 @@
 @import 'styles/pages/lab';
 
 /* custom elements stylings */
-
 @import 'styles/elements/alert';
 @import 'styles/elements/bg-process';
 @import 'styles/elements/btn-round';
@@ -62,6 +66,4 @@
 @import 'styles/practice/practice-item';
 
 /* swiper */
-@import "~swiper/swiper-bundle";
-
-
+@import '~swiper/swiper-bundle';

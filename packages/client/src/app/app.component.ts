@@ -14,11 +14,11 @@ import { map, mergeMap } from 'rxjs/operators';
 import Amplify from 'aws-amplify';
 
 declare let gtag: any;
-declare var $: any;
+declare let $: any;
 
 @Component({
   selector: 'dsapp-root',
-  templateUrl: './app.component.html',
+  templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit, OnDestroy {
   state: string;
@@ -77,7 +77,10 @@ export class AppComponent implements OnInit, OnDestroy {
     );
   }
   configureAmplifyAuth() {
-    const domain: string = this.confifurationService.getBuildType() === BuildType.DEV ? 'http://localhost:4200/' : 'https://dev.danskill.com/';
+    const domain: string =
+      this.confifurationService.getBuildType() === BuildType.DEV
+        ? 'http://localhost:4200/'
+        : 'https://dev.danskill.com/';
     Amplify.configure({
       Auth: {
         // REQUIRED - Amazon Cognito Region
@@ -101,9 +104,9 @@ export class AppComponent implements OnInit, OnDestroy {
           scope: ['phone', 'email', 'profile', 'openid', 'aws.cognito.signin.user.admin'],
           redirectSignIn: domain + 'afterLogin',
           redirectSignOut: domain,
-          responseType: 'code', // or 'token', note that REFRESH token will only be generated when the responseType is code
-        },
-      },
+          responseType: 'code' // or 'token', note that REFRESH token will only be generated when the responseType is code
+        }
+      }
     });
   }
 

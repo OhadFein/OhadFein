@@ -12,12 +12,10 @@ import { AlertService } from './alert.service';
 import { BaseRestService } from './base-rest.service';
 import { TokenService } from './token.service';
 
-
 @Injectable({
   providedIn: 'root'
 })
 export class LoginService {
-
   constructor(
     private router: Router,
     private alertService: AlertService,
@@ -25,18 +23,17 @@ export class LoginService {
     private store: Store<any>,
     private tokenService: TokenService,
     private baseRestService: BaseRestService
-  ) { }
+  ) {}
 
   login({ email, password }) {
     this.store.dispatch(GlobalActions.Logout());
     this.baseRestService
       .post<AuthRestResponse>('login', { email, password })
       .subscribe(
-        res => {
+        (res) => {
           if (res.success) {
             this.tokenService.storeTokens(res.data);
             this.afterLoginRoute();
-
           } else if (!res.success && res.message) {
             const errorStr = `${res.message}`;
             this.alertService.error(errorStr);
@@ -44,7 +41,7 @@ export class LoginService {
             this.alertService.error('LOGIN.LoginFailedMsg');
           }
         },
-        error => {
+        () => {
           this.alertService.error('LOGIN.LoginFailedMsg');
         }
       );
@@ -52,10 +49,10 @@ export class LoginService {
 
   loginFacebook() {
     this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
-      res => {
+      (res) => {
         console.log('FACEBOOK LOGIN: ', res);
       },
-      error => {
+      () => {
         this.alertService.error('LOGIN.LoginFailedMsg');
       }
     );
@@ -83,5 +80,4 @@ export class LoginService {
   validateResetToken(token: string): Observable<IRestResponse> {
     return this.baseRestService.get<IRestResponse>(`reset/${token}`);
   }
-
 }

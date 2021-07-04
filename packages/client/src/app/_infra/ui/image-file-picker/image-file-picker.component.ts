@@ -6,12 +6,11 @@ import { DeviceDetectorService } from 'ngx-device-detector';
   templateUrl: './image-file-picker.component.html'
 })
 export class ImageFilePickerComponent implements OnInit {
-
   @Output() pictureChange = new EventEmitter<Event>();
 
   isDesktop: boolean;
 
-  constructor(private deviceService: DeviceDetectorService) { }
+  constructor(private deviceService: DeviceDetectorService) {}
 
   ngOnInit() {
     this.isDesktop = this.deviceService.isDesktop();
@@ -20,5 +19,4 @@ export class ImageFilePickerComponent implements OnInit {
   fileChangeEvent(event: Event): void {
     this.pictureChange.emit(event);
   }
-
 }

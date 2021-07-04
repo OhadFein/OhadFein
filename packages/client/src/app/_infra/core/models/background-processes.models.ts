@@ -1,32 +1,32 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 export class BackgroundProcess {
-    type: BackgroundProcessType;
-    processtId: string;
-    data?: any;
+  type: BackgroundProcessType;
+  processtId: string;
+  data?: any;
 
-    constructor(init?: Partial<BackgroundProcess>) {
-        Object.assign(this, init);
-    }
+  constructor(init?: Partial<BackgroundProcess>) {
+    Object.assign(this, init);
+  }
 }
 
 export enum BackgroundProcessType {
-    UPLOAD_PRACTICE = 'uploadPractice'
+  UPLOAD_PRACTICE = 'uploadPractice'
 }
 
 export interface BackgroundProcessCallbackData {
-    process: BackgroundProcess;
-    action: BackgroundProcessCallbackAction
+  process: BackgroundProcess;
+  action: BackgroundProcessCallbackAction;
 }
 
 export enum BackgroundProcessCallbackAction {
-    CANCEL = 'cancel'
+  CANCEL = 'cancel'
 }
 
 @Component({
-    template: ''
+  template: ''
 })
 export class BaseBgProcessComponent {
-    @Input() process: BackgroundProcess;
-    @Output() processCallback = new EventEmitter<BackgroundProcessCallbackData>();
+  @Input() process: BackgroundProcess;
+  @Output() processCallback = new EventEmitter<BackgroundProcessCallbackData>();
 }

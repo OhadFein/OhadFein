@@ -1,7 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { TranslatePipe } from '@testing/pipes';
-import { ToggleSwitchDirective } from '@infra/ui';
+
 import { LabVideoToolComponent } from './lab-video-tool.component';
 
 describe('LabVideoToolComponent', () => {
@@ -10,10 +8,8 @@ describe('LabVideoToolComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LabVideoToolComponent, TranslatePipe, ToggleSwitchDirective],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA]
-    })
-    .compileComponents();
+      declarations: [LabVideoToolComponent]
+    }).compileComponents();
   }));
 
   beforeEach(() => {
