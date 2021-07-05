@@ -5,14 +5,18 @@ import { AllExceptionsFilter } from './common/filters/http-exception.filter';
 import * as helmet from 'helmet';
 import * as compression from 'compression';
 
-global['fetch'] = require('node-fetch');
+// global['fetch'] = require('node-fetch');
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalFilters(new AllExceptionsFilter());
   app.useGlobalPipes(new ValidationPipe());
   app.enableCors();
-  app.use(helmet());
+  app.use(
+    helmet({
+      contentSecurityPolicy: false,
+    })
+  );
   app.use(compression());
   app.setGlobalPrefix('api/v1');
 
