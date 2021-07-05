@@ -30,31 +30,31 @@ export class UserService {
     );
   }
 
-  userExists(): Promise<boolean> {
-    return this.baseRestService.get<boolean>('users/exists').toPromise();
+  userExists(): Observable<boolean> {
+    return this.baseRestService.get<boolean>('users/exists');
   }
 
-  createNewUser(username: string, sub: string): Promise<UserDto> {
+  createNewUser(username: string, sub: string): Observable<UserDto> {
     const createUserDto = new CreateUserDto(username, sub);
 
-    return this.baseRestService.post<UserDto>('users', createUserDto).toPromise();
+    return this.baseRestService.post<UserDto>('users', createUserDto);
   }
 
-  getGeneralInfo(): Observable<INotifications[]> {
-    return this.baseRestService.get<IRestResponse>('').pipe(
-      map(
-        (res) => {
-          if (res.success) {
-            return res.data;
-          }
-          throwError([res.message]); // TODO: add real error here
-        },
-        () => {
-          throwError(['ERRORS.GeneralBackendError']);
-        }
-      )
-    );
-  }
+  // getGeneralInfo(): Observable<INotifications> {
+  //   return this.baseRestService.get<IRestResponse>('').pipe(
+  //     map(
+  //       (res) => {
+  //         if (res.success) {
+  //           return res.data;
+  //         }
+  //         throwError([res.message]); // TODO: add real error here
+  //       },
+  //       () => {
+  //         throwError(['ERRORS.GeneralBackendError']);
+  //       }
+  //     )
+  //   );
+  // }
 
   updateUser(user: User): Observable<User> {
     return this.baseRestService.patch<UserRestResponse>('account/profile', user.profile).pipe(

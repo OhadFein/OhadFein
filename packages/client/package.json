@@ -5,11 +5,12 @@
   "scripts": {
     "ng": "ng",
     "dev": "ng serve",
-    "build": "ng build --prod",
+    "build": "rimraf dist && ng build --prod",
     "test": "jest --maxWorkers=50%",
     "lint": "eslint -c .eslintrc.js --ext .ts src",
     "e2e": "ng e2e",
-    "postinstall": "ngcc"
+    "postinstall": "ngcc",
+    "bundle-report": "webpack-bundle-analyzer dist/webapp/stats-es2015.json"
   },
   "private": true,
   "dependencies": {
@@ -61,18 +62,19 @@
     "codelyzer": "^5.0.0",
     "eslint": "^6.4.0",
     "eslint-config-prettier": "^4.1.0",
-    "eslint-plugin-prettier": "^3.0.1",
     "eslint-plugin-jest": "^22.17.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^6.0.0",
     "jest": "^26.1.0",
     "jest-preset-angular": "^8.3.2",
-    "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
     "prettier": "2.0.5",
-    "pretty-quick": "^1.6.0",
     "prettier-package-json": "^2.0.1",
+    "pretty-quick": "^1.6.0",
     "protractor": "~5.4.0",
     "ts-jest": "^26.1.1",
     "ts-node": "~8.8.2",
-    "typescript": "~3.8.3"
+    "typescript": "~3.8.3",
+    "webpack-bundle-analyzer": "^4.4.2"
   }
 }

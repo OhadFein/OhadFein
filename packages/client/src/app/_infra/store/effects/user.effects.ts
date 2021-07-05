@@ -44,19 +44,20 @@ export class UserEffects {
     )
   );
 
-  getGeneralInfo$: Observable<Action> = createEffect(() =>
-    this.action$.pipe(
-      ofType(UserActions.BeginGetGeneralInfoAction),
-      mergeMap(() =>
-        this.userService.getGeneralInfo().pipe(
-          map((data: INotifications[]) => {
-            return UserActions.SuccessGetGeneralInfoAction({ payload: data });
-          }),
-          catchError((error: Error) => {
-            return of(UserActions.ErrorGetGeneralInfoAction(error));
-          })
-        )
-      )
-    )
-  );
+  // never worked
+  // getGeneralInfo$: Observable<Action> = createEffect(() =>
+  //   this.action$.pipe(
+  //     ofType(UserActions.BeginGetGeneralInfoAction),
+  //     mergeMap(() =>
+  //       this.userService.getGeneralInfo().pipe(
+  //         map((data: INotifications[]) => {
+  //           return UserActions.SuccessGetGeneralInfoAction({ payload: data });
+  //         }),
+  //         catchError((error: Error) => {
+  //           return of(UserActions.ErrorGetGeneralInfoAction(error));
+  //         })
+  //       )
+  //     )
+  //   )
+  // );
 }

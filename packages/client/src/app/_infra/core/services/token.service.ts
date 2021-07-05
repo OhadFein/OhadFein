@@ -8,8 +8,6 @@ import { Auth } from 'aws-amplify';
   providedIn: 'root'
 })
 export class TokenService {
-  constructor() {}
-
   storeTokens(tokens: AuthTokens) {
     localStorage.setItem('access_token', tokens.access_token);
     localStorage.setItem('refresh_token', tokens.refresh_token);

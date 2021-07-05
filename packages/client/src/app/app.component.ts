@@ -1,17 +1,16 @@
 import { Location } from '@angular/common';
 import { Component, OnDestroy, OnInit, HostListener, ViewChild } from '@angular/core';
 import { NavigationEnd, NavigationStart, Router } from '@angular/router';
-import { BackgroundPosition, BuildType } from '@core/models/';
-import { ConfigurationService, MenuService, UserService } from '@core/services';
-import { environment } from '@environments/environment';
+import { Amplify } from 'aws-amplify';
 import { TranslateService } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import * as selectors from '@store/selectors/user.selectors';
-import * as UserAction from '@store/actions/user.actions';
 import { Store } from '@ngrx/store';
-import { map, mergeMap } from 'rxjs/operators';
-import Amplify from 'aws-amplify';
+import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+import { environment } from '@environments/environment';
+import { ConfigurationService, MenuService, UserService } from '@core/services';
+import { BackgroundPosition, BuildType } from '@core/models/';
 
 declare let gtag: any;
 declare let $: any;
@@ -44,7 +43,7 @@ export class AppComponent implements OnInit, OnDestroy {
     translate.use('en');
   }
 
-  @HostListener('window:resize') updateOrientatioState() {
+  @HostListener('window:resize') updateOrientationState() {
     this.isDesktop = innerWidth > 980;
     if (!this.isDesktop && window.innerHeight < window.innerWidth) {
       this.showModal = true;
@@ -56,9 +55,9 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.updateOrientatioState();
+    this.updateOrientationState();
     this.changeBgPosition();
-    this.getGeneralInfo();
+    // this.getGeneralInfo();
     this.configureAmplifyAuth();
     this.subs.push(
       this.router.events.subscribe((event) => {
@@ -110,17 +109,18 @@ export class AppComponent implements OnInit, OnDestroy {
     });
   }
 
-  getGeneralInfo() {
-    this.userService
-      .getGeneralInfo()
-      .pipe(
-        map((res: any) => {
-          const notificationsNumber = res.notifications.filter((n) => n.isRead === false).length;
-          sessionStorage.setItem('notifications', JSON.stringify(notificationsNumber));
-        })
-      )
-      .subscribe();
-  }
+  // TODO: unfinished work, part of notification task
+  // getGeneralInfo() {
+  //   this.userService
+  //     .getGeneralInfo()
+  //     .pipe(
+  //       map((res: any) => {
+  //         const notificationsNumber = res.notifications.filter((n) => n.isRead === false).length;
+  //         sessionStorage.setItem('notifications', JSON.stringify(notificationsNumber));
+  //       })
+  //     )
+  //     .subscribe();
+  // }
 
   changeBgPosition() {
     this.backgroundPositionOne = new BackgroundPosition();
