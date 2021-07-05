@@ -12,7 +12,11 @@ async function bootstrap() {
   app.useGlobalFilters(new AllExceptionsFilter());
   app.useGlobalPipes(new ValidationPipe());
   app.enableCors();
-  app.use(helmet());
+  app.use(
+    helmet({
+      contentSecurityPolicy: false,
+    })
+  );
   app.use(compression());
   app.setGlobalPrefix('api/v1');
 
