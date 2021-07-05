@@ -5,7 +5,7 @@ import { AllExceptionsFilter } from './common/filters/http-exception.filter';
 import * as helmet from 'helmet';
 import * as compression from 'compression';
 
-// global['fetch'] = require('node-fetch');
+global['fetch'] = require('node-fetch');
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
