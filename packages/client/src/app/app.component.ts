@@ -100,7 +100,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
         // OPTIONAL - Hosted UI configuration
         oauth: {
-          domain: 'danskill.auth.eu-west-1.amazoncognito.com',
+          domain: 'auth.danskill.com',
           scope: ['phone', 'email', 'profile', 'openid', 'aws.cognito.signin.user.admin'],
           redirectSignIn: domain + 'afterLogin',
           redirectSignOut: domain,
