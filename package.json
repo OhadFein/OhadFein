@@ -18,6 +18,7 @@
     "setup": "lerna bootstrap",
     "build": "lerna run build --parallel",
     "start": "yarn workspace @danskill/backend start",
+    "precommit": "pretty-quick --staged && lint-staged --config packages/client/.eslintrc.js",
     "prepare": "husky install"
   },
   "devDependencies": {
