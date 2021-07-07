@@ -9,31 +9,100 @@
 			"name": "Auth",
 			"item": [
 				{
-					"name": "Login",
+					"name": "Get OAUTH token",
 					"event": [
 						{
 							"listen": "test",
 							"script": {
 								"exec": [
-									"pm.test(\"login\", function () {",
-									"    if (responseCode.code === 201)",
-									"    {",
-									"        const data = pm.response.json();",
-									"        pm.environment.set(\"access_token_nest\", data.access_token);",
-									"    }",
-									"    pm.response.to.have.status(201);",
+									"pm.test(\"Get all stars\", function () {",
+									"",
+									"    pm.response.to.have.status(200);",
 									"});"
 								],
 								"type": "text/javascript"
 							}
 						}
 					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"auth": {
+							"type": "oauth2",
+							"oauth2": [
+								{
+									"key": "redirect_uri",
+									"value": "http://localhost:4200/afterLogin",
+									"type": "string"
+								},
+								{
+									"key": "useBrowser",
+									"value": false,
+									"type": "boolean"
+								},
+								{
+									"key": "grant_type",
+									"value": "implicit",
+									"type": "string"
+								},
+								{
+									"key": "client_authentication",
+									"value": "header",
+									"type": "string"
+								},
+								{
+									"key": "accessTokenUrl",
+									"value": "https://auth.danskill.com/afterLogin",
+									"type": "string"
+								},
+								{
+									"key": "clientSecret",
+									"value": "",
+									"type": "string"
+								},
+								{
+									"key": "authUrl",
+									"value": "https://auth.danskill.com/login/",
+									"type": "string"
+								},
+								{
+									"key": "clientId",
+									"value": "5viisfon23qk9d0ummirte9nrc",
+									"type": "string"
+								},
+								{
+									"key": "password",
+									"value": "e3fx1sE3FX1S",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "ohad2121@gmail.com",
+									"type": "string"
+								},
+								{
+									"key": "tokenName",
+									"value": "DanSkill",
+									"type": "string"
+								},
+								{
+									"key": "scope",
+									"value": "phone email profile openid aws.cognito.signin.user.admin",
+									"type": "string"
+								},
+								{
+									"key": "addTokenTo",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
 						"header": [],
 						"body": {
-							"mode": "raw",
-							"raw": "{\n\t\"username\": \"ohad2121@gmail.com\",\n\t\"password\": \"check\"\n}",
+							"mode": "formdata",
+							"formdata": [],
 							"options": {
 								"raw": {
 									"language": "json"
@@ -41,14 +110,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{url}}/auth/login",
-							"host": [
-								"{{url}}"
-							],
-							"path": [
-								"auth",
-								"login"
-							]
+							"raw": ""
 						}
 					},
 					"response": []

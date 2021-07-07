@@ -26,6 +26,7 @@ import { join } from 'path';
       useCreateIndex: true,
       useFindAndModify: false,
     }),
+    // TODO: remove for dev environment
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', '..', '..', '..', 'client', 'dist', 'webapp'),
       exclude: ['/api/v1/*'],
