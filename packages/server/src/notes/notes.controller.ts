@@ -10,14 +10,14 @@ import { TransformInterceptor } from 'src/common/interceptors/transform.intercep
 export class NotesController {
   constructor(private readonly notesService: NotesService) {}
 
-  @Post(':noteId')
+  @Post(':practiceId')
   @UseInterceptors(new TransformInterceptor(NoteDto))
   create(
     @RequestUser() user: User,
     @Body() createNoteDto: CreateNoteDto,
-    @Param('noteId') noteId: Types.ObjectId,
+    @Param('practiceId') practiceId: Types.ObjectId,
   ) {
-    return this.notesService.create(user, noteId, createNoteDto);
+    return this.notesService.create(user, practiceId, createNoteDto);
   }
 
   @Delete(':id')
