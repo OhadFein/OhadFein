@@ -48,7 +48,7 @@ export class PracticesService {
   ): Promise<Practice[]> {
     let usernameToFind: string;
 
-    if (username && username != reqUser.username) {
+    if (username && username !== reqUser.username) {
       const user = await this.usersService.findOne(username);
       if (matchRoles(reqUser, [EnumRole.Coach]) && user.coach.equals(reqUser._id)) {
         usernameToFind = username;
@@ -74,15 +74,15 @@ export class PracticesService {
     return practice;
   }
 
-  async addNote(note: Note) {
+  async addNote(note: Note): Promise<Practice> {
     return this.practiceModel
-      .updateOne({ _id: note.practice }, { $addToSet: { notes: note._id } })
+      .findByIdAndUpdate(note.practice, { $addToSet: { notes: note._id } })
       .exec();
   }
 
-  async removeNote(note: Note) {
+  async removeNote(note: Note): Promise<Practice> {
     return this.practiceModel
-      .updateOne({ _id: note.practice }, { $pull: { notes: note._id } })
+      .findByIdAndUpdate(note.practice, { $pull: { notes: note._id } })
       .exec();
   }
 }

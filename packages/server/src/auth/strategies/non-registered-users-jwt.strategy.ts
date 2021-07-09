@@ -3,6 +3,7 @@ import { PassportStrategy } from '@nestjs/passport';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { passportJwtSecret } from 'jwks-rsa';
 import { UsersService } from 'src/users/users.service';
+import { OauthPayload } from '../interfaces/oauth-payload.interface';
 
 @Injectable()
 export class NonRegisteredUsersJwtStrategy extends PassportStrategy(
@@ -25,7 +26,9 @@ export class NonRegisteredUsersJwtStrategy extends PassportStrategy(
     });
   }
 
-  public async validate(payload: any) {
+  /* eslint-disable class-methods-use-this */
+  public validate(payload: OauthPayload): string {
     return payload.sub;
   }
+  /* eslint-enable class-methods-use-this */
 }
