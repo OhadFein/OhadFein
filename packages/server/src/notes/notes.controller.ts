@@ -14,6 +14,7 @@ import { User } from 'src/users/schemas/user.schema';
 import { CreateNoteDto, NoteDto } from '@danskill/contract';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
 import { NotesService } from './notes.service';
+import { Note } from './schemas/note.schema';
 
 @Controller('notes')
 export class NotesController {
@@ -25,7 +26,7 @@ export class NotesController {
     @RequestUser() user: User,
     @Body() createNoteDto: CreateNoteDto,
     @Param('practiceId') practiceId: Types.ObjectId
-  ) {
+  ): Promise<Note> {
     return this.notesService.create(user, practiceId, createNoteDto);
   }
 
