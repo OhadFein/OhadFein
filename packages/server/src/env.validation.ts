@@ -21,7 +21,7 @@ class EnvironmentVariables {
   MONGODB_DEVELOPMENT_URI: string;
 }
 
-export function validate(config: Record<string, unknown>) {
+export function validate(config: Record<string, unknown>): EnvironmentVariables {
   const validatedConfig = plainToClass(EnvironmentVariables, config, {
     enableImplicitConversion: true,
   });
@@ -30,5 +30,6 @@ export function validate(config: Record<string, unknown>) {
   if (errors.length > 0) {
     throw new Error(errors.toString());
   }
+
   return validatedConfig;
 }
