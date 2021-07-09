@@ -1,7 +1,7 @@
 import { S3 } from 'aws-sdk';
 import { Injectable, Logger } from '@nestjs/common';
 
-const default_bucket_name = 'danskill1'; // TODO:
+const defaultBucketName = 'danskill1'; // TODO:
 
 @Injectable()
 export class S3Service {
@@ -10,7 +10,7 @@ export class S3Service {
       file.originalname
     }`;
 
-    return this.uploadS3(file.buffer, default_bucket_name, filename);
+    return this.uploadS3(file.buffer, defaultBucketName, filename);
   }
 
   private async uploadS3(
@@ -42,9 +42,9 @@ export class S3Service {
     });
   }
 
-  async remove(key: string) {
+  async remove(key: string): Promise<void> {
     const s3 = this.getAggregatedS3();
 
-    await s3.deleteObject({ Bucket: default_bucket_name, Key: key }).promise();
+    await s3.deleteObject({ Bucket: defaultBucketName, Key: key }).promise();
   }
 }

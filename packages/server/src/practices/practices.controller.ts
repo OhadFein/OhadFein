@@ -38,7 +38,7 @@ export class PracticesController {
     @RequestUser() user: User,
     @Param('videoId') videoId: Types.ObjectId,
     @UploadedFile() videoFile: Express.Multer.File
-  ) {
+  ): Promise<Practice> {
     const video = await this.figureVideosService.findOne(videoId);
     if (!video || !video.figure) throw new HttpException('Video not found', HttpStatus.NOT_FOUND);
 
@@ -69,7 +69,7 @@ export class PracticesController {
   }
 
   @Delete('single/:id')
-  async remove(@RequestUser() user: User, @Param('id') id: Types.ObjectId) {
+  async remove(@RequestUser() user: User, @Param('id') id: Types.ObjectId): Promise<void> {
     const deletedPractice = await this.practicesService.remove(user, id);
     if (!deletedPractice) {
       throw new HttpException('Practice not found', HttpStatus.NOT_FOUND);

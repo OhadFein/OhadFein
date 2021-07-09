@@ -53,15 +53,15 @@ export class FiguresService {
     return this.figureModel.findByIdAndRemove({ _id: id }).exec();
   }
 
-  async addVideo(video: FigureVideo) {
+  async addVideo(video: FigureVideo): Promise<Figure> {
     return this.figureModel
-      .updateOne({ _id: video.figure }, { $addToSet: { videos: video._id } })
+      .findByIdAndUpdate(video.figure, { $addToSet: { videos: video._id } })
       .exec();
   }
 
-  async removeVideo(video: FigureVideo) {
+  async removeVideo(video: FigureVideo): Promise<Figure> {
     return this.figureModel
-      .updateOne({ _id: video.figure }, { $pull: { videos: video._id } })
+      .findByIdAndUpdate(video.figure, { $pull: { videos: video._id } })
       .exec();
   }
 }
