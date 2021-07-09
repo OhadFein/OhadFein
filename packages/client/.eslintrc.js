@@ -1,39 +1,13 @@
 module.exports = {
-  extends: [
-    'eslint:recommended',
-    'prettier',
-    'plugin:prettier/recommended',
-    'plugin:@typescript-eslint/recommended'
-  ],
-  parser: '@typescript-eslint/parser',
+  extends: ['@shared/eslint-config'],
   parserOptions: {
-    ecmaVersion: 2017,
-    sourceType: 'module',
-    project: ['packages/client/tsconfig.json']
-  },
-  env: {
-    node: true,
-    es6: true,
-    jasmine: true,
-    browser: true
-  },
-  plugins: ['@typescript-eslint', 'prettier'],
-  globals: {
-    module: true,
-    inject: true,
-    Promise: true
+    tsconfigRootDir: __dirname
   },
   rules: {
     'callback-return': ['error'],
     curly: ['error'],
     'newline-before-return': ['error'],
     'no-else-return': ['error'],
-    'no-shadow': [
-      'error',
-      {
-        allow: ['done', 'cb', 'err']
-      }
-    ],
     'no-throw-literal': ['error'],
     'no-unused-vars': 'off',
     '@typescript-eslint/no-unused-vars': 'off',
