@@ -1,10 +1,19 @@
-import { Controller, Post, Body, Param, Delete, UseInterceptors, HttpException, HttpStatus } from '@nestjs/common';
-import { NotesService } from './notes.service';
+import {
+  Controller,
+  Post,
+  Body,
+  Param,
+  Delete,
+  UseInterceptors,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
 import { Types } from 'mongoose';
 import { RequestUser } from 'src/common/decorators/request-user.decorator';
 import { User } from 'src/users/schemas/user.schema';
 import { CreateNoteDto, NoteDto } from '@danskill/contract';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
+import { NotesService } from './notes.service';
 
 @Controller('notes')
 export class NotesController {
@@ -15,7 +24,7 @@ export class NotesController {
   create(
     @RequestUser() user: User,
     @Body() createNoteDto: CreateNoteDto,
-    @Param('practiceId') practiceId: Types.ObjectId,
+    @Param('practiceId') practiceId: Types.ObjectId
   ) {
     return this.notesService.create(user, practiceId, createNoteDto);
   }
@@ -26,7 +35,5 @@ export class NotesController {
     if (!deletedNote) {
       throw new HttpException('Note not found', HttpStatus.NOT_FOUND);
     }
-
-    return;
   }
 }

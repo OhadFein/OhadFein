@@ -1,10 +1,8 @@
-import { EnumRole } from './../common/enums/role.enum';
 import { S3 } from 'aws-sdk';
 import { Model, Types } from 'mongoose';
 import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 
-import { Practice, PracticeDocument } from './schemas/practice.schema';
 import { User } from 'src/users/schemas/user.schema';
 import { FigureVideo } from 'src/figure-video/schemas/figure-video.schema';
 import { S3Service } from 'src/s3/s3.service';
@@ -12,6 +10,8 @@ import { UsersService } from 'src/users/users.service';
 import { Note } from 'src/notes/schemas/note.schema';
 import { GetAllPracticesDto } from '@danskill/contract';
 import { matchRoles } from 'src/common/utils/match-roles';
+import { Practice, PracticeDocument } from './schemas/practice.schema';
+import { EnumRole } from '../common/enums/role.enum';
 
 @Injectable()
 export class PracticesService {
@@ -59,11 +59,11 @@ export class PracticesService {
       usernameToFind = reqUser.username;
     }
 
-    return await this.usersService.getPractices(usernameToFind, getAllPracticesDto);
+    return this.usersService.getPractices(usernameToFind, getAllPracticesDto);
   }
 
   async findOne(id: Types.ObjectId): Promise<Practice> {
-    return await this.practiceModel.findOne({ _id: id }).populate('video notes').exec();  // TODO: replace the strings with fixed values
+    return this.practiceModel.findOne({ _id: id }).populate('video notes').exec(); // TODO: replace the strings with fixed values
   }
 
   async remove(user: User, id: Types.ObjectId): Promise<Practice> {

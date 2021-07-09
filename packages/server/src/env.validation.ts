@@ -5,9 +5,9 @@ import { IsEnum, IsNumber, IsString, validateSync } from 'class-validator';
 // TODO: use this.configService.get<string>('database.host')
 
 export enum Environment {
-  Development = "development",
-  Production = "production",
-  Test = "test",
+  Development = 'development',
+  Production = 'production',
+  Test = 'test',
 }
 
 class EnvironmentVariables {
@@ -22,11 +22,9 @@ class EnvironmentVariables {
 }
 
 export function validate(config: Record<string, unknown>) {
-  const validatedConfig = plainToClass(
-    EnvironmentVariables,
-    config,
-    { enableImplicitConversion: true },
-  );
+  const validatedConfig = plainToClass(EnvironmentVariables, config, {
+    enableImplicitConversion: true,
+  });
   const errors = validateSync(validatedConfig, { skipMissingProperties: false });
 
   if (errors.length > 0) {

@@ -1,11 +1,11 @@
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
-import { AllExceptionsFilter } from './common/filters/http-exception.filter';
 import * as helmet from 'helmet';
 import * as compression from 'compression';
+import { AppModule } from './app.module';
+import { AllExceptionsFilter } from './common/filters/http-exception.filter';
 
-global['fetch'] = require('node-fetch');
+global.fetch = require('node-fetch');
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -24,5 +24,9 @@ async function bootstrap() {
 }
 
 bootstrap()
-  .then(() => Logger.log(`App is running at http://localhost:${process.env.PORT} in ${process.env.NODE_ENV} mode `))
+  .then(() =>
+    Logger.log(
+      `App is running at http://localhost:${process.env.PORT} in ${process.env.NODE_ENV} mode `
+    )
+  )
   .catch((error) => Logger.error(`Server failed`, error));

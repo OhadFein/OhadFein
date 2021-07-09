@@ -5,25 +5,18 @@ const default_bucket_name = 'danskill1'; // TODO:
 
 @Injectable()
 export class S3Service {
-  async upload(
-    file: Express.Multer.File,
-    prefix: string,
-  ): Promise<S3.ManagedUpload.SendData> {
-    const filename =
-      'users/' +
-      prefix +
-      '/' +
-      new Date().toISOString().replace(/:/g, '-') +
-      '_' +
-      file.originalname;
+  async upload(file: Express.Multer.File, prefix: string): Promise<S3.ManagedUpload.SendData> {
+    const filename = `users/${prefix}/${new Date().toISOString().replace(/:/g, '-')}_${
+      file.originalname
+    }`;
 
-    return await this.uploadS3(file.buffer, default_bucket_name, filename);
+    return this.uploadS3(file.buffer, default_bucket_name, filename);
   }
 
   private async uploadS3(
     file: Buffer,
     bucket: string,
-    name: string,
+    name: string
   ): Promise<S3.ManagedUpload.SendData> {
     const s3 = this.getAggregatedS3();
     const params: S3.Types.PutObjectRequest = {

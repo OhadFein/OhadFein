@@ -1,12 +1,12 @@
-import { matchRoles } from './../common/utils/match-roles';
-import { EnumRole } from './../common/enums/role.enum';
 import { FilterQuery, Model, Types } from 'mongoose';
 import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { User, UserDocument, Coach, Star } from './schemas/user.schema';
 import { CreateUserDto, GetAllPracticesDto } from '@danskill/contract';
 import { Practice } from 'src/practices/schemas/practice.schema';
 import { FiguresService } from 'src/figures/figures.service';
+import { User, UserDocument, Coach, Star } from './schemas/user.schema';
+import { EnumRole } from '../common/enums/role.enum';
+import { matchRoles } from '../common/utils/match-roles';
 
 @Injectable()
 export class UsersService {
@@ -20,7 +20,7 @@ export class UsersService {
   async create(createUserDto: CreateUserDto): Promise<User> {
     const username = await this.getUniqueUsername(createUserDto);
     const createdUser = new this.userModel({
-      username: username,
+      username,
       sub: createUserDto.sub,
     });
 
@@ -33,22 +33,22 @@ export class UsersService {
     let currUserName = createUserDto.username;
     let i = 1;
     while ((await this.findOne(currUserName)) !== null) {
-      currUserName = currUserName + i;
+      currUserName += i;
       i++;
     }
     return currUserName;
   }
 
   async findOneForAuth(email: string): Promise<User> {
-    return await this.userModel.findOne({ email: email }).select('+password').exec();
+    return this.userModel.findOne({ email }).select('+password').exec();
   }
 
   async findOneForJwt(sub: string): Promise<User> {
-    return await this.userModel.findOne({ sub: sub }).select('+roles').exec();
+    return this.userModel.findOne({ sub }).select('+roles').exec();
   }
 
   async findOne(username: string): Promise<User> {
-    return this.userModel.findOne({ username: username }).exec();
+    return this.userModel.findOne({ username }).exec();
   }
 
   async findAllUsers(): Promise<User[]> {
@@ -58,14 +58,14 @@ export class UsersService {
   async findAllStars(): Promise<Star[]> {
     return this.userModel
       .find({ roles: { $in: [EnumRole.Star] } })
-      .populate('figures')  // TODO: replace the strings with fixed values
+      .populate('figures') // TODO: replace the strings with fixed values
       .exec();
   }
 
   async findAllCoaches(): Promise<Coach[]> {
     return this.userModel
       .find({ roles: { $in: [EnumRole.Coach] } })
-      .populate('students')  // TODO: replace the strings with fixed values
+      .populate('students') // TODO: replace the strings with fixed values
       .exec();
   }
 
@@ -92,9 +92,9 @@ export class UsersService {
 
     // TOODO: check the query
     const userWithPractices = await this.userModel
-      .findOne({ username: username })
+      .findOne({ username })
       .populate({
-        path: 'practices',  // TODO: replace the strings with fixed values
+        path: 'practices', // TODO: replace the strings with fixed values
         match: query,
       })
       .exec();
@@ -103,7 +103,7 @@ export class UsersService {
   }
 
   async getStudents(reqUser: User): Promise<User[]> {
-    const userWithStudents = await this.userModel.findById(reqUser._id).populate('students').exec();  // TODO: replace the strings with fixed values
+    const userWithStudents = await this.userModel.findById(reqUser._id).populate('students').exec(); // TODO: replace the strings with fixed values
 
     return userWithStudents.students;
   }
@@ -119,8 +119,6 @@ export class UsersService {
       await this.userModel.updateOne({ _id: reqUser._id }, { $set: { coach: newCoach._id } });
       await this.addStudent(newCoach._id, reqUser);
     }
-
-    return;
   }
 
   async addStudent(coachId: Types.ObjectId, student: User) {

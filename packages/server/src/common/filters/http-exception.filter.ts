@@ -22,8 +22,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
       const httpResponse = (exception as BadRequestException).getResponse();
       status = exception.getStatus();
 
-      if (typeof httpResponse === 'object')
-        message = (httpResponse as any).message; // TODO:
+      if (typeof httpResponse === 'object') message = (httpResponse as any).message; // TODO:
     } else if (exception instanceof HttpException) {
       const httpResponse = (exception as HttpException).getResponse();
       status = exception.getStatus();
@@ -38,7 +37,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
       statusCode: status,
       timestamp: new Date().toISOString(),
       path: request.url,
-      message: message,
+      message,
     });
   }
 }

@@ -3,8 +3,8 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Types, Model } from 'mongoose';
 import { PracticesService } from 'src/practices/practices.service';
 import { User } from 'src/users/schemas/user.schema';
-import { Note, NoteDocument } from './schemas/note.schema';
 import { CreateNoteDto } from '@danskill/contract';
+import { Note, NoteDocument } from './schemas/note.schema';
 
 @Injectable()
 export class NotesService {
@@ -12,18 +12,18 @@ export class NotesService {
     @InjectModel(Note.name)
     private readonly noteModel: Model<NoteDocument>,
     @Inject(forwardRef(() => PracticesService))
-    private readonly practicesService: PracticesService,
+    private readonly practicesService: PracticesService
   ) {}
 
   async create(
     user: User,
     practiceId: Types.ObjectId,
-    createNoteDto: CreateNoteDto,
+    createNoteDto: CreateNoteDto
   ): Promise<Note> {
     // TODO: check user permissions (coach or student)
 
     const createdNote = new this.noteModel({
-      user: user,
+      user,
       practice: practiceId,
       title: createNoteDto.title,
       content: createNoteDto.content,
@@ -40,6 +40,5 @@ export class NotesService {
     await this.practicesService.removeNote(deletedNote);
 
     return deletedNote;
-
   }
 }

@@ -1,9 +1,9 @@
 import { forwardRef, Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { PracticesModule } from 'src/practices/practices.module';
 import { NotesService } from './notes.service';
 import { NotesController } from './notes.controller';
-import { MongooseModule } from '@nestjs/mongoose';
 import { Note, NoteSchema } from './schemas/note.schema';
-import { PracticesModule } from 'src/practices/practices.module';
 
 @Module({
   imports: [

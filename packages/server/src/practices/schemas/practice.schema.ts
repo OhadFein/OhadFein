@@ -24,12 +24,14 @@ export class Practice implements PracticeBaseDto {
 
   @Prop({ required: true })
   key: string;
+
   readonly url: string;
 
   @Prop({ type: [{ type: Types.ObjectId, ref: Note.name }] })
   notes: Note[] | Types.ObjectId[];
 
   readonly createdAt: Date;
+
   readonly updatedAt: Date;
 
   // @Prop({ required: true, get: PrepareUrl })

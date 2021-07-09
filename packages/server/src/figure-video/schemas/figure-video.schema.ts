@@ -3,7 +3,6 @@ import { PrepareUrl } from 'src/common/utils/prepare-url';
 import { Types } from 'mongoose';
 import { FigureVideoBaseDto, EnumVideoType } from '@danskill/contract';
 
-
 export type FigureVideoDocument = FigureVideo & Document;
 
 @Schema({ timestamps: true, toJSON: { getters: true } })
@@ -18,6 +17,7 @@ export class FigureVideo implements FigureVideoBaseDto {
 
   @Prop({ required: true })
   key: string;
+
   readonly url: string;
 
   @Prop({ required: true, get: PrepareUrl })

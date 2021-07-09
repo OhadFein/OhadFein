@@ -1,13 +1,13 @@
 import { JwtModule } from '@nestjs/jwt';
 import { PassportModule } from '@nestjs/passport';
 import { Test, TestingModule } from '@nestjs/testing';
+import mongoose from 'mongoose';
+import { EnumRole } from 'src/common/enums/role.enum';
 import { UsersModule } from '../users/users.module';
 import { AuthService } from './auth.service';
 import { jwtConstants } from './constants';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { LocalStrategy } from './strategies/local.strategy';
-import mongoose from 'mongoose';
-import { EnumRole } from 'src/common/enums/role.enum';
 
 describe('AuthService', () => {
   let service: AuthService;
