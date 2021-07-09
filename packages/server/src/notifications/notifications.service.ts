@@ -1,23 +1,30 @@
-import { Injectable } from '@nestjs/common';
-import {
-  CreateNotificationDto,
-} from '@danskill/contract';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model, Types } from 'mongoose';
+import { User } from 'src/users/schemas/user.schema';
+
+import { Notification, NotificationDocument } from './schemas/notification.schema';
 
 @Injectable()
 export class NotificationsService {
-  create(createNotificationDto: CreateNotificationDto) {
-    return 'This action adds a new notification';
+  constructor(
+    @InjectModel(Notification.name)
+    private readonly notificationModel: Model<NotificationDocument>
+  ) {}
+
+  async findAll(): Promise<Notification[]> {
+    return this.notificationModel.find().populate('sourceUser performedActionUser').exec();
   }
 
-  findAll() {
-    return `This action returns all notifications`;
-  }
+  async markRead(user: User, id: Types.ObjectId): Promise<Notification> {
+    const notifcation = await this.notificationModel.findById(id).exec();
+    if (!notifcation) {
+      throw new HttpException('Notifcation not found', HttpStatus.NOT_FOUND);
+    }
+    if (!notifcation.sourceUser.equals(user._id)) {
+      throw new HttpException('Notifcation not found', HttpStatus.UNAUTHORIZED); // Invalid permissions
+    }
 
-  findOne(id: number) {
-    return `This action returns a #${id} notification`;
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} notification`;
+    return notifcation;
   }
 }
