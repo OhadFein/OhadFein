@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
-import { NotificationBaseDto, EnumNotificationType } from '@danskill/contract';
+import { EnumNotificationType, NotificationBaseDto } from '@danskill/contract';
 
 export type NotificationDocument = Notification & Document;
 
