@@ -33,5 +33,6 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'off',
     '@typescript-eslint/explicit-module-boundary-types': ['error'],
     'new-cap': 'off',
+    'class-methods-use-this': 'off',
   },
 };

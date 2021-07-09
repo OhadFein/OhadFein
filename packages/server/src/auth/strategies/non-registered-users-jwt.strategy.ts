@@ -26,9 +26,7 @@ export class NonRegisteredUsersJwtStrategy extends PassportStrategy(
     });
   }
 
-  /* eslint-disable class-methods-use-this */
   public validate(payload: OauthPayload): string {
     return payload.sub;
   }
-  /* eslint-enable class-methods-use-this */
 }
