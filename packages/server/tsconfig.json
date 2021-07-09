@@ -1,4 +1,5 @@
 {
+  "include": [".eslintrc.js"],
   "compilerOptions": {
     "module": "commonjs",
     "declaration": true,
@@ -12,9 +13,7 @@
     "baseUrl": "./",
     "incremental": true,
     "paths": {
-      "@danskill/contract": [
-        "../contract/src"
-      ],
-    },
+      "@danskill/contract": ["../contract/src"]
+    }
   }
 }
