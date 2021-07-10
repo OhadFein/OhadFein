@@ -30,7 +30,7 @@ export class UsersService {
   }
 
   /* eslint-disable no-await-in-loop */
-  async getUniqueUsername(createUserDto: CreateUserDto): string {
+  async getUniqueUsername(createUserDto: CreateUserDto): Promise<string> {
     let currUserName = createUserDto.username;
     let i = 1;
     while ((await this.findOne(currUserName)) !== null) {
