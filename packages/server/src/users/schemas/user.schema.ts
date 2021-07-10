@@ -1,3 +1,5 @@
+/* eslint-disable max-classes-per-file */
+
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 import { EnumRole } from 'src/common/enums/role.enum';

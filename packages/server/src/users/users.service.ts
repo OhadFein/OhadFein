@@ -29,15 +29,18 @@ export class UsersService {
     return createdUser;
   }
 
-  async getUniqueUsername(createUserDto: CreateUserDto) {
+  /* eslint-disable no-await-in-loop */
+  async getUniqueUsername(createUserDto: CreateUserDto): string {
     let currUserName = createUserDto.username;
     let i = 1;
     while ((await this.findOne(currUserName)) !== null) {
       currUserName += i;
       i += 1;
     }
+
     return currUserName;
   }
+  /* eslint-enable no-await-in-loop */
 
   async findOneForAuth(email: string): Promise<User> {
     return this.userModel.findOne({ email }).select('+password').exec();
@@ -69,14 +72,14 @@ export class UsersService {
       .exec();
   }
 
-  async addPractice(user: User, practiceId: Types.ObjectId) {
+  async addPractice(user: User, practiceId: Types.ObjectId): Promise<User> {
     return this.userModel
-      .updateOne({ _id: user._id }, { $addToSet: { practices: practiceId } })
+      .findByIdAndUpdate(user._id, { $addToSet: { practices: practiceId } })
       .exec();
   }
 
-  async removePractice(user: User, practiceId: Types.ObjectId) {
-    return this.userModel.updateOne({ _id: user._id }, { $pull: { practices: practiceId } }).exec();
+  async removePractice(user: User, practiceId: Types.ObjectId): Promise<User> {
+    return this.userModel.findByIdAndUpdate(user._id, { $pull: { practices: practiceId } }).exec();
   }
 
   async getPractices(
@@ -108,7 +111,7 @@ export class UsersService {
     return userWithStudents.students;
   }
 
-  async setCoach(reqUser: User, username: string) {
+  async setCoach(reqUser: User, username: string): Promise<void> {
     // TODO: use transactions https://mongoosejs.com/docs/transactions.html
     const newCoach = await this.findOne(username);
     if (!newCoach || !matchRoles(newCoach, [EnumRole.Coach]))
@@ -121,13 +124,13 @@ export class UsersService {
     }
   }
 
-  async addStudent(coachId: Types.ObjectId, student: User) {
+  async addStudent(coachId: Types.ObjectId, student: User): Promise<User> {
     return this.userModel
-      .updateOne({ _id: coachId }, { $addToSet: { students: student._id } })
+      .findByIdAndUpdate(coachId, { $addToSet: { students: student._id } })
       .exec();
   }
 
-  async removeStudent(coachId: Types.ObjectId, student: User) {
-    return this.userModel.updateOne({ _id: coachId }, { $pull: { students: student._id } }).exec();
+  async removeStudent(coachId: Types.ObjectId, student: User): Promise<User> {
+    return this.userModel.findByIdAndUpdate(coachId, { $pull: { students: student._id } }).exec();
   }
 }
