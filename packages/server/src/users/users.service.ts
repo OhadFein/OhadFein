@@ -34,7 +34,7 @@ export class UsersService {
     let i = 1;
     while ((await this.findOne(currUserName)) !== null) {
       currUserName += i;
-      i++;
+      i += 1;
     }
     return currUserName;
   }

@@ -1,7 +1,7 @@
 import { User } from 'src/users/schemas/user.schema';
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
-import { PrepareUrl } from 'src/common/utils/prepare-url';
+import { PrepareS3URL } from 'src/common/utils/prepare-url';
 import { Figure } from 'src/figures/schemas/figure.schema';
 import { FigureVideo } from 'src/figure-video/schemas/figure-video.schema';
 import { Note } from 'src/notes/schemas/note.schema';
@@ -44,5 +44,5 @@ export class Practice implements PracticeBaseDto {
 export const PracticeSchema = SchemaFactory.createForClass(Practice);
 
 PracticeSchema.virtual('url').get(function (this: { key: string }) {
-  return PrepareUrl(this.key);
+  return PrepareS3URL(this.key);
 });

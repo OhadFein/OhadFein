@@ -1,6 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
-import { PrepareUrl } from 'src/common/utils/prepare-url';
+import { PrepareS3URL } from 'src/common/utils/prepare-url';
 import { FigureVideo } from 'src/figure-video/schemas/figure-video.schema';
 import { FigureBaseDto, EnumDanceType, EnumDanceLevel } from '@danskill/contract';
 
@@ -19,7 +19,7 @@ export class Figure implements FigureBaseDto {
   @Prop({ required: true })
   name: string;
 
-  @Prop({ required: true, get: PrepareUrl })
+  @Prop({ required: true, get: PrepareS3URL })
   logo: string;
 
   @Prop({ required: true })

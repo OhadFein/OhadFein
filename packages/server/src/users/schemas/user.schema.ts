@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 import { EnumRole } from 'src/common/enums/role.enum';
-import { PrepareUrl } from 'src/common/utils/prepare-url';
+import { PrepareS3URL } from 'src/common/utils/prepare-url';
 import { StarDto, CoachDto, UserBaseDto, FigureBaseDto } from '@danskill/contract';
 import { Figure } from '../../figures/schemas/figure.schema';
 import { Practice } from '../../practices/schemas/practice.schema';
@@ -43,10 +43,10 @@ export class User implements UserBaseDto {
   @Prop({})
   about: string;
 
-  @Prop({ get: PrepareUrl })
+  @Prop({ get: PrepareS3URL })
   logo: string;
 
-  @Prop({ get: PrepareUrl })
+  @Prop({ get: PrepareS3URL })
   promo_video: string;
 }
 
