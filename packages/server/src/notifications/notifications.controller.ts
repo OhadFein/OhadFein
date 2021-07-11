@@ -13,8 +13,22 @@ export class NotificationsController {
 
   @Get()
   @UseInterceptors(new TransformInterceptor(NotificationDto))
-  findAll(): Promise<Notification[]> {
-    return this.notificationsService.findAll();
+  async findAll(@RequestUser() user: User): Promise<Notification[]> {
+    const notifications = await this.notificationsService.findAll(user);
+
+    /* eslint-disable no-param-reassign */
+    notifications.forEach((notification) => {
+      const found = notification.readBy.find((readBy) => readBy.readerId.equals(user._id));
+
+      notification.isRead = !!found;
+      if (found) notification.readAt = found.readAt;
+
+      // readBy array shouldn't be exposed to FE (because it contains the IDs of all users)
+      notification.readBy = null;
+    });
+    /* eslint-enable no-param-reassign */
+
+    return notifications;
   }
 
   @Post('/markRead/:id')

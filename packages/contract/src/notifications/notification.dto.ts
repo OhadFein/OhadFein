@@ -6,9 +6,5 @@ import { NotificationBaseDto } from './notification-base.dto';
 export class NotificationDto extends NotificationBaseDto {
   @Expose()
   @Type(() => UserBaseDto)
-  sourceUser: UserBaseDto;
-
-  @Expose()
-  @Type(() => UserBaseDto)
-  performedActionUser: UserBaseDto;
+  senders: UserBaseDto[];
 }

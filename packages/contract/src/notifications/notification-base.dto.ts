@@ -1,5 +1,5 @@
 import { Types } from 'mongoose';
-import { Exclude, Expose } from 'class-transformer';
+import { Exclude, Expose, Type } from 'class-transformer';
 import { EnumNotificationType } from '../common/enums';
 
 @Exclude()
@@ -14,8 +14,8 @@ export class NotificationBaseDto {
   isRead: boolean;
 
   @Expose()
-  type: EnumNotificationType;
+  readAt?: Date;
 
   @Expose()
-  readonly createdAt: Date;
+  type: EnumNotificationType;
 }

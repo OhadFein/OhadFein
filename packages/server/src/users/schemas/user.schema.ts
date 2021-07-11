@@ -31,8 +31,8 @@ export class User implements UserBaseDto {
   })
   practices: Types.ObjectId[] | Practice[];
 
-  // @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Notifcation' }] })
-  // notifications: Notification[];
+  @Prop({ type: [{ type: Types.ObjectId, ref: 'Notifcation' }] })
+  notifications: Notification[];
 
   // coach attributes:
   @Prop({ type: [{ type: Types.ObjectId, ref: User.name }] })

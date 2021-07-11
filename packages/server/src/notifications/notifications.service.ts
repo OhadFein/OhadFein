@@ -12,8 +12,8 @@ export class NotificationsService {
     private readonly notificationModel: Model<NotificationDocument>
   ) {}
 
-  async findAll(): Promise<Notification[]> {
-    return this.notificationModel.find().populate('sourceUser performedActionUser').exec();
+  async findAll(user: User): Promise<Notification[]> {
+    return this.notificationModel.find().populate('senders').exec();
   }
 
   async markRead(user: User, id: Types.ObjectId): Promise<Notification> {
@@ -21,9 +21,10 @@ export class NotificationsService {
     if (!notifcation) {
       throw new HttpException('Notifcation not found', HttpStatus.NOT_FOUND);
     }
-    if (!notifcation.sourceUser.equals(user._id)) {
-      throw new HttpException('Notifcation not found', HttpStatus.UNAUTHORIZED); // Invalid permissions
-    }
+    // TODO: fix this
+    // if (!notifcation.sourceUser.equals(user._id)) {
+    //   throw new HttpException('Notifcation not found', HttpStatus.UNAUTHORIZED); // Invalid permissions
+    // }
 
     return notifcation;
   }
