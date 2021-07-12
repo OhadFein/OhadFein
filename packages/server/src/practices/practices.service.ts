@@ -76,13 +76,13 @@ export class PracticesService {
 
   async addNote(note: Note): Promise<Practice> {
     return this.practiceModel
-      .findByIdAndUpdate(note.practice, { $addToSet: { notes: note._id } })
+      .findByIdAndUpdate(note.practice, { $addToSet: { notes: note._id } }, { new: true })
       .exec();
   }
 
   async removeNote(note: Note): Promise<Practice> {
     return this.practiceModel
-      .findByIdAndUpdate(note.practice, { $pull: { notes: note._id } })
+      .findByIdAndUpdate(note.practice, { $pull: { notes: note._id } }, { new: true })
       .exec();
   }
 }

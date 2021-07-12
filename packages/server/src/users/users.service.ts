@@ -1,9 +1,11 @@
 import { FilterQuery, Model, Types } from 'mongoose';
 import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { CreateUserDto, GetAllPracticesDto } from '@danskill/contract';
+import { CreateUserDto, EnumNotificationType, GetAllPracticesDto } from '@danskill/contract';
 import { Practice } from 'src/practices/schemas/practice.schema';
 import { FiguresService } from 'src/figures/figures.service';
+import { NotificationsService } from 'src/notifications/notifications.service';
+import { EnumNotificationLinkedModel } from 'src/common/enums/notification-linked-model.enum';
 import { User, UserDocument, Coach, Star } from './schemas/user.schema';
 import { EnumRole } from '../common/enums/role.enum';
 import { matchRoles } from '../common/utils/match-roles';
@@ -14,7 +16,9 @@ export class UsersService {
     @InjectModel(User.name)
     private readonly userModel: Model<UserDocument>,
     @Inject(forwardRef(() => FiguresService))
-    private readonly figuresService: FiguresService
+    private readonly figuresService: FiguresService,
+    @Inject(forwardRef(() => NotificationsService))
+    private readonly notificationsService: NotificationsService
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
@@ -73,13 +77,33 @@ export class UsersService {
   }
 
   async addPractice(user: User, practiceId: Types.ObjectId): Promise<User> {
-    return this.userModel
-      .findByIdAndUpdate(user._id, { $addToSet: { practices: practiceId } })
+    const updatedUser = await this.userModel
+      .findByIdAndUpdate(user._id, { $addToSet: { practices: practiceId } }, { new: true })
       .exec();
+
+    if (updatedUser.coach) {
+      const coach = await this.userModel.findById(updatedUser.coach).exec();
+      const notification = await this.notificationsService.build(
+        [user._id],
+        [coach],
+        EnumNotificationType.NewPractice,
+        EnumNotificationLinkedModel.Practice,
+        practiceId
+      );
+
+      await notification.save();
+      await this.userModel
+        .findByIdAndUpdate(coach._id, { $addToSet: { notifications: notification._id } })
+        .exec();
+    }
+
+    return updatedUser;
   }
 
   async removePractice(user: User, practiceId: Types.ObjectId): Promise<User> {
-    return this.userModel.findByIdAndUpdate(user._id, { $pull: { practices: practiceId } }).exec();
+    return this.userModel
+      .findByIdAndUpdate(user._id, { $pull: { practices: practiceId } }, { new: true })
+      .exec();
   }
 
   async getPractices(
@@ -126,11 +150,13 @@ export class UsersService {
 
   async addStudent(coachId: Types.ObjectId, student: User): Promise<User> {
     return this.userModel
-      .findByIdAndUpdate(coachId, { $addToSet: { students: student._id } })
+      .findByIdAndUpdate(coachId, { $addToSet: { students: student._id } }, { new: true })
       .exec();
   }
 
   async removeStudent(coachId: Types.ObjectId, student: User): Promise<User> {
-    return this.userModel.findByIdAndUpdate(coachId, { $pull: { students: student._id } }).exec();
+    return this.userModel
+      .findByIdAndUpdate(coachId, { $pull: { students: student._id } }, { new: true })
+      .exec();
   }
 }

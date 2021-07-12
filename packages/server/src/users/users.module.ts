@@ -1,4 +1,5 @@
 import { FiguresModule } from 'src/figures/figures.module';
+import { NotificationsModule } from 'src/notifications/notifications.module';
 import { forwardRef, Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { JwtStrategy } from 'src/auth/strategies/jwt.strategy';
@@ -14,6 +15,7 @@ import { UsersController } from './users.controller';
     forwardRef(() => PracticesModule),
     forwardRef(() => FiguresModule),
     forwardRef(() => FigureVideoModule),
+    forwardRef(() => NotificationsModule),
   ],
   controllers: [UsersController],
   providers: [UsersService, JwtStrategy],
