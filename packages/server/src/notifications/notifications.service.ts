@@ -33,14 +33,14 @@ export class NotificationsService {
 
   async build(
     sendersIds: Types.ObjectId[],
-    receiversUsers: User[],
+    receiversIds: Types.ObjectId[],
     type: EnumNotificationType,
     notificationLinkedModel: EnumNotificationLinkedModel,
     linkedId: Types.ObjectId
   ): Promise<NotificationDocument> {
     const createdNotifcation = new this.notificationModel({
       senders: sendersIds,
-      receivers: receiversUsers.map((receiversUser: User) => receiversUser._id),
+      receivers: receiversIds,
       linkedId,
       type,
       notificationLinkedModel,

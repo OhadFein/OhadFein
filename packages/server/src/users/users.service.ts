@@ -6,6 +6,7 @@ import { Practice } from 'src/practices/schemas/practice.schema';
 import { FiguresService } from 'src/figures/figures.service';
 import { NotificationsService } from 'src/notifications/notifications.service';
 import { EnumNotificationLinkedModel } from 'src/common/enums/notification-linked-model.enum';
+import { Notification } from 'src/notifications/schemas/notification.schema';
 import { User, UserDocument, Coach, Star } from './schemas/user.schema';
 import { EnumRole } from '../common/enums/role.enum';
 import { matchRoles } from '../common/utils/match-roles';
@@ -82,19 +83,16 @@ export class UsersService {
       .exec();
 
     if (updatedUser.coach) {
-      const coach = await this.userModel.findById(updatedUser.coach).exec();
       const notification = await this.notificationsService.build(
         [user._id],
-        [coach],
+        [user.coach],
         EnumNotificationType.NewPractice,
         EnumNotificationLinkedModel.Practice,
         practiceId
       );
 
       await notification.save();
-      await this.userModel
-        .findByIdAndUpdate(coach._id, { $addToSet: { notifications: notification._id } })
-        .exec();
+      await this.addNotification(user.coach, notification);
     }
 
     return updatedUser;
@@ -157,6 +155,16 @@ export class UsersService {
   async removeStudent(coachId: Types.ObjectId, student: User): Promise<User> {
     return this.userModel
       .findByIdAndUpdate(coachId, { $pull: { students: student._id } }, { new: true })
+      .exec();
+  }
+
+  async addNotification(receiver: Types.ObjectId, notification: Notification): Promise<User> {
+    return this.userModel
+      .findByIdAndUpdate(
+        receiver,
+        { $addToSet: { notifications: notification._id } },
+        { new: true }
+      )
       .exec();
   }
 }
