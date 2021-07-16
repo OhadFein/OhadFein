@@ -3342,6 +3342,16 @@
     tslib "2.3.0"
     uuid "8.3.2"
 
+"@nestjs/common@^8.0.2":
+  version "8.0.2"
+  resolved "https://registry.yarnpkg.com/@nestjs/common/-/common-8.0.2.tgz#4f8b82280073ae43a2f392557fe675ff6ba0656f"
+  integrity sha512-Onr29APFiOG/Ahox1ytIdNXGXBVn6ViOWErFVNRIz3ZB4guLeFlr9Cly8U3Dssrd6rxuQG22YGD8cRhBNyQHvQ==
+  dependencies:
+    axios "0.21.1"
+    iterare "1.2.1"
+    tslib "2.3.0"
+    uuid "8.3.2"
+
 "@nestjs/config@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@nestjs/config/-/config-1.0.0.tgz#966067195826b9b82b6fc63e990e31af28912185"
@@ -3423,6 +3433,15 @@
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-5.0.0.tgz#9856989c6253d8d8093601fdab67fc7c915e2b57"
   integrity sha512-LWKDmiEwNzIIaWj1Tq2x+RXTZdN4trhaafI0pA3JtBosYlx1klgzsrV/vsNvcTnD2RNd9P5u8yRPApJVpSWr5A==
+  dependencies:
+    "@nestjs/mapped-types" "1.0.0"
+    lodash "4.17.21"
+    path-to-regexp "3.2.0"
+
+"@nestjs/swagger@^5.0.3":
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-5.0.3.tgz#61d199483014c7d2f5601d2d9136455914fb63ed"
+  integrity sha512-F/E0eDBMjYYkz+Tesw+UXjvxUsZYRBaDhm12KCfyPjns8yEF62SoqnFqYPstdvejhN+fd0T/E9MYVLiZtDMqRw==
   dependencies:
     "@nestjs/mapped-types" "1.0.0"
     lodash "4.17.21"

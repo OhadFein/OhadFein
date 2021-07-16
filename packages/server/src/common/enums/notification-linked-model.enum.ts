@@ -2,4 +2,4 @@ export enum EnumNotificationLinkedModel {
   Practice = 'Practice',
   Note = 'Note',
 }
-export const possibleNotificationLinkedModels = Object.values(EnumNotificationLinkedModel);
+export const EnumNotificationLinkedModelValues = Object.values(EnumNotificationLinkedModel);

@@ -5,7 +5,7 @@ import { Document, Types } from 'mongoose';
 import { EnumNotificationType, NotificationBaseDto } from '@danskill/contract';
 import {
   EnumNotificationLinkedModel,
-  possibleNotificationLinkedModels,
+  EnumNotificationLinkedModelValues,
 } from 'src/common/enums/notification-linked-model.enum';
 
 @Schema()
@@ -33,7 +33,7 @@ export class Notification implements NotificationBaseDto {
   @Prop({ type: Types.ObjectId, required: true, refPath: 'notificationLinkedModel' })
   linkedId: Types.ObjectId;
 
-  @Prop({ type: String, required: true, enum: possibleNotificationLinkedModels })
+  @Prop({ type: String, required: true, enum: EnumNotificationLinkedModelValues })
   notificationLinkedModel: EnumNotificationLinkedModel;
 
   @Prop({ type: [ReadBySchema] })

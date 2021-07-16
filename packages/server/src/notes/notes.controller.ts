@@ -13,6 +13,7 @@ import { RequestUser } from 'src/common/decorators/request-user.decorator';
 import { User } from 'src/users/schemas/user.schema';
 import { CreateNoteDto, NoteDto } from '@danskill/contract';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
+import { ApiBody } from '@nestjs/swagger';
 import { NotesService } from './notes.service';
 import { Note } from './schemas/note.schema';
 
@@ -20,6 +21,7 @@ import { Note } from './schemas/note.schema';
 export class NotesController {
   constructor(private readonly notesService: NotesService) {}
 
+  @ApiBody({ type: CreateNoteDto })
   @Post(':practiceId')
   @UseInterceptors(new TransformInterceptor(NoteDto))
   create(
