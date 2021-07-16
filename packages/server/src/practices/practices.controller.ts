@@ -11,9 +11,7 @@ import {
   HttpException,
   Delete,
 } from '@nestjs/common';
-import { PracticesService } from './practices.service';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { Practice } from './schemas/practice.schema';
 import { RequestUser } from 'src/common/decorators/request-user.decorator';
 import { User } from 'src/users/schemas/user.schema';
 import { JwtAuthGuard } from 'src/common/guards/jwt-auth.guard';
@@ -21,6 +19,8 @@ import { FigureVideoService } from 'src/figure-video/figure-video.service';
 import { S3Service } from 'src/s3/s3.service';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
 import { PracticeDto, GetAllPracticesDto, PracticeBaseDto } from '@danskill/contract';
+import { Practice } from './schemas/practice.schema';
+import { PracticesService } from './practices.service';
 
 @UseGuards(JwtAuthGuard)
 @Controller('practices')
@@ -38,12 +38,12 @@ export class PracticesController {
     @RequestUser() user: User,
     @Param('videoId') videoId: Types.ObjectId,
     @UploadedFile() videoFile: Express.Multer.File
-  ) {
+  ): Promise<Practice> {
     const video = await this.figureVideosService.findOne(videoId);
     if (!video || !video.figure) throw new HttpException('Video not found', HttpStatus.NOT_FOUND);
 
     const s3video = await this.s3Service.upload(videoFile, user.username);
-    return await this.practicesService.create(user, video, s3video);
+    return this.practicesService.create(user, video, s3video);
   }
 
   @Get('all/:username?')
@@ -65,16 +65,14 @@ export class PracticesController {
   @Get('single/:id')
   @UseInterceptors(new TransformInterceptor(PracticeDto))
   async findOne(@Param('id') id: Types.ObjectId): Promise<Practice> {
-    return await this.practicesService.findOne(id);
+    return this.practicesService.findOne(id);
   }
 
   @Delete('single/:id')
-  async remove(@RequestUser() user: User, @Param('id') id: Types.ObjectId) {
+  async remove(@RequestUser() user: User, @Param('id') id: Types.ObjectId): Promise<void> {
     const deletedPractice = await this.practicesService.remove(user, id);
     if (!deletedPractice) {
       throw new HttpException('Practice not found', HttpStatus.NOT_FOUND);
     }
-
-    return;
   }
 }

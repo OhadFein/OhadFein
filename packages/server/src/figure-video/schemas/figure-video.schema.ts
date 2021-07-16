@@ -1,8 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { PrepareUrl } from 'src/common/utils/prepare-url';
+import { PrepareS3URL } from 'src/common/utils/prepare-url';
 import { Types } from 'mongoose';
 import { FigureVideoBaseDto, EnumVideoType } from '@danskill/contract';
-
 
 export type FigureVideoDocument = FigureVideo & Document;
 
@@ -18,9 +17,10 @@ export class FigureVideo implements FigureVideoBaseDto {
 
   @Prop({ required: true })
   key: string;
+
   readonly url: string;
 
-  @Prop({ required: true, get: PrepareUrl })
+  @Prop({ required: true, get: PrepareS3URL })
   thumbnail: string;
 
   @Prop({ required: true })
@@ -30,5 +30,5 @@ export class FigureVideo implements FigureVideoBaseDto {
 export const FigureVideoSchema = SchemaFactory.createForClass(FigureVideo);
 
 FigureVideoSchema.virtual('url').get(function (this: { key: string }) {
-  return PrepareUrl(this.key);
+  return PrepareS3URL(this.key);
 });

@@ -1,12 +1,9 @@
 import { InjectModel } from '@nestjs/mongoose';
 import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
-import {
-  FigureVideo,
-  FigureVideoDocument,
-} from './schemas/figure-video.schema';
 import { Types, Model } from 'mongoose';
 import { CreateFigureVideoDto } from '@danskill/contract';
 import { FiguresService } from 'src/figures/figures.service';
+import { FigureVideo, FigureVideoDocument } from './schemas/figure-video.schema';
 
 @Injectable()
 export class FigureVideoService {
@@ -18,7 +15,7 @@ export class FigureVideoService {
   ) {}
 
   async findOne(id: Types.ObjectId): Promise<FigureVideo> {
-    return await this.figureVideoModel.findOne({ _id: id }).exec();
+    return this.figureVideoModel.findOne({ _id: id }).exec();
   }
 
   async create(

@@ -3,3 +3,4 @@ export enum EnumDanceLevel {
   Intermediate = 'intermediate',
   Advanced = 'advanced',
 }
+export const EnumDanceLevelValues = Object.values(EnumDanceLevel);

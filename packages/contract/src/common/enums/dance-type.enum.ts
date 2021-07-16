@@ -10,3 +10,5 @@ export enum EnumDanceType {
   Foxtrot = 'foxtrot',
   Quickstep = 'quickstep',
 }
+
+export const EnumDanceTypeValues = Object.values(EnumDanceType);
