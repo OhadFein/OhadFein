@@ -3449,15 +3449,6 @@
   dependencies:
     path-to-regexp "0.1.7"
 
-"@nestjs/swagger@^5.0.4":
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/@nestjs/swagger/-/swagger-5.0.4.tgz#cc3be175b14e5b1d2d443d38d5808261d44d8f9e"
-  integrity sha512-TNMYrY4ZkpIiBf11eZSS5OKGv/bBBcW6UoIVf6sesk9Ry4muErxjz0OZansrF9o7GrlvBz/YsJSgDnIQURFXaA==
-  dependencies:
-    "@nestjs/mapped-types" "1.0.0"
-    lodash "4.17.21"
-    path-to-regexp "3.2.0"
-
 "@nestjs/testing@^7.6.15":
   version "7.6.18"
   resolved "https://registry.yarnpkg.com/@nestjs/testing/-/testing-7.6.18.tgz#b4c137b5b6c2fb18c51602d33a083cd97c648283"
@@ -15427,6 +15418,11 @@ typescript@^4.2.3:
   version "4.3.5"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-4.3.5.tgz#4d1c37cc16e893973c45a06886b7113234f119f4"
   integrity sha512-DqQgihaQ9cUrskJo9kIyW/+g0Vxsk8cDtZ52a3NGh0YNTfpUSArXSohyUGnvbPazEPLu398C0UxmKSOrPumUzA==
+
+typescript@~3.8.3:
+  version "3.8.3"
+  resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.8.3.tgz#409eb8544ea0335711205869ec458ab109ee1061"
+  integrity sha512-MYlEfn5VrLNsgudQTVJeNaQFUAI7DkhnOjdpAp4T+ku1TfQClewlbSuTVHiA+8skNBgaf02TL/kLOvig4y3G8w==
 
 typy@^3.3.0:
   version "3.3.0"

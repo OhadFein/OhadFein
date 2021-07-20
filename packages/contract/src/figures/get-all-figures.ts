@@ -1,8 +1,8 @@
-import { ApiPropertyOptional } from '@nestjs/swagger';
+// import { ApiPropertyOptional } from '@nestjs/swagger';
 import { IsNotEmpty, IsOptional, IsString } from 'class-validator';
 
 export class GetAllFiguresDto {
-  @ApiPropertyOptional({ type: String })
+  // @ApiPropertyOptional({ type: String })
   @IsOptional()
   @IsNotEmpty()
   @IsString()

@@ -18,7 +18,7 @@ import { JwtAuthGuard } from 'src/common/guards/jwt-auth.guard';
 import { Roles } from 'src/common/decorators/roles.decorator';
 import { EnumRole } from 'src/common/enums/role.enum';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
-import { ApiBody } from '@nestjs/swagger';
+// import { ApiBody } from '@nestjs/swagger';
 import { FiguresService } from './figures.service';
 import { Figure } from './schemas/figure.schema';
 
@@ -33,14 +33,14 @@ export class FiguresController {
     return this.figuresService.findOne(id);
   }
 
-  @ApiBody({ type: GetAllFiguresDto })
+  // @ApiBody({ type: GetAllFiguresDto })
   @Get('all')
   @UseInterceptors(new TransformInterceptor(FigureBaseDto))
   async findAll(@Query() getAllFiguresDto: GetAllFiguresDto): Promise<Figure[]> {
     return this.figuresService.findAll(getAllFiguresDto);
   }
 
-  @ApiBody({ type: CreateFigureDto })
+  // @ApiBody({ type: CreateFigureDto })
   @Roles(EnumRole.Admin)
   @Post()
   @UseInterceptors(new TransformInterceptor(FigureBaseDto))
