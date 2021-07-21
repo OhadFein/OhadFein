@@ -32,7 +32,12 @@ export class AfterLoginPageComponent implements OnInit {
             map((loggedInUser: IAmplifyInfo) => [this.extractUserName(loggedInUser), loggedInUser]),
             switchMap(([username, loggedInUser]: [string, IAmplifyInfo]) =>
               this.usersService
-                .createNewUser(username, loggedInUser.attributes.sub)
+                .createNewUser(
+                  username,
+                  loggedInUser.attributes.sub,
+                  loggedInUser.attributes.given_name,
+                  loggedInUser.attributes.family_name
+                )
                 .pipe(catchError((error: any) => this.handleError(error?.message)))
             ),
             catchError((error: any) => this.handleError(error?.message))

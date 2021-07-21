@@ -43,23 +43,23 @@ export class PracticesService {
 
   async findAllUsersPractices(
     reqUser: User,
-    username?: string,
+    slug?: string,
     getAllPracticesDto?: GetAllPracticesDto
   ): Promise<Practice[]> {
-    let usernameToFind: string;
+    let slugToFind: string;
 
-    if (username && username !== reqUser.username) {
-      const user = await this.usersService.findOne(username);
+    if (slug && slug !== reqUser.slug) {
+      const user = await this.usersService.findOne(slug);
       if (matchRoles(reqUser, [EnumRole.Coach]) && user.coach.equals(reqUser._id)) {
-        usernameToFind = username;
+        slugToFind = slug;
       } else {
         throw new HttpException('', HttpStatus.UNAUTHORIZED);
       }
     } else {
-      usernameToFind = reqUser.username;
+      slugToFind = reqUser.slug;
     }
 
-    return this.usersService.getPractices(usernameToFind, getAllPracticesDto);
+    return this.usersService.getPractices(slugToFind, getAllPracticesDto);
   }
 
   async findOne(id: Types.ObjectId): Promise<Practice> {

@@ -34,8 +34,13 @@ export class UserService {
     return this.baseRestService.get<boolean>('users/exists');
   }
 
-  createNewUser(username: string, sub: string): Observable<UserDto> {
-    const createUserDto = new CreateUserDto(username, sub);
+  createNewUser(
+    username: string,
+    sub: string,
+    firstName?: string,
+    lastName?: string
+  ): Observable<UserDto> {
+    const createUserDto = new CreateUserDto(username, sub, firstName, lastName);
 
     return this.baseRestService.post<UserDto>('users', createUserDto);
   }

@@ -14,11 +14,21 @@ export type UserDocument = User & Star & Coach & Document;
 export class User implements UserBaseDto {
   _id: Types.ObjectId;
 
-  @Prop({ required: true, unique: true })
-  username: string;
+  // TODO: needed? should be used for AdminGetUser SDK function
+  // @Prop({ required: true, unique: true })
+  // username: string;
 
   @Prop({ required: true, unique: true })
   sub: string;
+
+  @Prop({ required: true, unique: true })
+  slug: string;
+
+  @Prop()
+  firstName?: string;
+
+  @Prop()
+  lastName?: string;
 
   @Prop({ default: [EnumRole.User] })
   roles: EnumRole[];
@@ -49,13 +59,13 @@ export class User implements UserBaseDto {
   logo: string;
 
   @Prop({ get: PrepareS3URL })
-  promo_video: string;
+  promoVideo: string;
 }
 
 export class Star extends User implements StarDto {
   figures: Figure[];
 
-  promo_video: string;
+  promoVideo: string;
 
   about: string;
 

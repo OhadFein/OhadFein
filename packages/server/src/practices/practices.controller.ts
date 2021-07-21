@@ -42,7 +42,7 @@ export class PracticesController {
     const video = await this.figureVideosService.findOne(videoId);
     if (!video || !video.figure) throw new HttpException('Video not found', HttpStatus.NOT_FOUND);
 
-    const s3video = await this.s3Service.upload(videoFile, user.username);
+    const s3video = await this.s3Service.upload(videoFile, user.slug);
     return this.practicesService.create(user, video, s3video);
   }
 
