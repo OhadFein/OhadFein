@@ -1,0 +1,15 @@
+<mat-toolbar>
+  <button mat-icon-button class="danskill-btn" (click)="onCloseSideMenu()">
+    <mat-icon fontSet="material-icons-outlined">close</mat-icon>
+  </button>
+  <button mat-icon-button class="danskill-btn" color="accent">
+    <mat-icon fontSet="material-icons-outlined">notifications</mat-icon>
+  </button>
+</mat-toolbar>
+<user-avatar class="user-avatar"></user-avatar>
+<mat-nav-list>
+  <mat-list-item class="sidenav-menu-item" *ngFor="let menu_item of menu_items">
+    <mat-icon class="sidenav-menu-icon" mat-list-icon>{{menu_item.icon_name}}</mat-icon>
+    <a mat-line class="sidenav-menu-text" href="{{menu_item.link}}">{{menu_item.text}}</a>
+  </mat-list-item>
+</mat-nav-list>

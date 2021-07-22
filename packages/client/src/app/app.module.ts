@@ -24,6 +24,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SocialLoginModule } from 'angularx-social-login';
 import { DeviceDetectorModule } from 'ngx-device-detector';
+import {MaterialModule} from '@infra/material.module';
 
 import {
   FiguresEffects,
@@ -36,6 +37,7 @@ import {
 import { APP_PROVIDERS } from './app-providers';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LayoutModule } from '@angular/cdk/layout';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
@@ -83,7 +85,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     InfraModule,
     LoginModule,
     StudentModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: false })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: false }),
+    LayoutModule,
+    MaterialModule,
   ],
   entryComponents: [AboutDanskillModalComponent, VideoPlayerModalComponent],
   providers: [...APP_PROVIDERS],

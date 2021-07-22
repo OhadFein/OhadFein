@@ -17,7 +17,47 @@ declare let $: any;
 
 @Component({
   selector: 'dsapp-root',
-  templateUrl: './app.component.html'
+  templateUrl: './app.component.html',
+  styles: [
+    `
+      .sidenav-container {
+        height: 100%;
+      }
+
+      .sidenav {
+        width: 80%;
+        border-radius: 25px 0px 0px 0px;
+      }
+
+      .sidenav .mat-toolbar {
+        background: inherit;
+      }
+
+      .mat-toolbar.mat-primary {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+      }
+
+      .sidenav-menu-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #eaeaea;
+        font-size: medium !important;
+      }
+
+      .sidenav-menu-text {
+        font-family: Poppins;
+        font-style: normal;
+        font-size: small !important;
+      }
+
+      .sidenav-menu-item {
+        padding: 0 25px !important;
+      }
+    `
+  ]
 })
 export class AppComponent implements OnInit, OnDestroy {
   state: string;

@@ -19,3 +19,7 @@ export * from './background-processes/background-processes.component';
 export * from './background-processes/upload-practice-bg-process/upload-practice-bg-process.component';
 export * from './video-preview/video-preview.component';
 export * from './custom-lab-controls/custom-lab-controls.component';
+export * from './side-menu/side-menu.component';
+export * from './user-avatar/user-avatar.component';
+export * from './upper-toolbar/upper-toolbar.component';
+export * from './bottom-toolbar/bottom-toolbar.component';

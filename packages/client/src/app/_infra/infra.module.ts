@@ -30,9 +30,14 @@ import {
   VideoPlayerModalComponent,
   VideoPlayerWrapperComponent,
   VideoPreviewComponent,
-  CustomLabControlsComponent
+  CustomLabControlsComponent,
+  SideMenuComponent,
+  UserAvatarComponent,
+  UpperToolbarComponent,
+  BottomToolbarComponent
 } from './ui';
 import { StarNameDirective } from '@core/derectives';
+import { MaterialModule } from './material.module';
 
 const components = [
   AlertsComponent,
@@ -57,7 +62,11 @@ const components = [
   ToggleSwitchDirective,
   VideoPreviewComponent,
   CustomLabControlsComponent,
-  StarNameDirective
+  StarNameDirective,
+  SideMenuComponent,
+  UserAvatarComponent,
+  UpperToolbarComponent,
+  BottomToolbarComponent,
 ];
 
 @NgModule({
@@ -69,7 +78,8 @@ const components = [
     VgControlsModule,
     VgOverlayPlayModule,
     VgBufferingModule,
-    ImageCropperModule
+    ImageCropperModule,
+    MaterialModule,
   ],
   declarations: [components],
   exports: [components]
