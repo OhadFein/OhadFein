@@ -1,12 +1,18 @@
 import { FilterQuery, Model, Types } from 'mongoose';
 import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { CreateUserDto, EnumNotificationType, GetAllPracticesDto } from '@danskill/contract';
+import {
+  CreateUserDto,
+  EnumNotificationType,
+  GetAllPracticesDto,
+  CreateStarDto,
+} from '@danskill/contract';
 import { Practice } from 'src/practices/schemas/practice.schema';
 import { FiguresService } from 'src/figures/figures.service';
 import { NotificationsService } from 'src/notifications/notifications.service';
 import { EnumNotificationLinkedModel } from 'src/common/enums/notification-linked-model.enum';
 import { Notification } from 'src/notifications/schemas/notification.schema';
+import slugify from 'slugify';
 import { User, UserDocument, Coach, Star } from './schemas/user.schema';
 import { EnumRole } from '../common/enums/role.enum';
 import { matchRoles } from '../common/utils/match-roles';
@@ -23,7 +29,6 @@ export class UsersService {
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
-    // TODO: use slugify?
     const slug = await this.getUniqueSlug(createUserDto);
     const createdUser = new this.userModel({
       slug,
@@ -36,16 +41,28 @@ export class UsersService {
     return createdUser;
   }
 
+  async createStar(slug: string, createStarDto: CreateStarDto): Promise<Star> {
+    const star = await this.findOne(slug);
+    star.promoVideo = createStarDto.promoVideo;
+    star.about = createStarDto.about;
+    star.logo = createStarDto.logo;
+    if (star.roles.indexOf(EnumRole.Star) === -1) star.roles.push(EnumRole.Star);
+    await star.save();
+
+    return star;
+  }
+
   /* eslint-disable no-await-in-loop */
   async getUniqueSlug(createUserDto: CreateUserDto): Promise<string> {
     let currSlug = createUserDto.slug;
     let i = 1;
-    while ((await this.findOne(currSlug)) !== null) {
+
+    while ((await this.findOne(slugify(currSlug, { lower: true }))) !== null) {
       currSlug += i;
       i += 1;
     }
 
-    return currSlug;
+    return slugify(currSlug, { lower: true });
   }
   /* eslint-enable no-await-in-loop */
 
@@ -57,8 +74,8 @@ export class UsersService {
     return this.userModel.findOne({ sub }).select('+roles').exec();
   }
 
-  async findOne(slug: string): Promise<User> {
-    return this.userModel.findOne({ slug }).exec();
+  async findOne(slug: string): Promise<UserDocument> {
+    return this.userModel.findOne({ slug: slug.toLowerCase() }).exec();
   }
 
   async findAllUsers(): Promise<User[]> {
