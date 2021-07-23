@@ -23,27 +23,29 @@ export class UsersService {
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<User> {
-    const username = await this.getUniqueUsername(createUserDto);
+    // TODO: use slugify?
+    const slug = await this.getUniqueSlug(createUserDto);
     const createdUser = new this.userModel({
-      username,
+      slug,
       sub: createUserDto.sub,
+      firstName: createUserDto.firstName,
+      lastName: createUserDto.lastName,
     });
-
     await createdUser.save();
 
     return createdUser;
   }
 
   /* eslint-disable no-await-in-loop */
-  async getUniqueUsername(createUserDto: CreateUserDto): Promise<string> {
-    let currUserName = createUserDto.username;
+  async getUniqueSlug(createUserDto: CreateUserDto): Promise<string> {
+    let currSlug = createUserDto.slug;
     let i = 1;
-    while ((await this.findOne(currUserName)) !== null) {
-      currUserName += i;
+    while ((await this.findOne(currSlug)) !== null) {
+      currSlug += i;
       i += 1;
     }
 
-    return currUserName;
+    return currSlug;
   }
   /* eslint-enable no-await-in-loop */
 
@@ -55,8 +57,8 @@ export class UsersService {
     return this.userModel.findOne({ sub }).select('+roles').exec();
   }
 
-  async findOne(username: string): Promise<User> {
-    return this.userModel.findOne({ username }).exec();
+  async findOne(slug: string): Promise<User> {
+    return this.userModel.findOne({ slug }).exec();
   }
 
   async findAllUsers(): Promise<User[]> {
@@ -104,10 +106,7 @@ export class UsersService {
       .exec();
   }
 
-  async getPractices(
-    username: string,
-    getAllPracticesDto?: GetAllPracticesDto
-  ): Promise<Practice[]> {
+  async getPractices(slug: string, getAllPracticesDto?: GetAllPracticesDto): Promise<Practice[]> {
     const query: FilterQuery<UserDocument> = {};
     if (getAllPracticesDto?.figureId) {
       const figure = await this.figuresService.findOne(getAllPracticesDto.figureId);
@@ -117,7 +116,7 @@ export class UsersService {
 
     // TOODO: check the query
     const userWithPractices = await this.userModel
-      .findOne({ username })
+      .findOne({ slug })
       .populate({
         path: 'practices', // TODO: replace the strings with fixed values
         match: query,
@@ -133,9 +132,9 @@ export class UsersService {
     return userWithStudents.students;
   }
 
-  async setCoach(reqUser: User, username: string): Promise<void> {
+  async setCoach(reqUser: User, slug: string): Promise<void> {
     // TODO: use transactions https://mongoosejs.com/docs/transactions.html
-    const newCoach = await this.findOne(username);
+    const newCoach = await this.findOne(slug);
     if (!newCoach || !matchRoles(newCoach, [EnumRole.Coach]))
       throw new HttpException('Coach not found', HttpStatus.NOT_FOUND);
 

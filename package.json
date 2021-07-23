@@ -22,10 +22,10 @@
     "prepare": "husky install"
   },
   "devDependencies": {
+    "eslint": "^7.30.0",
     "husky": "^6.0.0",
     "lerna": "4.0.0",
-    "lint-staged": "^11.0.0",
-    "eslint": "^7.30.0"
+    "lint-staged": "^11.0.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [

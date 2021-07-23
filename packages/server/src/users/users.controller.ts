@@ -45,7 +45,7 @@ export class UsersController {
   @Get('single/:username?')
   @UseInterceptors(new TransformInterceptor(UserDto))
   async findOne(@RequestUser() reqUser: User, @Param('username') username?: string): Promise<User> {
-    const user = await this.usersService.findOne(username ?? reqUser.username);
+    const user = await this.usersService.findOne(username ?? reqUser.slug);
     if (!user) throw new HttpException('User not found', HttpStatus.NOT_FOUND);
 
     return user;
@@ -76,8 +76,8 @@ export class UsersController {
     return this.usersService.getStudents(reqUser);
   }
 
-  @Post('coach/:username')
-  async setCoach(@RequestUser() reqUser: User, @Param('username') username: string): Promise<void> {
-    await this.usersService.setCoach(reqUser, username);
+  @Post('coach/:slug')
+  async setCoach(@RequestUser() reqUser: User, @Param('slug') slug: string): Promise<void> {
+    await this.usersService.setCoach(reqUser, slug);
   }
 }
