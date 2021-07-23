@@ -1,5 +1,6 @@
-import { UserBaseDto, PracticeBaseDto } from '@danskill/contract';
 import { Exclude, Expose, Type } from 'class-transformer';
+import { UserBaseDto } from '../users';
+import { PracticeBaseDto } from '../practices';
 import { NoteBaseDto } from './note-base.dto';
 
 @Exclude()

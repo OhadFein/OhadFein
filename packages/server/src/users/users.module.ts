@@ -1,12 +1,13 @@
-import { PracticesModule } from './../practices/practices.module';
-import { FigureVideoModule } from './../figure-video/figure-video.module';
 import { FiguresModule } from 'src/figures/figures.module';
-import { User, UserSchema } from './schemas/user.schema';
+import { NotificationsModule } from 'src/notifications/notifications.module';
 import { forwardRef, Module } from '@nestjs/common';
-import { UsersService } from './users.service';
-import { UsersController } from './users.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { JwtStrategy } from 'src/auth/strategies/jwt.strategy';
+import { PracticesModule } from '../practices/practices.module';
+import { FigureVideoModule } from '../figure-video/figure-video.module';
+import { User, UserSchema } from './schemas/user.schema';
+import { UsersService } from './users.service';
+import { UsersController } from './users.controller';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { JwtStrategy } from 'src/auth/strategies/jwt.strategy';
     forwardRef(() => PracticesModule),
     forwardRef(() => FiguresModule),
     forwardRef(() => FigureVideoModule),
+    forwardRef(() => NotificationsModule),
   ],
   controllers: [UsersController],
   providers: [UsersService, JwtStrategy],

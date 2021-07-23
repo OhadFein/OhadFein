@@ -1,6 +1,6 @@
 import { Types } from 'mongoose';
-import { EnumVideoType } from '../common/enums/video-type.enum';
 import { Exclude, Expose, Type } from 'class-transformer';
+import { EnumVideoType } from '../common/enums/video-type.enum';
 
 @Exclude()
 export class FigureVideoBaseDto {

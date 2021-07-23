@@ -18,14 +18,14 @@
     "setup": "lerna bootstrap",
     "build": "lerna run build --parallel",
     "start": "yarn workspace @danskill/backend start",
-    "precommit": "pretty-quick --staged && lint-staged --config packages/client/.eslintrc.js",
+    "precommit": "pretty-quick --staged && lint-staged",
     "prepare": "husky install"
   },
   "devDependencies": {
-    "lerna": "4.0.0",
+    "eslint": "^7.30.0",
     "husky": "^6.0.0",
-    "lint-staged": "^11.0.0",
-    "eslint-plugin-prettier": "^3.0.1"
+    "lerna": "4.0.0",
+    "lint-staged": "^11.0.0"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [

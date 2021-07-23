@@ -21,6 +21,7 @@ export class Note implements NoteBaseDto {
   content: string;
 
   readonly createdAt: Date;
+
   readonly updatedAt: Date;
 }
 
