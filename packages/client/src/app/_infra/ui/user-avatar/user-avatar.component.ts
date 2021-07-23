@@ -1,3 +1,4 @@
+import { UserService } from '@core/services';
 import { Component, OnInit, Input } from '@angular/core';
 import { Auth } from 'aws-amplify';
 import { fromPromise } from 'rxjs/internal-compatibility';
@@ -9,6 +10,8 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./user-avatar.component.less']
 })
 export class UserAvatarComponent implements OnInit {
+  constructor(private userService: UserService) {}
+
   public showInitials = false;
 
   public initials: string;
@@ -22,8 +25,9 @@ export class UserAvatarComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     await Auth.currentUserInfo().then((loggedInUser) => {
       this.fullName = this.extractFullName(loggedInUser);
-      this.userName = this.extractUserName(loggedInUser);
     });
+
+    this.userName = await this.getUsername();
 
     this.createInititals();
 
@@ -43,9 +47,9 @@ export class UserAvatarComponent implements OnInit {
     return fullName;
   }
 
-  private extractUserName(loggedInUser): string {
-    const { email } = loggedInUser.attributes;
+  private async getUsername(): Promise<string> {
+    const user = await this.userService.getUser().toPromise();
 
-    return email?.split('@')[0];
+    return user.slug;
   }
 }

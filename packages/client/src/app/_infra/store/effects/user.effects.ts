@@ -12,21 +12,21 @@ import * as UserActions from '../actions/user.actions';
 export class UserEffects {
   constructor(private action$: Actions, private userService: UserService) {}
 
-  getUser$: Observable<Action> = createEffect(() =>
-    this.action$.pipe(
-      ofType(UserActions.BeginGetUserAction),
-      mergeMap(() =>
-        this.userService.getUser().pipe(
-          map((data: User) => {
-            return UserActions.SuccessGetUserAction({ payload: data });
-          }),
-          catchError((error: Error) => {
-            return of(UserActions.ErrorGetUserAction(error));
-          })
-        )
-      )
-    )
-  );
+  // getUser$: Observable<Action> = createEffect(() =>
+  //   this.action$.pipe(
+  //     ofType(UserActions.BeginGetUserAction),
+  //     mergeMap(() =>
+  //       this.userService.getUser().pipe(
+  //         map((data: User) => {
+  //           return UserActions.SuccessGetUserAction({ payload: data });
+  //         }),
+  //         catchError((error: Error) => {
+  //           return of(UserActions.ErrorGetUserAction(error));
+  //         })
+  //       )
+  //     )
+  //   )
+  // );
 
   updateUser$: Observable<Action> = createEffect(() =>
     this.action$.pipe(
