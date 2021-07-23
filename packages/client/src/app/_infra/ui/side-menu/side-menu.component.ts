@@ -1,7 +1,4 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
 
 export interface MenuItem {
   icon_name: string;
@@ -12,37 +9,7 @@ export interface MenuItem {
 @Component({
   selector: 'dsapp-side-menu',
   templateUrl: './side-menu.component.html',
-  styles: [
-    `
-      .mat-toolbar {
-        background: inherit;
-        justify-content: space-between;
-      }
-      .mat-toolbar.mat-primary {
-        position: sticky;
-        top: 0;
-        z-index: 1;
-      }
-
-      .sidenav-menu-icon {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #eaeaea;
-        font-size: medium !important;
-      }
-
-      .sidenav-menu-text {
-        font-family: Poppins;
-        font-style: normal;
-        font-size: small !important;
-      }
-
-      .sidenav-menu-item {
-        padding: 0 25px !important;
-      }
-    `
-  ]
+  styleUrls: ['./side-menu.component.less']
 })
 export class SideMenuComponent {
   menu_items: MenuItem[] = [
@@ -77,11 +44,10 @@ export class SideMenuComponent {
       link: ''
     }
   ];
+
   @Output() public sideMenuClose = new EventEmitter();
 
-  public onCloseSideMenu = () => {
+  public onCloseSideMenu = (): void => {
     this.sideMenuClose.emit();
   };
-
-  constructor() {}
 }
