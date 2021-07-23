@@ -1,10 +1,12 @@
-import { Practice } from './../../practices/schemas/practice.schema';
-import { Figure } from './../../figures/schemas/figure.schema';
+/* eslint-disable max-classes-per-file */
+
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types } from 'mongoose';
 import { EnumRole } from 'src/common/enums/role.enum';
-import { PrepareUrl } from 'src/common/utils/prepare-url';
+import { PrepareS3URL } from 'src/common/utils/prepare-url';
 import { StarDto, CoachDto, UserBaseDto, FigureBaseDto } from '@danskill/contract';
+import { Figure } from '../../figures/schemas/figure.schema';
+import { Practice } from '../../practices/schemas/practice.schema';
 
 export type UserDocument = User & Star & Coach & Document;
 
@@ -25,12 +27,12 @@ export class User implements UserBaseDto {
   coach?: Types.ObjectId;
 
   @Prop({
-    type: [{ type: Types.ObjectId, ref: Practice.name }],
+    type: [{ type: Types.ObjectId, ref: 'Practice' }], // TODO: Practice.name
   })
   practices: Types.ObjectId[] | Practice[];
 
-  // @Prop({ type: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Notifcation' }] })
-  // notifications: Notification[];
+  @Prop({ type: [{ type: Types.ObjectId, ref: 'Notifcation' }] })
+  notifications: Notification[];
 
   // coach attributes:
   @Prop({ type: [{ type: Types.ObjectId, ref: User.name }] })
@@ -40,20 +42,23 @@ export class User implements UserBaseDto {
   @Prop({ type: [{ type: Types.ObjectId, ref: Figure.name }] })
   figures: Types.ObjectId[] | Figure[];
 
-  @Prop({ })
+  @Prop({})
   about: string;
 
-  @Prop({ get: PrepareUrl })
+  @Prop({ get: PrepareS3URL })
   logo: string;
 
-  @Prop({ get: PrepareUrl })
+  @Prop({ get: PrepareS3URL })
   promo_video: string;
 }
 
 export class Star extends User implements StarDto {
   figures: Figure[];
+
   promo_video: string;
+
   about: string;
+
   logo: string;
 }
 

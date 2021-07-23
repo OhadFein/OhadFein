@@ -1,4 +1,4 @@
-import { CreateFigureDto } from '@danskill/contract';
+import { CreateFigureDto, FigureDto, FigureBaseDto, GetAllFiguresDto } from '@danskill/contract';
 import {
   Controller,
   Get,
@@ -13,13 +13,14 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { Types } from 'mongoose';
-import { Figure } from './schemas/figure.schema';
-import { FiguresService } from './figures.service';
 import { JwtAuthGuard } from 'src/common/guards/jwt-auth.guard';
-import { FigureDto, FigureBaseDto, GetAllFiguresDto } from '@danskill/contract';
+
 import { Roles } from 'src/common/decorators/roles.decorator';
 import { EnumRole } from 'src/common/enums/role.enum';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
+import { ApiBody } from '@nestjs/swagger';
+import { FiguresService } from './figures.service';
+import { Figure } from './schemas/figure.schema';
 
 @UseGuards(JwtAuthGuard)
 @Controller('figures')
@@ -29,22 +30,22 @@ export class FiguresController {
   @Get('single/:id')
   @UseInterceptors(new TransformInterceptor(FigureDto))
   async findOne(@Param('id') id: Types.ObjectId): Promise<Figure> {
-    return await this.figuresService.findOne(id);
+    return this.figuresService.findOne(id);
   }
 
+  @ApiBody({ type: GetAllFiguresDto })
   @Get('all')
   @UseInterceptors(new TransformInterceptor(FigureBaseDto))
-  async findAll(
-    @Query() getAllFiguresDto: GetAllFiguresDto
-  ): Promise<Figure[]> {
-    return await this.figuresService.findAll(getAllFiguresDto);
+  async findAll(@Query() getAllFiguresDto: GetAllFiguresDto): Promise<Figure[]> {
+    return this.figuresService.findAll(getAllFiguresDto);
   }
 
+  @ApiBody({ type: CreateFigureDto })
   @Roles(EnumRole.Admin)
   @Post()
   @UseInterceptors(new TransformInterceptor(FigureBaseDto))
   async create(@Body() createFigureDto: CreateFigureDto): Promise<Figure> {
-    return await this.figuresService.create(createFigureDto);
+    return this.figuresService.create(createFigureDto);
   }
 
   @Roles(EnumRole.Admin)
@@ -54,7 +55,5 @@ export class FiguresController {
     if (!deletedFigure) {
       throw new HttpException('Figure not found', HttpStatus.NOT_FOUND);
     }
-
-    return;
   }
 }

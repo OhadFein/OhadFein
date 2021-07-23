@@ -3,3 +3,4 @@ export enum EnumVideoType {
   BasicPrinciples = 'basic principles',
   Comparable = 'comparable',
 }
+export const EnumVideoTypeValues = Object.values(EnumVideoType);

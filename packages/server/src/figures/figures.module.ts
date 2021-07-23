@@ -1,10 +1,10 @@
-import { FigureVideoModule } from './../figure-video/figure-video.module';
 import { forwardRef, Module } from '@nestjs/common';
+import { MongooseModule } from '@nestjs/mongoose';
+import { UsersModule } from 'src/users/users.module';
+import { FigureVideoModule } from '../figure-video/figure-video.module';
 import { FiguresService } from './figures.service';
 import { FiguresController } from './figures.controller';
 import { Figure, FigureSchema } from './schemas/figure.schema';
-import { MongooseModule } from '@nestjs/mongoose';
-import { UsersModule } from 'src/users/users.module';
 
 @Module({
   imports: [

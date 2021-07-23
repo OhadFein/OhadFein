@@ -5,9 +5,9 @@ import { IsEnum, IsNumber, IsString, validateSync } from 'class-validator';
 // TODO: use this.configService.get<string>('database.host')
 
 export enum Environment {
-  Development = "development",
-  Production = "production",
-  Test = "test",
+  Development = 'development',
+  Production = 'production',
+  Test = 'test',
 }
 
 class EnvironmentVariables {
@@ -21,16 +21,15 @@ class EnvironmentVariables {
   MONGODB_DEVELOPMENT_URI: string;
 }
 
-export function validate(config: Record<string, unknown>) {
-  const validatedConfig = plainToClass(
-    EnvironmentVariables,
-    config,
-    { enableImplicitConversion: true },
-  );
+export function validate(config: Record<string, unknown>): EnvironmentVariables {
+  const validatedConfig = plainToClass(EnvironmentVariables, config, {
+    enableImplicitConversion: true,
+  });
   const errors = validateSync(validatedConfig, { skipMissingProperties: false });
 
   if (errors.length > 0) {
     throw new Error(errors.toString());
   }
+
   return validatedConfig;
 }

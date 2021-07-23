@@ -1,3 +1,3 @@
-import { SetMetadata } from '@nestjs/common';
+import { CustomDecorator, SetMetadata } from '@nestjs/common';
 
-export const Skip = () => SetMetadata('skip', '1');
+export const Skip = (): CustomDecorator => SetMetadata('skip', '1');
