@@ -1,17 +1,29 @@
-import { ApiProperty } from '@nestjs/swagger';
-import { IsOptional, IsDate, IsMongoId, IsString } from 'class-validator';
+// import { ApiProperty } from '@nestjs/swagger';
+import { IsOptional, IsString } from 'class-validator';
 
 export class CreateUserDto {
-  constructor(username: string, sub: string) {
-    this.username = username;
+  constructor(slug: string, sub: string, firstName?: string, lastName?: string) {
+    this.slug = slug;
     this.sub = sub;
+    if (firstName) this.firstName = firstName;
+    if (lastName) this.lastName = lastName;
   }
 
-  @ApiProperty({ type: String })
+  // @ApiProperty({ type: String })
   @IsString()
-  username: string;
+  slug: string;
 
-  @ApiProperty({ type: String })
+  // @ApiProperty({ type: String })
   @IsString()
   sub: string;
+
+  // @ApiPropertyOptional({ type: String })
+  @IsOptional()
+  @IsString()
+  firstName?: string;
+
+  // @ApiPropertyOptional({ type: String })
+  @IsOptional()
+  @IsString()
+  lastName?: string;
 }

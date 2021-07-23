@@ -10,7 +10,7 @@ export class UserBaseDto {
   sub: string;
 
   @Expose()
-  username: string;
-  
+  slug: string;
+
   // @Expose() notifications: Notifcation[];
 }

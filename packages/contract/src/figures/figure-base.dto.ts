@@ -1,6 +1,6 @@
 import { Types } from 'mongoose';
-import { EnumDanceType, EnumDanceLevel } from '@danskill/contract';
 import { Exclude, Expose } from 'class-transformer';
+import { EnumDanceType, EnumDanceLevel } from '../common/enums';
 
 @Exclude()
 export class FigureBaseDto {
