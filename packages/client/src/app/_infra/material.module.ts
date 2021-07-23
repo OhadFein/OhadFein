@@ -7,7 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 
 @NgModule({
-  imports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatListModule, MatButtonModule],
-  exports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatListModule, MatButtonModule]
+  imports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatListModule],
+  exports: [MatSidenavModule, MatToolbarModule, MatIconModule, MatListModule]
 })
 export class MaterialModule {}

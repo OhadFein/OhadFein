@@ -19,7 +19,9 @@
   </button>
   <button mat-icon-button
           class="danskill-btn"
-          [routerLink]="'/student/practices'">
+          [routerLink]="'/student/practices'"
+          [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact: false}">
     <mat-icon fontSet="material-icons-outlined"
               class="bottom-nav-icon">folder_open</mat-icon>
     <div class="bottom-nav-text">Practices</div>
