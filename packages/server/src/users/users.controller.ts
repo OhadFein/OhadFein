@@ -10,7 +10,7 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { Skip } from 'src/common/decorators/skip.decorator';
-import { CreateUserDto, StarDto, CoachDto, UserBaseDto, UserDto } from '@danskill/contract';
+import { CreateUserDto, StarDto, CoachDto, UserBaseDto, UserDto, CreateStarDto } from '@danskill/contract';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
 import { RequestUser } from 'src/common/decorators/request-user.decorator';
 import { Roles } from 'src/common/decorators/roles.decorator';
@@ -33,6 +33,19 @@ export class UsersController {
     return user;
   }
 
+  @Roles(EnumRole.Admin)
+  @Post('/star/:slug')
+  @UseGuards(NonRegisteredJwtGuard)
+  @UseInterceptors(new TransformInterceptor(StarDto))
+  async createStar(
+    @Body() createStarDto: CreateStarDto,
+    @Param('slug') slug: string
+  ): Promise<User> {
+    const user = await this.usersService.createStar(slug, createStarDto);
+
+    return user;
+  }
+
   @Get('exists')
   @Skip()
   @UseGuards(NonRegisteredJwtGuard)
@@ -42,10 +55,10 @@ export class UsersController {
     return user !== null;
   }
 
-  @Get('single/:username?')
+  @Get('single/:slug?')
   @UseInterceptors(new TransformInterceptor(UserDto))
-  async findOne(@RequestUser() reqUser: User, @Param('username') username?: string): Promise<User> {
-    const user = await this.usersService.findOne(username ?? reqUser.slug);
+  async findOne(@RequestUser() reqUser: User, @Param('slug') slug?: string): Promise<User> {
+    const user = await this.usersService.findOne(slug ?? reqUser.slug);
     if (!user) throw new HttpException('User not found', HttpStatus.NOT_FOUND);
 
     return user;

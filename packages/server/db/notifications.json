@@ -1,0 +1,112 @@
+[
+  {
+    "_id": {
+      "$oid": "60fc4df6691b3a4b9366c1c7"
+    },
+    "receivers": [
+      {
+        "$oid": "60f8abc357d219facdeb65c8"
+      }
+    ],
+    "senders": [
+      {
+        "$oid": "60f8aa3557d219facdeb65b3"
+      }
+    ],
+    "linkedId": {
+      "$oid": "60fc4df6691b3a4b9366c1c4"
+    },
+    "type": "new practice",
+    "notificationLinkedModel": "Practice",
+    "readBy": [],
+    "createdAt": {
+      "$date": "2021-07-24T17:29:26.187Z"
+    },
+    "updatedAt": {
+      "$date": "2021-07-24T17:29:26.187Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "60fc4e06691b3a4b9366c1d2"
+    },
+    "receivers": [
+      {
+        "$oid": "60f8abc357d219facdeb65c8"
+      }
+    ],
+    "senders": [
+      {
+        "$oid": "60f8aa3557d219facdeb65b3"
+      }
+    ],
+    "linkedId": {
+      "$oid": "60fc4e06691b3a4b9366c1cf"
+    },
+    "type": "new practice",
+    "notificationLinkedModel": "Practice",
+    "readBy": [],
+    "createdAt": {
+      "$date": "2021-07-24T17:29:42.281Z"
+    },
+    "updatedAt": {
+      "$date": "2021-07-24T17:29:42.281Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "60fc4e09691b3a4b9366c1dd"
+    },
+    "receivers": [
+      {
+        "$oid": "60f8abc357d219facdeb65c8"
+      }
+    ],
+    "senders": [
+      {
+        "$oid": "60f8aa3557d219facdeb65b3"
+      }
+    ],
+    "linkedId": {
+      "$oid": "60fc4e09691b3a4b9366c1da"
+    },
+    "type": "new practice",
+    "notificationLinkedModel": "Practice",
+    "readBy": [],
+    "createdAt": {
+      "$date": "2021-07-24T17:29:45.512Z"
+    },
+    "updatedAt": {
+      "$date": "2021-07-24T17:29:45.512Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "60fc4e36691b3a4b9366c1e8"
+    },
+    "receivers": [
+      {
+        "$oid": "60f8abc357d219facdeb65c8"
+      }
+    ],
+    "senders": [
+      {
+        "$oid": "60f8aa3557d219facdeb65b3"
+      }
+    ],
+    "linkedId": "60fc4e09691b3a4b9366c1da",
+    "type": "new note",
+    "notificationLinkedModel": "Note",
+    "readBy": [],
+    "createdAt": {
+      "$date": "2021-07-24T17:30:30.608Z"
+    },
+    "updatedAt": {
+      "$date": "2021-07-24T17:30:30.608Z"
+    },
+    "__v": 0
+  }
+]
