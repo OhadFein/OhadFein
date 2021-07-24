@@ -13,6 +13,7 @@ import { NotificationsService } from 'src/notifications/notifications.service';
 import { EnumNotificationLinkedModel } from 'src/common/enums/notification-linked-model.enum';
 import { Notification } from 'src/notifications/schemas/notification.schema';
 import slugify from 'slugify';
+import { Figure } from 'src/figures/schemas/figure.schema';
 import { User, UserDocument, Coach, Star } from './schemas/user.schema';
 import { EnumRole } from '../common/enums/role.enum';
 import { matchRoles } from '../common/utils/match-roles';
@@ -120,6 +121,22 @@ export class UsersService {
   async removePractice(user: User, practiceId: Types.ObjectId): Promise<User> {
     return this.userModel
       .findByIdAndUpdate(user._id, { $pull: { practices: practiceId } }, { new: true })
+      .exec();
+  }
+
+  async addFigure(figure: Figure): Promise<void> {
+    this.userModel
+      .updateMany(
+        { _id: { $in: figure.stars } },
+        { $addToSet: { figures: figure._id } },
+        { new: true }
+      )
+      .exec();
+  }
+
+  async removeFigure(figure: Figure): Promise<void> {
+    this.userModel
+      .updateMany({ _id: { $in: figure.stars } }, { $pull: { figures: figure._id } }, { new: true })
       .exec();
   }
 

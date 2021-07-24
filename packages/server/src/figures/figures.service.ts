@@ -45,12 +45,16 @@ export class FiguresService {
     });
 
     await createdFigure.save();
+    await this.usersService.addFigure(createdFigure);
 
     return createdFigure;
   }
 
   async remove(id: Types.ObjectId): Promise<Figure> {
-    return this.figureModel.findByIdAndRemove({ _id: id }).exec();
+    const figure = await this.figureModel.findByIdAndRemove({ _id: id }).exec();
+    await this.usersService.removeFigure(figure);
+
+    return figure;
   }
 
   async addVideo(video: FigureVideo): Promise<Figure> {
