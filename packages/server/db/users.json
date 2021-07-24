@@ -1,0 +1,157 @@
+[
+  {
+    "_id": {
+      "$oid": "60f8aa3557d219facdeb65b3"
+    },
+    "figures": [],
+    "students": [],
+    "notifications": [],
+    "practices": [
+      {
+        "$oid": "60fc4df6691b3a4b9366c1c4"
+      },
+      {
+        "$oid": "60fc4e06691b3a4b9366c1cf"
+      },
+      {
+        "$oid": "60fc4e09691b3a4b9366c1da"
+      }
+    ],
+    "roles": ["user", "admin"],
+    "slug": "ema-lee",
+    "sub": "1d666488-dad8-443a-9c83-8662c7fda179",
+    "createdAt": {
+      "$date": "2021-07-21T23:13:57.973Z"
+    },
+    "updatedAt": {
+      "$date": "2021-07-24T17:29:45.503Z"
+    },
+    "__v": 1,
+    "firstName": "Ema",
+    "lastName": "Lee",
+    "coach": {
+      "$oid": "60f8abc357d219facdeb65c8"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "60f8aa4257d219facdeb65ba"
+    },
+    "figures": [
+      {
+        "$oid": "60fc44d9459e5848c414ec81"
+      },
+      {
+        "$oid": "60fc44ef459e5848c414ec87"
+      }
+    ],
+    "students": [],
+    "notifications": [],
+    "practices": [],
+    "roles": ["user", "star"],
+    "slug": "paul-moldovan",
+    "sub": "998dc664-d613-4219-9798-8d696bf8d911",
+    "firstName": "Paul",
+    "lastName": "Moldovan",
+    "createdAt": {
+      "$date": "2021-07-21T23:14:10.744Z"
+    },
+    "updatedAt": {
+      "$date": "2021-07-24T16:50:55.027Z"
+    },
+    "__v": 0,
+    "about": "2 times world champions 10 dance",
+    "logo": "stars/benedetto_ferruggia/logo.JPG",
+    "promoVideo": "stars/benedetto_ferruggia/fake.mov"
+  },
+  {
+    "_id": {
+      "$oid": "60f8aa4d57d219facdeb65c2"
+    },
+    "figures": [
+      {
+        "$oid": "60fc44d9459e5848c414ec81"
+      },
+      {
+        "$oid": "60fc44ef459e5848c414ec87"
+      }
+    ],
+    "students": [],
+    "notifications": [],
+    "practices": [],
+    "roles": ["user", "star"],
+    "slug": "cristina-tator",
+    "sub": "fa103e18-7736-4828-bd61-24b6ce44b51b",
+    "firstName": "Cristina",
+    "lastName": "Tator",
+    "createdAt": {
+      "$date": "2021-07-21T23:14:21.622Z"
+    },
+    "updatedAt": {
+      "$date": "2021-07-24T16:50:55.027Z"
+    },
+    "__v": 0,
+    "about": "2 times world champions 10 dance",
+    "logo": "stars/benedetto_ferruggia/logo.JPG",
+    "promoVideo": "stars/benedetto_ferruggia/fake.mov"
+  },
+  {
+    "_id": {
+      "$oid": "60f8abc357d219facdeb65c8"
+    },
+    "figures": [],
+    "students": [
+      {
+        "$oid": "60f8aa3557d219facdeb65b3"
+      }
+    ],
+    "notifications": [
+      {
+        "$oid": "60fc4df6691b3a4b9366c1c7"
+      },
+      {
+        "$oid": "60fc4e06691b3a4b9366c1d2"
+      },
+      {
+        "$oid": "60fc4e09691b3a4b9366c1dd"
+      },
+      {
+        "$oid": "60fc4e36691b3a4b9366c1e8"
+      }
+    ],
+    "practices": [],
+    "roles": ["user", "coach"],
+    "slug": "sergey-stepanov",
+    "sub": "26e4e6ea-90a9-4fda-9ef6-d1738a5dc5ba",
+    "createdAt": {
+      "$date": "2021-07-21T23:20:35.630Z"
+    },
+    "updatedAt": {
+      "$date": "2021-07-24T17:30:30.609Z"
+    },
+    "__v": 0,
+    "firstName": "Sergey",
+    "lastName": "Stepanov"
+  },
+  {
+    "_id": {
+      "$oid": "60fae64231d2a5eca293678b"
+    },
+    "figures": [],
+    "students": [],
+    "notifications": [],
+    "practices": [],
+    "roles": ["user"],
+    "slug": "ohad-fein",
+    "sub": "950c04d6-ecf1-4ce1-9c8e-12ecab8a1b01",
+    "firstName": "Ohad ",
+    "lastName": "Fein",
+    "createdAt": {
+      "$date": "2021-07-23T15:54:42.657Z"
+    },
+    "updatedAt": {
+      "$date": "2021-07-23T15:54:42.657Z"
+    },
+    "__v": 0
+  }
+]
