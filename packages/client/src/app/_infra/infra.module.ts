@@ -37,7 +37,8 @@ import {
   SideMenuComponent,
   UserAvatarComponent,
   UpperToolbarComponent,
-  BottomToolbarComponent
+  BottomToolbarComponent,
+  FormInputComponent
 } from './ui';
 import { MaterialModule } from './material.module';
 
@@ -68,7 +69,8 @@ const components = [
   SideMenuComponent,
   UserAvatarComponent,
   UpperToolbarComponent,
-  BottomToolbarComponent
+  BottomToolbarComponent,
+  FormInputComponent
 ];
 
 @NgModule({

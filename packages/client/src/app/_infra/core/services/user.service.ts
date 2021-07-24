@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { CreateUserDto, UserDto } from '@danskill/contract';
+import { CoachDto, CreateUserDto, UserDto } from '@danskill/contract';
 
 import { INotifications, IRestResponse, User, UserRestResponse } from '../models';
 import { BaseRestService } from './base-rest.service';
@@ -16,6 +16,10 @@ export class UserService {
 
   getUser(): Observable<UserDto> {
     return this.baseRestService.get<UserDto>('users/single');
+  }
+
+  getAllCoaches(): Observable<CoachDto[]> {
+    return this.baseRestService.get<CoachDto[]>('users/all/coaches');
   }
 
   userExists(): Observable<boolean> {

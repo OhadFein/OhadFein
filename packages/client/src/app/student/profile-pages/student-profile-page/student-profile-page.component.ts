@@ -1,52 +1,53 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AlertErrorService } from '@core/services';
-import { User, UserError } from '@infra/core/models';
-import * as UserActions from '@infra/store/actions/user.actions';
-import * as selectors from '@infra/store/selectors/user.selectors';
-import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '@core/services';
+import { Auth } from 'aws-amplify';
+import { UserDto, CoachDto } from '@danskill/contract';
+import { UserBaseDto } from '../../../../../../contract/src/users/user-base.dto';
 
 @Component({
   selector: 'dsapp-student-profile-page',
-  templateUrl: './student-profile-page.component.html'
+  templateUrl: './student-profile-page.component.html',
+  styleUrls: ['./student-profile-page.component.less']
 })
-export class StudentProfilePageComponent implements OnInit, OnDestroy {
-  subs: Subscription[] = [];
-  user: User = null;
-  errorMsg: UserError | string = null;
+export class StudentProfilePageComponent implements OnInit {
+  slug: string;
 
-  constructor(private store: Store<any>, private errorService: AlertErrorService) {}
+  selectedCoach: UserBaseDto;
 
-  ngOnInit() {
-    this.subs.push(
-      this.store.select(selectors.selectCurrentUser()).subscribe((res) => {
-        if (res) {
-          this.user = { ...res };
-          this.errorMsg = null;
-        } else {
-          this.store.dispatch(UserActions.BeginGetUserAction());
-        }
-      })
-    );
+  email: string;
 
-    this.subs.push(
-      this.store.select(selectors.selectCurrentUserError()).subscribe((res) => {
-        if (res && res.type) {
-          this.errorMsg = this.errorService.alertUserError(res.type);
-        }
-      })
-    );
-  }
+  allCoaches: CoachDto[];
 
-  tryAgain() {
-    this.user = null;
-    this.errorMsg = null;
-    setTimeout(() => {
-      this.store.dispatch(UserActions.BeginGetUserAction());
-    }, 2000);
-  }
+  testCoach = new CoachDto('some slug', 'sub');
 
-  ngOnDestroy(): void {
-    this.subs.forEach((sub) => sub.unsubscribe());
+  constructor(private userService: UserService) {}
+
+  async ngOnInit(): Promise<void> {
+    this.userService
+      .getUser()
+      .pipe(
+        map((user: UserDto) => {
+          this.slug = user.slug;
+          this.selectedCoach = user.coach;
+        })
+      )
+      .subscribe();
+
+    this.userService
+      .getAllCoaches()
+      .pipe(
+        map((coaches: CoachDto[]) => {
+          this.allCoaches = coaches;
+          if (coaches.length === 0) {
+            this.allCoaches = [this.testCoach];
+          }
+        })
+      )
+      .subscribe();
+
+    await Auth.currentUserInfo().then((loggedInUser) => {
+      this.email = loggedInUser.attributes.email;
+    });
   }
 }

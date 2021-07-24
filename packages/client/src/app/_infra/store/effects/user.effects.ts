@@ -28,21 +28,21 @@ export class UserEffects {
   //   )
   // );
 
-  updateUser$: Observable<Action> = createEffect(() =>
-    this.action$.pipe(
-      ofType(UserActions.BeginUpdateUserAction),
-      mergeMap((action) =>
-        this.userService.updateUser(action.payload).pipe(
-          map((data: User) => {
-            return UserActions.SuccessUpdateUserAction({ payload: data });
-          }),
-          catchError((error: Error) => {
-            return of(UserActions.ErrorUpdateUserAction(error));
-          })
-        )
-      )
-    )
-  );
+  // updateUser$: Observable<Action> = createEffect(() =>
+  //   this.action$.pipe(
+  //     ofType(UserActions.BeginUpdateUserAction),
+  //     mergeMap((action) =>
+  //       this.userService.updateUser(action.payload).pipe(
+  //         map((data: User) => {
+  //           return UserActions.SuccessUpdateUserAction({ payload: data });
+  //         }),
+  //         catchError((error: Error) => {
+  //           return of(UserActions.ErrorUpdateUserAction(error));
+  //         })
+  //       )
+  //     )
+  //   )
+  // );
 
   // never worked
   // getGeneralInfo$: Observable<Action> = createEffect(() =>
