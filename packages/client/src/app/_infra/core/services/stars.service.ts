@@ -18,10 +18,6 @@ export class StarsService {
   }
 
   getStars(): Observable<IUser[]> {
-    return this.baseRestService.get<StarsRestResponse>('users/all/stars').pipe(
-      map((res) => {
-        return res.data ? res.data : [];
-      })
-    );
+    return this.baseRestService.get<any>('users/all/stars');
   }
 }

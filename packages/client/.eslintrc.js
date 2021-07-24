@@ -1,8 +1,13 @@
 module.exports = {
   extends: ['@shared/eslint-config'],
+  ignorePatterns: ['./node_modules'],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    tsconfigRootDir: __dirname
+    ecmaVersion: 2017,
+    sourceType: 'module',
+    project: './tsconfig.json'
   },
+  plugins: ['@typescript-eslint', 'prettier'],
   rules: {
     'callback-return': ['error'],
     curly: ['error'],
