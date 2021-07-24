@@ -40,6 +40,7 @@ export class StudentProfilePageComponent implements OnInit {
         map((coaches: CoachDto[]) => {
           this.allCoaches = coaches;
           if (coaches.length === 0) {
+            // just for tests, remove after we have dummy data
             this.allCoaches = [this.testCoach];
           }
         })
