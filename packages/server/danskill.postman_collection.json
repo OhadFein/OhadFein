@@ -391,9 +391,45 @@
               }
             },
             "url": {
-              "raw": "{{url}}/users/coach/{{username}}",
+              "raw": "{{url}}/users/coach/{{coachSlug}}",
               "host": ["{{url}}"],
-              "path": ["users", "coach", "{{username}}"]
+              "path": ["users", "coach", "{{coachSlug}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "🔑 Make user to a star",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Set coach\", function () {",
+                  "",
+                  "    pm.response.to.have.status(200);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"promoVideo\": \"stars/benedetto_ferruggia/fake.mov\",\n  \"about\":\"2 times world champions 10 dance\",\n  \"logo\": \"stars/benedetto_ferruggia/logo.JPG\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/users/star/cristina-tator",
+              "host": ["{{url}}"],
+              "path": ["users", "star", "cristina-tator"]
             }
           },
           "response": []
@@ -474,7 +510,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n\t\"stars\": [\"{{userId}}\"],\n\t\"name\": \"figure 1\",\n\t\"type\": \"samba\",\n\t\"level\": \"advanced\",\n\t\"logo\": \"stars/benedetto_ferruggia/dance.JPG\"\n}",
+              "raw": "{\n\t\"stars\": [\"60f8aa4257d219facdeb65ba\", \"60f8aa4d57d219facdeb65c2\"],\n\t\"name\": \"figure 2\",\n\t\"type\": \"samba\",\n\t\"level\": \"advanced\",\n\t\"logo\": \"stars/benedetto_ferruggia/dance.JPG\"\n}",
               "options": {
                 "raw": {
                   "language": "json"
@@ -685,7 +721,7 @@
             "header": [],
             "body": {
               "mode": "raw",
-              "raw": "{\n    \"stars\": [\"{{userId}}\"],\n    \"key\": \"stars/SoulDance/nina/Batuchado.MOV\",\n    \"thumbnail\": \"stars/paul_moldovan/Rumba/opening_out/14570766_531615306963253_7292340220612807962_o.jpg\",\n    \"type\": \"comparable\"\n}",
+              "raw": "{\n    \"stars\": [\"{{userId}}\"],\n    \"key\": \"stars/benedetto_ferruggia/fake.mov\",\n    \"thumbnail\": \"stars/benedetto_ferruggia/dance.JPG\",\n    \"type\": \"comparable\"\n}",
               "options": {
                 "raw": {
                   "language": "json"

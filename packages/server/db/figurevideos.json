@@ -1,0 +1,116 @@
+[
+  {
+    "_id": {
+      "$oid": "60fc4cc7691b3a4b9366c19d"
+    },
+    "stars": [
+      {
+        "$oid": "60f8aa4257d219facdeb65ba"
+      }
+    ],
+    "figure": "60fc44ef459e5848c414ec87",
+    "key": "stars/benedetto_ferruggia/fake.mov",
+    "thumbnail": "stars/benedetto_ferruggia/dance.JPG",
+    "type": "comparable",
+    "createdAt": {
+      "$date": "2021-07-24T17:24:23.944Z"
+    },
+    "updatedAt": {
+      "$date": "2021-07-24T17:24:23.944Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "60fc4cce691b3a4b9366c1a3"
+    },
+    "stars": [
+      {
+        "$oid": "60f8aa4d57d219facdeb65c2"
+      }
+    ],
+    "figure": "60fc44ef459e5848c414ec87",
+    "key": "stars/benedetto_ferruggia/fake.mov",
+    "thumbnail": "stars/benedetto_ferruggia/dance.JPG",
+    "type": "comparable",
+    "createdAt": {
+      "$date": "2021-07-24T17:24:30.499Z"
+    },
+    "updatedAt": {
+      "$date": "2021-07-24T17:24:30.499Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "60fc4cd8691b3a4b9366c1a9"
+    },
+    "stars": [
+      {
+        "$oid": "60f8aa4257d219facdeb65ba"
+      },
+      {
+        "$oid": "60f8aa4d57d219facdeb65c2"
+      }
+    ],
+    "figure": "60fc44ef459e5848c414ec87",
+    "key": "stars/benedetto_ferruggia/fake.mov",
+    "thumbnail": "stars/benedetto_ferruggia/dance.JPG",
+    "type": "comparable",
+    "createdAt": {
+      "$date": "2021-07-24T17:24:40.207Z"
+    },
+    "updatedAt": {
+      "$date": "2021-07-24T17:24:40.207Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "60fc4ceb691b3a4b9366c1b0"
+    },
+    "stars": [
+      {
+        "$oid": "60f8aa4257d219facdeb65ba"
+      },
+      {
+        "$oid": "60f8aa4d57d219facdeb65c2"
+      }
+    ],
+    "figure": "60fc44ef459e5848c414ec87",
+    "key": "stars/benedetto_ferruggia/fake.mov",
+    "thumbnail": "stars/benedetto_ferruggia/dance.JPG",
+    "type": "promo",
+    "createdAt": {
+      "$date": "2021-07-24T17:24:59.365Z"
+    },
+    "updatedAt": {
+      "$date": "2021-07-24T17:24:59.365Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "60fc4cf1691b3a4b9366c1b7"
+    },
+    "stars": [
+      {
+        "$oid": "60f8aa4257d219facdeb65ba"
+      },
+      {
+        "$oid": "60f8aa4d57d219facdeb65c2"
+      }
+    ],
+    "figure": "60fc44ef459e5848c414ec87",
+    "key": "stars/benedetto_ferruggia/fake.mov",
+    "thumbnail": "stars/benedetto_ferruggia/dance.JPG",
+    "type": "basic principles",
+    "createdAt": {
+      "$date": "2021-07-24T17:25:05.101Z"
+    },
+    "updatedAt": {
+      "$date": "2021-07-24T17:25:05.101Z"
+    },
+    "__v": 0
+  }
+]
