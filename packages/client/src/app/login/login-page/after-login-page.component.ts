@@ -29,7 +29,7 @@ export class AfterLoginPageComponent implements OnInit {
         switchMap(() => {
           return fromPromise(Auth.currentUserInfo()).pipe(
             filter((loggedInUser) => this.isAmplifyInfo(loggedInUser)),
-            map((loggedInUser: IAmplifyInfo) => [this.extractUserName(loggedInUser), loggedInUser]),
+            map((loggedInUser: IAmplifyInfo) => [this.extractSlug(loggedInUser), loggedInUser]),
             switchMap(([username, loggedInUser]: [string, IAmplifyInfo]) =>
               this.usersService
                 .createNewUser(
@@ -48,10 +48,20 @@ export class AfterLoginPageComponent implements OnInit {
       .subscribe();
   }
 
-  extractUserName(loggedInUser: IAmplifyInfo): string {
-    const email: string | undefined = loggedInUser.attributes.email;
+  extractSlug(loggedInUser: IAmplifyInfo): string {
+    // const email: string | undefined = loggedInUser.attributes.email;
+    let slug = '';
 
-    return email?.split('@')[0];
+    if (loggedInUser.attributes.given_name) {
+      slug = (loggedInUser.attributes.given_name as string).trim();
+    }
+    if (loggedInUser.attributes.family_name) {
+      if (loggedInUser.attributes.given_name) slug += '-';
+      slug += (loggedInUser.attributes.family_name as string).trim();
+    }
+    if (!slug) slug = loggedInUser.attributes.email.split('@')[0];
+
+    return slug;
   }
 
   private isAmplifyInfo(user: IAmplifyInfo | {} | null): user is IAmplifyInfo {
