@@ -10,7 +10,14 @@ import {
   UseInterceptors,
 } from '@nestjs/common';
 import { Skip } from 'src/common/decorators/skip.decorator';
-import { CreateUserDto, StarDto, CoachDto, UserBaseDto, UserDto, CreateStarDto } from '@danskill/contract';
+import {
+  CreateUserDto,
+  StarDto,
+  CoachDto,
+  UserBaseDto,
+  UserDto,
+  CreateStarDto,
+} from '@danskill/contract';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
 import { RequestUser } from 'src/common/decorators/request-user.decorator';
 import { Roles } from 'src/common/decorators/roles.decorator';
