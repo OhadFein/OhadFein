@@ -13,6 +13,10 @@ import { UserBaseDto } from '../../../../../../contract/src/users/user-base.dto'
 export class StudentProfilePageComponent implements OnInit {
   slug: string;
 
+  firstName: string;
+
+  lastName: string;
+
   selectedCoach: UserBaseDto;
 
   email: string;
@@ -30,6 +34,8 @@ export class StudentProfilePageComponent implements OnInit {
         map((user: UserDto) => {
           this.slug = user.slug;
           this.selectedCoach = user.coach;
+          this.firstName = user.firstName;
+          this.lastName = user.lastName;
         })
       )
       .subscribe();
