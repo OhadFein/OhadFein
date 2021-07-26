@@ -9,7 +9,7 @@ export interface MenuItem {
 @Component({
   selector: 'dsapp-side-menu',
   templateUrl: './side-menu.component.html',
-  styleUrls: ['./side-menu.component.less']
+  styleUrls: ['./side-menu.component.scss']
 })
 export class SideMenuComponent {
   menu_items: MenuItem[] = [
