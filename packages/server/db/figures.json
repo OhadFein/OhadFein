@@ -1,0 +1,68 @@
+[
+  {
+    "_id": {
+      "$oid": "60fc44d9459e5848c414ec81"
+    },
+    "videos": [],
+    "stars": [
+      {
+        "$oid": "60f8aa4257d219facdeb65ba"
+      },
+      {
+        "$oid": "60f8aa4d57d219facdeb65c2"
+      }
+    ],
+    "name": "figure 1",
+    "logo": "stars/benedetto_ferruggia/dance.JPG",
+    "type": "samba",
+    "level": "advanced",
+    "createdAt": {
+      "$date": "2021-07-24T16:50:33.710Z"
+    },
+    "updatedAt": {
+      "$date": "2021-07-24T16:50:33.710Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "60fc44ef459e5848c414ec87"
+    },
+    "videos": [
+      {
+        "$oid": "60fc4cc7691b3a4b9366c19d"
+      },
+      {
+        "$oid": "60fc4cce691b3a4b9366c1a3"
+      },
+      {
+        "$oid": "60fc4cd8691b3a4b9366c1a9"
+      },
+      {
+        "$oid": "60fc4ceb691b3a4b9366c1b0"
+      },
+      {
+        "$oid": "60fc4cf1691b3a4b9366c1b7"
+      }
+    ],
+    "stars": [
+      {
+        "$oid": "60f8aa4257d219facdeb65ba"
+      },
+      {
+        "$oid": "60f8aa4d57d219facdeb65c2"
+      }
+    ],
+    "name": "figure 2",
+    "logo": "stars/benedetto_ferruggia/dance.JPG",
+    "type": "samba",
+    "level": "advanced",
+    "createdAt": {
+      "$date": "2021-07-24T16:50:55.025Z"
+    },
+    "updatedAt": {
+      "$date": "2021-07-24T17:25:05.103Z"
+    },
+    "__v": 0
+  }
+]

@@ -12,5 +12,11 @@ export class UserBaseDto {
   @Expose()
   slug: string;
 
+  @Expose()
+  firstName?: string;
+
+  @Expose()
+  lastName?: string;
+
   // @Expose() notifications: Notifcation[];
 }
