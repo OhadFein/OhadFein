@@ -5,7 +5,7 @@ import {
   CreateUserDto,
   EnumNotificationType,
   GetAllPracticesDto,
-  CreateStarDto,
+  CreateStarDto
 } from '@danskill/contract';
 import { Practice } from 'src/practices/schemas/practice.schema';
 import { FiguresService } from 'src/figures/figures.service';
@@ -35,7 +35,7 @@ export class UsersService {
       slug,
       sub: createUserDto.sub,
       firstName: createUserDto.firstName,
-      lastName: createUserDto.lastName,
+      lastName: createUserDto.lastName
     });
     await createdUser.save();
 
@@ -54,7 +54,7 @@ export class UsersService {
   }
 
   /* eslint-disable no-await-in-loop */
-  async getUniqueSlug(createUserDto: CreateUserDto): Promise<string> {
+  private async getUniqueSlug(createUserDto: CreateUserDto): Promise<string> {
     let currSlug = createUserDto.slug;
     let i = 1;
 
@@ -153,7 +153,7 @@ export class UsersService {
       .findOne({ slug })
       .populate({
         path: 'practices', // TODO: replace the strings with fixed values
-        match: query,
+        match: query
       })
       .exec();
 
