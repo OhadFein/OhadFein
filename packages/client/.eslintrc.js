@@ -15,7 +15,14 @@ module.exports = {
     'no-else-return': ['error'],
     'no-throw-literal': ['error'],
     'no-unused-vars': 'off',
-    '@typescript-eslint/no-unused-vars': 'off',
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "vars": "all",
+        "args": "after-used",
+        "ignoreRestSiblings": true
+      }
+    ],
     'no-var': ['error'],
     'prettier/prettier': [
       'error',
