@@ -39,7 +39,9 @@ import {
   UserAvatarComponent,
   UpperToolbarComponent,
   BottomToolbarComponent,
-  MainSearchBarComponent
+  MainSearchBarComponent,
+  StarPreviewItemComponent,
+  StarPreviewGridComponent
 } from './ui';
 import { MaterialModule } from './material.module';
 
@@ -71,7 +73,9 @@ const components = [
   UserAvatarComponent,
   UpperToolbarComponent,
   BottomToolbarComponent,
-  MainSearchBarComponent
+  MainSearchBarComponent,
+  StarPreviewItemComponent,
+  StarPreviewGridComponent
 ];
 
 @NgModule({

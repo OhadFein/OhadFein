@@ -1,0 +1,20 @@
+@import 'src/styles/_all';
+
+.star-preview {
+  object-fit: cover;
+  width: 100%;
+  height: 115px;
+  border-radius: $img-list-item-radius;
+
+  @include media-breakpoint-up(sm) {
+    height: 200px;
+  }
+}
+
+.star-name {
+  width: 100%;
+  margin-top: .5rem;
+  margin-bottom: rem(18px);
+  text-align: center;
+  font-size: $font-size-base;
+}
