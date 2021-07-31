@@ -1,7 +1,7 @@
 <mat-label class="input-label">{{label}}</mat-label>
 <mat-form-field class="form-full-width"
                 appearance="fill">
-    <input matInput
-           [disabled]="disabled"
-           value="{{value}}">
+       <input matInput
+              [disabled]="disabled"
+              [(ngModel)]="value">
 </mat-form-field>

@@ -11,6 +11,7 @@ import {
 } from 'ngx-videogular';
 
 import { StarNameDirective } from '@core/derectives';
+import { FormsModule } from '@angular/forms';
 import { BaseBgProcessComponent } from './core/models';
 import {
   AboutDanskillModalComponent,
@@ -83,7 +84,8 @@ const components = [
     VgOverlayPlayModule,
     VgBufferingModule,
     ImageCropperModule,
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   declarations: [components],
   exports: [components]
