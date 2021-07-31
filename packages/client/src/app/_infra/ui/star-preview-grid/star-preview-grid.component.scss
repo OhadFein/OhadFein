@@ -1,0 +1,15 @@
+@import 'src/styles/_all';
+
+.star-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 155px;
+  gap: 18px;
+  justify-items: stretch;
+  align-items: stretch;
+  margin-top: 2rem;
+
+  @include media-breakpoint-up(sm) {
+    grid-template-rows: 240px;
+  }
+}

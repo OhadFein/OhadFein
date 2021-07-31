@@ -1,11 +1,13 @@
+@import '../palette';
+
 @mixin underline($border) {
   display: inline-block;
   padding-bottom: 0.2rem;
   border-bottom: 2px solid $border;
 }
 
-@each $color, $value in $theme-colors {
-  .underline-#{$color} {
-    @include underline($value);
-  }
-}
+//@each $color, $value in $theme-colors {
+//  .underline-#{$color} {
+//    @include underline($value);
+//  }
+//}
