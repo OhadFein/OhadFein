@@ -20,6 +20,6 @@ export class StarsService {
   }
 
   getStars(): Observable<StarDto[]> {
-    return this.baseRestService.get<any>('users/all/stars');
+    return this.baseRestService.get<StarDto[]>('users/all/stars');
   }
 }
