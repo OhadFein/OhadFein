@@ -24,12 +24,12 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SocialLoginModule } from 'angularx-social-login';
 import { DeviceDetectorModule } from 'ngx-device-detector';
-import {MaterialModule} from '@infra/material.module';
+import { MaterialModule } from '@infra/material.module';
 
+import { LayoutModule } from '@angular/cdk/layout';
 import {
   FiguresEffects,
   PracticesEffects,
-  StarsContentEffects,
   StarsEffects,
   UserEffects,
   NotificationsEffects
@@ -37,11 +37,10 @@ import {
 import { APP_PROVIDERS } from './app-providers';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LayoutModule } from '@angular/cdk/layout';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, '/assets/i18n/', '.json?ob=' + new Date().getTime());
+  return new TranslateHttpLoader(http, '/assets/i18n/', `.json?ob=${new Date().getTime()}`);
 }
 
 @NgModule({
@@ -72,7 +71,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     EffectsModule.forRoot([
       UserEffects,
       StarsEffects,
-      StarsContentEffects,
       PracticesEffects,
       FiguresEffects,
       NotificationsEffects
@@ -87,7 +85,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     StudentModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: false }),
     LayoutModule,
-    MaterialModule,
+    MaterialModule
   ],
   entryComponents: [AboutDanskillModalComponent, VideoPlayerModalComponent],
   providers: [...APP_PROVIDERS],
