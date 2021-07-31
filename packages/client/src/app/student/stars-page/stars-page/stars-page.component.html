@@ -1,47 +1,14 @@
-<ng-template [ngIf]="users && !errorMsg && !loading">
-    <div class="row page-search-row">
-        <div class="col">
-            <div class="input-group input-group-sm">
-                <input type="text"
-                       class="form-control"
-                       [formControl]="search"
-                       placeholder="{{'STAR.chooseYourTeacher' | translate}}">
-                <div class="input-group-append">
-                    <i class="input-group-text icon-search"></i>
-                </div>
-            </div>
-        </div>
-    </div>
+<dsapp-main-search-bar [placeholder]="searchPlaceholder"
+                       (search)="onSearch($event)"></dsapp-main-search-bar>
 
-    <div *ngIf="filteredStars.length > 0"
-         class="row d-flex justify-content-center">
-        <div *ngFor="let star of filteredStars"
-             class="col-6 col-md-6 pb-2 col-lg-4 star-info-wrapper">
-            <dsapp-star-info [user]="star"></dsapp-star-info>
-        </div>
-    </div>
+<dsapp-star-preview-grid>
+    <ng-container *ngFor="let star of filteredStars">
+        <dsapp-star-preview-item [star]="star"></dsapp-star-preview-item>
+    </ng-container>
+</dsapp-star-preview-grid>
 
-    <div *ngIf="filteredStars.length === 0"
-         class="row">
-        <div class="col pt-2">
-            <p class="text-muted">
-                {{'ERRORS.noSerchResults' | translate:{param:searchString} }}
-            </p>
-        </div>
-    </div>
-</ng-template>
-
-
-<ng-template [ngIf]="!users && errorMsg && !loading">
-    <div class="row mb-4">
-        <div class="col">
-            <dsapp-inpage-error [heading]="'ERRORS.InformationNotFound'"
-                                [msg]="errorMsg"
-                                (action)="tryAgain()"></dsapp-inpage-error>
-        </div>
-    </div>
-</ng-template>
-
-<ng-template [ngIf]="loading">
-    <ui-preloader-inapp></ui-preloader-inapp>
-</ng-template>
+<div *ngIf="!filteredStars.length" class="no-result-text-wrapper">
+    <p class="no-result-text">
+        {{ 'ERRORS.noSerchResults' | translate:{ param: searchString } }}
+    </p>
+</div>

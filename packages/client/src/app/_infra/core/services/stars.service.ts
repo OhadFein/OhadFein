@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { IUser, StarsRestResponse, IStarContent, IRestResponse } from '@core/models';
+import { StarDto } from '@danskill/contract';
+import { IStarContent, IRestResponse } from '@core/models';
+
 import { BaseRestService } from './base-rest.service';
 
 @Injectable({
@@ -11,17 +13,13 @@ import { BaseRestService } from './base-rest.service';
 export class StarsService {
   constructor(private baseRestService: BaseRestService) {}
 
-  getStarContent(starId): Observable<IStarContent> {
+  getStarContent(starId: string): Observable<IStarContent> {
     return this.baseRestService
       .get<IRestResponse>(`stars/${starId}`)
       .pipe(map((response) => response.data ?? []));
   }
 
-  getStars(): Observable<IUser[]> {
-    return this.baseRestService.get<StarsRestResponse>('users/all/stars').pipe(
-      map((res) => {
-        return res.data ? res.data : [];
-      })
-    );
+  getStars(): Observable<StarDto[]> {
+    return this.baseRestService.get<any>('users/all/stars');
   }
 }
