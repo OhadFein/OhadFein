@@ -11,7 +11,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
         z-index: 1;
       }
 
-      .upper-tollbar {
+      .upper-toolbar {
+        display: flex;
+        justify-content: space-between;
         background: inherit;
         border-bottom: 0.8px solid #ededed;
       }
@@ -19,12 +21,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
   ]
 })
 export class UpperToolbarComponent {
-
   @Output() public sideMenuOpen = new EventEmitter();
 
-  public onOpenSideMenu = () => {
-    this.sideMenuOpen.emit()
-  }
-  
-  constructor() {}
+  onOpenSideMenu = (): void => {
+    this.sideMenuOpen.emit();
+  };
 }
