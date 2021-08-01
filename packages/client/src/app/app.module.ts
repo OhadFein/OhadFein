@@ -30,7 +30,6 @@ import { MaterialModule } from '@infra/material.module';
 import {
   FiguresEffects,
   PracticesEffects,
-  StarsContentEffects,
   StarsEffects,
   UserEffects,
   NotificationsEffects
@@ -41,7 +40,7 @@ import { AppComponent } from './app.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http, '/assets/i18n/', '.json?ob=' + new Date().getTime());
+  return new TranslateHttpLoader(http, '/assets/i18n/', `.json?ob=${new Date().getTime()}`);
 }
 
 @NgModule({
@@ -72,7 +71,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     EffectsModule.forRoot([
       UserEffects,
       StarsEffects,
-      StarsContentEffects,
       PracticesEffects,
       FiguresEffects,
       NotificationsEffects
