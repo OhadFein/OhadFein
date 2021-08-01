@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
       .bottom-nav {
         display: flex;
         justify-content: space-around;
-        background: inherit;
+        background: white;
         position: fixed;
         bottom: 0px;
         border-top: 0.8px solid #ededed;
