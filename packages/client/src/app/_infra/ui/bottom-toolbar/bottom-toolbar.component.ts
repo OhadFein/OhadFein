@@ -3,37 +3,6 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'dsapp-bottom-toolbar',
   templateUrl: './bottom-toolbar.component.html',
-  styles: [
-    `
-      .bottom-nav {
-        display: flex;
-        justify-content: space-around;
-        background: inherit;
-        position: fixed;
-        bottom: 0px;
-        border-top: 0.8px solid #ededed;
-      }
-
-      .danskill-btn {
-        color: #aeaeae;
-        font-size: 12px;
-        display: flex;
-        justify-content: center;
-      }
-
-      .bottom-nav-icon {
-        position: absolute;
-        top: 9px;
-      }
-
-      .bottom-nav-text {
-        font-family: Poppins;
-        position: relative;
-        top: 15px;
-      }
-    `
-  ]
+  styleUrls: ['./bottom-toolbar.component.scss']
 })
-export class BottomToolbarComponent {
-  constructor() {}
-}
+export class BottomToolbarComponent {}

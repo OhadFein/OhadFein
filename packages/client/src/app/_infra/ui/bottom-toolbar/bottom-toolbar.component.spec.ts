@@ -6,16 +6,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { BottomToolbarComponent } from '..';
 
-import { NewNavComponent } from './new-nav.component';
 
-describe('NewNavComponent', () => {
-  let component: NewNavComponent;
-  let fixture: ComponentFixture<NewNavComponent>;
+describe('BottomToolbarComponent', () => {
+  let component: BottomToolbarComponent;
+  let fixture: ComponentFixture<BottomToolbarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [NewNavComponent],
+      declarations: [BottomToolbarComponent],
       imports: [
         NoopAnimationsModule,
         LayoutModule,
@@ -29,7 +29,7 @@ describe('NewNavComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NewNavComponent);
+    fixture = TestBed.createComponent(BottomToolbarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

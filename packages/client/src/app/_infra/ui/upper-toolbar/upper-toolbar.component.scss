@@ -1,0 +1,12 @@
+@import 'src/styles/_all';
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.upper-toolbar {
+  background: $ds-color-background;
+  border-bottom: 0.8px solid #ededed;
+}

@@ -24,9 +24,9 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { SocialLoginModule } from 'angularx-social-login';
 import { DeviceDetectorModule } from 'ngx-device-detector';
+import { LayoutModule } from '@angular/cdk/layout';
 import { MaterialModule } from '@infra/material.module';
 
-import { LayoutModule } from '@angular/cdk/layout';
 import {
   FiguresEffects,
   PracticesEffects,
