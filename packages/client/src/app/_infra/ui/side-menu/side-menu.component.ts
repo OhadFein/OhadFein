@@ -47,7 +47,7 @@ export class SideMenuComponent {
 
   @Output() public sideMenuClose = new EventEmitter();
 
-  public onCloseSideMenu = (): void => {
+  onCloseSideMenu = (): void => {
     this.sideMenuClose.emit();
   };
 }

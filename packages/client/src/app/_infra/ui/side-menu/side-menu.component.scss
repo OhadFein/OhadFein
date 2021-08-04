@@ -1,5 +1,7 @@
+@import 'src/styles/_all';
+
 .mat-toolbar {
-  background: inherit;
+  background: $ds-color-background;
   justify-content: space-between;
 }
 .mat-toolbar.mat-primary {
@@ -9,8 +11,7 @@
 }
 
 .mat-list-base .mat-list-item .mat-line.sidenav-menu-text {
-  font-family: Poppins;
-  font-style: normal;
+  // font-style: normal;
   font-size: small;
 }
 
@@ -22,6 +23,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #eaeaea;
+  background-color: $ds-icon-background-color;
   font-size: medium;
 }

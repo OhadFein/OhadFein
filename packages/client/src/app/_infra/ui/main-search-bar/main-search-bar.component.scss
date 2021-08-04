@@ -1,0 +1,29 @@
+@import 'src/styles/_all';
+
+.search-icon {
+  position: absolute;
+  color: $ds-color-text-secondary;
+  line-height: rem(22px);
+  transform: translate(50%, 50%);
+}
+
+.main-search-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 14px 0 44px;
+  border: none;
+  border-radius: $input-border-radius;
+  color: $ds-color-text-secondary;
+  background-color: $ds-color-input-background;
+  font-size: $h1-font-size;
+  line-height: $line-height-base;
+
+  &::placeholder {
+    color: $ds-color-text-secondary;
+  }
+
+  &::selection {
+    color: $ds-color-tag-yellow;
+    background-color: lighten($ds-color-tag-yellow, 40%);
+  }
+}

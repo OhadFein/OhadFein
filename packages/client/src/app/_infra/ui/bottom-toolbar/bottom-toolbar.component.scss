@@ -1,21 +1,23 @@
+@import 'src/styles/_all';
+
 .bottom-nav {
   display: flex;
   justify-content: space-around;
-  background: white;
+  background: $ds-color-background;
   position: fixed;
   bottom: 0px;
   border-top: 0.8px solid #ededed;
 }
 
 .danskill-btn {
-  color: #aeaeae;
+  color: $ds-color-bottom-nav-btn;
   font-size: 12px;
   display: flex;
   justify-content: center;
 }
 
 .danskill-btn.active {
-  color: #343434;
+  color: $ds-color-bottom-nav-btn-active;
 }
 
 .bottom-nav-icon {
@@ -24,7 +26,6 @@
 }
 
 .bottom-nav-text {
-  font-family: Poppins;
   position: relative;
   top: 15px;
 }

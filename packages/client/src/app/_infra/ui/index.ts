@@ -24,3 +24,6 @@ export * from './user-avatar/user-avatar.component';
 export * from './upper-toolbar/upper-toolbar.component';
 export * from './bottom-toolbar/bottom-toolbar.component';
 export * from './form-input/form-input.component';
+export * from './main-search-bar/main-search-bar.component';
+export * from './star-preview-item/star-preview-item.component';
+export * from './star-preview-grid/star-preview-grid.component';
