@@ -1,3 +1,5 @@
+@import 'src/styles/_all';
+
 .profile-form {
   min-width: 150px;
   max-width: 500px;
@@ -5,38 +7,10 @@
   padding-top: 20px;
 }
 
-.select-coach-field {
-  width: 100%;
-  font-family: Poppins;
-  font-size: small;
-  line-height: 2.125;
-}
-
-::ng-deep .mat-form-field-infix {
-  border-top: none;
-  padding: 0.5em 0 !important;
-  display: flex !important;
-}
-
-::ng-deep .mat-select-arrow {
-  color: transparent !important;
-}
-
-.input-label {
-  font-size: x-small;
-  color: #888888;
-  padding-bottom: 5px;
-}
-
-.expand-icon {
-  color: #a1a1a3;
-}
-
 .save-btn {
   width: 100%;
-  color: #ffffff;
-  background-color: #343434;
-  font-family: 'POPPINS';
+  color: $ds-color-text-secondary;
+  background-color: $ds-color-button-main;
   font-size: 13px;
   border: none;
   border-radius: 7px;

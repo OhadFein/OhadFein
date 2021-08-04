@@ -11,12 +11,21 @@
 ::ng-deep .mat-form-field-infix {
   border-top: none;
   padding: 0.5em 0 !important;
+  display: flex !important;
+}
+
+::ng-deep .mat-select-arrow {
+  color: transparent !important;
 }
 
 .input-label {
   font-size: x-small;
   color: #888888;
   padding-bottom: 5px;
+}
+
+.expand-icon {
+  color: #a1a1a3;
 }
 
 .form-full-width {

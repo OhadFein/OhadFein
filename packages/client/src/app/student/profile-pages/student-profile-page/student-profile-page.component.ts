@@ -52,7 +52,7 @@ export class StudentProfilePageComponent implements OnInit {
       .updateUserDetails(this.newFirstName, this.newLastName, this.newCoach)
       .pipe(finalize(() => window.location.reload()))
       .subscribe();
-    // Add refresh
+    // Make a loader instead of reloading the page
   }
 
   private async initProfilePage(): Promise<void> {
