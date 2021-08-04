@@ -1,3 +1,4 @@
+import { UpdateUserDto } from './../../../contract/src/users/update-user.dto';
 import {
   Body,
   Controller,
@@ -5,7 +6,9 @@ import {
   HttpException,
   HttpStatus,
   Param,
+  Patch,
   Post,
+  Put,
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
@@ -96,8 +99,11 @@ export class UsersController {
     return this.usersService.getStudents(reqUser);
   }
 
-  @Post('coach/:slug')
-  async setCoach(@RequestUser() reqUser: User, @Param('slug') slug: string): Promise<void> {
-    await this.usersService.setCoach(reqUser, slug);
+  @Patch()
+  async updateUserDetails(
+    @RequestUser() reqUser: User,
+    @Body() updateUserReq: UpdateUserDto
+  ): Promise<void> {
+    return this.usersService.updateUserDetails(reqUser, updateUserReq);
   }
 }

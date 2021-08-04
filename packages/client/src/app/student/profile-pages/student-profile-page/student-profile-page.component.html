@@ -6,22 +6,26 @@
                     [value]="email"
                     [disabled]="true"></dsapp-form-input>
   <dsapp-form-input [label]="'Username'"
-                    [value]="slug"></dsapp-form-input>
+                    [value]="slug"
+                    [disabled]="true"></dsapp-form-input>
   <dsapp-form-input [label]="'First Name'"
-                    [value]="firstName"></dsapp-form-input>
+                    [value]="firstName"
+                    (input)="onFirstNameChange($event)"></dsapp-form-input>
   <dsapp-form-input [label]="'Last Name'"
-                    [value]="lastName"></dsapp-form-input>
+                    [value]="lastName"
+                    (input)="onLastNameChange($event)"></dsapp-form-input>
   <mat-label class="input-label">Coach</mat-label>
   <mat-form-field class="profile-full-width"
                   appearance="fill">
     <mat-select [placeholder]="'Select your coach'"
-                [(value)]="selectedCoach">
-      <mat-option *ngFor="let coach of allCoaches"
-                  [value]="coach">{{coach.slug}}</mat-option>
+                [(value)]="coach">
+      <mat-option *ngFor="let someCoach of allCoaches"
+                  [value]="someCoach">{{someCoach}}</mat-option>
     </mat-select>
     <mat-icon class="expand-icon">expand_more</mat-icon>
   </mat-form-field>
   <button mat-flat-button
           class="save-btn"
-          color="#343434">Save Changes</button>
+          color="#343434"
+          (click)="saveChanges()">Save Changes</button>
 </form>

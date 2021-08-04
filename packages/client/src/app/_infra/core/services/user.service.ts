@@ -1,7 +1,8 @@
+import { UpdateUserDto } from './../../../../../../contract/src/users/update-user.dto';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { CoachDto, CreateUserDto, UserDto } from '@danskill/contract';
+import { CoachDto, CreateUserDto, UserDto, UserBaseDto } from '@danskill/contract';
 
 import { INotifications, IRestResponse, User, UserRestResponse } from '../models';
 import { BaseRestService } from './base-rest.service';
@@ -37,35 +38,9 @@ export class UserService {
     return this.baseRestService.post<UserDto>('users', createUserDto);
   }
 
-  // getGeneralInfo(): Observable<INotifications> {
-  //   return this.baseRestService.get<IRestResponse>('').pipe(
-  //     map(
-  //       (res) => {
-  //         if (res.success) {
-  //           return res.data;
-  //         }
-  //         throwError([res.message]); // TODO: add real error here
-  //       },
-  //       () => {
-  //         throwError(['ERRORS.GeneralBackendError']);
-  //       }
-  //     )
-  //   );
-  // }
+  updateUserDetails(firstName: string, lastName: string, coach?: string): Observable<void> {
+    const updateUserDto = new UpdateUserDto(firstName, lastName, coach);
 
-  // updateUser(user: User): Observable<User> {
-  //   return this.baseRestService.patch<UserRestResponse>('account/profile', user.profile).pipe(
-  //     map(
-  //       (res) => {
-  //         if (res.success) {
-  //           return user;
-  //         }
-  //         throwError([res.message]); // TODO: add real error here
-  //       },
-  //       () => {
-  //         throwError(['ERRORS.GeneralBackendError']);
-  //       }
-  //     )
-  //   );
-  // }
+    return this.baseRestService.patch<void>('users', updateUserDto);
+  }
 }

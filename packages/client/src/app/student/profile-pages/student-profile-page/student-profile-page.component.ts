@@ -17,23 +17,43 @@ export class StudentProfilePageComponent implements OnInit {
 
   lastName: string;
 
-  selectedCoach: UserBaseDto;
+  coach: string;
 
   email: string;
 
-  allCoaches: CoachDto[];
+  allCoaches: string[];
 
-  testCoach = new CoachDto('some slug', 'sub');
+  newFirstName: string;
+
+  newLastName: string;
 
   constructor(private userService: UserService) {}
 
   async ngOnInit(): Promise<void> {
+    await this.initProfilePage();
+  }
+
+  onFirstNameChange(value: string): void {
+    this.newFirstName = value;
+  }
+
+  onLastNameChange(value: string): void {
+    this.newLastName = value;
+  }
+
+  async saveChanges(): Promise<void> {
+    await this.userService
+      .updateUserDetails(this.newFirstName, this.newLastName, this.coach)
+      .subscribe();
+  }
+
+  private async initProfilePage(): Promise<void> {
     this.userService
       .getUser()
       .pipe(
         map((user: UserDto) => {
           this.slug = user.slug;
-          this.selectedCoach = user.coach;
+          this.coach = user.coach.slug;
           this.firstName = user.firstName;
           this.lastName = user.lastName;
         })
@@ -44,11 +64,7 @@ export class StudentProfilePageComponent implements OnInit {
       .getAllCoaches()
       .pipe(
         map((coaches: CoachDto[]) => {
-          this.allCoaches = coaches;
-          if (coaches.length === 0) {
-            // just for tests, remove after we have dummy data
-            this.allCoaches = [this.testCoach];
-          }
+          this.allCoaches = coaches.map((coach) => coach.slug);
         })
       )
       .subscribe();
