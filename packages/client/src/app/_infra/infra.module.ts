@@ -42,7 +42,8 @@ import {
   FormInputComponent,
   MainSearchBarComponent,
   StarPreviewItemComponent,
-  StarPreviewGridComponent
+  StarPreviewGridComponent,
+  FormSelectComponent
 } from './ui';
 import { MaterialModule } from './material.module';
 
@@ -77,7 +78,8 @@ const components = [
   FormInputComponent,
   MainSearchBarComponent,
   StarPreviewItemComponent,
-  StarPreviewGridComponent
+  StarPreviewGridComponent,
+  FormSelectComponent
 ];
 
 @NgModule({

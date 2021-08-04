@@ -5,21 +5,11 @@
   padding-top: 20px;
 }
 
-.profile-full-width {
+.select-coach-field {
   width: 100%;
   font-family: Poppins;
   font-size: small;
   line-height: 2.125;
-}
-
-::ng-deep .mat-form-field-underline {
-  display: none;
-}
-
-::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
-  padding: 0 !important;
-  padding-left: 0.75em !important;
-  border-radius: 10px !important;
 }
 
 ::ng-deep .mat-form-field-infix {
@@ -33,7 +23,6 @@
 }
 
 .input-label {
-  font-family: Poppins;
   font-size: x-small;
   color: #888888;
   padding-bottom: 5px;

@@ -1,14 +1,14 @@
-import { map } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '@core/services';
 import { Auth } from 'aws-amplify';
 import { UserDto, CoachDto } from '@danskill/contract';
-import { UserBaseDto } from '../../../../../../contract/src/users/user-base.dto';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dsapp-student-profile-page',
   templateUrl: './student-profile-page.component.html',
-  styleUrls: ['./student-profile-page.component.less']
+  styleUrls: ['./student-profile-page.component.scss']
 })
 export class StudentProfilePageComponent implements OnInit {
   slug: string;
@@ -27,7 +27,9 @@ export class StudentProfilePageComponent implements OnInit {
 
   newLastName: string;
 
-  constructor(private userService: UserService) {}
+  newCoach: string;
+
+  constructor(private userService: UserService, private router: Router) {}
 
   async ngOnInit(): Promise<void> {
     await this.initProfilePage();
@@ -41,10 +43,16 @@ export class StudentProfilePageComponent implements OnInit {
     this.newLastName = value;
   }
 
+  onCoachChange(value: string): void {
+    this.newCoach = value;
+  }
+
   async saveChanges(): Promise<void> {
     await this.userService
-      .updateUserDetails(this.newFirstName, this.newLastName, this.coach)
+      .updateUserDetails(this.newFirstName, this.newLastName, this.newCoach)
+      .pipe(finalize(() => window.location.reload()))
       .subscribe();
+    // Add refresh
   }
 
   private async initProfilePage(): Promise<void> {
@@ -53,7 +61,7 @@ export class StudentProfilePageComponent implements OnInit {
       .pipe(
         map((user: UserDto) => {
           this.slug = user.slug;
-          this.coach = user.coach.slug;
+          this.coach = user.coach ? user.coach.slug : '';
           this.firstName = user.firstName;
           this.lastName = user.lastName;
         })

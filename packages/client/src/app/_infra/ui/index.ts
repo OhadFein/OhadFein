@@ -27,3 +27,4 @@ export * from './form-input/form-input.component';
 export * from './main-search-bar/main-search-bar.component';
 export * from './star-preview-item/star-preview-item.component';
 export * from './star-preview-grid/star-preview-grid.component';
+export * from './form-select/form-select.component';

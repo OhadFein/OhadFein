@@ -20,4 +20,11 @@
        class="sidenav-menu-text"
        href="{{menu_item.link}}">{{menu_item.text}}</a>
   </mat-list-item>
+  <mat-list-item class="sidenav-menu-item">
+    <mat-icon class="sidenav-menu-icon"
+              mat-list-icon>logout</mat-icon>
+    <a mat-line
+       class="sidenav-menu-text"
+       (click)="logOut()">Log Out</a>
+  </mat-list-item>
 </mat-nav-list>

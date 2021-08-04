@@ -14,18 +14,12 @@
   <dsapp-form-input [label]="'Last Name'"
                     [value]="lastName"
                     (input)="onLastNameChange($event)"></dsapp-form-input>
-  <mat-label class="input-label">Coach</mat-label>
-  <mat-form-field class="profile-full-width"
-                  appearance="fill">
-    <mat-select [placeholder]="'Select your coach'"
-                [(value)]="coach">
-      <mat-option *ngFor="let someCoach of allCoaches"
-                  [value]="someCoach">{{someCoach}}</mat-option>
-    </mat-select>
-    <mat-icon class="expand-icon">expand_more</mat-icon>
-  </mat-form-field>
+  <dsapp-form-select [label]="'Coach'"
+                     [value]="coach"
+                     [placeholder]="'Select your coach'"
+                     [options]="allCoaches"
+                     (select)="onCoachChange($event)"></dsapp-form-select>
   <button mat-flat-button
           class="save-btn"
-          color="#343434"
           (click)="saveChanges()">Save Changes</button>
 </form>

@@ -1,0 +1,11 @@
+<mat-label class="input-label">{{label}}</mat-label>
+<mat-form-field class="form-full-width"
+                appearance="fill">
+     <mat-select [placeholder]="placeholder"
+                 [formControl]="control"
+                 [(ngModel)]="value">
+          <mat-option *ngFor="let option of options"
+                      [value]="option">{{option}}</mat-option>
+     </mat-select>
+     <mat-icon class="expand-icon">expand_more</mat-icon>
+</mat-form-field>

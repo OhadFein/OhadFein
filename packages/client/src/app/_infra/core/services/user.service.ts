@@ -1,10 +1,7 @@
-import { UpdateUserDto } from './../../../../../../contract/src/users/update-user.dto';
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { CoachDto, CreateUserDto, UserDto, UserBaseDto } from '@danskill/contract';
+import { Observable } from 'rxjs';
+import { CoachDto, CreateUserDto, UserDto, UpdateUserDto } from '@danskill/contract';
 
-import { INotifications, IRestResponse, User, UserRestResponse } from '../models';
 import { BaseRestService } from './base-rest.service';
 
 @Injectable({
