@@ -1,4 +1,3 @@
-import { MatButtonModule } from '@angular/material/button';
 import { NgModule } from '@angular/core';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -19,8 +18,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
-    MatInputModule,
-    MatButtonModule
+    MatInputModule
   ],
   exports: [
     MatSidenavModule,
@@ -31,8 +29,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     MatFormFieldModule,
     MatSelectModule,
     MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule
+    MatInputModule
   ]
 })
 export class MaterialModule {}
