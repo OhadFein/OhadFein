@@ -1,0 +1,25 @@
+@import 'src/styles/_all';
+
+.star-initials {
+  display: flex;
+  align-items: center;
+
+  .star-initials__avatar {
+    width: $avatar-size;
+    height: $avatar-size;
+    line-height: $avatar-size;
+    text-align: center;
+    background-color: $ds-color-icon-background;
+    border-radius: 50%;
+
+    .star-initials__text {
+      font-size: 1.2rem
+    }
+  }
+
+  .star-initials__full-name {
+    margin-left: rem(14px);
+    font-size: 1rem;
+    font-weight: 400;
+  }
+}
