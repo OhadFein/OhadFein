@@ -5,6 +5,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { catchError, map, mergeMap } from 'rxjs/operators';
+import { NotificationDto } from '@danskill/contract';
 import * as NotificationsActions from '../actions/notifications.actions';
 
 @Injectable()
@@ -16,7 +17,7 @@ export class NotificationsEffects {
       ofType(NotificationsActions.BeginGetNotificationsAction),
       mergeMap(() =>
         this.notificationsService.getNotifications().pipe(
-          map((notifications: INotifications[]) => {
+          map((notifications: NotificationDto[]) => {
             return NotificationsActions.SuccessGetNotificationsAction({
               payload: notifications
             });
