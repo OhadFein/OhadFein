@@ -1,3 +1,4 @@
+import { UserService } from '@core/services';
 import { Component, OnInit, Input } from '@angular/core';
 import { Auth } from 'aws-amplify';
 import { fromPromise } from 'rxjs/internal-compatibility';
@@ -6,20 +7,27 @@ import { map } from 'rxjs/operators';
 @Component({
   selector: 'user-avatar',
   templateUrl: './user-avatar.component.html',
-  styleUrls: ['./user-avatar.component.less']
+  styleUrls: ['./user-avatar.component.scss']
 })
 export class UserAvatarComponent implements OnInit {
-  public showInitials = false;
-  public initials: string;
-  public circleColor: string;
-  public fullName : string;
-  public userName : string;
+  constructor(private userService: UserService) {}
 
-  async ngOnInit() {
+  public showInitials = false;
+
+  public initials: string;
+
+  public circleColor: string;
+
+  public fullName: string;
+
+  public userName: string;
+
+  async ngOnInit(): Promise<void> {
     await Auth.currentUserInfo().then((loggedInUser) => {
-        this.fullName= this.extractFullName(loggedInUser)
-        this.userName = this.extractUserName(loggedInUser)
-    })
+      this.fullName = this.extractFullName(loggedInUser);
+    });
+
+    this.userName = await this.getUsername();
 
     this.createInititals();
 
@@ -27,37 +35,21 @@ export class UserAvatarComponent implements OnInit {
   }
 
   private createInititals(): void {
-    console.log("Name is:" + this.fullName)
-    let initials = '';
-
-    for (let i = 0; i < this.fullName.length; i++) {
-      if (this.fullName.charAt(i) === ' ') {
-        continue;
-      }
-
-      if (this.fullName.charAt(i) === this.fullName.charAt(i).toUpperCase()) {
-        initials += this.fullName.charAt(i);
-
-        if (initials.length == 2) {
-          break;
-        }
-      }
-    }
-    console.log("Initials are: " + initials)
-    this.initials = initials;
+    const names = this.fullName.split(' ');
+    this.initials = names[0].charAt(0).toUpperCase() + names[1].charAt(0).toUpperCase();
   }
 
   private extractFullName(loggedInUser): string {
-    const fullName: string | undefined =
-      loggedInUser.attributes.given_name + " " + loggedInUser.attributes.family_name;
-    console.log("Returning " + fullName)
+    const fullName:
+      | string
+      | undefined = `${loggedInUser.attributes.given_name} ${loggedInUser.attributes.family_name}`;
+
     return fullName;
   }
 
-  extractUserName(loggedInUser): string {
-    const email: string | undefined = loggedInUser.attributes.email;
+  private async getUsername(): Promise<string> {
+    const user = await this.userService.getUser().toPromise();
 
-    return email?.split('@')[0];
+    return user.slug;
   }
-
 }

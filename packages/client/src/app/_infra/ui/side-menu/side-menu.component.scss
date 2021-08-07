@@ -1,0 +1,28 @@
+@import 'src/styles/_all';
+
+.mat-toolbar {
+  background: $ds-color-background;
+  justify-content: space-between;
+}
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.mat-list-base .mat-list-item .mat-line.sidenav-menu-text {
+  // font-style: normal;
+  font-size: small;
+}
+
+.mat-list-base .mat-list-item.sidenav-menu-item {
+  padding: 0 25px;
+}
+
+.mat-list-base .mat-list-item .mat-list-icon.sidenav-menu-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $ds-icon-background-color;
+  font-size: medium;
+}
