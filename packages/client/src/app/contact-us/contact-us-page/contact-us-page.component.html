@@ -1,0 +1,23 @@
+<div class="container inner-page-container full-height">
+  <div class="contact-us-header">Hi there!</div>
+  <a class="contact-us-text">Feel free to contact us and we will get back as soon as we can.</a>
+  <form class="contact-us-form">
+    <dsapp-form-input [label]="'Name'"
+                      [value]="name"
+                      [disabled]="true"></dsapp-form-input>
+    <dsapp-form-input [label]="'Email'"
+                      [value]="email"
+                      [disabled]="true"></dsapp-form-input>
+    <dsapp-form-select [label]="'Subject'"
+                       [placeholder]="'Choose a subject'"
+                       [options]="subjects"
+                       (select)="onSubjectChange($event)"></dsapp-form-select>
+    <dsapp-form-textarea class="message-text-box"
+                         [label]="'Message'"
+                         (input)="onMessageChange($event)"></dsapp-form-textarea>
+
+    <button mat-flat-button
+            class="send-btn"
+            (click)="sendMessage()">Send</button>
+  </form>
+</div>

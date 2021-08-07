@@ -24,7 +24,7 @@ export class SideMenuComponent {
     {
       icon_name: 'contact_mail',
       text: 'Contact us',
-      link: ''
+      link: 'contact'
     }
   ];
 

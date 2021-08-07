@@ -19,6 +19,11 @@ const routes: Routes = [
       import('./notifications/notifications.module').then((m) => m.NotificationsModule),
     canActivate: [AuthGuard]
   },
+  {
+    path: 'contact',
+    loadChildren: () => import('./contact-us/contact-us.module').then((m) => m.ContactUsModule),
+    canActivate: [AuthGuard]
+  },
   { path: '**', component: PageNotFoundComponent }
 ];
 

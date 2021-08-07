@@ -1,4 +1,3 @@
-import { UpdateUserDto } from './../../../contract/src/users/update-user.dto';
 import {
   Body,
   Controller,
@@ -8,7 +7,6 @@ import {
   Param,
   Patch,
   Post,
-  Put,
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
@@ -20,6 +18,7 @@ import {
   UserBaseDto,
   UserDto,
   CreateStarDto,
+  UpdateUserDto,
 } from '@danskill/contract';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
 import { RequestUser } from 'src/common/decorators/request-user.decorator';

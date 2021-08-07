@@ -1,0 +1,8 @@
+<mat-label class="input-label">{{label}}</mat-label>
+<mat-form-field class="form-full-width"
+                appearance="fill">
+       <textarea matInput
+                 [disabled]="disabled"
+                 [formControl]="control"
+                 [(ngModel)]="value"></textarea>
+</mat-form-field>

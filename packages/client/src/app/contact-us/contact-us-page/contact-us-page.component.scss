@@ -1,0 +1,30 @@
+@import 'src/styles/_all';
+
+.contact-us-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.contact-us-header {
+  color: $ds-accent-color;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.contact-us-text {
+  color: $ds-color-text-regular;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.send-btn {
+  width: 100%;
+  color: $ds-color-text-secondary;
+  background-color: $ds-color-button-main;
+  font-size: 13px;
+  border: none;
+  border-radius: 7px;
+  height: 40px;
+}
