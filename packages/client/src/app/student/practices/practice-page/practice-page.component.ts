@@ -18,19 +18,33 @@ import * as StarsActions from '@store/actions/stars.actions';
 })
 export class PracticePageComponent implements OnInit, OnDestroy {
   practiceId: string = null;
+
   loading = true;
+
   practice: Practice = null;
+
   disabled = false; // TODO: can be removed?
+
   disabledNote = false; // TODO: can be removed?
+
   disabledTitle = true;
+
   practiceTitleInput = '';
+
   practiceNotes = '';
+
   hiddenVideo = false;
+
   hiddenNotes = false;
+
   noteButtonText = '';
+
   videoButtonText = '';
+
   storeSelectSub: Subscription = null;
+
   subs: Subscription[] = [];
+
   starsSubs: Subscription[] = [];
 
   errorMsg: PracticeError | string = null;
@@ -101,10 +115,11 @@ export class PracticePageComponent implements OnInit, OnDestroy {
   }
 
   openInLab(practice: Practice): void {
-    const userVideo = practice.video;
+    // const userVideo = practice.video; // fix models
+    const userVideo = null;
     const currentStar = practice.star;
 
-    if (currentStar) {
+    if (userVideo && currentStar) {
       this.loading = false;
       const labItem: LabItem = {
         user: currentStar as any, // TODO: any,

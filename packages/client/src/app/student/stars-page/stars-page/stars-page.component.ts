@@ -1,9 +1,11 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { Subject } from 'rxjs';
 
-import { StarsService } from '@core/services';
 import { StarDto } from '@danskill/contract';
+import { StarsService } from '@core/services';
+import { StudentStoreService } from '@app/student/services/student-store/student-store.service';
 
 @Component({
   selector: 'dsapp-stars-page',
@@ -21,7 +23,11 @@ export class StarsPageComponent implements OnInit, OnDestroy {
 
   private unsubscribe = new Subject<void>();
 
-  constructor(private starService: StarsService) {}
+  constructor(
+    private starService: StarsService,
+    private studentStoreService: StudentStoreService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.fetchAllStars();
@@ -52,10 +58,15 @@ export class StarsPageComponent implements OnInit, OnDestroy {
     this.filterStars(value);
   }
 
+  navigateToStarPage(star: StarDto): void {
+    this.router.navigate(['/student', 'star', star.slug]);
+  }
+
   private fetchAllStars(): void {
     this.starService.getStars().subscribe((stars: StarDto[]) => {
       this.stars = stars;
       this.filteredStars = stars;
+      this.studentStoreService.setStars(stars);
     });
   }
 }

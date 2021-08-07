@@ -1,8 +1,6 @@
 import { UserService } from '@core/services';
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Auth } from 'aws-amplify';
-import { fromPromise } from 'rxjs/internal-compatibility';
-import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'user-avatar',

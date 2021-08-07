@@ -77,6 +77,15 @@ export class UsersController {
     return this.usersService.findAllUsers();
   }
 
+  @Get('single/star/:slug?')
+  @UseInterceptors(new TransformInterceptor(StarDto))
+  async findOneStar(@Param('slug') slug?: string): Promise<Star> {
+    const user = await this.usersService.findOne(slug);
+    if (!user) throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+
+    return user;
+  }
+
   @Get('all/stars')
   @UseInterceptors(new TransformInterceptor(StarDto))
   async findAllStars(): Promise<Star[]> {

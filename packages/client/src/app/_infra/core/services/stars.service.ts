@@ -14,4 +14,8 @@ export class StarsService {
   getStars(): Observable<StarDto[]> {
     return this.baseRestService.get<StarDto[]>('users/all/stars');
   }
+
+  getStarBySlug(slug: string): Observable<StarDto> {
+    return this.baseRestService.get<StarDto>(`users/single/star/${slug}`);
+  }
 }

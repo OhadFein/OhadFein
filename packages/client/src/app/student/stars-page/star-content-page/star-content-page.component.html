@@ -1,31 +1,22 @@
-<ng-template [ngIf]="user && !loading">
+<div *ngIf="user && !loading"class="star-page-wrapper">
+    <div class="star-promo-review-wrapper">
+        <dsapp-star-promo-review [logo]="user.logo"
+                                 (openModal)="openPromoModal()"></dsapp-star-promo-review>
+    </div>
+
+    <div class="star-initials-wrapper">
+        <dsapp-star-initials [firstName]="user.firstName"
+                             [lastName]="user.lastName"></dsapp-star-initials>
+    </div>
+
     <div class="row d-flex justify-content-center">
         <div class="col">
             <div class="star-info-vertical">
-                <div class="star-info-image">
-                    <div class="embed-responsive embed-responsive-16by9 video-preview-container"
-                         (click)="openPromoModal(user.given_name + ' ' + user.family_name, user.star.promo_video)">
-                        <div class="embed-responsive-item star-big-image cover-bg"
-                             [style.backgroundImage]="'url('+ user.star.logo +')'">
-                        </div>
-                        <div class="play-btn-container">
-                            <i class="icon-play"></i>
-                        </div>
-                        <div class="hover-message">
-                            {{'STAR.STAR_INFO_PAGE.WatchPromo' | translate}}
-                        </div>
-                    </div>
-                </div>
-
                 <div class="star-info-text text-center">
-                    <h5 class="star-info-name"
-                        dsappStarName [givenName]="user.given_name" [familyName]="user.family_name"></h5>
-                    <div>
-                        <p #stardescription
-                           *ngIf="user.star.description"
-                           class="star-info-desc text-muted"
-                           [ngClass]="isReadMore === true ? 'show-less' : isReadMore === false ? 'read-more' : ''">{{user.star.description}}</p>
-                    </div>
+                    <p #stardescription
+                       *ngIf="user.about"
+                       class="star-info-desc text-muted"
+                       [ngClass]="isReadMore === true ? 'show-less' : isReadMore === false ? 'read-more' : ''">{{user.about}}</p>
 
                     <div *ngIf="isReadMore===true"
                          class="text-end w-100 text-right read-more-button"
@@ -47,7 +38,7 @@
         </div>
     </div>
     <dsapp-start-figure-wrapper [starId]="user._id"></dsapp-start-figure-wrapper>
-</ng-template>
+</div>
 
 <ng-template [ngIf]="loading">
     <ui-preloader-inapp></ui-preloader-inapp>
