@@ -1,15 +1,22 @@
+@import 'src/styles/_all.scss';
+
 body,
 html {
   min-height: 100%;
 }
 
 body {
-  font-size: 0.8rem;
+  font-size: $font-size-base;
+  font-family: Poppins, "Helvetica Neue", sans-serif;
   @include media-breakpoint-up(sm) {
     font-size: 0.9rem;
   }
   @include media-breakpoint-up(md) {
     font-size: 1rem;
+  }
+
+  input {
+    outline: none;
   }
 }
 .landscape-modal {

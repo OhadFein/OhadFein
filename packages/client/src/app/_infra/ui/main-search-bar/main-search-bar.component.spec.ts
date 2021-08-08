@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NotificationsPageComponent } from './notifications-page.component';
+import { MainSearchBarComponent } from './main-search-bar.component';
 
-describe('NotificationsPageComponent', () => {
-  let component: NotificationsPageComponent;
-  let fixture: ComponentFixture<NotificationsPageComponent>;
+describe('MainSearchBarComponent', () => {
+  let component: MainSearchBarComponent;
+  let fixture: ComponentFixture<MainSearchBarComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [NotificationsPageComponent]
+      declarations: [MainSearchBarComponent]
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NotificationsPageComponent);
+    fixture = TestBed.createComponent(MainSearchBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

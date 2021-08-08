@@ -1,0 +1,9 @@
+@import 'src/styles/_all';
+
+.no-result-text-wrapper {
+  text-align: center;
+
+  .no-result-text {
+    color: $ds-color-text-muted;
+  }
+}

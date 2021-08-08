@@ -1,3 +1,5 @@
+@import '../palette';
+
 .btn-round {
   border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -21,14 +23,14 @@
   }
 }
 
-@each $color, $value in $theme-colors {
-  .btn-round-#{$color} {
-    @include button-round-variant($value, $value);
-  }
-}
-
-@each $color, $value in $theme-colors {
-  .btn-round-outline-#{$color} {
-    @include button-round-outline-variant($value);
-  }
-}
+//@each $color, $value in $theme-colors {
+//  .btn-round-#{$color} {
+//    @include button-round-variant($value, $value);
+//  }
+//}
+//
+//@each $color, $value in $theme-colors {
+//  .btn-round-outline-#{$color} {
+//    @include button-round-outline-variant($value);
+//  }
+//}

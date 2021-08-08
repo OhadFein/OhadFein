@@ -1,0 +1,7 @@
+<div class="notification-grid">
+    <ng-container *ngFor="let notification of notifications; let index = index;">
+        <dsapp-notification-list-item [notification]="notification"
+                                      (readNotification)="onReadNotification(index)"></dsapp-notification-list-item>
+        <div class="list-separator"></div>
+    </ng-container>
+</div>

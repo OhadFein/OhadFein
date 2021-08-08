@@ -1,0 +1,42 @@
+@import 'src/styles/_all';
+
+.notification-list-item {
+  position: relative;
+  display: flex;
+  align-content: center;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 .5rem;
+}
+
+.notification-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: rem(38px);
+  min-width: rem(38px);
+  height: rem(38px);
+  background-color: $ds-color-icon-background;
+  border-radius: 50%;
+
+  .notification-icon {
+    width: rem(18px);
+    height: rem(18px);
+    font-size: rem(18px);
+  }
+
+  &.notification-new {
+    border: 2px solid $ds-color-tag-yellow;
+  }
+}
+
+.notification-info-wrapper {
+  margin-left: rem(12px);
+  font-size: $font-size-sm;
+
+  .notification-time {
+    color: $ds-color-text-secondary;
+  }
+}

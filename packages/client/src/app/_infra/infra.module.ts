@@ -3,11 +3,15 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ImageCropperModule } from 'ngx-image-cropper';
-import { VgBufferingModule } from 'ngx-videogular';
-import { VgControlsModule } from 'ngx-videogular';
-import { VgCoreModule } from 'ngx-videogular';
-import { VgOverlayPlayModule } from 'ngx-videogular';
+import {
+  VgBufferingModule,
+  VgControlsModule,
+  VgCoreModule,
+  VgOverlayPlayModule
+} from 'ngx-videogular';
 
+import { StarNameDirective } from '@core/derectives';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BaseBgProcessComponent } from './core/models';
 import {
   AboutDanskillModalComponent,
@@ -18,7 +22,6 @@ import {
   InpageErrorComponent,
   LogoComponent,
   NavigationComponent,
-  NotificationsPageComponent,
   PageNotFoundComponent,
   PlayerControlsComponent,
   PreloaderIconComponent,
@@ -30,14 +33,22 @@ import {
   VideoPlayerModalComponent,
   VideoPlayerWrapperComponent,
   VideoPreviewComponent,
-  CustomLabControlsComponent
+  CustomLabControlsComponent,
+  SideMenuComponent,
+  UserAvatarComponent,
+  UpperToolbarComponent,
+  BottomToolbarComponent,
+  MainSearchBarComponent,
+  StarPreviewItemComponent,
+  StarPreviewGridComponent,
+  NotificationListGridComponent,
+  NotificationListItemComponent
 } from './ui';
-import { StarNameDirective } from '@core/derectives';
+import { MaterialModule } from './material.module';
 
 const components = [
   AlertsComponent,
   PageNotFoundComponent,
-  NotificationsPageComponent,
   NavigationComponent,
   HeaderComponent,
   AboutDanskillModalComponent,
@@ -57,7 +68,16 @@ const components = [
   ToggleSwitchDirective,
   VideoPreviewComponent,
   CustomLabControlsComponent,
-  StarNameDirective
+  StarNameDirective,
+  SideMenuComponent,
+  UserAvatarComponent,
+  UpperToolbarComponent,
+  BottomToolbarComponent,
+  MainSearchBarComponent,
+  StarPreviewItemComponent,
+  StarPreviewGridComponent,
+  NotificationListGridComponent,
+  NotificationListItemComponent
 ];
 
 @NgModule({
@@ -69,7 +89,9 @@ const components = [
     VgControlsModule,
     VgOverlayPlayModule,
     VgBufferingModule,
-    ImageCropperModule
+    ImageCropperModule,
+    MaterialModule,
+    ReactiveFormsModule
   ],
   declarations: [components],
   exports: [components]

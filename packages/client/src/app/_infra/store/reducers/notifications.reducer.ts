@@ -6,18 +6,7 @@ export const initialNotificationsState = initializeNotificationsState();
 
 const reducer = createReducer(
   initialNotificationsState,
-  on(NotificationsActions.GetNotificationsAction, (state) => state),
-
-  on(
-    NotificationsActions.SuccessGetNotificationsAction,
-    (state: NotificationsState, { payload }) => {
-      return { ...state, notifications: payload, error: null };
-    }
-  ),
-
-  on(NotificationsActions.ErrorNotificationsAction, (state: NotificationsState, error: Error) => {
-    return { ...state, error };
-  })
+  on(NotificationsActions.GetNotificationsAction, (state) => state)
 );
 
 export function NotificationsReducer(state: NotificationsState | undefined, action: Action) {
