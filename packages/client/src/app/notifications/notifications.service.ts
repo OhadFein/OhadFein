@@ -17,6 +17,14 @@ export class NotificationsService {
       })
     );
   }
+
+  getUnreadNotificationsNumber(): Observable<number> {
+    return this.baseRestService.get<IRestResponse>(`notifications`).pipe(
+      map((response: IRestResponse) => {
+        return response.data ? response.data : [];
+      })
+    );
+  }
   // `stars/${starId}`
 
   setNotificationsAsRead(notificationId): Observable<any> {

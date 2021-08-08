@@ -2,8 +2,7 @@
 <mat-form-field class="form-full-width"
                 appearance="fill">
      <mat-select [placeholder]="placeholder"
-                 [formControl]="control"
-                 [(ngModel)]="value">
+                 [formControl]="control">
           <mat-option *ngFor="let option of options"
                       [value]="option">{{option}}</mat-option>
      </mat-select>
