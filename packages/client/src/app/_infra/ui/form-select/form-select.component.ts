@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subject } from 'rxjs';
-import { debounceTime, takeUntil } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'dsapp-form-select',
@@ -11,7 +11,19 @@ import { debounceTime, takeUntil } from 'rxjs/operators';
 export class FormSelectComponent {
   @Input() public label: string;
 
-  @Input() public value: string;
+  // @Input() public value: string = '';
+
+  @Input()
+  get value(): string {
+    return this._value;
+  }
+
+  set value(value: string) {
+    this._value = value;
+    this.updateControlValue(value);
+  }
+
+  private _value = '';
 
   @Input() public disabled: boolean = false;
 
@@ -21,16 +33,20 @@ export class FormSelectComponent {
 
   @Output() select = new EventEmitter<string>();
 
-  control = new FormControl('');
-
   private unsubscribe = new Subject<void>();
+
+  control = new FormControl('');
 
   ngOnInit(): void {
     if (this.disabled) {
       this.control.disable();
     }
     this.control.valueChanges
-      .pipe(takeUntil(this.unsubscribe), debounceTime(300))
+      .pipe(takeUntil(this.unsubscribe))
       .subscribe((value: string) => this.select.emit(value));
+  }
+
+  private updateControlValue(value: string) {
+    this.control.patchValue(value);
   }
 }

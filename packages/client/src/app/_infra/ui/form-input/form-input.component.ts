@@ -11,7 +11,17 @@ import { debounceTime, takeUntil } from 'rxjs/operators';
 export class FormInputComponent {
   @Input() public label: string;
 
-  @Input() public value: string;
+  @Input()
+  get value(): string {
+    return this._value;
+  }
+
+  set value(value: string) {
+    this._value = value;
+    this.updateControlValue(value);
+  }
+
+  private _value = '';
 
   @Input() public disabled: boolean = false;
 
@@ -28,5 +38,9 @@ export class FormInputComponent {
     this.control.valueChanges
       .pipe(takeUntil(this.unsubscribe), debounceTime(300))
       .subscribe((value: string) => this.input.emit(value));
+  }
+
+  private updateControlValue(value: string) {
+    this.control.patchValue(value);
   }
 }

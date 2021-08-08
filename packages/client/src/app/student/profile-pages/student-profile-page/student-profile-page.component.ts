@@ -47,8 +47,8 @@ export class StudentProfilePageComponent implements OnInit {
     this.newCoach = value;
   }
 
-  async saveChanges(): Promise<void> {
-    await this.userService
+  saveChanges(): void {
+    this.userService
       .updateUserDetails(this.newFirstName, this.newLastName, this.newCoach)
       .pipe(finalize(() => window.location.reload()))
       .subscribe();
