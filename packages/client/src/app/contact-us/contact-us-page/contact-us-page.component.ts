@@ -1,4 +1,4 @@
-import { finalize, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '@core/services';
 import { Auth } from 'aws-amplify';
@@ -36,11 +36,7 @@ export class ContactUsPageComponent implements OnInit {
   }
 
   async sendMessage(): Promise<void> {
-    // await this.userService
-    //   .updateUserDetails(this.newFirstName, this.newLastName, this.newCoach)
-    //   .pipe(finalize(() => window.location.reload()))
-    //   .subscribe();
-    // // Make a loader instead of reloading the page
+    // TODO Impl. sending a contact message
   }
 
   private async initContactUsPage(): Promise<void> {
