@@ -1,13 +1,18 @@
-import { Video } from '@models/video.model';
-
+// TODO: should be fixed by new contract
 export class Practice {
   _id: string;
+
   star: string;
+
   name: string;
-  video: Video;
+
+  // video: Video;
   createdAt: string;
+
   updatedAt: string;
+
   _v: number;
+
   notes: string;
 }
 

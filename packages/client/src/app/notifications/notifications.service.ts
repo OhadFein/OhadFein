@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { INotifications, IRestResponse } from '@core/models';
-import { map } from 'rxjs/operators';
-import { BaseRestService } from '@core/services';
+
 import { Observable, throwError } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+import { BaseRestService } from '@core/services';
+import { NotificationDto } from '@danskill/contract';
 
 @Injectable({
   providedIn: 'root'
@@ -10,12 +12,8 @@ import { Observable, throwError } from 'rxjs';
 export class NotificationsService {
   constructor(private baseRestService: BaseRestService) {}
 
-  getNotifications(): Observable<INotifications[]> {
-    return this.baseRestService.get<IRestResponse>(`notifications`).pipe(
-      map((response: IRestResponse) => {
-        return response.data ? response.data : [];
-      })
-    );
+  getNotifications(): Observable<NotificationDto[]> {
+    return this.baseRestService.get<NotificationDto[]>(`notifications`);
   }
 
   getUnreadNotificationsNumber(): Observable<number> {
@@ -27,7 +25,7 @@ export class NotificationsService {
   }
   // `stars/${starId}`
 
-  setNotificationsAsRead(notificationId): Observable<any> {
+  setNotificationsAsRead(notificationId: string): Observable<any> {
     return this.baseRestService.post<any>(`notifications/mark/read/${notificationId}`, {}).pipe(
       map(
         (res) => {

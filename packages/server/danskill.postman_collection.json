@@ -1212,6 +1212,23 @@
           "response": []
         }
       ]
+    },
+    {
+      "name": "Main",
+      "item": [
+        {
+          "name": "Get main info",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}",
+              "host": ["{{url}}"]
+            }
+          },
+          "response": []
+        }
+      ]
     }
   ],
   "auth": {

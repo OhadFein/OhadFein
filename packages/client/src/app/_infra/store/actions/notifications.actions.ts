@@ -1,5 +1,5 @@
-import { INotifications } from '@core/models';
 import { createAction, props } from '@ngrx/store';
+import { NotificationDto } from '@danskill/contract';
 
 export enum NotificationsActionType {
   GetNotificationsAction = '[notifications] - Get notifications',
@@ -19,7 +19,7 @@ export const BeginGetNotificationsAction = createAction(
 
 export const SuccessGetNotificationsAction = createAction(
   NotificationsActionType.SuccessGetNotificationsAction,
-  props<{ payload: INotifications[] }>()
+  props<{ payload: NotificationDto[] }>()
 );
 
 export const ErrorNotificationsAction = createAction(
