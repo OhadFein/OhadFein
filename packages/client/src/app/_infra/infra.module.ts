@@ -43,6 +43,7 @@ import {
   StarPreviewItemComponent,
   StarPreviewGridComponent,
   FormSelectComponent,
+  FormTexareaComponent,
   NotificationListGridComponent,
   NotificationListItemComponent,
   NotificationButtonComponent
@@ -81,6 +82,7 @@ const components = [
   StarPreviewItemComponent,
   StarPreviewGridComponent,
   FormSelectComponent,
+  FormTexareaComponent,
   NotificationListGridComponent,
   NotificationListItemComponent,
   NotificationButtonComponent
