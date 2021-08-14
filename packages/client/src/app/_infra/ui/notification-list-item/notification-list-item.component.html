@@ -1,0 +1,9 @@
+<div class="notification-list-item" (click)="onReadNotification()">
+    <div class="notification-icon-wrapper" [ngClass]="{'notification-new': !notification.isRead}">
+        <mat-icon class="notification-icon" fontSet="material-icons-outlined">description</mat-icon>
+    </div>
+    <div class="notification-info-wrapper">
+        <div class="notification-text">{{ MESSAGE_PLACEHOLDER }}</div>
+        <div class="notification-time">{{ TIME_PLACEHOLDER | date : 'h:mm aaaaa\'m\'' | lowercase }}</div>
+    </div>
+</div>

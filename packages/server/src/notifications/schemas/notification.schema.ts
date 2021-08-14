@@ -5,7 +5,7 @@ import { Document, Types } from 'mongoose';
 import { EnumNotificationType, NotificationBaseDto } from '@danskill/contract';
 import {
   EnumNotificationLinkedModel,
-  EnumNotificationLinkedModelValues,
+  EnumNotificationLinkedModelValues
 } from 'src/common/enums/notification-linked-model.enum';
 
 @Schema()

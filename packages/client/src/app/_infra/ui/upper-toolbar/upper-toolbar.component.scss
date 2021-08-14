@@ -7,6 +7,8 @@
 }
 
 .upper-toolbar {
+  display: flex;
+  justify-content: space-between;
   background: $ds-color-background;
   border-bottom: 0.8px solid #ededed;
 }

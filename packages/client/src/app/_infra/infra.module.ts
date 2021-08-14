@@ -22,7 +22,6 @@ import {
   InpageErrorComponent,
   LogoComponent,
   NavigationComponent,
-  NotificationsPageComponent,
   PageNotFoundComponent,
   PlayerControlsComponent,
   PreloaderIconComponent,
@@ -44,14 +43,16 @@ import {
   StarPreviewItemComponent,
   StarPreviewGridComponent,
   FormSelectComponent,
-  FormTexareaComponent
+  FormTexareaComponent,
+  NotificationListGridComponent,
+  NotificationListItemComponent,
+  NotificationButtonComponent
 } from './ui';
 import { MaterialModule } from './material.module';
 
 const components = [
   AlertsComponent,
   PageNotFoundComponent,
-  NotificationsPageComponent,
   NavigationComponent,
   HeaderComponent,
   AboutDanskillModalComponent,
@@ -81,7 +82,10 @@ const components = [
   StarPreviewItemComponent,
   StarPreviewGridComponent,
   FormSelectComponent,
-  FormTexareaComponent
+  FormTexareaComponent,
+  NotificationListGridComponent,
+  NotificationListItemComponent,
+  NotificationButtonComponent
 ];
 
 @NgModule({

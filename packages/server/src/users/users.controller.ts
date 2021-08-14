@@ -8,7 +8,7 @@ import {
   Patch,
   Post,
   UseGuards,
-  UseInterceptors,
+  UseInterceptors
 } from '@nestjs/common';
 import { Skip } from 'src/common/decorators/skip.decorator';
 import {
@@ -18,7 +18,7 @@ import {
   UserBaseDto,
   UserDto,
   CreateStarDto,
-  UpdateUserDto,
+  UpdateUserDto
 } from '@danskill/contract';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
 import { RequestUser } from 'src/common/decorators/request-user.decorator';

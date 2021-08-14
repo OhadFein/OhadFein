@@ -1,0 +1,17 @@
+@import 'src/styles/_all';
+
+.notification-grid {
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+
+  .list-separator {
+    width: 100%;
+    margin: 1rem 0;
+    border-bottom: 1px solid $gray-300;
+
+    &:last-child {
+      display: none;
+    }
+  }
+}

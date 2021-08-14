@@ -1,10 +1,9 @@
-import { INotifications } from '@core/models/';
+import { NotificationDto } from '@danskill/contract';
 
 export class NotificationsState {
-  notifications: Array<INotifications> | null;
-  error: Error | string | null; // track errors
+  notifications: NotificationDto[] | null;
 }
 
 export const initializeNotificationsState = () => {
-  return { notifications: null, error: null };
+  return { notifications: null };
 };
