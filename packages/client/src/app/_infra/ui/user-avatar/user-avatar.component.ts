@@ -10,9 +10,11 @@ import { map } from 'rxjs/operators';
   styleUrls: ['./user-avatar.component.scss']
 })
 export class UserAvatarComponent implements OnInit {
-  constructor(private userService: UserService) {}
+  @Input() showFullName: boolean = true;
 
-  public showInitials = false;
+  @Input() showSlug: boolean = true;
+
+  constructor(private userService: UserService) {}
 
   public initials: string;
 

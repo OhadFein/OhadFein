@@ -11,7 +11,7 @@ import {
 } from 'ngx-videogular';
 
 import { StarNameDirective } from '@core/derectives';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BaseBgProcessComponent } from './core/models';
 import {
   AboutDanskillModalComponent,
@@ -38,9 +38,11 @@ import {
   UserAvatarComponent,
   UpperToolbarComponent,
   BottomToolbarComponent,
+  FormInputComponent,
   MainSearchBarComponent,
   StarPreviewItemComponent,
   StarPreviewGridComponent,
+  FormSelectComponent,
   NotificationListGridComponent,
   NotificationListItemComponent,
   NotificationButtonComponent
@@ -74,9 +76,11 @@ const components = [
   UserAvatarComponent,
   UpperToolbarComponent,
   BottomToolbarComponent,
+  FormInputComponent,
   MainSearchBarComponent,
   StarPreviewItemComponent,
   StarPreviewGridComponent,
+  FormSelectComponent,
   NotificationListGridComponent,
   NotificationListItemComponent,
   NotificationButtonComponent
@@ -93,6 +97,7 @@ const components = [
     VgBufferingModule,
     ImageCropperModule,
     MaterialModule,
+    FormsModule,
     ReactiveFormsModule
   ],
   declarations: [components],

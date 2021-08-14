@@ -16,6 +16,15 @@ export class NotificationsService {
     return this.baseRestService.get<NotificationDto[]>(`notifications`);
   }
 
+  getUnreadNotificationsNumber(): Observable<number> {
+    return this.baseRestService.get<IRestResponse>(`notifications`).pipe(
+      map((response: IRestResponse) => {
+        return response.data ? response.data : [];
+      })
+    );
+  }
+  // `stars/${starId}`
+
   setNotificationsAsRead(notificationId: string): Observable<any> {
     return this.baseRestService.post<any>(`notifications/mark/read/${notificationId}`, {}).pipe(
       map(

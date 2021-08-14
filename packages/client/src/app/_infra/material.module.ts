@@ -4,8 +4,9 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   imports: [
@@ -13,7 +14,10 @@ import { MatInputModule } from '@angular/material/input';
     MatToolbarModule,
     MatIconModule,
     MatListModule,
+    MatInputModule,
     MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
     MatInputModule
   ],
   exports: [
@@ -21,6 +25,9 @@ import { MatInputModule } from '@angular/material/input';
     MatToolbarModule,
     MatIconModule,
     MatListModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
     MatFormFieldModule,
     MatInputModule
   ]
