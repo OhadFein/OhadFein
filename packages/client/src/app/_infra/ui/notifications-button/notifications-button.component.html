@@ -1,0 +1,10 @@
+<button mat-icon-button
+        class="danskill-btn notifications-btn"
+        color="accent"
+        [routerLink]="'/notifications'">
+  <mat-icon class="badge-container"
+            fontSet="material-icons-outlined">notifications
+    <span *ngIf="unreadNotificationsNumber > 0"
+          class="notifications-badge">+{{unreadNotificationsNumber}}</span>
+  </mat-icon>
+</button>

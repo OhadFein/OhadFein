@@ -42,7 +42,8 @@ import {
   StarPreviewItemComponent,
   StarPreviewGridComponent,
   NotificationListGridComponent,
-  NotificationListItemComponent
+  NotificationListItemComponent,
+  NotificationButtonComponent
 } from './ui';
 import { MaterialModule } from './material.module';
 
@@ -77,7 +78,8 @@ const components = [
   StarPreviewItemComponent,
   StarPreviewGridComponent,
   NotificationListGridComponent,
-  NotificationListItemComponent
+  NotificationListItemComponent,
+  NotificationButtonComponent
 ];
 
 @NgModule({
