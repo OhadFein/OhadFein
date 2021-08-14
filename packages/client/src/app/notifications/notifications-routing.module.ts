@@ -11,10 +11,16 @@ const routes: Routes = [
       {
         path: 'notifications',
         loadChildren: () => import('./notifications.module').then((m) => m.NotificationsModule),
-        canActivate: [AuthGuard]
+        canActivate: [AuthGuard],
+        data: {
+          title: 'Notifications'
+        }
       },
       { path: '', redirectTo: 'star', pathMatch: 'full' }
-    ]
+    ],
+    data: {
+      title: 'Notifications'
+    }
   }
 ];
 
