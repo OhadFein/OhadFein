@@ -8,6 +8,8 @@
     </div>
 </div>
 <div>
-    <span class="full-name">{{fullName}}</span>
-    <span class="user-name">{{userName}}</span>
+    <span class="full-name"
+          *ngIf="showFullName">{{fullName}}</span>
+    <span class="user-name"
+          *ngIf="showSlug">{{userName}}</span>
 </div>

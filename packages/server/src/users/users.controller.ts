@@ -5,12 +5,22 @@ import {
   HttpException,
   HttpStatus,
   Param,
+  Patch,
   Post,
+  Put,
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
 import { Skip } from 'src/common/decorators/skip.decorator';
-import { CreateUserDto, StarDto, CoachDto, UserBaseDto, UserDto, CreateStarDto } from '@danskill/contract';
+import {
+  CreateUserDto,
+  StarDto,
+  CoachDto,
+  UserBaseDto,
+  UserDto,
+  CreateStarDto,
+  UpdateUserDto,
+} from '@danskill/contract';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
 import { RequestUser } from 'src/common/decorators/request-user.decorator';
 import { Roles } from 'src/common/decorators/roles.decorator';
@@ -89,8 +99,11 @@ export class UsersController {
     return this.usersService.getStudents(reqUser);
   }
 
-  @Post('coach/:slug')
-  async setCoach(@RequestUser() reqUser: User, @Param('slug') slug: string): Promise<void> {
-    await this.usersService.setCoach(reqUser, slug);
+  @Patch()
+  async updateUserDetails(
+    @RequestUser() reqUser: User,
+    @Body() updateUserReq: UpdateUserDto
+  ): Promise<void> {
+    return this.usersService.updateUserDetails(reqUser, updateUserReq);
   }
 }

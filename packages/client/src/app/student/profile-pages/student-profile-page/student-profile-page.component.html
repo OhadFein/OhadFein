@@ -1,58 +1,25 @@
-<div class="row">
-  <div class="col">
-    <h2 class="inner-page-title">{{'STUDENT.PROFILE.title' | translate}}</h2>
-  </div>
-</div>
+<user-avatar [showFullName]="false"
+             [showSlug]="false"></user-avatar>
 
-<ng-template [ngIf]="user && !errorMsg">
-  <div class="row mb-4">
-    <div class="col-auto">
-      <dsapp-student-upic
-                          [picBase64]="user.profile.picture ? user.profile.picture : null">
-      </dsapp-student-upic>
-    </div>
-    <div class="col">
-      <h4 dsappStarName [givenName]="'FIX IT'" [familyName]="'FIX IT'"></h4>
-      <p class="text-muted"
-         *ngIf="user.profile.location && user.profile.location.city">
-        {{user.profile.location.city}}, {{user.profile.location.country}}
-      </p>
-      <p *ngIf="user.profile.birthDate && user.profile.birthDate.group">
-        {{user.profile.birthDate.group | uppercase}}
-      <p *ngIf="user.profile.birthDate && user.profile.birthDate.date">
-        {{user.profile.birthDate.date | date}}
-      </p>
-    </div>
-  </div>
-  <div *ngIf="user.profile.about"
-       class="row mb-4">
-    <div class="col">
-      <p>{{user.profile.about}}</p>
-    </div>
-  </div>
-
-  <div class="row">
-    <div class="col">
-      <a class="btn btn-outline-info"
-         tabindex="0"
-         [routerLink]="'/student/profile/edit'">{{'STUDENT.PROFILE.EditProfile' | translate}}</a>
-    </div>
-  </div>
-
-</ng-template>
-
-<ng-template [ngIf]="!user && errorMsg">
-  <div class="row mb-4">
-    <div class="col">
-      <dsapp-inpage-error [heading]="'ERRORS.InformationNotFound'"
-                          [msg]="errorMsg"
-                          (action)="tryAgain()"></dsapp-inpage-error>
-    </div>
-  </div>
-
-</ng-template>
-
-
-<ng-template [ngIf]="!user && !errorMsg">
-  <ui-preloader-inapp></ui-preloader-inapp>
-</ng-template>
+<form class="profile-form">
+  <dsapp-form-input [label]="'Email'"
+                    [value]="email"
+                    [disabled]="true"></dsapp-form-input>
+  <dsapp-form-input [label]="'Username'"
+                    [value]="slug"
+                    [disabled]="true"></dsapp-form-input>
+  <dsapp-form-input [label]="'First Name'"
+                    [value]="firstName"
+                    (input)="onFirstNameChange($event)"></dsapp-form-input>
+  <dsapp-form-input [label]="'Last Name'"
+                    [value]="lastName"
+                    (input)="onLastNameChange($event)"></dsapp-form-input>
+  <dsapp-form-select [label]="'Coach'"
+                     [value]="coach"
+                     [placeholder]="'Select your coach'"
+                     [options]="allCoaches"
+                     (select)="onCoachChange($event)"></dsapp-form-select>
+  <button mat-flat-button
+          class="save-btn"
+          (click)="saveChanges()">Save Changes</button>
+</form>

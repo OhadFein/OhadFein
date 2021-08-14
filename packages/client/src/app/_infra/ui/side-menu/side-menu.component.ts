@@ -1,3 +1,4 @@
+import { LoginService } from '@core/services/';
 import { Component, EventEmitter, Output } from '@angular/core';
 
 export interface MenuItem {
@@ -12,35 +13,17 @@ export interface MenuItem {
   styleUrls: ['./side-menu.component.scss']
 })
 export class SideMenuComponent {
+  constructor(private loginService: LoginService) {}
+
   menu_items: MenuItem[] = [
     {
       icon_name: 'person_outline',
       text: 'Profile',
-      link: ''
-    },
-    {
-      icon_name: 'subscriptions',
-      text: 'Subscription',
-      link: ''
-    },
-    {
-      icon_name: 'plagiarism',
-      text: 'About us',
-      link: ''
+      link: 'student/profile'
     },
     {
       icon_name: 'contact_mail',
       text: 'Contact us',
-      link: ''
-    },
-    {
-      icon_name: 'question_answer',
-      text: 'Help & Support',
-      link: ''
-    },
-    {
-      icon_name: 'settings',
-      text: 'Settings',
       link: ''
     }
   ];
@@ -50,4 +33,8 @@ export class SideMenuComponent {
   onCloseSideMenu = (): void => {
     this.sideMenuClose.emit();
   };
+
+  async logOut(): Promise<void> {
+    await this.loginService.logout();
+  }
 }
