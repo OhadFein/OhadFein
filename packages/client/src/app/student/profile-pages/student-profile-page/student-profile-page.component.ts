@@ -1,52 +1,84 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { AlertErrorService } from '@core/services';
-import { User, UserError } from '@infra/core/models';
-import * as UserActions from '@infra/store/actions/user.actions';
-import * as selectors from '@infra/store/selectors/user.selectors';
-import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { finalize, map } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '@core/services';
+import { Auth } from 'aws-amplify';
+import { UserDto, CoachDto } from '@danskill/contract';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dsapp-student-profile-page',
-  templateUrl: './student-profile-page.component.html'
+  templateUrl: './student-profile-page.component.html',
+  styleUrls: ['./student-profile-page.component.scss']
 })
-export class StudentProfilePageComponent implements OnInit, OnDestroy {
-  subs: Subscription[] = [];
-  user: User = null;
-  errorMsg: UserError | string = null;
+export class StudentProfilePageComponent implements OnInit {
+  slug: string;
 
-  constructor(private store: Store<any>, private errorService: AlertErrorService) {}
+  firstName: string;
 
-  ngOnInit() {
-    this.subs.push(
-      this.store.select(selectors.selectCurrentUser()).subscribe((res) => {
-        if (res) {
-          this.user = { ...res };
-          this.errorMsg = null;
-        } else {
-          this.store.dispatch(UserActions.BeginGetUserAction());
-        }
-      })
-    );
+  lastName: string;
 
-    this.subs.push(
-      this.store.select(selectors.selectCurrentUserError()).subscribe((res) => {
-        if (res && res.type) {
-          this.errorMsg = this.errorService.alertUserError(res.type);
-        }
-      })
-    );
+  coach: string;
+
+  email: string;
+
+  allCoaches: string[];
+
+  newFirstName: string;
+
+  newLastName: string;
+
+  newCoach: string;
+
+  constructor(private userService: UserService, private router: Router) {}
+
+  async ngOnInit(): Promise<void> {
+    await this.initProfilePage();
   }
 
-  tryAgain() {
-    this.user = null;
-    this.errorMsg = null;
-    setTimeout(() => {
-      this.store.dispatch(UserActions.BeginGetUserAction());
-    }, 2000);
+  onFirstNameChange(value: string): void {
+    this.newFirstName = value;
   }
 
-  ngOnDestroy(): void {
-    this.subs.forEach((sub) => sub.unsubscribe());
+  onLastNameChange(value: string): void {
+    this.newLastName = value;
+  }
+
+  onCoachChange(value: string): void {
+    this.newCoach = value;
+  }
+
+  saveChanges(): void {
+    this.userService
+      .updateUserDetails(this.newFirstName, this.newLastName, this.newCoach)
+      .pipe(finalize(() => window.location.reload()))
+      .subscribe();
+    // Make a loader instead of reloading the page
+  }
+
+  private async initProfilePage(): Promise<void> {
+    this.userService
+      .getUser()
+      .pipe(
+        map((user: UserDto) => {
+          this.slug = user.slug;
+          this.coach = user.coach ? user.coach.slug : '';
+          this.firstName = user.firstName;
+          this.lastName = user.lastName;
+        })
+      )
+      .subscribe();
+
+    this.userService
+      .getAllCoaches()
+      .pipe(
+        map((coaches: CoachDto[]) => {
+          this.allCoaches = coaches.map((coach) => coach.slug);
+        })
+      )
+      .subscribe();
+
+    await Auth.currentUserInfo().then((loggedInUser) => {
+      this.email = loggedInUser.attributes.email;
+    });
   }
 }

@@ -1,0 +1,18 @@
+@import 'src/styles/_all';
+
+.profile-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  padding-top: 20px;
+}
+
+.save-btn {
+  width: 100%;
+  color: $ds-text-color-button-main;
+  background-color: $ds-color-button-main;
+  font-size: 13px;
+  border: none;
+  border-radius: 7px;
+  height: 40px;
+}

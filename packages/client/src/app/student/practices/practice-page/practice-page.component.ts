@@ -115,11 +115,12 @@ export class PracticePageComponent implements OnInit, OnDestroy {
   }
 
   openInLab(practice: Practice): void {
-    // const userVideo = practice.video; // fix models
+    // TODO: model has to be fixed
+    // const userVideo = practice.video;
     const userVideo = null;
     const currentStar = practice.star;
 
-    if (userVideo && currentStar) {
+    if (userVideo && currentStar && userVideo) {
       this.loading = false;
       const labItem: LabItem = {
         user: currentStar as any, // TODO: any,

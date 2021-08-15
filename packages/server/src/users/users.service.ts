@@ -1,3 +1,4 @@
+import { UpdateUserDto } from './../../../contract/src/users/update-user.dto';
 import { FilterQuery, Model, Types } from 'mongoose';
 import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
@@ -5,7 +6,7 @@ import {
   CreateUserDto,
   EnumNotificationType,
   GetAllPracticesDto,
-  CreateStarDto
+  CreateStarDto,
 } from '@danskill/contract';
 import { Practice } from 'src/practices/schemas/practice.schema';
 import { FiguresService } from 'src/figures/figures.service';
@@ -35,7 +36,7 @@ export class UsersService {
       slug,
       sub: createUserDto.sub,
       firstName: createUserDto.firstName,
-      lastName: createUserDto.lastName
+      lastName: createUserDto.lastName,
     });
     await createdUser.save();
 
@@ -76,7 +77,7 @@ export class UsersService {
   }
 
   async findOne(slug: string): Promise<UserDocument> {
-    return this.userModel.findOne({ slug: slug.toLowerCase() }).exec();
+    return this.userModel.findOne({ slug: slug.toLowerCase() }).populate('coach').exec();
   }
 
   async findAllUsers(): Promise<User[]> {
@@ -153,7 +154,7 @@ export class UsersService {
       .findOne({ slug })
       .populate({
         path: 'practices', // TODO: replace the strings with fixed values
-        match: query
+        match: query,
       })
       .exec();
 
@@ -164,6 +165,16 @@ export class UsersService {
     const userWithStudents = await this.userModel.findById(reqUser._id).populate('students').exec(); // TODO: replace the strings with fixed values
 
     return userWithStudents.students;
+  }
+
+  async updateUserDetails(reqUser: User, updateUserDto: UpdateUserDto): Promise<void> {
+    if (updateUserDto.coachSlug) {
+      this.setCoach(reqUser, updateUserDto.coachSlug);
+    }
+    await this.userModel.updateOne(
+      { _id: reqUser._id },
+      { $set: { firstName: updateUserDto.firstName, lastName: updateUserDto.lastName } }
+    );
   }
 
   async setCoach(reqUser: User, slug: string): Promise<void> {

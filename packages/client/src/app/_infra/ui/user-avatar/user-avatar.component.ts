@@ -1,5 +1,5 @@
 import { UserService } from '@core/services';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Auth } from 'aws-amplify';
 
 @Component({
@@ -8,9 +8,11 @@ import { Auth } from 'aws-amplify';
   styleUrls: ['./user-avatar.component.scss']
 })
 export class UserAvatarComponent implements OnInit {
-  constructor(private userService: UserService) {}
+  @Input() showFullName: boolean = true;
 
-  public showInitials = false;
+  @Input() showSlug: boolean = true;
+
+  constructor(private userService: UserService) {}
 
   public initials: string;
 

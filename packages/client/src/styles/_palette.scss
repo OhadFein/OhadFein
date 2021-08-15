@@ -1,3 +1,6 @@
+// theme colors
+$ds-accent-color: #ffb154;
+
 // Texts
 $ds-color-text-regular: #343434;
 $ds-color-text-muted: #707070;
@@ -6,8 +9,10 @@ $ds-color-text-disabled: #a1a1a1;
 $ds-color-text-blue: #3c377a;
 
 // Buttons
-$ds-color-button-main: #3c377a;
+$ds-color-button-main: #343434;
+$ds-text-color-button-main: #ffffff;
 $ds-color-button-secondary: #ffffff;
+$ds-text-color-button-secondary: #343434;
 
 // Tags
 $ds-color-tag-pink: #ff5170;

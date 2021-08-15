@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { CreateUserDto, UserDto } from '@danskill/contract';
+import { Observable } from 'rxjs';
+import { CoachDto, CreateUserDto, UserDto, UpdateUserDto } from '@danskill/contract';
 
-import { INotifications, IRestResponse, User, UserRestResponse } from '../models';
 import { BaseRestService } from './base-rest.service';
 
 @Injectable({
@@ -16,6 +14,10 @@ export class UserService {
 
   getUser(): Observable<UserDto> {
     return this.baseRestService.get<UserDto>('users/single');
+  }
+
+  getAllCoaches(): Observable<CoachDto[]> {
+    return this.baseRestService.get<CoachDto[]>('users/all/coaches');
   }
 
   userExists(): Observable<boolean> {
@@ -33,35 +35,9 @@ export class UserService {
     return this.baseRestService.post<UserDto>('users', createUserDto);
   }
 
-  // getGeneralInfo(): Observable<INotifications> {
-  //   return this.baseRestService.get<IRestResponse>('').pipe(
-  //     map(
-  //       (res) => {
-  //         if (res.success) {
-  //           return res.data;
-  //         }
-  //         throwError([res.message]); // TODO: add real error here
-  //       },
-  //       () => {
-  //         throwError(['ERRORS.GeneralBackendError']);
-  //       }
-  //     )
-  //   );
-  // }
+  updateUserDetails(firstName: string, lastName: string, coach?: string): Observable<void> {
+    const updateUserDto = new UpdateUserDto(firstName, lastName, coach);
 
-  // updateUser(user: User): Observable<User> {
-  //   return this.baseRestService.patch<UserRestResponse>('account/profile', user.profile).pipe(
-  //     map(
-  //       (res) => {
-  //         if (res.success) {
-  //           return user;
-  //         }
-  //         throwError([res.message]); // TODO: add real error here
-  //       },
-  //       () => {
-  //         throwError(['ERRORS.GeneralBackendError']);
-  //       }
-  //     )
-  //   );
-  // }
+    return this.baseRestService.patch<void>('users', updateUserDto);
+  }
 }
