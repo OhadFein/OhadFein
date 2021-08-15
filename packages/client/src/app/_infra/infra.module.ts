@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { IvyCarouselModule } from 'angular-responsive-carousel';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { ImageCropperModule } from 'ngx-image-cropper';
@@ -42,7 +43,9 @@ import {
   StarPreviewItemComponent,
   StarPreviewGridComponent,
   NotificationListGridComponent,
-  NotificationListItemComponent
+  NotificationListItemComponent,
+  StarAboutSectionComponent,
+  HorizontalPreviewCarouselComponent
 } from './ui';
 import { MaterialModule } from './material.module';
 
@@ -77,7 +80,9 @@ const components = [
   StarPreviewItemComponent,
   StarPreviewGridComponent,
   NotificationListGridComponent,
-  NotificationListItemComponent
+  NotificationListItemComponent,
+  StarAboutSectionComponent,
+  HorizontalPreviewCarouselComponent
 ];
 
 @NgModule({
@@ -91,7 +96,8 @@ const components = [
     VgBufferingModule,
     ImageCropperModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    IvyCarouselModule
   ],
   declarations: [components],
   exports: [components]

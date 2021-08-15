@@ -27,3 +27,5 @@ export * from './star-preview-item/star-preview-item.component';
 export * from './star-preview-grid/star-preview-grid.component';
 export * from './notification-list-grid/notification-list-grid.component';
 export * from './notification-list-item/notification-list-item.component';
+export * from './star-about-section/star-about-section.component';
+export * from './horizontal-preview-carousel/horizontal-preview-carousel.component';
