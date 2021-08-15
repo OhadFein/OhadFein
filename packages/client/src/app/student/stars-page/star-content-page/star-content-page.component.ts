@@ -1,13 +1,17 @@
-import { Component, OnDestroy, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subject, Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 import { VideoPlayerModalComponent } from '@infra/ui';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { filter, finalize, take } from 'rxjs/operators';
 import { StudentStoreService } from '@app/student/services/student-store/student-store.service';
-import { StarDto } from '@danskill/contract';
+import { FigureBaseDto, StarDto } from '@danskill/contract';
 import { StarsService } from '@core/services';
+
+interface DanceStyles {
+  [danceStyle: string]: FigureBaseDto[];
+}
 
 @Component({
   selector: 'dsapp-star-content-page',
@@ -21,16 +25,9 @@ export class StarContentPageComponent implements OnInit, OnDestroy {
 
   loading = true;
 
-  subs: Subscription[] = [];
-
-  @ViewChild('stardescription')
-  starDescriptionEl: ElementRef;
-
-  isReadMore: boolean;
-
-  showMore = false;
-
   noResultMessage: string;
+
+  danceStyles: DanceStyles;
 
   private unsubscribe = new Subject<void>();
 
@@ -43,7 +40,6 @@ export class StarContentPageComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.isOverflown();
     this.route.params
       .pipe(
         take(1),
@@ -52,33 +48,12 @@ export class StarContentPageComponent implements OnInit, OnDestroy {
           this.loading = false;
         })
       )
-      .subscribe((params: Params) => this.initUser(params.slug));
-  }
-
-  isOverflown(): void {
-    setTimeout(() => {
-      if (this.starDescriptionEl) {
-        const element = this.starDescriptionEl.nativeElement;
-        if (
-          element.scrollHeight > element.clientHeight ||
-          element.scrollWidth > element.clientWidth
-        ) {
-          this.isReadMore = true;
+      .subscribe((params: Params) => {
+        this.initUser(params.slug);
+        if (this.user) {
+          this.initUserDanceStyles(this.user.figures);
         }
-      }
-    }, 1000);
-  }
-
-  readMore(): void {
-    this.starDescriptionEl.nativeElement.classList.add('show-more');
-    this.showMore = true;
-    this.isReadMore = false;
-  }
-
-  readLess(): void {
-    this.starDescriptionEl.nativeElement.classList.add('show-more');
-    this.showMore = false;
-    this.isReadMore = true;
+      });
   }
 
   ngOnDestroy(): void {
@@ -106,11 +81,24 @@ export class StarContentPageComponent implements OnInit, OnDestroy {
         (star: StarDto) => {
           this.user = star;
           this.studentStoreService.setStars([star]);
+          this.initUserDanceStyles(this.user.figures);
         },
         () => {
           this.noResultMessage = 'Sorry, there is no star with such name';
         }
       );
     }
+  }
+
+  private initUserDanceStyles(figures: FigureBaseDto[]): void {
+    const danceStyles: DanceStyles = {};
+    figures.forEach((figure: FigureBaseDto) => {
+      if (danceStyles[figure.type]) {
+        danceStyles[figure.type].push(figure);
+      } else {
+        danceStyles[figure.type] = [figure];
+      }
+    });
+    this.danceStyles = danceStyles;
   }
 }

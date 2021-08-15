@@ -1,4 +1,4 @@
-<div *ngIf="user && !loading"class="star-page-wrapper">
+<div *ngIf="user && !loading" class="star-page-wrapper">
     <div class="star-promo-review-wrapper">
         <dsapp-star-promo-review [logo]="user.logo"
                                  (openModal)="openPromoModal()"></dsapp-star-promo-review>
@@ -9,35 +9,15 @@
                              [lastName]="user.lastName"></dsapp-star-initials>
     </div>
 
-    <div class="row d-flex justify-content-center">
-        <div class="col">
-            <div class="star-info-vertical">
-                <div class="star-info-text text-center">
-                    <p #stardescription
-                       *ngIf="user.about"
-                       class="star-info-desc text-muted"
-                       [ngClass]="isReadMore === true ? 'show-less' : isReadMore === false ? 'read-more' : ''">{{user.about}}</p>
-
-                    <div *ngIf="isReadMore===true"
-                         class="text-end w-100 text-right read-more-button"
-                         (click)="readMore()"><span>
-                            {{'COMMON.showMore' | translate}}
-                        </span>
-                        <img src="/assets/images/icons/down-chevron.svg">
-                    </div>
-                    <div *ngIf="isReadMore===false"
-                         class="text-end w-100 text-right read-less-button"
-                         (click)="readLess()"><span>
-                            {{'COMMON.showLess' | translate}}
-                        </span>
-                        <img src="/assets/images/icons/up-chevron.svg">
-                    </div>
-                </div>
-
-            </div>
-        </div>
+    <div class="star-about-section-wrapper">
+        <dsapp-star-about-section [text]="user.about"></dsapp-star-about-section>
     </div>
-    <dsapp-start-figure-wrapper [starId]="user._id"></dsapp-start-figure-wrapper>
+
+    <div class="star-dance-style-wrapper">
+        <dsapp-horizontal-preview-carousel *ngFor="let style of danceStyles | keyvalue"
+                                           [name]="style.key"
+                                           [items]="style.value"></dsapp-horizontal-preview-carousel>
+    </div>
 </div>
 
 <ng-template [ngIf]="loading">
