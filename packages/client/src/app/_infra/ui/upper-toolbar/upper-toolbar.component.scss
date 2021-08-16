@@ -12,3 +12,19 @@
   background: $ds-color-background;
   border-bottom: 0.8px solid #ededed;
 }
+
+.page-title {
+  font-family: $font-family-sans-serif;
+  color: $ds-color-text-regular;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.title-area {
+  display: flex;
+  align-items: center;
+}
+
+.back-icon {
+  margin-right: 10px;
+}

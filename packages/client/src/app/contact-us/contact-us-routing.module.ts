@@ -6,7 +6,10 @@ import { ContactUsPageComponent } from './contact-us-page/contact-us-page.compon
 const routes: Routes = [
   {
     path: '',
-    component: ContactUsPageComponent
+    component: ContactUsPageComponent,
+    data: {
+      title: 'Contact us'
+    }
   }
 ];
 

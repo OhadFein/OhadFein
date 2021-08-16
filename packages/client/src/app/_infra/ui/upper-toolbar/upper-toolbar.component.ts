@@ -1,6 +1,12 @@
-import { map, filter } from 'rxjs/operators';
+import { map, filter, mergeMap, pairwise } from 'rxjs/operators';
 import { Component, EventEmitter, Output, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, ResolveEnd, Router } from '@angular/router';
+import {
+  ActivatedRoute,
+  NavigationEnd,
+  ResolveEnd,
+  Router,
+  RoutesRecognized
+} from '@angular/router';
 
 @Component({
   selector: 'dsapp-upper-toolbar',
@@ -10,16 +16,13 @@ import { ActivatedRoute, NavigationEnd, ResolveEnd, Router } from '@angular/rout
 export class UpperToolbarComponent implements OnInit {
   title: string;
 
-  constructor(private router: ActivatedRoute) {}
+  previousUrl: string = '/';
+
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.router.url
-      .pipe(
-        map((event) => {
-          console.log(event);
-        })
-      )
-      .subscribe();
+    this.subscribeForTitleUpdates();
+    this.subscribeForPreviousPage();
   }
 
   @Output() public sideMenuOpen = new EventEmitter();
@@ -27,4 +30,33 @@ export class UpperToolbarComponent implements OnInit {
   public onOpenSideMenu = (): void => {
     this.sideMenuOpen.emit();
   };
+
+  subscribeForPreviousPage(): void {
+    this.router.events
+      .pipe(
+        filter((evt: any) => evt instanceof RoutesRecognized),
+        pairwise()
+      )
+      .subscribe((events: RoutesRecognized[]) => {
+        this.previousUrl = events[0].urlAfterRedirects;
+      });
+  }
+
+  subscribeForTitleUpdates(): void {
+    this.router.events
+      .pipe(
+        filter((event) => event instanceof NavigationEnd),
+        map(() => this.activatedRoute),
+        map((route) => {
+          while (route.firstChild) route = route.firstChild;
+
+          return route;
+        }),
+        filter((route) => route.outlet === 'primary'),
+        mergeMap((route) => route.data)
+      )
+      .subscribe((event) => {
+        this.title = event.title;
+      });
+  }
 }
