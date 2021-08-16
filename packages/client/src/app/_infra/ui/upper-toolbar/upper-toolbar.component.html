@@ -1,5 +1,5 @@
 <mat-toolbar class="upper-toolbar">
-  <ui-logo></ui-logo>
+  <ui-logo *ngIf="!title"></ui-logo>
   <div>
     <dsapp-notifications-button></dsapp-notifications-button>
     <button mat-icon-button
