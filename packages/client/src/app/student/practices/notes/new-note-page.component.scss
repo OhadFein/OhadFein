@@ -33,3 +33,16 @@
   outline: none;
   overflow: hidden;
 }
+
+.save-btn {
+  width: 40px;
+  height: 40px;
+  color: $ds-text-color-button-main;
+  background-color: $ds-color-button-main;
+  font-size: 13px;
+  border: none;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

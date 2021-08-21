@@ -1,5 +1,5 @@
 import { map, filter, mergeMap, pairwise } from 'rxjs/operators';
-import { Component, EventEmitter, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit, ElementRef, TemplateRef } from '@angular/core';
 import {
   ActivatedRoute,
   NavigationEnd,
@@ -7,6 +7,7 @@ import {
   Router,
   RoutesRecognized
 } from '@angular/router';
+import { UpperToolbarService } from './upper-toolbar.service';
 
 @Component({
   selector: 'dsapp-upper-toolbar',
@@ -18,11 +19,20 @@ export class UpperToolbarComponent implements OnInit {
 
   previousUrl: string = '/';
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
+  toolbarButtons: ElementRef;
+
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private upperToolbarService: UpperToolbarService
+  ) {}
 
   ngOnInit(): void {
     this.subscribeForTitleUpdates();
     this.subscribeForPreviousPage();
+    this.upperToolbarService.customButtonsComponent.subscribe((customBtnElem) => {
+      this.toolbarButtons = customBtnElem;
+    });
   }
 
   @Output() public sideMenuOpen = new EventEmitter();

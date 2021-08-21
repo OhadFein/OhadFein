@@ -1,5 +1,6 @@
+import { UpperToolbarService } from '@app/_infra/ui/upper-toolbar/upper-toolbar.service';
 import { formatDate } from '@angular/common';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 
@@ -8,7 +9,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './new-note-page.component.html',
   styleUrls: ['./new-note-page.component.scss']
 })
-export class NewNotePageComponent implements OnInit, OnDestroy {
+export class NewNotePageComponent implements OnInit, OnDestroy, AfterViewInit {
   practiceId: string = null;
 
   noteTitle = '';
@@ -17,9 +18,12 @@ export class NewNotePageComponent implements OnInit, OnDestroy {
 
   subs: Subscription[] = [];
 
+  @ViewChild('saveBtn')
+  private saveButtonTemplate: ElementRef;
+
   public now: string = this.formatDateTime(new Date());
 
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private upperToolbarService: UpperToolbarService) {
     setInterval(() => {
       this.now = this.formatDateTime(new Date());
     }, 60000);
@@ -31,6 +35,11 @@ export class NewNotePageComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subs.forEach((s) => s.unsubscribe());
+    this.upperToolbarService.setDefaultButtonsComponent();
+  }
+
+  ngAfterViewInit(): void {
+    this.upperToolbarService.setCustomButtonsComponent(this.saveButtonTemplate);
   }
 
   getPracticeId(): void {

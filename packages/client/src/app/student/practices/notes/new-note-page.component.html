@@ -11,3 +11,12 @@
                   cdkTextareaAutosize></textarea>
     </div>
 </div>
+
+<ng-template #saveBtn>
+    <button mat-icon-button
+            class="save-btn"
+            (click)="saveNote()">
+        <mat-icon fontSet="material-icons-outlined">done</mat-icon>
+    </button>
+
+</ng-template>
