@@ -46,3 +46,7 @@
   align-items: center;
   justify-content: center;
 }
+
+.save-btn:disabled {
+  opacity: 30%;
+}

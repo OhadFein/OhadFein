@@ -10,7 +10,6 @@ export class UpperToolbarService {
   public customButtonsComponent = this.customButtonsComponentSubject.asObservable();
 
   public setCustomButtonsComponent(elem: ElementRef): void {
-    console.log('Publishing new comp');
     this.customButtonsComponentSubject.next(elem);
   }
 

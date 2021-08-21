@@ -1,21 +1,24 @@
 <div>
     <div class="title-input-area">
         <span class="heading">Title:</span>
-        <input class="title-input">
+        <input class="title-input"
+               [(ngModel)]="noteTitle">
         <span class="now-datetime">{{now}}</span>
     </div>
     <div class="note-area">
         <span class="heading">Your note:</span>
         <textarea matInput
                   class="note-textarea"
-                  cdkTextareaAutosize></textarea>
+                  cdkTextareaAutosize
+                  [(ngModel)]="noteText"></textarea>
     </div>
 </div>
 
 <ng-template #saveBtn>
     <button mat-icon-button
             class="save-btn"
-            (click)="saveNote()">
+            (click)="saveNote()"
+            [disabled]="!noteTitle || !noteText">
         <mat-icon fontSet="material-icons-outlined">done</mat-icon>
     </button>
 

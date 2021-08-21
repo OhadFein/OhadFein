@@ -51,7 +51,7 @@ export class NewNotePageComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   saveNote(): void {
-    //
+    console.log('Saving new note: title: ' + this.noteTitle + ' body: ' + this.noteText);
   }
 
   formatDateTime(date: Date): string {
