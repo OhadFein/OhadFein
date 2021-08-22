@@ -1,12 +1,7 @@
-import { map, filter, mergeMap, pairwise } from 'rxjs/operators';
-import { Component, EventEmitter, Output, OnInit, ElementRef, TemplateRef } from '@angular/core';
-import {
-  ActivatedRoute,
-  NavigationEnd,
-  ResolveEnd,
-  Router,
-  RoutesRecognized
-} from '@angular/router';
+import { map, filter, mergeMap, pairwise, takeUntil } from 'rxjs/operators';
+import { Component, EventEmitter, Output, OnInit, ElementRef } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router, RoutesRecognized } from '@angular/router';
+import { Subject } from 'rxjs';
 import { UpperToolbarService } from './upper-toolbar.service';
 
 @Component({
@@ -14,7 +9,7 @@ import { UpperToolbarService } from './upper-toolbar.service';
   templateUrl: './upper-toolbar.component.html',
   styleUrls: ['./upper-toolbar.component.scss']
 })
-export class UpperToolbarComponent implements OnInit {
+export class UpperToolbarComponent implements OnInit, OnDestroy {
   title: string;
 
   previousUrl: string = '/';
@@ -27,12 +22,17 @@ export class UpperToolbarComponent implements OnInit {
     private upperToolbarService: UpperToolbarService
   ) {}
 
+  private unsubscribe: Subject<void> = new Subject();
+
   ngOnInit(): void {
     this.subscribeForTitleUpdates();
     this.subscribeForPreviousPage();
-    this.upperToolbarService.customButtonsComponent.subscribe((customBtnElem) => {
-      this.toolbarButtons = customBtnElem;
-    });
+    this.subscribeForCustomButtonsComponent();
+  }
+
+  ngOnDestroy(): void {
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 
   @Output() public sideMenuOpen = new EventEmitter();
@@ -44,17 +44,27 @@ export class UpperToolbarComponent implements OnInit {
   subscribeForPreviousPage(): void {
     this.router.events
       .pipe(
+        takeUntil(this.unsubscribe),
         filter((evt: any) => evt instanceof RoutesRecognized),
         pairwise()
       )
-      .subscribe((events: RoutesRecognized[]) => {
+      .subscribe((events) => {
         this.previousUrl = events[0].urlAfterRedirects;
+      });
+  }
+
+  subscribeForCustomButtonsComponent(): void {
+    this.upperToolbarService.customButtonsComponent
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe((customBtnElem) => {
+        this.toolbarButtons = customBtnElem;
       });
   }
 
   subscribeForTitleUpdates(): void {
     this.router.events
       .pipe(
+        takeUntil(this.unsubscribe),
         filter((event) => event instanceof NavigationEnd),
         map(() => this.activatedRoute),
         map((route) => {

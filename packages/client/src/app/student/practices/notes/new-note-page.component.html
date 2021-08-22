@@ -1,18 +1,17 @@
-<div>
-    <div class="title-input-area">
-        <span class="heading">Title:</span>
-        <input class="title-input"
-               [(ngModel)]="noteTitle">
-        <span class="now-datetime">{{now}}</span>
-    </div>
-    <div class="note-area">
-        <span class="heading">Your note:</span>
-        <textarea matInput
-                  class="note-textarea"
-                  cdkTextareaAutosize
-                  [(ngModel)]="noteText"></textarea>
-    </div>
+<div class="title-input-area">
+    <span class="heading">Title:</span>
+    <input class="title-input"
+           [(ngModel)]="noteTitle">
+    <span class="now-datetime">{{now}}</span>
 </div>
+<div class="note-area">
+    <span class="heading">Your note:</span>
+    <textarea matInput
+              class="note-textarea"
+              cdkTextareaAutosize
+              [(ngModel)]="noteText"></textarea>
+</div>
+
 
 <ng-template #saveBtn>
     <button mat-icon-button

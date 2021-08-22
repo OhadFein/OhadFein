@@ -3,14 +3,14 @@
 .title-input-area {
   color: $ds-color-text-secondary;
   display: flex;
-  font-size: 13px;
+  font-size: $h3-font-size;
   align-items: center;
   margin-bottom: 15px;
 }
 
 .note-area {
   color: $ds-color-text-secondary;
-  font-size: 13px;
+  font-size: $h3-font-size;
 }
 
 .title-input {
@@ -39,7 +39,7 @@
   height: 40px;
   color: $ds-text-color-button-main;
   background-color: $ds-color-button-main;
-  font-size: 13px;
+  font-size: $h3-font-size;
   border: none;
   border-radius: 7px;
   display: flex;

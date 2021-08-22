@@ -1,8 +1,9 @@
+import { takeUntil } from 'rxjs/operators';
 import { UpperToolbarService } from '@app/_infra/ui/upper-toolbar/upper-toolbar.service';
 import { formatDate } from '@angular/common';
 import { Component, OnDestroy, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'dsapp-new-note-page',
@@ -16,7 +17,7 @@ export class NewNotePageComponent implements OnInit, OnDestroy, AfterViewInit {
 
   noteText = '';
 
-  subs: Subscription[] = [];
+  private unsubscribe: Subject<void> = new Subject();
 
   @ViewChild('saveBtn')
   private saveButtonTemplate: ElementRef;
@@ -34,7 +35,8 @@ export class NewNotePageComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   ngOnDestroy(): void {
-    this.subs.forEach((s) => s.unsubscribe());
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
     this.upperToolbarService.setDefaultButtonsComponent();
   }
 
@@ -43,11 +45,9 @@ export class NewNotePageComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   getPracticeId(): void {
-    this.subs.push(
-      this.route.paramMap.subscribe((params) => {
-        this.practiceId = params.get('practiceId');
-      })
-    );
+    this.route.paramMap.pipe(takeUntil(this.unsubscribe)).subscribe((params) => {
+      this.practiceId = params.get('practiceId');
+    });
   }
 
   saveNote(): void {
