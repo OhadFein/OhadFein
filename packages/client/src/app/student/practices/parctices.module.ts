@@ -4,8 +4,13 @@ import { NgModule } from '@angular/core';
 import { InfraModule } from '@app/_infra/infra.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
-import { FormsModule } from '@angular/forms';
-import { PracticesPageComponent, PracticePageComponent, NewNotePageComponent } from '.';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import {
+  PracticesPageComponent,
+  PracticePageComponent,
+  NewNotePageComponent,
+  NotePageComponent
+} from '.';
 import { PracticesRoutingModule } from './practices-routing.module';
 import { SharedModule } from '../../shared/shared.module';
 
@@ -18,8 +23,14 @@ import { SharedModule } from '../../shared/shared.module';
     PracticesRoutingModule,
     FormsModule,
     SharedModule,
-    MaterialModule
+    MaterialModule,
+    ReactiveFormsModule
   ],
-  declarations: [PracticesPageComponent, PracticePageComponent, NewNotePageComponent]
+  declarations: [
+    PracticesPageComponent,
+    PracticePageComponent,
+    NewNotePageComponent,
+    NotePageComponent
+  ]
 })
 export class PracticesModule {}

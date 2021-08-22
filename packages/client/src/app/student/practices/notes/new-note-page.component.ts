@@ -13,22 +13,16 @@ import { Subject } from 'rxjs';
 export class NewNotePageComponent implements OnInit, OnDestroy, AfterViewInit {
   practiceId: string = null;
 
-  noteTitle = '';
+  noteTitle;
 
-  noteText = '';
+  noteText;
 
   private unsubscribe: Subject<void> = new Subject();
 
   @ViewChild('saveBtn')
   private saveButtonTemplate: ElementRef;
 
-  public now: string = this.formatDateTime(new Date());
-
-  constructor(private route: ActivatedRoute, private upperToolbarService: UpperToolbarService) {
-    setInterval(() => {
-      this.now = this.formatDateTime(new Date());
-    }, 60000);
-  }
+  constructor(private route: ActivatedRoute, private upperToolbarService: UpperToolbarService) {}
 
   ngOnInit(): void {
     this.getPracticeId();
@@ -54,7 +48,11 @@ export class NewNotePageComponent implements OnInit, OnDestroy, AfterViewInit {
     console.log('Saving new note: title: ' + this.noteTitle + ' body: ' + this.noteText);
   }
 
-  formatDateTime(date: Date): string {
-    return formatDate(date, 'dd/LL HH:mm', 'en');
+  onTitleChange(value: string): void {
+    this.noteTitle = value;
+  }
+
+  onBodyChange(value: string): void {
+    this.noteText = value;
   }
 }

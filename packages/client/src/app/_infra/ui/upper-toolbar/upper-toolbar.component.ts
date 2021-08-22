@@ -1,5 +1,5 @@
 import { map, filter, mergeMap, pairwise, takeUntil } from 'rxjs/operators';
-import { Component, EventEmitter, Output, OnInit, ElementRef } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit, ElementRef, OnDestroy } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RoutesRecognized } from '@angular/router';
 import { Subject } from 'rxjs';
 import { UpperToolbarService } from './upper-toolbar.service';
