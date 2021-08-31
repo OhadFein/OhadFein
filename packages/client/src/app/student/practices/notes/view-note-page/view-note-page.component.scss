@@ -13,16 +13,8 @@
   font-size: $h3-font-size;
 }
 
-.note-title-input {
-  color: $ds-color-text-regular;
+.title-input {
   width: 100%;
-  border: none;
-  background: transparent;
-  outline: none;
-}
-
-.note-title-input:disabled {
-  color: $ds-color-text-regular;
 }
 
 .now-datetime {
@@ -42,10 +34,6 @@
   overflow: hidden;
 }
 
-.note-textarea:disabled {
-  color: $ds-color-text-regular;
-}
-
 .save-btn {
   width: 40px;
   height: 40px;
@@ -61,4 +49,21 @@
 
 .save-btn:disabled {
   opacity: 30%;
+}
+
+.edit-btns {
+  display: flex;
+}
+
+.note-edit-btn {
+  background-color: transparent;
+  color: $ds-text-color-button-secondary;
+  width: 40px;
+  height: 40px;
+  font-size: $h3-font-size;
+  border: none;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

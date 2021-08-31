@@ -2,7 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '@app/_infra/core/guards/auth.guard';
 
-import { PracticePageComponent, PracticesPageComponent, NewNotePageComponent } from '.';
+import {
+  PracticePageComponent,
+  PracticesPageComponent,
+  NewNotePageComponent,
+  ViewNotePageComponent
+} from '.';
 
 const routes: Routes = [
   { path: '', component: PracticesPageComponent, canActivate: [AuthGuard] },
@@ -17,6 +22,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: {
       title: 'Add new note'
+    }
+  },
+  {
+    path: ':practiceId/:noteId',
+    component: ViewNotePageComponent,
+    canActivate: [AuthGuard],
+    data: {
+      title: 'Notes'
     }
   }
 ];

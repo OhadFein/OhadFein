@@ -1,8 +1,8 @@
 <div class="title-input-area">
     <span class="heading">Title:</span>
-    <input class="title-input"
+    <input class="note-title-input"
            [formControl]="titleControl">
-    <span class="now-datetime">{{now}}</span>
+    <span class="now-datetime">{{noteDate | date: 'dd/LL HH:mm'}}</span>
 </div>
 <div class="note-area">
     <span class="heading">Your note:</span>

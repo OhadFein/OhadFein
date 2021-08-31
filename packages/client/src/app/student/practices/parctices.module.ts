@@ -9,7 +9,8 @@ import {
   PracticesPageComponent,
   PracticePageComponent,
   NewNotePageComponent,
-  NotePageComponent
+  NotePageComponent,
+  ViewNotePageComponent
 } from '.';
 import { PracticesRoutingModule } from './practices-routing.module';
 import { SharedModule } from '../../shared/shared.module';
@@ -30,7 +31,8 @@ import { SharedModule } from '../../shared/shared.module';
     PracticesPageComponent,
     PracticePageComponent,
     NewNotePageComponent,
-    NotePageComponent
+    NotePageComponent,
+    ViewNotePageComponent
   ]
 })
 export class PracticesModule {}

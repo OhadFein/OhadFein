@@ -1,0 +1,31 @@
+<dsapp-note [noteTitle]="noteTitle"
+            [noteText]="noteText"
+            [noteDate]="noteLastUpdateDate"
+            [disabled]="!editMode"
+            (titleChange)="onTitleChange($event)"
+            (bodyChange)="onBodyChange($event)"></dsapp-note>
+
+<ng-template #saveBtn>
+    <button mat-icon-button
+            class="save-btn"
+            (click)="saveNote()"
+            [disabled]="!noteTitle || !noteText">
+        <mat-icon fontSet="material-icons-outlined">done</mat-icon>
+    </button>
+
+</ng-template>
+
+<ng-template #editAndDeleteButtons>
+    <div class="edit-btns">
+        <button mat-icon-button
+                class="note-edit-btn"
+                (click)="editNote()">
+            <mat-icon fontSet="material-icons-outlined">edit</mat-icon>
+        </button>
+        <button mat-icon-button
+                class="note-edit-btn"
+                (click)="deleteNote()">
+            <mat-icon fontSet="material-icons-outlined">delete_outline</mat-icon>
+        </button>
+    </div>
+</ng-template>

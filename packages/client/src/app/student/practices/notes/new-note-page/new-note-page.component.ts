@@ -1,6 +1,5 @@
 import { takeUntil } from 'rxjs/operators';
 import { UpperToolbarService } from '@app/_infra/ui/upper-toolbar/upper-toolbar.service';
-import { formatDate } from '@angular/common';
 import { Component, OnDestroy, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subject } from 'rxjs';
