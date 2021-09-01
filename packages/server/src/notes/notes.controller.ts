@@ -7,11 +7,12 @@ import {
   UseInterceptors,
   HttpException,
   HttpStatus,
+  Patch
 } from '@nestjs/common';
 import { Types } from 'mongoose';
 import { RequestUser } from 'src/common/decorators/request-user.decorator';
 import { User } from 'src/users/schemas/user.schema';
-import { CreateNoteDto, NoteDto } from '@danskill/contract';
+import { CreateNoteDto, UpdateNoteDto, NoteDto } from '@danskill/contract';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
 // import { ApiBody } from '@nestjs/swagger';
 import { NotesService } from './notes.service';
@@ -32,8 +33,23 @@ export class NotesController {
     return this.notesService.create(user, practiceId, createNoteDto);
   }
 
+  @Patch(':id')
+  @UseInterceptors(new TransformInterceptor(NoteDto))
+  async remove(
+    @Param('id') id: Types.ObjectId,
+    @Body() updateNoteDto: UpdateNoteDto
+  ): Promise<Note> {
+    console.log('here');
+    const updatedNote = await this.notesService.update(id, updateNoteDto);
+    if (!updatedNote) {
+      throw new HttpException('Note not found', HttpStatus.NOT_FOUND);
+    }
+
+    return updatedNote;
+  }
+
   @Delete(':id')
-  async remove(@Param('id') id: Types.ObjectId): Promise<void> {
+  async update(@Param('id') id: Types.ObjectId): Promise<void> {
     const deletedNote = await this.notesService.remove(id);
     if (!deletedNote) {
       throw new HttpException('Note not found', HttpStatus.NOT_FOUND);
