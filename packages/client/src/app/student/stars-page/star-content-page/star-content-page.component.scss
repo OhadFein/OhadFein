@@ -1,0 +1,14 @@
+@import 'src/styles/_all';
+
+.star-page-wrapper {
+  margin-top: -2rem;
+
+  .star-promo-review-wrapper,
+  .star-about-section-wrapper {
+    margin-bottom: rem(20px);
+  }
+
+  .star-initials-wrapper {
+    margin-bottom: rem(12px);
+  }
+}

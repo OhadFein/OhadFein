@@ -3,7 +3,9 @@
 
 <dsapp-star-preview-grid>
     <ng-container *ngFor="let star of filteredStars">
-        <dsapp-star-preview-item [star]="star"></dsapp-star-preview-item>
+        <dsapp-star-preview-item [logo]="star.logo"
+                                 [name]="star.firstName + ' ' + star.lastName"
+                                 (click)="navigateToStarPage(star)"></dsapp-star-preview-item>
     </ng-container>
 </dsapp-star-preview-grid>
 

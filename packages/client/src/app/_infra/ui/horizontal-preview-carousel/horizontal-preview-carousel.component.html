@@ -1,0 +1,12 @@
+<div class="carousel-header">
+    <span class="carousel-name">{{name | titlecase}}</span>
+    <span class="view-all-button">view all</span>
+</div>
+<div class="item-list">
+    <carousel class="horizontal-carousel" [arrows]="false">
+        <div *ngFor="let item of items" class="carousel-cell">
+            <dsapp-star-preview-item [logo]="item.logo"
+                                     [name]="item.name"></dsapp-star-preview-item>
+        </div>
+    </carousel>
+</div>

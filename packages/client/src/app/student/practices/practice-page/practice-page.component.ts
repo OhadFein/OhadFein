@@ -120,7 +120,7 @@ export class PracticePageComponent implements OnInit, OnDestroy {
     const userVideo = null;
     const currentStar = practice.star;
 
-    if (currentStar && userVideo) {
+    if (userVideo && currentStar && userVideo) {
       this.loading = false;
       const labItem: LabItem = {
         user: currentStar as any, // TODO: any,

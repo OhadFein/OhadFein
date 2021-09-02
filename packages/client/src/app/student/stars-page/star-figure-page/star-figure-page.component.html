@@ -4,9 +4,7 @@
       <div class="row figure-info">
         <div class="col">
           <ui-video-preview *ngIf="currentVideo"
-                            [path]="currentVideo.path"
-                            [bla]="currentVideo.type"
-                            [poster]="currentVideo.thumbnail"></ui-video-preview>
+                            [path]="currentVideo.path"></ui-video-preview>
           <div *ngIf="!currentVideo"
                class="embed-responsive embed-responsive-16by9">
             <div class="embed-responsive-item cover-bg"

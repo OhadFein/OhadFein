@@ -17,9 +17,9 @@ import { Subscription } from 'rxjs';
 })
 export class VideoPreviewComponent implements OnChanges, OnDestroy {
   @Input() path: string;
-  @Input() poster: string;
-  @Input() bla: string;
+
   playerAPI: VgAPI;
+
   subs: Subscription[] = [];
 
   constructor(private elRef: ElementRef) {}

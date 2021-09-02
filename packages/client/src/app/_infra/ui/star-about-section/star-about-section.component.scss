@@ -1,0 +1,30 @@
+@import 'src/styles/_all';
+
+.about-text {
+  position: relative;
+  font-size: $font-size-sm;
+  color: $ds-color-text-regular;
+  max-height: 4rem;
+  overflow-y: hidden;
+}
+
+.unrolled {
+  max-height: 100%;
+  overflow-y: visible;
+}
+
+.read-more {
+  display: block;
+  position: absolute;
+  top: rem(42px);
+  right: 0;
+  background: linear-gradient(to right, transparent -20px, #fcfcfc 30px);
+  font-weight: 600;
+  padding: 0 20px 0 40px
+}
+
+.read-less {
+  padding-left: 4px;
+  font-weight: 600;
+  white-space: nowrap;
+}

@@ -1,89 +1,104 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { IUser } from '@core/models';
-import * as StarsActions from '@app/_infra/store/actions/stars.actions';
-import * as selectors from '@infra/store/selectors/stars.selectors';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
+import { Subject } from 'rxjs';
 import { VideoPlayerModalComponent } from '@infra/ui';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ElementRef } from '@angular/core';
+import { filter, finalize, take } from 'rxjs/operators';
+import { StudentStoreService } from '@app/student/services/student-store/student-store.service';
+import { FigureBaseDto, StarDto } from '@danskill/contract';
+import { StarsService } from '@core/services';
+
+interface DanceStyles {
+  [danceStyle: string]: FigureBaseDto[];
+}
 
 @Component({
   selector: 'dsapp-star-content-page',
-  templateUrl: './star-content-page.component.html'
+  templateUrl: './star-content-page.component.html',
+  styleUrls: ['./star-content-page.component.scss']
 })
 export class StarContentPageComponent implements OnInit, OnDestroy {
   slug = null;
-  user: IUser = null;
+
+  user: StarDto;
+
   loading = true;
-  subs: Subscription[] = [];
-  @ViewChild('stardescription') starDescriptionEl: ElementRef;
-  isReadMore: boolean;
-  showMore = false;
+
+  noResultMessage: string;
+
+  danceStyles: DanceStyles;
+
+  private unsubscribe = new Subject<void>();
 
   constructor(
     private store: Store<any>,
     private route: ActivatedRoute,
-    private modalService: NgbModal
+    private modalService: NgbModal,
+    private starService: StarsService,
+    private studentStoreService: StudentStoreService
   ) {}
 
   ngOnInit(): void {
-    this.isOverflown();
-    this.subs.push(
-      this.route.params.subscribe((params: ParamMap) => {
-        this.slug = params['username'];
-      })
-    );
-    this.subs.push(
-      this.store.select(selectors.selectStarBySlug(this.slug)).subscribe((star) => {
-        if (star) {
-          this.user = { ...star };
+    this.route.params
+      .pipe(
+        take(1),
+        filter((params: Params) => params.slug),
+        finalize(() => {
           this.loading = false;
-        } else {
-          this.store.dispatch(StarsActions.BeginGetStarsAction());
+        })
+      )
+      .subscribe((params: Params) => {
+        this.initUser(params.slug);
+        if (this.user) {
+          this.initUserDanceStyles(this.user.figures);
         }
-      })
-    );
-  }
-
-  isOverflown(): void {
-    setTimeout(() => {
-      if (this.starDescriptionEl) {
-        const element = this.starDescriptionEl.nativeElement;
-        if (
-          element.scrollHeight > element.clientHeight ||
-          element.scrollWidth > element.clientWidth
-        ) {
-          this.isReadMore = true;
-        }
-      }
-    }, 1000);
-  }
-
-  readMore() {
-    this.starDescriptionEl.nativeElement.classList.add('show-more');
-    this.showMore = true;
-    this.isReadMore = false;
-  }
-
-  readLess() {
-    this.starDescriptionEl.nativeElement.classList.add('show-more');
-    this.showMore = false;
-    this.isReadMore = true;
+      });
   }
 
   ngOnDestroy(): void {
-    this.subs.forEach((s) => s.unsubscribe());
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 
-  openPromoModal(starName: string, promoUrl: string) {
+  openPromoModal(): void {
+    const { firstName, lastName, promoVideo } = this.user;
     const modalRef = this.modalService.open(VideoPlayerModalComponent, {
       size: 'xl',
       centered: true
     });
-    modalRef.componentInstance.videoURL = promoUrl;
-    modalRef.componentInstance.title = starName;
+    modalRef.componentInstance.videoURL = promoVideo;
+    modalRef.componentInstance.title = `${firstName} ${lastName}`;
     modalRef.componentInstance.autoplay = true;
+  }
+
+  private initUser(slug: string): void {
+    this.slug = slug;
+    this.user = this.studentStoreService.getStarBySlug(this.slug);
+
+    if (!this.user && this.slug) {
+      this.starService.getStarBySlug(this.slug).subscribe(
+        (star: StarDto) => {
+          this.user = star;
+          this.studentStoreService.setStars([star]);
+          this.initUserDanceStyles(this.user.figures);
+        },
+        () => {
+          this.noResultMessage = 'Sorry, there is no star with such name';
+        }
+      );
+    }
+  }
+
+  private initUserDanceStyles(figures: FigureBaseDto[]): void {
+    const danceStyles: DanceStyles = {};
+    figures.forEach((figure: FigureBaseDto) => {
+      if (danceStyles[figure.type]) {
+        danceStyles[figure.type].push(figure);
+      } else {
+        danceStyles[figure.type] = [figure];
+      }
+    });
+    this.danceStyles = danceStyles;
   }
 }

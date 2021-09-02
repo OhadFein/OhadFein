@@ -1,0 +1,32 @@
+@import 'src/styles/_all';
+
+.carousel-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: rem(14px);
+  color: $ds-color-text-regular;
+
+  .carousel-name {
+    font-size: rem(18px);
+    font-weight: 600;
+  }
+
+  .view-all-button {
+    font-size: .75rem;
+  }
+}
+
+// override default settings of carousel
+.horizontal-carousel {
+  height: 180px!important;
+  z-index: 0!important;
+
+  ::ng-deep .carousel-cells .carousel-cell {
+    height: 135px;
+    overflow: visible;
+
+    img.star-preview {
+      object-fit: cover;
+    }
+  }
+}
