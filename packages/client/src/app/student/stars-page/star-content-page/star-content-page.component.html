@@ -16,7 +16,8 @@
     <div class="star-dance-style-wrapper">
         <dsapp-horizontal-preview-carousel *ngFor="let style of danceStyles | keyvalue"
                                            [name]="style.key"
-                                           [items]="style.value"></dsapp-horizontal-preview-carousel>
+                                           [items]="style.value"
+                                           (viewAll)="onViewAllFiguresByType($event)"></dsapp-horizontal-preview-carousel>
     </div>
 </div>
 
