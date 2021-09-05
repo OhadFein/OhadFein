@@ -1,0 +1,23 @@
+<div *ngIf="!loading && user">
+    <div class="main-search-bar-wrapper">
+        <dsapp-main-search-bar [placeholder]="searchPlaceholder"
+                               (search)="onSearch($event)"></dsapp-main-search-bar>
+    </div>
+
+    <ng-container *ngFor="let figure of filteredFigures">
+        <dsapp-star-figure-list-item [logo]="figure.logo"
+                                     [name]="figure.name"
+                                     (click)="onSelectFigure(figure)"></dsapp-star-figure-list-item>
+        <div class="list-separator"></div>
+    </ng-container>
+
+    <div *ngIf="!filteredFigures.length && searchString.trim()" class="no-result-text-wrapper">
+        <p class="no-result-text">
+            {{ 'ERRORS.noSerchResults' | translate:{ param: searchString } }}
+        </p>
+    </div>
+</div>
+
+<ng-template [ngIf]="loading">
+    <ui-preloader-inapp></ui-preloader-inapp>
+</ng-template>
