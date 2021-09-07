@@ -1,5 +1,11 @@
 <mat-toolbar class="upper-toolbar">
-  <ui-logo></ui-logo>
+  <ui-logo *ngIf="!title"></ui-logo>
+  <div class="title-area"
+       *ngIf="title">
+    <mat-icon class="back-icon"
+              [routerLink]="previousUrl">chevron_left</mat-icon>
+    <span class="page-title">{{title}}</span>
+  </div>
   <div>
     <dsapp-notifications-button></dsapp-notifications-button>
     <button mat-icon-button
