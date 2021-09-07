@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { VideoPlayerModalComponent } from '@infra/ui';
@@ -32,11 +32,11 @@ export class StarContentPageComponent implements OnInit, OnDestroy {
   private unsubscribe = new Subject<void>();
 
   constructor(
-    private store: Store<any>,
     private route: ActivatedRoute,
     private modalService: NgbModal,
     private starService: StarsService,
-    private studentStoreService: StudentStoreService
+    private studentStoreService: StudentStoreService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -70,6 +70,10 @@ export class StarContentPageComponent implements OnInit, OnDestroy {
     modalRef.componentInstance.videoURL = promoVideo;
     modalRef.componentInstance.title = `${firstName} ${lastName}`;
     modalRef.componentInstance.autoplay = true;
+  }
+
+  onViewAllFiguresByType(figureType: string): void {
+    this.router.navigate(['/student', 'star', this.slug, figureType]);
   }
 
   private initUser(slug: string): void {

@@ -22,6 +22,8 @@ import { FigureMovementsComponent } from './star-figure-page/figure-movements/fi
 import { FigurePrinciplesComponent } from './star-figure-page/figure-principles/figure-principles.component';
 import { FigurePracticesComponent } from './star-figure-page/figure-practices/figure-practices.component';
 import { FigurePreviewComponent } from './star-figure-page/figure-preview/figure-preview.component';
+import { StarFigureListComponent } from './star-figure-list/star-figure-list.component';
+import { StarFigureListItemComponent } from './star-figure-list-item/star-figure-list-item.component';
 
 @NgModule({
   imports: [
@@ -45,7 +47,9 @@ import { FigurePreviewComponent } from './star-figure-page/figure-preview/figure
     FigurePracticesComponent,
     FigurePreviewComponent,
     StarPromoReviewComponent,
-    StarInitialsComponent
+    StarInitialsComponent,
+    StarFigureListComponent,
+    StarFigureListItemComponent
   ],
   providers: [SharedService]
 })

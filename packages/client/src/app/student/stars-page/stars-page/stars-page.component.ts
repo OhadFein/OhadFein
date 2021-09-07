@@ -19,7 +19,7 @@ export class StarsPageComponent implements OnInit, OnDestroy {
 
   searchString: string;
 
-  searchPlaceholder = 'Search for a star';
+  readonly searchPlaceholder = 'Search for a star';
 
   private unsubscribe = new Subject<void>();
 
@@ -38,7 +38,15 @@ export class StarsPageComponent implements OnInit, OnDestroy {
     this.unsubscribe.complete();
   }
 
-  filterStars(searchString: string): void {
+  onSearch(value: string): void {
+    this.filterStars(value);
+  }
+
+  navigateToStarPage(star: StarDto): void {
+    this.router.navigate(['/student', 'star', star.slug]);
+  }
+
+  private filterStars(searchString: string): void {
     this.searchString = searchString;
 
     if (this.stars) {
@@ -52,14 +60,6 @@ export class StarsPageComponent implements OnInit, OnDestroy {
 
       this.filteredStars = tempFiltered;
     }
-  }
-
-  onSearch(value: string): void {
-    this.filterStars(value);
-  }
-
-  navigateToStarPage(star: StarDto): void {
-    this.router.navigate(['/student', 'star', star.slug]);
   }
 
   private fetchAllStars(): void {
