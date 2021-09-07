@@ -35,11 +35,10 @@ export class NotesController {
 
   @Patch(':id')
   @UseInterceptors(new TransformInterceptor(NoteDto))
-  async remove(
+  async update(
     @Param('id') id: Types.ObjectId,
     @Body() updateNoteDto: UpdateNoteDto
   ): Promise<Note> {
-    console.log('here');
     const updatedNote = await this.notesService.update(id, updateNoteDto);
     if (!updatedNote) {
       throw new HttpException('Note not found', HttpStatus.NOT_FOUND);
@@ -49,7 +48,7 @@ export class NotesController {
   }
 
   @Delete(':id')
-  async update(@Param('id') id: Types.ObjectId): Promise<void> {
+  async remove(@Param('id') id: Types.ObjectId): Promise<void> {
     const deletedNote = await this.notesService.remove(id);
     if (!deletedNote) {
       throw new HttpException('Note not found', HttpStatus.NOT_FOUND);
