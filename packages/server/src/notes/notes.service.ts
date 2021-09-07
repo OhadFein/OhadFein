@@ -66,6 +66,13 @@ export class NotesService {
     return createdNote;
   }
 
+  async findOne(id: Types.ObjectId): Promise<Note> {
+    return this.noteModel
+      .findOne({ _id: id })
+      .populate('videos stars') // TODO: replace the strings with fixed values
+      .exec();
+  }
+
   async update(id: Types.ObjectId, updateNoteDto: UpdateNoteDto): Promise<Note> {
     // TODO: check permissions
     const note = await this.noteModel

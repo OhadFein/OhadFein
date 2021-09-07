@@ -7,7 +7,8 @@ import {
   UseInterceptors,
   HttpException,
   HttpStatus,
-  Patch
+  Patch,
+  Get
 } from '@nestjs/common';
 import { Types } from 'mongoose';
 import { RequestUser } from 'src/common/decorators/request-user.decorator';
@@ -31,6 +32,12 @@ export class NotesController {
     @Param('practiceId') practiceId: Types.ObjectId
   ): Promise<Note> {
     return this.notesService.create(user, practiceId, createNoteDto);
+  }
+
+  @Get('single/:id')
+  @UseInterceptors(new TransformInterceptor(NoteDto))
+  async findOne(@Param('id') id: Types.ObjectId): Promise<Note> {
+    return this.notesService.findOne(id);
   }
 
   @Patch(':id')
