@@ -1,8 +1,9 @@
 import { takeUntil } from 'rxjs/operators';
 import { UpperToolbarService } from '@app/_infra/ui/upper-toolbar/upper-toolbar.service';
 import { Component, OnDestroy, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
+import { NotesService } from '@app/_infra/core/services/notes.service';
 
 @Component({
   selector: 'dsapp-new-note-page',
@@ -21,7 +22,12 @@ export class NewNotePageComponent implements OnInit, OnDestroy, AfterViewInit {
   @ViewChild('saveBtn')
   private saveButtonTemplate: ElementRef;
 
-  constructor(private route: ActivatedRoute, private upperToolbarService: UpperToolbarService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private upperToolbarService: UpperToolbarService,
+    private notesService: NotesService
+  ) {}
 
   ngOnInit(): void {
     this.getPracticeId();
@@ -44,7 +50,8 @@ export class NewNotePageComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   saveNote(): void {
-    console.log('Saving new note: title: ' + this.noteTitle + ' body: ' + this.noteText);
+    this.notesService.createNote(this.practiceId, this.noteTitle, this.noteText);
+    this.router.navigate(['..'], { relativeTo: this.route });
   }
 
   onTitleChange(value: string): void {

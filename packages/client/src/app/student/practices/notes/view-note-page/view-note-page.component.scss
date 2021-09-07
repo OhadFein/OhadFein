@@ -34,7 +34,7 @@
   overflow: hidden;
 }
 
-.save-btn {
+.update-btn {
   width: 40px;
   height: 40px;
   color: $ds-text-color-button-main;
@@ -47,7 +47,7 @@
   justify-content: center;
 }
 
-.save-btn:disabled {
+.update-btn:disabled {
   opacity: 30%;
 }
 

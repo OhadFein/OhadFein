@@ -2,6 +2,11 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
 export class CreateNoteDto {
+  constructor(title: string, content: string) {
+    this.title = title;
+    this.content = content;
+  }
+
   // @ApiProperty({ type: String })
   @IsNotEmpty()
   @IsString()

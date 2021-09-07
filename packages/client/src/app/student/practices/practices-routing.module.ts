@@ -25,7 +25,7 @@ const routes: Routes = [
     }
   },
   {
-    path: ':practiceId/:noteId',
+    path: 'notes/:noteId',
     component: ViewNotePageComponent,
     canActivate: [AuthGuard],
     data: {

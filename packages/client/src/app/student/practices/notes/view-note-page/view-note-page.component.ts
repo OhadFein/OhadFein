@@ -1,10 +1,10 @@
 import { map, takeUntil } from 'rxjs/operators';
 import { UpperToolbarService } from '@app/_infra/ui/upper-toolbar/upper-toolbar.service';
 import { Component, OnDestroy, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { PracticesService } from '@app/_infra/core/services';
-import { NoteBaseDto, PracticeDto } from '@danskill/contract';
+import { NoteBaseDto } from '@danskill/contract';
+import { NotesService } from '@app/_infra/core/services/notes.service';
 
 @Component({
   selector: 'dsapp-view-note-page',
@@ -12,8 +12,6 @@ import { NoteBaseDto, PracticeDto } from '@danskill/contract';
   styleUrls: ['./view-note-page.component.scss']
 })
 export class ViewNotePageComponent implements OnInit, OnDestroy, AfterViewInit {
-  practiceId: string = null;
-
   noteId: string = null;
 
   noteTitle;
@@ -34,8 +32,9 @@ export class ViewNotePageComponent implements OnInit, OnDestroy, AfterViewInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private upperToolbarService: UpperToolbarService,
-    private practicesService: PracticesService
+    private notesService: NotesService
   ) {}
 
   ngOnInit(): void {
@@ -54,19 +53,15 @@ export class ViewNotePageComponent implements OnInit, OnDestroy, AfterViewInit {
 
   initPracticeDetails(): void {
     this.route.paramMap.pipe(takeUntil(this.unsubscribe)).subscribe((params) => {
-      this.practiceId = params.get('practiceId');
       this.noteId = params.get('noteId');
-      this.getNoteDetails(this.practiceId, this.noteId);
+      this.getNoteDetails(this.noteId);
     });
   }
 
-  getNoteDetails(practiceId: string, noteId: string): void {
-    this.practicesService
-      .getPractice(practiceId)
+  getNoteDetails(noteId: string): void {
+    this.notesService
+      .getNote(noteId)
       .pipe(
-        map((practice: PracticeDto) => {
-          return this.getNoteFromPractice(practice, noteId);
-        }),
         map((note: NoteBaseDto) => {
           this.noteTitle = note.title;
           this.noteText = note.content;
@@ -76,18 +71,15 @@ export class ViewNotePageComponent implements OnInit, OnDestroy, AfterViewInit {
       .subscribe();
   }
 
-  getNoteFromPractice(practice: PracticeDto, noteId: string): NoteBaseDto {
-    return practice.notes.find((n) => n._id.toString() === noteId);
-  }
-
-  saveNote(): void {
-    console.log('Saving new note: title: ' + this.noteTitle + ' body: ' + this.noteText);
+  updateNote(): void {
+    this.notesService.updateNote(this.noteId, this.noteTitle, this.noteText);
     this.editMode = false;
+    this.router.navigate([this.route.url]);
   }
 
   deleteNote(): void {
-    console.log('Deleting note: title: ' + this.noteTitle + ' body: ' + this.noteText);
-    // Return to practice
+    this.notesService.deleteNote(this.noteId);
+    this.router.navigate(['../..'], { relativeTo: this.route });
   }
 
   editNote(): void {
