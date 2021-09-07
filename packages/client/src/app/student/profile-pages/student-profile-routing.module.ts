@@ -9,7 +9,10 @@ const routes: Routes = [
   {
     path: '',
     component: StudentProfilePageComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: {
+      title: 'Profile'
+    }
   },
   {
     path: 'edit',

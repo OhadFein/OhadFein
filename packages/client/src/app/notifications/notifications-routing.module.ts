@@ -7,14 +7,9 @@ const routes: Routes = [
   {
     path: '',
     component: NotificationsLayoutComponent,
-    children: [
-      {
-        path: 'notifications',
-        loadChildren: () => import('./notifications.module').then((m) => m.NotificationsModule),
-        canActivate: [AuthGuard]
-      },
-      { path: '', redirectTo: 'star', pathMatch: 'full' }
-    ]
+    data: {
+      title: 'Notifications'
+    }
   }
 ];
 
