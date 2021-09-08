@@ -1093,6 +1093,95 @@
           "response": []
         },
         {
+          "name": "Get note by id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Add note\", function () {\r",
+                  "    if (responseCode.code === 201)\r",
+                  "    {\r",
+                  "        const figure = pm.response.json();\r",
+                  "        pm.environment.set(\"noteId\", figure._id);\r",
+                  "    }\r",
+                  "    \r",
+                  "    pm.response.to.have.status(201);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": ""
+            },
+            "url": {
+              "raw": "{{url}}/notes/single/{{noteId}}",
+              "host": ["{{url}}"],
+              "path": ["notes", "single", "{{noteId}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Edit note",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Add note\", function () {\r",
+                  "    if (responseCode.code === 201)\r",
+                  "    {\r",
+                  "        const figure = pm.response.json();\r",
+                  "        pm.environment.set(\"noteId\", figure._id);\r",
+                  "    }\r",
+                  "    \r",
+                  "    pm.response.to.have.status(201);\r",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "name": "Content-Type",
+                "type": "text",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"title\": \"Title #12345\",\n    \"content\": \"check\"\n}"
+            },
+            "url": {
+              "raw": "{{url}}/notes/{{noteId}}",
+              "host": ["{{url}}"],
+              "path": ["notes", "{{noteId}}"]
+            }
+          },
+          "response": []
+        },
+        {
           "name": "Delete note",
           "event": [
             {

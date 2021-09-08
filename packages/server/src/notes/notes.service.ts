@@ -3,7 +3,7 @@ import { InjectModel } from '@nestjs/mongoose';
 import { Types, Model } from 'mongoose';
 import { PracticesService } from 'src/practices/practices.service';
 import { User } from 'src/users/schemas/user.schema';
-import { CreateNoteDto, EnumNotificationType } from '@danskill/contract';
+import { CreateNoteDto, UpdateNoteDto, EnumNotificationType } from '@danskill/contract';
 import { EnumNotificationLinkedModel } from 'src/common/enums/notification-linked-model.enum';
 import { UsersService } from 'src/users/users.service';
 import { NotificationsService } from 'src/notifications/notifications.service';
@@ -46,7 +46,7 @@ export class NotesService {
       user,
       practice: practiceId,
       title: createNoteDto.title,
-      content: createNoteDto.content,
+      content: createNoteDto.content
     });
 
     await createdNote.save();
@@ -64,6 +64,26 @@ export class NotesService {
     await this.usersService.addNotification(receiver, notification);
 
     return createdNote;
+  }
+
+  async findOne(id: Types.ObjectId): Promise<Note> {
+    return this.noteModel
+      .findOne({ _id: id })
+      .populate('videos stars') // TODO: replace the strings with fixed values
+      .exec();
+  }
+
+  async update(id: Types.ObjectId, updateNoteDto: UpdateNoteDto): Promise<Note> {
+    // TODO: check permissions
+    const note = await this.noteModel
+      .findByIdAndUpdate(
+        id,
+        { title: updateNoteDto.title, content: updateNoteDto.content },
+        { new: true }
+      )
+      .exec();
+
+    return note;
   }
 
   async remove(id: Types.ObjectId): Promise<Note> {
