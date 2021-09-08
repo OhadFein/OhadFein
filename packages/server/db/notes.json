@@ -1,0 +1,20 @@
+[
+  {
+    "_id": {
+      "$oid": "60fc4e36691b3a4b9366c1e5"
+    },
+    "user": {
+      "$oid": "60f8aa3557d219facdeb65b3"
+    },
+    "practice": "60fc4e09691b3a4b9366c1da",
+    "title": "Title #1",
+    "content": "check",
+    "createdAt": {
+      "$date": "2021-07-24T17:30:30.589Z"
+    },
+    "updatedAt": {
+      "$date": "2021-07-24T17:30:30.589Z"
+    },
+    "__v": 0
+  }
+]

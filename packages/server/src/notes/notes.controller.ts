@@ -7,11 +7,13 @@ import {
   UseInterceptors,
   HttpException,
   HttpStatus,
+  Patch,
+  Get
 } from '@nestjs/common';
 import { Types } from 'mongoose';
 import { RequestUser } from 'src/common/decorators/request-user.decorator';
 import { User } from 'src/users/schemas/user.schema';
-import { CreateNoteDto, NoteDto } from '@danskill/contract';
+import { CreateNoteDto, UpdateNoteDto, NoteDto } from '@danskill/contract';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
 // import { ApiBody } from '@nestjs/swagger';
 import { NotesService } from './notes.service';
@@ -30,6 +32,26 @@ export class NotesController {
     @Param('practiceId') practiceId: Types.ObjectId
   ): Promise<Note> {
     return this.notesService.create(user, practiceId, createNoteDto);
+  }
+
+  @Get('single/:id')
+  @UseInterceptors(new TransformInterceptor(NoteDto))
+  async findOne(@Param('id') id: Types.ObjectId): Promise<Note> {
+    return this.notesService.findOne(id);
+  }
+
+  @Patch(':id')
+  @UseInterceptors(new TransformInterceptor(NoteDto))
+  async update(
+    @Param('id') id: Types.ObjectId,
+    @Body() updateNoteDto: UpdateNoteDto
+  ): Promise<Note> {
+    const updatedNote = await this.notesService.update(id, updateNoteDto);
+    if (!updatedNote) {
+      throw new HttpException('Note not found', HttpStatus.NOT_FOUND);
+    }
+
+    return updatedNote;
   }
 
   @Delete(':id')

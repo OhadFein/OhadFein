@@ -1,0 +1,39 @@
+@import 'src/styles/_all';
+
+:host {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: 100%;
+}
+
+.star-figure-preview-wrapper {
+  width: rem(106px);
+  min-width: rem(106px);
+  height: rem(74px);
+
+  .star-figure-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: $img-list-item-radius;
+  }
+
+  @include media-breakpoint-up(sm) {
+    width: rem(144px);
+    min-width: rem(144px);
+    height: rem(100px);
+  }
+}
+
+.star-figure-name {
+  margin-left: 1rem;
+  font-size: $font-size-sm;
+  font-weight: $font-weight-bold-light;
+
+  @include truncate();
+
+  @include media-breakpoint-up(sm) {
+    font-size: $font-size-base;
+  }
+}
