@@ -50,8 +50,12 @@ export class NewNotePageComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   saveNote(): void {
-    this.notesService.createNote(this.practiceId, this.noteTitle, this.noteText);
-    this.router.navigate(['..'], { relativeTo: this.route });
+    this.notesService
+      .createNote(this.practiceId, this.noteTitle, this.noteText)
+      .toPromise()
+      .then(() => {
+        this.router.navigate(['..'], { relativeTo: this.route });
+      });
   }
 
   onTitleChange(value: string): void {

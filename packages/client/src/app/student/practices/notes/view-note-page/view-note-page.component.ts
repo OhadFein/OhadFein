@@ -3,7 +3,7 @@ import { UpperToolbarService } from '@app/_infra/ui/upper-toolbar/upper-toolbar.
 import { Component, OnDestroy, OnInit, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subject } from 'rxjs';
-import { NoteBaseDto } from '@danskill/contract';
+import { NoteDto } from '@danskill/contract';
 import { NotesService } from '@app/_infra/core/services/notes.service';
 
 @Component({
@@ -18,14 +18,16 @@ export class ViewNotePageComponent implements OnInit, OnDestroy, AfterViewInit {
 
   noteText;
 
+  practiceId;
+
   noteLastUpdateDate;
 
   editMode: boolean = false;
 
   private unsubscribe: Subject<void> = new Subject();
 
-  @ViewChild('saveBtn')
-  private saveButtonTemplate: ElementRef;
+  @ViewChild('updateBtn')
+  private updateButtonTemplate: ElementRef;
 
   @ViewChild('editAndDeleteButtons')
   private editAndDeleteBtnTemp: ElementRef;
@@ -62,7 +64,8 @@ export class ViewNotePageComponent implements OnInit, OnDestroy, AfterViewInit {
     this.notesService
       .getNote(noteId)
       .pipe(
-        map((note: NoteBaseDto) => {
+        map((note: NoteDto) => {
+          this.practiceId = note.practice._id;
           this.noteTitle = note.title;
           this.noteText = note.content;
           this.noteLastUpdateDate = note.updatedAt;
@@ -72,19 +75,28 @@ export class ViewNotePageComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   updateNote(): void {
-    this.notesService.updateNote(this.noteId, this.noteTitle, this.noteText);
-    this.editMode = false;
-    this.router.navigate([this.route.url]);
+    this.notesService
+      .updateNote(this.noteId, this.noteTitle, this.noteText)
+      .toPromise()
+      .then(() => {
+        this.editMode = false;
+        this.upperToolbarService.setCustomButtonsComponent(this.editAndDeleteBtnTemp);
+        this.router.navigate([this.router.url]);
+      });
   }
 
   deleteNote(): void {
-    this.notesService.deleteNote(this.noteId);
-    this.router.navigate(['../..'], { relativeTo: this.route });
+    this.notesService
+      .deleteNote(this.noteId)
+      .toPromise()
+      .then(() => {
+        this.router.navigate([`../../${this.practiceId}`], { relativeTo: this.route });
+      });
   }
 
   editNote(): void {
     this.editMode = true;
-    this.upperToolbarService.setCustomButtonsComponent(this.saveButtonTemplate);
+    this.upperToolbarService.setCustomButtonsComponent(this.updateButtonTemplate);
   }
 
   onTitleChange(value: string): void {

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BaseRestService } from '@core/services/base-rest.service';
 import { Observable } from 'rxjs';
-import { CreateNoteDto, NoteBaseDto } from '@danskill/contract';
+import { CreateNoteDto, NoteDto, UpdateNoteDto } from '@danskill/contract';
 
 @Injectable({
   providedIn: 'root'
@@ -9,21 +9,23 @@ import { CreateNoteDto, NoteBaseDto } from '@danskill/contract';
 export class NotesService {
   constructor(private baseRestService: BaseRestService) {}
 
-  getNote(noteId: string): Observable<NoteBaseDto> {
-    // TODO impl when server is ready
+  getNote(noteId: string): Observable<NoteDto> {
+    return this.baseRestService.get<NoteDto>(`notes/single/${noteId}`);
   }
 
-  updateNote(noteId: string, title: string, content: string): Observable<void> {
-    // TODO impl when server is ready
+  updateNote(noteId: string, title: string, content: string): Observable<NoteDto> {
+    const updateNoteDto = new UpdateNoteDto(title, content);
+
+    return this.baseRestService.patch<NoteDto>(`notes/${noteId}`, updateNoteDto);
   }
 
   deleteNote(noteId: string): Observable<void> {
     return this.baseRestService.delete<void>(`notes/${noteId}`);
   }
 
-  createNote(practiceId: string, title: string, content: string): Observable<NoteBaseDto> {
+  createNote(practiceId: string, title: string, content: string): Observable<NoteDto> {
     const createNoteDto = new CreateNoteDto(title, content);
 
-    return this.baseRestService.post<NoteBaseDto>(`notes/${practiceId}`, createNoteDto);
+    return this.baseRestService.post<NoteDto>(`notes/${practiceId}`, createNoteDto);
   }
 }
