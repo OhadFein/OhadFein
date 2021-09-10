@@ -18,4 +18,7 @@ export class NotificationBaseDto {
 
   @Expose()
   type: EnumNotificationType;
+
+  @Expose()
+  createdAt: Date;
 }
