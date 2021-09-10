@@ -8,7 +8,7 @@ import {
   EnumNotificationLinkedModelValues
 } from 'src/common/enums/notification-linked-model.enum';
 
-@Schema()
+@Schema({ _id: false })
 export class ReadBy {
   @Prop({ type: Types.ObjectId, ref: 'User', required: true }) // TODO: change to User.name
   readerId: Types.ObjectId;

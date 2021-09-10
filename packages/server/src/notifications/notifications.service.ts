@@ -19,16 +19,29 @@ export class NotificationsService {
   }
 
   async markRead(user: User, id: Types.ObjectId): Promise<Notification> {
-    const notifcation = await this.notificationModel.findById(id).exec();
-    if (!notifcation) {
-      throw new HttpException('Notifcation not found', HttpStatus.NOT_FOUND);
+    const notification = await this.notificationModel.findById(id).exec();
+    if (!notification) {
+      throw new HttpException('Notification not found', HttpStatus.NOT_FOUND);
     }
-    // TODO: fix this
-    // if (!notifcation.sourceUser.equals(user._id)) {
-    //   throw new HttpException('Notifcation not found', HttpStatus.UNAUTHORIZED); // Invalid permissions
-    // }
 
-    return notifcation;
+    const isNotificationForCurrentUser = notification.receivers.find((receiver) =>
+      receiver.equals(user._id)
+    );
+    if (!isNotificationForCurrentUser) {
+      throw new HttpException('Notification not found', HttpStatus.NOT_FOUND);
+    }
+
+    const isAlreadyRead = notification.readBy.find((readBy) => readBy.readerId.equals(user._id));
+    if (!isAlreadyRead) {
+      notification.readBy.push({
+        readerId: user._id,
+        readAt: new Date()
+      });
+    }
+
+    await notification.save();
+
+    return notification;
   }
 
   async build(
@@ -38,14 +51,14 @@ export class NotificationsService {
     notificationLinkedModel: EnumNotificationLinkedModel,
     linkedId: Types.ObjectId
   ): Promise<NotificationDocument> {
-    const createdNotifcation = new this.notificationModel({
+    const createdNotification = new this.notificationModel({
       senders: sendersIds,
       receivers: receiversIds,
       linkedId,
       type,
-      notificationLinkedModel,
+      notificationLinkedModel
     });
 
-    return createdNotifcation;
+    return createdNotification;
   }
 }
