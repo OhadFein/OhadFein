@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Post, UseInterceptors } from '@nestjs/common';
+import { Controller, Get, HttpCode, Param, Post, UseInterceptors } from '@nestjs/common';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
 import { Types } from 'mongoose';
 import { RequestUser } from 'src/common/decorators/request-user.decorator';
@@ -32,6 +32,7 @@ export class NotificationsController {
   }
 
   @Post('/markRead/:id')
+  @HttpCode(200)
   async markRead(@RequestUser() user: User, @Param('id') id: Types.ObjectId): Promise<void> {
     await this.notificationsService.markRead(user, id);
   }
