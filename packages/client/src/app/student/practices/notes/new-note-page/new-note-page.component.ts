@@ -13,9 +13,9 @@ import { NotesService } from '@app/_infra/core/services/notes.service';
 export class NewNotePageComponent implements OnInit, OnDestroy, AfterViewInit {
   practiceId: string = null;
 
-  noteTitle;
+  noteTitle: string;
 
-  noteText;
+  noteText: string;
 
   private unsubscribe: Subject<void> = new Subject();
 

@@ -20,7 +20,7 @@ export class BaseRestService {
 
   get<T>(endpoint: string, httpHeadersObj?: HttpHeaders): Observable<T> {
     this.getRestUrl();
-    const headersObj: HttpHeaders = httpHeadersObj || this.HTTP_HEADERS;
+    const headersObj: HttpHeaders = httpHeadersObj ?? this.HTTP_HEADERS;
     const options = { headers: headersObj, method: 'GET' };
 
     return this.http.get<T>(`${this.REST_URL}/${endpoint}`, options);
@@ -33,7 +33,7 @@ export class BaseRestService {
     reportProgress = false
   ): Observable<T> {
     this.getRestUrl();
-    const headersObj: HttpHeaders = httpHeadersObj || this.HTTP_HEADERS;
+    const headersObj: HttpHeaders = httpHeadersObj ?? this.HTTP_HEADERS;
     let options = { headers: headersObj, method: 'POST', reportProgress };
     if (reportProgress) {
       options = { ...options, ...{ observe: 'events' } };
@@ -44,7 +44,7 @@ export class BaseRestService {
 
   patch<T>(endpoint: string, body: any, httpHeadersObj?: HttpHeaders): Observable<T> {
     this.getRestUrl();
-    const headersObj: HttpHeaders = httpHeadersObj || this.HTTP_HEADERS;
+    const headersObj: HttpHeaders = httpHeadersObj ?? this.HTTP_HEADERS;
     const options = { headers: headersObj, method: 'PATCH' };
 
     return this.http.patch<T>(`${this.REST_URL}/${endpoint}`, body, options);
@@ -52,7 +52,7 @@ export class BaseRestService {
 
   delete<T>(endpoint: string, httpHeadersObj?: HttpHeaders): Observable<T> {
     this.getRestUrl();
-    const headersObj: HttpHeaders = httpHeadersObj || this.HTTP_HEADERS;
+    const headersObj: HttpHeaders = httpHeadersObj ?? this.HTTP_HEADERS;
     const options = { headers: headersObj, method: 'DELETE' };
 
     return this.http.delete<T>(`${this.REST_URL}/${endpoint}`, options);

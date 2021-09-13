@@ -14,13 +14,13 @@ import { NotesService } from '@app/_infra/core/services/notes.service';
 export class ViewNotePageComponent implements OnInit, OnDestroy, AfterViewInit {
   noteId: string = null;
 
-  noteTitle;
+  noteTitle: string;
 
-  noteText;
+  noteText: string;
 
-  practiceId;
+  practiceId: string;
 
-  noteLastUpdateDate;
+  noteLastUpdateDate: Date;
 
   editMode: boolean = false;
 
@@ -63,15 +63,13 @@ export class ViewNotePageComponent implements OnInit, OnDestroy, AfterViewInit {
   getNoteDetails(noteId: string): void {
     this.notesService
       .getNote(noteId)
-      .pipe(
-        map((note: NoteDto) => {
-          this.practiceId = note.practice._id;
-          this.noteTitle = note.title;
-          this.noteText = note.content;
-          this.noteLastUpdateDate = note.updatedAt;
-        })
-      )
-      .subscribe();
+      .toPromise()
+      .then((note: NoteDto) => {
+        this.practiceId = note.practice._id.toString();
+        this.noteTitle = note.title;
+        this.noteText = note.content;
+        this.noteLastUpdateDate = note.updatedAt;
+      });
   }
 
   updateNote(): void {

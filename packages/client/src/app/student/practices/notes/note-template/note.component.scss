@@ -45,20 +45,3 @@
 .note-textarea:disabled {
   color: $ds-color-text-regular;
 }
-
-.save-btn {
-  width: 40px;
-  height: 40px;
-  color: $ds-text-color-button-main;
-  background-color: $ds-color-button-main;
-  font-size: $h3-font-size;
-  border: none;
-  border-radius: 7px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.save-btn:disabled {
-  opacity: 30%;
-}
