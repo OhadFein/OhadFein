@@ -67,13 +67,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
       { metaReducers: [GlobalReducer] }
     ),
-    EffectsModule.forRoot([
-      UserEffects,
-      StarsEffects,
-      PracticesEffects,
-      FiguresEffects,
-      NotificationsEffects
-    ]),
+    EffectsModule.forRoot([UserEffects, StarsEffects, PracticesEffects, FiguresEffects]),
     HammerModule,
     SocialLoginModule,
     NgbModule,
