@@ -31,8 +31,7 @@ import {
   FiguresEffects,
   PracticesEffects,
   StarsEffects,
-  UserEffects,
-  NotificationsEffects
+  UserEffects
 } from './_infra/store/effects';
 import { APP_PROVIDERS } from './app-providers';
 import { AppRoutingModule } from './app-routing.module';

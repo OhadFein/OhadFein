@@ -1,18 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NotificationsService } from '@app/notifications/notifications.service';
-import { interval, merge, Subject, timer } from 'rxjs';
-import {
-  flatMap,
-  map,
-  takeLast,
-  takeUntil,
-  switchMap,
-  mergeMap,
-  mergeMapTo,
-  concatMap,
-  concatMapTo,
-  mapTo
-} from 'rxjs/operators';
+import { merge, Subject, timer } from 'rxjs';
+import { flatMap, takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'dsapp-notifications-button',
@@ -29,7 +18,7 @@ export class NotificationButtonComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     const timerSubscr = timer(0, 10000).pipe(
       takeUntil(this.unsubscribe),
-      switchMap(() => {
+      flatMap(() => {
         return this.notificationService.getUnreadNotificationsNumber();
       })
     );
