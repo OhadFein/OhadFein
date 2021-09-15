@@ -1,9 +1,10 @@
 import { EnumNotificationType } from '@danskill/contract';
-import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model, Types } from 'mongoose';
 import { EnumNotificationLinkedModel } from 'src/common/enums/notification-linked-model.enum';
-import { User } from 'src/users/schemas/user.schema';
+import { User, UserDocument } from 'src/users/schemas/user.schema';
+import { UsersService } from 'src/users/users.service';
 
 import { Notification, NotificationDocument } from './schemas/notification.schema';
 
@@ -14,11 +15,16 @@ export class NotificationsService {
     private readonly notificationModel: Model<NotificationDocument>
   ) {}
 
-  async findAll(user: User): Promise<Notification[]> {
-    return this.notificationModel
-      .find({ receivers: { $in: [user._id] } })
-      .populate('senders')
-      .exec();
+  async findAll(user: UserDocument): Promise<Notification[]> {
+    const userWithNotifications = await user
+      .populate({
+        path: 'notifications',
+        populate: {
+          path: 'senders'
+        }
+      })
+      .execPopulate();
+    return userWithNotifications.notifications as Notification[];
   }
 
   async markRead(user: User, id: Types.ObjectId): Promise<Notification> {

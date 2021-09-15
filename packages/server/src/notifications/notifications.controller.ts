@@ -2,7 +2,7 @@ import { Controller, Get, HttpCode, Param, Post, UseInterceptors } from '@nestjs
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
 import { Types } from 'mongoose';
 import { RequestUser } from 'src/common/decorators/request-user.decorator';
-import { User } from 'src/users/schemas/user.schema';
+import { User, UserDocument } from 'src/users/schemas/user.schema';
 import { NotificationsService } from './notifications.service';
 import { NotificationDto } from '../../../contract/src/notifications/notification.dto';
 import { Notification } from './schemas/notification.schema';
@@ -13,12 +13,11 @@ export class NotificationsController {
 
   @Get()
   @UseInterceptors(new TransformInterceptor(NotificationDto))
-  async findAll(@RequestUser() user: User): Promise<Notification[]> {
+  async findAll(@RequestUser() user: UserDocument): Promise<Notification[]> {
     const notifications = await this.notificationsService.findAll(user);
-
     /* eslint-disable no-param-reassign */
     notifications.forEach((notification) => {
-      const found = notification.readBy.find((readBy) => readBy.readerId.equals(user._id));
+      const found = notification.readBy?.find((readBy) => readBy.readerId.equals(user._id));
 
       notification.isRead = !!found;
       if (found) notification.readAt = found.readAt;
