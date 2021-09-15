@@ -15,7 +15,10 @@ export class NotificationsService {
   ) {}
 
   async findAll(user: User): Promise<Notification[]> {
-    return this.notificationModel.find().populate('senders').exec();
+    return this.notificationModel
+      .find({ receivers: { $in: [user._id] } })
+      .populate('senders')
+      .exec();
   }
 
   async markRead(user: User, id: Types.ObjectId): Promise<Notification> {
