@@ -7,6 +7,7 @@ import { PrepareS3URL } from 'src/common/utils/prepare-url';
 import { StarDto, CoachDto, UserBaseDto, FigureBaseDto } from '@danskill/contract';
 import { Figure } from '../../figures/schemas/figure.schema';
 import { Practice } from '../../practices/schemas/practice.schema';
+import { Notification } from '../../notifications/schemas/notification.schema';
 
 export type UserDocument = User & Star & Coach & Document;
 
