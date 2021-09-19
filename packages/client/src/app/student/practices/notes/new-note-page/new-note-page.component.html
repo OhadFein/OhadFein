@@ -1,0 +1,12 @@
+<dsapp-note (titleChange)="onTitleChange($event)"
+            (bodyChange)="onBodyChange($event)"></dsapp-note>
+
+<ng-template #saveBtn>
+    <button mat-icon-button
+            class="save-btn"
+            (click)="saveNote()"
+            [disabled]="!noteTitle || !noteText">
+        <mat-icon fontSet="material-icons-outlined">done</mat-icon>
+    </button>
+
+</ng-template>

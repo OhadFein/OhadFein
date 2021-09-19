@@ -7,11 +7,14 @@
     <span class="page-title">{{title}}</span>
   </div>
   <div>
-    <dsapp-notifications-button></dsapp-notifications-button>
-    <button mat-icon-button
-            class="danskill-btn"
-            (click)="onOpenSideMenu()">
-      <mat-icon fontSet="material-icons-outlined">menu</mat-icon>
-    </button>
+    <ng-template [ngIf]="!toolbarButtons"
+                 [ngIfElse]="toolbarButtons">
+      <dsapp-notifications-button></dsapp-notifications-button>
+      <button mat-icon-button
+              class="danskill-btn"
+              (click)="onOpenSideMenu()">
+        <mat-icon fontSet="material-icons-outlined">menu</mat-icon>
+      </button>
+    </ng-template>
   </div>
 </mat-toolbar>

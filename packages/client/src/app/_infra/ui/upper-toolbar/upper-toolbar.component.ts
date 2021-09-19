@@ -1,7 +1,8 @@
 import { map, filter, mergeMap, pairwise, takeUntil } from 'rxjs/operators';
-import { Component, EventEmitter, Output, OnInit, OnDestroy } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit, ElementRef, OnDestroy } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router, RoutesRecognized } from '@angular/router';
 import { Subject } from 'rxjs';
+import { UpperToolbarService } from './upper-toolbar.service';
 
 @Component({
   selector: 'dsapp-upper-toolbar',
@@ -13,13 +14,20 @@ export class UpperToolbarComponent implements OnInit, OnDestroy {
 
   previousUrl: string = '/';
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {}
+  toolbarButtons: ElementRef;
+
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private upperToolbarService: UpperToolbarService
+  ) {}
 
   private unsubscribe: Subject<void> = new Subject();
 
   ngOnInit(): void {
     this.subscribeForTitleUpdates();
     this.subscribeForPreviousPage();
+    this.subscribeForCustomButtonsComponent();
   }
 
   ngOnDestroy(): void {
@@ -42,6 +50,14 @@ export class UpperToolbarComponent implements OnInit, OnDestroy {
       )
       .subscribe((events) => {
         this.previousUrl = events[0].urlAfterRedirects;
+      });
+  }
+
+  subscribeForCustomButtonsComponent(): void {
+    this.upperToolbarService.customButtonsComponent
+      .pipe(takeUntil(this.unsubscribe))
+      .subscribe((customBtnElem) => {
+        this.toolbarButtons = customBtnElem;
       });
   }
 

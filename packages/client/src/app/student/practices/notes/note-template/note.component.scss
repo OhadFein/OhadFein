@@ -1,0 +1,47 @@
+@import 'src/styles/_all';
+
+.title-input-area {
+  color: $ds-color-text-secondary;
+  display: flex;
+  font-size: $h3-font-size;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.note-area {
+  color: $ds-color-text-secondary;
+  font-size: $h3-font-size;
+}
+
+.note-title-input {
+  color: $ds-color-text-regular;
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.note-title-input:disabled {
+  color: $ds-color-text-regular;
+}
+
+.now-datetime {
+  white-space: nowrap;
+}
+
+.heading {
+  margin-right: 5px;
+}
+
+.note-textarea {
+  margin-top: 10px;
+  border: none;
+  background: transparent;
+  width: 100%;
+  outline: none;
+  overflow: hidden;
+}
+
+.note-textarea:disabled {
+  color: $ds-color-text-regular;
+}
