@@ -18,7 +18,9 @@
     "updatedAt": {
       "$date": "2021-07-24T17:24:23.944Z"
     },
-    "__v": 0
+    "__v": 0,
+    "duration": "120",
+    "shooting_angle": "back"
   },
   {
     "_id": {
@@ -39,7 +41,9 @@
     "updatedAt": {
       "$date": "2021-07-24T17:24:30.499Z"
     },
-    "__v": 0
+    "__v": 0,
+    "duration": "121",
+    "shooting_angle": "front"
   },
   {
     "_id": {
@@ -63,7 +67,9 @@
     "updatedAt": {
       "$date": "2021-07-24T17:24:40.207Z"
     },
-    "__v": 0
+    "__v": 0,
+    "duration": "119",
+    "shooting_angle": "back"
   },
   {
     "_id": {
@@ -87,7 +93,9 @@
     "updatedAt": {
       "$date": "2021-07-24T17:24:59.365Z"
     },
-    "__v": 0
+    "__v": 0,
+    "duration": "90",
+    "shooting_angle": "front"
   },
   {
     "_id": {
@@ -111,6 +119,8 @@
     "updatedAt": {
       "$date": "2021-07-24T17:25:05.101Z"
     },
-    "__v": 0
+    "__v": 0,
+    "duration": "55",
+    "shooting_angle": "back"
   }
 ]

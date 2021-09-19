@@ -22,13 +22,14 @@ export class S3Service {
     const params: S3.Types.PutObjectRequest = {
       Bucket: bucket,
       Key: String(name),
-      Body: file,
+      Body: file
     };
     return new Promise((resolve, reject) => {
       s3.upload(params, (err, data) => {
         if (err) {
           Logger.error(err);
           reject(err.message);
+          return;
         }
         resolve(data);
       });
@@ -38,7 +39,7 @@ export class S3Service {
   private getAggregatedS3() {
     return new S3({
       accessKeyId: process.env.AWS_ACCESS_KEY_ID,
-      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+      secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
     });
   }
 
