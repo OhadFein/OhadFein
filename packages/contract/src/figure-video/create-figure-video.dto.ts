@@ -1,7 +1,8 @@
 // import { ApiProperty } from '@nestjs/swagger';
-import { IsMongoId, IsString, IsEnum } from 'class-validator';
+import { IsMongoId, IsString, IsEnum, IsNumber } from 'class-validator';
 import { Types } from 'mongoose';
-import { EnumVideoType, EnumVideoTypeValues } from '../common/enums/video-type.enum';
+import { EnumVideoType } from '../common/enums/video-type.enum';
+import { EnumShootingAngle } from '../common/enums/shooting-angle.enum';
 
 export class CreateFigureVideoDto {
   // @ApiProperty({ type: [Types.ObjectId] })
@@ -19,4 +20,10 @@ export class CreateFigureVideoDto {
   // @ApiProperty({ enum: EnumVideoTypeValues })
   @IsEnum(EnumVideoType)
   type: EnumVideoType;
+
+  @IsNumber()
+  duration: number;
+
+  @IsEnum(EnumShootingAngle)
+  shooting_angle: EnumShootingAngle;
 }

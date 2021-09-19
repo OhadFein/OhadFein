@@ -1,7 +1,13 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { PrepareS3URL } from 'src/common/utils/prepare-url';
 import { Types } from 'mongoose';
-import { FigureVideoBaseDto, EnumVideoType } from '@danskill/contract';
+import {
+  FigureVideoBaseDto,
+  EnumVideoType,
+  EnumShootingAngle,
+  EnumVideoTypeValues,
+  EnumShootingAngleValues
+} from '@danskill/contract';
 
 export type FigureVideoDocument = FigureVideo & Document;
 
@@ -23,8 +29,14 @@ export class FigureVideo implements FigureVideoBaseDto {
   @Prop({ required: true, get: PrepareS3URL })
   thumbnail: string;
 
-  @Prop({ required: true })
+  @Prop({ type: String, required: true, enum: EnumVideoTypeValues })
   type: EnumVideoType;
+
+  @Prop({ required: true })
+  duration: number;
+
+  @Prop({ type: String, required: true, enum: EnumShootingAngleValues })
+  shooting_angle: EnumShootingAngle;
 }
 
 export const FigureVideoSchema = SchemaFactory.createForClass(FigureVideo);

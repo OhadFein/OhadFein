@@ -28,6 +28,8 @@ export class FigureVideoService {
       key: createFigureVideoDto.key,
       thumbnail: createFigureVideoDto.thumbnail,
       type: createFigureVideoDto.type,
+      duration: createFigureVideoDto.duration,
+      shooting_angle: createFigureVideoDto.shooting_angle
     });
 
     await createdFigureVideo.save();

@@ -1,5 +1,6 @@
 import { Types } from 'mongoose';
 import { Exclude, Expose, Type } from 'class-transformer';
+import { EnumShootingAngle } from '../common/enums/shooting-angle.enum';
 import { EnumVideoType } from '../common/enums/video-type.enum';
 
 @Exclude()
@@ -24,4 +25,10 @@ export class FigureVideoBaseDto {
 
   @Expose()
   type: EnumVideoType;
+
+  @Expose()
+  duration: number;
+
+  @Expose()
+  shooting_angle: EnumShootingAngle;
 }
