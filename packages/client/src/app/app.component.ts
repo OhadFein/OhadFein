@@ -111,7 +111,6 @@ export class AppComponent implements OnInit, OnDestroy {
             page_path: event.urlAfterRedirects,
             page_title: event.urlAfterRedirects
           });
-          console.log(`sent gtag ${event.urlAfterRedirects}`);
           // closing menu
           this.menuService.setMenuOpenState(false);
         }
