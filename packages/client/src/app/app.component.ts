@@ -107,8 +107,11 @@ export class AppComponent implements OnInit, OnDestroy {
         if (event instanceof NavigationEnd) {
           // sending Google Analitics
           this.route = location.pathname === '/' ? '' : location.pathname;
-          gtag('config', environment.googleAnalyticsID, { page_path: event.urlAfterRedirects });
-
+          gtag('config', environment.googleAnalyticsID, {
+            page_path: event.urlAfterRedirects,
+            page_title: event.urlAfterRedirects
+          });
+          console.log(`sent gtag ${event.urlAfterRedirects}`);
           // closing menu
           this.menuService.setMenuOpenState(false);
         }
@@ -148,19 +151,6 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     });
   }
-
-  // TODO: unfinished work, part of notification task
-  // getGeneralInfo() {
-  //   this.userService
-  //     .getGeneralInfo()
-  //     .pipe(
-  //       map((res: any) => {
-  //         const notificationsNumber = res.notifications.filter((n) => n.isRead === false).length;
-  //         sessionStorage.setItem('notifications', JSON.stringify(notificationsNumber));
-  //       })
-  //     )
-  //     .subscribe();
-  // }
 
   changeBgPosition() {
     this.backgroundPositionOne = new BackgroundPosition();
