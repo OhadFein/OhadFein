@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   facebookAppID: '415416542727246',
   configFile: 'assets/config/app.config.json',
-  googleAnalyticsID: 'UA-164648800-2'
+  googleAnalyticsID: 'G-QBF3Q77KJT'
 };
 
 /*
