@@ -13,11 +13,15 @@ export class PracticesService {
   constructor(private baseRestService: BaseRestService) {}
 
   getPractices(): Observable<Practice[]> {
-    return this.baseRestService.get<PracticeItemsRestResponse>('account/practices/all').pipe(
-      map((res) => {
-        return res.data ?? [];
-      })
-    );
+    return this.baseRestService
+      .get<PracticeItemsRestResponse>('practices/all/andrey.sverkunov1')
+      .pipe(
+        map((res) => {
+          console.log(res);
+
+          return res.data ?? [];
+        })
+      );
   }
 
   getPractice(practiceId: string): Observable<PracticeDto> {

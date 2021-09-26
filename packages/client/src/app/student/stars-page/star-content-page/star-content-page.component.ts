@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
 import { VideoPlayerModalComponent } from '@infra/ui';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -73,7 +72,11 @@ export class StarContentPageComponent implements OnInit, OnDestroy {
   }
 
   onViewAllFiguresByType(figureType: string): void {
-    this.router.navigate(['/student', 'star', this.slug, figureType]);
+    this.router.navigate(['/student', 'star', this.slug, 'style', figureType]);
+  }
+
+  onOpenFigureItem(figureId: string): void {
+    this.router.navigate(['/student', 'star', this.slug, 'figure', figureId]);
   }
 
   private initUser(slug: string): void {
@@ -94,7 +97,8 @@ export class StarContentPageComponent implements OnInit, OnDestroy {
     }
   }
 
-  private initUserDanceStyles(figures: FigureBaseDto[]): void {
+  private initUserDanceStyles(figures: unknown[]): void {
+    console.log('look here', figures);
     const danceStyles: DanceStyles = {};
     figures.forEach((figure: FigureBaseDto) => {
       if (danceStyles[figure.type]) {

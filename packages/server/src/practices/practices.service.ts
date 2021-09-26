@@ -32,7 +32,7 @@ export class PracticesService {
       figure: video.figure,
       video: video._id,
       user: user._id,
-      key: s3file.Key,
+      key: s3file.Key
     });
 
     await createdPractice.save();
@@ -49,7 +49,9 @@ export class PracticesService {
     let slugToFind: string;
 
     if (slug && slug !== reqUser.slug) {
+      console.log(reqUser);
       const user = await this.usersService.findOne(slug);
+      console.log(user);
       if (matchRoles(reqUser, [EnumRole.Coach]) && user.coach.equals(reqUser._id)) {
         slugToFind = slug;
       } else {

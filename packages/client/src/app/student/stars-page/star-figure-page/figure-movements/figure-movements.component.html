@@ -1,18 +1,18 @@
-<div *ngIf="movements"
-     class="movements-wrapper">
-    <div *ngFor="let video of movements " (click)="onVideoSelectedEvent(video)"
-         class="col-12 d-flex align-items-center movement-item" [ngClass]="{'selected': video._id === currentVideoId}" >
-        <div class="comparable-video-image mr-2">
-            <div class="embed-responsive embed-responsive-16by9 video-preview-container">
-                <div class="embed-responsive-item star-big-image cover-bg"
-                     [style.backgroundImage]="'url('+ video.thumbnail +')'">
-                </div>
+<div class="movements-wrapper">
+    <div *ngFor="let video of movements"
+         class="movement-item" [ngClass]="{'selected': video._id === currentVideoId}" >
+        <div class="movement-row-left" (click)="onVideoSelectedEvent(video)">
+            <div class="movement-figure-preview-wrapper">
+                <img class="movement-figure-preview" [src]="video.thumbnail" [alt]="video">
+            </div>
+            <div class="movement-item-text">
+                <span class="movement-name">{{video.shooting_angle | titlecase}} view</span>
+                <span class="movement-duration">{{video.duration * 1000 | date:'mm:ss'}}</span>
             </div>
         </div>
-        <div class="comparable-video-text">
-            <div *ngIf="video.name">{{video.name}}</div>
-            <div *ngIf="">3.57</div>
+        <div class="movement-cta">
+            <button mat-button class="compare-btn"
+                    (click)="openInLab(video)">Compare</button>
         </div>
-        <div class="comparable-video-button"><button class="btn btn-success" (click)="openInLab(video)">Compare</button></div>
     </div>
 </div>

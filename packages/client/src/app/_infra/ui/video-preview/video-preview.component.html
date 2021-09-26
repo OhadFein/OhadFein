@@ -1,4 +1,5 @@
-<div class="embed-responsive embed-responsive-16by9">
+<div *ngIf="figureVideo && figure else preview;"
+     class="embed-responsive embed-responsive-16by9 video-preview">
     <vg-player class="embed-responsive-item"
                (onPlayerReady)="onPlayerReady($event)">
 
@@ -31,9 +32,15 @@
                muted
                playsinline
                webkit-playsinline>
-            <source *ngIf="path"
-                    [src]="path"
-                    type="video/mp4">
+            <source [src]="figureVideo?.url" type="video/mp4">
         </video>
     </vg-player>
 </div>
+<ng-template #preview>
+    <div class="embed-responsive embed-responsive-16by9 video-preview">
+        <img class="embed-responsive-item cover-bg"
+             [src]="'url('+ figureVideo?.thumbnail +')'"/>
+    </div>
+</ng-template>
+<div class="clip-name">{{clipName}}</div>
+<div class="participants-list">{{participants}}</div>

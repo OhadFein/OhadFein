@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { FigureBaseDto, StarDto } from '@danskill/contract';
+import { FigureBaseDto, FigureDto, StarDto } from '@danskill/contract';
 
 import { BaseRestService } from './base-rest.service';
 
@@ -19,7 +19,15 @@ export class StarsService {
     return this.baseRestService.get<StarDto>(`users/single/star/${slug}`);
   }
 
+  getAllStarFigures(slug: string): Observable<FigureBaseDto[]> {
+    return this.baseRestService.get<FigureBaseDto[]>(`figures/all`);
+  }
+
   getPracticesByType(slug: string, type: string): Observable<FigureBaseDto[]> {
     return this.baseRestService.get<FigureBaseDto[]>(`figures/all/${slug}/${type}`);
+  }
+
+  getFigureById(figureId: string): Observable<FigureDto> {
+    return this.baseRestService.get(`figures/single/${figureId}`);
   }
 }
