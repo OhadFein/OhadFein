@@ -1,3 +1,4 @@
+import { UpperToolbarService } from '@app/_infra/ui/upper-toolbar/upper-toolbar.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { filter, finalize, take } from 'rxjs/operators';
@@ -30,7 +31,8 @@ export class StarFigureListComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private studentStoreService: StudentStoreService,
-    private starService: StarsService
+    private starService: StarsService,
+    private upperToolbarService: UpperToolbarService
   ) {}
 
   ngOnInit(): void {
@@ -44,7 +46,11 @@ export class StarFigureListComponent implements OnInit {
       )
       .subscribe((params: Params) => {
         this.initUser(params);
+
         if (this.user) {
+          this.upperToolbarService.setPageName(
+            `${this.user.firstName} ${this.user.lastName}-${params.type}`
+          );
           this.initFigureList(params);
         }
       });
@@ -68,6 +74,9 @@ export class StarFigureListComponent implements OnInit {
         (star: StarDto) => {
           this.user = star;
           this.studentStoreService.setStars([star]);
+          this.upperToolbarService.setPageName(
+            `${this.user.firstName} ${this.user.lastName}-${params.type}`
+          );
           this.initFigureList(params);
         },
         () => {
