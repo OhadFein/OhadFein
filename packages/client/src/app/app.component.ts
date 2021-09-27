@@ -11,6 +11,7 @@ import { map } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { ConfigurationService, MenuService, UserService } from '@core/services';
 import { BackgroundPosition, BuildType } from '@core/models/';
+import { Angulartics2GoogleGlobalSiteTag } from 'angulartics2/gst';
 
 declare let gtag: any;
 declare let $: any;
@@ -77,10 +78,12 @@ export class AppComponent implements OnInit, OnDestroy {
     private modalService: NgbModal,
     private store: Store<any>,
     private userService: UserService,
-    private confifurationService: ConfigurationService
+    private confifurationService: ConfigurationService,
+    angulartics2ga: Angulartics2GoogleGlobalSiteTag
   ) {
     translate.setDefaultLang('en');
     translate.use('en');
+    angulartics2ga.startTracking();
   }
 
   @HostListener('window:resize') updateOrientationState() {

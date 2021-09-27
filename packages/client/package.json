@@ -35,6 +35,7 @@
     "@ngx-translate/core": "^12.1.2",
     "@ngx-translate/http-loader": "^4.0.0",
     "angular-responsive-carousel": "^2.1.2",
+    "angulartics2": "^10.0.0",
     "angularx-social-login": "^2.2.1",
     "aws-amplify": "^4.1.1",
     "bootstrap": "^4.3.1",
