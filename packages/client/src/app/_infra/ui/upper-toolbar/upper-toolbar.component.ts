@@ -78,5 +78,9 @@ export class UpperToolbarComponent implements OnInit, OnDestroy {
       .subscribe((event) => {
         this.title = event.title;
       });
+
+    this.upperToolbarService.pageName.pipe(takeUntil(this.unsubscribe)).subscribe((pageName) => {
+      this.title = pageName;
+    });
   }
 }
