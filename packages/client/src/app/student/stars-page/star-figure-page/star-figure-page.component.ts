@@ -8,15 +8,24 @@ import { Subject } from 'rxjs';
 import { SharedService } from '@app/_infra/core/services/shared.service';
 import { filter, finalize, take, takeUntil } from 'rxjs/operators';
 import { StudentStoreService } from '@app/student/services/student-store/student-store.service';
-import { EnumVideoType, FigureDto, FigureVideoBaseDto, StarDto } from '@danskill/contract';
-import { PracticesService, StarsService } from '@core/services';
+import {
+  EnumVideoType,
+  FigureDto,
+  FigureVideoBaseDto,
+  PracticeDto,
+  StarDto
+} from '@danskill/contract';
+import { PracticesService, StarsService, UserService } from '@core/services';
 
 @Component({
   selector: 'dsapp-star-figure-page',
-  templateUrl: './star-figure-page.component.html'
+  templateUrl: './star-figure-page.component.html',
+  styleUrls: ['./star-figure-page.component.scss']
 })
 export class StarFigurePageComponent implements OnInit, OnDestroy {
   slug = null;
+
+  userSlug: string;
 
   star: StarDto = null;
 
@@ -29,6 +38,8 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
   figureIsLoading = true;
 
   loading = true;
+
+  practices: PracticeDto[];
 
   basicPrinciplesVideos: FigureVideoBaseDto[] = [];
 
@@ -57,7 +68,8 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
     private sharedService: SharedService,
     private studentStoreService: StudentStoreService,
     private starService: StarsService,
-    private practicesService: PracticesService
+    private practicesService: PracticesService,
+    private userService: UserService
   ) {
     this.router.events
       .pipe(
@@ -75,9 +87,12 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.setFigureId();
-    this.setStar();
-    this.setFigure();
-    this.getPractices();
+    this.userService.getUser().subscribe((user) => {
+      this.userSlug = user.slug;
+      this.setStar();
+      this.setFigure();
+      this.getPractices();
+    });
   }
 
   navigateToTab(tab: FigurePageTab): void {
@@ -90,6 +105,18 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
 
   onVideoPreview(video: FigureVideoBaseDto): void {
     this.currentVideo = video;
+  }
+
+  getPracticeLabel(label: string): string {
+    const practices = this.practices?.length;
+    if (practices && practices < 9) {
+      return `${label} (${practices})`;
+    }
+    if (practices > 9) {
+      return `${label} (9+)`;
+    }
+
+    return label;
   }
 
   setCurrentVideo(): void {
@@ -191,8 +218,8 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
   }
 
   getPractices(): void {
-    this.practicesService.getPractices().subscribe((result) => {
-      console.log('Result', result);
+    this.practicesService.getPractices(this.userSlug).subscribe((practices: PracticeDto[]) => {
+      this.practices = practices;
     });
   }
 

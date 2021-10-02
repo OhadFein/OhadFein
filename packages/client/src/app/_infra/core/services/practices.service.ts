@@ -4,7 +4,7 @@ import { BaseRestService } from '@core/services/base-rest.service';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { PracticeDto } from '@danskill/contract';
-import { Practice, PracticeItemsRestResponse, UpdatePracticeItemsRestResponse } from '../models';
+import { Practice, UpdatePracticeItemsRestResponse } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -12,16 +12,8 @@ import { Practice, PracticeItemsRestResponse, UpdatePracticeItemsRestResponse } 
 export class PracticesService {
   constructor(private baseRestService: BaseRestService) {}
 
-  getPractices(): Observable<Practice[]> {
-    return this.baseRestService
-      .get<PracticeItemsRestResponse>('practices/all/andrey.sverkunov1')
-      .pipe(
-        map((res) => {
-          console.log(res);
-
-          return res.data ?? [];
-        })
-      );
+  getPractices(slug: string): Observable<PracticeDto[]> {
+    return this.baseRestService.get(`practices/all/${slug}`);
   }
 
   getPractice(practiceId: string): Observable<PracticeDto> {

@@ -37,8 +37,6 @@ export class FigureMovementsComponent implements OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if ('movements' in changes && this.movements?.length) {
       this.currentVideoId = this.movements[0]._id;
-      console.log(this.movements);
-      console.log(this.figure);
     }
   }
 

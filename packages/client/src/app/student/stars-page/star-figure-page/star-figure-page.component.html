@@ -11,7 +11,13 @@
                             (videoPreview)="onVideoPreview($event)"></dsapp-figure-movements>
   </mat-tab>
   <mat-tab [label]="tabs[1]">No content here</mat-tab>
-  <mat-tab [label]="tabs[2]">In progress...</mat-tab>
+  <mat-tab [label]="getPracticeLabel(tabs[2])">
+    <ng-container *ngFor="let practice of practices">
+      <dsapp-star-figure-list-item [logo]="practice.url"
+                                   [name]="'Placeholder for a name'"></dsapp-star-figure-list-item>
+      <div class="list-separator"></div>
+    </ng-container>
+  </mat-tab>
 </mat-tab-group>
 
 <ng-template [ngIf]="starIsLoading && figureIsLoading">

@@ -98,7 +98,6 @@ export class StarContentPageComponent implements OnInit, OnDestroy {
   }
 
   private initUserDanceStyles(figures: unknown[]): void {
-    console.log('look here', figures);
     const danceStyles: DanceStyles = {};
     figures.forEach((figure: FigureBaseDto) => {
       if (danceStyles[figure.type]) {
