@@ -13,7 +13,10 @@ const routes: Routes = [
   {
     path: ':slug',
     component: StarContentPageComponent,
-    canActivate: [AuthGuard]
+    canActivate: [AuthGuard],
+    data: {
+      title: 'Star profile'
+    }
   },
   {
     path: ':slug/style/:type',

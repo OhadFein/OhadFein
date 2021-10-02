@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth } from 'aws-amplify';
+import { Angulartics2 } from 'angulartics2';
 
 import { catchError, filter, finalize, map, switchMap } from 'rxjs/operators';
 import { fromPromise } from 'rxjs/internal-compatibility';
@@ -13,12 +14,21 @@ interface IAmplifyInfo {
   attributes: any;
 }
 
+enum IDProvider {
+  Google = 'Google',
+  Facebook = 'Facebook',
+  Manual = 'Manual'
+}
 @Component({
   selector: 'dsapp-after-login-page',
   template: ''
 })
 export class AfterLoginPageComponent implements OnInit {
-  constructor(private usersService: UserService, private router: Router) {}
+  constructor(
+    private usersService: UserService,
+    private router: Router,
+    private angulartics2: Angulartics2
+  ) {}
 
   ngOnInit(): void {
     this.usersService
@@ -30,22 +40,38 @@ export class AfterLoginPageComponent implements OnInit {
           return fromPromise(Auth.currentUserInfo()).pipe(
             filter((loggedInUser) => this.isAmplifyInfo(loggedInUser)),
             map((loggedInUser: IAmplifyInfo) => [this.extractSlug(loggedInUser), loggedInUser]),
-            switchMap(([username, loggedInUser]: [string, IAmplifyInfo]) =>
-              this.usersService
+            switchMap(([username, loggedInUser]: [string, IAmplifyInfo]) => {
+              this.angulartics2.eventTrack.next({
+                action: 'Sign Up',
+                properties: { id_provider: this.getIdProvider(loggedInUser) }
+              });
+
+              return this.usersService
                 .createNewUser(
                   username,
                   loggedInUser.attributes.sub,
                   loggedInUser.attributes.given_name,
                   loggedInUser.attributes.family_name
                 )
-                .pipe(catchError((error: any) => this.handleError(error?.message)))
-            ),
+                .pipe(catchError((error: any) => this.handleError(error?.message)));
+            }),
             catchError((error: any) => this.handleError(error?.message))
           );
         }),
         catchError((error: any) => this.handleError(error?.message))
       )
       .subscribe();
+  }
+
+  getIdProvider(loggedInUser: IAmplifyInfo): IDProvider {
+    if (loggedInUser.username.startsWith('google')) {
+      return IDProvider.Google;
+    }
+    if (loggedInUser.username.startsWith('facebook')) {
+      return IDProvider.Facebook;
+    }
+
+    return IDProvider.Manual;
   }
 
   extractSlug(loggedInUser: IAmplifyInfo): string {
