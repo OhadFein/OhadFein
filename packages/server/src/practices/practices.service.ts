@@ -63,7 +63,16 @@ export class PracticesService {
   }
 
   async findOne(id: Types.ObjectId): Promise<Practice> {
-    return this.practiceModel.findOne({ _id: id }).populate('video notes').exec(); // TODO: replace the strings with fixed values
+    return this.practiceModel
+      .findOne({ _id: id })
+      .populate('notes')
+      .populate({
+        path: 'video',
+        populate: {
+          path: 'figure',
+        },
+      })
+      .exec(); // TODO: replace the strings with fixed values
   }
 
   async remove(user: User, id: Types.ObjectId): Promise<Practice> {

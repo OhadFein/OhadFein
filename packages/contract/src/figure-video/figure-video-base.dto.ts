@@ -12,9 +12,6 @@ export class FigureVideoBaseDto {
   stars: Types.ObjectId[]; // participants stars
 
   @Expose()
-  figure: Types.ObjectId;
-
-  @Expose()
   key: string;
 
   @Expose()

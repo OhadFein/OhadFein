@@ -1,5 +1,4 @@
 import { Types } from 'mongoose';
-import { NoteBaseDto } from '../notes/note-base.dto';
 import { Exclude, Expose } from 'class-transformer';
 
 @Exclude()

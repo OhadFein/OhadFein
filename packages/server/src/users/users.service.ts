@@ -1,4 +1,3 @@
-import { UpdateUserDto } from './../../../contract/src/users/update-user.dto';
 import { FilterQuery, Model, Types } from 'mongoose';
 import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
@@ -15,6 +14,7 @@ import { EnumNotificationLinkedModel } from 'src/common/enums/notification-linke
 import { Notification } from 'src/notifications/schemas/notification.schema';
 import slugify from 'slugify';
 import { Figure } from 'src/figures/schemas/figure.schema';
+import { UpdateUserDto } from '../../../contract/src/users/update-user.dto';
 import { User, UserDocument, Coach, Star } from './schemas/user.schema';
 import { EnumRole } from '../common/enums/role.enum';
 import { matchRoles } from '../common/utils/match-roles';
@@ -155,6 +155,12 @@ export class UsersService {
       .populate({
         path: 'practices', // TODO: replace the strings with fixed values
         match: query,
+        populate: {
+          path: 'video',
+          populate: {
+            path: 'figure',
+          },
+        },
       })
       .exec();
 
