@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { BaseRestService } from '@core/services/base-rest.service';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { PracticeDto } from '@danskill/contract';
 import { Practice, PracticeItemsRestResponse, UpdatePracticeItemsRestResponse } from '../models';
 
 @Injectable({
@@ -17,6 +18,10 @@ export class PracticesService {
         return res.data ?? [];
       })
     );
+  }
+
+  getPractice(practiceId: string): Observable<PracticeDto> {
+    return this.baseRestService.get<PracticeDto>(`practices/single/${practiceId}`);
   }
 
   uploadPractice(data: any): Observable<any> {

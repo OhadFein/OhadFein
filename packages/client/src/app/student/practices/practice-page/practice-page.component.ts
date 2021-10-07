@@ -19,7 +19,7 @@ import * as StarsActions from '@store/actions/stars.actions';
 export class PracticePageComponent implements OnInit, OnDestroy {
   practiceId: string = null;
 
-  loading = true;
+  loading = false;
 
   practice: Practice = null;
 
@@ -59,7 +59,7 @@ export class PracticePageComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.translateContent();
-    this.getPractice(false, null);
+    // this.getPractice(false, null);
   }
 
   ngOnDestroy(): void {
@@ -120,7 +120,7 @@ export class PracticePageComponent implements OnInit, OnDestroy {
     const userVideo = null;
     const currentStar = practice.star;
 
-    if (currentStar && userVideo) {
+    if (userVideo && currentStar && userVideo) {
       this.loading = false;
       const labItem: LabItem = {
         user: currentStar as any, // TODO: any,

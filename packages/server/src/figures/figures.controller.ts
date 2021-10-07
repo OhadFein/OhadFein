@@ -10,7 +10,7 @@ import {
   Delete,
   HttpException,
   HttpStatus,
-  UseInterceptors,
+  UseInterceptors
 } from '@nestjs/common';
 import { Types } from 'mongoose';
 import { JwtAuthGuard } from 'src/common/guards/jwt-auth.guard';
@@ -38,6 +38,15 @@ export class FiguresController {
   @UseInterceptors(new TransformInterceptor(FigureBaseDto))
   async findAll(@Query() getAllFiguresDto: GetAllFiguresDto): Promise<Figure[]> {
     return this.figuresService.findAll(getAllFiguresDto);
+  }
+
+  @Get('all/:slug/:type')
+  @UseInterceptors(new TransformInterceptor(FigureBaseDto))
+  async findAllWithType(
+    @Param('slug') starUsername: string,
+    @Param('type') figureType: string
+  ): Promise<Figure[]> {
+    return this.figuresService.findAllByType({ starUsername, figureType });
   }
 
   // @ApiBody({ type: CreateFigureDto })

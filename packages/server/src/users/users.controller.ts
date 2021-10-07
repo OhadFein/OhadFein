@@ -8,7 +8,7 @@ import {
   Patch,
   Post,
   UseGuards,
-  UseInterceptors
+  UseInterceptors,
 } from '@nestjs/common';
 import { Skip } from 'src/common/decorators/skip.decorator';
 import {
@@ -18,7 +18,7 @@ import {
   UserBaseDto,
   UserDto,
   CreateStarDto,
-  UpdateUserDto
+  UpdateUserDto,
 } from '@danskill/contract';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
 import { RequestUser } from 'src/common/decorators/request-user.decorator';
@@ -77,6 +77,15 @@ export class UsersController {
   @UseInterceptors(new TransformInterceptor(UserBaseDto))
   async findAllUsers(): Promise<User[]> {
     return this.usersService.findAllUsers();
+  }
+
+  @Get('single/star/:slug?')
+  @UseInterceptors(new TransformInterceptor(StarDto))
+  async findOneStar(@Param('slug') slug?: string): Promise<Star> {
+    const user = await this.usersService.findOne(slug);
+    if (!user) throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+
+    return user;
   }
 
   @Get('all/stars')

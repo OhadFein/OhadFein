@@ -9,9 +9,7 @@
                    [disabled]="disabledTitle">
         </div>
         <div class="col-12">
-            <div class="inner-page-sub-title">
-                {{practice.createdAt | date:'MMMM y, HH:mm'}}
-            </div>
+
         </div>
     </div>
     <div class="row mb-4">
@@ -19,16 +17,16 @@
             <button class="mb-2 hide-btn"
                     (click)="toggleVideo()">{{videoButtonText}}</button>
             <!-- TODO: has to be fixed in redesign epic -->
-<!--            <ui-video-player-wrapper [hidden]="hiddenVideo"-->
-<!--                                     src="{{practice.video.path}}">-->
-<!--            </ui-video-player-wrapper>-->
+            <!--            <ui-video-player-wrapper [hidden]="hiddenVideo"-->
+            <!--                                     src="{{practice.video.path}}">-->
+            <!--            </ui-video-player-wrapper>-->
         </div>
     </div>
-   
+
     <div class="row">
         <div class="col-12">
             <button class="btn btn-sm mt-3 mb-2 btn-success"
-            (click)="openInLab(practice)">{{'STAR.FIGURES.openInMyLab' | translate}}</button>
+                    (click)="openInLab(practice)">{{'STAR.FIGURES.openInMyLab' | translate}}</button>
         </div>
     </div>
     <div class="row mb-4 justify-content-between">
@@ -36,7 +34,7 @@
 
             <button class="hide-btn"
                     (click)="toggleNotes()">{{noteButtonText}}</button>
-           
+
         </div>
         <div class="col-4">
         </div>

@@ -83,6 +83,7 @@ export class NotificationsPageComponent implements OnInit, OnDestroy {
 
   setNotificationsAsRead(notification: NotificationDto): any {
     notification.isRead = true;
+    this.notificationsService.setNotificationsAsRead(notification._id.toString());
     // TODO: navigate to a particular page
     // this.router.navigate([notification.link]);
   }

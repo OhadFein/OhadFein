@@ -4704,6 +4704,20 @@ amazon-cognito-identity-js@5.0.5:
     isomorphic-unfetch "^3.0.0"
     js-cookie "^2.2.1"
 
+angular-responsive-carousel@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/angular-responsive-carousel/-/angular-responsive-carousel-2.1.2.tgz#151adacb80835e374d6b9a3b99ff6d0cf4bd82ec"
+  integrity sha512-nOCEyL9R80kW876GY8KvXoPu9fHu3nEnA2RVoFZ3hnBLx/OIdebeKFTxfogWLgbI4S1xn+vOecY/a+GnAQNc8w==
+  dependencies:
+    tslib "^2.0.0"
+
+angulartics2@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/angulartics2/-/angulartics2-10.0.0.tgz#8e78eaf9f64467a941aefab5d834baca3f0a7b0f"
+  integrity sha512-ebn4uZb74WtG5S/OI69eY1J1MLyvIOXpUo64nYHAL7nUqp0PSbz+djPSaWsHKu4ga9G8lMmURzfxZ/EY1X+lmg==
+  dependencies:
+    tslib "^2.0.0"
+
 angularx-social-login@^2.2.1:
   version "2.3.1"
   resolved "https://registry.yarnpkg.com/angularx-social-login/-/angularx-social-login-2.3.1.tgz#81099fe20b398ef4c4a0710930358bacc635d016"

@@ -27,12 +27,12 @@ import { DeviceDetectorModule } from 'ngx-device-detector';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MaterialModule } from '@infra/material.module';
 
+import { Angulartics2Module } from 'angulartics2';
 import {
   FiguresEffects,
   PracticesEffects,
   StarsEffects,
-  UserEffects,
-  NotificationsEffects
+  UserEffects
 } from './_infra/store/effects';
 import { APP_PROVIDERS } from './app-providers';
 import { AppRoutingModule } from './app-routing.module';
@@ -68,13 +68,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
       { metaReducers: [GlobalReducer] }
     ),
-    EffectsModule.forRoot([
-      UserEffects,
-      StarsEffects,
-      PracticesEffects,
-      FiguresEffects,
-      NotificationsEffects
-    ]),
+    EffectsModule.forRoot([UserEffects, StarsEffects, PracticesEffects, FiguresEffects]),
     HammerModule,
     SocialLoginModule,
     NgbModule,
@@ -85,7 +79,12 @@ export function HttpLoaderFactory(http: HttpClient) {
     StudentModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: false }),
     LayoutModule,
-    MaterialModule
+    MaterialModule,
+    Angulartics2Module.forRoot({
+      pageTracking: {
+        clearIds: true
+      }
+    })
   ],
   entryComponents: [AboutDanskillModalComponent, VideoPlayerModalComponent],
   providers: [...APP_PROVIDERS],

@@ -17,4 +17,6 @@
   margin-bottom: rem(18px);
   text-align: center;
   font-size: $font-size-base;
+
+  @include truncate();
 }

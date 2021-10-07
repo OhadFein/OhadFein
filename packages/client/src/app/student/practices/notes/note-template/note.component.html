@@ -1,0 +1,13 @@
+<div class="title-input-area">
+    <span class="heading">Title:</span>
+    <input class="note-title-input"
+           [formControl]="titleControl">
+    <span class="now-datetime">{{noteDate | date: 'dd/LL HH:mm'}}</span>
+</div>
+<div class="note-area">
+    <span class="heading">Your note:</span>
+    <textarea matInput
+              class="note-textarea"
+              cdkTextareaAutosize
+              [formControl]="bodyControl"></textarea>
+</div>

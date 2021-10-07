@@ -1,0 +1,10 @@
+<div #aboutSection
+     *ngIf="text"
+     class="about-text"
+     [ngClass]="{'unrolled': !isRolledUp}">
+    <span>{{text}}</span>
+    <span *ngIf="isToggleButtonRequired"
+          [ngClass]="isRolledUp ? 'read-more' : 'read-less'"
+          [innerHTML]="isRolledUp ? 'Read more': 'Read less'"
+          (click)="toggleText()"></span>
+</div>

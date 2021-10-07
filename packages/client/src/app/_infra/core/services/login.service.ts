@@ -3,10 +3,7 @@ import { Router } from '@angular/router';
 import { AuthRestResponse, IRestResponse } from '@app/_infra/core/models';
 import * as GlobalActions from '@infra/store/actions/global.actions';
 import { Store } from '@ngrx/store';
-import { AuthService } from 'angularx-social-login';
-import { FacebookLoginProvider } from 'angularx-social-login';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 import { AlertService } from './alert.service';
 import { BaseRestService } from './base-rest.service';
@@ -19,7 +16,6 @@ export class LoginService {
   constructor(
     private router: Router,
     private alertService: AlertService,
-    private authService: AuthService,
     private store: Store<any>,
     private tokenService: TokenService,
     private baseRestService: BaseRestService
@@ -47,18 +43,7 @@ export class LoginService {
       );
   }
 
-  loginFacebook() {
-    this.authService.signIn(FacebookLoginProvider.PROVIDER_ID).then(
-      (res) => {
-        console.log('FACEBOOK LOGIN: ', res);
-      },
-      () => {
-        this.alertService.error('LOGIN.LoginFailedMsg');
-      }
-    );
-  }
-
-  async logout(showMsg = true) {
+  async logout(showMsg = true): Promise<void> {
     this.store.dispatch(GlobalActions.Logout());
 
     await this.tokenService.deleteStoredTokens();
@@ -68,16 +53,8 @@ export class LoginService {
     this.router.navigate(['/']);
   }
 
-  afterLoginRoute() {
+  afterLoginRoute(): void {
     this.alertService.success('LOGIN.LoginSuccessMsg');
     this.router.navigate(['/student']); // TODO: Smart redirect
-  }
-
-  forgotPassword({ email }): Observable<IRestResponse> {
-    return this.baseRestService.post<IRestResponse>('forgot', { email });
-  }
-
-  validateResetToken(token: string): Observable<IRestResponse> {
-    return this.baseRestService.get<IRestResponse>(`reset/${token}`);
   }
 }

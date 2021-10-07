@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { Observable, throwError } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { map, count, flatMap } from 'rxjs/operators';
 
 import { BaseRestService } from '@core/services';
 import { NotificationDto } from '@danskill/contract';
@@ -12,23 +12,29 @@ import { NotificationDto } from '@danskill/contract';
 export class NotificationsService {
   constructor(private baseRestService: BaseRestService) {}
 
+  private unreadNotificationsNumSubject = new Subject<number>();
+
+  public unreadNotificationsNumObservable = this.unreadNotificationsNumSubject.asObservable();
+
   getNotifications(): Observable<NotificationDto[]> {
     return this.baseRestService.get<NotificationDto[]>(`notifications`);
   }
 
-  setNotificationsAsRead(notificationId: string): Observable<any> {
-    return this.baseRestService.post<any>(`notifications/mark/read/${notificationId}`, {}).pipe(
-      map(
-        (res) => {
-          if (res.success) {
-            return res.data;
-          }
-          throwError([res.message]); // TODO: add real error here
-        },
-        () => {
-          throwError(['ERRORS.GeneralBackendError']);
-        }
-      )
+  getUnreadNotificationsNumber(): Observable<number> {
+    return this.getNotifications().pipe(
+      flatMap((notifications) => notifications),
+      count((notification) => !notification.isRead)
     );
+  }
+
+  setNotificationsAsRead(notificationId: string): void {
+    this.baseRestService
+      .post<any>(`notifications/markRead/${notificationId}`, {})
+      .toPromise()
+      .then(() => {
+        this.getUnreadNotificationsNumber()
+          .pipe(map((value) => this.unreadNotificationsNumSubject.next(value)))
+          .subscribe();
+      });
   }
 }

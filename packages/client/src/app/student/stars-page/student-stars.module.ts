@@ -5,6 +5,9 @@ import { InfraModule } from '@app/_infra/infra.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { SwiperModule } from 'swiper/angular';
+import { SharedService } from '@app/_infra/core/services/shared.service';
+import { StarPromoReviewComponent } from '@app/student/components/star-promo-review/star-promo-review.component';
+import { StarInitialsComponent } from '@app/student/components/star-initials/star-initials.component';
 import { SharedModule } from '../../shared/shared.module';
 
 import {
@@ -19,7 +22,8 @@ import { FigureMovementsComponent } from './star-figure-page/figure-movements/fi
 import { FigurePrinciplesComponent } from './star-figure-page/figure-principles/figure-principles.component';
 import { FigurePracticesComponent } from './star-figure-page/figure-practices/figure-practices.component';
 import { FigurePreviewComponent } from './star-figure-page/figure-preview/figure-preview.component';
-import { SharedService } from '@app/_infra/core/services/shared.service';
+import { StarFigureListComponent } from './star-figure-list/star-figure-list.component';
+import { StarFigureListItemComponent } from './star-figure-list-item/star-figure-list-item.component';
 
 @NgModule({
   imports: [
@@ -41,7 +45,11 @@ import { SharedService } from '@app/_infra/core/services/shared.service';
     FigureMovementsComponent,
     FigurePrinciplesComponent,
     FigurePracticesComponent,
-    FigurePreviewComponent
+    FigurePreviewComponent,
+    StarPromoReviewComponent,
+    StarInitialsComponent,
+    StarFigureListComponent,
+    StarFigureListItemComponent
   ],
   providers: [SharedService]
 })

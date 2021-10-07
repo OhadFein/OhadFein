@@ -23,7 +23,7 @@
     "BackToHome": "Back to Home Page",
     "SessionIsExpired": "Session is Expired. Please, log in again.",
     "GeneralBackendError": "Response error, please try again later",
-    "noSerchResults": "Sorry, we couldn't  find any results matching \"{{param}}\" ..."
+    "noSerchResults": "Sorry, we couldn't  find any results matching \"{{param}}\""
   },
   "LOGIN": {
     "registerMsg": "Don't have an Account?",

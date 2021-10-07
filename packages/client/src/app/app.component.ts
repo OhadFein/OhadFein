@@ -11,6 +11,7 @@ import { map } from 'rxjs/operators';
 import { environment } from '@environments/environment';
 import { ConfigurationService, MenuService, UserService } from '@core/services';
 import { BackgroundPosition, BuildType } from '@core/models/';
+import { Angulartics2GoogleGlobalSiteTag } from 'angulartics2/gst';
 
 declare let gtag: any;
 declare let $: any;
@@ -77,10 +78,12 @@ export class AppComponent implements OnInit, OnDestroy {
     private modalService: NgbModal,
     private store: Store<any>,
     private userService: UserService,
-    private confifurationService: ConfigurationService
+    private confifurationService: ConfigurationService,
+    angulartics2ga: Angulartics2GoogleGlobalSiteTag
   ) {
     translate.setDefaultLang('en');
     translate.use('en');
+    angulartics2ga.startTracking();
   }
 
   @HostListener('window:resize') updateOrientationState() {
@@ -107,8 +110,10 @@ export class AppComponent implements OnInit, OnDestroy {
         if (event instanceof NavigationEnd) {
           // sending Google Analitics
           this.route = location.pathname === '/' ? '' : location.pathname;
-          gtag('config', environment.googleAnalyticsID, { page_path: event.urlAfterRedirects });
-
+          gtag('config', environment.googleAnalyticsID, {
+            page_path: event.urlAfterRedirects,
+            page_title: event.urlAfterRedirects
+          });
           // closing menu
           this.menuService.setMenuOpenState(false);
         }
@@ -148,19 +153,6 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     });
   }
-
-  // TODO: unfinished work, part of notification task
-  // getGeneralInfo() {
-  //   this.userService
-  //     .getGeneralInfo()
-  //     .pipe(
-  //       map((res: any) => {
-  //         const notificationsNumber = res.notifications.filter((n) => n.isRead === false).length;
-  //         sessionStorage.setItem('notifications', JSON.stringify(notificationsNumber));
-  //       })
-  //     )
-  //     .subscribe();
-  // }
 
   changeBgPosition() {
     this.backgroundPositionOne = new BackgroundPosition();

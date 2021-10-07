@@ -2,7 +2,7 @@ import { UsersService } from 'src/users/users.service';
 import { Types, Model, FilterQuery } from 'mongoose';
 import { forwardRef, HttpException, HttpStatus, Inject, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
-import { CreateFigureDto, GetAllFiguresDto } from '@danskill/contract';
+import { CreateFigureDto, GetAllFiguresByTypeDto, GetAllFiguresDto } from '@danskill/contract';
 import { Figure, FigureDocument } from './schemas/figure.schema';
 import { FigureVideo } from '../figure-video/schemas/figure-video.schema';
 
@@ -35,13 +35,19 @@ export class FiguresService {
     return this.figureModel.find(query).populate('videos').exec(); // TODO: replace the strings with fixed values
   }
 
+  async findAllByType(getAllFiguresByTypeDto: GetAllFiguresByTypeDto): Promise<Figure[]> {
+    const allFigures = await this.findAll(getAllFiguresByTypeDto);
+
+    return allFigures.filter((figure: Figure) => figure.type === getAllFiguresByTypeDto.figureType);
+  }
+
   async create(createFigureDto: CreateFigureDto): Promise<Figure> {
     const createdFigure = new this.figureModel({
       stars: createFigureDto.stars,
       name: createFigureDto.name,
       logo: createFigureDto.logo,
       type: createFigureDto.type,
-      level: createFigureDto.level,
+      level: createFigureDto.level
     });
 
     await createdFigure.save();
