@@ -47,7 +47,7 @@ export class PracticesController {
   }
 
   @Get('all/:username?')
-  @UseInterceptors(new TransformInterceptor(PracticeBaseDto))
+  @UseInterceptors(new TransformInterceptor(PracticeDto))
   async getPractices(
     @RequestUser() reqUser: User,
     getAllPracticesDto?: GetAllPracticesDto,

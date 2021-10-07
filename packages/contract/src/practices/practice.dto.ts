@@ -1,15 +1,15 @@
-import { FigureVideoBaseDto } from '../figure-video/figure-video-base.dto';
+import { Exclude, Expose, Type } from 'class-transformer';
+import { FigureVideoDto } from '../figure-video';
 import { PracticeBaseDto } from './practice-base.dto';
 import { NoteBaseDto } from '../notes/note-base.dto';
-import { Exclude, Expose, Type } from 'class-transformer';
 
 @Exclude()
-export class PracticeDto extends PracticeBaseDto  {
+export class PracticeDto extends PracticeBaseDto {
   @Expose()
-  @Type(() => FigureVideoBaseDto)
-  video: FigureVideoBaseDto;
+  @Type(() => FigureVideoDto)
+  video: FigureVideoDto;
 
   @Expose()
   @Type(() => NoteBaseDto)
-  notes: NoteBaseDto[];
+  notes?: NoteBaseDto[];
 }
