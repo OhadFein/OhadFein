@@ -33,7 +33,6 @@ export class AfterLoginPageComponent implements OnInit {
   ) {}
 
   async ngOnInit(): Promise<void> {
-    await new Promise((r) => setTimeout(r, 10000));
     this.usersService
       .userExists()
       .pipe(

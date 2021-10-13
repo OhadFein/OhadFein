@@ -35,7 +35,7 @@ export class UsersService {
     const createdUser = new this.userModel({
       slug,
       sub: createUserDto.sub,
-      email: createUserDto.email,
+      email: createUserDto.email.toLowerCase(),
       firstName: createUserDto.firstName,
       lastName: createUserDto.lastName,
     });
@@ -74,7 +74,7 @@ export class UsersService {
   }
 
   async findOneForJwt(email: string): Promise<User> {
-    return this.userModel.findOne({ email }).select('+roles').exec();
+    return this.userModel.findOne({ email: email.toLowerCase() }).select('+roles').exec();
   }
 
   async findOne(slug: string): Promise<UserDocument> {
