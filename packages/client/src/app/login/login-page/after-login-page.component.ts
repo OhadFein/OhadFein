@@ -6,7 +6,8 @@ import { Angulartics2 } from 'angulartics2';
 import { catchError, filter, finalize, map, switchMap } from 'rxjs/operators';
 import { fromPromise } from 'rxjs/internal-compatibility';
 
-import { UserService } from '@core/services';
+import { UserService, TokenService } from '@core/services';
+import { UserDto } from '@danskill/contract';
 
 interface IAmplifyInfo {
   id: string | undefined;
@@ -27,14 +28,16 @@ export class AfterLoginPageComponent implements OnInit {
   constructor(
     private usersService: UserService,
     private router: Router,
-    private angulartics2: Angulartics2
+    private angulartics2: Angulartics2,
+    private tokenService: TokenService
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
+    await new Promise((r) => setTimeout(r, 10000));
     this.usersService
       .userExists()
       .pipe(
-        finalize(() => this.router.navigate(['/student'])),
+        finalize(() => this.finalizeLogin()),
         filter((isUserExist: boolean) => !isUserExist),
         switchMap(() => {
           return fromPromise(Auth.currentUserInfo()).pipe(
@@ -50,6 +53,7 @@ export class AfterLoginPageComponent implements OnInit {
                 .createNewUser(
                   username,
                   loggedInUser.attributes.sub,
+                  loggedInUser.attributes.email,
                   loggedInUser.attributes.given_name,
                   loggedInUser.attributes.family_name
                 )
@@ -61,6 +65,19 @@ export class AfterLoginPageComponent implements OnInit {
         catchError((error: any) => this.handleError(error?.message))
       )
       .subscribe();
+  }
+
+  private finalizeLogin(): void {
+    this.usersService
+      .getUser()
+      .pipe(
+        map((user: UserDto) => {
+          this.tokenService.setUser(user.slug);
+        })
+      )
+      .subscribe();
+
+    this.router.navigate(['/student']);
   }
 
   getIdProvider(loggedInUser: IAmplifyInfo): IDProvider {

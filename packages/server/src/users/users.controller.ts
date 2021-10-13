@@ -58,8 +58,8 @@ export class UsersController {
   @Get('exists')
   @Skip()
   @UseGuards(NonRegisteredJwtGuard)
-  async doesUserExists(@RequestUser() reqUser: string): Promise<boolean> {
-    const user = await this.usersService.findOneForJwt(reqUser);
+  async doesUserExists(@RequestUser() userMail: string): Promise<boolean> {
+    const user = await this.usersService.findOneForJwt(userMail);
 
     return user !== null;
   }

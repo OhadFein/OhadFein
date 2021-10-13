@@ -25,6 +25,9 @@ export class User implements UserBaseDto {
   @Prop({ required: true, unique: true })
   slug: string;
 
+  @Prop({ required: true, unique: true })
+  email: string;
+
   @Prop()
   firstName?: string;
 
@@ -38,7 +41,7 @@ export class User implements UserBaseDto {
   coach?: Types.ObjectId;
 
   @Prop({
-    type: [{ type: Types.ObjectId, ref: 'Practice' }] // TODO: Practice.name
+    type: [{ type: Types.ObjectId, ref: 'Practice' }], // TODO: Practice.name
   })
   practices: Types.ObjectId[] | Practice[];
 
