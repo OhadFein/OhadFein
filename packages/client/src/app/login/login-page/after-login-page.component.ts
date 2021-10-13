@@ -32,7 +32,7 @@ export class AfterLoginPageComponent implements OnInit {
     private tokenService: TokenService
   ) {}
 
-  async ngOnInit(): Promise<void> {
+  ngOnInit(): void {
     this.usersService
       .userExists()
       .pipe(
