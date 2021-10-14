@@ -61,6 +61,9 @@ export class User implements UserBaseDto {
 
   @Prop({ get: PrepareS3URL })
   promoVideo: string;
+
+  @Prop()
+  createdAt: Date;
 }
 
 export class Star extends User implements StarDto {

@@ -1,65 +1,87 @@
-<div class="row page-title-row mb-4 mt-4">
-    <div class="col-12 text-center">
-        <h2 class="inner-page-title mb-2">{{'PRACTICES.title' | translate}}</h2>
-        <div class="search-wrapper input-group input-group-sm">
-            <!--      [formControl]="search"-->
-            <input type="text"
-                   class="form-control"
-                   [(ngModel)]="searchTerm"
-                   (keyup)="search()">
-            <div class="input-group-append">
-                <i class="input-group-text icon-search"></i>
-            </div>
-        </div>
-        <img>
+<div class="practice-header">
+    <span class="main-header">Your practices</span>
+    <span *ngIf="practices" class="practice-amount">{{practicesAmount}}</span>
+</div>
+<div class="practice-calendar-wrapper">
+    <dsapp-horizontal-calendar [startDate]="startDate"
+                               [endDate]="currentDate"
+                               (select)="onSelectMonth($event)"></dsapp-horizontal-calendar>
+</div>
+<div class="practice-search-bar-wrapper">
+    <dsapp-main-search-bar [placeholder]="searchPlaceholder"
+                           (search)="onSearch($event)"></dsapp-main-search-bar>
+</div>
+<div class="practice-list-wrapper">
+    <dsapp-star-preview-grid *ngIf="filteredPractices">
+        <!-- no property for the name. data and schema has to be adjusted -->
+        <dsapp-star-preview-item *ngFor="let practice of filteredPractices; let i = index;"
+                                 [logo]="practice.video.thumbnail"
+                                 name="Practice number {{i + 1}}"></dsapp-star-preview-item>
+    </dsapp-star-preview-grid>
+    <div *ngIf="!filteredPractices.length && (searchString.trim() || selectedMonthFilter)" class="no-result-text-wrapper">
+        <p class="no-result-text">Sorry, there is no result for selected filter</p>
     </div>
 </div>
 
-<ng-template [ngIf]="practices && !loading && !errorMsg">
-    <div
-            class="row practices-dates justify-content-center align-items-center mb-4">
-        <div class="col-2">
-            <button class="btn prev-btn"
-                    [disabled]=prevBtndisabled
-                    (click)="decreaseMonths()"></button>
-        </div>
-        <div class="col-4 d-flex justify-content-center">
-            <div>{{currentDate | date:'MMMM y'}}</div>
-        </div>
-        <div class="col-2">
-            <button class="btn next-btn"
-                    [disabled]=nextBtndisabled
-                    (click)="increaseMonths()"></button>
-        </div>
-    </div>
-    <ul class="list-group">
-        <div [hidden]="!isPracticesOnThisMonth" class="row practices-list">
-                <ng-container *ngFor="let practice of practices; ">
-                    <div class="col-12 col-lg-4 mb-3 " *ngIf="compareDates(practice.createdAt, currentDate) && !isHidden(practice.name)">
-                        <li [routerLink]="[practice._id]" class="list-group-item d-flex bg-light ">
-                            <div class="col-4 practice-date text-muted ">
-                                <p>{{practice.createdAt | danskillDate}}</p>
-                            </div>
-                            <div class="col-8">
-                                <h5 class="practice-title">
-                                    {{practice.name}}</h5>
-                            </div>
-                            
-                        </li>
-                    </div>
-                </ng-container>
-        </div>
-        <div [hidden]="isPracticesOnThisMonth" class="row">
-            <div class="col-12 text-center p-2">
-                <h5>{{'PRACTICES.PRACTICE.noPracticesMonth' | translate}}</h5>
-            </div>
-        </div>
+<!--{{ startDate | json }}-->
+<!--Hi its me-->
+<!--{{ practices | json }}-->
+<!--<div class="row page-title-row mb-4 mt-4">-->
+<!--    <div class="col-12 text-center">-->
+<!--        <h2 class="inner-page-title mb-2">{{'PRACTICES.title' | translate}}</h2>-->
+<!--        <div class="search-wrapper input-group input-group-sm">-->
+<!--            &lt;!&ndash;      [formControl]="search"&ndash;&gt;-->
+<!--            <input type="text"-->
+<!--                   class="form-control"-->
+<!--                   [(ngModel)]="searchTerm"-->
+<!--                   (keyup)="search()">-->
+<!--            <div class="input-group-append">-->
+<!--                <i class="input-group-text icon-search"></i>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--        <img>-->
+<!--    </div>-->
+<!--</div>-->
 
-    </ul>
-</ng-template>
+<!--<ng-template [ngIf]="practices && !loading && !errorMsg">-->
+<!--    <div-->
+<!--            class="row practices-dates justify-content-center align-items-center mb-4">-->
+<!--        <div class="col-2">-->
+<!--            <button class="btn prev-btn"-->
+<!--                    [disabled]=prevBtndisabled-->
+<!--                    (click)="decreaseMonths()"></button>-->
+<!--        </div>-->
+<!--        <div class="col-4 d-flex justify-content-center">-->
+<!--            <div>{{currentDate | date:'MMMM y'}}</div>-->
+<!--        </div>-->
+<!--        <div class="col-2">-->
+<!--            <button class="btn next-btn"-->
+<!--                    [disabled]=nextBtndisabled-->
+<!--                    (click)="increaseMonths()"></button>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    <ul class="list-group">-->
+<!--        <div [hidden]="!isPracticesOnThisMonth" class="row practices-list">-->
+<!--                <ng-container *ngFor="let practice of practices; ">-->
+<!--                    <div class="col-12 col-lg-4 mb-3 " *ngIf="compareDates(practice.createdAt, currentDate) && !isHidden(practice.name)">-->
+<!--                        <li [routerLink]="[practice._id]" class="list-group-item d-flex bg-light ">-->
+<!--                            <div class="col-4 practice-date text-muted ">-->
+<!--                                <p>{{practice.createdAt | danskillDate}}</p>-->
+<!--                            </div>-->
+<!--                            <div class="col-8">-->
+<!--                                <h5 class="practice-title">-->
+<!--                                    {{practice.name}}</h5>-->
+<!--                            </div>-->
+<!--                            -->
+<!--                        </li>-->
+<!--                    </div>-->
+<!--                </ng-container>-->
+<!--        </div>-->
+<!--        <div [hidden]="isPracticesOnThisMonth" class="row">-->
+<!--            <div class="col-12 text-center p-2">-->
+<!--                <h5>{{'PRACTICES.PRACTICE.noPracticesMonth' | translate}}</h5>-->
+<!--            </div>-->
+<!--        </div>-->
 
-
-
-<ng-template [ngIf]="loading">
-    <ui-preloader-inapp></ui-preloader-inapp>
-</ng-template>
+<!--    </ul>-->
+<!--</ng-template>-->

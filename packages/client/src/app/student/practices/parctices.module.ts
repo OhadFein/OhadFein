@@ -5,6 +5,7 @@ import { InfraModule } from '@app/_infra/infra.module';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StudentStarsModule } from '@app/student/stars-page/student-stars.module';
 import {
   PracticesPageComponent,
   PracticePageComponent,
@@ -25,7 +26,8 @@ import { SharedModule } from '../../shared/shared.module';
     FormsModule,
     SharedModule,
     MaterialModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StudentStarsModule
   ],
   declarations: [
     PracticesPageComponent,
