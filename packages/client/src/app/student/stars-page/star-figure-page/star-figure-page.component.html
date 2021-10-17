@@ -12,9 +12,11 @@
   </mat-tab>
   <mat-tab [label]="tabs[1]">No content here</mat-tab>
   <mat-tab [label]="getPracticeLabel(tabs[2])">
-    <ng-container *ngFor="let practice of practices">
-      <dsapp-star-figure-list-item [logo]="practice.url"
-                                   [name]="'Placeholder for a name'"></dsapp-star-figure-list-item>
+    <ng-container *ngFor="let practice of practices; let i = index;">
+      <div class="practice-item">
+        <dsapp-star-figure-list-item [logo]="practice.video.thumbnail"
+                                     name="Practice number{{i + 1}}"></dsapp-star-figure-list-item>
+      </div>
       <div class="list-separator"></div>
     </ng-container>
   </mat-tab>

@@ -9,3 +9,16 @@
     display: none;
   }
 }
+
+.practice-item {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ededed;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}

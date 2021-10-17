@@ -34,8 +34,10 @@ export class VideoPreviewComponent implements OnChanges {
   }
 
   ngOnChanges(): void {
-    this.clipName = `${this.figureVideo.shooting_angle} view`;
-    this.participants = this.getParticipants(this.figure.stars);
+    this.clipName = this.figureVideo ? `${this.figureVideo.shooting_angle} view` : '';
+    if (this.figure) {
+      this.participants = this.getParticipants(this.figure.stars);
+    }
   }
 
   private getParticipants(stars: UserBaseDto[]): string {
