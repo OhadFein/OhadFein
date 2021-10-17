@@ -1,8 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PracticesService, UserService } from '@core/services';
 import { StudentStoreService } from '@app/student/services/student-store/student-store.service';
-import { combineLatest, finalize, map, switchMap } from 'rxjs/operators';
-import { FigureBaseDto, PracticeDto, UserDto } from '@danskill/contract';
+import { finalize, switchMap } from 'rxjs/operators';
+import { PracticeDto, UserDto } from '@danskill/contract';
 
 @Component({
   selector: 'dsapp-practices-page',
@@ -69,36 +69,37 @@ export class PracticesPageComponent implements OnInit, OnDestroy {
     this.filterFigures(value);
   }
 
-  onSelectMonth(month: Date): void {
+  onSelectMonth(month: Date): PracticeDto[] {
     this.selectedMonthFilter = month;
-    // TODO: filter practices which has been recorded in a selected month
     this.filteredPractices = this.practices.filter((figure: PracticeDto) => {
       const date = new Date(month);
       const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
       const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-      const selectedDay = new Date(figure.createdAt);
+      const practiceCreatedAt = new Date(figure.createdAt);
 
-      return selectedDay >= firstDay && selectedDay <= lastDay;
+      return practiceCreatedAt >= firstDay && practiceCreatedAt <= lastDay;
     });
+
+    return this.filteredPractices;
   }
 
-  private filterFigures(searchString: string): void {
-    this.searchString = searchString;
+  private filterFigures(searchString: string = ''): void {
+    this.searchString = searchString.toLowerCase();
+    const basePractices = this.selectedMonthFilter ? this.filteredPractices : this.practices;
+    let tempFiltered: PracticeDto[] = [];
 
-    if (this.practices) {
-      let tempFiltered: PracticeDto[] = [];
-      if (searchString) {
-        // TODO: no field to search by??
-        // need a proper name
-        // const search = searchString.toLocaleLowerCase().trim();
-        tempFiltered = this.practices.filter((figure: PracticeDto, index: number) =>
-          this.searchString.includes(`${index}`)
-        );
-      } else {
-        tempFiltered = [...this.practices];
-      }
-
-      this.filteredPractices = tempFiltered;
+    if (basePractices && searchString) {
+      // TODO: no field to search by??
+      // need a proper name
+      // const search = searchString.toLocaleLowerCase().trim();
+      tempFiltered = basePractices.filter((figure: PracticeDto, index: number) =>
+        `Practice number ${index + 1}`.toLowerCase().includes(searchString)
+      );
+    } else {
+      tempFiltered = this.selectedMonthFilter
+        ? this.onSelectMonth(this.selectedMonthFilter)
+        : [...this.practices];
     }
+    this.filteredPractices = tempFiltered;
   }
 }
