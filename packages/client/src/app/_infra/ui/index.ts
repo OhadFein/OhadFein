@@ -33,3 +33,4 @@ export * from './notification-list-item/notification-list-item.component';
 export * from './notifications-button/notifications-button.component';
 export * from './star-about-section/star-about-section.component';
 export * from './horizontal-preview-carousel/horizontal-preview-carousel.component';
+export * from './horizontal-calendar/horizontal-calendar.component';

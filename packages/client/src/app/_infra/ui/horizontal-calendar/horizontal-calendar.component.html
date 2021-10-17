@@ -1,0 +1,10 @@
+<div class="horizontal-calendar-wrapper">
+    <carousel class="horizontal-carousel" [arrows]="false" [cellWidth]="72" [lightDOM]="true" [margin]="16">
+        <button mat-button *ngFor="let month of months; let i = index;"
+                class="month-button carousel-cell"
+                [ngClass]="{'selected-month': i === selectedIndex}"
+                (click)="onMonthSelect(month, i)">
+            {{ month | date : 'MMM yy' }}
+        </button>
+    </carousel>
+</div>

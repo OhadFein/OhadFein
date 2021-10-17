@@ -1,150 +1,105 @@
-import { Component, OnDestroy, OnInit, AfterViewChecked } from '@angular/core';
-import { AlertErrorService } from '@app/_infra/core/services';
-import * as PracticesActions from '@app/_infra/store/actions/practices.actions';
-import { Practice, PracticeError } from '@core/models';
-import * as selectors from '@infra/store/selectors/practices.selector';
-import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
-import { ChangeDetectorRef } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { PracticesService, UserService } from '@core/services';
+import { StudentStoreService } from '@app/student/services/student-store/student-store.service';
+import { finalize, switchMap } from 'rxjs/operators';
+import { PracticeDto, UserDto } from '@danskill/contract';
 
 @Component({
   selector: 'dsapp-practices-page',
-  templateUrl: './practices-page.component.html'
+  templateUrl: './practices-page.component.html',
+  styleUrls: ['./practices-page.component.scss']
 })
-export class PracticesPageComponent implements OnInit, OnDestroy, AfterViewChecked {
-  loading = true;
-  errorMsg: PracticeError | string = null;
-  startDate: Date = new Date('1/1/2020');
-  lastDate: Date = new Date();
-  currentDate: Date;
-  monthLength: number;
-  maxMonthLength: number;
-  nextBtndisabled = false;
-  prevBtndisabled = false;
-  practicesData: Practice[] = null;
-  practices: Practice[] = null;
-  test: Practice[] = [];
-  subs: Subscription[] = [];
-  searchTerm = '';
-  selectedValue = '';
-  isPracticesOnThisMonth;
-  formattedDate;
-  currentMonth: string;
+export class PracticesPageComponent implements OnInit, OnDestroy {
+  practices: PracticeDto[];
+
+  filteredPractices: PracticeDto[];
+
+  currentDate = new Date();
+
+  startDate: Date;
+
+  loading: boolean;
+
+  searchString = '';
+
+  selectedMonthFilter: Date;
+
+  readonly searchPlaceholder = 'Search for a practice';
+
+  private user: UserDto;
+
+  get practicesAmount(): string {
+    const len = this.practices.length;
+    if (!len) {
+      return '';
+    }
+
+    return len === 1 ? `${len} Practice` : `${len} Practices`;
+  }
 
   constructor(
-    private store: Store<any>,
-    private errorService: AlertErrorService,
-    private cdRef: ChangeDetectorRef
-  ) {
-    this.currentDate = this.lastDate;
-  }
+    private practicesService: PracticesService,
+    private userService: UserService,
+    private studentService: StudentStoreService
+  ) {}
 
-  ngAfterViewChecked() {
-    this.cdRef.detectChanges();
-  }
+  ngOnDestroy(): void {}
 
-  ngOnInit() {
-    // this.setMonthsLength();
-
-    this.maxMonthLength = this.monthLength;
-
-    this.setDisabledBtn();
-
-    this.subs.push(
-      this.store.select(selectors.selectPracticestMonth()).subscribe((res) => {
-        if (res) {
-          this.currentDate = res;
-        }
-      })
-    );
-    this.subs.push(
-      this.store.select(selectors.selectAllPracticesSorted()).subscribe((res) => {
-        if (res) {
-          this.practices = [...res];
+  ngOnInit(): void {
+    this.loading = true;
+    this.userService
+      .getUser()
+      .pipe(
+        finalize(() => {
           this.loading = false;
-        } else {
-          this.store.dispatch(PracticesActions.BeginGetPracticesAction());
-        }
-      })
-    );
+        }),
+        switchMap((user: UserDto) => {
+          this.startDate = new Date(user.createdAt);
 
-    this.subs.push(
-      this.store.select(selectors.selectPracticesError()).subscribe((res) => {
-        if (res && res.type) {
-          this.practices = null;
-          this.loading = false;
-          this.errorMsg = this.errorService.alertStarsError(res.type);
-        }
-      })
-    );
+          return this.practicesService.getPractices(user.slug);
+        })
+      )
+      .subscribe((practices: PracticeDto[]) => {
+        this.practices = practices;
+        this.filteredPractices = practices;
+      });
   }
 
-  ngOnDestroy(): void {
-    this.subs.forEach((s) => s.unsubscribe());
+  onSearch(value: string): void {
+    this.filterFigures(value);
   }
 
-  setMonthsLength() {
-    const yearDelta = 12 * (this.currentDate.getFullYear() - this.startDate.getFullYear());
-    this.monthLength = this.currentDate.getMonth() - this.startDate.getMonth() + yearDelta + 1;
+  onSelectMonth(month: Date): PracticeDto[] {
+    this.selectedMonthFilter = month;
+    this.filteredPractices = this.practices.filter((figure: PracticeDto) => {
+      const date = new Date(month);
+      const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+      const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+      const practiceCreatedAt = new Date(figure.createdAt);
+
+      return practiceCreatedAt >= firstDay && practiceCreatedAt <= lastDay;
+    });
+
+    return this.filteredPractices;
   }
 
-  setDisabledBtn() {
-    if (this.monthLength === this.maxMonthLength) {
-      this.nextBtndisabled = true;
-    } else if (this.monthLength === 1) {
-      this.prevBtndisabled = true;
+  private filterFigures(searchString: string = ''): void {
+    this.searchString = searchString.toLowerCase();
+    const basePractices = this.selectedMonthFilter ? this.filteredPractices : this.practices;
+    let tempFiltered: PracticeDto[] = [];
+
+    if (basePractices && searchString) {
+      // TODO: no field to search by??
+      // need a proper name
+      // const search = searchString.toLocaleLowerCase().trim();
+      tempFiltered = basePractices.filter((figure: PracticeDto, index: number) =>
+        `Practice number ${index + 1}`.toLowerCase().includes(searchString)
+      );
     } else {
-      this.prevBtndisabled = false;
-      this.nextBtndisabled = false;
+      tempFiltered = this.selectedMonthFilter
+        ? this.onSelectMonth(this.selectedMonthFilter)
+        : [...this.practices];
     }
-  }
-
-  increaseMonths() {
-    this.currentDate = new Date(this.currentDate.setMonth(this.currentDate.getMonth() + 1));
-    this.setMonthsLength();
-    this.setDisabledBtn();
-    this.isPracticesOnThisMonth = false;
-    this.currentMonth = this.getCurrentMonth();
-    this.store.dispatch(PracticesActions.SaveCurrentMonth({ payload: this.currentDate }));
-  }
-
-  getCurrentMonth() {
-    return this.currentDate.toLocaleString('default', { month: 'long' });
-  }
-
-  decreaseMonths() {
-    this.currentDate = new Date(this.currentDate.setMonth(this.currentDate.getMonth() - 1));
-    this.setMonthsLength();
-    this.setDisabledBtn();
-    this.isPracticesOnThisMonth = false;
-    this.currentMonth = this.getCurrentMonth();
-    this.store.dispatch(PracticesActions.SaveCurrentMonth({ payload: this.currentDate }));
-  }
-
-  compareDates(firstDate, secondDate) {
-    firstDate = new Date(firstDate);
-    if (
-      firstDate.getMonth() === secondDate.getMonth() &&
-      firstDate.getFullYear() === secondDate.getFullYear()
-    ) {
-      this.isPracticesOnThisMonth = true;
-
-      return true;
-    }
-
-    return false;
-  }
-
-  isHidden(title) {
-    return !title.includes(this.selectedValue);
-  }
-
-  search() {
-    this.selectedValue = this.searchTerm;
-  }
-
-  clear() {
-    this.searchTerm = '';
-    this.selectedValue = '';
+    this.filteredPractices = tempFiltered;
   }
 }

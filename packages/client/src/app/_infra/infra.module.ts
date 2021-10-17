@@ -49,7 +49,8 @@ import {
   NotificationListItemComponent,
   NotificationButtonComponent,
   StarAboutSectionComponent,
-  HorizontalPreviewCarouselComponent
+  HorizontalPreviewCarouselComponent,
+  HorizontalCalendarComponent
 } from './ui';
 import { MaterialModule } from './material.module';
 
@@ -90,7 +91,8 @@ const components = [
   NotificationListItemComponent,
   NotificationButtonComponent,
   StarAboutSectionComponent,
-  HorizontalPreviewCarouselComponent
+  HorizontalPreviewCarouselComponent,
+  HorizontalCalendarComponent
 ];
 
 @NgModule({

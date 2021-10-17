@@ -19,24 +19,25 @@ const routes: Routes = [
     }
   },
   {
-    path: ':slug/:type',
+    path: ':slug/style/:type',
     component: StarFigureListComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: ':slug/:figureId',
+    path: ':slug/figure/:figureId',
     component: StarFigurePageComponent,
     children: [
-      { path: '', component: FigureMovementsComponent },
-      { path: 'Outline', component: FigurePreviewComponent },
-      { path: 'Movements', component: FigureMovementsComponent },
-      { path: 'Principles', component: FigurePrinciplesComponent },
-      {
-        path: 'Practices',
-        component: FigurePracticesComponent,
-        children: [{ path: 'practiceId', component: StarContentPageComponent }],
-        canActivate: [AuthGuard]
-      }
+      { path: 'Movements', component: FigureMovementsComponent }
+      // { path: '', component: FigureMovementsComponent },
+      // { path: 'Outline', component: FigurePreviewComponent },
+
+      // { path: 'Principles', component: FigurePrinciplesComponent },
+      // {
+      //   path: 'Practices',
+      //   component: FigurePracticesComponent,
+      //   children: [{ path: 'practiceId', component: StarContentPageComponent }],
+      //   canActivate: [AuthGuard]
+      // }
     ],
     canActivate: [AuthGuard]
   }

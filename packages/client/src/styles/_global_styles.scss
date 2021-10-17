@@ -19,6 +19,18 @@ body {
     outline: none;
   }
 }
+
+
+.mat-tab-group.mat-accent .mat-ink-bar,
+.mat-tab-nav-bar.mat-accent .mat-ink-bar {
+  background-color: $ds-accent-color!important;
+}
+
+.mat-tab-label-active {
+  color: $ds-accent-color!important;
+  opacity: 1!important;
+}
+
 .landscape-modal {
   background: radial-gradient(black, transparent);
   //display: block;

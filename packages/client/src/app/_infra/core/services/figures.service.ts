@@ -10,7 +10,7 @@ import { BaseRestService } from './base-rest.service';
 export class FiguresService {
   constructor(private baseRestService: BaseRestService) {}
 
-  getFigure(figureId): Observable<IFigure> {
+  getFigure(figureId: string): Observable<IFigure> {
     return this.baseRestService
       .get<SingleFigureRestResponse>(`figures/${figureId}`)
       .pipe(map((response) => response.data ?? null));

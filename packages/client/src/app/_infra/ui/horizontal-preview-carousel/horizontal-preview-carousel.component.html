@@ -6,7 +6,8 @@
     <carousel class="horizontal-carousel" [arrows]="false">
         <div *ngFor="let item of items" class="carousel-cell">
             <dsapp-star-preview-item [logo]="item.logo"
-                                     [name]="item.name"></dsapp-star-preview-item>
+                                     [name]="item.name"
+                                     (click)="openFigure(item._id)"></dsapp-star-preview-item>
         </div>
     </carousel>
 </div>

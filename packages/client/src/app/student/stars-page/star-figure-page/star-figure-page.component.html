@@ -1,39 +1,26 @@
-<ng-template [ngIf]="figure">
-  <div class="star-figure">
-    <div class="star-figure-header">
-      <div class="row figure-info">
-        <div class="col">
-          <ui-video-preview *ngIf="currentVideo"
-                            [path]="currentVideo.path"></ui-video-preview>
-          <div *ngIf="!currentVideo"
-               class="embed-responsive embed-responsive-16by9">
-            <div class="embed-responsive-item cover-bg"
-                 [style.backgroundImage]="'url('+ figure.logo +')'">
-            </div>
-          </div>
-          <h5 class="figure-name text-center pt-2">{{figure.name}}</h5>
-        </div>
+<ui-video-preview [figureVideo]="currentVideo"
+                  [figure]="figure"></ui-video-preview>
+
+<mat-tab-group mat-stretch-tabs color="accent">
+  <mat-tab [label]="tabs[0]">
+    <dsapp-figure-movements [slug]="slug"
+                            [star]="star"
+                            [figure]="figure"
+                            [movements]="comparableVideos"
+                            (videoSelected)="onVideoCompare($event)"
+                            (videoPreview)="onVideoPreview($event)"></dsapp-figure-movements>
+  </mat-tab>
+  <mat-tab [label]="tabs[1]">No content here</mat-tab>
+  <mat-tab [label]="getPracticeLabel(tabs[2])">
+    <ng-container *ngFor="let practice of practices; let i = index;">
+      <div class="practice-item">
+        <dsapp-star-figure-list-item [logo]="practice.video.thumbnail"
+                                     name="Practice number{{i + 1}}"></dsapp-star-figure-list-item>
       </div>
-      <swiper [slidesPerView]="4"
-              [spaceBetween]="15"
-              [setWrapperSize]="true"
-              style="box-shadow: inset 0 -1px 0 0 #afada1">
-        <ng-container *ngFor="let tab of tabs">
-          <ng-template swiperSlide>
-            <div [routerLink]="['../',figureId, tab]" class="tab-swiper d-flex flex-column h-100"
-                 [ngClass]="tab === activeTab ? 'active' : ''"
-                >
-              <div class="figure-swiper-content text-center"><span>{{tab}}</span></div>
-            </div>
-          </ng-template>
-        </ng-container>
-      </swiper>
-    </div>
-    <div class="star-figure-content">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-</ng-template>
+      <div class="list-separator"></div>
+    </ng-container>
+  </mat-tab>
+</mat-tab-group>
 
 <ng-template [ngIf]="starIsLoading && figureIsLoading">
   <ui-preloader-inapp></ui-preloader-inapp>

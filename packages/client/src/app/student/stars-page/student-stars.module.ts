@@ -8,6 +8,7 @@ import { SwiperModule } from 'swiper/angular';
 import { SharedService } from '@app/_infra/core/services/shared.service';
 import { StarPromoReviewComponent } from '@app/student/components/star-promo-review/star-promo-review.component';
 import { StarInitialsComponent } from '@app/student/components/star-initials/star-initials.component';
+import { MaterialModule } from '@infra/material.module';
 import { SharedModule } from '../../shared/shared.module';
 
 import {
@@ -34,7 +35,8 @@ import { StarFigureListItemComponent } from './star-figure-list-item/star-figure
     StudentStarRoutingModule,
     InfraModule,
     SwiperModule,
-    SharedModule
+    SharedModule,
+    MaterialModule
   ],
   declarations: [
     StarsPageComponent,
@@ -51,6 +53,7 @@ import { StarFigureListItemComponent } from './star-figure-list-item/star-figure
     StarFigureListComponent,
     StarFigureListItemComponent
   ],
+  exports: [StarFigureListItemComponent],
   providers: [SharedService]
 })
 export class StudentStarsModule {}

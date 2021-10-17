@@ -17,7 +17,8 @@
         <dsapp-horizontal-preview-carousel *ngFor="let style of danceStyles | keyvalue"
                                            [name]="style.key"
                                            [items]="style.value"
-                                           (viewAll)="onViewAllFiguresByType($event)"></dsapp-horizontal-preview-carousel>
+                                           (viewAll)="onViewAllFiguresByType($event)"
+                                           (openFigureItem)="onOpenFigureItem($event)"></dsapp-horizontal-preview-carousel>
     </div>
 </div>
 

@@ -1,9 +1,8 @@
-import { CreateFigureDto, FigureDto, FigureBaseDto, GetAllFiguresDto } from '@danskill/contract';
+import { CreateFigureDto, FigureDto, FigureBaseDto } from '@danskill/contract';
 import {
   Controller,
   Get,
   Param,
-  Query,
   UseGuards,
   Post,
   Body,
@@ -18,7 +17,6 @@ import { JwtAuthGuard } from 'src/common/guards/jwt-auth.guard';
 import { Roles } from 'src/common/decorators/roles.decorator';
 import { EnumRole } from 'src/common/enums/role.enum';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
-// import { ApiBody } from '@nestjs/swagger';
 import { FiguresService } from './figures.service';
 import { Figure } from './schemas/figure.schema';
 
@@ -34,10 +32,10 @@ export class FiguresController {
   }
 
   // @ApiBody({ type: GetAllFiguresDto })
-  @Get('all')
+  @Get('all/:slug')
   @UseInterceptors(new TransformInterceptor(FigureBaseDto))
-  async findAll(@Query() getAllFiguresDto: GetAllFiguresDto): Promise<Figure[]> {
-    return this.figuresService.findAll(getAllFiguresDto);
+  async findAll(@Param('slug') starUsername: string): Promise<Figure[]> {
+    return this.figuresService.findAll({ starUsername });
   }
 
   @Get('all/:slug/:type')

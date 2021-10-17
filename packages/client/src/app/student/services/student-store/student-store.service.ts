@@ -14,7 +14,7 @@ export class StudentStoreService {
   };
 
   setStars(payload: StarDto[]): void {
-    this.store.stars = [...payload];
+    this.store.stars = [...this.store.stars, ...payload];
   }
 
   getAllStars(): StarDto[] {

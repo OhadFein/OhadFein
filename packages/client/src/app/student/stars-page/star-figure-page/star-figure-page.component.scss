@@ -1,0 +1,24 @@
+@import 'src/styles/_all';
+
+.list-separator {
+  width: 100%;
+  margin: 1rem 0;
+  border-bottom: 1px solid $gray-300;
+
+  &:last-child {
+    display: none;
+  }
+}
+
+.practice-item {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 0;
+  border-bottom: 1px solid #ededed;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}

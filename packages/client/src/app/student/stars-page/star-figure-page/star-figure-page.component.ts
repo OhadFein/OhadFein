@@ -1,155 +1,208 @@
 import { Component, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
-import { ActivatedRoute, ParamMap, Router } from '@angular/router';
-import { IFigure, LabItem, LabStarVideo, IUser, Video, VideoType, ETabs } from '@core/models';
-import * as FigureActions from '@app/_infra/store/actions/figures.actions';
-import * as StarsActions from '@app/_infra/store/actions/stars.actions';
+import { ActivatedRoute, Router, NavigationEnd, Params, RouterEvent } from '@angular/router';
+import { LabStarVideo, FigurePageTab } from '@core/models';
 import { VideoPlayerModalComponent } from '@app/_infra/ui';
-import * as FigureSelectors from '@infra/store/selectors/figures.selectors';
-import * as StarSelectors from '@infra/store/selectors/stars.selectors';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Store } from '@ngrx/store';
-import * as LabActions from '@store/actions/lab.actions';
-import { Subscription } from 'rxjs';
-import { StarFigureService } from '../star-figure-page/figure-page.service';
-import { Event, NavigationEnd } from '@angular/router';
+import { Subject } from 'rxjs';
 import { SharedService } from '@app/_infra/core/services/shared.service';
+import { filter, finalize, take, takeUntil } from 'rxjs/operators';
+import { StudentStoreService } from '@app/student/services/student-store/student-store.service';
+import {
+  EnumVideoType,
+  FigureDto,
+  FigureVideoBaseDto,
+  PracticeDto,
+  StarDto
+} from '@danskill/contract';
+import { PracticesService, StarsService, UserService } from '@core/services';
 
 @Component({
   selector: 'dsapp-star-figure-page',
-  templateUrl: './star-figure-page.component.html'
+  templateUrl: './star-figure-page.component.html',
+  styleUrls: ['./star-figure-page.component.scss']
 })
 export class StarFigurePageComponent implements OnInit, OnDestroy {
   slug = null;
-  user: IUser = null;
-  figure: IFigure = null;
+
+  userSlug: string;
+
+  star: StarDto = null;
+
+  figure: FigureDto = null;
+
   figureId = null;
+
   starIsLoading = true;
+
   figureIsLoading = true;
+
   loading = true;
-  basicPrinciplesVideos: Array<Video> = [];
-  comparableVideos: Array<Video> = [];
-  additionalVideos: Array<Video> = [];
-  promoVideo: Video = null;
-  currentVideo: Video = null;
-  subs: Subscription[] = [];
-  public activeTab: string;
-  tabs = [ETabs.preview, ETabs.Principles, ETabs.Movements, ETabs.Practices];
+
+  practices: PracticeDto[];
+
+  basicPrinciplesVideos: FigureVideoBaseDto[] = [];
+
+  comparableVideos: FigureVideoBaseDto[] = [];
+
+  additionalVideos: FigureVideoBaseDto[] = [];
+
+  promoVideo: FigureVideoBaseDto = null;
+
+  currentVideo: FigureVideoBaseDto = null;
+
+  activeTab: FigurePageTab;
+
+  tabs = [FigurePageTab.Movements, FigurePageTab.Educational, FigurePageTab.Practices];
+
   test: any;
+
+  private unsubscribe = new Subject<void>();
 
   constructor(
     private store: Store<any>,
     private route: ActivatedRoute,
     private modalService: NgbModal,
     private router: Router,
-    private starFigureService: StarFigureService,
     private cdRef: ChangeDetectorRef,
-    private sharedService: SharedService
+    private sharedService: SharedService,
+    private studentStoreService: StudentStoreService,
+    private starService: StarsService,
+    private practicesService: PracticesService,
+    private userService: UserService
   ) {
-    this.subs.push(
-      this.sharedService.changeEmitted$.subscribe((video) => {
-        this.currentVideo = video;
-      })
-    );
-    this.router.events.subscribe((event: Event) => {
-      if (event instanceof NavigationEnd) {
-        const url = event?.url;
-        const routeLength = url?.split('/').length;
-        const lastParam = url?.split('/')[routeLength - 1];
-        if (this.tabs.find((tab) => tab === lastParam)) {
-          this.activeTab = lastParam;
-        } else {
-          this.activeTab = ETabs.Movements;
-        }
-      }
+    this.router.events
+      .pipe(
+        takeUntil(this.unsubscribe),
+        filter((event: RouterEvent) => event instanceof NavigationEnd)
+      )
+      .subscribe(({ url }: { url: string }) => {
+        const index = url.lastIndexOf('/');
+        const urlOptions = url.slice(index);
+        this.activeTab =
+          this.tabs.find((tab: FigurePageTab) => urlOptions.includes(tab)) ||
+          FigurePageTab.Movements;
+      });
+  }
+
+  ngOnInit(): void {
+    this.setFigureId();
+    this.userService.getUser().subscribe((user) => {
+      this.userSlug = user.slug;
+      this.setStar();
+      this.setFigure();
+      this.getPractices();
     });
   }
 
-  ngOnInit() {
-    this.getFigureId();
-    this.getStar();
-    this.getFigure();
-  }
-
-  navigateToTab(tab) {
+  navigateToTab(tab: FigurePageTab): void {
     this.activeTab = tab;
     this.router.navigate([tab], { relativeTo: this.route });
-    this.getCurrentVideo();
+    this.setCurrentVideo();
   }
 
-  getCurrentVideo() {
-    if (this.activeTab === 'Outline') {
+  onVideoCompare(video: FigureVideoBaseDto): void {}
+
+  onVideoPreview(video: FigureVideoBaseDto): void {
+    this.currentVideo = video;
+  }
+
+  getPracticeLabel(label: string): string {
+    const practices = this.practices?.length;
+    if (practices && practices < 9) {
+      return `${label} (${practices})`;
+    }
+    if (practices > 9) {
+      return `${label} (9+)`;
+    }
+
+    return label;
+  }
+
+  setCurrentVideo(): void {
+    if (this.activeTab === FigurePageTab.Movements) {
+      this.currentVideo = this.comparableVideos[0];
+    } else if (this.activeTab === FigurePageTab.Educational) {
+      this.currentVideo = this.basicPrinciplesVideos[0];
+    } else {
       this.currentVideo = this.promoVideo;
     }
-    if (this.activeTab === 'Principles') {
-      this.currentVideo = this.basicPrinciplesVideos[0];
-    }
-    if (this.activeTab === 'Movements') {
-      this.currentVideo = this.comparableVideos[0];
-    }
   }
 
-  getFigure() {
-    this.subs.push(
-      this.store.select(FigureSelectors.selectFigureById(this.figureId)).subscribe((figure) => {
-        if (figure) {
-          this.figure = { ...figure };
-          this.splitVideosByType();
+  setFigure(): void {
+    this.starService
+      .getFigureById(this.figureId)
+      .pipe(
+        filter((figure: FigureDto) => !!figure._id),
+        finalize(() => {
           this.starIsLoading = false;
-          this.getCurrentVideo();
-        } else {
-          setTimeout(() => {
-            this.store.dispatch(FigureActions.BeginGetFigureAction({ payload: this.figureId }));
-          }, 1000);
-        }
-      })
-    );
+        })
+      )
+      .subscribe((figure: FigureDto) => {
+        this.figure = figure;
+        this.splitVideosByType();
+        this.setCurrentVideo();
+      });
   }
 
-  getStar(): void {
-    this.subs.push(
-      this.store.select(StarSelectors.selectStarBySlug(this.slug)).subscribe((user) => {
-        if (user) {
-          this.user = { ...user };
-          this.starIsLoading = false;
-        } else {
-          this.store.dispatch(StarsActions.BeginGetStarsAction());
-        }
-      })
-    );
+  setStar(): void {
+    if (this.slug) {
+      this.star = this.studentStoreService.getStarBySlug(this.slug);
+      if (this.star) {
+        this.starIsLoading = false;
+      } else {
+        this.starService
+          .getStarBySlug(this.slug)
+          .pipe(
+            finalize(() => {
+              this.starIsLoading = false;
+            })
+          )
+          .subscribe(
+            (star: StarDto) => {
+              this.star = star;
+              this.studentStoreService.setStars([star]);
+            },
+            () => {
+              // this.noResultMessage = 'Sorry, there is no star with such name';
+            }
+          );
+      }
+    }
   }
 
-  getFigureId(): void {
-    this.subs.push(
-      this.route.params.subscribe((params: ParamMap) => {
-        this.slug = params['slug'];
-        this.figureId = params['figureId'];
-      })
-    );
+  setFigureId(): void {
+    this.route.params
+      .pipe(
+        take(1),
+        filter((params: Params) => params.slug && params.figureId),
+        finalize(() => {
+          this.loading = false;
+        })
+      )
+      .subscribe((params: Params) => {
+        this.slug = params.slug;
+        this.figureId = params.figureId;
+      });
   }
 
   splitVideosByType(): void {
     this.basicPrinciplesVideos = [];
     this.comparableVideos = [];
     this.additionalVideos = [];
-    this.figure.videos.forEach((video) => {
+    this.figure.videos.forEach((video: FigureVideoBaseDto) => {
       switch (video.type) {
-        case VideoType.BASIC_PRINCIPLES:
+        case EnumVideoType.BasicPrinciples:
           this.basicPrinciplesVideos.push(video);
           break;
-        case VideoType.COMPARABLE:
+        case EnumVideoType.Comparable:
           this.comparableVideos.push(video);
           break;
-        case VideoType.TIPS:
-          this.additionalVideos.push(video);
-          // TODO: add additional video functionality
-          break;
-        case VideoType.EXERCISES:
-          this.additionalVideos.push(video);
-          // TODO: add additional video functionality
-          break;
-        case VideoType.PROMO:
+        case EnumVideoType.Promo:
           this.promoVideo = video;
           break;
+        default:
+        // Log that not handled type of the video
       }
     });
   }
@@ -164,17 +217,24 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
     modalRef.componentInstance.autoplay = true;
   }
 
+  getPractices(): void {
+    this.practicesService.getPractices(this.userSlug).subscribe((practices: PracticeDto[]) => {
+      this.practices = practices;
+    });
+  }
+
   openInLab(starVideo: LabStarVideo): void {
-    const labItem: LabItem = {
-      user: this.user,
-      figure: this.figure,
-      starVideo
-    };
-    this.store.dispatch(LabActions.SetLabAction({ payload: labItem }));
-    this.router.navigate(['/', 'student', 'lab']);
+    // const labItem: LabItem = {
+    //   user: this.star,
+    //   figure: this.figure,
+    //   starVideo
+    // };
+    // this.store.dispatch(LabActions.SetLabAction({ payload: labItem }));
+    // this.router.navigate(['/', 'student', 'lab']);
   }
 
   ngOnDestroy(): void {
-    this.subs.forEach((s) => s.unsubscribe());
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
   }
 }

@@ -59,7 +59,7 @@ $font-weight-bolder: bolder;
 $font-weight-base: $font-weight-normal;
 $line-height-base: 1.5;
 
-$h1-font-size: rem(17px);
+$h1-font-size: rem(18px);
 $h2-font-size: rem(14px);
 $h3-font-size: rem(13px);
 $h4-font-size: rem(12px);
@@ -133,6 +133,7 @@ $img-list-item-radius: 10px;
 
 //Buttons
 $success: $green;
+$btn-default-radius: .5rem;
 //$btn-primary-bg: $gray-200;$btn-primary-color:              #fff !default;
 //$btn-primary-color:              #fff !default;
 // $input-group-addon-color:               $input-color;

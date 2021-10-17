@@ -1,3 +1,5 @@
+@import 'src/styles/_all';
+
 $zindex-vg-controls: 300;
 $zindex-vg-scrub-bar: 301;
 
@@ -7,4 +9,19 @@ vg-scrub-bar {
 
 vg-controls {
   z-index: $zindex-vg-controls;
+}
+
+.video-preview {
+  margin-bottom: 1rem;
+}
+
+.clip-name {
+  font-size: rem(18px);
+  font-weight: $font-weight-bold-light;
+  padding-bottom: .25rem;
+}
+
+.participants-list {
+  font-size: $font-size-sm;
+  font-weight: $font-weight-normal;
 }

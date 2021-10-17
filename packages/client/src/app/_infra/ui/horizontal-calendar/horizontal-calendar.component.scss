@@ -1,0 +1,28 @@
+@import 'src/styles/_all';
+
+.horizontal-calendar-wrapper {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+}
+
+.horizontal-carousel {
+  height: 48px!important;
+  z-index: 0!important;
+
+  .month-button {
+    height: rem(44px);
+    padding: 0 10px;
+    background-color: $ds-text-color-button-main;
+    color: $ds-color-text-secondary;
+    border-radius: $input-border-radius;
+    border: 1px solid $input-border;
+
+    &.selected-month {
+      background-color: $ds-color-tag-yellow;
+      color: $ds-text-color-button-main;
+      border-radius: $input-border-radius;
+      border: none;
+    }
+  }
+}

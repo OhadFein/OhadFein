@@ -18,5 +18,8 @@ export class UserBaseDto {
   @Expose()
   lastName?: string;
 
+  @Expose()
+  readonly createdAt: Date;
+
   // @Expose() notifications: Notifcation[];
 }

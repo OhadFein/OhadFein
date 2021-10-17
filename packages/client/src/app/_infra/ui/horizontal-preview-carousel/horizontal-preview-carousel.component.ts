@@ -15,4 +15,11 @@ export class HorizontalPreviewCarouselComponent {
 
   @Output()
   viewAll = new EventEmitter<string>();
+
+  @Output()
+  openFigureItem = new EventEmitter<string>();
+
+  openFigure(figureId: unknown): void {
+    this.openFigureItem.emit(figureId as string);
+  }
 }
