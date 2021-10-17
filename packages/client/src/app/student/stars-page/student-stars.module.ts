@@ -53,6 +53,7 @@ import { StarFigureListItemComponent } from './star-figure-list-item/star-figure
     StarFigureListComponent,
     StarFigureListItemComponent
   ],
+  exports: [StarFigureListItemComponent],
   providers: [SharedService]
 })
 export class StudentStarsModule {}
