@@ -8,6 +8,9 @@ import { Auth } from 'aws-amplify';
   providedIn: 'root'
 })
 export class TokenService {
+  setUser(slug: string): void {
+    localStorage.setItem('user_slug', slug);
+  }
   storeTokens(tokens: AuthTokens) {
     localStorage.setItem('access_token', tokens.access_token);
     localStorage.setItem('refresh_token', tokens.refresh_token);
@@ -18,8 +21,8 @@ export class TokenService {
     return localStorage.getItem('access_token');
   }
 
-  async checkStoredAccessToken(): Promise<boolean> {
-    return (await this.getCurrentJwtToken()) !== null;
+  checkStoredAccessToken(): boolean {
+    return localStorage.getItem('user_slug') !== null;
   }
 
   async getCurrentJwtToken(): Promise<string> {
@@ -35,6 +38,7 @@ export class TokenService {
   }
 
   async deleteStoredTokens() {
+    localStorage.removeItem('user_slug');
     await Auth.signOut()
       .then((m) => console.log('Logged out'))
       .catch((error) => {

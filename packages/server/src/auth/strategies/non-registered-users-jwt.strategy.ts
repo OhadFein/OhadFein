@@ -27,6 +27,6 @@ export class NonRegisteredUsersJwtStrategy extends PassportStrategy(
   }
 
   public validate(payload: OauthPayload): string {
-    return payload.sub;
+    return payload.email;
   }
 }

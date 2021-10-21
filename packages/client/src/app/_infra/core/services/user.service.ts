@@ -27,10 +27,11 @@ export class UserService {
   createNewUser(
     username: string,
     sub: string,
+    email: string,
     firstName?: string,
     lastName?: string
   ): Observable<UserDto> {
-    const createUserDto = new CreateUserDto(username, sub, firstName, lastName);
+    const createUserDto = new CreateUserDto(username, sub, email, firstName, lastName);
 
     return this.baseRestService.post<UserDto>('users', createUserDto);
   }

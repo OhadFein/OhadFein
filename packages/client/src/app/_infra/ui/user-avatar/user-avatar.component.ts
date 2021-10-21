@@ -23,9 +23,14 @@ export class UserAvatarComponent implements OnInit {
   public userName: string;
 
   async ngOnInit(): Promise<void> {
-    await Auth.currentUserInfo().then((loggedInUser) => {
-      this.fullName = this.extractFullName(loggedInUser);
-    });
+    const user = await this.userService.getUser().toPromise();
+    if (user.firstName || user.lastName) {
+      this.fullName = `${user.firstName} ${user.lastName}`;
+    } else {
+      await Auth.currentUserInfo().then((loggedInUser) => {
+        this.fullName = this.extractFullName(loggedInUser);
+      });
+    }
 
     this.userName = await this.getUsername();
 
@@ -35,14 +40,19 @@ export class UserAvatarComponent implements OnInit {
   }
 
   private createInititals(): void {
-    const names = this.fullName.split(' ');
-    this.initials = names[0].charAt(0).toUpperCase() + names[1].charAt(0).toUpperCase();
+    if (this.fullName === '') {
+      this.initials = ' ';
+    } else {
+      const names = this.fullName.split(' ');
+      this.initials = names[0].charAt(0).toUpperCase() + names[1].charAt(0).toUpperCase();
+    }
   }
 
   private extractFullName(loggedInUser): string {
-    const fullName:
-      | string
-      | undefined = `${loggedInUser.attributes.given_name} ${loggedInUser.attributes.family_name}`;
+    if (!(loggedInUser.attributes.given_name && loggedInUser.attributes.family_name)) {
+      return '';
+    }
+    const fullName = `${loggedInUser.attributes.given_name} ${loggedInUser.attributes.family_name}`;
 
     return fullName;
   }
