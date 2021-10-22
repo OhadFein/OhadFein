@@ -51,7 +51,6 @@ export class AfterLoginPageComponent implements OnInit {
               return this.usersService
                 .createNewUser(
                   username,
-                  loggedInUser.attributes.sub,
                   loggedInUser.attributes.email,
                   loggedInUser.attributes.given_name,
                   loggedInUser.attributes.family_name
