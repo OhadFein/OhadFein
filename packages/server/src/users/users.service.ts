@@ -34,7 +34,6 @@ export class UsersService {
     const slug = await this.getUniqueSlug(createUserDto);
     const createdUser = new this.userModel({
       slug,
-      sub: createUserDto.sub,
       email: createUserDto.email.toLowerCase(),
       firstName: createUserDto.firstName,
       lastName: createUserDto.lastName,

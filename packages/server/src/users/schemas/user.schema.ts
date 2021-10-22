@@ -20,9 +20,6 @@ export class User implements UserBaseDto {
   // username: string;
 
   @Prop({ required: true, unique: true })
-  sub: string;
-
-  @Prop({ required: true, unique: true })
   slug: string;
 
   @Prop({ required: true, unique: true })
