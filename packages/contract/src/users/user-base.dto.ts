@@ -7,9 +7,6 @@ export class UserBaseDto {
   readonly _id: Types.ObjectId;
 
   @Expose()
-  sub: string;
-
-  @Expose()
   slug: string;
 
   @Expose()
