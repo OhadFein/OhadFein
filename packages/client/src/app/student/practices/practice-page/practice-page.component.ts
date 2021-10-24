@@ -123,8 +123,7 @@ export class PracticePageComponent implements OnInit, OnDestroy, AfterViewInit {
   onAddNote(): void {}
 
   compareVideos(): void {
-    // // TODO: model has to be fixed
-    // // const userVideo = practice.video;
+    // const userVideo = practice.video;
     // const userVideo = null;
     // const currentStar = practice.star;
     //

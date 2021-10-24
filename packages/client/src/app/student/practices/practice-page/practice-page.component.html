@@ -13,55 +13,6 @@
         <dsapp-notes-list-preview [notes]="practice.notes"
                                   (addNote)="onAddNote()"></dsapp-notes-list-preview>
     </div>
-<!--    <div class="row page-title-row mb-4 text-center edit-practice-name-wrapper">-->
-<!--        <div class="col-12 edit-practice-name">-->
-<!--            <button class="edit-btn"-->
-<!--                    (click)=editTitle()></button>-->
-<!--            <input class="title-input inner-page-title text-center"-->
-<!--                   type="text"-->
-<!--                   [(ngModel)]="practiceTitleInput"-->
-<!--                   [disabled]="disabledTitle">-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="row mb-4">-->
-<!--        <div class="col">-->
-<!--            <button class="mb-2 hide-btn"-->
-<!--                    (click)="toggleVideo()">{{videoButtonText}}</button>-->
-<!--                    <ui-video-player-wrapper [hidden]="hiddenVideo"-->
-<!--                                             [src]="practice.video.url"></ui-video-player-wrapper>-->
-<!--        </div>-->
-<!--    </div>-->
-
-<!--    <div class="row">-->
-<!--        <div class="col-12">-->
-<!--            <button class="btn btn-sm mt-3 mb-2 btn-success"-->
-<!--                    (click)="openInLab(practice)">{{'STAR.FIGURES.openInMyLab' | translate}}</button>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="row mb-4 justify-content-between">-->
-<!--        <div class="col-4">-->
-
-<!--            <button class="hide-btn"-->
-<!--                    (click)="toggleNotes()">{{noteButtonText}}</button>-->
-
-<!--        </div>-->
-<!--        <div class="col-4">-->
-<!--        </div>-->
-<!--        <div class="col-12 mt-2"-->
-<!--             [hidden]="hiddenNotes">-->
-<!--            <textarea [disabled]="disabledNote"-->
-<!--                      class="form-control"-->
-<!--                      rows="4"-->
-<!--                      [(ngModel)]="practiceNotes"></textarea>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--    <div class="row text-center">-->
-<!--        <div class="col">-->
-<!--            <button class="btn btn-danger"-->
-<!--                    [disabled]="disabled"-->
-<!--                    (click)=saveChanges()>{{'PRACTICES.PRACTICE.saveChanges' | translate}}</button>-->
-<!--        </div>-->
-<!--    </div>-->
 </ng-template>
 
 <ng-template [ngIf]="loading">
