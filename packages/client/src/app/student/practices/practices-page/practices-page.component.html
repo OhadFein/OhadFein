@@ -15,8 +15,10 @@
     <dsapp-star-preview-grid *ngIf="filteredPractices">
         <!-- no property for the name. data and schema has to be adjusted -->
         <dsapp-star-preview-item *ngFor="let practice of filteredPractices; let i = index;"
+                                 name="Practice number {{i + 1}}"
                                  [logo]="practice.video.thumbnail"
-                                 name="Practice number {{i + 1}}"></dsapp-star-preview-item>
+                                 (click)="onOpenPractice(practice)"
+        ></dsapp-star-preview-item>
     </dsapp-star-preview-grid>
     <div *ngIf="!filteredPractices?.length && (searchString.trim() || selectedMonthFilter)" class="no-result-text-wrapper">
         <p class="no-result-text">Sorry, there is no result for selected filter</p>
