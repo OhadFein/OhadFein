@@ -1,31 +1,25 @@
 @import 'src/styles/_all';
 
 .bottom-nav {
+  position: fixed;
   display: flex;
   justify-content: space-around;
   background: $ds-color-background;
-  position: fixed;
-  bottom: 0px;
-  border-top: 0.8px solid #ededed;
+  bottom: 0;
+  border-top: 1px solid $ds-icon-background-color;
+  z-index: 1;
 }
 
 .danskill-btn {
   color: $ds-color-bottom-nav-btn;
-  font-size: 12px;
   display: flex;
+  flex-flow: column;
   justify-content: center;
+  align-items: center;
+  font-size: rem(12px);
+  line-height: rem(18px);
 }
 
 .danskill-btn.active {
   color: $ds-color-bottom-nav-btn-active;
-}
-
-.bottom-nav-icon {
-  position: absolute;
-  top: 9px;
-}
-
-.bottom-nav-text {
-  position: relative;
-  top: 15px;
 }
