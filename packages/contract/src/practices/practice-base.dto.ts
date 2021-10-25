@@ -10,9 +10,6 @@ export class PracticeBaseDto {
   user: Types.ObjectId;
 
   @Expose()
-  figure: Types.ObjectId; // TODO: needed? (used for query all figure practices)
-
-  @Expose()
   key: string;
 
   @Expose()

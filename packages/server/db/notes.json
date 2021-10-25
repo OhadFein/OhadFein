@@ -4,11 +4,47 @@
       "$oid": "60fc4e36691b3a4b9366c1e5"
     },
     "user": {
-      "$oid": "60f8aa3557d219facdeb65b3"
+      "$oid": "617464e1f5de50c29c429d4f"
     },
     "practice": "60fc4e09691b3a4b9366c1da",
     "title": "Title #1",
-    "content": "check",
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ultricies suscipit enim nec eleifend. Phasellus sodales turpis neque, eget feugiat leo condimentum non.",
+    "createdAt": {
+      "$date": "2021-07-24T17:30:30.589Z"
+    },
+    "updatedAt": {
+      "$date": "2021-07-24T17:30:30.589Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "60fc4e36691b3a4b9366c1e6"
+    },
+    "user": {
+      "$oid": "617464e1f5de50c29c429d4f"
+    },
+    "practice": "60fc4e09691b3a4b9366c1da",
+    "title": "Title #2",
+    "content": "Cras vel arcu nunc.",
+    "createdAt": {
+      "$date": "2021-07-24T17:30:30.589Z"
+    },
+    "updatedAt": {
+      "$date": "2021-07-24T17:30:30.589Z"
+    },
+    "__v": 0
+  },
+  {
+    "_id": {
+      "$oid": "60fc4e36691b3a4b9366c1e7"
+    },
+    "user": {
+      "$oid": "617464e1f5de50c29c429d4f"
+    },
+    "practice": "60fc4e09691b3a4b9366c1da",
+    "title": "Title #3",
+    "content": "Donec convallis nisi at tincidunt congue. Etiam scelerisque congue orci, a fringilla ante fermentum non. In in molestie augue, eu mollis odio. Ut dignissim faucibus turpis ac mollis. Aliquam varius justo blandit iaculis vehicula. Donec ultricies libero id lacus pretium, sed blandit risus ullamcorper. Sed id interdum tortor. In pretium elit in dignissim commodo. Duis dolor enim, elementum eget sem a, fringilla semper augue. Interdum et malesuada fames ac ante ipsum primis in faucibus. Proin feugiat iaculis lectus, ut ullamcorper ante. Suspendisse arcu sem, vestibulum vel odio ullamcorper, bibendum pulvinar sem. Nulla facilisi. Nunc ultricies, mauris vel dapibus egestas, odio dui elementum odio, id porta nisl nulla semper lectus. Proin sodales sapien nisi, non vestibulum diam molestie quis. Maecenas id sollicitudin lorem.",
     "createdAt": {
       "$date": "2021-07-24T17:30:30.589Z"
     },

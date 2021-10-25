@@ -3,6 +3,7 @@ import { PracticesService, UserService } from '@core/services';
 import { StudentStoreService } from '@app/student/services/student-store/student-store.service';
 import { finalize, switchMap } from 'rxjs/operators';
 import { PracticeDto, UserDto } from '@danskill/contract';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'dsapp-practices-page',
@@ -40,7 +41,8 @@ export class PracticesPageComponent implements OnInit, OnDestroy {
   constructor(
     private practicesService: PracticesService,
     private userService: UserService,
-    private studentService: StudentStoreService
+    private studentService: StudentStoreService,
+    private router: Router
   ) {}
 
   ngOnDestroy(): void {}
@@ -62,6 +64,7 @@ export class PracticesPageComponent implements OnInit, OnDestroy {
       .subscribe((practices: PracticeDto[]) => {
         this.practices = practices;
         this.filteredPractices = practices;
+        this.studentService.setPractices(practices);
       });
   }
 
@@ -81,6 +84,10 @@ export class PracticesPageComponent implements OnInit, OnDestroy {
     });
 
     return this.filteredPractices;
+  }
+
+  onOpenPractice(practice: PracticeDto): void {
+    this.router.navigate(['/student', 'practices', practice._id]);
   }
 
   private filterFigures(searchString: string = ''): void {
