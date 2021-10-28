@@ -74,14 +74,15 @@ export class PracticesPageComponent implements OnInit, OnDestroy {
 
   onSelectMonth(month: Date): PracticeDto[] {
     this.selectedMonthFilter = month;
-    this.filteredPractices = this.practices.filter((figure: PracticeDto) => {
-      const date = new Date(month);
-      const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-      const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-      const practiceCreatedAt = new Date(figure.createdAt);
+    this.filteredPractices =
+      this.practices?.filter((figure: PracticeDto) => {
+        const date = new Date(month);
+        const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+        const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+        const practiceCreatedAt = new Date(figure.createdAt);
 
-      return practiceCreatedAt >= firstDay && practiceCreatedAt <= lastDay;
-    });
+        return practiceCreatedAt >= firstDay && practiceCreatedAt <= lastDay;
+      }) ?? [];
 
     return this.filteredPractices;
   }
