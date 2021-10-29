@@ -1,3 +1,4 @@
+import { UpperToolbarService } from '@app/_infra/ui/upper-toolbar/upper-toolbar.service';
 import { Component, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd, Params, RouterEvent } from '@angular/router';
 import { LabStarVideo, FigurePageTab } from '@core/models';
@@ -69,7 +70,8 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
     private studentStoreService: StudentStoreService,
     private starService: StarsService,
     private practicesService: PracticesService,
-    private userService: UserService
+    private userService: UserService,
+    private upperToolbarService: UpperToolbarService
   ) {
     this.router.events
       .pipe(
@@ -140,6 +142,7 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
       )
       .subscribe((figure: FigureDto) => {
         this.figure = figure;
+        this.upperToolbarService.setPageName(figure.type);
         this.splitVideosByType();
         this.setCurrentVideo();
       });

@@ -19,6 +19,15 @@
 
   .add-note-button {
     font-size: rem(16px);
+    width: 40px;
+    height: 40px;
+    color: $ds-text-color-button-main;
+    background-color: $ds-color-button-main;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }
 
