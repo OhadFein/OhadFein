@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { CoachDto, CreateUserDto, UserDto, UpdateUserDto } from '@danskill/contract';
 
+import { tap } from 'rxjs/operators';
 import { BaseRestService } from './base-rest.service';
 
 @Injectable({
@@ -10,10 +11,16 @@ import { BaseRestService } from './base-rest.service';
 export class UserService {
   REST_URL = '';
 
+  user: UserDto;
+
   constructor(private baseRestService: BaseRestService) {}
 
   getUser(): Observable<UserDto> {
-    return this.baseRestService.get<UserDto>('users/single');
+    return this.user
+      ? of(this.user)
+      : this.baseRestService
+          .get<UserDto>('users/single')
+          .pipe(tap((user: UserDto) => (this.user = user)));
   }
 
   getAllCoaches(): Observable<CoachDto[]> {

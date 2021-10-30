@@ -1,0 +1,50 @@
+@import 'src/styles/_all';
+
+.notes-preview-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: rem(14px);
+  color: $ds-color-text-regular;
+
+  .notes-name {
+    font-size: rem(18px);
+    font-weight: $font-weight-bold;
+  }
+
+  .notes-counter {
+    font-weight: $font-weight-normal;
+    color: $ds-color-text-muted;
+  }
+
+  .add-note-button {
+    font-size: rem(16px);
+  }
+}
+
+.note-main-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: rem(16px) 0;
+
+  .note-title {
+    font-size: rem(16px);
+    font-weight: $font-weight-bold;
+  }
+
+  .note-created-at {
+    font-size: rem(14px);
+    color: $ds-color-text-muted;
+  }
+}
+
+.list-separator {
+  width: 100%;
+  margin: 1rem 0;
+  border-bottom: 1px solid $gray-300;
+
+  &:last-child {
+    display: none;
+  }
+}

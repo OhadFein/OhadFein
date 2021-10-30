@@ -1,0 +1,32 @@
+@import 'src/styles/_all';
+
+.preview-wrapper,
+.practice-cta-wrapper {
+  margin-bottom: rem(24px);
+}
+
+.practice-cta-wrapper {
+  display: flex;
+}
+
+.practice-cta-button {
+  width: 100%;
+  height: rem(44px);
+  font-size: $font-size-sm;
+  background-color: $ds-text-color-button-main;
+  color: $ds-color-text-regular;
+  border-radius: $input-border-radius;
+
+  &:first-child {
+    margin-right: rem(8px);
+  }
+
+  &:last-child {
+    margin-left: rem(8px);
+  }
+}
+
+.practice-cta-button--main {
+  color: white;
+  background-color: $ds-color-button-main;
+}

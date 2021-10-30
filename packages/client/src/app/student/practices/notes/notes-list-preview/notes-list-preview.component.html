@@ -1,0 +1,16 @@
+<div class="notes-preview-header">
+    <span class="notes-name">Notes <span *ngIf="notes.length" class="notes-counter">({{notes.length > 9 ? '9+' : notes.length}})</span></span>
+    <span class="add-note-button" (click)="addNote.emit()">add note</span>
+</div>
+<div class="notes-list">
+    <ng-container *ngFor="let note of notes">
+        <div class="note-item">
+            <div class="note-main-info">
+                <span class="note-title">{{note.title}}</span>
+                <span class="note-created-at">{{note.createdAt | date : 'MMMM dd, yyyy'}}</span>
+            </div>
+            <!--        <div class="note-tag"></div>--> <!-- No data atm for tag feature -->
+        </div>
+        <div class="list-separator"></div>
+    </ng-container>
+</div>

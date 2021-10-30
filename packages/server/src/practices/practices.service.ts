@@ -32,7 +32,7 @@ export class PracticesService {
       figure: video.figure,
       video: video._id,
       user: user._id,
-      key: s3file.Key,
+      key: s3file.Key
     });
 
     await createdPractice.save();
@@ -69,8 +69,14 @@ export class PracticesService {
       .populate({
         path: 'video',
         populate: {
-          path: 'figure',
-        },
+          path: 'figure'
+        }
+      })
+      .populate({
+        path: 'figure',
+        populate: {
+          path: 'stars'
+        }
       })
       .exec(); // TODO: replace the strings with fixed values
   }

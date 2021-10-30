@@ -1,27 +1,28 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { LabItem, Practice, PracticeError } from '@app/_infra/core/models';
-import { AlertErrorService } from '@app/_infra/core/services';
-import * as PracticeAction from '@app/_infra/store/actions/practices.actions';
-import * as selectors from '@app/_infra/store/selectors/practices.selector';
-import { Store } from '@ngrx/store';
+import { of, Subject } from 'rxjs';
+import { catchError, finalize, takeUntil } from 'rxjs/operators';
+
+import { FigureDto, NoteBaseDto, PracticeDto, UserBaseDto, UserDto } from '@danskill/contract';
 import { TranslateService } from '@ngx-translate/core';
-import { Subscription } from 'rxjs';
-import * as PracticesAction from '@store/actions/practices.actions';
-import * as LabActions from '@store/actions/lab.actions';
-import * as StarsActions from '@store/actions/stars.actions';
+import { PracticeError } from '@app/_infra/core/models';
+import { AlertErrorService, PracticesService, UserService } from '@app/_infra/core/services';
+import { StudentStoreService } from '@app/student/services/student-store/student-store.service';
+import { UpperToolbarService } from '@ui/upper-toolbar/upper-toolbar.service';
 
 @Component({
   selector: 'dsapp-practice-page',
   templateUrl: './practice-page.component.html',
-  styles: []
+  styleUrls: ['./practice-page.component.scss']
 })
-export class PracticePageComponent implements OnInit, OnDestroy {
-  practiceId: string = null;
+export class PracticePageComponent implements OnInit, OnDestroy, AfterViewInit {
+  practiceId: string;
 
   loading = false;
 
-  practice: Practice = null;
+  practice: PracticeDto;
+
+  stars: UserBaseDto[] = [];
 
   disabled = false; // TODO: can be removed?
 
@@ -31,7 +32,7 @@ export class PracticePageComponent implements OnInit, OnDestroy {
 
   practiceTitleInput = '';
 
-  practiceNotes = '';
+  practiceNotes: NoteBaseDto[];
 
   hiddenVideo = false;
 
@@ -41,113 +42,117 @@ export class PracticePageComponent implements OnInit, OnDestroy {
 
   videoButtonText = '';
 
-  storeSelectSub: Subscription = null;
-
-  subs: Subscription[] = [];
-
-  starsSubs: Subscription[] = [];
-
   errorMsg: PracticeError | string = null;
+
+  @ViewChild('editAndDeleteButtons')
+  private editAndDeleteBtnTemp: ElementRef;
+
+  private unsubscribe: Subject<void> = new Subject<void>();
 
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private translate: TranslateService,
-    private store: Store<any>,
-    private errorService: AlertErrorService
+    private errorService: AlertErrorService,
+    private studentService: StudentStoreService,
+    private practicesService: PracticesService,
+    private upperToolbarService: UpperToolbarService,
+    private userService: UserService
   ) {}
 
   ngOnInit(): void {
+    this.getPractice();
     this.translateContent();
-    // this.getPractice(false, null);
   }
 
   ngOnDestroy(): void {
-    if (this.storeSelectSub) {
-      this.storeSelectSub.unsubscribe();
-    }
-    this.subs.forEach((s) => s.unsubscribe());
+    this.unsubscribe.next();
+    this.unsubscribe.complete();
+    this.upperToolbarService.setDefaultButtonsComponent();
   }
 
-  getPractice(isUpdate, practiceNotes) {
-    this.subs.push(
-      this.route.paramMap.subscribe((params) => {
-        this.practiceId = params.get('practiceId');
-        this.storeSelectSub = this.store
-          .select(selectors.selectPracticeById(this.practiceId))
-          .subscribe((practice) => {
-            if (practice) {
-              this.practice = { ...practice };
-              this.loading = false;
-              this.practiceTitleInput = practice.name;
-              this.practiceNotes = practice.notes;
-              if (isUpdate) {
-                // this.disabled = true;
-                // this.disabledNote = true;
-                this.practiceNotes = practiceNotes;
-              }
-            } else {
-              this.store.dispatch(PracticeAction.BeginGetPracticesAction());
-            }
-          });
-      })
-    );
-
-    this.subs.push(
-      this.store.select(selectors.selectPracticesError()).subscribe((res) => {
-        if (res && res.type) {
-          this.practice = null;
-          this.loading = false;
-          this.errorMsg = this.errorService.alertStarsError(res.type);
-        }
-      })
-    );
-  }
-
-  translateContent() {
-    this.translate.get('PRACTICES.PRACTICE.hideNotes').subscribe((res: string) => {
-      this.noteButtonText = res;
-    });
-
-    this.translate.get('PRACTICES.PRACTICE.hideVideo').subscribe((res: string) => {
-      this.videoButtonText = res;
+  ngAfterViewInit(): void {
+    this.userService.getUser().subscribe((user: UserDto) => {
+      const { firstName, lastName } = user;
+      const name = firstName && lastName ? `${user.firstName} ${user.lastName}` : 'Back';
+      this.upperToolbarService.setPageName(name);
     });
   }
 
-  openInLab(practice: Practice): void {
-    // TODO: model has to be fixed
+  private getPractice(): void {
+    this.route.paramMap.pipe(takeUntil(this.unsubscribe)).subscribe((params) => {
+      this.practiceId = params.get('practiceId');
+
+      // TODO: not possible atm, practices/all/${slug} has to populate full figure object with stars
+      // const selectedPractice = this.studentService.getPracticeById(this.practiceId);
+
+      // if (selectedPractice) {
+      //   this.practiceTitleInput = 'Practice'; // TODO: there is no name property for practice atm
+      //   this.practiceNotes = selectedPractice.notes;
+      //   this.stars = ((selectedPractice.figure as unknown) as FigureDto).stars;
+      // } else {
+      this.loading = true;
+      this.practicesService
+        .getPractice(this.practiceId)
+        .pipe(
+          finalize(() => {
+            this.loading = false;
+          }),
+          catchError((err) => {
+            // TODO: properly communicate error to a user
+            return of(undefined);
+          })
+        )
+        .subscribe((practice: PracticeDto | undefined) => {
+          if (!practice) {
+            // TODO: communicate to user that there is no such practice he / she looks for
+          } else {
+            this.practice = practice;
+            this.practiceTitleInput = 'Practice'; // TODO: there is no name property for practice atm
+            this.practiceNotes = practice.notes;
+            this.stars = ((practice.figure as unknown) as FigureDto).stars;
+            this.studentService.setPractices([practice]);
+          }
+        });
+      // }
+    });
+  }
+
+  onViewMovement(): void {}
+
+  onAddNote(): void {}
+
+  compareVideos(): void {
     // const userVideo = practice.video;
-    const userVideo = null;
-    const currentStar = practice.star;
-
-    if (userVideo && currentStar && userVideo) {
-      this.loading = false;
-      const labItem: LabItem = {
-        user: currentStar as any, // TODO: any,
-        figure: (userVideo.associatedObject as any).associatedObject, // TODO: any
-        starVideo: userVideo.associatedObject as any, // TODO: any
-        userVideo
-      };
-      this.store.dispatch(LabActions.SetLabAction({ payload: labItem }));
-      this.router.navigate(['/', 'student', 'lab']);
-    } else {
-      this.store.dispatch(StarsActions.BeginGetStarsAction());
-    }
+    // const userVideo = null;
+    // const currentStar = practice.star;
+    //
+    // if (userVideo && currentStar && userVideo) {
+    //   this.loading = false;
+    //   const labItem: LabItem = {
+    //     user: currentStar as any, // TODO: any,
+    //     figure: (userVideo.associatedObject as any).associatedObject, // TODO: any
+    //     starVideo: userVideo.associatedObject as any, // TODO: any
+    //     userVideo
+    //   };
+    //   this.store.dispatch(LabActions.SetLabAction({ payload: labItem }));
+    //   this.router.navigate(['/', 'student', 'lab']);
+    // } else {
+    //   this.store.dispatch(StarsActions.BeginGetStarsAction());
+    // }
   }
 
-  editTitle() {
+  editTitle(): void {
     this.disabledTitle = false;
     this.disabled = false;
   }
 
-  saveChanges() {
-    this.practice.name = this.practiceTitleInput;
+  saveChanges(): void {
     this.practice.notes = this.practiceNotes;
-    this.store.dispatch(PracticesAction.BeginUpdatePracticeItemAction({ payload: this.practice }));
-    this.getPractice(true, this.practice.notes);
+    this.getPractice();
   }
 
-  toggleVideo() {
+  toggleVideo(): void {
     this.hiddenVideo = !this.hiddenVideo;
     if (this.hiddenVideo) {
       this.videoButtonText = this.translateButtons('PRACTICES.PRACTICE.showVideo');
@@ -156,7 +161,7 @@ export class PracticePageComponent implements OnInit, OnDestroy {
     }
   }
 
-  toggleNotes() {
+  toggleNotes(): void {
     this.hiddenNotes = !this.hiddenNotes;
     if (this.hiddenNotes) {
       this.noteButtonText = this.translateButtons('PRACTICES.PRACTICE.showNotes');
@@ -165,12 +170,17 @@ export class PracticePageComponent implements OnInit, OnDestroy {
     }
   }
 
-  translateButtons(translateTerm): string {
-    let buttonText = '';
-    this.translate.get(translateTerm).subscribe((res: string) => {
-      buttonText = res;
+  private translateButtons(translateTerm: string): string {
+    return this.translate.instant(translateTerm);
+  }
+
+  private translateContent(): void {
+    this.translate.get('PRACTICES.PRACTICE.hideNotes').subscribe((res: string) => {
+      this.noteButtonText = res;
     });
 
-    return buttonText;
+    this.translate.get('PRACTICES.PRACTICE.hideVideo').subscribe((res: string) => {
+      this.videoButtonText = res;
+    });
   }
 }

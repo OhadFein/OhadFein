@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { StarDto } from '@danskill/contract';
+import { PracticeDto, StarDto } from '@danskill/contract';
 
 export interface StudentStore {
   stars: StarDto[];
+  practices: PracticeDto[];
 }
 
 @Injectable({
@@ -10,7 +11,8 @@ export interface StudentStore {
 })
 export class StudentStoreService {
   private store: StudentStore = {
-    stars: []
+    stars: [],
+    practices: []
   };
 
   setStars(payload: StarDto[]): void {
@@ -23,5 +25,19 @@ export class StudentStoreService {
 
   getStarBySlug(slug: string): StarDto | null {
     return this.store.stars.find((star: StarDto) => star.slug === slug);
+  }
+
+  setPractices(payload: PracticeDto[]): void {
+    this.store.practices = [...this.store.practices, ...payload];
+  }
+
+  getAllPractices(): PracticeDto[] {
+    return this.store.practices;
+  }
+
+  getPracticeById(practiceId: string): PracticeDto | undefined {
+    return this.getAllPractices().find(
+      ({ _id }: { _id: unknown }) => (_id as string) === practiceId
+    );
   }
 }

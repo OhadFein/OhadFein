@@ -5,7 +5,7 @@ import {
   CreateUserDto,
   EnumNotificationType,
   GetAllPracticesDto,
-  CreateStarDto,
+  CreateStarDto
 } from '@danskill/contract';
 import { Practice } from 'src/practices/schemas/practice.schema';
 import { FiguresService } from 'src/figures/figures.service';
@@ -36,7 +36,7 @@ export class UsersService {
       slug,
       email: createUserDto.email.toLowerCase(),
       firstName: createUserDto.firstName,
-      lastName: createUserDto.lastName,
+      lastName: createUserDto.lastName
     });
     await createdUser.save();
 
@@ -77,7 +77,11 @@ export class UsersService {
   }
 
   async findOne(slug: string): Promise<UserDocument> {
-    return this.userModel.findOne({ slug: slug.toLowerCase() }).populate('coach').exec();
+    return this.userModel
+      .findOne({ slug: slug.toLowerCase() })
+      .populate('coach')
+      .populate('figures')
+      .exec();
   }
 
   async findAllUsers(): Promise<User[]> {
@@ -158,9 +162,9 @@ export class UsersService {
         populate: {
           path: 'video',
           populate: {
-            path: 'figure',
-          },
-        },
+            path: 'figure'
+          }
+        }
       })
       .exec();
 
@@ -186,8 +190,9 @@ export class UsersService {
   async setCoach(reqUser: User, slug: string): Promise<void> {
     // TODO: use transactions https://mongoosejs.com/docs/transactions.html
     const newCoach = await this.findOne(slug);
-    if (!newCoach || !matchRoles(newCoach, [EnumRole.Coach]))
+    if (!newCoach || !matchRoles(newCoach, [EnumRole.Coach])) {
       throw new HttpException('Coach not found', HttpStatus.NOT_FOUND);
+    }
 
     if (!reqUser.coach || !reqUser.coach.equals(newCoach._id)) {
       if (reqUser.coach) await this.removeStudent(reqUser.coach, reqUser);
