@@ -1,16 +1,16 @@
 <div class="figure-practices">
-    <ng-template [ngIf]="practices && !loading && !errorMsg" >
+    <ng-template [ngIf]="practices && !loading && !errorMsg">
         <ul class="list-group ">
             <div class="row practice-list">
                 <div *ngFor="let practice of practices"
                      [routerLink]="['../../../../practices/', practice._id]"
                      class="col-12 d-flex practice-item">
-                        <div class="date d-flex flex-6">
-                            <p>{{practice.createdAt | danskillDate}}</p>
-                        </div>
-                        <div class="comparable-video-text">
-                            <div *ngIf="practice.name"> {{practice.name}}</div>
-                        </div>
+                    <div class="date d-flex flex-6">
+                        <p>{{practice.createdAt | danskillDate}}</p>
+                    </div>
+                    <div class="comparable-video-text">
+                        <div *ngIf="practice.name"> {{practice.name}}</div>
+                    </div>
                     <!-- <div (click)="deletePractice($event)" class="delete">
                         <img style="height: 15px;" src="/assets/images/icons/trash.svg">
                     </div> -->
@@ -18,7 +18,7 @@
             </div>
         </ul>
     </ng-template>
-    
+
     <ng-template [ngIf]="loading">
         <ui-preloader-inapp></ui-preloader-inapp>
     </ng-template>

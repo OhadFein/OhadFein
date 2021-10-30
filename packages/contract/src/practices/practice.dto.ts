@@ -17,5 +17,5 @@ export class PracticeDto extends PracticeBaseDto {
 
   @Expose()
   @Type(() => FigureDto)
-  figure: Types.ObjectId; // TODO: needed? (used for query all figure practices)
+  figure: FigureDto;
 }

@@ -1,6 +1,6 @@
 import { UpperToolbarService } from '@app/_infra/ui/upper-toolbar/upper-toolbar.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { filter, finalize, take } from 'rxjs/operators';
 import { FigureBaseDto, StarDto } from '@danskill/contract';
 import { StarsService } from '@core/services';
@@ -29,6 +29,7 @@ export class StarFigureListComponent implements OnInit {
   readonly searchPlaceholder = 'Search for a movement';
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private studentStoreService: StudentStoreService,
     private starService: StarsService,
@@ -61,8 +62,7 @@ export class StarFigureListComponent implements OnInit {
   }
 
   onSelectFigure(figure: FigureBaseDto): void {
-    // TODO: should route to a figure screen
-    console.log(figure);
+    this.router.navigate(['/student', 'star', this.slug, 'figure', figure._id]);
   }
 
   private initUser(params: Params): void {

@@ -118,7 +118,12 @@ export class PracticePageComponent implements OnInit, OnDestroy, AfterViewInit {
     });
   }
 
-  onViewMovement(): void {}
+  onViewMovement(): void {
+    const starSlug = this.stars[0].slug;
+    this.router.navigate([`../../star/${starSlug}/figure/${this.practice.figure._id}`], {
+      relativeTo: this.route
+    });
+  }
 
   onAddNote(): void {
     this.router.navigate(['./note'], { relativeTo: this.route });
