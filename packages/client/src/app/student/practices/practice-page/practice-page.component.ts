@@ -125,7 +125,7 @@ export class PracticePageComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   onEditNote($event): void {
-    this.router.navigate([`./notes/${$event.noteId}`], { relativeTo: this.route });
+    this.router.navigate([`../notes/${$event.noteId}`], { relativeTo: this.route });
   }
 
   compareVideos(): void {
