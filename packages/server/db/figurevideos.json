@@ -20,7 +20,7 @@
     },
     "__v": 0,
     "duration": "120",
-    "shooting_angle": "back"
+    "name": "back"
   },
   {
     "_id": {
@@ -43,7 +43,7 @@
     },
     "__v": 0,
     "duration": "121",
-    "shooting_angle": "front"
+    "name": "front"
   },
   {
     "_id": {
@@ -69,7 +69,7 @@
     },
     "__v": 0,
     "duration": "119",
-    "shooting_angle": "back"
+    "name": "back"
   },
   {
     "_id": {
@@ -95,7 +95,7 @@
     },
     "__v": 0,
     "duration": "90",
-    "shooting_angle": "front"
+    "name": "front"
   },
   {
     "_id": {
@@ -121,6 +121,6 @@
     },
     "__v": 0,
     "duration": "55",
-    "shooting_angle": "back"
+    "name": "back"
   }
 ]
