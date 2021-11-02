@@ -6,7 +6,7 @@
                 <img class="movement-figure-preview" [src]="video.thumbnail" [alt]="video">
             </div>
             <div class="movement-item-text">
-                <span class="movement-name">{{video.shooting_angle | titlecase}} view</span>
+                <span class="movement-name">{{video.name | titlecase}} view</span>
                 <span class="movement-duration">{{video.duration * 1000 | date:'mm:ss'}}</span>
             </div>
         </div>
