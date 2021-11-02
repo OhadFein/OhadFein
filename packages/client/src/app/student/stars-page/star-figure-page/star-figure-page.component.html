@@ -1,8 +1,10 @@
 <div *ngIf="figure && currentVideo">
   <ui-video-preview [figureVideo]="currentVideo"
+                    [figureName]="figure.name"
                     [stars]="figure?.stars"></ui-video-preview>
 
-  <mat-tab-group mat-stretch-tabs color="accent">
+  <mat-tab-group mat-stretch-tabs
+                 color="accent">
     <mat-tab [label]="tabs[0]">
       <dsapp-figure-movements [slug]="slug"
                               [star]="star"
@@ -14,9 +16,10 @@
     <mat-tab [label]="tabs[1]">No content here</mat-tab>
     <mat-tab [label]="getPracticeLabel(tabs[2])">
       <ng-container *ngFor="let practice of practices; let i = index;">
-        <div class="practice-item">
+        <div class="practice-item"
+             [routerLink]="['../../../../practices/', practice._id]">
           <dsapp-star-figure-list-item [logo]="practice.video.thumbnail"
-                                       name="Practice number{{i + 1}}"></dsapp-star-figure-list-item>
+                                       name="Practice number {{i + 1}}"></dsapp-star-figure-list-item>
         </div>
         <div class="list-separator"></div>
       </ng-container>

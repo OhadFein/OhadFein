@@ -1,11 +1,10 @@
-import { Component, OnDestroy, OnInit, ChangeDetectorRef } from '@angular/core';
+import { UpperToolbarService } from '@app/_infra/ui/upper-toolbar/upper-toolbar.service';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd, Params, RouterEvent } from '@angular/router';
 import { LabStarVideo, FigurePageTab } from '@core/models';
 import { VideoPlayerModalComponent } from '@app/_infra/ui';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { Store } from '@ngrx/store';
 import { Subject } from 'rxjs';
-import { SharedService } from '@app/_infra/core/services/shared.service';
 import { filter, finalize, take, takeUntil } from 'rxjs/operators';
 import { StudentStoreService } from '@app/student/services/student-store/student-store.service';
 import {
@@ -60,16 +59,14 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
   private unsubscribe = new Subject<void>();
 
   constructor(
-    private store: Store<any>,
     private route: ActivatedRoute,
     private modalService: NgbModal,
     private router: Router,
-    private cdRef: ChangeDetectorRef,
-    private sharedService: SharedService,
     private studentStoreService: StudentStoreService,
     private starService: StarsService,
     private practicesService: PracticesService,
-    private userService: UserService
+    private userService: UserService,
+    private upperToolbarService: UpperToolbarService
   ) {
     this.router.events
       .pipe(
@@ -140,6 +137,7 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
       )
       .subscribe((figure: FigureDto) => {
         this.figure = figure;
+        this.upperToolbarService.setPageName(figure.type);
         this.splitVideosByType();
         this.setCurrentVideo();
       });

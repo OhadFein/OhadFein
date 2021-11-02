@@ -19,7 +19,7 @@ export class ContactUsPageComponent implements OnInit {
 
   message: string;
 
-  subjects: string[] = ['Subscription', 'Technichal Assitance', 'Other'];
+  subjects: string[] = ['Technichal Assitance', 'Other'];
 
   constructor(private userService: UserService, private router: Router) {}
 

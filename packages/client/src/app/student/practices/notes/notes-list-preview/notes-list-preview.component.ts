@@ -12,4 +12,11 @@ export class NotesListPreviewComponent {
 
   @Output()
   addNote = new EventEmitter<void>();
+
+  @Output()
+  editNote = new EventEmitter();
+
+  onEditNote(note: NoteBaseDto): void {
+    this.editNote.emit({ noteId: note._id });
+  }
 }

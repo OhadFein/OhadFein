@@ -46,7 +46,7 @@ export class NotesService {
       user,
       practice: practiceId,
       title: createNoteDto.title,
-      content: createNoteDto.content
+      content: createNoteDto.content,
     });
 
     await createdNote.save();
@@ -69,7 +69,7 @@ export class NotesService {
   async findOne(id: Types.ObjectId): Promise<Note> {
     return this.noteModel
       .findOne({ _id: id })
-      .populate('videos stars') // TODO: replace the strings with fixed values
+      .populate('practice') // TODO: replace the strings with fixed values
       .exec();
   }
 

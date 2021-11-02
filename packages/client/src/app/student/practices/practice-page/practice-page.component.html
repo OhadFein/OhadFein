@@ -4,14 +4,17 @@
                           [stars]="stars"></ui-video-preview>
     </div>
     <div class="practice-cta-wrapper">
-        <button mat-flat-button class="practice-cta-button practice-cta-button--secondary"
+        <button mat-flat-button
+                class="practice-cta-button practice-cta-button--secondary"
                 (click)="onViewMovement()">View movement</button>
-        <button mat-flat-button class="practice-cta-button practice-cta-button--main"
+        <button mat-flat-button
+                class="practice-cta-button practice-cta-button--main"
                 (click)="compareVideos()">My comparison</button>
     </div>
     <div class="practice-notes-wrapper">
         <dsapp-notes-list-preview [notes]="practice.notes"
-                                  (addNote)="onAddNote()"></dsapp-notes-list-preview>
+                                  (addNote)="onAddNote()"
+                                  (editNote)="onEditNote($event)"></dsapp-notes-list-preview>
     </div>
 </ng-template>
 

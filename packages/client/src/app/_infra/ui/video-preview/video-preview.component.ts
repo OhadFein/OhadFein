@@ -14,6 +14,8 @@ export class VideoPreviewComponent implements OnChanges {
 
   @Input() stars: UserBaseDto[];
 
+  @Input() figureName?: string;
+
   playerAPI: VgAPI;
 
   participants: string;
