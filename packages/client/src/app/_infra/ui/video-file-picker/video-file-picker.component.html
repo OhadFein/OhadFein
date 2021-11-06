@@ -2,20 +2,22 @@
         [disabled]="disableButtons"
         (click)="cameraInput.click()">
     <span class=" ">
-    <span class="">    {{'LAB.FilmVideo' | translate}}</span>
+        <span class=""> {{'LAB.FilmVideo' | translate}}</span>
     </span>
 </button>
 <input #cameraInput
        style="display:none;"
        type="file"
        accept="video/*"
-       capture="environment"
-       (change)="fileChangeEvent($event)"/>
+       capture="user"
+       (change)="fileChangeEvent($event)" />
 
 
-<button [disabled]="disableButtons" class="btn lab-button user-button" (click)="fileInput.click()">
+<button [disabled]="disableButtons"
+        class="btn lab-button user-button"
+        (click)="fileInput.click()">
     <span class="">
-            <span class="">{{'LAB.UploadVideo' | translate}}</span>
+        <span class="">{{'LAB.UploadVideo' | translate}}</span>
     </span>
 </button>
 
@@ -23,4 +25,4 @@
        style="display:none;"
        type="file"
        accept="video/mp4,video/x-m4v,video/*"
-       (change)="fileChangeEvent($event)"/>
+       (change)="fileChangeEvent($event)" />

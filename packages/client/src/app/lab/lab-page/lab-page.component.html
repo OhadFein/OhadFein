@@ -1,5 +1,5 @@
 <div class="lab-page {{labView}}">
-    <div class="steps-bar-wrapper">
+    <!-- <div class="steps-bar-wrapper">
         <ul class="steps-bar">
             <li *ngFor="let step of steps" class="steps-bar-item"
                 [ngClass]="step.id == currentStep ? 'active' : step.id < currentStep ? 'completed': ''">
@@ -7,24 +7,27 @@
                 <div>{{step.name}}</div>
             </li>
         </ul>
-    </div>
+    </div> -->
 
     <!--    PAGE TITLES-->
     <div class="row lab-row page-title-row figure-title-row">
         <!-- PAGE MAIN TITLE -->
         <div class="col text-center">
-            <div *ngIf="!labItem" class=""><span
-                    class="underline-warning">{{'LAB.title' | translate}}</span>
+            <div *ngIf="!labItem"
+                 class=""><span class="underline-warning">{{'LAB.title' | translate}}</span>
             </div>
         </div>
         <!-- PAGE SUB TITLE - AFTER STARR VIDEO UPLOADED -->
-        <div *ngIf="labItem" class="col-12 pb-2 text-center">
-            <span dsappStarName [givenName]="labItem.user.given_name" [familyName]="labItem.user.family_name">
+        <div *ngIf="starFigure"
+             class="col-12 pb-2 text-center">
+            <span dsappStarName
+                  [givenName]="starFigure.stars[0].given_name"
+                  [familyName]="starFigure.stars[0].family_name">
             </span>
             <span> - </span>
-            <span>{{labItem.figure.name}},
+            <span>{{starFigure.name}},
                 {{'STAR.STAR_INFO_PAGE.level' | translate}}
-                {{labItem.figure.level}}</span>
+                {{starFigure.level}}</span>
         </div>
     </div>
 
@@ -38,17 +41,17 @@
             <ng-container [ngTemplateOutlet]="emptyUserVideo"></ng-container>
         </ng-container>
 
-        <ng-container *ngSwitchCase="'empty'">
-            <ng-container [ngTemplateOutlet]="emptyStarVideo"></ng-container>
-            <!--            <ng-container [ngTemplateOutlet]="emptyUserVideo"></ng-container>-->
-        </ng-container>
+        <!-- <ng-container *ngSwitchCase="'empty'"> -->
+        <!-- <ng-container [ngTemplateOutlet]="emptyStarVideo"></ng-container> -->
+        <!--            <ng-container [ngTemplateOutlet]="emptyUserVideo"></ng-container>-->
+        <!-- </ng-container> -->
     </ng-container>
 
 
 </div>
 
 <!-- STAR VIDEO IS NOT SELECTED --->
-<ng-template #emptyStarVideo>
+<!-- <ng-template #emptyStarVideo>
     <div class="row lab-row choose-star-video-row text-center">
         <div class="col">
             <div class="toolbox">
@@ -57,22 +60,21 @@
                     <button class="btn lab-button start-button"
                             tabindex="0"
                             [routerLink]="['/student','star']">
-                        <!--                        <span class="icon-video-2"></span>-->
+                                               <span class="icon-video-2"></span>
                         {{'LAB.chooseVideo' | translate}}
                     </button>
                 </div>
             </div>
         </div>
     </div>
-</ng-template>
+</ng-template> -->
 <!-- USER MUST TO UPLOAD --->
 <ng-template #emptyUserVideo>
     <div class="row lab-row choose-user-video-row text-center">
         <div class="col">
             <div class="toolbox">
-                <ui-video-file-picker
-                        [disableButtons]="disableUserVideoButtons"
-                        (videoChange)="userVideoFileChanged($event)">
+                <ui-video-file-picker [disableButtons]="disableUserVideoButtons"
+                                      (videoChange)="userVideoFileChanged($event)">
                 </ui-video-file-picker>
             </div>
         </div>

@@ -42,33 +42,33 @@ export class UploadPracticeBgProcessComponent extends BaseBgProcessComponent
   }
 
   subscribe(): void {
-    this.httpSub = this.practicesService.uploadPractice(this.process.data).subscribe(
-      (event: HttpEvent<any>) => {
-        switch (event.type) {
-          case HttpEventType.Sent:
-            this.message = 'LAB.MESSAGES.uploadStarted';
-            setTimeout(() => {
-              this.message = '';
-            }, 3000);
-            break;
-          case HttpEventType.ResponseHeader:
-            break;
-          case HttpEventType.UploadProgress:
-            this.progress = Math.round((event.loaded / event.total) * 100);
-            break;
-          case HttpEventType.Response:
-            this.message = 'LAB.MESSAGES.uploadCompleted';
-            setTimeout(() => {
-              this.store.dispatch(PracticesActions.BeginGetPracticesAction());
-              this.cancel();
-            }, 4000);
-        }
-      },
-      () => {
-        this.isError = true;
-        this.unsubscribe();
-      }
-    );
+    // this.httpSub = this.practicesService.uploadPractice(this.process.data).subscribe(
+    //   (event: HttpEvent<any>) => {
+    //     switch (event.type) {
+    //       case HttpEventType.Sent:
+    //         this.message = 'LAB.MESSAGES.uploadStarted';
+    //         setTimeout(() => {
+    //           this.message = '';
+    //         }, 3000);
+    //         break;
+    //       case HttpEventType.ResponseHeader:
+    //         break;
+    //       case HttpEventType.UploadProgress:
+    //         this.progress = Math.round((event.loaded / event.total) * 100);
+    //         break;
+    //       case HttpEventType.Response:
+    //         this.message = 'LAB.MESSAGES.uploadCompleted';
+    //         setTimeout(() => {
+    //           this.store.dispatch(PracticesActions.BeginGetPracticesAction());
+    //           this.cancel();
+    //         }, 4000);
+    //     }
+    //   },
+    //   () => {
+    //     this.isError = true;
+    //     this.unsubscribe();
+    //   }
+    // );
   }
 
   unsubscribe(): void {

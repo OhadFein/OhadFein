@@ -16,7 +16,7 @@ const routes: Routes = [
         canActivate: [AuthGuard]
       },
       {
-        path: 'lab',
+        path: 'lab/:figureVideoId',
         loadChildren: () => import('../lab/lab.module').then((m) => m.LabModule),
         canActivate: [AuthGuard]
       },

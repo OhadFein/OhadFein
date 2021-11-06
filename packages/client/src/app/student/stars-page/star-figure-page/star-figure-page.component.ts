@@ -1,5 +1,5 @@
 import { UpperToolbarService } from '@app/_infra/ui/upper-toolbar/upper-toolbar.service';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Router, NavigationEnd, Params, RouterEvent } from '@angular/router';
 import { LabStarVideo, FigurePageTab } from '@core/models';
 import { VideoPlayerModalComponent } from '@app/_infra/ui';
@@ -25,6 +25,8 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
   slug = null;
 
   userSlug: string;
+
+  recordMode: boolean = false;
 
   star: StarDto = null;
 
@@ -57,6 +59,11 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
   test: any;
 
   private unsubscribe = new Subject<void>();
+
+  @ViewChild('cameraInput')
+  private cameraInput;
+
+  video: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -98,7 +105,29 @@ export class StarFigurePageComponent implements OnInit, OnDestroy {
     this.setCurrentVideo();
   }
 
-  onVideoCompare(video: FigureVideoBaseDto): void {}
+  onVideoUploaded(event): void {
+    const file = (event.target as HTMLInputElement).files[0];
+    console.log(file);
+  }
+
+  onVideoCompare(video: FigureVideoBaseDto): void {
+    // this.video = this.videoElement.nativeElement;
+    // const browser = <any>navigator;
+    // const config = { video: true, audio: true };
+
+    // browser.getUserMedia =
+    //   browser.getUserMedia ||
+    //   browser.webkitGetUserMedia ||
+    //   browser.mozGetUserMedia ||
+    //   browser.msGetUserMedia;
+
+    // browser.mediaDevices.getUserMedia(config).then((stream) => {
+    //   this.video.srcObject = stream;
+    //   this.video.play();
+    // });
+    this.router.navigate(['/', 'student', 'lab', `${video._id}`]);
+    // this.cameraInput.nativeElement.click();
+  }
 
   onVideoPreview(video: FigureVideoBaseDto): void {
     this.currentVideo = video;
