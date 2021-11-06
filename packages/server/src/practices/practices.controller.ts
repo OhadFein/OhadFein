@@ -9,7 +9,7 @@ import {
   UseGuards,
   HttpStatus,
   HttpException,
-  Delete
+  Delete,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { RequestUser } from 'src/common/decorators/request-user.decorator';
@@ -40,6 +40,7 @@ export class PracticesController {
     @UploadedFile() videoFile: Express.Multer.File
   ): Promise<Practice> {
     const video = await this.figureVideosService.findOne(videoId);
+    // TODO: throw exception from the service?
     if (!video || !video.figure) throw new HttpException('Video not found', HttpStatus.NOT_FOUND);
 
     const s3video = await this.s3Service.upload(videoFile, user.slug);
