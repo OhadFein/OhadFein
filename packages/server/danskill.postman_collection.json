@@ -118,6 +118,23 @@
       ]
     },
     {
+      "name": "Main",
+      "item": [
+        {
+          "name": "Get main info",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{url}}",
+              "host": ["{{url}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
       "name": "Users",
       "item": [
         {
@@ -695,6 +712,50 @@
     {
       "name": "FIgure Videos",
       "item": [
+        {
+          "name": "Get figure video by id",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Add figure video\", function () {",
+                  "    if (responseCode.code === 201)",
+                  "    {",
+                  "        const figureVideo = pm.response.json();",
+                  "        pm.environment.set(\"videoId\", figureVideo._id);",
+                  "    }",
+                  "    ",
+                  "    pm.response.to.have.status(201);",
+                  "});"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url}}/figure-video/{{videoId}}",
+              "host": ["{{url}}"],
+              "path": ["figure-video", "{{videoId}}"]
+            }
+          },
+          "response": []
+        },
         {
           "name": "🔑  Add figure video",
           "event": [
@@ -1296,23 +1357,6 @@
               "raw": "{{url}}/notifications/markRead/{{notifcationId}}",
               "host": ["{{url}}"],
               "path": ["notifications", "markRead", "{{notifcationId}}"]
-            }
-          },
-          "response": []
-        }
-      ]
-    },
-    {
-      "name": "Main",
-      "item": [
-        {
-          "name": "Get main info",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{url}}",
-              "host": ["{{url}}"]
             }
           },
           "response": []

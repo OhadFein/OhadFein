@@ -6,8 +6,9 @@ import {
   HttpException,
   HttpStatus,
   Param,
+  Get,
   Post,
-  UseInterceptors
+  UseInterceptors,
 } from '@nestjs/common';
 import { Roles } from 'src/common/decorators/roles.decorator';
 import { EnumRole } from 'src/common/enums/role.enum';
@@ -20,6 +21,16 @@ import { FigureVideoBaseDto } from '../../../contract/src/figure-video/figure-vi
 @Controller('figure-video')
 export class FigureVideoController {
   constructor(private readonly figureVideoService: FigureVideoService) {}
+
+  @Get(':id')
+  @UseInterceptors(new TransformInterceptor(FigureVideoBaseDto))
+  async getFigureVideo(@Param('id') id: Types.ObjectId): Promise<FigureVideo> {
+    const video = await this.figureVideoService.findOne(id);
+    // TODO: throw exception from the service?
+    if (!video || !video.figure) throw new HttpException('Video not found', HttpStatus.NOT_FOUND);
+
+    return this.figureVideoService.findOne(id);
+  }
 
   @Roles(EnumRole.Admin)
   @Post(':id')
