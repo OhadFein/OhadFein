@@ -15,7 +15,7 @@
               "listen": "test",
               "script": {
                 "exec": [
-                  "pm.test(\"Get all stars\", function () {",
+                  "pm.test(\"Get all stars!\", function () {",
                   "",
                   "    pm.response.to.have.status(200);",
                   "});"
