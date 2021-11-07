@@ -12,24 +12,27 @@
       <button class="icon icon-practices control-button"
               [style.font-size.rem]="'1.1'"
               (click)="saveToPractices.emit()">
-<!--        <span>{{'LAB.saveToMyPractices' | translate}}</span>-->
+        <!--        <span>{{'LAB.saveToMyPractices' | translate}}</span>-->
       </button>
     </div>
-    <div *ngIf="masterVideo && studentVideo"
+    <div *ngIf="masterVideo && studentVideoUrl"
          class="right-side"
          (click)="toggleSync()">
       <span>{{synchronized ? ('LAB.unlinkVideos' | translate) : ('LAB.linkVideos' | translate)}}</span>
 
-      <button uiToggleSwitch class="control-button pr-0" [state]="synchronized" [disabled]="!studentVideo"></button>
+      <button uiToggleSwitch
+              class="control-button pr-0"
+              [state]="synchronized"
+              [disabled]="!studentVideoUrl"></button>
     </div>
   </div>
 
   <div class="lab-tool-player-wrapper"
-       [ngClass]="{'lab-tool-player-wrapper--master-student': masterVideo && studentVideo}">
+       [ngClass]="{'lab-tool-player-wrapper--master-student': masterVideo && studentVideoUrl}">
     <div *ngIf="masterVideo"
          class="lab-tool-player star-player-wrapper">
       <ui-video-player-wrapper #masterPLayer
-                               [src]="masterVideo.path"
+                               [src]="masterVideo.url"
                                [poster]="masterVideo.thumbnail"
                                [synchronized]="synchronized"
                                [preview]="false"
@@ -40,13 +43,13 @@
       </ui-video-player-wrapper>
     </div>
 
-    <div *ngIf="studentVideo"
+    <div *ngIf="studentVideoUrl"
          class="lab-tool-player student-player-wrapper">
       <div class="close-video-control">
         <button (click)="studentVideoClear()">close</button>
       </div>
       <ui-video-player-wrapper #studentPLayer
-                               [src]="studentVideo ? studentVideo.path : null"
+                               [src]="studentVideoUrl ? studentVideoUrl : null"
                                [preview]="false"
                                [synchronized]="synchronized"
                                [isMasterVideo]="false"
@@ -56,7 +59,8 @@
     </div>
   </div>
 
-  <div class="lab-video-control" *ngIf="synchronized && studentVideo">
+  <div class="lab-video-control"
+       *ngIf="synchronized && studentVideo">
     <dsapp-custom-lab-controls [isPlaying]="playing"
                                [duration]="videoDurationSync"
                                [totalTimePassed]="syncPlayer?.timePassed"

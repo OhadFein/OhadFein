@@ -1,9 +1,10 @@
+import { DomSanitizer } from '@angular/platform-browser';
 import { PracticesService, UserService, AlertService, StarsService } from '@core/services';
 import { ActivatedRoute } from '@angular/router';
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { LAB_USER_VIDEO_DURATION_DIFF_LIMIT, LabItem, LabViewType } from '@core/models/';
+import { LAB_USER_VIDEO_DURATION_DIFF_LIMIT, LabViewType } from '@core/models/';
 import { Subscription } from 'rxjs';
-import { FigureDto, UserDto } from '@danskill/contract';
+import { FigureVideoBaseDto, UserDto } from '@danskill/contract';
 
 @Component({
   selector: 'dsapp-lab-page',
@@ -13,11 +14,13 @@ import { FigureDto, UserDto } from '@danskill/contract';
 export class LabPageComponent implements OnInit, OnDestroy {
   userVideo: File;
 
+  userVideoPath: string;
+
   practiceIsSaved = false;
 
   // labItem: LabItem = null;
 
-  starFigure: FigureDto = null;
+  starFigureVideo: FigureVideoBaseDto = null;
 
   labView: LabViewType = LabViewType.EMPTY;
 
@@ -29,7 +32,7 @@ export class LabPageComponent implements OnInit, OnDestroy {
 
   disableSavePracticesButton = false;
 
-  disableUserVideoButtons = true;
+  disableUserVideoButtons = false;
 
   @Output() isPlayerReady = new EventEmitter<boolean>();
 
@@ -42,7 +45,8 @@ export class LabPageComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private starService: StarsService,
     private userService: UserService,
-    private practiceService: PracticesService
+    private practiceService: PracticesService,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -50,7 +54,7 @@ export class LabPageComponent implements OnInit, OnDestroy {
       this.route.paramMap.subscribe((params) => {
         const figureVideoId = params.get('figureVideoId');
         this.initLabItem(figureVideoId);
-        this.setLabView();
+        // this.setLabView();
       })
     );
 
@@ -81,18 +85,21 @@ export class LabPageComponent implements OnInit, OnDestroy {
     // this.setLabView();
   }
 
-  initLabItem(figureId: string): void {
+  initLabItem(figureVideoId: string): void {
     this.userService.getUser().subscribe((user: UserDto) => {
-      this.starService.getFigureById(figureId).subscribe((figure: FigureDto) => {
-        this.starFigure = figure;
-        this.user = user;
-        // this.labItem = {
-        //   user,
-        //   figure,
-        //   starVideo: figure.videos[0],
-        //   practiceIsSaved: false
-        // };
-      });
+      this.starService
+        .getFigureVideoById(figureVideoId)
+        .subscribe((figureVideo: FigureVideoBaseDto) => {
+          this.starFigureVideo = figureVideo;
+          this.user = user;
+          this.setLabView();
+          // this.labItem = {
+          //   user,
+          //   figure,
+          //   starVideo: figure.videos[0],
+          //   practiceIsSaved: false
+          // };
+        });
 
       // user: UserDto;
       // figure: FigureDto;
@@ -107,10 +114,11 @@ export class LabPageComponent implements OnInit, OnDestroy {
   }
 
   setLabView(): void {
-    if (!this.starFigure) {
+    if (!this.starFigureVideo) {
       this.labView = LabViewType.EMPTY;
     } else {
-      this.labView = this.starFigure && this.userVideo ? LabViewType.FULL : LabViewType.PREVIEW;
+      this.labView =
+        this.starFigureVideo && this.userVideo ? LabViewType.FULL : LabViewType.PREVIEW;
     }
   }
 
@@ -122,7 +130,9 @@ export class LabPageComponent implements OnInit, OnDestroy {
     const file = (event.target as HTMLInputElement).files[0];
     if (file) {
       this.userVideo = file;
+      this.userVideoPath = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(file));
       this.disableSavePracticesButton = false;
+      this.setLabView();
     }
   }
 
@@ -166,23 +176,25 @@ export class LabPageComponent implements OnInit, OnDestroy {
   // }
 
   saveToPractices(): void {
-    this.practiceService.uploadPractice(this.starFigure._id.toString(), this.userVideo);
-    // const data: CreatePracticeData = new FormData();
-    // data.append(
-    //   'name',
-    //   `${this.labItem.user.given_name} ${this.labItem.user.family_name} ${this.labItem.figure.name}`
-    // );
+    const data = new FormData();
+    data.append(
+      'name',
+      `${this.user.firstName} ${this.user.lastName} ${this.starFigureVideo.name}`
+    );
     // data.append('associatedVideoId', this.labItem.starVideo._id);
-    // data.append('video', this.labItem.userVideo.file);
+    data.append('video', this.userVideo);
     // data.append('starId', this.labItem.user._id);
     // data.append('figureId', this.labItem.figure._id);
     // this.backgroundProcessesService.uploadPractice(data, `upload_practice_${this.userStamp}`);
     // this.userVideo = this.labItem.userVideo;
+    this.practiceService.uploadPractice(this.starFigureVideo._id.toString(), data).subscribe(() => {
+      this.practiceIsSaved = false;
+    });
     this.practiceIsSaved = true;
 
-    setTimeout(() => {
-      this.practiceIsSaved = false;
-    }, 3000);
+    // setTimeout(() => {
+    //   this.practiceIsSaved = false;
+    // }, 3000);
   }
 
   ngOnDestroy(): void {

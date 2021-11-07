@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
 import { LabPlayerType, LabStarVideo, LabUserVideo } from '@app/_infra/core/models';
 import { VideoPlayerWrapperComponent } from '@app/_infra/ui';
+import { FigureVideoBaseDto } from '@danskill/contract';
 import { VgEvents } from 'ngx-videogular';
 
 enum PlayerType {
@@ -14,22 +15,34 @@ enum PlayerType {
   styleUrls: ['./lab-video-tool.component.scss']
 })
 export class LabVideoToolComponent {
-  @Input() masterVideo: LabStarVideo = null;
-  @Input() studentVideo: LabUserVideo = null;
+  @Input() masterVideo: FigureVideoBaseDto = null;
+
+  @Input() studentVideoUrl: string = null;
+
+  @Input() studentVideoFile: File = null;
+
   @Input() disableSavePracticesButton: boolean;
 
   @Output() masterPlayerDurationReady = new EventEmitter<number>();
+
   @Output() clearVideo = new EventEmitter<LabPlayerType>();
+
   @Output() isPlayerReady = new EventEmitter<boolean>();
+
   @Output() saveToPractices = new EventEmitter<void>();
+
   @ViewChild('masterPLayer', { static: false })
   masterPLayer: VideoPlayerWrapperComponent;
+
   @ViewChild('studentPLayer', { static: false })
   studentPLayer: VideoPlayerWrapperComponent;
 
   synchronized = false;
+
   timeDiff = 0;
+
   playing = false;
+
   playbackRate = 1;
 
   fullscreen = false;
@@ -38,10 +51,12 @@ export class LabVideoToolComponent {
    * duration of a shortest video clip
    */
   videoDurationSync: number;
+
   /**
    * reference to a player in a sync mode (the one which holds a shortest video)
    */
   syncPlayer: VideoPlayerWrapperComponent;
+
   /**
    * start points for each video during a sync mode
    * @private
@@ -50,6 +65,7 @@ export class LabVideoToolComponent {
     master: null,
     student: null
   };
+
   /**
    * duration of each video
    * @private
@@ -80,7 +96,7 @@ export class LabVideoToolComponent {
     this.videoDuration.student = duration;
   }
 
-  onPlayerEvent(event): void {
+  onPlayerEvent(event: Event): void {
     if (!this.synchronized) {
       return;
     }
@@ -104,7 +120,7 @@ export class LabVideoToolComponent {
    * same rule applies in regards to the sync video totalTimePassed or currentTime properties
    */
   toggleSync() {
-    if (!this.studentVideo) {
+    if (!this.studentVideoUrl) {
       return;
     }
 

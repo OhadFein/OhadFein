@@ -13,21 +13,21 @@
     <div class="row lab-row page-title-row figure-title-row">
         <!-- PAGE MAIN TITLE -->
         <div class="col text-center">
-            <div *ngIf="!labItem"
+            <div *ngIf="!starFigureVideo"
                  class=""><span class="underline-warning">{{'LAB.title' | translate}}</span>
             </div>
         </div>
         <!-- PAGE SUB TITLE - AFTER STARR VIDEO UPLOADED -->
-        <div *ngIf="starFigure"
+        <div *ngIf="starFigureVideo"
              class="col-12 pb-2 text-center">
             <span dsappStarName
-                  [givenName]="starFigure.stars[0].given_name"
-                  [familyName]="starFigure.stars[0].family_name">
+                  [givenName]="'Michael'"
+                  [familyName]="'Azimov'">
             </span>
             <span> - </span>
-            <span>{{starFigure.name}},
+            <span>{{starFigureVideo.name}},
                 {{'STAR.STAR_INFO_PAGE.level' | translate}}
-                {{starFigure.level}}</span>
+                {{starFigureVideo.level}}</span>
         </div>
     </div>
 
@@ -87,8 +87,8 @@
 <ng-template #labTool>
     <div class="row star-video-row">
         <div class="col">
-            <dsapp-lab-video-tool [masterVideo]="labItem.starVideo ? labItem.starVideo : null"
-                                  [studentVideo]="labItem.userVideo ? labItem.userVideo : null"
+            <dsapp-lab-video-tool [masterVideo]="starFigureVideo ? starFigureVideo : null"
+                                  [studentVideoUrl]="userVideoPath ? userVideoPath : null"
                                   (masterPlayerDurationReady)="setDurationLimit($event)"
                                   (isPlayerReady)="masterVideoReady()"
                                   (clearVideo)="clearVideo($event)">
@@ -108,7 +108,7 @@
 
 <video #videoMta
        style="display: none;"
-       *ngIf="userVideo"
+       *ngIf="userVideoPath"
        width="0"
        height="0"
        preload="metadata"
