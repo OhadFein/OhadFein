@@ -6,7 +6,7 @@ import { Angulartics2 } from 'angulartics2';
 import { catchError, filter, finalize, map, switchMap } from 'rxjs/operators';
 import { fromPromise } from 'rxjs/internal-compatibility';
 
-import { UserService, TokenService } from '@core/services';
+import { UserService, TokenService, LoaderService } from '@core/services';
 import { UserDto } from '@danskill/contract';
 
 interface IAmplifyInfo {
@@ -29,10 +29,13 @@ export class AfterLoginPageComponent implements OnInit {
     private usersService: UserService,
     private router: Router,
     private angulartics2: Angulartics2,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    private loaderService: LoaderService
   ) {}
 
   ngOnInit(): void {
+    this.loaderService.setIsLoading(true);
+
     this.usersService
       .userExists()
       .pipe(
@@ -75,6 +78,7 @@ export class AfterLoginPageComponent implements OnInit {
       )
       .subscribe();
 
+    this.loaderService.setIsLoading(false);
     this.router.navigate(['/student']);
   }
 

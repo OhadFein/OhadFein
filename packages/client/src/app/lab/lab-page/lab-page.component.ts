@@ -5,6 +5,7 @@ import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/cor
 import { LAB_USER_VIDEO_DURATION_DIFF_LIMIT, LabViewType } from '@core/models/';
 import { Subscription } from 'rxjs';
 import { FigureVideoBaseDto, UserDto } from '@danskill/contract';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'dsapp-lab-page',
@@ -36,7 +37,7 @@ export class LabPageComponent implements OnInit, OnDestroy {
 
   @Output() isPlayerReady = new EventEmitter<boolean>();
 
-  private maxVideoDuration = 0;
+  private maxVideoDuration = 30;
 
   user: UserDto;
 
@@ -53,8 +54,19 @@ export class LabPageComponent implements OnInit, OnDestroy {
     this.subs.push(
       this.route.paramMap.subscribe((params) => {
         const figureVideoId = params.get('figureVideoId');
+
         this.initLabItem(figureVideoId);
         // this.setLabView();
+      })
+    );
+
+    this.subs.push(
+      this.route.queryParams.pipe(filter((params) => params.practiceId)).subscribe((params) => {
+        this.practiceService.getPractice(params.practiceId).subscribe((practice) => {
+          this.userVideoPath = practice.url;
+          this.disableSavePracticesButton = true;
+          this.setLabView();
+        });
       })
     );
 
@@ -118,7 +130,7 @@ export class LabPageComponent implements OnInit, OnDestroy {
       this.labView = LabViewType.EMPTY;
     } else {
       this.labView =
-        this.starFigureVideo && this.userVideo ? LabViewType.FULL : LabViewType.PREVIEW;
+        this.starFigureVideo && this.userVideoPath ? LabViewType.FULL : LabViewType.PREVIEW;
     }
   }
 

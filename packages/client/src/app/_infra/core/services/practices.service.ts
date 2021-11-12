@@ -3,8 +3,8 @@ import { BaseRestService } from '@core/services/base-rest.service';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { PracticeBaseDto, PracticeDto } from '@danskill/contract';
-import { Practice, UpdatePracticeItemsRestResponse } from '../models';
 import { HttpHeaders } from '@angular/common/http';
+import { Practice, UpdatePracticeItemsRestResponse } from '../models';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,6 @@ export class PracticesService {
     //   .set('Pragma', 'no-cache');
     const httpHeadersObj = new HttpHeaders()
       .set('Accept', 'application/json')
-      // .set('Content-Type', 'file')
       .set('Cache-Control', 'no-cache')
       .set('Pragma', 'no-cache');
 
