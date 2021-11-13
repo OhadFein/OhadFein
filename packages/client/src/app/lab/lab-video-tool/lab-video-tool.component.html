@@ -9,11 +9,7 @@
               [style.font-size.rem]="'2'"
               (click)="toggleFullScreen()"></button>
       <!-- TODO: need another icon here to be more descriptive and with correct line width -->
-      <button class="icon icon-practices control-button"
-              [style.font-size.rem]="'1.1'"
-              (click)="saveToPractices.emit()">
-        <!--        <span>{{'LAB.saveToMyPractices' | translate}}</span>-->
-      </button>
+
     </div>
     <div *ngIf="masterVideo && studentVideoUrl"
          class="right-side"
@@ -60,7 +56,7 @@
   </div>
 
   <div class="lab-video-control"
-       *ngIf="synchronized && studentVideo">
+       *ngIf="synchronized && studentVideoUrl">
     <dsapp-custom-lab-controls [isPlaying]="playing"
                                [duration]="videoDurationSync"
                                [totalTimePassed]="syncPlayer?.timePassed"

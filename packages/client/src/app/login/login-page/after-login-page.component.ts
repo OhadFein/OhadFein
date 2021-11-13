@@ -74,12 +74,11 @@ export class AfterLoginPageComponent implements OnInit {
       .pipe(
         map((user: UserDto) => {
           this.tokenService.setUser(user.slug);
+          this.loaderService.setIsLoading(false);
+          this.router.navigate(['/student']);
         })
       )
       .subscribe();
-
-    this.loaderService.setIsLoading(false);
-    this.router.navigate(['/student']);
   }
 
   getIdProvider(loggedInUser: IAmplifyInfo): IDProvider {
