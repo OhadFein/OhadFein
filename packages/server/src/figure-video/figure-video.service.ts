@@ -15,7 +15,7 @@ export class FigureVideoService {
   ) {}
 
   async findOne(id: Types.ObjectId): Promise<FigureVideo> {
-    return this.figureVideoModel.findOne({ _id: id }).exec();
+    return this.figureVideoModel.findOne({ _id: id }).populate('stars figure').exec();
   }
 
   async create(
