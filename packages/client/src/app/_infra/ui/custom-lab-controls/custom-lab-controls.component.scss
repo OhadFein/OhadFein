@@ -1,3 +1,4 @@
+@import 'src/styles/_all';
 $delimiterColor: whitesmoke;
 
 :host {
@@ -123,7 +124,7 @@ $delimiterColor: whitesmoke;
 .custom-lab-progress {
   width: 0; // default value. updated as progress moves
   height: 4px;
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: $ds-accent-color;
 }
 
 .custom-lab-progress-pointer {
@@ -131,5 +132,5 @@ $delimiterColor: whitesmoke;
   top: -2px;
   left: -4px;
   border-radius: 50%;
-  background-color: $delimiterColor;
+  background-color: $ds-accent-color;
 }

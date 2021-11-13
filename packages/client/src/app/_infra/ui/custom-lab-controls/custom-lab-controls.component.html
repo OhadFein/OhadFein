@@ -1,7 +1,11 @@
 <!-- TODO: move to a component on its own -->
-<div #progressBar class="custom-lab-progress-bar" (click)="onChangeProgress($event)">
-    <div #progress class="custom-lab-progress"></div>
-    <div #pointer class="custom-lab-progress-pointer"
+<div #progressBar
+     class="custom-lab-progress-bar"
+     (click)="onChangeProgress($event)">
+    <div #progress
+         class="custom-lab-progress"></div>
+    <div #pointer
+         class="custom-lab-progress-pointer"
          [style.width.px]="minJumpShift"
          [style.height.px]="minJumpShift"></div>
 </div>
@@ -12,8 +16,12 @@
          (click)="onTogglePlay()"></div>
 
     <!-- TODO: move to a component on its own -->
-    <div #scroll class="custom-lab-scroll" (pan)="onPan($event)" (panmove)="onPanMove($event)">
-        <div *ngFor="let block of blocks;" class="custom-lab-block">
+    <div #scroll
+         class="custom-lab-scroll"
+         (pan)="onPan($event)"
+         (panmove)="onPanMove($event)">
+        <div *ngFor="let block of blocks;"
+             class="custom-lab-block">
             <div class="main-line"></div>
             <div class="sub-line"></div>
             <div class="sub-line"></div>

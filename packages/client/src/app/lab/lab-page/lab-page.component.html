@@ -2,12 +2,6 @@
 
     <!--    PAGE TITLES-->
     <div class="row lab-row page-title-row figure-title-row">
-        <!-- PAGE MAIN TITLE -->
-        <div class="col text-center">
-            <div *ngIf="!starFigureVideo"
-                 class=""><span class="underline-warning">{{'LAB.title' | translate}}</span>
-            </div>
-        </div>
         <!-- PAGE SUB TITLE - AFTER STARR VIDEO UPLOADED -->
         <div *ngIf="starFigureVideo"
              class="col-12 pb-2 text-center">
@@ -32,16 +26,10 @@
             <ng-container [ngTemplateOutlet]="emptyUserVideo"></ng-container>
         </ng-container>
 
-        <!-- <ng-container *ngSwitchCase="'empty'"> -->
-        <!-- <ng-container [ngTemplateOutlet]="emptyStarVideo"></ng-container> -->
-        <!--            <ng-container [ngTemplateOutlet]="emptyUserVideo"></ng-container>-->
-        <!-- </ng-container> -->
     </ng-container>
 
 
 </div>
-
-<!-- STAR VIDEO IS NOT SELECTED --->
 
 <!-- USER MUST TO UPLOAD --->
 <ng-template #emptyUserVideo>

@@ -19,17 +19,11 @@ export class LabPageComponent implements OnInit, OnDestroy {
 
   practiceIsSaved = false;
 
-  // labItem: LabItem = null;
-
   starFigureVideo: FigureVideoBaseDto = null;
 
   labView: LabViewType = LabViewType.EMPTY;
 
   subs: Subscription[] = [];
-
-  // steps: any;
-
-  // currentStep: number;
 
   disableSavePracticesButton = false;
 
