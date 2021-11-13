@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
-import { FigureBaseDto, FigureDto, StarDto } from '@danskill/contract';
+import { FigureBaseDto, FigureDto, FigureVideoDto, StarDto } from '@danskill/contract';
 
 import { BaseRestService } from './base-rest.service';
 
@@ -29,5 +29,9 @@ export class StarsService {
 
   getFigureById(figureId: string): Observable<FigureDto> {
     return this.baseRestService.get(`figures/single/${figureId}`);
+  }
+
+  getFigureVideoById(figureVideoId: string): Observable<FigureVideoDto> {
+    return this.baseRestService.get(`figure-video/${figureVideoId}`);
   }
 }

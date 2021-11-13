@@ -1,7 +1,10 @@
 <ng-template [ngIf]="!loading && !errorMsg && practice">
     <div class="preview-wrapper">
-        <ui-video-preview [figureVideo]="practice.video"
-                          [stars]="stars"></ui-video-preview>
+        <ui-video-preview [videoUrl]="practice.url"
+                          [thumbnail]="practice.video.thumbnail"
+                          [figureName]="practice.figure.name"
+                          [stars]="stars">
+        </ui-video-preview>
     </div>
     <div class="practice-cta-wrapper">
         <button mat-flat-button

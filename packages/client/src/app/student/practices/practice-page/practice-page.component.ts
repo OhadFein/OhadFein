@@ -134,7 +134,10 @@ export class PracticePageComponent implements OnInit, OnDestroy, AfterViewInit {
   }
 
   compareVideos(): void {
-    // const userVideo = practice.video;
+    // const userVideo = practi
+    this.router.navigate([`/student/lab/${this.practice.video._id}`], {
+      queryParams: { practiceId: this.practiceId }
+    });
     // const userVideo = null;
     // const currentStar = practice.star;
     //

@@ -28,7 +28,7 @@ export class FigureVideoController {
     // TODO: throw exception from the service?
     if (!video || !video.figure) throw new HttpException('Video not found', HttpStatus.NOT_FOUND);
 
-    return this.figureVideoService.findOne(id);
+    return video;
   }
 
   @Roles(EnumRole.Admin)

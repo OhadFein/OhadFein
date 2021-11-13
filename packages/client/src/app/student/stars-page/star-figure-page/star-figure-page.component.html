@@ -1,5 +1,6 @@
 <div *ngIf="figure && currentVideo">
-  <ui-video-preview [figureVideo]="currentVideo"
+  <ui-video-preview [videoUrl]="currentVideo.url"
+                    [thumbnail]="currentVideo.thumbnail"
                     [figureName]="figure.name"
                     [stars]="figure?.stars"></ui-video-preview>
 

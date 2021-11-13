@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input, OnChanges } from '@angular/core';
 import { VgAPI } from 'ngx-videogular';
 import { take } from 'rxjs/operators';
-import { FigureVideoBaseDto, UserBaseDto } from '@danskill/contract';
+import { UserBaseDto } from '@danskill/contract';
 
 @Component({
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -10,7 +10,11 @@ import { FigureVideoBaseDto, UserBaseDto } from '@danskill/contract';
   styleUrls: ['./video-preview.component.scss']
 })
 export class VideoPreviewComponent implements OnChanges {
-  @Input() figureVideo: FigureVideoBaseDto;
+  // @Input() figureVideo: FigureVideoBaseDto;
+
+  @Input() videoUrl: string;
+
+  @Input() thumbnail: string;
 
   @Input() stars: UserBaseDto[];
 
@@ -34,7 +38,7 @@ export class VideoPreviewComponent implements OnChanges {
   }
 
   ngOnChanges(): void {
-    this.clipName = this.figureVideo ? `${this.figureVideo.name} view` : '';
+    this.clipName = this.figureName ? `${this.figureName} view` : '';
     if (this.stars) {
       this.participants = this.getParticipants(this.stars);
     }

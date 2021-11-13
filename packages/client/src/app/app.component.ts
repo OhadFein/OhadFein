@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
-import { ConfigurationService, MenuService, UserService } from '@core/services';
+import { ConfigurationService, MenuService, UserService, LoaderService } from '@core/services';
 import { BackgroundPosition, BuildType } from '@core/models/';
 import { Angulartics2GoogleGlobalSiteTag } from 'angulartics2/gst';
 
@@ -70,12 +70,14 @@ export class AppComponent implements OnInit, OnDestroy {
   showModal: boolean = false;
   @ViewChild('myModal') myModal;
 
+  isAppReady: boolean = true;
+
   constructor(
     public translate: TranslateService,
     public router: Router,
     public location: Location,
     private menuService: MenuService,
-    private modalService: NgbModal,
+    private loaderService: LoaderService,
     private store: Store<any>,
     private userService: UserService,
     private confifurationService: ConfigurationService,
@@ -102,6 +104,13 @@ export class AppComponent implements OnInit, OnDestroy {
     this.changeBgPosition();
     // this.getGeneralInfo();
     this.configureAmplifyAuth();
+
+    this.subs.push(
+      this.loaderService.isLoading.subscribe((isLoading) => {
+        this.isAppReady = !isLoading;
+      })
+    );
+
     this.subs.push(
       this.router.events.subscribe((event) => {
         if (event instanceof NavigationStart) {
@@ -120,7 +129,8 @@ export class AppComponent implements OnInit, OnDestroy {
       })
     );
   }
-  configureAmplifyAuth() {
+
+  configureAmplifyAuth(): void {
     const domain: string =
       this.confifurationService.getBuildType() === BuildType.DEV
         ? 'http://localhost:4200/'

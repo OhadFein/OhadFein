@@ -1,9 +1,9 @@
-import { HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BaseRestService } from '@core/services/base-rest.service';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { PracticeDto } from '@danskill/contract';
+import { PracticeBaseDto, PracticeDto } from '@danskill/contract';
+import { HttpHeaders } from '@angular/common/http';
 import { Practice, UpdatePracticeItemsRestResponse } from '../models';
 
 @Injectable({
@@ -20,13 +20,17 @@ export class PracticesService {
     return this.baseRestService.get<PracticeDto>(`practices/single/${practiceId}`);
   }
 
-  uploadPractice(data: any): Observable<any> {
+  uploadPractice(figureVideoId: string, videoFile: FormData): Observable<PracticeBaseDto> {
     const httpHeadersObj = new HttpHeaders()
       .set('Accept', 'application/json')
       .set('Cache-Control', 'no-cache')
       .set('Pragma', 'no-cache');
 
-    return this.baseRestService.post('account/practices', data, httpHeadersObj, true);
+    return this.baseRestService.post<PracticeBaseDto>(
+      `practices/${figureVideoId}`,
+      videoFile,
+      httpHeadersObj
+    );
   }
 
   updatePractice(practice: Practice): Observable<Practice> {

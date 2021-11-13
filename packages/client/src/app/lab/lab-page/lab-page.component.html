@@ -1,32 +1,27 @@
 <div class="lab-page {{labView}}">
-    <div class="steps-bar-wrapper">
-        <ul class="steps-bar">
-            <li *ngFor="let step of steps" class="steps-bar-item"
-                [ngClass]="step.id == currentStep ? 'active' : step.id < currentStep ? 'completed': ''">
-                <div class="step-item-num">{{step.id}}</div>
-                <div>{{step.name}}</div>
-            </li>
-        </ul>
-    </div>
 
     <!--    PAGE TITLES-->
-    <div class="row lab-row page-title-row figure-title-row">
-        <!-- PAGE MAIN TITLE -->
-        <div class="col text-center">
-            <div *ngIf="!labItem" class=""><span
-                    class="underline-warning">{{'LAB.title' | translate}}</span>
-            </div>
-        </div>
-        <!-- PAGE SUB TITLE - AFTER STARR VIDEO UPLOADED -->
-        <div *ngIf="labItem" class="col-12 pb-2 text-center">
-            <span dsappStarName [givenName]="labItem.user.given_name" [familyName]="labItem.user.family_name">
+    <!-- <div class="row lab-row page-title-row figure-title-row"> -->
+    <!-- PAGE SUB TITLE - AFTER STARR VIDEO UPLOADED -->
+    <!-- <div *ngIf="starFigureVideo"
+             class="col-12 pb-2 text-center">
+            <span dsappStarName
+                  [givenName]="starFigureVideo.stars[0].firstName"
+                  [familyName]="starFigureVideo.stars[0].lastName">
             </span>
-            <span> - </span>
-            <span>{{labItem.figure.name}},
-                {{'STAR.STAR_INFO_PAGE.level' | translate}}
-                {{labItem.figure.level}}</span>
+            <span *ngIf="starFigureVideo.stars.length > 1"> & </span>
+            <span *ngIf="starFigureVideo.stars.length > 1"
+                  dsappStarName
+                  [givenName]="starFigureVideo.stars[1].firstName"
+                  [familyName]="starFigureVideo.stars[1].lastName">
+            </span>
+
         </div>
-    </div>
+        <div class="col-12 pb-2 text-center">
+            <span>{{starFigureVideo.figure.name}} -
+                {{starFigureVideo.name}}</span>
+        </div>
+    </div> -->
 
     <ng-container [ngSwitch]="labView">
         <ng-container *ngSwitchCase="'full'"
@@ -38,41 +33,18 @@
             <ng-container [ngTemplateOutlet]="emptyUserVideo"></ng-container>
         </ng-container>
 
-        <ng-container *ngSwitchCase="'empty'">
-            <ng-container [ngTemplateOutlet]="emptyStarVideo"></ng-container>
-            <!--            <ng-container [ngTemplateOutlet]="emptyUserVideo"></ng-container>-->
-        </ng-container>
     </ng-container>
 
 
 </div>
 
-<!-- STAR VIDEO IS NOT SELECTED --->
-<ng-template #emptyStarVideo>
-    <div class="row lab-row choose-star-video-row text-center">
-        <div class="col">
-            <div class="toolbox">
-                <div class="lab-choose-video-text">{{'LAB.instruction' | translate}}</div>
-                <div class="text-center">
-                    <button class="btn lab-button start-button"
-                            tabindex="0"
-                            [routerLink]="['/student','star']">
-                        <!--                        <span class="icon-video-2"></span>-->
-                        {{'LAB.chooseVideo' | translate}}
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-</ng-template>
 <!-- USER MUST TO UPLOAD --->
 <ng-template #emptyUserVideo>
     <div class="row lab-row choose-user-video-row text-center">
         <div class="col">
             <div class="toolbox">
-                <ui-video-file-picker
-                        [disableButtons]="disableUserVideoButtons"
-                        (videoChange)="userVideoFileChanged($event)">
+                <ui-video-file-picker [disableButtons]="disableUserVideoButtons"
+                                      (videoChange)="userVideoFileChanged($event)">
                 </ui-video-file-picker>
             </div>
         </div>
@@ -85,8 +57,8 @@
 <ng-template #labTool>
     <div class="row star-video-row">
         <div class="col">
-            <dsapp-lab-video-tool [masterVideo]="labItem.starVideo ? labItem.starVideo : null"
-                                  [studentVideo]="labItem.userVideo ? labItem.userVideo : null"
+            <dsapp-lab-video-tool [masterVideo]="starFigureVideo ? starFigureVideo : null"
+                                  [studentVideoUrl]="userVideoPath ? userVideoPath : null"
                                   (masterPlayerDurationReady)="setDurationLimit($event)"
                                   (isPlayerReady)="masterVideoReady()"
                                   (clearVideo)="clearVideo($event)">
@@ -94,7 +66,7 @@
         </div>
     </div>
 </ng-template>
-<div *ngIf="labView=='full'"
+<div *ngIf="labView=='full' && !disableSavePracticesButton"
      class="row">
     <div class="col text-center">
         <button class="btn btn-danger"
@@ -106,13 +78,13 @@
 
 <video #videoMta
        style="display: none;"
-       *ngIf="userVideo"
+       *ngIf="userVideoPath"
        width="0"
        height="0"
        preload="metadata"
        controls="false"
        playsinline
        webkit-playsinline
-       [attr.src]="userVideo.path"
+       [attr.src]="userVideoPath"
        (loadedmetadata)="checkUserVideoDuration($event)">
 </video>

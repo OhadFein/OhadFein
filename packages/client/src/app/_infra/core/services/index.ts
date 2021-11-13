@@ -12,3 +12,4 @@ export * from './practices.service';
 export * from './figures.service';
 export * from './menu.service';
 export * from './background-processes.service';
+export * from './loader.service';

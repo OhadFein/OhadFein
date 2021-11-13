@@ -1,4 +1,4 @@
-<div *ngIf="figureVideo && stars else preview;"
+<div *ngIf="videoUrl && stars else preview;"
      class="embed-responsive embed-responsive-16by9 video-preview">
     <vg-player class="embed-responsive-item"
                (onPlayerReady)="onPlayerReady($event)">
@@ -11,13 +11,16 @@
             <vg-scrub-bar-buffering-time></vg-scrub-bar-buffering-time>
         </vg-scrub-bar>
 
-        <vg-controls [vgAutohide]="true" vgFor="previewVideo">
+        <vg-controls [vgAutohide]="true"
+                     vgFor="previewVideo">
             <vg-play-pause vgFor="previewVideo"></vg-play-pause>
             <vg-playback-button></vg-playback-button>
 
-            <vg-time-display vgProperty="current" vgFormat="mm:ss"></vg-time-display>
+            <vg-time-display vgProperty="current"
+                             vgFormat="mm:ss"></vg-time-display>
             <vg-scrub-bar style="pointer-events: none;"></vg-scrub-bar>
-            <vg-time-display vgProperty="total" vgFormat="mm:ss"></vg-time-display>
+            <vg-time-display vgProperty="total"
+                             vgFormat="mm:ss"></vg-time-display>
 
             <vg-mute></vg-mute>
             <vg-volume></vg-volume>
@@ -32,14 +35,15 @@
                muted
                playsinline
                webkit-playsinline>
-            <source [src]="figureVideo?.url" type="video/mp4">
+            <source [src]="videoUrl"
+                    type="video/mp4">
         </video>
     </vg-player>
 </div>
 <ng-template #preview>
     <div class="embed-responsive embed-responsive-16by9 video-preview">
         <img class="embed-responsive-item cover-bg"
-             [src]="'url('+ figureVideo?.thumbnail +')'"/>
+             [src]="'url('+ thumbnail +')'" />
     </div>
 </ng-template>
 <div class="clip-name">{{clipName}}</div>

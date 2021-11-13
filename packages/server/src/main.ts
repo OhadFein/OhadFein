@@ -3,6 +3,7 @@ import { NestFactory } from '@nestjs/core';
 import * as helmet from 'helmet';
 import * as compression from 'compression';
 // import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { json, urlencoded } from 'body-parser';
 import { AppModule } from './app.module';
 import { AllExceptionsFilter } from './common/filters/http-exception.filter';
 import { Environment } from './env.validation';
@@ -22,6 +23,8 @@ async function bootstrap() {
   //   const document = SwaggerModule.createDocument(app, config);
   //   SwaggerModule.setup('api/docs', app, document);
   // }
+  app.use(json({ limit: '50mb' }));
+  app.use(urlencoded({ limit: '50mb', extended: true }));
 
   app.useGlobalFilters(new AllExceptionsFilter());
   app.useGlobalPipes(new ValidationPipe());
