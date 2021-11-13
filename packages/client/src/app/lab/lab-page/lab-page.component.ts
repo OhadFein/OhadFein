@@ -1,10 +1,11 @@
+import { UpperToolbarService } from '@ui/upper-toolbar/upper-toolbar.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { PracticesService, UserService, AlertService, StarsService } from '@core/services';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
 import { LAB_USER_VIDEO_DURATION_DIFF_LIMIT, LabViewType } from '@core/models/';
 import { Subscription } from 'rxjs';
-import { FigureVideoBaseDto, UserDto } from '@danskill/contract';
+import { FigureVideoDto, UserDto, PracticeBaseDto } from '@danskill/contract';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -19,7 +20,7 @@ export class LabPageComponent implements OnInit, OnDestroy {
 
   practiceIsSaved = false;
 
-  starFigureVideo: FigureVideoBaseDto = null;
+  starFigureVideo: FigureVideoDto = null;
 
   labView: LabViewType = LabViewType.EMPTY;
 
@@ -38,10 +39,12 @@ export class LabPageComponent implements OnInit, OnDestroy {
   constructor(
     private alertService: AlertService,
     private route: ActivatedRoute,
+    private router: Router,
     private starService: StarsService,
     private userService: UserService,
     private practiceService: PracticesService,
-    private sanitizer: DomSanitizer
+    private sanitizer: DomSanitizer,
+    private upperToolbarService: UpperToolbarService
   ) {}
 
   ngOnInit(): void {
@@ -63,59 +66,19 @@ export class LabPageComponent implements OnInit, OnDestroy {
         });
       })
     );
-
-    // this.steps = [
-    //   { id: 1, key: 'empty', name: 'Star video' },
-    //   { id: 2, key: 'preview', name: 'User video' },
-    //   { id: 3, key: 'full', name: 'Analysis' }
-    // ];
-
-    // this.subs.push(
-    //   this.store.select(labSelectors.selectCurrentLabItem()).subscribe((res) => {
-    //     if (res && res.practiceIsSaved === undefined && res.userVideo) {
-    //       this.disableSavePracticesButton = true;
-    //     }
-    //     // this.labItem = res ? { ...res } : null;
-    //     this.setLabView();
-    //   })
-    // );
-    // this.subs.push(
-    //   this.store.select(userSelectors.selectCurrentUser()).subscribe((res) => {
-    //     if (res) {
-    //       this.userStamp = `user_${res._id}_${res.profile.name.firstName}_${res.profile.name.lastName}`;
-    //     } else {
-    //       this.store.dispatch(UserActions.BeginGetUserAction());
-    //     }
-    //   })
-    // );
-    // this.setLabView();
   }
 
   initLabItem(figureVideoId: string): void {
     this.userService.getUser().subscribe((user: UserDto) => {
       this.starService
         .getFigureVideoById(figureVideoId)
-        .subscribe((figureVideo: FigureVideoBaseDto) => {
+        .subscribe((figureVideo: FigureVideoDto) => {
           this.starFigureVideo = figureVideo;
           this.user = user;
+          const pageName = `${this.starFigureVideo.stars[0].firstName} ${this.starFigureVideo.stars[0].lastName}: ${this.starFigureVideo.figure.name}`;
+          this.upperToolbarService.setPageName(pageName);
           this.setLabView();
-          // this.labItem = {
-          //   user,
-          //   figure,
-          //   starVideo: figure.videos[0],
-          //   practiceIsSaved: false
-          // };
         });
-
-      // user: UserDto;
-      // figure: FigureDto;
-      // starVideo: FigureVideoDto;
-      // userVideo?: FigureVideoDto;
-      // practiceIsSaved?: boolean;
-
-      // this.upperToolbarService.setPageName(figure.type);
-      // this.splitVideosByType();
-      // this.setCurrentVideo();
     });
   }
 
@@ -157,50 +120,23 @@ export class LabPageComponent implements OnInit, OnDestroy {
     this.practiceIsSaved = false;
   }
 
-  // clearVideo(type: LabPlayerType): void {
-  //   switch (type) {
-  //     case LabPlayerType.MASTER:
-  //       this.clearLabItem();
-  //       break;
-  //     case LabPlayerType.STUDENT:
-  //       this.clearUserVideo();
-  //       break;
-  //   }
-  // }
-
   masterVideoReady(): void {
     this.disableUserVideoButtons = false;
   }
 
-  // updateLabStore() {
-  //   const payload: LabItem = {
-  //     ...this.labItem,
-  //     userVideo: this.userVideo,
-  //     practiceIsSaved: this.practiceIsSaved
-  //   };
-  //   this.store.dispatch(LabActions.UpdateLabAction({ payload }));
-  // }
-
   saveToPractices(): void {
+    // TODO Add loader
     const data = new FormData();
     data.append(
       'name',
       `${this.user.firstName} ${this.user.lastName} ${this.starFigureVideo.name}`
     );
-    // data.append('associatedVideoId', this.labItem.starVideo._id);
     data.append('video', this.userVideo);
-    // data.append('starId', this.labItem.user._id);
-    // data.append('figureId', this.labItem.figure._id);
-    // this.backgroundProcessesService.uploadPractice(data, `upload_practice_${this.userStamp}`);
-    // this.userVideo = this.labItem.userVideo;
-    this.practiceService.uploadPractice(this.starFigureVideo._id.toString(), data).subscribe(() => {
-      this.practiceIsSaved = false;
-    });
-    this.practiceIsSaved = true;
-
-    // setTimeout(() => {
-    //   this.practiceIsSaved = false;
-    // }, 3000);
+    this.practiceService
+      .uploadPractice(this.starFigureVideo._id.toString(), data)
+      .subscribe((practice: PracticeBaseDto) => {
+        this.router.navigate(['/student', 'practices', practice._id]);
+      });
   }
 
   ngOnDestroy(): void {

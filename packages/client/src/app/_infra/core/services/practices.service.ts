@@ -21,10 +21,6 @@ export class PracticesService {
   }
 
   uploadPractice(figureVideoId: string, videoFile: FormData): Observable<PracticeBaseDto> {
-    // const httpHeadersObj = new HttpHeaders()
-    //   .set('Accept', 'application/json')
-    //   .set('Cache-Control', 'no-cache')
-    //   .set('Pragma', 'no-cache');
     const httpHeadersObj = new HttpHeaders()
       .set('Accept', 'application/json')
       .set('Cache-Control', 'no-cache')
