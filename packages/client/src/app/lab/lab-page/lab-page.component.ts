@@ -1,5 +1,5 @@
 import { UpperToolbarService } from '@ui/upper-toolbar/upper-toolbar.service';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { PracticesService, UserService, AlertService, StarsService } from '@core/services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
@@ -16,7 +16,7 @@ import { filter } from 'rxjs/operators';
 export class LabPageComponent implements OnInit, OnDestroy {
   userVideo: File;
 
-  userVideoPath: string;
+  userVideoPath: string | SafeUrl;
 
   practiceIsSaved = false;
 
@@ -105,8 +105,8 @@ export class LabPageComponent implements OnInit, OnDestroy {
     }
   }
 
-  checkUserVideoDuration(event: Event): void {
-    const duration = event.target.duration;
+  checkUserVideoDuration(event): void {
+    const { duration } = event.target;
     if (duration > this.maxVideoDuration) {
       this.clearUserVideo();
       this.alertService.error('LAB.ERRORS.userDurationError', this.maxVideoDuration.toString());
@@ -117,6 +117,10 @@ export class LabPageComponent implements OnInit, OnDestroy {
 
   clearUserVideo(): void {
     this.userVideo = null;
+    this.practiceIsSaved = false;
+  }
+
+  clearVideo(event): void {
     this.practiceIsSaved = false;
   }
 
