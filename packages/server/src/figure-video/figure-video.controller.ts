@@ -13,17 +13,16 @@ import {
 import { Roles } from 'src/common/decorators/roles.decorator';
 import { EnumRole } from 'src/common/enums/role.enum';
 import { Types } from 'mongoose';
-import { CreateFigureVideoDto } from '@danskill/contract';
+import { CreateFigureVideoDto, FigureVideoBaseDto, FigureVideoDto } from '@danskill/contract';
 import { TransformInterceptor } from 'src/common/interceptors/transform.interceptor';
 import { FigureVideoService } from './figure-video.service';
-import { FigureVideoBaseDto } from '../../../contract/src/figure-video/figure-video-base.dto';
 
 @Controller('figure-video')
 export class FigureVideoController {
   constructor(private readonly figureVideoService: FigureVideoService) {}
 
   @Get(':id')
-  @UseInterceptors(new TransformInterceptor(FigureVideoBaseDto))
+  @UseInterceptors(new TransformInterceptor(FigureVideoDto))
   async getFigureVideo(@Param('id') id: Types.ObjectId): Promise<FigureVideo> {
     const video = await this.figureVideoService.findOne(id);
     // TODO: throw exception from the service?

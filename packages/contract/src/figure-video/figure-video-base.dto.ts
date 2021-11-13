@@ -8,9 +8,6 @@ export class FigureVideoBaseDto {
   readonly _id: Types.ObjectId;
 
   @Expose()
-  stars: Types.ObjectId[]; // participants stars
-
-  @Expose()
   key: string;
 
   @Expose()
