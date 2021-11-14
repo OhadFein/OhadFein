@@ -37,14 +37,8 @@ export class TokenService {
     return token ? token.getJwtToken() : null;
   }
 
-  async deleteStoredTokens() {
+  deleteStoredTokens(): void {
     localStorage.removeItem('user_slug');
-    await Auth.signOut()
-      .then((m) => console.log('Logged out'))
-      .catch((error) => {
-        console.log('Error while logging out');
-        console.log(error);
-      });
   }
 
   async addToken(request: HttpRequest<any>): Promise<HttpRequest<any>> {

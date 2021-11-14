@@ -1,3 +1,4 @@
+import { TokenService } from '@core/services';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NotificationsService } from '@app/notifications/notifications.service';
 import { merge, Subject, timer } from 'rxjs';
@@ -13,13 +14,18 @@ export class NotificationButtonComponent implements OnInit, OnDestroy {
 
   private unsubscribe: Subject<void> = new Subject();
 
-  constructor(private notificationService: NotificationsService) {}
+  constructor(
+    private notificationService: NotificationsService,
+    private tokenService: TokenService
+  ) {}
 
   ngOnInit(): void {
     const timerSubscr = timer(0, 10000).pipe(
       takeUntil(this.unsubscribe),
       flatMap(() => {
-        return this.notificationService.getUnreadNotificationsNumber();
+        if (this.tokenService.checkStoredAccessToken) {
+          return this.notificationService.getUnreadNotificationsNumber();
+        }
       })
     );
     const valueChangeSubs = this.notificationService.unreadNotificationsNumObservable.pipe(

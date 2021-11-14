@@ -1,23 +1,9 @@
-<button class="lab-button user-button btn"
-        [disabled]="disableButtons"
-        (click)="cameraInput.click()">
-    <span class=" ">
-        <span class=""> {{'LAB.FilmVideo' | translate}}</span>
-    </span>
-</button>
-<input #cameraInput
-       style="display:none;"
-       type="file"
-       accept="video/*"
-       capture="user"
-       (change)="fileChangeEvent($event)" />
-
-
 <button [disabled]="disableButtons"
-        class="btn lab-button user-button"
+        mat-flat-button
+        class="upload-video-btn"
         (click)="fileInput.click()">
     <span class="">
-        <span class="">{{'LAB.UploadVideo' | translate}}</span>
+        <span class="">Upload your video</span>
     </span>
 </button>
 

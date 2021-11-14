@@ -42,7 +42,7 @@
     <div *ngIf="studentVideoUrl"
          class="lab-tool-player student-player-wrapper">
       <div class="close-video-control">
-        <button (click)="studentVideoClear()">close</button>
+        <button (click)="studentVideoClear()">remove</button>
       </div>
       <ui-video-player-wrapper #studentPLayer
                                [src]="studentVideoUrl ? studentVideoUrl : null"

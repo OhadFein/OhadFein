@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthRestResponse, IRestResponse } from '@app/_infra/core/models';
 import * as GlobalActions from '@infra/store/actions/global.actions';
 import { Store } from '@ngrx/store';
+import { Auth } from 'aws-amplify';
 import { Observable } from 'rxjs';
 
 import { AlertService } from './alert.service';
@@ -44,13 +45,13 @@ export class LoginService {
   }
 
   async logout(showMsg = true): Promise<void> {
-    this.store.dispatch(GlobalActions.Logout());
-
-    await this.tokenService.deleteStoredTokens();
-    if (showMsg) {
-      this.alertService.info('LOGIN.LogOutMsg');
-    }
-    this.router.navigate(['/']);
+    this.tokenService.deleteStoredTokens();
+    await Auth.signOut()
+      .then(() => console.log('Logged out'))
+      .catch((error) => {
+        console.log('Error while logging out');
+        console.log(error);
+      });
   }
 
   afterLoginRoute(): void {

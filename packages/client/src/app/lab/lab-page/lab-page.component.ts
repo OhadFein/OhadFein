@@ -3,7 +3,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { PracticesService, UserService, AlertService, StarsService } from '@core/services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { LAB_USER_VIDEO_DURATION_DIFF_LIMIT, LabViewType } from '@core/models/';
+import { LAB_USER_VIDEO_DURATION_DIFF_LIMIT, LabViewType, LabPlayerType } from '@core/models/';
 import { Subscription } from 'rxjs';
 import { FigureVideoDto, UserDto, PracticeBaseDto } from '@danskill/contract';
 import { filter } from 'rxjs/operators';
@@ -29,6 +29,8 @@ export class LabPageComponent implements OnInit, OnDestroy {
   disableSavePracticesButton = false;
 
   disableUserVideoButtons = false;
+
+  loading = false;
 
   @Output() isPlayerReady = new EventEmitter<boolean>();
 
@@ -120,8 +122,13 @@ export class LabPageComponent implements OnInit, OnDestroy {
     this.practiceIsSaved = false;
   }
 
-  clearVideo(event): void {
+  clearVideo(videoType: LabPlayerType): void {
     this.practiceIsSaved = false;
+    if (videoType === LabPlayerType.STUDENT) {
+      this.userVideo = null;
+      this.userVideoPath = null;
+      this.setLabView();
+    }
   }
 
   masterVideoReady(): void {
@@ -129,7 +136,8 @@ export class LabPageComponent implements OnInit, OnDestroy {
   }
 
   saveToPractices(): void {
-    // TODO Add loader
+    this.disableSavePracticesButton = true;
+    this.loading = true;
     const data = new FormData();
     data.append(
       'name',
@@ -139,6 +147,7 @@ export class LabPageComponent implements OnInit, OnDestroy {
     this.practiceService
       .uploadPractice(this.starFigureVideo._id.toString(), data)
       .subscribe((practice: PracticeBaseDto) => {
+        this.loading = false;
         this.router.navigate(['/student', 'practices', practice._id]);
       });
   }
