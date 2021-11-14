@@ -30,6 +30,8 @@ export class LabPageComponent implements OnInit, OnDestroy {
 
   disableUserVideoButtons = false;
 
+  loading = false;
+
   @Output() isPlayerReady = new EventEmitter<boolean>();
 
   private maxVideoDuration = 30;
@@ -134,7 +136,8 @@ export class LabPageComponent implements OnInit, OnDestroy {
   }
 
   saveToPractices(): void {
-    // TODO Add loader
+    this.disableSavePracticesButton = true;
+    this.loading = true;
     const data = new FormData();
     data.append(
       'name',
@@ -144,6 +147,7 @@ export class LabPageComponent implements OnInit, OnDestroy {
     this.practiceService
       .uploadPractice(this.starFigureVideo._id.toString(), data)
       .subscribe((practice: PracticeBaseDto) => {
+        this.loading = false;
         this.router.navigate(['/student', 'practices', practice._id]);
       });
   }
