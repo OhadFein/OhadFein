@@ -3,7 +3,7 @@ import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { PracticesService, UserService, AlertService, StarsService } from '@core/services';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
-import { LAB_USER_VIDEO_DURATION_DIFF_LIMIT, LabViewType } from '@core/models/';
+import { LAB_USER_VIDEO_DURATION_DIFF_LIMIT, LabViewType, LabPlayerType } from '@core/models/';
 import { Subscription } from 'rxjs';
 import { FigureVideoDto, UserDto, PracticeBaseDto } from '@danskill/contract';
 import { filter } from 'rxjs/operators';
@@ -120,8 +120,13 @@ export class LabPageComponent implements OnInit, OnDestroy {
     this.practiceIsSaved = false;
   }
 
-  clearVideo(event): void {
+  clearVideo(videoType: LabPlayerType): void {
     this.practiceIsSaved = false;
+    if (videoType === LabPlayerType.STUDENT) {
+      this.userVideo = null;
+      this.userVideoPath = null;
+      this.setLabView();
+    }
   }
 
   masterVideoReady(): void {

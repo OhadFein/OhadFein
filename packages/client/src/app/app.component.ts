@@ -70,8 +70,6 @@ export class AppComponent implements OnInit, OnDestroy {
   showModal: boolean = false;
   @ViewChild('myModal') myModal;
 
-  isAppReady: boolean = true;
-
   constructor(
     public translate: TranslateService,
     public router: Router,
@@ -104,12 +102,6 @@ export class AppComponent implements OnInit, OnDestroy {
     this.changeBgPosition();
     // this.getGeneralInfo();
     this.configureAmplifyAuth();
-
-    this.subs.push(
-      this.loaderService.isLoading.subscribe((isLoading) => {
-        this.isAppReady = !isLoading;
-      })
-    );
 
     this.subs.push(
       this.router.events.subscribe((event) => {

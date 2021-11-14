@@ -3,7 +3,8 @@ import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: 'ui-video-file-picker',
-  templateUrl: './video-file-picker.component.html'
+  templateUrl: './video-file-picker.component.html',
+  styleUrls: ['./video-file-picker.component.scss']
 })
 export class VideoFilePickerComponent implements OnInit {
   @Output() videoChange = new EventEmitter<Event>();

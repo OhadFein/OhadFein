@@ -87,7 +87,7 @@ export class LabVideoToolComponent {
     this.fullscreen = !this.fullscreen;
   }
 
-  masterPlayerDuration(duration: number) {
+  masterPlayerDuration(duration: number): void {
     this.masterPlayerDurationReady.emit(duration);
     this.videoDuration.master = duration;
   }

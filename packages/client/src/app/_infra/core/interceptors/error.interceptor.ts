@@ -14,7 +14,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((err) => {
         if (err.status === 401 || err.status === 403) {
-          // this.loginService.logout(false);
+          this.loginService.logout(false);
         }
         const error = err.error.message || err.statusText;
 

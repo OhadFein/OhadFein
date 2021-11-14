@@ -1,27 +1,5 @@
 <div class="lab-page {{labView}}">
 
-    <!--    PAGE TITLES-->
-    <!-- <div class="row lab-row page-title-row figure-title-row"> -->
-    <!-- PAGE SUB TITLE - AFTER STARR VIDEO UPLOADED -->
-    <!-- <div *ngIf="starFigureVideo"
-             class="col-12 pb-2 text-center">
-            <span dsappStarName
-                  [givenName]="starFigureVideo.stars[0].firstName"
-                  [familyName]="starFigureVideo.stars[0].lastName">
-            </span>
-            <span *ngIf="starFigureVideo.stars.length > 1"> & </span>
-            <span *ngIf="starFigureVideo.stars.length > 1"
-                  dsappStarName
-                  [givenName]="starFigureVideo.stars[1].firstName"
-                  [familyName]="starFigureVideo.stars[1].lastName">
-            </span>
-
-        </div>
-        <div class="col-12 pb-2 text-center">
-            <span>{{starFigureVideo.figure.name}} -
-                {{starFigureVideo.name}}</span>
-        </div>
-    </div> -->
 
     <ng-container [ngSwitch]="labView">
         <ng-container *ngSwitchCase="'full'"
@@ -69,7 +47,7 @@
 <div *ngIf="labView=='full' && !disableSavePracticesButton"
      class="row">
     <div class="col text-center">
-        <button class="btn btn-danger"
+        <button class="save-to-practices-btn"
                 [disabled]="practiceIsSaved || disableSavePracticesButton"
                 (click)="saveToPractices()"><i class="icon icon-practices"></i>
             {{'LAB.saveToMyPractices' | translate}}</button>

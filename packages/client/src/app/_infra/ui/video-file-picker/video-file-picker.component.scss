@@ -1,6 +1,6 @@
 @import 'src/styles/_all';
 
-.save-to-practices-btn {
+.upload-video-btn {
   width: 100%;
   color: $ds-text-color-button-main;
   background-color: $ds-color-button-main;
@@ -9,8 +9,4 @@
   border-radius: 7px;
   height: 40px;
   margin-top: 20px;
-}
-
-.lab-page-wrapper {
-  padding: 2px 0; // TODO: get rid of this padding. Temp fix for a sticked to the top lab page
 }
