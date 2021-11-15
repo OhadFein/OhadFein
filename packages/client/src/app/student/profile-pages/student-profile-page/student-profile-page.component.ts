@@ -72,7 +72,16 @@ export class StudentProfilePageComponent implements OnInit {
       .getAllCoaches()
       .pipe(
         map((coaches: CoachDto[]) => {
-          this.allCoaches = coaches.map((coach) => coach.slug);
+          this.allCoaches = coaches.map((coach) => {
+            let displayName = '';
+            if (coach.firstName && coach.lastName) {
+              displayName = `${coach.firstName} ${coach.lastName}`;
+            } else {
+              displayName = coach.slug;
+            }
+
+            return displayName;
+          });
         })
       )
       .subscribe();
