@@ -10,6 +10,7 @@
     "test": "jest --maxWorkers=50%",
     "lint": "eslint -c .eslintrc.js --ext .ts src",
     "e2e": "ng e2e",
+    "postinstall": "npx ngcc",
     "bundle-report": "webpack-bundle-analyzer dist/webapp/stats-es2015.json"
   },
   "dependencies": {
