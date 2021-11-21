@@ -13,13 +13,13 @@
     ]
   },
   "scripts": {
-    "dev": "npx lerna run dev --stream",
-    "test": "npx lerna run test",
-    "setup": "npx lerna bootstrap",
-    "build": "npx lerna run build --parallel",
+    "dev": "lerna run dev --stream",
+    "test": "lerna run test",
+    "setup": "lerna bootstrap",
+    "build": "lerna run build --parallel",
     "start": "yarn workspace @danskill/backend start",
     "precommit": "pretty-quick --staged && lint-staged",
-    "prepare": "npx husky install"
+    "prepare": "husky install"
   },
   "devDependencies": {
     "eslint": "^7.30.0",
