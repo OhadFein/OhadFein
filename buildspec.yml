@@ -24,6 +24,17 @@ artifacts:
   files:
     - '**/*'
 
+env:
+  exported-variables:
+    - NODE_ENV
+    - COGNITO_USER_POOL_ID
+    - COGNITO_CLIENT_ID
+    - COGNITO_REGION
+    - COGNITO_AUTHORITY
+    - ACCESS_KEY_ID
+    - SECRET_ACCESS_KEY
+    - MONGODB_URI
+
 cache:
   paths:
     - 'node_modules/**/*'
