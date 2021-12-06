@@ -21,10 +21,12 @@
     "precommit": "pretty-quick --staged && lint-staged",
     "prepare": "husky install"
   },
+  "dependencies": {
+    "lerna": "4.0.0"
+  },
   "devDependencies": {
     "eslint": "^7.30.0",
     "husky": "^6.0.0",
-    "lerna": "4.0.0",
     "lint-staged": "^11.0.0"
   },
   "lint-staged": {
