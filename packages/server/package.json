@@ -19,6 +19,9 @@
   },
   "dependencies": {
     "@danskill/contract": "^1.0.0",
+    "@nestjs/cli": "^7.6.0",
+    "@nestjs/schematics": "^7.3.0",
+    "@nestjs/testing": "^7.6.15",
     "@nestjs/common": "^8.0.4",
     "@nestjs/config": "^1.0.0",
     "@nestjs/core": "^8.0.4",
@@ -49,9 +52,6 @@
     "swagger-ui-express": "^4.1.6"
   },
   "devDependencies": {
-    "@nestjs/cli": "^7.6.0",
-    "@nestjs/schematics": "^7.3.0",
-    "@nestjs/testing": "^7.6.15",
     "@shared/eslint-config": "^0.0.0",
     "@types/bcryptjs": "^2.4.2",
     "@types/compression": "^1.7.0",
