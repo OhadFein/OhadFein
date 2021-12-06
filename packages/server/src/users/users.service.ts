@@ -5,7 +5,7 @@ import {
   CreateUserDto,
   EnumNotificationType,
   GetAllPracticesDto,
-  CreateStarDto
+  CreateStarDto,
 } from '@danskill/contract';
 import { Practice } from 'src/practices/schemas/practice.schema';
 import { FiguresService } from 'src/figures/figures.service';
@@ -36,7 +36,7 @@ export class UsersService {
       slug,
       email: createUserDto.email.toLowerCase(),
       firstName: createUserDto.firstName,
-      lastName: createUserDto.lastName
+      lastName: createUserDto.lastName,
     });
     await createdUser.save();
 
@@ -162,9 +162,9 @@ export class UsersService {
         populate: {
           path: 'video',
           populate: {
-            path: 'figure'
-          }
-        }
+            path: 'figure',
+          },
+        },
       })
       .exec();
 
@@ -179,7 +179,7 @@ export class UsersService {
 
   async updateUserDetails(reqUser: User, updateUserDto: UpdateUserDto): Promise<void> {
     if (updateUserDto.coachSlug) {
-      this.setCoach(reqUser, updateUserDto.coachSlug);
+      await this.setCoach(reqUser, updateUserDto.coachSlug);
     }
     await this.userModel.updateOne(
       { _id: reqUser._id },
