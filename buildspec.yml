@@ -10,6 +10,7 @@ phases:
     commands:
       - echo `pwd`
       - echo yarn INSTALL started on `date`
+      - yarn --version
       - yarn install
       - echo yarn INSTALL completed on `date`
 
