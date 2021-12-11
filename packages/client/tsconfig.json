@@ -28,7 +28,8 @@
       "@lab/*": ["src/app/lab/*"],
       "@environments/*": ["src/environments/*"],
       "@testing/*": ["src/testing/*"],
-      "@danskill/contract": ["../contract/src"]
+      "@danskill/contract": ["../contract/src"],
+      "crypto": ["../../node_modules/crypto-js"]
     }
   },
   "angularCompilerOptions": {
