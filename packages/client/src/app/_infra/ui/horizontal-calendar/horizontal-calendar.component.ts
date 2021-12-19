@@ -34,14 +34,20 @@ export class HorizontalCalendarComponent implements OnChanges {
   }
 
   onMonthSelect(month: Date, index: number): void {
-    this.selectedIndex = index;
-    this.select.emit(month);
+    if (this.selectedIndex !== undefined && this.selectedIndex === index) {
+      this.selectedIndex = undefined;
+      this.select.emit(month);
+    } else {
+      this.selectedIndex = index;
+      this.select.emit(month);
+    }
   }
 
   private getMonthRange(startDate: Date, endDate: Date): Date[] {
     const result: Date[] = [];
-    for (startDate; startDate < endDate; startDate.setMonth(startDate.getMonth() + 1)) {
+    while (startDate < endDate) {
       result.push(new Date(startDate));
+      startDate.setMonth(startDate.getMonth() + 1, 1);
     }
 
     return result.reverse();

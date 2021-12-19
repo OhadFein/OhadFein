@@ -56,6 +56,7 @@ export class PracticesPageComponent implements OnInit, OnDestroy {
           this.loading = false;
         }),
         switchMap((user: UserDto) => {
+          this.user = user;
           this.startDate = new Date(user.createdAt);
 
           return this.practicesService.getPractices(user.slug);
@@ -73,16 +74,22 @@ export class PracticesPageComponent implements OnInit, OnDestroy {
   }
 
   onSelectMonth(month: Date): PracticeDto[] {
-    this.selectedMonthFilter = month;
-    this.filteredPractices =
-      this.practices?.filter((figure: PracticeDto) => {
-        const date = new Date(month);
-        const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
-        const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
-        const practiceCreatedAt = new Date(figure.createdAt);
+    if (this.selectedMonthFilter && month === this.selectedMonthFilter) {
+      this.selectedMonthFilter = null;
+      this.filteredPractices = this.practices;
+      this.startDate = new Date(this.user.createdAt);
+    } else {
+      this.selectedMonthFilter = month;
+      this.filteredPractices =
+        this.practices?.filter((figure: PracticeDto) => {
+          const date = new Date(month);
+          const firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+          const lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+          const practiceCreatedAt = new Date(figure.createdAt);
 
-        return practiceCreatedAt >= firstDay && practiceCreatedAt <= lastDay;
-      }) ?? [];
+          return practiceCreatedAt >= firstDay && practiceCreatedAt <= lastDay;
+        }) ?? [];
+    }
 
     return this.filteredPractices;
   }
