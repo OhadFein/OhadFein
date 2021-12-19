@@ -38,7 +38,7 @@ export class VideoPreviewComponent implements OnChanges {
   }
 
   ngOnChanges(): void {
-    this.clipName = this.figureName ? `${this.figureName} view` : '';
+    this.clipName = this.figureName ? `${this.figureName}` : '';
     if (this.stars) {
       this.participants = this.getParticipants(this.stars);
     }
