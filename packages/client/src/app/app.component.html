@@ -12,29 +12,6 @@
             <ui-alerts></ui-alerts>
             <ui-background-processes></ui-background-processes>
             <dsapp-bottom-toolbar></dsapp-bottom-toolbar>
-            <div class="modal fade landscape-modal {{showModal ? 'show' : ''}}"
-                 style="display: {{showModal ? 'block' : 'none'}}"
-                 tabindex="-1"
-                 role="dialog">
-                <div class="modal-dialog"
-                     role="document">
-                    <div class="modal-content">
-                        <div class="modal-body">
-                            <button type="button"
-                                    class="close"
-                                    data-dismiss="modal"
-                                    aria-label="Close"
-                                    (click)="closeModal()">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <div class="modal-message">
-                                <div>{{'COMMON.landscapeTitle' | translate}}</div>
-                                <div>{{'COMMON.landscapeSubTitle' | translate}}</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <!-- Add Content Here -->
         </mat-sidenav-content>
     </mat-sidenav-container>
