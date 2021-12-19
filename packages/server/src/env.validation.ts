@@ -19,6 +19,9 @@ class EnvironmentVariables {
 
   @IsString()
   MONGODB_DEVELOPMENT_URI: string;
+
+  @IsString()
+  ACCESS_KEY_ID: string;
 }
 
 export function validate(config: Record<string, unknown>): EnvironmentVariables {

@@ -60,7 +60,7 @@ export class UsersController {
   @UseGuards(NonRegisteredJwtGuard)
   async test(): Promise<any> {
     return {
-      access: (process.env as any).ACCESS_KEY_ID,
+      access: process.env.ACCESS_KEY_ID ?? 'FAILED',
       env: process.env,
     };
   }
