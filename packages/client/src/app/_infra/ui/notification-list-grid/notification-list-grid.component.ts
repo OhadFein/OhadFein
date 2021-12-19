@@ -11,9 +11,9 @@ export class NotificationListGridComponent {
   notifications: NotificationDto[];
 
   @Output()
-  readNotification = new EventEmitter<NotificationDto>();
+  readNotification = new EventEmitter<{ notification: NotificationDto; practiceId: string }>();
 
-  onReadNotification(index: number): void {
-    this.readNotification.emit(this.notifications[index]);
+  onReadNotification(index: number, practiceId: string): void {
+    this.readNotification.emit({ notification: this.notifications[index], practiceId });
   }
 }
