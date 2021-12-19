@@ -81,11 +81,10 @@ export class NotificationsPageComponent implements OnInit, OnDestroy {
     });
   }
 
-  setNotificationsAsRead(notification: NotificationDto): any {
-    notification.isRead = true;
-    this.notificationsService.setNotificationsAsRead(notification._id.toString());
-    // TODO: navigate to a particular page
-    // this.router.navigate([notification.link]);
+  setNotificationsAsRead(params: { notification: NotificationDto; practiceId: string }): any {
+    params.notification.isRead = true;
+    this.notificationsService.setNotificationsAsRead(params.notification._id.toString());
+    this.router.navigate(['/student', 'practices', params.practiceId]);
   }
 
   ngOnDestroy(): void {

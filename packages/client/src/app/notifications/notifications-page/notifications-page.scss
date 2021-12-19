@@ -1,3 +1,5 @@
+@import 'src/styles/_all';
+
 .notifications-wrapper {
   //padding-top: 30px;
   .notifications-list {
@@ -65,4 +67,20 @@
       }
     }
   }
+}
+
+.placeholder-area {
+  display: block;
+  text-align: center;
+  margin-top: 80%;
+}
+
+.placeholder-title {
+  color: $ds-accent-color;
+  font-weight: $font-weight-bold;
+}
+
+.placeholder-body {
+  margin-top: 30px;
+  color: $ds-color-text-secondary;
 }
