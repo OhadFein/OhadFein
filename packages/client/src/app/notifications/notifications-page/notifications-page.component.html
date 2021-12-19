@@ -1,2 +1,8 @@
-<dsapp-notification-list-grid [notifications]="notifications"
+<div *ngIf="notifications.length === 0"
+     class="placeholder-area">
+    <div class="placeholder-title">No notifications yet</div>
+    <div class="placeholder-body">Notifications about your activity will show up here</div>
+</div>
+<dsapp-notification-list-grid *ngIf="notifications.length > 0"
+                              [notifications]="notifications"
                               (readNotification)="setNotificationsAsRead($event)"></dsapp-notification-list-grid>
