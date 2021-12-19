@@ -55,6 +55,16 @@ export class UsersController {
     return user;
   }
 
+  @Get('test')
+  @Skip()
+  @UseGuards(NonRegisteredJwtGuard)
+  async test(): Promise<any> {
+    return {
+      access: (process.env as any).ACCESS_KEY_ID,
+      env: process.env,
+    };
+  }
+
   @Get('exists')
   @Skip()
   @UseGuards(NonRegisteredJwtGuard)
