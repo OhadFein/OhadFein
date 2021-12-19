@@ -108,7 +108,7 @@ export class PracticesPageComponent implements OnInit, OnDestroy {
       // need a proper name
       // const search = searchString.toLocaleLowerCase().trim();
       tempFiltered = basePractices.filter((figure: PracticeDto, index: number) =>
-        `Practice number ${index + 1}`.toLowerCase().includes(searchString)
+        `Practice number ${index + 1}`.toLowerCase().includes(searchString.toLowerCase())
       );
     } else {
       tempFiltered = this.selectedMonthFilter
