@@ -99,8 +99,10 @@ export class PracticesPageComponent implements OnInit, OnDestroy {
   }
 
   private filterFigures(searchString: string = ''): void {
+    const { selectedMonthFilter } = this;
+
     this.searchString = searchString.toLowerCase();
-    const basePractices = this.selectedMonthFilter ? this.filteredPractices : this.practices;
+    const basePractices = selectedMonthFilter ? this.filteredPractices : this.practices;
     let tempFiltered: PracticeDto[] = [];
 
     if (basePractices && searchString) {
@@ -110,10 +112,11 @@ export class PracticesPageComponent implements OnInit, OnDestroy {
       tempFiltered = basePractices.filter((figure: PracticeDto, index: number) =>
         `Practice number ${index + 1}`.toLowerCase().includes(searchString.toLowerCase())
       );
+    } else if (selectedMonthFilter !== undefined) {
+      this.selectedMonthFilter = undefined; // TODO: workaround
+      tempFiltered = this.onSelectMonth(selectedMonthFilter);
     } else {
-      tempFiltered = this.selectedMonthFilter
-        ? this.onSelectMonth(this.selectedMonthFilter)
-        : [...this.practices];
+      tempFiltered = [...this.practices];
     }
     this.filteredPractices = tempFiltered;
   }
