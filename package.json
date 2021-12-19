@@ -10,6 +10,7 @@
     "nohoist": [
       "**/@types/jasmine",
       "**/@types/jasmine/**",
+      "**/typescript",
       "**/typescript/**"
     ]
   },
