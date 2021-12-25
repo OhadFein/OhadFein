@@ -74,6 +74,7 @@ export class StudentProfilePageComponent implements OnInit {
         map((coaches: CoachDto[]) => {
           this.allCoaches = coaches.map((coach) => {
             let displayName = '';
+            // TODO: use function for the following logic
             if (coach.firstName && coach.lastName) {
               displayName = `${coach.firstName} ${coach.lastName}`;
             } else {
