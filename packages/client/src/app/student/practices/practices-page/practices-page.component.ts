@@ -109,8 +109,8 @@ export class PracticesPageComponent implements OnInit, OnDestroy {
       // TODO: no field to search by??
       // need a proper name
       // const search = searchString.toLocaleLowerCase().trim();
-      tempFiltered = basePractices.filter((figure: PracticeDto, index: number) =>
-        `Practice number ${index + 1}`.toLowerCase().includes(searchString.toLowerCase())
+      tempFiltered = basePractices.filter((practice: PracticeDto) =>
+        practice.video.figure.name.toLowerCase().includes(searchString.toLowerCase())
       );
     } else if (selectedMonthFilter !== undefined) {
       this.selectedMonthFilter = undefined; // TODO: workaround

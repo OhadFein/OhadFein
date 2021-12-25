@@ -20,7 +20,7 @@
         <div class="practice-item"
              [routerLink]="['../../../../practices/', practice._id]">
           <dsapp-star-figure-list-item [logo]="practice.video.thumbnail"
-                                       name="Practice number {{i + 1}}"></dsapp-star-figure-list-item>
+                                       [name]="practice.video.figure.name"></dsapp-star-figure-list-item>
         </div>
         <div class="list-separator"></div>
       </ng-container>

@@ -15,7 +15,7 @@
     <dsapp-star-preview-grid *ngIf="filteredPractices">
         <!-- no property for the name. data and schema has to be adjusted -->
         <dsapp-star-preview-item *ngFor="let practice of filteredPractices; let i = index;"
-                                 name="Practice number {{i + 1}}"
+                                 [name]="practice.video.figure.name"
                                  [logo]="practice.video.thumbnail"
                                  (click)="onOpenPractice(practice)"
         ></dsapp-star-preview-item>
