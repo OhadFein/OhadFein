@@ -22,6 +22,9 @@ class EnvironmentVariables {
 
   @IsString()
   ACCESS_KEY_ID: string;
+
+  @IsString()
+  SECRET_ACCESS_KEY: string;
 }
 
 export function validate(config: Record<string, unknown>): EnvironmentVariables {
